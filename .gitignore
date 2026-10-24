@@ -5,3 +5,5 @@ __pycache__/
 qa/salida/
 .cursor/
 .atl/
+.vercel
+.env*
