@@ -1,0 +1,1813 @@
+{
+  "id": "medata_tarifas",
+  "fuente": "Medata, tarifa promedio mensual por zona de Medellín",
+  "url": "https://medata.app.medellin.gov.co/node/16279",
+  "archivo": "http://medata.app.medellin.gov.co/sites/default/files/distribution/1-010-04-000210/tarifa_promedio_mensual_por_zona_en_pesos_colombianos.csv",
+  "licencia": "CC BY-SA 4.0",
+  "descarga": "2026-10-24",
+  "corte_publicacion": "2023-12-14",
+  "universo": "Tarifa promedio mensual por zona. El metadato de la ficha marca la última modificación el 14 de diciembre de 2023.",
+  "grano": "mensual",
+  "serie": [
+    {
+      "tar_periodo": "202209",
+      "tar_valor": "77919.71293561725",
+      "tar_zona": "CENTRO"
+    },
+    {
+      "tar_periodo": "202209",
+      "tar_valor": "169348.128748068",
+      "tar_zona": "LAURELES"
+    },
+    {
+      "tar_periodo": "202209",
+      "tar_valor": "344596.473246356",
+      "tar_zona": "POBLADO"
+    },
+    {
+      "tar_periodo": "202109",
+      "tar_valor": "126277.0",
+      "tar_zona": "LAURELES"
+    },
+    {
+      "tar_periodo": "202109",
+      "tar_valor": "257055.0",
+      "tar_zona": "POBLADO"
+    },
+    {
+      "tar_periodo": "202109",
+      "tar_valor": "63989.0",
+      "tar_zona": "CENTRO"
+    },
+    {
+      "tar_periodo": "202009",
+      "tar_valor": "79580.0",
+      "tar_zona": "CENTRO"
+    },
+    {
+      "tar_periodo": "202009",
+      "tar_valor": "159445.0",
+      "tar_zona": "POBLADO"
+    },
+    {
+      "tar_periodo": "202009",
+      "tar_valor": "95378.0",
+      "tar_zona": "LAURELES"
+    },
+    {
+      "tar_periodo": "201909",
+      "tar_valor": "102614.0",
+      "tar_zona": "LAURELES"
+    },
+    {
+      "tar_periodo": "201909",
+      "tar_valor": "194700.0",
+      "tar_zona": "POBLADO"
+    },
+    {
+      "tar_periodo": "201909",
+      "tar_valor": "123584.0",
+      "tar_zona": "CENTRO"
+    },
+    {
+      "tar_periodo": "201809",
+      "tar_valor": "215564.0",
+      "tar_zona": "POBLADO"
+    },
+    {
+      "tar_periodo": "201809",
+      "tar_valor": "81937.0",
+      "tar_zona": "CENTRO"
+    },
+    {
+      "tar_periodo": "201809",
+      "tar_valor": "102984.0",
+      "tar_zona": "LAURELES"
+    },
+    {
+      "tar_periodo": "201709",
+      "tar_valor": "195020.0",
+      "tar_zona": "POBLADO"
+    },
+    {
+      "tar_periodo": "201709",
+      "tar_valor": "72050.0",
+      "tar_zona": "CENTRO"
+    },
+    {
+      "tar_periodo": "201709",
+      "tar_valor": "106443.0",
+      "tar_zona": "LAURELES"
+    },
+    {
+      "tar_periodo": "201609",
+      "tar_valor": "108690.0",
+      "tar_zona": "LAURELES"
+    },
+    {
+      "tar_periodo": "201609",
+      "tar_valor": "67848.0",
+      "tar_zona": "CENTRO"
+    },
+    {
+      "tar_periodo": "201609",
+      "tar_valor": "194227.0",
+      "tar_zona": "POBLADO"
+    },
+    {
+      "tar_periodo": "201509",
+      "tar_valor": "109582.0",
+      "tar_zona": "LAURELES"
+    },
+    {
+      "tar_periodo": "201509",
+      "tar_valor": "180096.0",
+      "tar_zona": "POBLADO"
+    },
+    {
+      "tar_periodo": "201509",
+      "tar_valor": "68531.0",
+      "tar_zona": "CENTRO"
+    },
+    {
+      "tar_periodo": "201409",
+      "tar_valor": "169489.0",
+      "tar_zona": "POBLADO"
+    },
+    {
+      "tar_periodo": "201409",
+      "tar_valor": "62420.0",
+      "tar_zona": "CENTRO"
+    },
+    {
+      "tar_periodo": "201409",
+      "tar_valor": "108955.0",
+      "tar_zona": "LAURELES"
+    },
+    {
+      "tar_periodo": "201309",
+      "tar_valor": "158717.0",
+      "tar_zona": "POBLADO"
+    },
+    {
+      "tar_periodo": "201309",
+      "tar_valor": "118092.0",
+      "tar_zona": "LAURELES"
+    },
+    {
+      "tar_periodo": "201309",
+      "tar_valor": "58937.0",
+      "tar_zona": "CENTRO"
+    },
+    {
+      "tar_periodo": "201209",
+      "tar_valor": "146339.0",
+      "tar_zona": "POBLADO"
+    },
+    {
+      "tar_periodo": "201209",
+      "tar_valor": "57993.0",
+      "tar_zona": "CENTRO"
+    },
+    {
+      "tar_periodo": "201209",
+      "tar_valor": "98783.0",
+      "tar_zona": "LAURELES"
+    },
+    {
+      "tar_periodo": "202208",
+      "tar_valor": "81553.23606228027",
+      "tar_zona": "CENTRO"
+    },
+    {
+      "tar_periodo": "202208",
+      "tar_valor": "168234.41625615762",
+      "tar_zona": "LAURELES"
+    },
+    {
+      "tar_periodo": "202208",
+      "tar_valor": "427615.1251331375",
+      "tar_zona": "POBLADO"
+    },
+    {
+      "tar_periodo": "202108",
+      "tar_valor": "256197.0",
+      "tar_zona": "POBLADO"
+    },
+    {
+      "tar_periodo": "202108",
+      "tar_valor": "129887.0",
+      "tar_zona": "CENTRO"
+    },
+    {
+      "tar_periodo": "202108",
+      "tar_valor": "119717.0",
+      "tar_zona": "LAURELES"
+    },
+    {
+      "tar_periodo": "202008",
+      "tar_valor": "163625.0",
+      "tar_zona": "POBLADO"
+    },
+    {
+      "tar_periodo": "202008",
+      "tar_valor": "79758.0",
+      "tar_zona": "CENTRO"
+    },
+    {
+      "tar_periodo": "202008",
+      "tar_valor": "88399.0",
+      "tar_zona": "LAURELES"
+    },
+    {
+      "tar_periodo": "201908",
+      "tar_valor": "85517.0",
+      "tar_zona": "CENTRO"
+    },
+    {
+      "tar_periodo": "201908",
+      "tar_valor": "211199.0",
+      "tar_zona": "POBLADO"
+    },
+    {
+      "tar_periodo": "201908",
+      "tar_valor": "104738.0",
+      "tar_zona": "LAURELES"
+    },
+    {
+      "tar_periodo": "201808",
+      "tar_valor": "106322.0",
+      "tar_zona": "LAURELES"
+    },
+    {
+      "tar_periodo": "201808",
+      "tar_valor": "81601.0",
+      "tar_zona": "CENTRO"
+    },
+    {
+      "tar_periodo": "201808",
+      "tar_valor": "206532.0",
+      "tar_zona": "POBLADO"
+    },
+    {
+      "tar_periodo": "201708",
+      "tar_valor": "207743.0",
+      "tar_zona": "POBLADO"
+    },
+    {
+      "tar_periodo": "201708",
+      "tar_valor": "111350.0",
+      "tar_zona": "LAURELES"
+    },
+    {
+      "tar_periodo": "201708",
+      "tar_valor": "73023.0",
+      "tar_zona": "CENTRO"
+    },
+    {
+      "tar_periodo": "201608",
+      "tar_valor": "113585.0",
+      "tar_zona": "LAURELES"
+    },
+    {
+      "tar_periodo": "201608",
+      "tar_valor": "75635.0",
+      "tar_zona": "CENTRO"
+    },
+    {
+      "tar_periodo": "201608",
+      "tar_valor": "217399.0",
+      "tar_zona": "POBLADO"
+    },
+    {
+      "tar_periodo": "201508",
+      "tar_valor": "68990.0",
+      "tar_zona": "CENTRO"
+    },
+    {
+      "tar_periodo": "201508",
+      "tar_valor": "122649.0",
+      "tar_zona": "LAURELES"
+    },
+    {
+      "tar_periodo": "201508",
+      "tar_valor": "186045.0",
+      "tar_zona": "POBLADO"
+    },
+    {
+      "tar_periodo": "201408",
+      "tar_valor": "89058.0",
+      "tar_zona": "CENTRO"
+    },
+    {
+      "tar_periodo": "201408",
+      "tar_valor": "119875.0",
+      "tar_zona": "LAURELES"
+    },
+    {
+      "tar_periodo": "201408",
+      "tar_valor": "165796.0",
+      "tar_zona": "POBLADO"
+    },
+    {
+      "tar_periodo": "201308",
+      "tar_valor": "161399.0",
+      "tar_zona": "POBLADO"
+    },
+    {
+      "tar_periodo": "201308",
+      "tar_valor": "104646.0",
+      "tar_zona": "LAURELES"
+    },
+    {
+      "tar_periodo": "201308",
+      "tar_valor": "69766.0",
+      "tar_zona": "CENTRO"
+    },
+    {
+      "tar_periodo": "201208",
+      "tar_valor": "99842.0",
+      "tar_zona": "LAURELES"
+    },
+    {
+      "tar_periodo": "201208",
+      "tar_valor": "157171.0",
+      "tar_zona": "POBLADO"
+    },
+    {
+      "tar_periodo": "201208",
+      "tar_valor": "65708.0",
+      "tar_zona": "CENTRO"
+    },
+    {
+      "tar_periodo": "202207",
+      "tar_valor": "396269.0",
+      "tar_zona": "POBLADO"
+    },
+    {
+      "tar_periodo": "202207",
+      "tar_valor": "172724.0",
+      "tar_zona": "LAURELES"
+    },
+    {
+      "tar_periodo": "202207",
+      "tar_valor": "78861.0",
+      "tar_zona": "CENTRO"
+    },
+    {
+      "tar_periodo": "202107",
+      "tar_valor": "65831.0",
+      "tar_zona": "CENTRO"
+    },
+    {
+      "tar_periodo": "202107",
+      "tar_valor": "119717.0",
+      "tar_zona": "LAURELES"
+    },
+    {
+      "tar_periodo": "202107",
+      "tar_valor": "242505.0",
+      "tar_zona": "POBLADO"
+    },
+    {
+      "tar_periodo": "202007",
+      "tar_valor": "77062.0",
+      "tar_zona": "CENTRO"
+    },
+    {
+      "tar_periodo": "202007",
+      "tar_valor": "89883.0",
+      "tar_zona": "LAURELES"
+    },
+    {
+      "tar_periodo": "202007",
+      "tar_valor": "166310.0",
+      "tar_zona": "POBLADO"
+    },
+    {
+      "tar_periodo": "201907",
+      "tar_valor": "200980.0",
+      "tar_zona": "POBLADO"
+    },
+    {
+      "tar_periodo": "201907",
+      "tar_valor": "111392.0",
+      "tar_zona": "CENTRO"
+    },
+    {
+      "tar_periodo": "201907",
+      "tar_valor": "95423.0",
+      "tar_zona": "LAURELES"
+    },
+    {
+      "tar_periodo": "201807",
+      "tar_valor": "195512.0",
+      "tar_zona": "POBLADO"
+    },
+    {
+      "tar_periodo": "201807",
+      "tar_valor": "114479.0",
+      "tar_zona": "LAURELES"
+    },
+    {
+      "tar_periodo": "201807",
+      "tar_valor": "81439.0",
+      "tar_zona": "CENTRO"
+    },
+    {
+      "tar_periodo": "201707",
+      "tar_valor": "102746.0",
+      "tar_zona": "LAURELES"
+    },
+    {
+      "tar_periodo": "201707",
+      "tar_valor": "72617.0",
+      "tar_zona": "CENTRO"
+    },
+    {
+      "tar_periodo": "201707",
+      "tar_valor": "210096.0",
+      "tar_zona": "POBLADO"
+    },
+    {
+      "tar_periodo": "201607",
+      "tar_valor": "205950.0",
+      "tar_zona": "POBLADO"
+    },
+    {
+      "tar_periodo": "201607",
+      "tar_valor": "69760.0",
+      "tar_zona": "CENTRO"
+    },
+    {
+      "tar_periodo": "201607",
+      "tar_valor": "111943.0",
+      "tar_zona": "LAURELES"
+    },
+    {
+      "tar_periodo": "201507",
+      "tar_valor": "114283.0",
+      "tar_zona": "LAURELES"
+    },
+    {
+      "tar_periodo": "201507",
+      "tar_valor": "75127.0",
+      "tar_zona": "CENTRO"
+    },
+    {
+      "tar_periodo": "201507",
+      "tar_valor": "183508.0",
+      "tar_zona": "POBLADO"
+    },
+    {
+      "tar_periodo": "201407",
+      "tar_valor": "103685.0",
+      "tar_zona": "LAURELES"
+    },
+    {
+      "tar_periodo": "201407",
+      "tar_valor": "56315.0",
+      "tar_zona": "CENTRO"
+    },
+    {
+      "tar_periodo": "201407",
+      "tar_valor": "152526.0",
+      "tar_zona": "POBLADO"
+    },
+    {
+      "tar_periodo": "201307",
+      "tar_valor": "142777.0",
+      "tar_zona": "POBLADO"
+    },
+    {
+      "tar_periodo": "201307",
+      "tar_valor": "101575.0",
+      "tar_zona": "LAURELES"
+    },
+    {
+      "tar_periodo": "201307",
+      "tar_valor": "62680.0",
+      "tar_zona": "CENTRO"
+    },
+    {
+      "tar_periodo": "201207",
+      "tar_valor": "95245.0",
+      "tar_zona": "LAURELES"
+    },
+    {
+      "tar_periodo": "201207",
+      "tar_valor": "157119.0",
+      "tar_zona": "POBLADO"
+    },
+    {
+      "tar_periodo": "201207",
+      "tar_valor": "58193.0",
+      "tar_zona": "CENTRO"
+    },
+    {
+      "tar_periodo": "202206",
+      "tar_valor": "158948.0",
+      "tar_zona": "LAURELES"
+    },
+    {
+      "tar_periodo": "202206",
+      "tar_valor": "75703.0",
+      "tar_zona": "CENTRO"
+    },
+    {
+      "tar_periodo": "202206",
+      "tar_valor": "339706.0",
+      "tar_zona": "POBLADO"
+    },
+    {
+      "tar_periodo": "202106",
+      "tar_valor": "226808.0",
+      "tar_zona": "POBLADO"
+    },
+    {
+      "tar_periodo": "202106",
+      "tar_valor": "65719.0",
+      "tar_zona": "CENTRO"
+    },
+    {
+      "tar_periodo": "202106",
+      "tar_valor": "118207.0",
+      "tar_zona": "LAURELES"
+    },
+    {
+      "tar_periodo": "202006",
+      "tar_valor": "96513.0",
+      "tar_zona": "CENTRO"
+    },
+    {
+      "tar_periodo": "202006",
+      "tar_valor": "77930.0",
+      "tar_zona": "LAURELES"
+    },
+    {
+      "tar_periodo": "202006",
+      "tar_valor": "155947.0",
+      "tar_zona": "POBLADO"
+    },
+    {
+      "tar_periodo": "201906",
+      "tar_valor": "81265.0",
+      "tar_zona": "CENTRO"
+    },
+    {
+      "tar_periodo": "201906",
+      "tar_valor": "199097.0",
+      "tar_zona": "POBLADO"
+    },
+    {
+      "tar_periodo": "201906",
+      "tar_valor": "94712.0",
+      "tar_zona": "LAURELES"
+    },
+    {
+      "tar_periodo": "201806",
+      "tar_valor": "187639.0",
+      "tar_zona": "POBLADO"
+    },
+    {
+      "tar_periodo": "201806",
+      "tar_valor": "110185.0",
+      "tar_zona": "LAURELES"
+    },
+    {
+      "tar_periodo": "201806",
+      "tar_valor": "74819.0",
+      "tar_zona": "CENTRO"
+    },
+    {
+      "tar_periodo": "201706",
+      "tar_valor": "98724.0",
+      "tar_zona": "LAURELES"
+    },
+    {
+      "tar_periodo": "201706",
+      "tar_valor": "187630.0",
+      "tar_zona": "POBLADO"
+    },
+    {
+      "tar_periodo": "201706",
+      "tar_valor": "70500.0",
+      "tar_zona": "CENTRO"
+    },
+    {
+      "tar_periodo": "201606",
+      "tar_valor": "70118.0",
+      "tar_zona": "CENTRO"
+    },
+    {
+      "tar_periodo": "201606",
+      "tar_valor": "106220.0",
+      "tar_zona": "LAURELES"
+    },
+    {
+      "tar_periodo": "201606",
+      "tar_valor": "196639.0",
+      "tar_zona": "POBLADO"
+    },
+    {
+      "tar_periodo": "201506",
+      "tar_valor": "159717.0",
+      "tar_zona": "POBLADO"
+    },
+    {
+      "tar_periodo": "201506",
+      "tar_valor": "67473.0",
+      "tar_zona": "CENTRO"
+    },
+    {
+      "tar_periodo": "201506",
+      "tar_valor": "100405.0",
+      "tar_zona": "LAURELES"
+    },
+    {
+      "tar_periodo": "201406",
+      "tar_valor": "108585.0",
+      "tar_zona": "LAURELES"
+    },
+    {
+      "tar_periodo": "201406",
+      "tar_valor": "62771.0",
+      "tar_zona": "CENTRO"
+    },
+    {
+      "tar_periodo": "201406",
+      "tar_valor": "149533.0",
+      "tar_zona": "POBLADO"
+    },
+    {
+      "tar_periodo": "201306",
+      "tar_valor": "151382.0",
+      "tar_zona": "POBLADO"
+    },
+    {
+      "tar_periodo": "201306",
+      "tar_valor": "96507.0",
+      "tar_zona": "LAURELES"
+    },
+    {
+      "tar_periodo": "201306",
+      "tar_valor": "65384.0",
+      "tar_zona": "CENTRO"
+    },
+    {
+      "tar_periodo": "201206",
+      "tar_valor": "142644.0",
+      "tar_zona": "POBLADO"
+    },
+    {
+      "tar_periodo": "201206",
+      "tar_valor": "62002.0",
+      "tar_zona": "CENTRO"
+    },
+    {
+      "tar_periodo": "201206",
+      "tar_valor": "97576.0",
+      "tar_zona": "LAURELES"
+    },
+    {
+      "tar_periodo": "202205",
+      "tar_valor": "340197.497658613",
+      "tar_zona": "POBLADO"
+    },
+    {
+      "tar_periodo": "202205",
+      "tar_valor": "154957.28493482873",
+      "tar_zona": "LAURELES"
+    },
+    {
+      "tar_periodo": "202205",
+      "tar_valor": "79285.68715697037",
+      "tar_zona": "CENTRO"
+    },
+    {
+      "tar_periodo": "202105",
+      "tar_valor": "67772.0",
+      "tar_zona": "CENTRO"
+    },
+    {
+      "tar_periodo": "202105",
+      "tar_valor": "108265.0",
+      "tar_zona": "LAURELES"
+    },
+    {
+      "tar_periodo": "202105",
+      "tar_valor": "224913.0",
+      "tar_zona": "POBLADO"
+    },
+    {
+      "tar_periodo": "202005",
+      "tar_valor": "46414.0",
+      "tar_zona": "CENTRO"
+    },
+    {
+      "tar_periodo": "202005",
+      "tar_valor": "162684.0",
+      "tar_zona": "POBLADO"
+    },
+    {
+      "tar_periodo": "202005",
+      "tar_valor": "85945.0",
+      "tar_zona": "LAURELES"
+    },
+    {
+      "tar_periodo": "201905",
+      "tar_valor": "191569.0",
+      "tar_zona": "POBLADO"
+    },
+    {
+      "tar_periodo": "201905",
+      "tar_valor": "79662.0",
+      "tar_zona": "CENTRO"
+    },
+    {
+      "tar_periodo": "201905",
+      "tar_valor": "89673.0",
+      "tar_zona": "LAURELES"
+    },
+    {
+      "tar_periodo": "201805",
+      "tar_valor": "107714.0",
+      "tar_zona": "LAURELES"
+    },
+    {
+      "tar_periodo": "201805",
+      "tar_valor": "185453.0",
+      "tar_zona": "POBLADO"
+    },
+    {
+      "tar_periodo": "201805",
+      "tar_valor": "80529.0",
+      "tar_zona": "CENTRO"
+    },
+    {
+      "tar_periodo": "201705",
+      "tar_valor": "97979.0",
+      "tar_zona": "LAURELES"
+    },
+    {
+      "tar_periodo": "201705",
+      "tar_valor": "72583.0",
+      "tar_zona": "CENTRO"
+    },
+    {
+      "tar_periodo": "201705",
+      "tar_valor": "193823.0",
+      "tar_zona": "POBLADO"
+    },
+    {
+      "tar_periodo": "201605",
+      "tar_valor": "187179.0",
+      "tar_zona": "POBLADO"
+    },
+    {
+      "tar_periodo": "201605",
+      "tar_valor": "104059.0",
+      "tar_zona": "LAURELES"
+    },
+    {
+      "tar_periodo": "201605",
+      "tar_valor": "64833.0",
+      "tar_zona": "CENTRO"
+    },
+    {
+      "tar_periodo": "201505",
+      "tar_valor": "100017.0",
+      "tar_zona": "LAURELES"
+    },
+    {
+      "tar_periodo": "201505",
+      "tar_valor": "165627.0",
+      "tar_zona": "POBLADO"
+    },
+    {
+      "tar_periodo": "201505",
+      "tar_valor": "78516.0",
+      "tar_zona": "CENTRO"
+    },
+    {
+      "tar_periodo": "201405",
+      "tar_valor": "101092.0",
+      "tar_zona": "LAURELES"
+    },
+    {
+      "tar_periodo": "201405",
+      "tar_valor": "153211.0",
+      "tar_zona": "POBLADO"
+    },
+    {
+      "tar_periodo": "201405",
+      "tar_valor": "68884.0",
+      "tar_zona": "CENTRO"
+    },
+    {
+      "tar_periodo": "201305",
+      "tar_valor": "99550.0",
+      "tar_zona": "LAURELES"
+    },
+    {
+      "tar_periodo": "201305",
+      "tar_valor": "140014.0",
+      "tar_zona": "POBLADO"
+    },
+    {
+      "tar_periodo": "201305",
+      "tar_valor": "63094.0",
+      "tar_zona": "CENTRO"
+    },
+    {
+      "tar_periodo": "201205",
+      "tar_valor": "91146.0",
+      "tar_zona": "LAURELES"
+    },
+    {
+      "tar_periodo": "201205",
+      "tar_valor": "54292.0",
+      "tar_zona": "CENTRO"
+    },
+    {
+      "tar_periodo": "201205",
+      "tar_valor": "145219.0",
+      "tar_zona": "POBLADO"
+    },
+    {
+      "tar_periodo": "202204",
+      "tar_valor": "333493.0",
+      "tar_zona": "POBLADO"
+    },
+    {
+      "tar_periodo": "202204",
+      "tar_valor": "154038.0",
+      "tar_zona": "LAURELES"
+    },
+    {
+      "tar_periodo": "202204",
+      "tar_valor": "80415.0",
+      "tar_zona": "CENTRO"
+    },
+    {
+      "tar_periodo": "202104",
+      "tar_valor": "211190.0",
+      "tar_zona": "POBLADO"
+    },
+    {
+      "tar_periodo": "202104",
+      "tar_valor": "111196.0",
+      "tar_zona": "LAURELES"
+    },
+    {
+      "tar_periodo": "202104",
+      "tar_valor": "68838.0",
+      "tar_zona": "CENTRO"
+    },
+    {
+      "tar_periodo": "202004",
+      "tar_valor": "170095.0",
+      "tar_zona": "POBLADO"
+    },
+    {
+      "tar_periodo": "202004",
+      "tar_valor": "54050.0",
+      "tar_zona": "CENTRO"
+    },
+    {
+      "tar_periodo": "202004",
+      "tar_valor": "70419.0",
+      "tar_zona": "LAURELES"
+    },
+    {
+      "tar_periodo": "201904",
+      "tar_valor": "99743.0",
+      "tar_zona": "LAURELES"
+    },
+    {
+      "tar_periodo": "201904",
+      "tar_valor": "73129.0",
+      "tar_zona": "CENTRO"
+    },
+    {
+      "tar_periodo": "201904",
+      "tar_valor": "193301.0",
+      "tar_zona": "POBLADO"
+    },
+    {
+      "tar_periodo": "201804",
+      "tar_valor": "189523.0",
+      "tar_zona": "POBLADO"
+    },
+    {
+      "tar_periodo": "201804",
+      "tar_valor": "105150.0",
+      "tar_zona": "LAURELES"
+    },
+    {
+      "tar_periodo": "201804",
+      "tar_valor": "90322.0",
+      "tar_zona": "CENTRO"
+    },
+    {
+      "tar_periodo": "201704",
+      "tar_valor": "72167.0",
+      "tar_zona": "CENTRO"
+    },
+    {
+      "tar_periodo": "201704",
+      "tar_valor": "104489.0",
+      "tar_zona": "LAURELES"
+    },
+    {
+      "tar_periodo": "201704",
+      "tar_valor": "196826.0",
+      "tar_zona": "POBLADO"
+    },
+    {
+      "tar_periodo": "201604",
+      "tar_valor": "67667.0",
+      "tar_zona": "CENTRO"
+    },
+    {
+      "tar_periodo": "201604",
+      "tar_valor": "187113.0",
+      "tar_zona": "POBLADO"
+    },
+    {
+      "tar_periodo": "201604",
+      "tar_valor": "105313.0",
+      "tar_zona": "LAURELES"
+    },
+    {
+      "tar_periodo": "201504",
+      "tar_valor": "98833.0",
+      "tar_zona": "LAURELES"
+    },
+    {
+      "tar_periodo": "201504",
+      "tar_valor": "164128.0",
+      "tar_zona": "POBLADO"
+    },
+    {
+      "tar_periodo": "201504",
+      "tar_valor": "74192.0",
+      "tar_zona": "CENTRO"
+    },
+    {
+      "tar_periodo": "201404",
+      "tar_valor": "188836.0",
+      "tar_zona": "POBLADO"
+    },
+    {
+      "tar_periodo": "201404",
+      "tar_valor": "102873.0",
+      "tar_zona": "LAURELES"
+    },
+    {
+      "tar_periodo": "201404",
+      "tar_valor": "67699.0",
+      "tar_zona": "CENTRO"
+    },
+    {
+      "tar_periodo": "201304",
+      "tar_valor": "147570.0",
+      "tar_zona": "POBLADO"
+    },
+    {
+      "tar_periodo": "201304",
+      "tar_valor": "101599.0",
+      "tar_zona": "LAURELES"
+    },
+    {
+      "tar_periodo": "201304",
+      "tar_valor": "67899.0",
+      "tar_zona": "CENTRO"
+    },
+    {
+      "tar_periodo": "201204",
+      "tar_valor": "55572.0",
+      "tar_zona": "CENTRO"
+    },
+    {
+      "tar_periodo": "201204",
+      "tar_valor": "90504.0",
+      "tar_zona": "LAURELES"
+    },
+    {
+      "tar_periodo": "201204",
+      "tar_valor": "147236.0",
+      "tar_zona": "POBLADO"
+    },
+    {
+      "tar_periodo": "202303",
+      "tar_valor": "189879.48961103722",
+      "tar_zona": "LAURELES"
+    },
+    {
+      "tar_periodo": "202303",
+      "tar_valor": "89987.6772875817",
+      "tar_zona": "CENTRO"
+    },
+    {
+      "tar_periodo": "202303",
+      "tar_valor": "492212.6283004358",
+      "tar_zona": "POBLADO"
+    },
+    {
+      "tar_periodo": "202203",
+      "tar_valor": "148230.0",
+      "tar_zona": "LAURELES"
+    },
+    {
+      "tar_periodo": "202203",
+      "tar_valor": "75028.0",
+      "tar_zona": "CENTRO"
+    },
+    {
+      "tar_periodo": "202203",
+      "tar_valor": "317233.0",
+      "tar_zona": "POBLADO"
+    },
+    {
+      "tar_periodo": "202103",
+      "tar_valor": "214196.0",
+      "tar_zona": "POBLADO"
+    },
+    {
+      "tar_periodo": "202103",
+      "tar_valor": "47492.0",
+      "tar_zona": "CENTRO"
+    },
+    {
+      "tar_periodo": "202103",
+      "tar_valor": "116316.0",
+      "tar_zona": "LAURELES"
+    },
+    {
+      "tar_periodo": "202003",
+      "tar_valor": "101732.0",
+      "tar_zona": "LAURELES"
+    },
+    {
+      "tar_periodo": "202003",
+      "tar_valor": "213330.0",
+      "tar_zona": "POBLADO"
+    },
+    {
+      "tar_periodo": "202003",
+      "tar_valor": "63728.0",
+      "tar_zona": "CENTRO"
+    },
+    {
+      "tar_periodo": "201903",
+      "tar_valor": "76807.0",
+      "tar_zona": "CENTRO"
+    },
+    {
+      "tar_periodo": "201903",
+      "tar_valor": "103825.0",
+      "tar_zona": "LAURELES"
+    },
+    {
+      "tar_periodo": "201903",
+      "tar_valor": "195871.0",
+      "tar_zona": "POBLADO"
+    },
+    {
+      "tar_periodo": "201803",
+      "tar_valor": "79058.0",
+      "tar_zona": "CENTRO"
+    },
+    {
+      "tar_periodo": "201803",
+      "tar_valor": "136206.0",
+      "tar_zona": "LAURELES"
+    },
+    {
+      "tar_periodo": "201803",
+      "tar_valor": "192469.0",
+      "tar_zona": "POBLADO"
+    },
+    {
+      "tar_periodo": "201703",
+      "tar_valor": "195298.0",
+      "tar_zona": "POBLADO"
+    },
+    {
+      "tar_periodo": "201703",
+      "tar_valor": "70700.0",
+      "tar_zona": "CENTRO"
+    },
+    {
+      "tar_periodo": "201703",
+      "tar_valor": "102826.0",
+      "tar_zona": "LAURELES"
+    },
+    {
+      "tar_periodo": "201603",
+      "tar_valor": "109681.0",
+      "tar_zona": "LAURELES"
+    },
+    {
+      "tar_periodo": "201603",
+      "tar_valor": "73500.0",
+      "tar_zona": "CENTRO"
+    },
+    {
+      "tar_periodo": "201603",
+      "tar_valor": "189340.0",
+      "tar_zona": "POBLADO"
+    },
+    {
+      "tar_periodo": "201503",
+      "tar_valor": "98394.0",
+      "tar_zona": "LAURELES"
+    },
+    {
+      "tar_periodo": "201503",
+      "tar_valor": "165814.0",
+      "tar_zona": "POBLADO"
+    },
+    {
+      "tar_periodo": "201503",
+      "tar_valor": "67581.0",
+      "tar_zona": "CENTRO"
+    },
+    {
+      "tar_periodo": "201403",
+      "tar_valor": "101179.0",
+      "tar_zona": "LAURELES"
+    },
+    {
+      "tar_periodo": "201403",
+      "tar_valor": "147475.0",
+      "tar_zona": "POBLADO"
+    },
+    {
+      "tar_periodo": "201403",
+      "tar_valor": "61869.0",
+      "tar_zona": "CENTRO"
+    },
+    {
+      "tar_periodo": "201303",
+      "tar_valor": "69993.0",
+      "tar_zona": "CENTRO"
+    },
+    {
+      "tar_periodo": "201303",
+      "tar_valor": "97708.0",
+      "tar_zona": "LAURELES"
+    },
+    {
+      "tar_periodo": "201303",
+      "tar_valor": "152675.0",
+      "tar_zona": "POBLADO"
+    },
+    {
+      "tar_periodo": "201203",
+      "tar_valor": "58749.0",
+      "tar_zona": "CENTRO"
+    },
+    {
+      "tar_periodo": "201203",
+      "tar_valor": "94096.0",
+      "tar_zona": "LAURELES"
+    },
+    {
+      "tar_periodo": "201203",
+      "tar_valor": "152145.0",
+      "tar_zona": "POBLADO"
+    },
+    {
+      "tar_periodo": "202202",
+      "tar_valor": "69300.30900798176",
+      "tar_zona": "CENTRO"
+    },
+    {
+      "tar_periodo": "202202",
+      "tar_valor": "315080.5729959299",
+      "tar_zona": "POBLADO"
+    },
+    {
+      "tar_periodo": "202202",
+      "tar_valor": "134166.03809125157",
+      "tar_zona": "LAURELES"
+    },
+    {
+      "tar_periodo": "202202",
+      "tar_valor": "216243.03055111822",
+      "tar_zona": "LAURELES"
+    },
+    {
+      "tar_periodo": "202202",
+      "tar_valor": "124250.08166295472",
+      "tar_zona": "CENTRO"
+    },
+    {
+      "tar_periodo": "202202",
+      "tar_valor": "516204.12903163396",
+      "tar_zona": "POBLADO"
+    },
+    {
+      "tar_periodo": "202102",
+      "tar_valor": "80000.0",
+      "tar_zona": "CENTRO"
+    },
+    {
+      "tar_periodo": "202102",
+      "tar_valor": "207480.0",
+      "tar_zona": "POBLADO"
+    },
+    {
+      "tar_periodo": "202102",
+      "tar_valor": "109929.0",
+      "tar_zona": "LAURELES"
+    },
+    {
+      "tar_periodo": "202002",
+      "tar_valor": "207141.0",
+      "tar_zona": "POBLADO"
+    },
+    {
+      "tar_periodo": "202002",
+      "tar_valor": "102763.0",
+      "tar_zona": "LAURELES"
+    },
+    {
+      "tar_periodo": "202002",
+      "tar_valor": "82530.0",
+      "tar_zona": "CENTRO"
+    },
+    {
+      "tar_periodo": "201902",
+      "tar_valor": "203474.0",
+      "tar_zona": "POBLADO"
+    },
+    {
+      "tar_periodo": "201902",
+      "tar_valor": "136430.0",
+      "tar_zona": "LAURELES"
+    },
+    {
+      "tar_periodo": "201902",
+      "tar_valor": "83754.0",
+      "tar_zona": "CENTRO"
+    },
+    {
+      "tar_periodo": "201802",
+      "tar_valor": "111480.0",
+      "tar_zona": "LAURELES"
+    },
+    {
+      "tar_periodo": "201802",
+      "tar_valor": "189338.0",
+      "tar_zona": "POBLADO"
+    },
+    {
+      "tar_periodo": "201802",
+      "tar_valor": "75573.0",
+      "tar_zona": "CENTRO"
+    },
+    {
+      "tar_periodo": "201702",
+      "tar_valor": "106875.0",
+      "tar_zona": "LAURELES"
+    },
+    {
+      "tar_periodo": "201702",
+      "tar_valor": "197501.0",
+      "tar_zona": "POBLADO"
+    },
+    {
+      "tar_periodo": "201702",
+      "tar_valor": "71375.0",
+      "tar_zona": "CENTRO"
+    },
+    {
+      "tar_periodo": "201602",
+      "tar_valor": "109966.0",
+      "tar_zona": "LAURELES"
+    },
+    {
+      "tar_periodo": "201602",
+      "tar_valor": "61867.0",
+      "tar_zona": "CENTRO"
+    },
+    {
+      "tar_periodo": "201602",
+      "tar_valor": "184963.0",
+      "tar_zona": "POBLADO"
+    },
+    {
+      "tar_periodo": "201502",
+      "tar_valor": "165067.0",
+      "tar_zona": "POBLADO"
+    },
+    {
+      "tar_periodo": "201502",
+      "tar_valor": "69312.0",
+      "tar_zona": "CENTRO"
+    },
+    {
+      "tar_periodo": "201502",
+      "tar_valor": "94986.0",
+      "tar_zona": "LAURELES"
+    },
+    {
+      "tar_periodo": "201402",
+      "tar_valor": "103520.0",
+      "tar_zona": "LAURELES"
+    },
+    {
+      "tar_periodo": "201402",
+      "tar_valor": "69531.0",
+      "tar_zona": "CENTRO"
+    },
+    {
+      "tar_periodo": "201402",
+      "tar_valor": "152623.0",
+      "tar_zona": "POBLADO"
+    },
+    {
+      "tar_periodo": "201302",
+      "tar_valor": "148115.0",
+      "tar_zona": "POBLADO"
+    },
+    {
+      "tar_periodo": "201302",
+      "tar_valor": "60428.0",
+      "tar_zona": "CENTRO"
+    },
+    {
+      "tar_periodo": "201302",
+      "tar_valor": "98653.0",
+      "tar_zona": "LAURELES"
+    },
+    {
+      "tar_periodo": "201202",
+      "tar_valor": "61438.0",
+      "tar_zona": "CENTRO"
+    },
+    {
+      "tar_periodo": "201202",
+      "tar_valor": "145103.0",
+      "tar_zona": "POBLADO"
+    },
+    {
+      "tar_periodo": "201202",
+      "tar_valor": "86941.0",
+      "tar_zona": "LAURELES"
+    },
+    {
+      "tar_periodo": "202212",
+      "tar_valor": "207247.07866613098",
+      "tar_zona": "LAURELES"
+    },
+    {
+      "tar_periodo": "202212",
+      "tar_valor": "131080.37686062246",
+      "tar_zona": "CENTRO"
+    },
+    {
+      "tar_periodo": "202212",
+      "tar_valor": "496034.5986057017",
+      "tar_zona": "POBLADO"
+    },
+    {
+      "tar_periodo": "202112",
+      "tar_valor": "78239.88812301167",
+      "tar_zona": "CENTRO"
+    },
+    {
+      "tar_periodo": "202112",
+      "tar_valor": "150961.77687175685",
+      "tar_zona": "LAURELES"
+    },
+    {
+      "tar_periodo": "202112",
+      "tar_valor": "289320.8065551113",
+      "tar_zona": "POBLADO"
+    },
+    {
+      "tar_periodo": "202012",
+      "tar_valor": "103219.0",
+      "tar_zona": "LAURELES"
+    },
+    {
+      "tar_periodo": "202012",
+      "tar_valor": "76212.0",
+      "tar_zona": "CENTRO"
+    },
+    {
+      "tar_periodo": "202012",
+      "tar_valor": "198802.0",
+      "tar_zona": "POBLADO"
+    },
+    {
+      "tar_periodo": "201912",
+      "tar_valor": "105882.0",
+      "tar_zona": "LAURELES"
+    },
+    {
+      "tar_periodo": "201912",
+      "tar_valor": "90638.0",
+      "tar_zona": "CENTRO"
+    },
+    {
+      "tar_periodo": "201912",
+      "tar_valor": "202083.0",
+      "tar_zona": "POBLADO"
+    },
+    {
+      "tar_periodo": "201812",
+      "tar_valor": "196868.0",
+      "tar_zona": "POBLADO"
+    },
+    {
+      "tar_periodo": "201812",
+      "tar_valor": "114503.0",
+      "tar_zona": "LAURELES"
+    },
+    {
+      "tar_periodo": "201812",
+      "tar_valor": "81815.0",
+      "tar_zona": "CENTRO"
+    },
+    {
+      "tar_periodo": "201712",
+      "tar_valor": "107142.0",
+      "tar_zona": "LAURELES"
+    },
+    {
+      "tar_periodo": "201712",
+      "tar_valor": "193456.0",
+      "tar_zona": "POBLADO"
+    },
+    {
+      "tar_periodo": "201712",
+      "tar_valor": "75243.0",
+      "tar_zona": "CENTRO"
+    },
+    {
+      "tar_periodo": "201612",
+      "tar_valor": "112721.0",
+      "tar_zona": "LAURELES"
+    },
+    {
+      "tar_periodo": "201612",
+      "tar_valor": "67029.0",
+      "tar_zona": "CENTRO"
+    },
+    {
+      "tar_periodo": "201612",
+      "tar_valor": "200115.0",
+      "tar_zona": "POBLADO"
+    },
+    {
+      "tar_periodo": "201512",
+      "tar_valor": "68141.0",
+      "tar_zona": "CENTRO"
+    },
+    {
+      "tar_periodo": "201512",
+      "tar_valor": "193223.0",
+      "tar_zona": "POBLADO"
+    },
+    {
+      "tar_periodo": "201512",
+      "tar_valor": "117194.0",
+      "tar_zona": "LAURELES"
+    },
+    {
+      "tar_periodo": "201412",
+      "tar_valor": "0.0",
+      "tar_zona": "LAURELES"
+    },
+    {
+      "tar_periodo": "201412",
+      "tar_valor": "0.0",
+      "tar_zona": "CENTRO"
+    },
+    {
+      "tar_periodo": "201412",
+      "tar_valor": "0.0",
+      "tar_zona": "POBLADO"
+    },
+    {
+      "tar_periodo": "201312",
+      "tar_valor": "100896.0",
+      "tar_zona": "LAURELES"
+    },
+    {
+      "tar_periodo": "201312",
+      "tar_valor": "59790.0",
+      "tar_zona": "CENTRO"
+    },
+    {
+      "tar_periodo": "201312",
+      "tar_valor": "160014.0",
+      "tar_zona": "POBLADO"
+    },
+    {
+      "tar_periodo": "201212",
+      "tar_valor": "106395.0",
+      "tar_zona": "LAURELES"
+    },
+    {
+      "tar_periodo": "201212",
+      "tar_valor": "67052.0",
+      "tar_zona": "CENTRO"
+    },
+    {
+      "tar_periodo": "201212",
+      "tar_valor": "149270.0",
+      "tar_zona": "POBLADO"
+    },
+    {
+      "tar_periodo": "202211",
+      "tar_valor": "468007.06398590194",
+      "tar_zona": "POBLADO"
+    },
+    {
+      "tar_periodo": "202211",
+      "tar_valor": "182514.9260715387",
+      "tar_zona": "LAURELES"
+    },
+    {
+      "tar_periodo": "202211",
+      "tar_valor": "86650.62478559176",
+      "tar_zona": "CENTRO"
+    },
+    {
+      "tar_periodo": "202111",
+      "tar_valor": "282966.0",
+      "tar_zona": "POBLADO"
+    },
+    {
+      "tar_periodo": "202111",
+      "tar_valor": "75636.0",
+      "tar_zona": "CENTRO"
+    },
+    {
+      "tar_periodo": "202111",
+      "tar_valor": "133221.0",
+      "tar_zona": "LAURELES"
+    },
+    {
+      "tar_periodo": "202011",
+      "tar_valor": "182103.0",
+      "tar_zona": "POBLADO"
+    },
+    {
+      "tar_periodo": "202011",
+      "tar_valor": "87854.0",
+      "tar_zona": "CENTRO"
+    },
+    {
+      "tar_periodo": "202011",
+      "tar_valor": "103460.0",
+      "tar_zona": "LAURELES"
+    },
+    {
+      "tar_periodo": "201911",
+      "tar_valor": "105947.0",
+      "tar_zona": "LAURELES"
+    },
+    {
+      "tar_periodo": "201911",
+      "tar_valor": "203065.0",
+      "tar_zona": "POBLADO"
+    },
+    {
+      "tar_periodo": "201911",
+      "tar_valor": "78751.0",
+      "tar_zona": "CENTRO"
+    },
+    {
+      "tar_periodo": "201811",
+      "tar_valor": "190385.0",
+      "tar_zona": "POBLADO"
+    },
+    {
+      "tar_periodo": "201811",
+      "tar_valor": "107068.0",
+      "tar_zona": "LAURELES"
+    },
+    {
+      "tar_periodo": "201811",
+      "tar_valor": "82170.0",
+      "tar_zona": "CENTRO"
+    },
+    {
+      "tar_periodo": "201711",
+      "tar_valor": "106310.0",
+      "tar_zona": "LAURELES"
+    },
+    {
+      "tar_periodo": "201711",
+      "tar_valor": "77035.0",
+      "tar_zona": "CENTRO"
+    },
+    {
+      "tar_periodo": "201711",
+      "tar_valor": "198460.0",
+      "tar_zona": "POBLADO"
+    },
+    {
+      "tar_periodo": "201611",
+      "tar_valor": "66857.0",
+      "tar_zona": "CENTRO"
+    },
+    {
+      "tar_periodo": "201611",
+      "tar_valor": "109477.0",
+      "tar_zona": "LAURELES"
+    },
+    {
+      "tar_periodo": "201611",
+      "tar_valor": "195512.0",
+      "tar_zona": "POBLADO"
+    },
+    {
+      "tar_periodo": "201511",
+      "tar_valor": "65157.0",
+      "tar_zona": "CENTRO"
+    },
+    {
+      "tar_periodo": "201511",
+      "tar_valor": "110950.0",
+      "tar_zona": "LAURELES"
+    },
+    {
+      "tar_periodo": "201511",
+      "tar_valor": "178520.0",
+      "tar_zona": "POBLADO"
+    },
+    {
+      "tar_periodo": "201411",
+      "tar_valor": "105239.0",
+      "tar_zona": "LAURELES"
+    },
+    {
+      "tar_periodo": "201411",
+      "tar_valor": "71192.0",
+      "tar_zona": "CENTRO"
+    },
+    {
+      "tar_periodo": "201411",
+      "tar_valor": "138196.0",
+      "tar_zona": "POBLADO"
+    },
+    {
+      "tar_periodo": "201311",
+      "tar_valor": "159706.0",
+      "tar_zona": "POBLADO"
+    },
+    {
+      "tar_periodo": "201311",
+      "tar_valor": "101205.0",
+      "tar_zona": "LAURELES"
+    },
+    {
+      "tar_periodo": "201311",
+      "tar_valor": "58317.0",
+      "tar_zona": "CENTRO"
+    },
+    {
+      "tar_periodo": "201211",
+      "tar_valor": "56054.0",
+      "tar_zona": "CENTRO"
+    },
+    {
+      "tar_periodo": "201211",
+      "tar_valor": "99082.0",
+      "tar_zona": "LAURELES"
+    },
+    {
+      "tar_periodo": "201211",
+      "tar_valor": "152374.0",
+      "tar_zona": "POBLADO"
+    },
+    {
+      "tar_periodo": "202210",
+      "tar_valor": "408985.97363183263",
+      "tar_zona": "POBLADO"
+    },
+    {
+      "tar_periodo": "202210",
+      "tar_valor": "98740.66751108297",
+      "tar_zona": "CENTRO"
+    },
+    {
+      "tar_periodo": "202210",
+      "tar_valor": "176463.69560028642",
+      "tar_zona": "LAURELES"
+    },
+    {
+      "tar_periodo": "202110",
+      "tar_valor": "69326.0",
+      "tar_zona": "CENTRO"
+    },
+    {
+      "tar_periodo": "202110",
+      "tar_valor": "269271.0",
+      "tar_zona": "POBLADO"
+    },
+    {
+      "tar_periodo": "202110",
+      "tar_valor": "129872.0",
+      "tar_zona": "LAURELES"
+    },
+    {
+      "tar_periodo": "202010",
+      "tar_valor": "173762.0",
+      "tar_zona": "POBLADO"
+    },
+    {
+      "tar_periodo": "202010",
+      "tar_valor": "99903.0",
+      "tar_zona": "LAURELES"
+    },
+    {
+      "tar_periodo": "202010",
+      "tar_valor": "79725.0",
+      "tar_zona": "CENTRO"
+    },
+    {
+      "tar_periodo": "201910",
+      "tar_valor": "189469.0",
+      "tar_zona": "POBLADO"
+    },
+    {
+      "tar_periodo": "201910",
+      "tar_valor": "79003.0",
+      "tar_zona": "CENTRO"
+    },
+    {
+      "tar_periodo": "201910",
+      "tar_valor": "99963.0",
+      "tar_zona": "LAURELES"
+    },
+    {
+      "tar_periodo": "201810",
+      "tar_valor": "101253.0",
+      "tar_zona": "LAURELES"
+    },
+    {
+      "tar_periodo": "201810",
+      "tar_valor": "187739.0",
+      "tar_zona": "POBLADO"
+    },
+    {
+      "tar_periodo": "201810",
+      "tar_valor": "85041.0",
+      "tar_zona": "CENTRO"
+    },
+    {
+      "tar_periodo": "201710",
+      "tar_valor": "108970.0",
+      "tar_zona": "LAURELES"
+    },
+    {
+      "tar_periodo": "201710",
+      "tar_valor": "196560.0",
+      "tar_zona": "POBLADO"
+    },
+    {
+      "tar_periodo": "201710",
+      "tar_valor": "71460.0",
+      "tar_zona": "CENTRO"
+    },
+    {
+      "tar_periodo": "201610",
+      "tar_valor": "187404.0",
+      "tar_zona": "POBLADO"
+    },
+    {
+      "tar_periodo": "201610",
+      "tar_valor": "65805.0",
+      "tar_zona": "CENTRO"
+    },
+    {
+      "tar_periodo": "201610",
+      "tar_valor": "111123.0",
+      "tar_zona": "LAURELES"
+    },
+    {
+      "tar_periodo": "201510",
+      "tar_valor": "111316.0",
+      "tar_zona": "LAURELES"
+    },
+    {
+      "tar_periodo": "201510",
+      "tar_valor": "62586.0",
+      "tar_zona": "CENTRO"
+    },
+    {
+      "tar_periodo": "201510",
+      "tar_valor": "174738.0",
+      "tar_zona": "POBLADO"
+    }
+  ]
+}

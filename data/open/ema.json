@@ -1,0 +1,1699 @@
+{
+  "id": "ema",
+  "fuente": "DANE, Encuesta Mensual de Alojamiento, anexo hoja 6.1, índice de tarifa sencilla",
+  "url": "https://www.dane.gov.co/files/operaciones/EMA/anex-EMA-ago2026.xlsx",
+  "licencia": "Estadística oficial DANE",
+  "descarga": "2026-10-24",
+  "universo": "Regiones EMA. Antioquia no es la tarifa de la ciudad de Medellín.",
+  "grano": "mensual",
+  "base": "Índice DANE base 2019=100, acomodación sencilla. indice_100 compara Antioquia con el promedio de las regiones de la fila, sin el total nacional.",
+  "ocupacion": {
+    "hoja": "Amazonía",
+    "unidad": "porcentaje de ocupación",
+    "universo": "Regiones EMA. Antioquia no es la ocupación de la ciudad de Medellín.",
+    "serie": [
+      {
+        "anio": 2022,
+        "mes": 1,
+        "regiones": {
+          "Total nacional": 51.93,
+          "Bogotá, D. C.": 41.55,
+          "Cartagena": 76.98,
+          "Central": 42.77,
+          "Caribe": 61.56,
+          "Eje Cafetero": 51.77,
+          "Antioquia": 54.87,
+          "San Andrés y Providencia": 78.14,
+          "Pacífico": 35.41,
+          "Santanderes": 42.25,
+          "Llanos Orinoquía": 40.64,
+          "Golfo Morrosquillo y Sabana": 41.67,
+          "Amazonía": 42.16
+        },
+        "total_nacional": 51.93,
+        "bogota": 41.55,
+        "cartagena": 76.98,
+        "antioquia": 54.87
+      },
+      {
+        "anio": 2022,
+        "mes": 2,
+        "regiones": {
+          "Total nacional": 50.34,
+          "Bogotá, D. C.": 53.61,
+          "Cartagena": 70.05,
+          "Central": 35.38,
+          "Caribe": 51.9,
+          "Eje Cafetero": 40.68,
+          "Antioquia": 52.38,
+          "San Andrés y Providencia": 74.48,
+          "Pacífico": 39.4,
+          "Santanderes": 40.83,
+          "Llanos Orinoquía": 35.54,
+          "Golfo Morrosquillo y Sabana": 38.91,
+          "Amazonía": 43.77
+        },
+        "total_nacional": 50.34,
+        "bogota": 53.61,
+        "cartagena": 70.05,
+        "antioquia": 52.38
+      },
+      {
+        "anio": 2022,
+        "mes": 3,
+        "regiones": {
+          "Total nacional": 53.47,
+          "Bogotá, D. C.": 60.65,
+          "Cartagena": 72.67,
+          "Central": 34.82,
+          "Caribe": 55.88,
+          "Eje Cafetero": 41.34,
+          "Antioquia": 56.0,
+          "San Andrés y Providencia": 72.22,
+          "Pacífico": 42.81,
+          "Santanderes": 43.12,
+          "Llanos Orinoquía": 39.86,
+          "Golfo Morrosquillo y Sabana": 36.81,
+          "Amazonía": 47.01
+        },
+        "total_nacional": 53.47,
+        "bogota": 60.65,
+        "cartagena": 72.67,
+        "antioquia": 56.0
+      },
+      {
+        "anio": 2022,
+        "mes": 4,
+        "regiones": {
+          "Total nacional": 54.61,
+          "Bogotá, D. C.": 56.41,
+          "Cartagena": 71.76,
+          "Central": 40.33,
+          "Caribe": 57.66,
+          "Eje Cafetero": 49.36,
+          "Antioquia": 58.72,
+          "San Andrés y Providencia": 70.56,
+          "Pacífico": 43.33,
+          "Santanderes": 44.69,
+          "Llanos Orinoquía": 47.51,
+          "Golfo Morrosquillo y Sabana": 41.95,
+          "Amazonía": 46.69
+        },
+        "total_nacional": 54.61,
+        "bogota": 56.41,
+        "cartagena": 71.76,
+        "antioquia": 58.72
+      },
+      {
+        "anio": 2022,
+        "mes": 5,
+        "regiones": {
+          "Total nacional": 49.88,
+          "Bogotá, D. C.": 59.28,
+          "Cartagena": 62.35,
+          "Central": 31.71,
+          "Caribe": 49.62,
+          "Eje Cafetero": 40.31,
+          "Antioquia": 53.45,
+          "San Andrés y Providencia": 66.26,
+          "Pacífico": 42.75,
+          "Santanderes": 41.38,
+          "Llanos Orinoquía": 35.8,
+          "Golfo Morrosquillo y Sabana": 34.39,
+          "Amazonía": 48.15
+        },
+        "total_nacional": 49.88,
+        "bogota": 59.28,
+        "cartagena": 62.35,
+        "antioquia": 53.45
+      },
+      {
+        "anio": 2022,
+        "mes": 6,
+        "regiones": {
+          "Total nacional": 54.16,
+          "Bogotá, D. C.": 59.27,
+          "Cartagena": 69.96,
+          "Central": 39.55,
+          "Caribe": 56.99,
+          "Eje Cafetero": 43.88,
+          "Antioquia": 57.93,
+          "San Andrés y Providencia": 70.82,
+          "Pacífico": 41.98,
+          "Santanderes": 45.26,
+          "Llanos Orinoquía": 41.18,
+          "Golfo Morrosquillo y Sabana": 42.69,
+          "Amazonía": 51.19
+        },
+        "total_nacional": 54.16,
+        "bogota": 59.27,
+        "cartagena": 69.96,
+        "antioquia": 57.93
+      },
+      {
+        "anio": 2022,
+        "mes": 7,
+        "regiones": {
+          "Total nacional": 59.05,
+          "Bogotá, D. C.": 62.83,
+          "Cartagena": 76.73,
+          "Central": 44.6,
+          "Caribe": 60.56,
+          "Eje Cafetero": 52.54,
+          "Antioquia": 63.32,
+          "San Andrés y Providencia": 71.66,
+          "Pacífico": 51.22,
+          "Santanderes": 47.62,
+          "Llanos Orinoquía": 44.64,
+          "Golfo Morrosquillo y Sabana": 46.16,
+          "Amazonía": 53.21
+        },
+        "total_nacional": 59.05,
+        "bogota": 62.83,
+        "cartagena": 76.73,
+        "antioquia": 63.32
+      },
+      {
+        "anio": 2022,
+        "mes": 8,
+        "regiones": {
+          "Total nacional": 58.39,
+          "Bogotá, D. C.": 64.41,
+          "Cartagena": 76.46,
+          "Central": 38.57,
+          "Caribe": 57.91,
+          "Eje Cafetero": 50.8,
+          "Antioquia": 63.17,
+          "San Andrés y Providencia": 70.98,
+          "Pacífico": 51.63,
+          "Santanderes": 46.06,
+          "Llanos Orinoquía": 48.67,
+          "Golfo Morrosquillo y Sabana": 46.66,
+          "Amazonía": 56.27
+        },
+        "total_nacional": 58.39,
+        "bogota": 64.41,
+        "cartagena": 76.46,
+        "antioquia": 63.17
+      },
+      {
+        "anio": 2022,
+        "mes": 9,
+        "regiones": {
+          "Total nacional": 57.83,
+          "Bogotá, D. C.": 70.72,
+          "Cartagena": 73.8,
+          "Central": 37.7,
+          "Caribe": 54.44,
+          "Eje Cafetero": 46.04,
+          "Antioquia": 59.98,
+          "San Andrés y Providencia": 71.14,
+          "Pacífico": 47.65,
+          "Santanderes": 48.18,
+          "Llanos Orinoquía": 49.26,
+          "Golfo Morrosquillo y Sabana": 47.16,
+          "Amazonía": 52.41
+        },
+        "total_nacional": 57.83,
+        "bogota": 70.72,
+        "cartagena": 73.8,
+        "antioquia": 59.98
+      },
+      {
+        "anio": 2022,
+        "mes": 10,
+        "regiones": {
+          "Total nacional": 58.73,
+          "Bogotá, D. C.": 71.5,
+          "Cartagena": 68.3,
+          "Central": 42.84,
+          "Caribe": 56.37,
+          "Eje Cafetero": 49.41,
+          "Antioquia": 61.59,
+          "San Andrés y Providencia": 70.2,
+          "Pacífico": 49.78,
+          "Santanderes": 48.74,
+          "Llanos Orinoquía": 51.32,
+          "Golfo Morrosquillo y Sabana": 49.93,
+          "Amazonía": 53.72
+        },
+        "total_nacional": 58.73,
+        "bogota": 71.5,
+        "cartagena": 68.3,
+        "antioquia": 61.59
+      },
+      {
+        "anio": 2022,
+        "mes": 11,
+        "regiones": {
+          "Total nacional": 60.24,
+          "Bogotá, D. C.": 73.51,
+          "Cartagena": 70.95,
+          "Central": 41.72,
+          "Caribe": 59.89,
+          "Eje Cafetero": 50.65,
+          "Antioquia": 63.13,
+          "San Andrés y Providencia": 71.48,
+          "Pacífico": 49.39,
+          "Santanderes": 50.29,
+          "Llanos Orinoquía": 53.32,
+          "Golfo Morrosquillo y Sabana": 46.9,
+          "Amazonía": 61.29
+        },
+        "total_nacional": 60.24,
+        "bogota": 73.51,
+        "cartagena": 70.95,
+        "antioquia": 63.13
+      },
+      {
+        "anio": 2022,
+        "mes": 12,
+        "regiones": {
+          "Total nacional": 56.2,
+          "Bogotá, D. C.": 56.7,
+          "Cartagena": 67.97,
+          "Central": 44.0,
+          "Caribe": 59.52,
+          "Eje Cafetero": 50.74,
+          "Antioquia": 62.06,
+          "San Andrés y Providencia": 69.53,
+          "Pacífico": 48.4,
+          "Santanderes": 44.95,
+          "Llanos Orinoquía": 52.82,
+          "Golfo Morrosquillo y Sabana": 47.41,
+          "Amazonía": 53.35
+        },
+        "total_nacional": 56.2,
+        "bogota": 56.7,
+        "cartagena": 67.97,
+        "antioquia": 62.06
+      },
+      {
+        "anio": 2023,
+        "mes": 1,
+        "regiones": {
+          "Total nacional": 53.44,
+          "Bogotá, D. C.": 52.17,
+          "Cartagena": 76.0,
+          "Central": 40.7,
+          "Caribe": 59.62,
+          "Eje Cafetero": 50.65,
+          "Antioquia": 57.36,
+          "San Andrés y Providencia": 70.08,
+          "Pacífico": 37.38,
+          "Santanderes": 38.13,
+          "Llanos Orinoquía": 44.17,
+          "Golfo Morrosquillo y Sabana": 42.06,
+          "Amazonía": 53.14
+        },
+        "total_nacional": 53.44,
+        "bogota": 52.17,
+        "cartagena": 76.0,
+        "antioquia": 57.36
+      },
+      {
+        "anio": 2023,
+        "mes": 2,
+        "regiones": {
+          "Total nacional": 54.19,
+          "Bogotá, D. C.": 68.6,
+          "Cartagena": 73.68,
+          "Central": 34.34,
+          "Caribe": 57.06,
+          "Eje Cafetero": 40.26,
+          "Antioquia": 55.87,
+          "San Andrés y Providencia": 65.35,
+          "Pacífico": 38.04,
+          "Santanderes": 37.36,
+          "Llanos Orinoquía": 41.74,
+          "Golfo Morrosquillo y Sabana": 39.08,
+          "Amazonía": 51.62
+        },
+        "total_nacional": 54.19,
+        "bogota": 68.6,
+        "cartagena": 73.68,
+        "antioquia": 55.87
+      },
+      {
+        "anio": 2023,
+        "mes": 3,
+        "regiones": {
+          "Total nacional": 52.0,
+          "Bogotá, D. C.": 68.74,
+          "Cartagena": 70.14,
+          "Central": 36.23,
+          "Caribe": 52.0,
+          "Eje Cafetero": 39.8,
+          "Antioquia": 52.65,
+          "San Andrés y Providencia": 49.11,
+          "Pacífico": 39.35,
+          "Santanderes": 35.89,
+          "Llanos Orinoquía": 39.46,
+          "Golfo Morrosquillo y Sabana": 37.82,
+          "Amazonía": 38.66
+        },
+        "total_nacional": 52.0,
+        "bogota": 68.74,
+        "cartagena": 70.14,
+        "antioquia": 52.65
+      },
+      {
+        "anio": 2023,
+        "mes": 4,
+        "regiones": {
+          "Total nacional": 48.65,
+          "Bogotá, D. C.": 58.94,
+          "Cartagena": 63.01,
+          "Central": 36.69,
+          "Caribe": 48.23,
+          "Eje Cafetero": 40.01,
+          "Antioquia": 53.0,
+          "San Andrés y Providencia": 41.67,
+          "Pacífico": 37.83,
+          "Santanderes": 36.66,
+          "Llanos Orinoquía": 41.28,
+          "Golfo Morrosquillo y Sabana": 37.64,
+          "Amazonía": 44.76
+        },
+        "total_nacional": 48.65,
+        "bogota": 58.94,
+        "cartagena": 63.01,
+        "antioquia": 53.0
+      },
+      {
+        "anio": 2023,
+        "mes": 5,
+        "regiones": {
+          "Total nacional": 48.3,
+          "Bogotá, D. C.": 59.7,
+          "Cartagena": 61.01,
+          "Central": 34.16,
+          "Caribe": 45.03,
+          "Eje Cafetero": 37.79,
+          "Antioquia": 53.92,
+          "San Andrés y Providencia": 47.6,
+          "Pacífico": 38.91,
+          "Santanderes": 37.6,
+          "Llanos Orinoquía": 41.35,
+          "Golfo Morrosquillo y Sabana": 35.05,
+          "Amazonía": 50.09
+        },
+        "total_nacional": 48.3,
+        "bogota": 59.7,
+        "cartagena": 61.01,
+        "antioquia": 53.92
+      },
+      {
+        "anio": 2023,
+        "mes": 6,
+        "regiones": {
+          "Total nacional": 51.66,
+          "Bogotá, D. C.": 63.52,
+          "Cartagena": 66.49,
+          "Central": 40.77,
+          "Caribe": 51.03,
+          "Eje Cafetero": 43.47,
+          "Antioquia": 52.98,
+          "San Andrés y Providencia": 48.93,
+          "Pacífico": 38.89,
+          "Santanderes": 39.36,
+          "Llanos Orinoquía": 42.47,
+          "Golfo Morrosquillo y Sabana": 41.88,
+          "Amazonía": 51.38
+        },
+        "total_nacional": 51.66,
+        "bogota": 63.52,
+        "cartagena": 66.49,
+        "antioquia": 52.98
+      },
+      {
+        "anio": 2023,
+        "mes": 7,
+        "regiones": {
+          "Total nacional": 54.27,
+          "Bogotá, D. C.": 61.87,
+          "Cartagena": 73.24,
+          "Central": 44.79,
+          "Caribe": 54.21,
+          "Eje Cafetero": 49.16,
+          "Antioquia": 58.06,
+          "San Andrés y Providencia": 59.34,
+          "Pacífico": 39.72,
+          "Santanderes": 39.06,
+          "Llanos Orinoquía": 38.91,
+          "Golfo Morrosquillo y Sabana": 38.85,
+          "Amazonía": 59.48
+        },
+        "total_nacional": 54.27,
+        "bogota": 61.87,
+        "cartagena": 73.24,
+        "antioquia": 58.06
+      },
+      {
+        "anio": 2023,
+        "mes": 8,
+        "regiones": {
+          "Total nacional": 53.82,
+          "Bogotá, D. C.": 61.93,
+          "Cartagena": 71.75,
+          "Central": 41.61,
+          "Caribe": 53.63,
+          "Eje Cafetero": 47.05,
+          "Antioquia": 58.68,
+          "San Andrés y Providencia": 58.57,
+          "Pacífico": 41.38,
+          "Santanderes": 39.61,
+          "Llanos Orinoquía": 36.19,
+          "Golfo Morrosquillo y Sabana": 41.38,
+          "Amazonía": 57.69
+        },
+        "total_nacional": 53.82,
+        "bogota": 61.93,
+        "cartagena": 71.75,
+        "antioquia": 58.68
+      },
+      {
+        "anio": 2023,
+        "mes": 9,
+        "regiones": {
+          "Total nacional": 51.27,
+          "Bogotá, D. C.": 61.53,
+          "Cartagena": 64.17,
+          "Central": 38.26,
+          "Caribe": 51.55,
+          "Eje Cafetero": 43.0,
+          "Antioquia": 53.39,
+          "San Andrés y Providencia": 54.53,
+          "Pacífico": 40.97,
+          "Santanderes": 42.18,
+          "Llanos Orinoquía": 36.49,
+          "Golfo Morrosquillo y Sabana": 42.4,
+          "Amazonía": 52.66
+        },
+        "total_nacional": 51.27,
+        "bogota": 61.53,
+        "cartagena": 64.17,
+        "antioquia": 53.39
+      },
+      {
+        "anio": 2023,
+        "mes": 10,
+        "regiones": {
+          "Total nacional": 49.8,
+          "Bogotá, D. C.": 60.96,
+          "Cartagena": 58.9,
+          "Central": 41.13,
+          "Caribe": 50.15,
+          "Eje Cafetero": 42.86,
+          "Antioquia": 49.08,
+          "San Andrés y Providencia": 53.93,
+          "Pacífico": 39.88,
+          "Santanderes": 38.8,
+          "Llanos Orinoquía": 42.72,
+          "Golfo Morrosquillo y Sabana": 40.7,
+          "Amazonía": 54.25
+        },
+        "total_nacional": 49.8,
+        "bogota": 60.96,
+        "cartagena": 58.9,
+        "antioquia": 49.08
+      },
+      {
+        "anio": 2023,
+        "mes": 11,
+        "regiones": {
+          "Total nacional": 56.99,
+          "Bogotá, D. C.": 69.97,
+          "Cartagena": 67.77,
+          "Central": 39.78,
+          "Caribe": 57.18,
+          "Eje Cafetero": 55.37,
+          "Antioquia": 60.01,
+          "San Andrés y Providencia": 63.39,
+          "Pacífico": 46.62,
+          "Santanderes": 43.19,
+          "Llanos Orinoquía": 45.41,
+          "Golfo Morrosquillo y Sabana": 43.19,
+          "Amazonía": 56.76
+        },
+        "total_nacional": 56.99,
+        "bogota": 69.97,
+        "cartagena": 67.77,
+        "antioquia": 60.01
+      },
+      {
+        "anio": 2023,
+        "mes": 12,
+        "regiones": {
+          "Total nacional": 51.17,
+          "Bogotá, D. C.": 53.42,
+          "Cartagena": 64.98,
+          "Central": 39.54,
+          "Caribe": 54.38,
+          "Eje Cafetero": 52.13,
+          "Antioquia": 53.99,
+          "San Andrés y Providencia": 68.09,
+          "Pacífico": 40.85,
+          "Santanderes": 38.43,
+          "Llanos Orinoquía": 40.81,
+          "Golfo Morrosquillo y Sabana": 40.41,
+          "Amazonía": 53.8
+        },
+        "total_nacional": 51.17,
+        "bogota": 53.42,
+        "cartagena": 64.98,
+        "antioquia": 53.99
+      },
+      {
+        "anio": 2024,
+        "mes": 1,
+        "regiones": {
+          "Total nacional": 49.68,
+          "Bogotá, D. C.": 50.19,
+          "Cartagena": 70.74,
+          "Central": 39.48,
+          "Caribe": 55.77,
+          "Eje Cafetero": 46.25,
+          "Antioquia": 51.11,
+          "San Andrés y Providencia": 68.14,
+          "Pacífico": 34.31,
+          "Santanderes": 33.52,
+          "Llanos Orinoquía": 36.59,
+          "Golfo Morrosquillo y Sabana": 40.01,
+          "Amazonía": 54.53
+        },
+        "total_nacional": 49.68,
+        "bogota": 50.19,
+        "cartagena": 70.74,
+        "antioquia": 51.11
+      },
+      {
+        "anio": 2024,
+        "mes": 2,
+        "regiones": {
+          "Total nacional": 51.31,
+          "Bogotá, D. C.": 65.62,
+          "Cartagena": 70.18,
+          "Central": 31.19,
+          "Caribe": 53.15,
+          "Eje Cafetero": 40.59,
+          "Antioquia": 51.35,
+          "San Andrés y Providencia": 64.34,
+          "Pacífico": 38.84,
+          "Santanderes": 34.12,
+          "Llanos Orinoquía": 36.34,
+          "Golfo Morrosquillo y Sabana": 36.87,
+          "Amazonía": 50.43
+        },
+        "total_nacional": 51.31,
+        "bogota": 65.62,
+        "cartagena": 70.18,
+        "antioquia": 51.35
+      },
+      {
+        "anio": 2024,
+        "mes": 3,
+        "regiones": {
+          "Total nacional": 49.6,
+          "Bogotá, D. C.": 59.26,
+          "Cartagena": 67.63,
+          "Central": 33.39,
+          "Caribe": 51.31,
+          "Eje Cafetero": 43.72,
+          "Antioquia": 49.28,
+          "San Andrés y Providencia": 60.28,
+          "Pacífico": 39.74,
+          "Santanderes": 34.57,
+          "Llanos Orinoquía": 34.76,
+          "Golfo Morrosquillo y Sabana": 38.25,
+          "Amazonía": 54.58
+        },
+        "total_nacional": 49.6,
+        "bogota": 59.26,
+        "cartagena": 67.63,
+        "antioquia": 49.28
+      },
+      {
+        "anio": 2024,
+        "mes": 4,
+        "regiones": {
+          "Total nacional": 47.38,
+          "Bogotá, D. C.": 62.28,
+          "Cartagena": 61.95,
+          "Central": 26.91,
+          "Caribe": 46.87,
+          "Eje Cafetero": 37.55,
+          "Antioquia": 48.73,
+          "San Andrés y Providencia": 53.1,
+          "Pacífico": 37.22,
+          "Santanderes": 34.9,
+          "Llanos Orinoquía": 36.35,
+          "Golfo Morrosquillo y Sabana": 37.14,
+          "Amazonía": 44.33
+        },
+        "total_nacional": 47.38,
+        "bogota": 62.28,
+        "cartagena": 61.95,
+        "antioquia": 48.73
+      },
+      {
+        "anio": 2024,
+        "mes": 5,
+        "regiones": {
+          "Total nacional": 46.55,
+          "Bogotá, D. C.": 57.42,
+          "Cartagena": 59.77,
+          "Central": 29.8,
+          "Caribe": 48.8,
+          "Eje Cafetero": 36.68,
+          "Antioquia": 48.87,
+          "San Andrés y Providencia": 55.12,
+          "Pacífico": 35.56,
+          "Santanderes": 33.19,
+          "Llanos Orinoquía": 34.64,
+          "Golfo Morrosquillo y Sabana": 39.11,
+          "Amazonía": 48.99
+        },
+        "total_nacional": 46.55,
+        "bogota": 57.42,
+        "cartagena": 59.77,
+        "antioquia": 48.87
+      },
+      {
+        "anio": 2024,
+        "mes": 6,
+        "regiones": {
+          "Total nacional": 50.43,
+          "Bogotá, D. C.": 61.51,
+          "Cartagena": 63.68,
+          "Central": 36.22,
+          "Caribe": 54.32,
+          "Eje Cafetero": 42.59,
+          "Antioquia": 50.06,
+          "San Andrés y Providencia": 63.23,
+          "Pacífico": 37.08,
+          "Santanderes": 37.37,
+          "Llanos Orinoquía": 35.77,
+          "Golfo Morrosquillo y Sabana": 41.23,
+          "Amazonía": 49.93
+        },
+        "total_nacional": 50.43,
+        "bogota": 61.51,
+        "cartagena": 63.68,
+        "antioquia": 50.06
+      },
+      {
+        "anio": 2024,
+        "mes": 7,
+        "regiones": {
+          "Total nacional": 51.13,
+          "Bogotá, D. C.": 60.58,
+          "Cartagena": 66.37,
+          "Central": 37.37,
+          "Caribe": 54.27,
+          "Eje Cafetero": 42.74,
+          "Antioquia": 53.27,
+          "San Andrés y Providencia": 65.86,
+          "Pacífico": 38.46,
+          "Santanderes": 33.58,
+          "Llanos Orinoquía": 35.05,
+          "Golfo Morrosquillo y Sabana": 38.42,
+          "Amazonía": 55.29
+        },
+        "total_nacional": 51.13,
+        "bogota": 60.58,
+        "cartagena": 66.37,
+        "antioquia": 53.27
+      },
+      {
+        "anio": 2024,
+        "mes": 8,
+        "regiones": {
+          "Total nacional": 53.16,
+          "Bogotá, D. C.": 63.61,
+          "Cartagena": 70.13,
+          "Central": 35.64,
+          "Caribe": 54.49,
+          "Eje Cafetero": 45.59,
+          "Antioquia": 57.13,
+          "San Andrés y Providencia": 64.06,
+          "Pacífico": 42.6,
+          "Santanderes": 36.37,
+          "Llanos Orinoquía": 33.28,
+          "Golfo Morrosquillo y Sabana": 39.09,
+          "Amazonía": 57.4
+        },
+        "total_nacional": 53.16,
+        "bogota": 63.61,
+        "cartagena": 70.13,
+        "antioquia": 57.13
+      },
+      {
+        "anio": 2024,
+        "mes": 9,
+        "regiones": {
+          "Total nacional": 51.03,
+          "Bogotá, D. C.": 66.7,
+          "Cartagena": 63.99,
+          "Central": 30.9,
+          "Caribe": 54.5,
+          "Eje Cafetero": 42.06,
+          "Antioquia": 49.87,
+          "San Andrés y Providencia": 61.02,
+          "Pacífico": 41.12,
+          "Santanderes": 37.76,
+          "Llanos Orinoquía": 33.63,
+          "Golfo Morrosquillo y Sabana": 36.95,
+          "Amazonía": 51.87
+        },
+        "total_nacional": 51.03,
+        "bogota": 66.7,
+        "cartagena": 63.99,
+        "antioquia": 49.87
+      },
+      {
+        "anio": 2024,
+        "mes": 10,
+        "regiones": {
+          "Total nacional": 52.42,
+          "Bogotá, D. C.": 63.39,
+          "Cartagena": 63.05,
+          "Central": 36.49,
+          "Caribe": 54.52,
+          "Eje Cafetero": 43.46,
+          "Antioquia": 50.18,
+          "San Andrés y Providencia": 62.17,
+          "Pacífico": 50.17,
+          "Santanderes": 40.56,
+          "Llanos Orinoquía": 39.96,
+          "Golfo Morrosquillo y Sabana": 43.4,
+          "Amazonía": 55.55
+        },
+        "total_nacional": 52.42,
+        "bogota": 63.39,
+        "cartagena": 63.05,
+        "antioquia": 50.18
+      },
+      {
+        "anio": 2024,
+        "mes": 11,
+        "regiones": {
+          "Total nacional": 56.44,
+          "Bogotá, D. C.": 72.43,
+          "Cartagena": 68.98,
+          "Central": 40.78,
+          "Caribe": 55.61,
+          "Eje Cafetero": 51.16,
+          "Antioquia": 55.24,
+          "San Andrés y Providencia": 64.0,
+          "Pacífico": 47.2,
+          "Santanderes": 41.78,
+          "Llanos Orinoquía": 39.49,
+          "Golfo Morrosquillo y Sabana": 42.49,
+          "Amazonía": 62.28
+        },
+        "total_nacional": 56.44,
+        "bogota": 72.43,
+        "cartagena": 68.98,
+        "antioquia": 55.24
+      },
+      {
+        "anio": 2024,
+        "mes": 12,
+        "regiones": {
+          "Total nacional": 51.32,
+          "Bogotá, D. C.": 54.33,
+          "Cartagena": 66.04,
+          "Central": 37.85,
+          "Caribe": 52.9,
+          "Eje Cafetero": 44.64,
+          "Antioquia": 56.01,
+          "San Andrés y Providencia": 72.43,
+          "Pacífico": 41.37,
+          "Santanderes": 41.35,
+          "Llanos Orinoquía": 36.73,
+          "Golfo Morrosquillo y Sabana": 40.0,
+          "Amazonía": 48.65
+        },
+        "total_nacional": 51.32,
+        "bogota": 54.33,
+        "cartagena": 66.04,
+        "antioquia": 56.01
+      },
+      {
+        "anio": 2025,
+        "mes": 1,
+        "regiones": {
+          "Total nacional": 50.44,
+          "Bogotá, D. C.": 48.99,
+          "Cartagena": 73.99,
+          "Central": 40.57,
+          "Caribe": 56.98,
+          "Eje Cafetero": 47.85,
+          "Antioquia": 49.23,
+          "San Andrés y Providencia": 74.82,
+          "Pacífico": 35.43,
+          "Santanderes": 33.92,
+          "Llanos Orinoquía": 38.38,
+          "Golfo Morrosquillo y Sabana": 40.86,
+          "Amazonía": 45.42
+        },
+        "total_nacional": 50.44,
+        "bogota": 48.99,
+        "cartagena": 73.99,
+        "antioquia": 49.23
+      },
+      {
+        "anio": 2025,
+        "mes": 2,
+        "regiones": {
+          "Total nacional": 50.74,
+          "Bogotá, D. C.": 63.33,
+          "Cartagena": 70.73,
+          "Central": 31.97,
+          "Caribe": 53.31,
+          "Eje Cafetero": 38.11,
+          "Antioquia": 48.98,
+          "San Andrés y Providencia": 74.53,
+          "Pacífico": 35.69,
+          "Santanderes": 34.4,
+          "Llanos Orinoquía": 36.52,
+          "Golfo Morrosquillo y Sabana": 37.93,
+          "Amazonía": 45.16
+        },
+        "total_nacional": 50.74,
+        "bogota": 63.33,
+        "cartagena": 70.73,
+        "antioquia": 48.98
+      },
+      {
+        "anio": 2025,
+        "mes": 3,
+        "regiones": {
+          "Total nacional": 49.34,
+          "Bogotá, D. C.": 61.62,
+          "Cartagena": 66.85,
+          "Central": 33.1,
+          "Caribe": 52.02,
+          "Eje Cafetero": 38.91,
+          "Antioquia": 47.94,
+          "San Andrés y Providencia": 63.25,
+          "Pacífico": 35.22,
+          "Santanderes": 34.01,
+          "Llanos Orinoquía": 36.82,
+          "Golfo Morrosquillo y Sabana": 40.89,
+          "Amazonía": 42.2
+        },
+        "total_nacional": 49.34,
+        "bogota": 61.62,
+        "cartagena": 66.85,
+        "antioquia": 47.94
+      },
+      {
+        "anio": 2025,
+        "mes": 4,
+        "regiones": {
+          "Total nacional": 46.64,
+          "Bogotá, D. C.": 54.34,
+          "Cartagena": 59.95,
+          "Central": 34.62,
+          "Caribe": 46.59,
+          "Eje Cafetero": 39.78,
+          "Antioquia": 49.07,
+          "San Andrés y Providencia": 58.46,
+          "Pacífico": 35.49,
+          "Santanderes": 34.51,
+          "Llanos Orinoquía": 36.79,
+          "Golfo Morrosquillo y Sabana": 42.21,
+          "Amazonía": 39.99
+        },
+        "total_nacional": 46.64,
+        "bogota": 54.34,
+        "cartagena": 59.95,
+        "antioquia": 49.07
+      },
+      {
+        "anio": 2025,
+        "mes": 5,
+        "regiones": {
+          "Total nacional": 47.3,
+          "Bogotá, D. C.": 58.72,
+          "Cartagena": 56.57,
+          "Central": 37.77,
+          "Caribe": 46.65,
+          "Eje Cafetero": 37.95,
+          "Antioquia": 48.37,
+          "San Andrés y Providencia": 57.27,
+          "Pacífico": 38.67,
+          "Santanderes": 35.31,
+          "Llanos Orinoquía": 35.56,
+          "Golfo Morrosquillo y Sabana": 38.43,
+          "Amazonía": 38.17
+        },
+        "total_nacional": 47.3,
+        "bogota": 58.72,
+        "cartagena": 56.57,
+        "antioquia": 48.37
+      },
+      {
+        "anio": 2025,
+        "mes": 6,
+        "regiones": {
+          "Total nacional": 49.55,
+          "Bogotá, D. C.": 58.79,
+          "Cartagena": 63.5,
+          "Central": 38.74,
+          "Caribe": 50.66,
+          "Eje Cafetero": 41.89,
+          "Antioquia": 48.83,
+          "San Andrés y Providencia": 62.02,
+          "Pacífico": 37.96,
+          "Santanderes": 36.74,
+          "Llanos Orinoquía": 36.88,
+          "Golfo Morrosquillo y Sabana": 47.28,
+          "Amazonía": 41.84
+        },
+        "total_nacional": 49.55,
+        "bogota": 58.79,
+        "cartagena": 63.5,
+        "antioquia": 48.83
+      },
+      {
+        "anio": 2025,
+        "mes": 7,
+        "regiones": {
+          "Total nacional": 51.89,
+          "Bogotá, D. C.": 60.91,
+          "Cartagena": 67.44,
+          "Central": 37.77,
+          "Caribe": 52.91,
+          "Eje Cafetero": 42.26,
+          "Antioquia": 54.35,
+          "San Andrés y Providencia": 67.02,
+          "Pacífico": 41.73,
+          "Santanderes": 35.97,
+          "Llanos Orinoquía": 37.45,
+          "Golfo Morrosquillo y Sabana": 44.25,
+          "Amazonía": 45.46
+        },
+        "total_nacional": 51.89,
+        "bogota": 60.91,
+        "cartagena": 67.44,
+        "antioquia": 54.35
+      },
+      {
+        "anio": 2025,
+        "mes": 8,
+        "regiones": {
+          "Total nacional": 51.97,
+          "Bogotá, D. C.": 59.2,
+          "Cartagena": 68.64,
+          "Central": 37.69,
+          "Caribe": 52.48,
+          "Eje Cafetero": 45.1,
+          "Antioquia": 55.13,
+          "San Andrés y Providencia": 64.53,
+          "Pacífico": 42.5,
+          "Santanderes": 37.72,
+          "Llanos Orinoquía": 37.25,
+          "Golfo Morrosquillo y Sabana": 41.54,
+          "Amazonía": 49.09
+        },
+        "total_nacional": 51.97,
+        "bogota": 59.2,
+        "cartagena": 68.64,
+        "antioquia": 55.13
+      },
+      {
+        "anio": 2025,
+        "mes": 9,
+        "regiones": {
+          "Total nacional": 49.96,
+          "Bogotá, D. C.": 60.98,
+          "Cartagena": 64.53,
+          "Central": 33.8,
+          "Caribe": 50.84,
+          "Eje Cafetero": 40.78,
+          "Antioquia": 50.38,
+          "San Andrés y Providencia": 59.79,
+          "Pacífico": 40.32,
+          "Santanderes": 40.24,
+          "Llanos Orinoquía": 37.5,
+          "Golfo Morrosquillo y Sabana": 38.71,
+          "Amazonía": 40.4
+        },
+        "total_nacional": 49.96,
+        "bogota": 60.98,
+        "cartagena": 64.53,
+        "antioquia": 50.38
+      },
+      {
+        "anio": 2025,
+        "mes": 10,
+        "regiones": {
+          "Total nacional": 52.65,
+          "Bogotá, D. C.": 64.19,
+          "Cartagena": 63.62,
+          "Central": 38.62,
+          "Caribe": 53.43,
+          "Eje Cafetero": 45.82,
+          "Antioquia": 50.79,
+          "San Andrés y Providencia": 62.62,
+          "Pacífico": 45.77,
+          "Santanderes": 42.01,
+          "Llanos Orinoquía": 39.56,
+          "Golfo Morrosquillo y Sabana": 47.84,
+          "Amazonía": 49.47
+        },
+        "total_nacional": 52.65,
+        "bogota": 64.19,
+        "cartagena": 63.62,
+        "antioquia": 50.79
+      },
+      {
+        "anio": 2025,
+        "mes": 11,
+        "regiones": {
+          "Total nacional": 54.75,
+          "Bogotá, D. C.": 69.55,
+          "Cartagena": 67.86,
+          "Central": 38.72,
+          "Caribe": 55.75,
+          "Eje Cafetero": 45.09,
+          "Antioquia": 53.75,
+          "San Andrés y Providencia": 67.35,
+          "Pacífico": 44.47,
+          "Santanderes": 42.08,
+          "Llanos Orinoquía": 37.07,
+          "Golfo Morrosquillo y Sabana": 43.29,
+          "Amazonía": 48.91
+        },
+        "total_nacional": 54.75,
+        "bogota": 69.55,
+        "cartagena": 67.86,
+        "antioquia": 53.75
+      },
+      {
+        "anio": 2025,
+        "mes": 12,
+        "regiones": {
+          "Total nacional": 50.03,
+          "Bogotá, D. C.": 51.02,
+          "Cartagena": 67.0,
+          "Central": 39.39,
+          "Caribe": 52.7,
+          "Eje Cafetero": 41.78,
+          "Antioquia": 51.07,
+          "San Andrés y Providencia": 71.88,
+          "Pacífico": 40.81,
+          "Santanderes": 39.5,
+          "Llanos Orinoquía": 38.99,
+          "Golfo Morrosquillo y Sabana": 43.35,
+          "Amazonía": 50.84
+        },
+        "total_nacional": 50.03,
+        "bogota": 51.02,
+        "cartagena": 67.0,
+        "antioquia": 51.07
+      },
+      {
+        "anio": 2026,
+        "mes": 1,
+        "regiones": {
+          "Total nacional": 49.66,
+          "Bogotá, D. C.": 46.11,
+          "Cartagena": 73.95,
+          "Central": 39.68,
+          "Caribe": 54.38,
+          "Eje Cafetero": 45.81,
+          "Antioquia": 51.26,
+          "San Andrés y Providencia": 77.42,
+          "Pacífico": 33.93,
+          "Santanderes": 35.37,
+          "Llanos Orinoquía": 39.28,
+          "Golfo Morrosquillo y Sabana": 40.83,
+          "Amazonía": 44.79
+        },
+        "total_nacional": 49.66,
+        "bogota": 46.11,
+        "cartagena": 73.95,
+        "antioquia": 51.26
+      },
+      {
+        "anio": 2026,
+        "mes": 2,
+        "regiones": {
+          "Total nacional": 49.31,
+          "Bogotá, D. C.": 59.46,
+          "Cartagena": 69.86,
+          "Central": 32.31,
+          "Caribe": 49.42,
+          "Eje Cafetero": 39.2,
+          "Antioquia": 47.68,
+          "San Andrés y Providencia": 74.05,
+          "Pacífico": 35.76,
+          "Santanderes": 34.54,
+          "Llanos Orinoquía": 37.6,
+          "Golfo Morrosquillo y Sabana": 37.77,
+          "Amazonía": 40.15
+        },
+        "total_nacional": 49.31,
+        "bogota": 59.46,
+        "cartagena": 69.86,
+        "antioquia": 47.68
+      },
+      {
+        "anio": 2026,
+        "mes": 3,
+        "regiones": {
+          "Total nacional": 48.4,
+          "Bogotá, D. C.": 58.91,
+          "Cartagena": 66.44,
+          "Central": 32.06,
+          "Caribe": 49.51,
+          "Eje Cafetero": 41.36,
+          "Antioquia": 46.28,
+          "San Andrés y Providencia": 68.64,
+          "Pacífico": 35.28,
+          "Santanderes": 34.06,
+          "Llanos Orinoquía": 38.22,
+          "Golfo Morrosquillo y Sabana": 36.91,
+          "Amazonía": 46.08
+        },
+        "total_nacional": 48.4,
+        "bogota": 58.91,
+        "cartagena": 66.44,
+        "antioquia": 46.28
+      },
+      {
+        "anio": 2026,
+        "mes": 4,
+        "regiones": {
+          "Total nacional": 46.25,
+          "Bogotá, D. C.": 55.08,
+          "Cartagena": 59.72,
+          "Central": 31.87,
+          "Caribe": 46.4,
+          "Eje Cafetero": 39.31,
+          "Antioquia": 45.64,
+          "San Andrés y Providencia": 62.63,
+          "Pacífico": 37.15,
+          "Santanderes": 34.81,
+          "Llanos Orinoquía": 38.47,
+          "Golfo Morrosquillo y Sabana": 39.73,
+          "Amazonía": 37.56
+        },
+        "total_nacional": 46.25,
+        "bogota": 55.08,
+        "cartagena": 59.72,
+        "antioquia": 45.64
+      },
+      {
+        "anio": 2026,
+        "mes": 5,
+        "regiones": {
+          "Total nacional": 45.17,
+          "Bogotá, D. C.": 55.65,
+          "Cartagena": 55.43,
+          "Central": 31.55,
+          "Caribe": 45.94,
+          "Eje Cafetero": 36.09,
+          "Antioquia": 45.27,
+          "San Andrés y Providencia": 61.14,
+          "Pacífico": 33.67,
+          "Santanderes": 35.81,
+          "Llanos Orinoquía": 37.73,
+          "Golfo Morrosquillo y Sabana": 37.05,
+          "Amazonía": 41.45
+        },
+        "total_nacional": 45.17,
+        "bogota": 55.65,
+        "cartagena": 55.43,
+        "antioquia": 45.27
+      },
+      {
+        "anio": 2026,
+        "mes": 6,
+        "regiones": {
+          "Total nacional": 45.38,
+          "Bogotá, D. C.": 50.6,
+          "Cartagena": 55.17,
+          "Central": 39.24,
+          "Caribe": 48.33,
+          "Eje Cafetero": 39.61,
+          "Antioquia": 43.07,
+          "San Andrés y Providencia": 66.26,
+          "Pacífico": 34.64,
+          "Santanderes": 35.09,
+          "Llanos Orinoquía": 37.88,
+          "Golfo Morrosquillo y Sabana": 39.72,
+          "Amazonía": 42.17
+        },
+        "total_nacional": 45.38,
+        "bogota": 50.6,
+        "cartagena": 55.17,
+        "antioquia": 43.07
+      },
+      {
+        "anio": 2026,
+        "mes": 7,
+        "regiones": {
+          "Total nacional": 50.6,
+          "Bogotá, D. C.": 58.53,
+          "Cartagena": 62.6,
+          "Central": 40.4,
+          "Caribe": 51.09,
+          "Eje Cafetero": 44.39,
+          "Antioquia": 50.91,
+          "San Andrés y Providencia": 70.92,
+          "Pacífico": 39.03,
+          "Santanderes": 40.2,
+          "Llanos Orinoquía": 37.97,
+          "Golfo Morrosquillo y Sabana": 39.06,
+          "Amazonía": 50.72
+        },
+        "total_nacional": 50.6,
+        "bogota": 58.53,
+        "cartagena": 62.6,
+        "antioquia": 50.91
+      },
+      {
+        "anio": 2026,
+        "mes": 8,
+        "regiones": {
+          "Total nacional": 49.21,
+          "Bogotá, D. C.": 57.49,
+          "Cartagena": 65.57,
+          "Central": 34.53,
+          "Caribe": 47.97,
+          "Eje Cafetero": 35.75,
+          "Antioquia": 51.45,
+          "San Andrés y Providencia": 66.59,
+          "Pacífico": 36.97,
+          "Santanderes": 37.8,
+          "Llanos Orinoquía": 38.47,
+          "Golfo Morrosquillo y Sabana": 39.14,
+          "Amazonía": 47.66
+        },
+        "total_nacional": 49.21,
+        "bogota": 57.49,
+        "cartagena": 65.57,
+        "antioquia": 51.45
+      }
+    ]
+  },
+  "serie": [
+    {
+      "anio": 2022,
+      "mes": 1,
+      "indice_antioquia": 112.11,
+      "indice_promedio_regiones": 117.28,
+      "indice_100": 95.59
+    },
+    {
+      "anio": 2022,
+      "mes": 2,
+      "indice_antioquia": 107.51,
+      "indice_promedio_regiones": 112.26,
+      "indice_100": 95.77
+    },
+    {
+      "anio": 2022,
+      "mes": 3,
+      "indice_antioquia": 110.8,
+      "indice_promedio_regiones": 113.75,
+      "indice_100": 97.41
+    },
+    {
+      "anio": 2022,
+      "mes": 4,
+      "indice_antioquia": 114.11,
+      "indice_promedio_regiones": 115.15,
+      "indice_100": 99.1
+    },
+    {
+      "anio": 2022,
+      "mes": 5,
+      "indice_antioquia": 112.16,
+      "indice_promedio_regiones": 112.98,
+      "indice_100": 99.27
+    },
+    {
+      "anio": 2022,
+      "mes": 6,
+      "indice_antioquia": 113.18,
+      "indice_promedio_regiones": 115.44,
+      "indice_100": 98.04
+    },
+    {
+      "anio": 2022,
+      "mes": 7,
+      "indice_antioquia": 120.75,
+      "indice_promedio_regiones": 118.43,
+      "indice_100": 101.95
+    },
+    {
+      "anio": 2022,
+      "mes": 8,
+      "indice_antioquia": 122.67,
+      "indice_promedio_regiones": 117.81,
+      "indice_100": 104.13
+    },
+    {
+      "anio": 2022,
+      "mes": 9,
+      "indice_antioquia": 117.2,
+      "indice_promedio_regiones": 117.16,
+      "indice_100": 100.03
+    },
+    {
+      "anio": 2022,
+      "mes": 10,
+      "indice_antioquia": 122.84,
+      "indice_promedio_regiones": 120.46,
+      "indice_100": 101.97
+    },
+    {
+      "anio": 2022,
+      "mes": 11,
+      "indice_antioquia": 125.75,
+      "indice_promedio_regiones": 122.66,
+      "indice_100": 102.52
+    },
+    {
+      "anio": 2022,
+      "mes": 12,
+      "indice_antioquia": 131.0,
+      "indice_promedio_regiones": 131.6,
+      "indice_100": 99.55
+    },
+    {
+      "anio": 2023,
+      "mes": 1,
+      "indice_antioquia": 137.23,
+      "indice_promedio_regiones": 137.92,
+      "indice_100": 99.5
+    },
+    {
+      "anio": 2023,
+      "mes": 2,
+      "indice_antioquia": 132.21,
+      "indice_promedio_regiones": 135.83,
+      "indice_100": 97.34
+    },
+    {
+      "anio": 2023,
+      "mes": 3,
+      "indice_antioquia": 131.58,
+      "indice_promedio_regiones": 133.72,
+      "indice_100": 98.4
+    },
+    {
+      "anio": 2023,
+      "mes": 4,
+      "indice_antioquia": 134.54,
+      "indice_promedio_regiones": 134.67,
+      "indice_100": 99.9
+    },
+    {
+      "anio": 2023,
+      "mes": 5,
+      "indice_antioquia": 130.13,
+      "indice_promedio_regiones": 129.8,
+      "indice_100": 100.26
+    },
+    {
+      "anio": 2023,
+      "mes": 6,
+      "indice_antioquia": 133.08,
+      "indice_promedio_regiones": 132.8,
+      "indice_100": 100.21
+    },
+    {
+      "anio": 2023,
+      "mes": 7,
+      "indice_antioquia": 137.87,
+      "indice_promedio_regiones": 133.08,
+      "indice_100": 103.59
+    },
+    {
+      "anio": 2023,
+      "mes": 8,
+      "indice_antioquia": 142.71,
+      "indice_promedio_regiones": 132.56,
+      "indice_100": 107.66
+    },
+    {
+      "anio": 2023,
+      "mes": 9,
+      "indice_antioquia": 132.57,
+      "indice_promedio_regiones": 130.35,
+      "indice_100": 101.7
+    },
+    {
+      "anio": 2023,
+      "mes": 10,
+      "indice_antioquia": 134.68,
+      "indice_promedio_regiones": 132.27,
+      "indice_100": 101.82
+    },
+    {
+      "anio": 2023,
+      "mes": 11,
+      "indice_antioquia": 141.25,
+      "indice_promedio_regiones": 133.28,
+      "indice_100": 105.98
+    },
+    {
+      "anio": 2023,
+      "mes": 12,
+      "indice_antioquia": 147.2,
+      "indice_promedio_regiones": 138.74,
+      "indice_100": 106.09
+    },
+    {
+      "anio": 2024,
+      "mes": 1,
+      "indice_antioquia": 146.65,
+      "indice_promedio_regiones": 144.08,
+      "indice_100": 101.79
+    },
+    {
+      "anio": 2024,
+      "mes": 2,
+      "indice_antioquia": 139.7,
+      "indice_promedio_regiones": 139.81,
+      "indice_100": 99.92
+    },
+    {
+      "anio": 2024,
+      "mes": 3,
+      "indice_antioquia": 138.13,
+      "indice_promedio_regiones": 140.05,
+      "indice_100": 98.62
+    },
+    {
+      "anio": 2024,
+      "mes": 4,
+      "indice_antioquia": 136.32,
+      "indice_promedio_regiones": 136.07,
+      "indice_100": 100.18
+    },
+    {
+      "anio": 2024,
+      "mes": 5,
+      "indice_antioquia": 137.34,
+      "indice_promedio_regiones": 135.69,
+      "indice_100": 101.22
+    },
+    {
+      "anio": 2024,
+      "mes": 6,
+      "indice_antioquia": 140.07,
+      "indice_promedio_regiones": 137.76,
+      "indice_100": 101.68
+    },
+    {
+      "anio": 2024,
+      "mes": 7,
+      "indice_antioquia": 140.12,
+      "indice_promedio_regiones": 138.51,
+      "indice_100": 101.17
+    },
+    {
+      "anio": 2024,
+      "mes": 8,
+      "indice_antioquia": 140.75,
+      "indice_promedio_regiones": 139.79,
+      "indice_100": 100.69
+    },
+    {
+      "anio": 2024,
+      "mes": 9,
+      "indice_antioquia": 138.0,
+      "indice_promedio_regiones": 139.93,
+      "indice_100": 98.62
+    },
+    {
+      "anio": 2024,
+      "mes": 10,
+      "indice_antioquia": 144.2,
+      "indice_promedio_regiones": 143.76,
+      "indice_100": 100.31
+    },
+    {
+      "anio": 2024,
+      "mes": 11,
+      "indice_antioquia": 142.51,
+      "indice_promedio_regiones": 141.52,
+      "indice_100": 100.7
+    },
+    {
+      "anio": 2024,
+      "mes": 12,
+      "indice_antioquia": 154.35,
+      "indice_promedio_regiones": 145.73,
+      "indice_100": 105.92
+    },
+    {
+      "anio": 2025,
+      "mes": 1,
+      "indice_antioquia": 159.37,
+      "indice_promedio_regiones": 152.85,
+      "indice_100": 104.27
+    },
+    {
+      "anio": 2025,
+      "mes": 2,
+      "indice_antioquia": 153.58,
+      "indice_promedio_regiones": 145.32,
+      "indice_100": 105.68
+    },
+    {
+      "anio": 2025,
+      "mes": 3,
+      "indice_antioquia": 153.42,
+      "indice_promedio_regiones": 148.6,
+      "indice_100": 103.24
+    },
+    {
+      "anio": 2025,
+      "mes": 4,
+      "indice_antioquia": 155.62,
+      "indice_promedio_regiones": 148.47,
+      "indice_100": 104.82
+    },
+    {
+      "anio": 2025,
+      "mes": 5,
+      "indice_antioquia": 150.24,
+      "indice_promedio_regiones": 145.12,
+      "indice_100": 103.53
+    },
+    {
+      "anio": 2025,
+      "mes": 6,
+      "indice_antioquia": 150.29,
+      "indice_promedio_regiones": 147.72,
+      "indice_100": 101.74
+    },
+    {
+      "anio": 2025,
+      "mes": 7,
+      "indice_antioquia": 154.3,
+      "indice_promedio_regiones": 146.56,
+      "indice_100": 105.28
+    },
+    {
+      "anio": 2025,
+      "mes": 8,
+      "indice_antioquia": 159.77,
+      "indice_promedio_regiones": 146.57,
+      "indice_100": 109.01
+    },
+    {
+      "anio": 2025,
+      "mes": 9,
+      "indice_antioquia": 151.99,
+      "indice_promedio_regiones": 144.34,
+      "indice_100": 105.31
+    },
+    {
+      "anio": 2025,
+      "mes": 10,
+      "indice_antioquia": 155.01,
+      "indice_promedio_regiones": 145.94,
+      "indice_100": 106.21
+    },
+    {
+      "anio": 2025,
+      "mes": 11,
+      "indice_antioquia": 155.05,
+      "indice_promedio_regiones": 145.66,
+      "indice_100": 106.45
+    },
+    {
+      "anio": 2025,
+      "mes": 12,
+      "indice_antioquia": 160.62,
+      "indice_promedio_regiones": 152.25,
+      "indice_100": 105.5
+    },
+    {
+      "anio": 2026,
+      "mes": 1,
+      "indice_antioquia": 171.85,
+      "indice_promedio_regiones": 158.64,
+      "indice_100": 108.33
+    },
+    {
+      "anio": 2026,
+      "mes": 2,
+      "indice_antioquia": 160.54,
+      "indice_promedio_regiones": 156.08,
+      "indice_100": 102.86
+    },
+    {
+      "anio": 2026,
+      "mes": 3,
+      "indice_antioquia": 162.51,
+      "indice_promedio_regiones": 152.0,
+      "indice_100": 106.92
+    },
+    {
+      "anio": 2026,
+      "mes": 4,
+      "indice_antioquia": 161.08,
+      "indice_promedio_regiones": 153.48,
+      "indice_100": 104.95
+    },
+    {
+      "anio": 2026,
+      "mes": 5,
+      "indice_antioquia": 161.47,
+      "indice_promedio_regiones": 151.39,
+      "indice_100": 106.65
+    },
+    {
+      "anio": 2026,
+      "mes": 6,
+      "indice_antioquia": 159.95,
+      "indice_promedio_regiones": 153.26,
+      "indice_100": 104.37
+    },
+    {
+      "anio": 2026,
+      "mes": 7,
+      "indice_antioquia": 164.92,
+      "indice_promedio_regiones": 155.08,
+      "indice_100": 106.34
+    },
+    {
+      "anio": 2026,
+      "mes": 8,
+      "indice_antioquia": 161.96,
+      "indice_promedio_regiones": 153.05,
+      "indice_100": 105.82
+    }
+  ]
+}

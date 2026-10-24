@@ -1,0 +1,827 @@
+{
+  "id": "evi",
+  "fuente": "DANE, Encuesta de Visitantes Internacionales, microdatos catálogo 869, base aéreo-marítimo",
+  "url": "https://microdatos.dane.gov.co/index.php/catalog/869",
+  "archivo": "https://microdatos.dane.gov.co/index.php/catalog/869/download/24177",
+  "licencia": "Microdatos DANE. El tablero guarda promedios y distribuciones ponderadas con fexp. Las filas no se publican.",
+  "descarga": "2026-10-24",
+  "universo": "No residente encuestado en el aeropuerto José María Córdova (Rionegro). Las noches son las del destino principal del viaje (Noches_per_prin). El gasto está en dólares por persona del grupo.",
+  "grano": "ola publicada",
+  "aeropuertos_en_la_base": [
+    {
+      "aeropuerto": "Bogotá",
+      "filas": 69903
+    },
+    {
+      "aeropuerto": "Cartagena",
+      "filas": 56131
+    },
+    {
+      "aeropuerto": "Medellín",
+      "filas": 43395
+    },
+    {
+      "aeropuerto": "Cali",
+      "filas": 36147
+    }
+  ],
+  "meses": [
+    {
+      "anio": 2023,
+      "mes": 8,
+      "n": 409,
+      "gasto_estadia_usd": 1432.79,
+      "noches": 9.94
+    },
+    {
+      "anio": 2023,
+      "mes": 9,
+      "n": 871,
+      "gasto_estadia_usd": 1373.57,
+      "noches": 10.96
+    },
+    {
+      "anio": 2023,
+      "mes": 10,
+      "n": 1046,
+      "gasto_estadia_usd": 1296.03,
+      "noches": 8.7
+    },
+    {
+      "anio": 2023,
+      "mes": 11,
+      "n": 933,
+      "gasto_estadia_usd": 1225.61,
+      "noches": 7.93
+    },
+    {
+      "anio": 2023,
+      "mes": 12,
+      "n": 945,
+      "gasto_estadia_usd": 1233.67,
+      "noches": 8.96
+    },
+    {
+      "anio": 2024,
+      "mes": 1,
+      "n": 248,
+      "gasto_estadia_usd": 1016.9,
+      "noches": 8.72
+    },
+    {
+      "anio": 2024,
+      "mes": 2,
+      "n": 1404,
+      "gasto_estadia_usd": 976.15,
+      "noches": 9.51
+    },
+    {
+      "anio": 2024,
+      "mes": 3,
+      "n": 1399,
+      "gasto_estadia_usd": 1011.24,
+      "noches": 8.95
+    },
+    {
+      "anio": 2024,
+      "mes": 4,
+      "n": 1383,
+      "gasto_estadia_usd": 1101.58,
+      "noches": 9.5
+    },
+    {
+      "anio": 2024,
+      "mes": 5,
+      "n": 1434,
+      "gasto_estadia_usd": 1006.26,
+      "noches": 8.68
+    },
+    {
+      "anio": 2024,
+      "mes": 6,
+      "n": 1583,
+      "gasto_estadia_usd": 925.3,
+      "noches": 7.75
+    },
+    {
+      "anio": 2024,
+      "mes": 7,
+      "n": 1653,
+      "gasto_estadia_usd": 978.15,
+      "noches": 8.41
+    },
+    {
+      "anio": 2025,
+      "mes": 2,
+      "n": 1178,
+      "gasto_estadia_usd": 976.1,
+      "noches": 8.15
+    },
+    {
+      "anio": 2025,
+      "mes": 3,
+      "n": 1708,
+      "gasto_estadia_usd": 904.06,
+      "noches": 7.86
+    },
+    {
+      "anio": 2025,
+      "mes": 4,
+      "n": 1824,
+      "gasto_estadia_usd": 909.77,
+      "noches": 8.71
+    },
+    {
+      "anio": 2025,
+      "mes": 5,
+      "n": 2048,
+      "gasto_estadia_usd": 899.83,
+      "noches": 8.58
+    },
+    {
+      "anio": 2025,
+      "mes": 6,
+      "n": 1762,
+      "gasto_estadia_usd": 957.27,
+      "noches": 9.3
+    }
+  ],
+  "olas": [
+    {
+      "ola": "Agosto 2023 – julio 2024",
+      "n": 13308,
+      "peso": 557215.7,
+      "gasto_estadia_usd": 1115.03,
+      "gasto_diario_usd": 176.2,
+      "noches": 8.95,
+      "n_gasto": 549457.5,
+      "n_noches": 549565.3,
+      "grupo": [
+        {
+          "nombre": "Solo",
+          "peso": 339076.9,
+          "participacion": 60.9
+        },
+        {
+          "nombre": "Pareja",
+          "peso": 152509.8,
+          "participacion": 27.4
+        },
+        {
+          "nombre": "Grupo de 3 a 4",
+          "peso": 52458.7,
+          "participacion": 9.4
+        },
+        {
+          "nombre": "Grupo de 5 o más",
+          "peso": 13159.7,
+          "participacion": 2.4
+        }
+      ],
+      "motivos": [
+        {
+          "nombre": "Vacaciones",
+          "peso": 354796.8,
+          "participacion": 63.7
+        },
+        {
+          "nombre": "Visita a fam/ami",
+          "peso": 128711.1,
+          "participacion": 23.1
+        },
+        {
+          "nombre": "Negocios origen",
+          "peso": 37862.5,
+          "participacion": 6.8
+        },
+        {
+          "nombre": "Trat. Médicos",
+          "peso": 14009.2,
+          "participacion": 2.5
+        },
+        {
+          "nombre": "Congresos",
+          "peso": 9345.0,
+          "participacion": 1.7
+        },
+        {
+          "nombre": "Otro",
+          "peso": 3570.1,
+          "participacion": 0.6
+        },
+        {
+          "nombre": "Educación",
+          "peso": 3410.0,
+          "participacion": 0.6
+        },
+        {
+          "nombre": "Tur. deportivo",
+          "peso": 3161.5,
+          "participacion": 0.6
+        }
+      ],
+      "residencia": [
+        {
+          "nombre": "Estados Unidos",
+          "peso": 200884.8,
+          "participacion": 36.1
+        },
+        {
+          "nombre": "Panamá",
+          "peso": 51588.8,
+          "participacion": 9.3
+        },
+        {
+          "nombre": "República Dominicana",
+          "peso": 41502.8,
+          "participacion": 7.4
+        },
+        {
+          "nombre": "Perú",
+          "peso": 41302.1,
+          "participacion": 7.4
+        },
+        {
+          "nombre": "Costa Rica",
+          "peso": 34460.1,
+          "participacion": 6.2
+        },
+        {
+          "nombre": "México",
+          "peso": 30734.8,
+          "participacion": 5.5
+        },
+        {
+          "nombre": "España",
+          "peso": 23601.2,
+          "participacion": 4.2
+        },
+        {
+          "nombre": "Puerto Rico",
+          "peso": 20064.0,
+          "participacion": 3.6
+        },
+        {
+          "nombre": "Chile",
+          "peso": 16600.6,
+          "participacion": 3.0
+        },
+        {
+          "nombre": "Aruba",
+          "peso": 10356.9,
+          "participacion": 1.9
+        },
+        {
+          "nombre": "Argentina",
+          "peso": 8644.2,
+          "participacion": 1.6
+        },
+        {
+          "nombre": "Canadá",
+          "peso": 8195.0,
+          "participacion": 1.5
+        },
+        {
+          "nombre": "Venezuela",
+          "peso": 7895.5,
+          "participacion": 1.4
+        },
+        {
+          "nombre": "Ecuador",
+          "peso": 6600.4,
+          "participacion": 1.2
+        },
+        {
+          "nombre": "Alemania",
+          "peso": 5066.3,
+          "participacion": 0.9
+        },
+        {
+          "nombre": "Brasil",
+          "peso": 4674.6,
+          "participacion": 0.8
+        },
+        {
+          "nombre": "Francia",
+          "peso": 4462.8,
+          "participacion": 0.8
+        },
+        {
+          "nombre": "Guatemala",
+          "peso": 4186.3,
+          "participacion": 0.8
+        },
+        {
+          "nombre": "Italia",
+          "peso": 3339.2,
+          "participacion": 0.6
+        },
+        {
+          "nombre": "El Salvador",
+          "peso": 3185.4,
+          "participacion": 0.6
+        },
+        {
+          "nombre": "Honduras",
+          "peso": 3178.7,
+          "participacion": 0.6
+        },
+        {
+          "nombre": "Países Bajos",
+          "peso": 3027.9,
+          "participacion": 0.5
+        }
+      ],
+      "umbral_pais": "0,5 % del peso de la ola",
+      "mercados": [
+        {
+          "nombre": "Estados Unidos",
+          "peso": 200884.8,
+          "participacion": 69.9
+        },
+        {
+          "nombre": "Europa",
+          "peso": 51169.8,
+          "participacion": 17.8
+        },
+        {
+          "nombre": "México",
+          "peso": 30734.8,
+          "participacion": 10.7
+        },
+        {
+          "nombre": "Brasil",
+          "peso": 4674.6,
+          "participacion": 1.6
+        }
+      ],
+      "gasto_por_mercado": [
+        {
+          "mercado": "Estados Unidos",
+          "gasto_estadia_usd": 1268.15,
+          "peso": 199195.3
+        },
+        {
+          "mercado": "México",
+          "gasto_estadia_usd": 1029.49,
+          "peso": 30307.9
+        },
+        {
+          "mercado": "Europa",
+          "gasto_estadia_usd": 1477.73,
+          "peso": 49969.1
+        },
+        {
+          "mercado": "Brasil",
+          "gasto_estadia_usd": 1064.94,
+          "peso": 4408.6
+        }
+      ],
+      "gasto_por_pais": [
+        {
+          "pais": "Estados Unidos",
+          "gasto_estadia_usd": 1268.15,
+          "peso": 199195.3
+        },
+        {
+          "pais": "México",
+          "gasto_estadia_usd": 1029.49,
+          "peso": 30307.9
+        },
+        {
+          "pais": "Panamá",
+          "gasto_estadia_usd": 821.0,
+          "peso": 50750.1
+        },
+        {
+          "pais": "Honduras",
+          "gasto_estadia_usd": 1030.25,
+          "peso": 3178.7
+        },
+        {
+          "pais": "Costa Rica",
+          "gasto_estadia_usd": 829.21,
+          "peso": 34195.3
+        },
+        {
+          "pais": "Guatemala",
+          "gasto_estadia_usd": 1249.07,
+          "peso": 4083.5
+        },
+        {
+          "pais": "El Salvador",
+          "gasto_estadia_usd": 812.36,
+          "peso": 3140.7
+        },
+        {
+          "pais": "Argentina",
+          "gasto_estadia_usd": 1190.84,
+          "peso": 8351.8
+        },
+        {
+          "pais": "Venezuela",
+          "gasto_estadia_usd": 544.45,
+          "peso": 7745.1
+        },
+        {
+          "pais": "República Dominicana",
+          "gasto_estadia_usd": 931.07,
+          "peso": 41183.7
+        },
+        {
+          "pais": "Italia",
+          "gasto_estadia_usd": 1440.84,
+          "peso": 2994.6
+        },
+        {
+          "pais": "Perú",
+          "gasto_estadia_usd": 844.79,
+          "peso": 39888.6
+        },
+        {
+          "pais": "Chile",
+          "gasto_estadia_usd": 969.28,
+          "peso": 16326.1
+        },
+        {
+          "pais": "Canadá",
+          "gasto_estadia_usd": 1624.95,
+          "peso": 8009.5
+        },
+        {
+          "pais": "Brasil",
+          "gasto_estadia_usd": 1064.94,
+          "peso": 4408.6
+        },
+        {
+          "pais": "España",
+          "gasto_estadia_usd": 1433.29,
+          "peso": 22846.4
+        },
+        {
+          "pais": "Alemania",
+          "gasto_estadia_usd": 1444.62,
+          "peso": 5066.3
+        },
+        {
+          "pais": "Francia",
+          "gasto_estadia_usd": 1465.62,
+          "peso": 4432.2
+        },
+        {
+          "pais": "Ecuador",
+          "gasto_estadia_usd": 785.2,
+          "peso": 6578.9
+        },
+        {
+          "pais": "Países Bajos",
+          "gasto_estadia_usd": 1685.12,
+          "peso": 3027.9
+        },
+        {
+          "pais": "Puerto Rico",
+          "gasto_estadia_usd": 1118.71,
+          "peso": 20024.4
+        },
+        {
+          "pais": "Aruba",
+          "gasto_estadia_usd": 1044.93,
+          "peso": 10356.9
+        }
+      ]
+    },
+    {
+      "ola": "Enero – junio 2025",
+      "n": 8520,
+      "peso": 314666.4,
+      "gasto_estadia_usd": 929.28,
+      "gasto_diario_usd": 157.83,
+      "noches": 8.51,
+      "n_gasto": 313434.9,
+      "n_noches": 304803.8,
+      "grupo": [
+        {
+          "nombre": "Solo",
+          "peso": 204395.2,
+          "participacion": 65.0
+        },
+        {
+          "nombre": "Pareja",
+          "peso": 84803.9,
+          "participacion": 27.0
+        },
+        {
+          "nombre": "Grupo de 3 a 4",
+          "peso": 21996.4,
+          "participacion": 7.0
+        },
+        {
+          "nombre": "Grupo de 5 o más",
+          "peso": 3470.9,
+          "participacion": 1.1
+        }
+      ],
+      "motivos": [
+        {
+          "nombre": "Vacaciones",
+          "peso": 191714.8,
+          "participacion": 60.9
+        },
+        {
+          "nombre": "Visita a fam/ami",
+          "peso": 71333.5,
+          "participacion": 22.7
+        },
+        {
+          "nombre": "Negocios origen",
+          "peso": 26832.5,
+          "participacion": 8.5
+        },
+        {
+          "nombre": "Tránsito",
+          "peso": 7068.9,
+          "participacion": 2.2
+        },
+        {
+          "nombre": "Trat. Médicos",
+          "peso": 6340.4,
+          "participacion": 2.0
+        },
+        {
+          "nombre": "Congresos",
+          "peso": 3687.2,
+          "participacion": 1.2
+        },
+        {
+          "nombre": "Educación",
+          "peso": 2505.3,
+          "participacion": 0.8
+        },
+        {
+          "nombre": "Tur. deportivo",
+          "peso": 2254.7,
+          "participacion": 0.7
+        }
+      ],
+      "residencia": [
+        {
+          "nombre": "Estados Unidos",
+          "peso": 92900.8,
+          "participacion": 29.5
+        },
+        {
+          "nombre": "Panamá",
+          "peso": 27644.4,
+          "participacion": 8.8
+        },
+        {
+          "nombre": "Perú",
+          "peso": 26301.0,
+          "participacion": 8.4
+        },
+        {
+          "nombre": "España",
+          "peso": 19343.4,
+          "participacion": 6.1
+        },
+        {
+          "nombre": "Costa Rica",
+          "peso": 18684.1,
+          "participacion": 5.9
+        },
+        {
+          "nombre": "Puerto Rico",
+          "peso": 17815.7,
+          "participacion": 5.7
+        },
+        {
+          "nombre": "Argentina",
+          "peso": 17427.6,
+          "participacion": 5.5
+        },
+        {
+          "nombre": "República Dominicana",
+          "peso": 16265.2,
+          "participacion": 5.2
+        },
+        {
+          "nombre": "México",
+          "peso": 15834.3,
+          "participacion": 5.0
+        },
+        {
+          "nombre": "Chile",
+          "peso": 9420.3,
+          "participacion": 3.0
+        },
+        {
+          "nombre": "El Salvador",
+          "peso": 6653.5,
+          "participacion": 2.1
+        },
+        {
+          "nombre": "Ecuador",
+          "peso": 5756.2,
+          "participacion": 1.8
+        },
+        {
+          "nombre": "Aruba",
+          "peso": 5120.6,
+          "participacion": 1.6
+        },
+        {
+          "nombre": "Canadá",
+          "peso": 4602.4,
+          "participacion": 1.5
+        },
+        {
+          "nombre": "Guatemala",
+          "peso": 4196.9,
+          "participacion": 1.3
+        },
+        {
+          "nombre": "Brasil",
+          "peso": 3522.6,
+          "participacion": 1.1
+        },
+        {
+          "nombre": "Honduras",
+          "peso": 3457.6,
+          "participacion": 1.1
+        },
+        {
+          "nombre": "Venezuela",
+          "peso": 2421.5,
+          "participacion": 0.8
+        },
+        {
+          "nombre": "Alemania",
+          "peso": 2186.0,
+          "participacion": 0.7
+        },
+        {
+          "nombre": "Italia",
+          "peso": 1870.1,
+          "participacion": 0.6
+        },
+        {
+          "nombre": "Francia",
+          "peso": 1650.9,
+          "participacion": 0.5
+        }
+      ],
+      "umbral_pais": "0,5 % del peso de la ola",
+      "mercados": [
+        {
+          "nombre": "Estados Unidos",
+          "peso": 92900.8,
+          "participacion": 64.7
+        },
+        {
+          "nombre": "Europa",
+          "peso": 31419.6,
+          "participacion": 21.9
+        },
+        {
+          "nombre": "México",
+          "peso": 15834.3,
+          "participacion": 11.0
+        },
+        {
+          "nombre": "Brasil",
+          "peso": 3522.6,
+          "participacion": 2.5
+        }
+      ],
+      "gasto_por_mercado": [
+        {
+          "mercado": "Estados Unidos",
+          "gasto_estadia_usd": 1021.12,
+          "peso": 92669.4
+        },
+        {
+          "mercado": "Europa",
+          "gasto_estadia_usd": 1341.46,
+          "peso": 31292.9
+        },
+        {
+          "mercado": "México",
+          "gasto_estadia_usd": 806.28,
+          "peso": 15775.3
+        },
+        {
+          "mercado": "Brasil",
+          "gasto_estadia_usd": 1276.48,
+          "peso": 3522.6
+        }
+      ],
+      "gasto_por_pais": [
+        {
+          "pais": "Canadá",
+          "gasto_estadia_usd": 1185.15,
+          "peso": 4602.4
+        },
+        {
+          "pais": "Costa Rica",
+          "gasto_estadia_usd": 761.95,
+          "peso": 18684.1
+        },
+        {
+          "pais": "Estados Unidos",
+          "gasto_estadia_usd": 1021.12,
+          "peso": 92669.4
+        },
+        {
+          "pais": "Perú",
+          "gasto_estadia_usd": 734.7,
+          "peso": 25729.6
+        },
+        {
+          "pais": "Chile",
+          "gasto_estadia_usd": 799.99,
+          "peso": 9350.9
+        },
+        {
+          "pais": "Argentina",
+          "gasto_estadia_usd": 798.34,
+          "peso": 17351.0
+        },
+        {
+          "pais": "República Dominicana",
+          "gasto_estadia_usd": 836.59,
+          "peso": 16265.2
+        },
+        {
+          "pais": "México",
+          "gasto_estadia_usd": 806.28,
+          "peso": 15775.3
+        },
+        {
+          "pais": "Panamá",
+          "gasto_estadia_usd": 679.8,
+          "peso": 27614.1
+        },
+        {
+          "pais": "El Salvador",
+          "gasto_estadia_usd": 769.02,
+          "peso": 6635.7
+        },
+        {
+          "pais": "Honduras",
+          "gasto_estadia_usd": 763.58,
+          "peso": 3457.6
+        },
+        {
+          "pais": "Venezuela",
+          "gasto_estadia_usd": 527.62,
+          "peso": 2421.5
+        },
+        {
+          "pais": "Aruba",
+          "gasto_estadia_usd": 1014.25,
+          "peso": 5120.6
+        },
+        {
+          "pais": "Puerto Rico",
+          "gasto_estadia_usd": 1029.18,
+          "peso": 17815.7
+        },
+        {
+          "pais": "Brasil",
+          "gasto_estadia_usd": 1276.48,
+          "peso": 3522.6
+        },
+        {
+          "pais": "Guatemala",
+          "gasto_estadia_usd": 750.64,
+          "peso": 4148.1
+        },
+        {
+          "pais": "Ecuador",
+          "gasto_estadia_usd": 665.19,
+          "peso": 5756.2
+        },
+        {
+          "pais": "Francia",
+          "gasto_estadia_usd": 1485.0,
+          "peso": 1650.9
+        },
+        {
+          "pais": "España",
+          "gasto_estadia_usd": 1243.35,
+          "peso": 19216.6
+        },
+        {
+          "pais": "Alemania",
+          "gasto_estadia_usd": 1446.87,
+          "peso": 2186.0
+        },
+        {
+          "pais": "Italia",
+          "gasto_estadia_usd": 1148.56,
+          "peso": 1870.1
+        }
+      ]
+    }
+  ]
+}

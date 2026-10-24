@@ -1,0 +1,27 @@
+{
+  "id": "icca",
+  "fuente": "ICCA GlobeWatch Country and City Rankings 2025, tabla de ciudades",
+  "url": "https://wot.waw.pl/wp-content/uploads/2026/05/ICCA-GlobeWatch-Business-Analytics-%E2%80%93-Country-and-City-Rankings-2025.pdf",
+  "licencia": "Cifras citadas del ranking difundido en ese PDF. La base ICCA Business Intelligence sigue siendo de miembros.",
+  "descarga": "2026-10-24",
+  "anio": 2025,
+  "grano": "anual",
+  "nota": "Reuniones de asociación elegibles ICCA. No hay participación no ICCA ni corte trimestral en esta fuente.",
+  "ciudades": [
+    {
+      "ciudad": "Bogotá",
+      "puesto": 36,
+      "reuniones": 63
+    },
+    {
+      "ciudad": "Cartagena",
+      "puesto": 77,
+      "reuniones": 36
+    },
+    {
+      "ciudad": "Medellín",
+      "puesto": 103,
+      "reuniones": 26
+    }
+  ]
+}
