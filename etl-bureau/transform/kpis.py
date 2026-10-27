@@ -119,6 +119,160 @@ def kpis_medata() -> dict:
         print(f"[transform][WARN] kpis_medata: {e}")
     return out
 
+# Normalización de países entre fuentes (Migración usa gentilicios/variantes distintas; case-insensitive porque 2026 viene en Title Case distinto)
+PAIS_ALIAS = {
+    "estados unidos de america": "Estados Unidos",
+    "estados unidos": "Estados Unidos",
+    "venezuela (republica bolivariana de)": "Venezuela",
+    "venezuela": "Venezuela",
+    "republica dominicana": "Rep. Dominicana",
+    "corea del sur": "Corea",
+    "rusia (federacion rusa)": "Rusia",
+    "rusia": "Rusia",
+    "iran (republica islamica de)": "Irán",
+    "iran": "Irán",
+    "tanzania (republica unida de)": "Tanzania",
+    "moldavia (republica de)": "Moldavia",
+    "macedonia del norte": "Macedonia",
+    "macedonia": "Macedonia",
+    "mexico": "México",
+    "panama": "Panamá",
+    "peru": "Perú",
+    "canada": "Canadá",
+    "espana": "España",
+    "brasil": "Brasil",
+    "chile": "Chile",
+    "ecuador": "Ecuador",
+    "costa rica": "Costa Rica",
+    "argentina": "Argentina",
+    "reino unido": "Reino Unido",
+    "francia": "Francia",
+    "alemania": "Alemania",
+    "paises bajos": "Países Bajos",
+    "holanda": "Países Bajos",
+    "italia": "Italia",
+    "portugal": "Portugal",
+    "suiza": "Suiza",
+    "belgica": "Bélgica",
+    "austria": "Austria",
+    "suecia": "Suecia",
+    "noruega": "Noruega",
+    "dinamarca": "Dinamarca",
+    "polonia": "Polonia",
+    "el salvador": "El Salvador",
+    "guatemala": "Guatemala",
+    "honduras": "Honduras",
+    "cuba": "Cuba",
+    "puerto rico": "Puerto Rico",
+    "jamaica": "Jamaica",
+    "china": "China",
+    "japon": "Japón",
+    "india": "India",
+    "australia": "Australia",
+    "colombia": "Colombia",
+}
+TRENDS_GEO_PAIS = {"US": "Estados Unidos", "ES": "España", "MX": "México", "PA": "Panamá", "PE": "Perú"}
+
+def norm_pais(s: str) -> str:
+    import unicodedata
+    s = str(s).strip()
+    key = "".join(c for c in unicodedata.normalize("NFKD", s) if not unicodedata.combining(c)).lower()
+    return PAIS_ALIAS.get(key, s)
+
+def kpis_pais() -> pd.DataFrame:
+    """Tabla por país: llegadas Medellín + Colombia, pax MDE, salidas, intención Trends, YoY y share."""
+    try:
+        med = latest_raw("medellin_no_residentes")
+        nac = latest_raw("entradas_nacionalidad")
+        aer = latest_raw("aereo_mde_eoh")
+        sal = latest_raw("salidas_destino")
+        tre = latest_raw("google_trends")
+        frames = {}
+        if not med.empty:
+            med["pais"] = med["paisoeeresidencia"].map(norm_pais)
+            med["cant_extranjeros_no_residentes"] = pd.to_numeric(med["cant_extranjeros_no_residentes"], errors="coerce").fillna(0)
+            med["a_o"] = med["a_o"].astype(str)
+            frames["med"] = med.groupby(["pais", "a_o"])["cant_extranjeros_no_residentes"].sum().reset_index()
+        if not nac.empty:
+            nac["pais"] = nac["nacionalidad"].map(norm_pais)
+            nac["total"] = pd.to_numeric(nac["total"], errors="coerce").fillna(0)
+            nac["a_o"] = nac["a_o"].astype(str)
+            frames["nac"] = nac.groupby(["pais", "a_o"])["total"].sum().reset_index()
+        if not aer.empty:
+            aer["pasajeros"] = pd.to_numeric(aer["pasajeros"], errors="coerce").fillna(0)
+            lleg = aer[aer.get("sentido", "") == "llegada"].copy()
+            lleg["pais"] = lleg.get("pais_origen", "").map(norm_pais)
+            lleg["a_o"] = lleg["a_o"].astype(str)
+            frames["aer"] = lleg.groupby(["pais", "a_o"])["pasajeros"].sum().reset_index()
+        if not sal.empty:
+            sal["pais"] = sal["pa_s_destino"].map(norm_pais)
+            sal["total"] = pd.to_numeric(sal["total"], errors="coerce").fillna(0)
+            sal["a_o"] = sal["a_o"].astype(str)
+            frames["sal"] = sal.groupby(["pais", "a_o"])["total"].sum().reset_index()
+        if not frames:
+            return pd.DataFrame()
+        years = sorted({y for f in frames.values() for y in f["a_o"].unique().tolist()})
+        # El año en curso viene parcial (2026 trae ene-jun) -> YoY sobre los dos últimos COMPLETOS
+        ytd = years[-1]
+        y1 = years[-2] if len(years) > 1 else years[-1]
+        y0 = years[-3] if len(years) > 2 else y1
+        paises = sorted({p for f in frames.values() for p in f["pais"].unique().tolist()})
+        rows = []
+        for p in paises:
+            r = {"pais": p}
+            for key, col in (("med", "cant_extranjeros_no_residentes"), ("nac", "total"), ("aer", "pasajeros"), ("sal", "total")):
+                f = frames.get(key)
+                v1 = float(f[(f["pais"] == p) & (f["a_o"] == y1)][col].sum()) if f is not None else 0.0
+                v0 = float(f[(f["pais"] == p) & (f["a_o"] == y0)][col].sum()) if f is not None else 0.0
+                vy = float(f[(f["pais"] == p) & (f["a_o"] == ytd)][col].sum()) if f is not None else 0.0
+                r[f"{key}_{y1}"] = v1
+                r[f"{key}_yoy"] = round((v1 - v0) / max(v0, 1), 3)
+                r[f"{key}_{ytd}_ytd"] = vy
+            rows.append(r)
+        out = pd.DataFrame(rows)
+        tot = out[f"med_{y1}"].sum()
+        out["share_med"] = (out[f"med_{y1}"] / max(tot, 1)).round(4)
+        out["intencion_trends"] = out["pais"].map({v: k for k, v in TRENDS_GEO_PAIS.items()})
+        out = out.sort_values(f"med_{y1}", ascending=False).reset_index(drop=True)
+        out["ano_ref"], out["ano_base"], out["ano_ytd"] = y1, y0, ytd
+        p = PROC / "pais_dashboard.csv"
+        out.to_csv(p, index=False)
+        print(f"[transform] pais_dashboard: {len(out)} países ({y0}->{y1}), top={out.iloc[0]['pais'] if len(out) else '—'}")
+        return out
+    except Exception as e:
+        print(f"[transform][WARN] kpis_pais: {e}")
+        return pd.DataFrame()
+
+def kpis_destinos(top_n: int = 12) -> pd.DataFrame:
+    """Ranking destinos Colombia x año (Bogotá, Medellín, Cartagena...) con YoY y share. Fuente: ciudades_llegadas."""
+    try:
+        df = latest_raw("ciudades_llegadas")
+        if df.empty:
+            return pd.DataFrame()
+        df["llegadas"] = pd.to_numeric(df["llegadas"], errors="coerce").fillna(0)
+        df["a_o"] = df["a_o"].astype(str)
+        years = sorted(df["a_o"].unique().tolist())
+        ytd = years[-1]
+        y1 = years[-2] if len(years) > 1 else years[-1]
+        y0 = years[-3] if len(years) > 2 else y1
+        piv = df.pivot_table(index="ciudad", columns="a_o", values="llegadas", aggfunc="sum").fillna(0)
+        out = pd.DataFrame({
+            "ciudad": piv.index,
+            f"llegadas_{y1}": piv[y1].values if y1 in piv.columns else 0,
+            "yoy": ((piv[y1] - piv[y0]) / piv[y0].replace(0, 1)).values if y0 in piv.columns else 0,
+            f"llegadas_{ytd}_ytd": piv[ytd].values if ytd in piv.columns else 0,
+        })
+        out["share"] = (out[f"llegadas_{y1}"] / max(out[f"llegadas_{y1}"].sum(), 1)).round(4)
+        out = out.sort_values(f"llegadas_{y1}", ascending=False).head(top_n).reset_index(drop=True)
+        out["ano_ref"], out["ano_base"], out["ano_ytd"] = y1, y0, ytd
+        p = PROC / "destinos_dashboard.csv"
+        out.to_csv(p, index=False)
+        print(f"[transform] destinos: {len(out)} ciudades ({y0}->{y1}), top={out.iloc[0]['ciudad'] if len(out) else '—'}")
+        return out
+    except Exception as e:
+        print(f"[transform][WARN] kpis_destinos: {e}")
+        return pd.DataFrame()
+
 def run():
     PROC.mkdir(parents=True, exist_ok=True)
     hoy = date.today().isoformat()
@@ -129,7 +283,9 @@ def run():
     dan = kpis_dane()
     gde = kpis_gdelt()
     mdt = kpis_medata()
-    print(f"[transform] trends={len(trends)} alerts={len(alerts)} marca={marca} dem={dem} dane={dan} gdelt={gde} medata={mdt}")
+    pai = kpis_pais()
+    des = kpis_destinos()
+    print(f"[transform] trends={len(trends)} alerts={len(alerts)} marca={marca} dem={dem} dane={dan} gdelt={gde} medata={mdt} paises={len(pai)} destinos={len(des)}")
 
     # CRM interno (gated manual): si el Bureau deja su Excel en data/raw/manual/crm.xlsx se calculan KPIs MICE
     crm_path = RAW / "manual" / "crm.xlsx"
