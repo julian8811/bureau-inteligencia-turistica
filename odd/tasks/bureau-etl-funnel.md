@@ -14,6 +14,10 @@ Estrategia delivery: single-pr (forecast <400 líneas por slice).
   Evidencia 27-oct: socrata_co (7wm8-w5ad 16k filas Medellín, 96sh-4v8d 50k, gb6w-ynu4 58k MDE/EOH) + dane_egit (IItrim2026, 67 filas) + trends 465 filas + gdelt 429-safe + alerts stub. Transform emite llegadas_medellin_nr=6.2M, top1 USA, share_top5=0.607, pax MDE 32M/33M.
   Pendientes honestos: DANE ENH (patrón URL distinto, dane_enh_ok=0), SITUR portal caído (manual mensual), GDELT 429 intermitente, CITUR directo (cubierto vía Socrata). — commit: eb7d3dc
 - [x] T3 (S3) Transforms a modelo estrella + KPIs Plan Dashboard — route: inline — status: done — commit: 0249aa1 (alertas 421 menciones + CRM ejemplo: win_rate 0.6, noches 6685, derrama USD 1.46M, pipeline USD 582K)
+- [x] T4a Pendientes automatización (28-oct): paginación Socrata (181k filas 96sh full), MEData 16 CSVs cableados (ocupación/tarifa/PITS/eventos, baseline 2023), GDELT single-query + backoff + carry-forward, EGIT parse por header (gasto II-2026 $149.530) — status: done — commit: pendiente
+- [ ] T4b Load SQLite/Parquet + wiring Power BI + cron diario 06:00 — route: inline
+- [ ] T5 (S1) Conectores gated: Amadeus Developers, Brand24 trial, ICCA/Cvent manual — route: inline
+  Nota ENH: DANE bloquea bots (search y deep-URLs devuelven página de error; anexos .xls viejos). ENH queda manual trimestral (5 min: descargar anexo de la página DANE) + MEData automático como baseline histórico. Ocupación fresca mensual: SITUR/MinCIT manual hasta que MEData se reactive.
 - [ ] T4 (S1,S3) Load a SQLite/Parquet + wiring Power BI + scheduler diario — route: inline
 - [ ] T5 (S1) Conectores gated: Amadeus Developers, Brand24 trial, ICCA/Cvent manual — route: inline
 - [ ] T4 (S1,S3) Load a SQLite/Parquet + wiring Power BI + scheduler diario — route: inline

@@ -82,6 +82,43 @@ def kpis_gdelt() -> dict:
     vol = pd.to_numeric(g.get("value", 0), errors="coerce").fillna(0).sum() if "value" in g.columns else len(g)
     return {"gdelt_vol_7d": int(vol), "gdelt_queries": int(g["query"].nunique()) if "query" in g.columns else 0}
 
+def kpis_medata() -> dict:
+    """MEData histórico (series congeladas 2023): ocupación, tarifa, PITS, llegadas MDE por país."""
+    out: dict = {}
+    try:
+        occ = latest_raw("medata_ocupacion_med")
+        if not occ.empty:
+            per = [c for c in occ.columns if "periodo" in c.lower()][0]
+            val = [c for c in occ.columns if "valor" in c.lower()][0]
+            occ = occ.sort_values(per)
+            out["occ_med_ult"] = float(occ[val].iloc[-1])
+            out["occ_med_periodo"] = str(occ[per].iloc[-1])
+            out["occ_med_max12"] = float(occ[val].tail(12).max())
+        tar = latest_raw("medata_tarifa_med")
+        if not tar.empty:
+            per = [c for c in tar.columns if "periodo" in c.lower()][0]
+            val = [c for c in tar.columns if "valor" in c.lower()][0]
+            tar = tar.sort_values(per)
+            out["tarifa_med_ult"] = float(tar[val].iloc[-1])
+            out["tarifa_med_periodo"] = str(tar[per].iloc[-1])
+        pits = latest_raw("medata_pits")
+        if not pits.empty:
+            out["pits_filas"] = int(len(pits))
+        ext = latest_raw("medata_extranjeros_pais_mde")
+        if not ext.empty:
+            per = [c for c in ext.columns if "periodo" in c.lower()][0]
+            last = str(ext[per].max())
+            sub = ext[ext[per].astype(str) == last]
+            val = [c for c in sub.columns if "valor" in c.lower()][0]
+            pais = [c for c in sub.columns if "origen" in c.lower() or "pais" in c.lower()][0]
+            top = sub.groupby(pais)[val].sum().sort_values(ascending=False)
+            out["mde_top_emisor_hist"] = str(top.index[0]) if len(top) else ""
+            out["mde_top3_share_hist"] = round(top.head(3).sum() / max(top.sum(), 1), 3)
+            out["mde_hist_periodo"] = last
+    except Exception as e:
+        print(f"[transform][WARN] kpis_medata: {e}")
+    return out
+
 def run():
     PROC.mkdir(parents=True, exist_ok=True)
     hoy = date.today().isoformat()
@@ -91,7 +128,8 @@ def run():
     dem = kpis_demanda()
     dan = kpis_dane()
     gde = kpis_gdelt()
-    print(f"[transform] trends={len(trends)} alerts={len(alerts)} marca={marca} dem={dem} dane={dan} gdelt={gde}")
+    mdt = kpis_medata()
+    print(f"[transform] trends={len(trends)} alerts={len(alerts)} marca={marca} dem={dem} dane={dan} gdelt={gde} medata={mdt}")
 
     # CRM interno (gated manual): si el Bureau deja su Excel en data/raw/manual/crm.xlsx se calculan KPIs MICE
     crm_path = RAW / "manual" / "crm.xlsx"
@@ -113,7 +151,7 @@ def run():
         print("[transform][SKIP] sin data/raw/manual/crm.xlsx -> KPIs MICE en 0 hasta carga manual")
         mice = {"win_rate": 0, "noches_mice": 0, "derrama_mice": 0, "pipeline_ponderado": 0}
 
-    kpi = pd.DataFrame([{"fecha": hoy, **marca, **dem, **dan, **gde, **mice}])
+    kpi = pd.DataFrame([{"fecha": hoy, **marca, **dem, **dan, **gde, **mdt, **mice}])
     p = PROC / f"kpis_{hoy}.csv"
     kpi.to_csv(p, index=False)
     # acumulado para Power BI
