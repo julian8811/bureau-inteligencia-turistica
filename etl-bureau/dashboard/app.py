@@ -11,7 +11,28 @@ BASE = Path(__file__).resolve().parents[1]
 RAW_TODAY = sorted((BASE / "data" / "raw").glob("20*"))[-1] if list((BASE / "data" / "raw").glob("20*")) else None
 PROC = BASE / "data" / "processed"
 
-st.set_page_config(page_title="Bureau Medellín · Inteligencia Turística", layout="wide", page_icon="🌺")
+st.set_page_config(page_title="Colmayor · Inteligencia Turística Medellín", layout="wide", page_icon="🌺")
+
+# Línea gráfica I.U. Colegio Mayor de Antioquia — Manual de comunicaciones y mercadeo V7
+# Paleta institucional: #172139 navy, #00AEAC turquesa, #E9901E naranja, #B4C42C lima, #108181 teal, #FBBB28 amarillo
+# Tipografías: Montserrat (títulos/texto)
+COLMAYOR_SEQ = ["#172139", "#00AEAC", "#E9901E", "#B4C42C", "#108181", "#FBBB28"]
+
+st.markdown(
+    """<style>
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap');
+html, body, [class*="css"] { font-family: 'Montserrat', sans-serif; }
+h1, h2, h3 { font-weight: 800 !important; color: #172139 !important; }
+section[data-testid="stSidebar"] { background-color: #172139; }
+section[data-testid="stSidebar"] * { color: white !important; }
+div[data-testid="stMetric"] { background: #EEF1F5; border-left: 6px solid #E9901E; border-radius: 8px; padding: 8px 12px; }
+</style>""",
+    unsafe_allow_html=True,
+)
+
+logo = BASE / "dashboard" / "assets" / "logo_colmayor_navy.png"
+if logo.exists():
+    st.image(str(logo), use_container_width=True)
 
 @st.cache_data
 def load(name, day=None):
@@ -25,8 +46,9 @@ def hist():
     return pd.read_csv(p) if p.exists() else pd.DataFrame()
 
 H = hist()
-st.title("🌺 Greater Medellín Bureau · Inteligencia de destino")
-st.caption(f"Datos abiertos + CRM interno · corte {RAW_TODAY.name if RAW_TODAY else '—'} · ETL diario Python (sin Power BI)")
+st.title("Inteligencia Turística · Medellín y Antioquia")
+st.caption("I.U. Colegio Mayor de Antioquia · Datos abiertos + CRM Bureau · "
+           f"corte {RAW_TODAY.name if RAW_TODAY else '—'} · ETL diario Python")
 st.divider()
 
 tab_mice, tab_vac, tab_marca = st.tabs(["🤝 Reuniones (MICE)", "✈️ Vacacional", "📣 Marca Ciudad"])
@@ -47,7 +69,7 @@ with tab_mice:
         vcol = [c for c in occ.columns if "valor" in c.lower()][0]
         occ = occ.sort_values(pcol)
         fig = px.bar(occ.tail(24), x=pcol, y=vcol, title="Ocupación hotelera mensual Medellín (%) — baseline MEData",
-                     color_discrete_sequence=["#E86A2C"])
+                     color_discrete_sequence=["#E9901E"])
         st.plotly_chart(fig, use_container_width=True)
     crm = pd.read_excel(BASE / "data" / "raw" / "manual" / "crm.xlsx", sheet_name=0) if (BASE / "data" / "raw" / "manual" / "crm.xlsx").exists() else pd.DataFrame()
     if not crm.empty:
@@ -68,7 +90,7 @@ with tab_vac:
     if not med.empty:
         top = med.groupby("paisoeeresidencia")["cant_extranjeros_no_residentes"].sum().sort_values(ascending=False).head(10)
         with col_a:
-            st.plotly_chart(px.bar(top, title="Top 10 emisores a Medellín", color_discrete_sequence=["#0F2A44"]), use_container_width=True)
+            st.plotly_chart(px.bar(top, title="Top 10 emisores a Medellín", color_discrete_sequence=["#172139"]), use_container_width=True)
     tr = load("google_trends")
     if not tr.empty:
         with col_b:
@@ -83,7 +105,7 @@ with tab_vac:
         p2 = [c for c in tar.columns if "periodo" in c.lower()][0]; v2 = [c for c in tar.columns if "valor" in c.lower()][0]
         m = occ[[p1, v1]].merge(tar[[p2, v2]], left_on=p1, right_on=p2, how="inner")
         st.plotly_chart(px.scatter(m, x=v1, y=v2, title="Ocupación % vs tarifa COP (cada punto = un mes)",
-                                   labels={v1: "Ocupación %", v2: "Tarifa COP"}, color_discrete_sequence=["#E86A2C"]),
+                                   labels={v1: "Ocupación %", v2: "Tarifa COP"}, color_discrete_sequence=["#E9901E"]),
                         use_container_width=True)
 
 # ============ MARCA ============
@@ -98,3 +120,6 @@ with tab_marca:
     if not al.empty:
         st.subheader("Últimas menciones (Google News + Reddit, sin login)")
         st.dataframe(al[["fecha", "titulo", "link"]].head(20), use_container_width=True)
+
+st.divider()
+st.caption("I.U. Colegio Mayor de Antioquia · Vigilada MinEducación · Fuente ETL: datos.gov.co, DANE, MEData, Google Trends · Uso académico/institucional")
