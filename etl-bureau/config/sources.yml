@@ -1,0 +1,19 @@
+# Tier-1: corre todos los días (fuentes abiertas, TOS ok)
+daily:
+  - google_trends      # pytrends: "Medellín vuelos", "Medellín hoteles" por origen USA/ES/MX
+  - un_tourism         # dashboard/barometer: CSV descargado manual 1x mes + check diario
+  - citur              # CITUR MinCIT CSV público
+  - migracion          # Migración Colombia CSV público
+  - aerocivil          # Aerocivil tráfico MDE/EOH
+  - alerts_rss         # Google Alerts + Talkwalker via RSS / mailbox
+  - tiktok_trends      # TikTok Creative Center (manual semanal, check diario)
+  - meta_ads           # Meta Ad Library búsqueda competidores (semanal)
+
+# Gated: NO se scrapean. Carga manual o API con key. El daily los salta si no hay key/archivo.
+gated_manual:
+  - globaldata_store    # CSV comprado -> data/raw/manual/
+  - amadeus_feed        # solo con contrato -> data/raw/manual/
+  - amadeus_dev         # API key en env AMADEUS_KEY
+  - brand24             # API key en env BRAND24_KEY o CSV trial
+  - icca_cvent          # CSV rankings + RFP CRM interno
+  - crm_interno         # RFP/eventos/miembros/aporte Wompi (Excel interno)
