@@ -14,7 +14,11 @@ def latest_raw(name: str) -> pd.DataFrame:
     cands = sorted(RAW.glob(f"*/{name}.csv"))
     if not cands:
         return pd.DataFrame()
-    return pd.read_csv(cands[-1])
+    try:
+        return pd.read_csv(cands[-1])
+    except Exception as e:
+        print(f"[transform][WARN] {name}: no se pudo leer ({e}) -> vacío")
+        return pd.DataFrame()
 
 def kpis_marca(alerts: pd.DataFrame) -> dict:
     if alerts.empty:
@@ -30,13 +34,52 @@ def kpis_marca(alerts: pd.DataFrame) -> dict:
         "share_medellin": round(med / total, 3),
     }
 
+def kpis_demanda() -> dict:
+    """Demanda desde Socrata cableado: Medellín no-residentes + aéreo MDE/EOH."""
+    med = latest_raw("medellin_no_residentes")
+    aer = latest_raw("aereo_mde_eoh")
+    out: dict = {}
+    try:
+        if not med.empty and "cant_extranjeros_no_residentes" in med.columns:
+            med["cant_extranjeros_no_residentes"] = pd.to_numeric(med["cant_extranjeros_no_residentes"], errors="coerce").fillna(0)
+            out["llegadas_medellin_nr"] = int(med["cant_extranjeros_no_residentes"].sum())
+            if "paisoeeresidencia" in med.columns:
+                top = med.groupby("paisoeeresidencia")["cant_extranjeros_no_residentes"].sum().sort_values(ascending=False).head(5)
+                out["top1_emisor"] = str(top.index[0]) if len(top) else ""
+                out["share_top5"] = round(top.sum() / max(med["cant_extranjeros_no_residentes"].sum(), 1), 3)
+        if not aer.empty and "pasajeros" in aer.columns:
+            aer["pasajeros"] = pd.to_numeric(aer["pasajeros"], errors="coerce").fillna(0)
+            lleg = aer[aer.get("sentido", "") == "llegada"]["pasajeros"].sum() if "sentido" in aer.columns else 0
+            sal = aer[aer.get("sentido", "") == "salida"]["pasajeros"].sum() if "sentido" in aer.columns else 0
+            out["pax_llegadas_mde"] = int(lleg)
+            out["pax_salidas_mde"] = int(sal)
+    except Exception as e:
+        print(f"[transform][WARN] kpis_demanda: {e}")
+    return out
+
+def kpis_dane() -> dict:
+    egit = latest_raw("dane_egit")
+    enh = latest_raw("dane_enh")
+    return {"dane_egit_ok": int(not egit.empty), "dane_enh_ok": int(not enh.empty),
+            "dane_egit_filas": int(len(egit)), "dane_enh_filas": int(len(enh))}
+
+def kpis_gdelt() -> dict:
+    g = latest_raw("gdelt_marca")
+    if g.empty:
+        return {"gdelt_vol_7d": 0}
+    vol = pd.to_numeric(g.get("value", 0), errors="coerce").fillna(0).sum() if "value" in g.columns else len(g)
+    return {"gdelt_vol_7d": int(vol), "gdelt_queries": int(g["query"].nunique()) if "query" in g.columns else 0}
+
 def run():
     PROC.mkdir(parents=True, exist_ok=True)
     hoy = date.today().isoformat()
     trends = latest_raw("google_trends")
     alerts = latest_raw("alerts_rss")
     marca = kpis_marca(alerts)
-    print(f"[transform] trends={len(trends)} alerts={len(alerts)} marca={marca}")
+    dem = kpis_demanda()
+    dan = kpis_dane()
+    gde = kpis_gdelt()
+    print(f"[transform] trends={len(trends)} alerts={len(alerts)} marca={marca} dem={dem} dane={dan} gdelt={gde}")
 
     # CRM interno (gated manual): si el Bureau deja su Excel en data/raw/manual/crm.xlsx se calculan KPIs MICE
     crm_path = RAW / "manual" / "crm.xlsx"
@@ -56,7 +99,7 @@ def run():
         print("[transform][SKIP] sin data/raw/manual/crm.xlsx -> KPIs MICE en 0 hasta carga manual")
         mice = {"win_rate": 0, "noches_mice": 0, "derrama_mice": 0, "pipeline_ponderado": 0}
 
-    kpi = pd.DataFrame([{"fecha": hoy, **marca, **mice}])
+    kpi = pd.DataFrame([{"fecha": hoy, **marca, **dem, **dan, **gde, **mice}])
     p = PROC / f"kpis_{hoy}.csv"
     kpi.to_csv(p, index=False)
     # acumulado para Power BI

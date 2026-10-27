@@ -9,8 +9,10 @@ Estrategia delivery: single-pr (forecast <400 líneas por slice).
 - S3: KPIs deben calcularse en capa transform (Python/pandas) y quedar listos para Power BI sin DAX complejo.
 
 ## Tasks
-- [x] T1 (S1,S2) Diseño + scaffold ETL + doc — route: inline — status: done — commit: pendiente
-- [ ] T2 (S1) Extractores Tier-1 gratis diarios: Google Trends, UN Tourism, CITUR/Migración/Aerocivil CSV, Alerts RSS — route: inline
+- [x] T1 (S1,S2) Diseño + scaffold ETL + doc — route: inline — status: done — commit: 8c57bfb
+- [x] T2 (S1) Extractores Tier-1 gratis diarios: Google Trends, UN Tourism, CITUR/Migración/Aerocivil CSV, Alerts RSS — route: inline — status: done — commit: pendiente
+  Evidencia 27-oct: socrata_co (7wm8-w5ad 16k filas Medellín, 96sh-4v8d 50k, gb6w-ynu4 58k MDE/EOH) + dane_egit (IItrim2026, 67 filas) + trends 465 filas + gdelt 429-safe + alerts stub. Transform emite llegadas_medellin_nr=6.2M, top1 USA, share_top5=0.607, pax MDE 32M/33M.
+  Pendientes honestos: DANE ENH (patrón URL distinto, dane_enh_ok=0), SITUR portal caído (manual mensual), GDELT 429 intermitente, CITUR directo (cubierto vía Socrata).
 - [ ] T3 (S3) Transforms a modelo estrella + KPIs Plan Dashboard — route: inline
 - [ ] T4 (S1,S3) Load a SQLite/Parquet + wiring Power BI + scheduler diario — route: inline
 - [ ] T5 (S1) Conectores gated: Amadeus Developers, Brand24 trial, ICCA/Cvent manual — route: inline
