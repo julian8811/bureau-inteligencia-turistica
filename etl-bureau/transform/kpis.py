@@ -86,6 +86,8 @@ def run():
     mice = {}
     if crm_path.exists():
         crm = pd.read_excel(crm_path)
+        # alias de columnas plantilla (gasto_prom_usd, estadia_noches, valor_rfp_usd)
+        crm = crm.rename(columns={"gasto_prom_usd": "gasto_prom", "estadia_noches": "estadia", "valor_rfp_usd": "valor_rfp"})
         # espera columnas: estado (recibido/ganado), asistentes, gasto_prom, estadia, valor_rfp, prob
         rec = len(crm)
         gan = len(crm[crm.get("estado", "") == "ganado"]) if "estado" in crm.columns else 0
