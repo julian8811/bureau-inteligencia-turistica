@@ -13,7 +13,9 @@ Estrategia delivery: single-pr (forecast <400 líneas por slice).
 - [x] T2 (S1) Extractores Tier-1 gratis diarios: Google Trends, UN Tourism, CITUR/Migración/Aerocivil CSV, Alerts RSS — route: inline — status: done — commit: pendiente
   Evidencia 27-oct: socrata_co (7wm8-w5ad 16k filas Medellín, 96sh-4v8d 50k, gb6w-ynu4 58k MDE/EOH) + dane_egit (IItrim2026, 67 filas) + trends 465 filas + gdelt 429-safe + alerts stub. Transform emite llegadas_medellin_nr=6.2M, top1 USA, share_top5=0.607, pax MDE 32M/33M.
   Pendientes honestos: DANE ENH (patrón URL distinto, dane_enh_ok=0), SITUR portal caído (manual mensual), GDELT 429 intermitente, CITUR directo (cubierto vía Socrata). — commit: eb7d3dc
-- [ ] T3 (S3) Transforms a modelo estrella + KPIs Plan Dashboard — route: inline
+- [x] T3 (S3) Transforms a modelo estrella + KPIs Plan Dashboard — route: inline — status: done — commit: 0249aa1 (alertas 421 menciones + CRM ejemplo: win_rate 0.6, noches 6685, derrama USD 1.46M, pipeline USD 582K)
+- [ ] T4 (S1,S3) Load a SQLite/Parquet + wiring Power BI + scheduler diario — route: inline
+- [ ] T5 (S1) Conectores gated: Amadeus Developers, Brand24 trial, ICCA/Cvent manual — route: inline
 - [ ] T4 (S1,S3) Load a SQLite/Parquet + wiring Power BI + scheduler diario — route: inline
 - [ ] T5 (S1) Conectores gated: Amadeus Developers, Brand24 trial, ICCA/Cvent manual — route: inline
 

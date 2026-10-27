@@ -58,10 +58,22 @@ def kpis_demanda() -> dict:
     return out
 
 def kpis_dane() -> dict:
-    egit = latest_raw("dane_egit")
+    egit = latest_raw("dane_egit_gasto_dia")
     enh = latest_raw("dane_enh")
-    return {"dane_egit_ok": int(not egit.empty), "dane_enh_ok": int(not enh.empty),
-            "dane_egit_filas": int(len(egit)), "dane_enh_filas": int(len(enh))}
+    out = {"dane_egit_ok": int(not egit.empty), "dane_enh_ok": int(not enh.empty),
+           "dane_egit_filas": int(len(egit)), "dane_enh_filas": int(len(enh))}
+    try:
+        # Gasto promedio día último trimestre disponible (serie nacional 24 ciudades, proxy gasto)
+        if not egit.empty and {"trimestre", "valor"} <= set(egit.columns):
+            last = egit["trimestre"].dropna().unique().tolist()[-1]
+            sub = egit[egit["trimestre"] == last]
+            total = sub[sub["concepto"].astype(str).str.contains("Total|total", na=False)]["valor"]
+            if not total.empty:
+                out["gasto_prom_dia_cop"] = float(pd.to_numeric(total, errors="coerce").dropna().iloc[0])
+                out["gasto_trimestre"] = str(last)
+    except Exception as e:
+        print(f"[transform][WARN] kpis_dane gasto: {e}")
+    return out
 
 def kpis_gdelt() -> dict:
     g = latest_raw("gdelt_marca")

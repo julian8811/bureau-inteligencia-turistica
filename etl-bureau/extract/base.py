@@ -10,7 +10,9 @@ def out_dir() -> Path:
     d.mkdir(parents=True, exist_ok=True)
     return d
 
-def save(df: pd.DataFrame, name: str) -> Path:
+def save(df: pd.DataFrame, name: str, columns: list[str] | None = None) -> Path:
+    if df.empty and columns:
+        df = pd.DataFrame(columns=columns)
     p = out_dir() / f"{name}.csv"
     df.to_csv(p, index=False)
     print(f"[extract] {name}: {len(df)} filas -> {p}")

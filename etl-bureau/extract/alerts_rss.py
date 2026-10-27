@@ -44,6 +44,8 @@ def run(feeds: list[str] | None = None):
             print(f"[extract][WARN] feed {url}: {ex}")
     df = pd.DataFrame(rows, columns=["feed", "titulo", "link", "fecha"])
     print(f"[extract] alerts_rss: {len(df)} menciones en {len(feeds)} feeds")
+    if df.empty:
+        return save(df, "alerts_rss", columns=["feed", "titulo", "link", "fecha"])
     return save(df, "alerts_rss")
 
 if __name__ == "__main__":

@@ -31,15 +31,10 @@ def fetch_first(urls: list[str], name: str):
         try:
             r = requests.get(u, timeout=40)
             if r.status_code == 200 and len(r.content) > 50000:
-                # guarda el xlsx crudo + intenta leer primera hoja a csv
+                # guarda el xlsx crudo + parsea hojas clave a CSVs largos
                 raw = out_dir() / f"{name}.xlsx"
                 raw.write_bytes(r.content)
-                try:
-                    df = pd.read_excel(BytesIO(r.content), sheet_name=0)
-                    df["fuente_url"] = u
-                    save(df, name)
-                except Exception as e:
-                    print(f"[dane][WARN] {name} xlsx guardado pero no parseado: {e}")
+                parse_egit_sheets(BytesIO(r.content), u)
                 print(f"[dane] {name} OK <- {u}")
                 return True
         except Exception as e:
@@ -47,6 +42,47 @@ def fetch_first(urls: list[str], name: str):
             continue
     print(f"[dane][SKIP] {name}: ningún anexo vivo en lookback")
     return False
+
+# Hojas clave EGIT: (hoja, nombre_csv). Estructura: fila "Concepto" = header, trimestres cada 3 cols.
+EGIT_SHEETS = [
+    ("8. Gasto promedio día turismo", "dane_egit_gasto_dia"),
+    ("2. Turismo interno", "dane_egit_turismo_interno"),
+    ("5. Turismo tipo de alojamiento", "dane_egit_alojamiento"),
+    ("6.Turismo promedio pernoctación", "dane_egit_pernoctacion"),
+]
+
+def parse_egit_sheets(buf: BytesIO, url: str):
+    from .base import save
+    x = pd.ExcelFile(buf)
+    for sheet, csv_name in EGIT_SHEETS:
+        try:
+            if sheet not in x.sheet_names:
+                print(f"[dane][WARN] hoja faltante: {sheet}")
+                continue
+            raw = pd.read_excel(x, sheet_name=sheet, header=None)
+            # fila header = la que contiene "Concepto" en col 0
+            hdr = raw[raw[0].astype(str).str.contains("Concepto", na=False)].index
+            if len(hdr) == 0:
+                continue
+            hi = hdr[0]
+            ncols = raw.shape[1]
+            # columna de valor = header con nombre de trimestre (rompe el patrón cada-3 por la col anual 2025†)
+            import re
+            tri = re.compile(r"^\s*(I{1,3}V?\s*-\s*\d|2025)")
+            pos = [p for p in range(1, ncols) if tri.match(str(raw.iat[hi, p]))]
+            trim_names = [str(raw.iat[hi, p]).strip() for p in pos]
+            body = raw.iloc[hi + 1 :, [0] + pos].reset_index(drop=True)
+            body.columns = ["concepto"] + trim_names
+            body = body[body["concepto"].notna() & (body["concepto"].astype(str).str.strip() != "")]
+            long = body.melt(id_vars="concepto", var_name="trimestre", value_name="valor")
+            # limpia columnas fantasma (header NaN al final) y sub-headers internos
+            long = long[long["trimestre"].notna() & (long["trimestre"].astype(str).str.strip().str.lower() != "nan") & (long["trimestre"].astype(str).str.strip() != "")]
+            long = long[long["concepto"].astype(str).str.strip().str.lower() != "concepto"]
+            long["fuente_url"] = url
+            long["hoja"] = sheet
+            save(long, csv_name)
+        except Exception as e:
+            print(f"[dane][WARN] parse {sheet}: {e}")
 
 def run():
     fetch_first(candidate_urls("EGIT"), "dane_egit")

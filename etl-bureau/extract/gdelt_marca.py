@@ -36,6 +36,9 @@ def timeseries(query: str) -> pd.DataFrame:
 def run():
     frames = [timeseries(q) for q in QUERIES.values()]
     df = pd.concat(frames, ignore_index=True) if any(not f.empty for f in frames) else pd.DataFrame()
+    from .base import out_dir
+    if df.empty:
+        return save(df, "gdelt_marca", columns=["date", "value", "query"])
     return save(df, "gdelt_marca")
 
 if __name__ == "__main__":
