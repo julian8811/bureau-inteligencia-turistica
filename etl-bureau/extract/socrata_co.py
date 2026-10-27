@@ -22,7 +22,7 @@ def run_entradas_nacionalidad() -> pd.DataFrame:
 
 def run_aereo_mde() -> pd.DataFrame:
     # Llegadas a MDE + salidas desde MDE (dos queries, se concatenan)
-    sel = "a_o,n_mero_de_mes,origen,nombre_origen,ciudad_origen,pais_origen,destino,nombre_destino,ciudad_destino,pais_destino,pasajeros,tipo_vuelo"
+    sel = "a_o,n_mero_de_mes,sigla_empresa,nombre,origen,nombre_origen,ciudad_origen,pais_origen,destino,nombre_destino,ciudad_destino,pais_destino,pasajeros,carga_correo_kg,tr_fico_n_i,tipo_vuelo"
     lleg = q("gb6w-ynu4", {"destino": "MDE", "$select": sel, "$order": "a_o DESC,n_mero_de_mes DESC"})
     sal = q("gb6w-ynu4", {"origen": "MDE", "$select": sel, "$order": "a_o DESC,n_mero_de_mes DESC"})
     lleg["sentido"] = "llegada"

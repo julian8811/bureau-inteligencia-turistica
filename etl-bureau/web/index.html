@@ -32,6 +32,7 @@ table.data td{padding:5px 8px;border-bottom:1px solid #eee}
 <button class="tab-btn" data-t="reciente">⏱️ Últimos 3 meses</button>
 <button class="tab-btn" data-t="paises">🌎 Por país</button>
 <button class="tab-btn" data-t="medellin">✈️ Foco Medellín</button>
+<button class="tab-btn" data-t="desglose">🔍 Desglose total</button>
 <button class="tab-btn" data-t="marca">📣 Marca</button>
 </nav>
 
@@ -62,6 +63,27 @@ table.data td{padding:5px 8px;border-bottom:1px solid #eee}
 <div class="chart mt-4" id="ch-gasto"></div>
 </section>
 
+<section id="t-desglose" class="tab pt-4 hidden">
+<p class="text-sm text-gray-500">Todos los cortes posibles con las fuentes actuales. Motivo de viaje solo existe en el informe TEC (Migración no lo publica en Socrata).</p>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-3 mt-2" id="kpi-desg"></div>
+<h3 class="font-bold mt-4">Género: % mujeres entradas vs salidas (serie anual)</h3>
+<div class="chart" id="ch-genero"></div>
+<h3 class="font-bold mt-4">Top rutas a MDE + top aerolíneas (año completo)</h3>
+<div class="grid md:grid-cols-2 gap-3"><div class="chart" id="ch-rutas"></div><div class="chart" id="ch-aero"></div></div>
+<h3 class="font-bold mt-4">Carga aérea MDE (kg) + nacional vs internacional</h3>
+<div class="grid md:grid-cols-2 gap-3"><div class="chart" id="ch-carga"></div><div class="chart" id="ch-nacint"></div></div>
+<h3 class="font-bold mt-4">Estacionalidad mensual Medellín</h3>
+<div class="chart" id="ch-estac"></div>
+<h3 class="font-bold mt-4">PITS y sitios de interés (baseline MEData)</h3>
+<div class="grid md:grid-cols-2 gap-3"><div class="chart" id="ch-pits"></div><div class="chart" id="ch-sitios"></div></div>
+<h3 class="font-bold mt-4">Alojamiento y pernoctación DANE (último trimestre)</h3>
+<div class="grid md:grid-cols-2 gap-3"><div class="chart" id="ch-aloj"></div><div class="chart" id="ch-pern"></div></div>
+<h3 class="font-bold mt-4">Uplift Feria de las Flores (pp sobre mes normal) + momentum Trends por geo</h3>
+<div class="grid md:grid-cols-2 gap-3"><div class="chart" id="ch-uplift"></div><div class="chart" id="ch-mom"></div></div>
+<h3 class="font-bold mt-4">Alertas por semana + top destinos de salidas colombianas</h3>
+<div class="grid md:grid-cols-2 gap-3"><div class="chart" id="ch-alser"></div><div class="chart" id="ch-saltop"></div></div>
+</section>
+
 <section id="t-marca" class="tab pt-4 hidden">
 <div class="grid grid-cols-2 md:grid-cols-3 gap-3" id="kpi-marca"></div>
 <h3 class="font-bold mt-4">Últimas menciones (Google News + Reddit)</h3>
@@ -79,7 +101,7 @@ document.querySelectorAll('.tab-btn').forEach(b=>b.onclick=()=>{document.querySe
 const REG=[];
 const ch=(id,opt)=>{const e=echarts.init(document.getElementById(id));e.setOption(opt);REG.push(e);};
 
-Promise.all([J('kpis'),J('destinos'),J('paises'),J('trends'),J('menciones'),J('gasto_dane'),J('ocupacion_hist'),J('ult3m_pais')]).then(([kpis,dest,paises,trends,men,gasto,occ,u3m])=>{
+Promise.all([J('kpis'),J('destinos'),J('paises'),J('trends'),J('menciones'),J('gasto_dane'),J('ocupacion_hist'),J('ult3m_pais')]).then(async ([kpis,dest,paises,trends,men,gasto,occ,u3m])=>{
 const k=kpis[0]||{};
 // RECIENTE: últimos 3 meses disponibles
 const vent=u3m[0]?.ventana||'';
@@ -132,6 +154,41 @@ kpi('kpi-marca','Menciones (7d)',fmt(k.menciones),'Google News + Reddit');
 kpi('kpi-marca','Sentimiento neto',(k.sentimiento_neto>=0?'+':'')+Number(k.sentimiento_neto||0).toFixed(2),'rango -1 a +1');
 kpi('kpi-marca','Share Medellín',(k.share_medellin*100).toFixed(0)+'%','de las menciones');
 document.getElementById('tbl-marca').innerHTML=`<table class="data"><tr><th>Fecha</th><th>Titular</th></tr>${men.map(m=>`<tr><td>${m.fecha||''}</td><td><a href="${m.link||'#'}" target="_blank" class="text-blue-700 underline">${m.titulo||''}</a></td></tr>`).join('')}</table>`;
+// DESGLOSE TOTAL
+const DG={};await Promise.all(['desglose_genero_entradas','desglose_genero_salidas','desglose_rutas_mde','desglose_aerolineas','desglose_carga_mde','desglose_nac_int','desglose_estacionalidad','desglose_pits','desglose_sitios','desglose_alojamiento','desglose_pernoct','desglose_uplift_feria','desglose_trends_momentum','desglose_alertas_serie','desglose_salidas_top'].map(async n=>{try{DG[n]=await J(n);}catch(e){DG[n]=[];}}));
+kpi('kpi-desg','Mujeres entradas (año)',(k.genero_entradas_fem*100).toFixed(1)+'%','vs salidas '+(k.genero_salidas_fem*100).toFixed(1)+'%');
+kpi('kpi-desg','Ruta top a MDE',k.rutas_top1||'—','Bogotá–Medellín');
+kpi('kpi-desg','Aerolínea top',k.aerolinea_top1||'—','pax a MDE');
+kpi('kpi-desg','Uplift Feria',('+'+k.uplift_feria_pp)+' pp','ocupación vs mes normal');
+const bar=(id,title,cats,data,color)=>ch(id,{title:{text:title,left:'center'},tooltip:{},xAxis:{type:'category',data:cats,axisLabel:{rotate:30}},yAxis:{},series:[{type:'bar',data:data,itemStyle:{color:color}}]});
+if(DG.desglose_genero_entradas.length){const e=DG.desglose_genero_entradas,s=DG.desglose_genero_salidas;
+bar('ch-genero','% mujeres por año',e.map(r=>r.a_o),e.map(r=>+(r.pct_fem*100).toFixed(1)),'#00AEAC');}
+if(DG.desglose_rutas_mde.length){const r=DG.desglose_rutas_mde.slice(0,12);
+bar('ch-rutas','Top rutas a MDE (pax)',r.map(x=>x.ciudad_origen||x[Object.keys(x)[0]]),r.map(x=>x.pax),'#172139');}
+if(DG.desglose_aerolineas.length){const a=DG.desglose_aerolineas;
+bar('ch-aero','Top aerolíneas a MDE (pax)',a.map(x=>x.nombre),a.map(x=>x.pax),'#E9901E');}
+if(DG.desglose_carga_mde.length){const c=DG.desglose_carga_mde;
+ch('ch-carga',{title:{text:'Carga aérea MDE (kg)',left:'center'},tooltip:{},xAxis:{type:'category',data:c.map(r=>r.a_o)},yAxis:{},series:[{type:'line',data:c.map(r=>r.kg),itemStyle:{color:'#108181'}}]});}
+if(DG.desglose_nac_int.length){const n=DG.desglose_nac_int,ks=Object.keys(n[0]).filter(x=>x!=='a_o');
+ch('ch-nacint',{title:{text:'Pax MDE nacional vs internacional',left:'center'},tooltip:{trigger:'axis'},legend:{data:ks},xAxis:{type:'category',data:n.map(r=>r.a_o)},yAxis:{},series:ks.map((s,i)=>({name:s,type:'bar',stack:'t',data:n.map(r=>r[s]),itemStyle:{color:PAL[i%PAL.length]}}))});}
+if(DG.desglose_estacionalidad.length){const e=DG.desglose_estacionalidad,ys=[...new Set(e.map(r=>r.a_o))].slice(-3);
+ch('ch-estac',{title:{text:'Estacionalidad mensual Medellín',left:'center'},tooltip:{trigger:'axis'},legend:{data:ys},xAxis:{type:'category',data:[...new Set(e.map(r=>r.mes_n))]},yAxis:{},series:ys.map((y,i)=>({name:y,type:'line',data:[...new Set(e.map(r=>r.mes_n))].map(m=>{const f=e.find(r=>r.a_o==y&&r.mes_n==m);return f?f.cant_extranjeros_no_residentes:null;}),itemStyle:{color:PAL[i%PAL.length]}}))});}
+if(DG.desglose_pits.length){const p=DG.desglose_pits.slice(0,8);
+bar('ch-pits','PITS top (visitas)',p.map(x=>x.pit_nombre),p.map(x=>x.pit_totalvisitas),'#B4C42C');}
+if(DG.desglose_sitios.length){const s=DG.desglose_sitios.slice(0,8);
+bar('ch-sitios','Sitios de interés top',s.map(x=>x.sit_nombre),s.map(x=>x.sit_totalvisitas),'#108181');}
+if(DG.desglose_alojamiento.length){const a=DG.desglose_alojamiento.filter(r=>r.concepto&&!r.concepto.startsWith('Población')&&!r.concepto.startsWith('Fuente'));
+ch('ch-aloj',{title:{text:'Tipo alojamiento (últ. trim.)',left:'center'},tooltip:{},series:[{type:'pie',radius:'60%',data:a.map(r=>({name:r.concepto,value:r.valor}))}]});}
+if(DG.desglose_pernoct.length){const p=DG.desglose_pernoct.filter(r=>+r.valor>0).slice(0,8);
+bar('ch-pern','Pernoctación (últ. trim.)',p.map(r=>String(r.concepto).slice(0,28)),p.map(r=>r.valor),'#FBBB28');}
+if(DG.desglose_uplift_feria.length){const u=DG.desglose_uplift_feria;
+bar('ch-uplift','Uplift Feria vs base (pp)',u.map(r=>r.ano),u.map(r=>r.uplift_pp),'#E9901E');}
+if(DG.desglose_trends_momentum.length){const m=DG.desglose_trends_momentum;
+bar('ch-mom','Momentum Trends por geo',m.map(r=>r.index||r.geo||''),m.map(r=>r.momentum||r[Object.keys(r)[1]]),'#00AEAC');}
+if(DG.desglose_alertas_serie.length){const s=DG.desglose_alertas_serie;
+ch('ch-alser',{title:{text:'Menciones por semana',left:'center'},tooltip:{},xAxis:{type:'category',data:s.map(r=>r.fecha||r[Object.keys(r)[0]])},yAxis:{},series:[{type:'line',data:s.map(r=>r.n),itemStyle:{color:'#172139'}}]});}
+if(DG.desglose_salidas_top.length){const s=DG.desglose_salidas_top;
+bar('ch-saltop','Top destinos salidas COL',s.map(r=>r.pais),s.map(r=>r.salidas),'#108181');}
 });
 </script>
 </body>

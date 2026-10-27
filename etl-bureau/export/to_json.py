@@ -53,6 +53,12 @@ def run():
     u3m = PROC / "ult3m_pais.csv"
     if u3m.exists():
         jwrite(pd.read_csv(u3m).head(40), "ult3m_pais")
+    for d in sorted(PROC.glob("desglose_*.csv")):
+        try:
+            df = pd.read_csv(d)
+            jwrite(df.head(60), d.stem)
+        except Exception as e:
+            print(f"[export][WARN] {d.name}: {e}")
     occ = latest_raw("medata_ocupacion_med")
     if not occ.empty:
         jwrite(occ, "ocupacion_hist")

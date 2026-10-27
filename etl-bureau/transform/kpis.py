@@ -344,6 +344,127 @@ def kpis_ult3m() -> dict:
         print(f"[transform][WARN] kpis_ult3m: {e}")
     return out
 
+def kpis_desglose() -> dict:
+    """Todos los cortes posibles por fuente. Escribe desglose_*.csv en processed."""
+    out: dict = {}
+    try:
+        # Género entradas/salidas por año
+        for key, tag in (("entradas_nacionalidad", "entradas"), ("salidas_destino", "salidas")):
+            df = latest_raw(key)
+            if df.empty or not {"femenino", "masculino"}.issubset(df.columns):
+                continue
+            df["femenino"] = pd.to_numeric(df["femenino"], errors="coerce").fillna(0)
+            df["masculino"] = pd.to_numeric(df["masculino"], errors="coerce").fillna(0)
+            g = df.groupby(df["a_o"].astype(str))[["femenino", "masculino"]].sum()
+            g["pct_fem"] = (g["femenino"] / (g["femenino"] + g["masculino"]).replace(0, 1)).round(3)
+            g.to_csv(PROC / f"desglose_genero_{tag}.csv")
+            r = g.loc[str(g.index.max())]
+            out[f"genero_{tag}_fem"] = float(r["pct_fem"])
+        # Rutas + aerolíneas + carga MDE (último año completo de la serie aérea)
+        aer = latest_raw("aereo_mde_eoh")
+        if not aer.empty:
+            aer["pasajeros"] = pd.to_numeric(aer.get("pasajeros", 0), errors="coerce").fillna(0)
+            lleg = aer[aer.get("sentido", "") == "llegada"].copy()
+            y1 = str(sorted(lleg["a_o"].astype(str).unique())[-2])
+            l1 = lleg[lleg["a_o"].astype(str) == y1]
+            rutas = l1.groupby("ciudad_origen")["pasajeros"].sum().sort_values(ascending=False).head(15)
+            rutas.to_csv(PROC / "desglose_rutas_mde.csv", header=["pax"])
+            out["rutas_top1"] = str(rutas.index[0]) if len(rutas) else ""
+            if "nombre" in l1.columns:
+                aero = l1.groupby("nombre")["pasajeros"].sum().sort_values(ascending=False).head(10)
+                aero.to_csv(PROC / "desglose_aerolineas.csv", header=["pax"])
+                out["aerolinea_top1"] = str(aero.index[0]) if len(aero) else ""
+            if "carga_correo_kg" in lleg.columns:
+                lleg["carga_correo_kg"] = pd.to_numeric(lleg["carga_correo_kg"], errors="coerce").fillna(0)
+                car = lleg.groupby(lleg["a_o"].astype(str))["carga_correo_kg"].sum()
+                car.to_csv(PROC / "desglose_carga_mde.csv", header=["kg"])
+                out["carga_ult_kg"] = float(car.iloc[-1])
+            if "tr_fico_n_i" in lleg.columns:
+                nac_int = lleg.groupby([lleg["a_o"].astype(str), "tr_fico_n_i"])["pasajeros"].sum().unstack(fill_value=0)
+                nac_int.to_csv(PROC / "desglose_nac_int.csv")
+        # Estacionalidad mensual Medellín (2024-2026)
+        med = latest_raw("medellin_no_residentes")
+        if not med.empty:
+            med["cant_extranjeros_no_residentes"] = pd.to_numeric(med["cant_extranjeros_no_residentes"], errors="coerce").fillna(0)
+            med["mes_n"] = med["mes"].astype(str).str.strip().str.lower().map(MES)
+            est = med.groupby([med["a_o"].astype(str), "mes_n"])["cant_extranjeros_no_residentes"].sum().reset_index()
+            est.to_csv(PROC / "desglose_estacionalidad.csv", index=False)
+            mmax = est.loc[est["cant_extranjeros_no_residentes"].idxmax()]
+            out["mes_pico"] = f"{int(mmax['mes_n']):02d}-{mmax['a_o']}"
+        # PITS y sitios (baseline MEData)
+        pits = latest_raw("medata_pits")
+        if not pits.empty and {"pit_nombre", "pit_totalvisitas"}.issubset(pits.columns):
+            pits["pit_totalvisitas"] = pd.to_numeric(pits["pit_totalvisitas"], errors="coerce").fillna(0)
+            pt = pits.groupby("pit_nombre")["pit_totalvisitas"].sum().sort_values(ascending=False).head(10)
+            pt.to_csv(PROC / "desglose_pits.csv", header=["visitas"])
+            out["pits_top1"] = str(pt.index[0]) if len(pt) else ""
+        sit = latest_raw("medata_sitios_interes")
+        if not sit.empty and {"sit_nombre", "sit_totalvisitas"}.issubset(sit.columns):
+            sit["sit_totalvisitas"] = pd.to_numeric(sit["sit_totalvisitas"], errors="coerce").fillna(0)
+            st_ = sit.groupby("sit_nombre")["sit_totalvisitas"].sum().sort_values(ascending=False).head(10)
+            st_.to_csv(PROC / "desglose_sitios.csv", header=["visitas"])
+            out["sitio_top1"] = str(st_.index[0]) if len(st_) else ""
+        # Alojamiento + pernoctación DANE último trimestre
+        for f, csvn in (("dane_egit_alojamiento", "desglose_alojamiento"), ("dane_egit_pernoctacion", "desglose_pernoct")):
+            df = latest_raw(f)
+            if df.empty:
+                continue
+            last = df["trimestre"].dropna().unique().tolist()[-1]
+            sub = df[df["trimestre"] == last].filter(["concepto", "valor"]).copy()
+            sub["valor"] = pd.to_numeric(sub["valor"], errors="coerce")
+            sub.to_csv(PROC / f"{csvn}.csv", index=False)
+        # Uplift eventos: Feria vs promedio mensual mismo año (baseline)
+        fer = latest_raw("medata_occ_feria")
+        occ = latest_raw("medata_ocupacion_med")
+        if not fer.empty and not occ.empty:
+            up = []
+            for f_, tag in ((fer, "feria"), (occ, "base")):
+                pc = [c for c in f_.columns if "periodo" in c.lower()][0]
+                vc = [c for c in f_.columns if "valor" in c.lower()][0]
+                d = f_.copy()
+                d["ano"] = d[pc].astype(str).str.slice(0, 4)
+                up.append(d.groupby("ano")[vc].mean().rename(tag))
+            uplift = pd.concat(up, axis=1).dropna()
+            uplift["uplift_pp"] = (uplift["feria"] - uplift["base"]).round(1)
+            uplift.to_csv(PROC / "desglose_uplift_feria.csv")
+            out["uplift_feria_pp"] = float(uplift["uplift_pp"].iloc[-1]) if len(uplift) else 0
+        # Trends momentum: últimas 4 sem vs 4 previas por geo
+        tre = latest_raw("google_trends")
+        if not tre.empty:
+            t = tre.copy()
+            t["date"] = pd.to_datetime(t["date"])
+            t = t.sort_values("date")
+            mom = {}
+            for geo, g in t.groupby("geo"):
+                cols = [c for c in g.columns if "Medell" in c]
+                s = g.groupby("date")[cols].sum().sum(axis=1).sort_index()
+                if len(s) >= 8:
+                    mom[str(geo)] = round(float(s.tail(4).mean() - s.iloc[-8:-4].mean()), 1)
+            pd.Series(mom, name="momentum").to_csv(PROC / "desglose_trends_momentum.csv", header=True)
+            out["momentum_top_geo"] = max(mom, key=mom.get) if mom else ""
+        # Alertas por fuente + serie semanal
+        al = latest_raw("alerts_rss")
+        if not al.empty:
+            al["es_reddit"] = al["feed"].astype(str).str.contains("reddit")
+            src = al.groupby("es_reddit").size()
+            src.to_csv(PROC / "desglose_alertas_fuente.csv", header=["n"])
+            al["fecha"] = pd.to_datetime(al["fecha"], errors="coerce", utc=True)
+            sem = al.dropna(subset=["fecha"]).groupby(al["fecha"].dt.strftime("%Y-W%V")).size()
+            sem.to_csv(PROC / "desglose_alertas_serie.csv", header=["n"])
+            out["alertas_sem_max"] = int(sem.max()) if len(sem) else 0
+        # Salidas top por país último año completo
+        sal = latest_raw("salidas_destino")
+        if not sal.empty:
+            sal["pais"] = sal["pa_s_destino"].map(norm_pais)
+            sal["total"] = pd.to_numeric(sal["total"], errors="coerce").fillna(0)
+            y1 = str(sorted(sal["a_o"].astype(str).unique())[-2])
+            top = sal[sal["a_o"].astype(str) == y1].groupby("pais")["total"].sum().sort_values(ascending=False).head(12)
+            top.to_csv(PROC / "desglose_salidas_top.csv", header=["salidas"])
+            out["salidas_top1"] = str(top.index[0]) if len(top) else ""
+    except Exception as e:
+        print(f"[transform][WARN] kpis_desglose: {e}")
+    return out
+
 def run():
     PROC.mkdir(parents=True, exist_ok=True)
     hoy = date.today().isoformat()
@@ -357,7 +478,8 @@ def run():
     pai = kpis_pais()
     des = kpis_destinos()
     u3m = kpis_ult3m()
-    print(f"[transform] trends={len(trends)} alerts={len(alerts)} marca={marca} dem={dem} dane={dan} gdelt={gde} medata={mdt} paises={len(pai)} destinos={len(des)} ult3m={u3m}")
+    dsg = kpis_desglose()
+    print(f"[transform] trends={len(trends)} alerts={len(alerts)} marca={marca} dem={dem} dane={dan} gdelt={gde} medata={mdt} paises={len(pai)} destinos={len(des)} ult3m={u3m} desglose={dsg}")
 
     # CRM interno (gated manual): si el Bureau deja su Excel en data/raw/manual/crm.xlsx se calculan KPIs MICE
     crm_path = RAW / "manual" / "crm.xlsx"
@@ -379,7 +501,8 @@ def run():
         print("[transform][SKIP] sin data/raw/manual/crm.xlsx -> KPIs MICE en 0 hasta carga manual")
         mice = {"win_rate": 0, "noches_mice": 0, "derrama_mice": 0, "pipeline_ponderado": 0}
 
-    kpi = pd.DataFrame([{"fecha": hoy, **marca, **dem, **dan, **gde, **mdt, **mice, **u3m}])
+    kpi = pd.DataFrame([{"fecha": hoy, **marca, **dem, **dan, **gde, **mdt, **mice, **u3m,
+                           **{k: v for k, v in dsg.items() if isinstance(v, (int, float))}}])
     p = PROC / f"kpis_{hoy}.csv"
     kpi.to_csv(p, index=False)
     # acumulado para Power BI
