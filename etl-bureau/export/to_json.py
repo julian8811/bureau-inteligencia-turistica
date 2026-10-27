@@ -50,6 +50,9 @@ def run():
     if not gas.empty:
         tot = gas[gas["concepto"].astype(str).str.contains("Total 24", na=False)].filter(["trimestre", "valor"])
         jwrite(tot, "gasto_dane")
+    u3m = PROC / "ult3m_pais.csv"
+    if u3m.exists():
+        jwrite(pd.read_csv(u3m).head(40), "ult3m_pais")
     occ = latest_raw("medata_ocupacion_med")
     if not occ.empty:
         jwrite(occ, "ocupacion_hist")

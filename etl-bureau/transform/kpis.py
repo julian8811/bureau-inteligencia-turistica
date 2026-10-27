@@ -244,7 +244,7 @@ def kpis_pais() -> pd.DataFrame:
         return pd.DataFrame()
 
 def kpis_destinos(top_n: int = 12) -> pd.DataFrame:
-    """Ranking destinos Colombia x año (Bogotá, Medellín, Cartagena...) con YoY y share. Fuente: ciudades_llegadas."""
+    """Ranking destinos Colombia x año con YoY y share. Fuente: ciudades_llegadas."""
     try:
         df = latest_raw("ciudades_llegadas")
         if df.empty:
@@ -273,6 +273,77 @@ def kpis_destinos(top_n: int = 12) -> pd.DataFrame:
         print(f"[transform][WARN] kpis_destinos: {e}")
         return pd.DataFrame()
 
+MES = {"ene": 1, "enero": 1, "feb": 2, "febrero": 2, "mar": 3, "marzo": 3, "abr": 4, "abril": 4,
+       "may": 5, "mayo": 5, "jun": 6, "junio": 6, "jul": 7, "julio": 7, "ago": 8, "agosto": 8,
+       "sep": 9, "septiembre": 9, "setiembre": 9, "oct": 10, "octubre": 10, "nov": 11, "noviembre": 11,
+       "dic": 12, "diciembre": 12}
+
+def trim3(df: pd.DataFrame, val_col: str, mes_col: str) -> tuple[pd.DataFrame, str, str]:
+    """Últimos 3 meses disponibles + mismo periodo año anterior. Retorna (df_filtrado, etiqueta, etiqueta_base)."""
+    d = df.copy()
+    num = pd.to_numeric(d[mes_col].astype(str).str.strip(), errors="coerce")
+    if num.notna().mean() > 0.9:
+        d["mes_n"] = num.astype(int)
+    else:
+        d["mes_n"] = d[mes_col].astype(str).str.strip().str.lower().map(MES)
+    d["a_o"] = d["a_o"].astype(str)
+    d = d.dropna(subset=["mes_n"])
+    if d.empty:
+        raise ValueError("sin meses parseables")
+    d["mes_n"] = d["mes_n"].astype(int)
+    max_y, max_m = d["a_o"].max(), int(d[d["a_o"] == d["a_o"].max()]["mes_n"].max())
+    # ventana: últimos 3 meses desde el máximo
+    end = max_y, max_m
+    win = []
+    y, m = int(max_y), max_m
+    for _ in range(3):
+        win.append((str(y), m))
+        m -= 1
+        if m == 0:
+            m, y = 12, y - 1
+    cur = d[d.apply(lambda r: (r["a_o"], int(r["mes_n"])) in win, axis=1)]
+    # base: mismos 3 meses, año anterior
+    win_base = [(str(int(a) - 1), mm) for a, mm in win]
+    base = d[d.apply(lambda r: (r["a_o"], int(r["mes_n"])) in win_base, axis=1)]
+    meses_es = {1: "ene", 2: "feb", 3: "mar", 4: "abr", 5: "may", 6: "jun", 7: "jul", 8: "ago", 9: "sep", 10: "oct", 11: "nov", 12: "dic"}
+    lab = f"{meses_es[win[-1][1]]}-{win[-1][0]} a {meses_es[win[0][1]]}-{win[0][0]}"
+    return cur, base, lab
+
+def kpis_ult3m() -> dict:
+    """Agregados últimos 3 meses disponibles (hoy: abr-jun 2026) + frescura por fuente."""
+    out: dict = {}
+    try:
+        med = latest_raw("medellin_no_residentes")
+        if not med.empty:
+            med["pais"] = med["paisoeeresidencia"].map(norm_pais)
+            med["cant_extranjeros_no_residentes"] = pd.to_numeric(med["cant_extranjeros_no_residentes"], errors="coerce").fillna(0)
+            cur, base, lab = trim3(med, "cant_extranjeros_no_residentes", "mes")
+            t = cur.groupby("pais")["cant_extranjeros_no_residentes"].sum().sort_values(ascending=False)
+            b = base.groupby("pais")["cant_extranjeros_no_residentes"].sum()
+            u = pd.DataFrame({"pais": t.index, "med_ult3m": t.values})
+            u["med_ult3m_yoy"] = u.apply(lambda r: round((r["med_ult3m"] - b.get(r["pais"], 0)) / max(b.get(r["pais"], 0), 1), 3), axis=1)
+            u["ventana"] = lab
+            u.to_csv(PROC / "ult3m_pais.csv", index=False)
+            out["med_ult3m_total"] = int(t.sum())
+            out["med_ult3m_yoy"] = round((t.sum() - b.sum()) / max(b.sum(), 1), 3)
+            out["med_ventana"] = lab
+        for key, col_m, col_v in (("entradas_nacionalidad", None, "total"), ("aereo_mde_eoh", "n_mero_de_mes", "pasajeros"), ("salidas_destino", None, "total")):
+            df = latest_raw(key)
+            if df.empty:
+                continue
+            mc = col_m or ("mes" if "mes" in df.columns else None)
+            if not mc:
+                continue
+            df[col_v] = pd.to_numeric(df[col_v], errors="coerce").fillna(0)
+            cur, base, lab = trim3(df, col_v, mc)
+            tot, totb = float(cur[col_v].sum()), float(base[col_v].sum())
+            out[f"{key}_ult3m"] = int(tot)
+            out[f"{key}_ult3m_yoy"] = round((tot - totb) / max(totb, 1), 3)
+            out[f"{key}_ventana"] = lab
+    except Exception as e:
+        print(f"[transform][WARN] kpis_ult3m: {e}")
+    return out
+
 def run():
     PROC.mkdir(parents=True, exist_ok=True)
     hoy = date.today().isoformat()
@@ -285,7 +356,8 @@ def run():
     mdt = kpis_medata()
     pai = kpis_pais()
     des = kpis_destinos()
-    print(f"[transform] trends={len(trends)} alerts={len(alerts)} marca={marca} dem={dem} dane={dan} gdelt={gde} medata={mdt} paises={len(pai)} destinos={len(des)}")
+    u3m = kpis_ult3m()
+    print(f"[transform] trends={len(trends)} alerts={len(alerts)} marca={marca} dem={dem} dane={dan} gdelt={gde} medata={mdt} paises={len(pai)} destinos={len(des)} ult3m={u3m}")
 
     # CRM interno (gated manual): si el Bureau deja su Excel en data/raw/manual/crm.xlsx se calculan KPIs MICE
     crm_path = RAW / "manual" / "crm.xlsx"
@@ -307,7 +379,7 @@ def run():
         print("[transform][SKIP] sin data/raw/manual/crm.xlsx -> KPIs MICE en 0 hasta carga manual")
         mice = {"win_rate": 0, "noches_mice": 0, "derrama_mice": 0, "pipeline_ponderado": 0}
 
-    kpi = pd.DataFrame([{"fecha": hoy, **marca, **dem, **dan, **gde, **mdt, **mice}])
+    kpi = pd.DataFrame([{"fecha": hoy, **marca, **dem, **dan, **gde, **mdt, **mice, **u3m}])
     p = PROC / f"kpis_{hoy}.csv"
     kpi.to_csv(p, index=False)
     # acumulado para Power BI

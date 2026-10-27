@@ -29,6 +29,7 @@ table.data td{padding:5px 8px;border-bottom:1px solid #eee}
 <p class="text-sm text-gray-500" id="corte">I.U. Colegio Mayor de Antioquia · datos abiertos · ETL diario Python</p>
 <nav class="flex gap-1 mt-4 border-b">
 <button class="tab-btn active" data-t="destinos">🇨🇴 Destinos Colombia</button>
+<button class="tab-btn" data-t="reciente">⏱️ Últimos 3 meses</button>
 <button class="tab-btn" data-t="paises">🌎 Por país</button>
 <button class="tab-btn" data-t="medellin">✈️ Foco Medellín</button>
 <button class="tab-btn" data-t="marca">📣 Marca</button>
@@ -38,6 +39,13 @@ table.data td{padding:5px 8px;border-bottom:1px solid #eee}
 <div class="grid grid-cols-2 md:grid-cols-4 gap-3" id="kpi-dest"></div>
 <div class="chart mt-4" id="ch-dest"></div>
 <div class="chart mt-4" id="ch-destyoy"></div>
+</section>
+
+<section id="t-reciente" class="tab pt-4 hidden">
+<p class="text-sm text-gray-500" id="frescura"></p>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-3 mt-2" id="kpi-recent"></div>
+<div class="chart mt-4" id="ch-recent"></div>
+<div class="chart mt-4" id="ch-recentyoy"></div>
 </section>
 
 <section id="t-paises" class="tab pt-4 hidden">
@@ -71,8 +79,19 @@ document.querySelectorAll('.tab-btn').forEach(b=>b.onclick=()=>{document.querySe
 const REG=[];
 const ch=(id,opt)=>{const e=echarts.init(document.getElementById(id));e.setOption(opt);REG.push(e);};
 
-Promise.all([J('kpis'),J('destinos'),J('paises'),J('trends'),J('menciones'),J('gasto_dane'),J('ocupacion_hist')]).then(([kpis,dest,paises,trends,men,gasto,occ])=>{
+Promise.all([J('kpis'),J('destinos'),J('paises'),J('trends'),J('menciones'),J('gasto_dane'),J('ocupacion_hist'),J('ult3m_pais')]).then(([kpis,dest,paises,trends,men,gasto,occ,u3m])=>{
 const k=kpis[0]||{};
+// RECIENTE: últimos 3 meses disponibles
+const vent=u3m[0]?.ventana||'';
+document.getElementById('frescura').textContent=`Ventana oficial más fresca: ${vent} · Migración/Aerocivil publican con ~4 meses de rezago · Trends y menciones en tiempo real`;
+kpi('kpi-recent','Medellín '+vent,fmt(k.med_ult3m_total),`${(k.med_ult3m_yoy*100).toFixed(1)}% vs 2025`);
+kpi('kpi-recent','Entradas COL '+vent,fmt(k.entradas_nacionalidad_ult3m),`${(k.entradas_nacionalidad_ult3m_yoy*100).toFixed(1)}% vs 2025`);
+kpi('kpi-recent','Pax MDE '+vent,fmt(k.aereo_mde_eoh_ult3m),`${(k.aereo_mde_eoh_ult3m_yoy*100).toFixed(1)}% vs 2025`);
+kpi('kpi-recent','Salidas COL '+vent,fmt(k.salidas_destino_ult3m),`+${(k.salidas_destino_ult3m_yoy*100).toFixed(1)}% vs 2025`);
+const r15=u3m.slice(0,15);
+ch('ch-recent',{title:{text:'Llegadas a Medellín por país · '+vent,left:'center'},tooltip:{},xAxis:{type:'category',data:r15.map(p=>p.pais),axisLabel:{rotate:35}},yAxis:{},series:[{type:'bar',data:r15.map(p=>p.med_ult3m),itemStyle:{color:'#172139'}}]});
+const ry=u3m.filter(p=>p.med_ult3m>2000).sort((a,b)=>b.med_ult3m_yoy-a.med_ult3m_yoy).slice(0,10);
+ch('ch-recentyoy',{title:{text:'YoY mismo trimestre 2025 (%)',left:'center'},tooltip:{},xAxis:{type:'category',data:ry.map(p=>p.pais),axisLabel:{rotate:30}},yAxis:{},series:[{type:'bar',data:ry.map(p=>+(p.med_ult3m_yoy*100).toFixed(1)),itemStyle:{color:'#00AEAC'}}]});
 document.getElementById('corte').textContent+=` · corte ${k.fecha||''}`;
 // DESTINOS
 const yref=dest[0]?.ano_ref||'2025';
