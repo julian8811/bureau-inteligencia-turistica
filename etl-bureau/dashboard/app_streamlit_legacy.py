@@ -1,6 +1,6 @@
-# Tablero Bureau Medellín — Reuniones / Vacacional / Marca
-# Uso: streamlit run etl-bureau/dashboard/app.py
-# Lee el warehouse local (sin Power BI, sin licencias, 100% Python).
+# LEGADO 28-oct: reemplazado por dashboard/build_html.py (HTML+CSS puro). No instalar streamlit/plotly.
+# Tablero Bureau Medellín — Reuniones / Vacacional / Marca (solo consulta historica)
+# Uso anterior: streamlit run etl-bureau/dashboard/app.py
 
 import pandas as pd
 import plotly.express as px
@@ -51,7 +51,7 @@ st.caption("I.U. Colegio Mayor de Antioquia · Datos abiertos + CRM Bureau · "
            f"corte {RAW_TODAY.name if RAW_TODAY else '—'} · ETL diario Python")
 st.divider()
 
-tab_mice, tab_vac, tab_marca = st.tabs(["🤝 Reuniones (MICE)", "✈️ Vacacional", "📣 Marca Ciudad"])
+tab_mice, tab_vac, tab_marca, tab_pais = st.tabs(["🤝 Reuniones (MICE)", "✈️ Vacacional", "📣 Marca Ciudad", "🌎 Por país"])
 
 # ============ REUNIONES ============
 with tab_mice:
@@ -120,6 +120,39 @@ with tab_marca:
     if not al.empty:
         st.subheader("Últimas menciones (Google News + Reddit, sin login)")
         st.dataframe(al[["fecha", "titulo", "link"]].head(20), use_container_width=True)
+
+# ============ POR PAÍS ============
+with tab_pais:
+    st.subheader("Todo discriminado por país emisor")
+    pp = PROC / "pais_dashboard.csv"
+    dfp = pd.read_csv(pp) if pp.exists() else pd.DataFrame()
+    if dfp.empty:
+        st.warning("Sin pais_dashboard.csv — correr el ETL de hoy.")
+    else:
+        y1 = str(dfp["ano_ref"].iloc[0])
+        c_med, c_nac, c_aer, c_sal = f"med_{y1}", f"nac_{y1}", f"aer_{y1}", f"sal_{y1}"
+        sel = st.selectbox("País", dfp["pais"].tolist(), index=0)
+        r = dfp[dfp["pais"] == sel].iloc[0]
+        k1, k2, k3, k4 = st.columns(4)
+        k1.metric(f"Llegadas Medellín {y1}", f"{r.get(c_med, 0):,.0f}", f"{r.get('med_yoy', 0)*100:+.1f}% YoY")
+        k2.metric(f"Llegadas Colombia {y1}", f"{r.get(c_nac, 0):,.0f}", f"{r.get('nac_yoy', 0)*100:+.1f}% YoY")
+        k3.metric(f"Pax aéreos a MDE {y1}", f"{r.get(c_aer, 0):,.0f}", f"{r.get('aer_yoy', 0)*100:+.1f}% YoY")
+        k4.metric(f"Salidas COL hacia {y1}", f"{r.get(c_sal, 0):,.0f}", f"{r.get('sal_yoy', 0)*100:+.1f}% YoY")
+        st.caption(f"Share de {sel} en Medellín: {r.get('share_med', 0)*100:.1f}% · Intención Google: geo {r.get('intencion_trends', '—') or '—'}")
+        col_a, col_b = st.columns(2)
+        with col_a:
+            top = dfp.head(15).set_index("pais")[c_med]
+            st.plotly_chart(px.bar(top, title=f"Top 15 emisores a Medellín {y1}",
+                                   color_discrete_sequence=["#172139"]), use_container_width=True)
+        with col_b:
+            yoy = dfp[dfp[c_med] > 1000].set_index("pais")["med_yoy"].sort_values(ascending=False).head(10)
+            st.plotly_chart(px.bar(yoy * 100, title="Mayor crecimiento YoY a Medellín (base >1.000)",
+                                   color_discrete_sequence=["#00AEAC"],
+                                   labels={"value": "YoY %"}), use_container_width=True)
+        st.subheader("Ranking completo por país")
+        show = dfp[["pais", c_med, "med_yoy", "share_med", c_nac, c_aer, c_sal]].copy()
+        show.columns = ["País", f"Medellín {y1}", "YoY Med", "Share Med", f"Colombia {y1}", f"Pax MDE {y1}", f"Salidas COL {y1}"]
+        st.dataframe(show, use_container_width=True)
 
 st.divider()
 st.caption("I.U. Colegio Mayor de Antioquia · Vigilada MinEducación · Fuente ETL: datos.gov.co, DANE, MEData, Google Trends · Uso académico/institucional")

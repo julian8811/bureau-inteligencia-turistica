@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Boletín de Turismo</title>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.5.1/dist/echarts.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#172139;--teal:#00AEAC;--orange:#E9901E;--lime:#B4C42C;--teal2:#108181;--yellow:#FBBB28;--mut:#5A6C7D}
+*{box-sizing:border-box}
+body{font-family:'Montserrat',sans-serif;color:var(--navy);margin:0;background:#fff;font-size:11pt}
+@page{size:A4;margin:14mm 12mm 16mm 12mm}
+.cover{background:var(--navy);color:#fff;padding:26px 28px;page-break-after:avoid}
+.cover img{width:100%;max-width:560px}
+.cover h1{font-size:26pt;font-weight:800;margin:14px 0 4px}
+.cover p{margin:2px 0;color:#cfd6df;font-size:10pt}
+h2{font-size:15pt;font-weight:800;border-left:8px solid var(--orange);padding-left:10px;margin:22px 0 8px;page-break-after:avoid}
+h3{font-size:12pt;margin:12px 0 4px}
+.sec{page-break-inside:avoid}
+.chart{height:300px;width:100%}
+table{width:100%;border-collapse:collapse;font-size:9pt;margin:6px 0}
+th{background:var(--navy);color:#fff;text-align:left;padding:5px 7px}
+td{padding:4px 7px;border-bottom:1px solid #e5e7eb}
+.num{text-align:right;font-variant-numeric:tabular-nums}
+.bul{background:#EEF1F5;border-left:6px solid var(--orange);border-radius:6px;padding:8px 12px;margin:6px 0;font-size:10pt}
+.src{font-size:8pt;color:var(--mut)}
+ul.tight{margin:4px 0;padding-left:18px;font-size:10pt}
+ul.tight li{margin:3px 0}
+.foot{margin-top:18px;border-top:2px solid var(--navy);padding-top:6px;font-size:8pt;color:var(--mut)}
+.pb{page-break-before:always}
+</style>
+</head>
+<body>
+<div class="cover">
+<img src="assets/logo_colmayor_navy.png" alt="I.U. Colegio Mayor de Antioquia">
+<h1>Boletín de Turismo · Medellín y Colombia</h1>
+<p id="cover-sub">Generado automáticamente desde el warehouse ETL</p>
+<p class="src" style="color:#9fb0c3" id="cover-src"></p>
+</div>
+
+<h2>Resumen ejecutivo</h2>
+<div id="resumen"></div>
+
+<h2>1 · Destinos de Colombia</h2>
+<div class="sec"><div class="chart" id="c-dest"></div><div id="t-dest"></div>
+<p class="src" id="s-dest"></p></div>
+
+<h2 class="pb">2 · Último trimestre disponible</h2>
+<div class="sec"><div id="kpi-trim"></div><div class="chart" id="c-trim"></div>
+<p class="src">Ventana oficial Migración/Aerocivil (rezago ~4 meses). Trends y menciones en tiempo real.</p></div>
+
+<h2>3 · Mercados emisores</h2>
+<div class="sec"><div class="chart" id="c-emi"></div><div class="chart" id="c-emiyoy"></div></div>
+
+<h2 class="pb">4 · Conectividad aérea MDE</h2>
+<div class="sec"><div id="kpi-mde"></div><div class="chart" id="c-rutas"></div><div class="chart" id="c-carga"></div></div>
+
+<h2>5 · Gasto, hotel y eventos</h2>
+<div class="sec"><div id="kpi-gasto"></div><div class="chart" id="c-gasto"></div></div>
+
+<h2>6 · Marca y conversación digital</h2>
+<div class="sec"><div id="kpi-marca"></div><div id="t-men"></div></div>
+
+<div class="foot">I.U. Colegio Mayor de Antioquia · Vigilada MinEducación · Fuentes: Migración Colombia y Aerocivil vía datos.gov.co, DANE EGIT, MEData Alcaldía de Medellín, Google Trends, Google News/Reddit RSS · Uso académico/institucional · Generado automáticamente, cifras provisionales sujetas a ajuste.</div>
+
+<script>
+const PAL=['#172139','#00AEAC','#E9901E','#B4C42C','#108181','#FBBB28'];
+const J=n=>fetch('data/'+n+'.json').then(r=>{if(!r.ok)throw n;return r.json();});
+const fmt=n=>Number(n||0).toLocaleString('es-CO',{maximumFractionDigits:0});
+const pct=x=>((x>=0?'+':'')+(x*100).toFixed(1)+'%');
+const ch=(id,opt)=>{const e=echarts.init(document.getElementById(id),null,{renderer:'canvas'});e.setOption({...opt,animation:false});};
+const tbl=(el,head,rows)=>{document.getElementById(el).innerHTML=`<table><tr>${head.map(h=>`<th>${h}</th>`).join('')}</tr>${rows.map(r=>`<tr>${r.map((c,i)=>`<td class="${typeof c==='number'?'num':''}">${c}</td>`).join('')}</tr>`).join('')}</table>`;};
+
+(async()=>{
+try{
+const [kpis,dest,paises,u3m,gasto,men,rutas,aero,carga] = await Promise.all([
+J('kpis').then(a=>a[0]),J('destinos'),J('paises'),J('ult3m_pais'),J('gasto_dane'),J('menciones'),
+J('desglose_rutas_mde').catch(()=>[]),J('desglose_aerolineas').catch(()=>[]),J('desglose_carga_mde').catch(()=>[])]);
+const yref=dest[0]?.ano_ref||'2025';
+document.getElementById('cover-sub').textContent=`Corte ${kpis.fecha} · Año de referencia ${yref} · Trimestre móvil ${u3m[0]?.ventana||''}`;
+document.getElementById('cover-src').textContent='Fuentes: datos.gov.co · DANE · MEData · Google Trends · RSS noticias';
+// Resumen
+const topE=paises[0], topD=dest.find(d=>d.ciudad==='Medellín')||{};
+const R=[
+`En ${yref}, <b>Medellín recibió ${fmt(topD['llegadas_'+yref])} extranjeros no residentes</b> (${(topD.share*100).toFixed(1)}% del país, ${pct(topD.yoy)} YoY), segunda ciudad después de Bogotá.`,
+`<b>${topE.pais} concentra el ${(topE.share_med*100).toFixed(1)}%</b> de las llegadas a Medellín (${fmt(topE['med_'+yref])}, ${pct(topE.med_yoy)} YoY).`,
+`En el trimestre móvil <b>${u3m[0]?.ventana}</b>, Medellín cayó ${pct(kpis.med_ult3m_yoy)} mientras las <b>salidas de colombianos crecieron ${pct(kpis.salidas_destino_ult3m_yoy)}</b>.`,
+`Gasto promedio día (turismo interno, DANE ${kpis.gasto_trimestre}): <b>$${fmt(kpis.gasto_prom_dia_cop)} COP</b> · Uplift Feria de las Flores: <b>+${kpis.uplift_feria_pp} pp</b> de ocupación.`,
+`Conversación digital (7d): <b>${fmt(kpis.menciones)} menciones</b>, sentimiento neto ${kpis.sentimiento_neto>=0?'+':''}${Number(kpis.sentimiento_neto).toFixed(2)}.`
+];
+document.getElementById('resumen').innerHTML=R.map(r=>`<div class="bul">${r}</div>`).join('');
+// 1 Destinos
+ch('c-dest',{tooltip:{},xAxis:{type:'category',data:dest.map(d=>d.ciudad),axisLabel:{rotate:28,fontSize:9}},yAxis:{},series:[{type:'bar',data:dest.map(d=>d['llegadas_'+yref]),itemStyle:{color:'#172139'},label:{show:true,formatter:p=>p.value>=200000?fmt(p.value):'',fontSize:8}}]});
+tbl('t-dest',['Destino','Llegadas '+yref,'Share','YoY'],dest.map(d=>[d.ciudad,fmt(d['llegadas_'+yref]),(d.share*100).toFixed(1)+'%',pct(d.yoy)]));
+document.getElementById('s-dest').textContent=`Fuente: Migración Colombia vía datos.gov.co (7wm8-w5ad), corte ${kpis.fecha}. Año ref ${yref}.`;
+// 2 Trimestre
+document.getElementById('kpi-trim').innerHTML=
+`<div class="bul">Medellín ${u3m[0]?.ventana}: <b>${fmt(kpis.med_ult3m_total)}</b> (${pct(kpis.med_ult3m_yoy)} vs 2025) · Entradas COL: <b>${fmt(kpis.entradas_nacionalidad_ult3m)}</b> (${pct(kpis.entradas_nacionalidad_ult3m_yoy)}) · Pax MDE: <b>${fmt(kpis.aereo_mde_eoh_ult3m)}</b> (${pct(kpis.aereo_mde_eoh_ult3m_yoy)}) · Salidas COL: <b>${fmt(kpis.salidas_destino_ult3m)}</b> (${pct(kpis.salidas_destino_ult3m_yoy)})</div>`;
+const r15=u3m.slice(0,12);
+ch('c-trim',{tooltip:{},xAxis:{type:'category',data:r15.map(p=>p.pais),axisLabel:{rotate:30,fontSize:9}},yAxis:{},series:[{type:'bar',data:r15.map(p=>p.med_ult3m),itemStyle:{color:'#172139'}}]});
+// 3 Emisores
+const t15=paises.slice(0,12);
+ch('c-emi',{tooltip:{},xAxis:{type:'category',data:t15.map(p=>p.pais),axisLabel:{rotate:30,fontSize:9}},yAxis:{},series:[{type:'bar',data:t15.map(p=>p['med_'+p.ano_ref]),itemStyle:{color:'#172139'}}]});
+const yy=paises.filter(p=>p['med_'+p.ano_ref]>1000).sort((a,b)=>b.med_yoy-a.med_yoy).slice(0,10);
+ch('c-emiyoy',{tooltip:{},xAxis:{type:'category',data:yy.map(p=>p.pais),axisLabel:{rotate:28,fontSize:9}},yAxis:{},series:[{type:'bar',data:yy.map(p=>+(p.med_yoy*100).toFixed(1)),itemStyle:{color:'#00AEAC'}}]});
+// 4 MDE
+document.getElementById('kpi-mde').innerHTML=`<div class="bul">Pax acumulados MDE: <b>${fmt(kpis.pax_llegadas_mde)}</b> · Ruta top: <b>${rutas[0]?.ciudad_origen||'—'}</b> · Aerolínea top: <b>${aero[0]?.nombre||'—'}</b> · Carga último año: <b>${fmt(kpis.carga_ult_kg)} kg</b> · Mujeres: <b>${(kpis.genero_entradas_fem*100).toFixed(1)}%</b> entradas / ${(kpis.genero_salidas_fem*100).toFixed(1)}% salidas</div>`;
+if(rutas.length){const r=rutas.slice(0,10);
+ch('c-rutas',{tooltip:{},xAxis:{type:'category',data:r.map(x=>x.ciudad_origen||Object.values(x)[0]),axisLabel:{rotate:30,fontSize:9}},yAxis:{},series:[{type:'bar',data:r.map(x=>x.pax),itemStyle:{color:'#E9901E'}}]});}
+if(carga.length){const cc=carga.filter(r=>r.kg!=null);const full=cc.slice(0,-1).concat([]);const last=cc[cc.length-1];const prev=cc[cc.length-2];
+if(last&&prev&&last.kg>prev.kg*0.6)full.push(last);
+ch('c-carga',{tooltip:{},xAxis:{type:'category',data:full.map(r=>r.a_o)},yAxis:{},series:[{type:'line',data:full.map(r=>r.kg),itemStyle:{color:'#108181'}}]});}
+// 5 Gasto
+document.getElementById('kpi-gasto').innerHTML=`<div class="bul">Gasto promedio día: <b>$${fmt(kpis.gasto_prom_dia_cop)} COP</b> (${kpis.gasto_trimestre}) · Ocupación Medellín (baseline MEData ${kpis.occ_med_periodo}): <b>${Number(kpis.occ_med_ult).toFixed(1)}%</b> · Tarifa media: <b>$${fmt(kpis.tarifa_med_ult)}</b> · Uplift Feria: <b>+${kpis.uplift_feria_pp} pp</b></div>`;
+ch('c-gasto',{tooltip:{},xAxis:{type:'category',data:gasto.map(g=>g.trimestre)},yAxis:{},series:[{type:'line',data:gasto.map(g=>g.valor),itemStyle:{color:'#E9901E'}}]});
+// 6 Marca
+document.getElementById('kpi-marca').innerHTML=`<div class="bul"><b>${fmt(kpis.menciones)} menciones</b> en 7 días · Sentimiento neto <b>${kpis.sentimiento_neto>=0?'+':''}${Number(kpis.sentimiento_neto).toFixed(2)}</b> · Share Medellín <b>${(kpis.share_medellin*100).toFixed(0)}%</b></div>`;
+tbl('t-men',['Fecha','Titular'],men.slice(0,15).map(m=>[(m.fecha||'').slice(0,16),m.titulo||'']));
+}catch(e){document.body.insertAdjacentHTML('beforeend','<p style="color:red">Error cargando datos: '+e+'</p>');}
+window.__REPORT_READY__=true;
+})();
+</script>
+</body>
+</html>

@@ -15,13 +15,16 @@ Estrategia delivery: single-pr (forecast <400 líneas por slice).
   Pendientes honestos: DANE ENH (patrón URL distinto, dane_enh_ok=0), SITUR portal caído (manual mensual), GDELT 429 intermitente, CITUR directo (cubierto vía Socrata). — commit: eb7d3dc
 - [x] T3 (S3) Transforms a modelo estrella + KPIs Plan Dashboard — route: inline — status: done — commit: 0249aa1 (alertas 421 menciones + CRM ejemplo: win_rate 0.6, noches 6685, derrama USD 1.46M, pipeline USD 582K)
 - [x] T4a Pendientes automatización (28-oct): paginación Socrata (181k filas 96sh full), MEData 16 CSVs cableados (ocupación/tarifa/PITS/eventos, baseline 2023), GDELT single-query + backoff + carry-forward, EGIT parse por header (gasto II-2026 $149.530) — status: done — commit: f07c9f7
-- [ ] T4b Load SQLite/Parquet + wiring Power BI + cron diario 06:00 — route: inline
-- [ ] T5 (S1) Conectores gated: Amadeus Developers, Brand24 trial, ICCA/Cvent manual — route: inline
+- [x] T4b (S1,S3) Load SQLite/Parquet + wiring Power BI + cron diario 06:00 — route: inline — status: done — 28-oct
+  to_warehouse exporta 20 tablas a bureau.sqlite + parquet + 24 json en web/data; powerbi/README con tablas + refresh 07:00; cron 06:00 instalado.
+- [x] T5 (S1) Conectores gated: Amadeus Developers, Brand24 trial, ICCA/Cvent manual — route: inline — status: done — 28-oct
+  Stubs gated_*.py con SKIP sin key/archivo; manual/README con plantillas; daily.py los llama antes de transform.
   Nota ENH: DANE bloquea bots (search y deep-URLs devuelven página de error; anexos .xls viejos). ENH queda manual trimestral (5 min: descargar anexo de la página DANE) + MEData automático como baseline histórico. Ocupación fresca mensual: SITUR/MinCIT manual hasta que MEData se reactive.
-- [ ] T4 (S1,S3) Load a SQLite/Parquet + wiring Power BI + scheduler diario — route: inline
-- [ ] T5 (S1) Conectores gated: Amadeus Developers, Brand24 trial, ICCA/Cvent manual — route: inline
-- [ ] T4 (S1,S3) Load a SQLite/Parquet + wiring Power BI + scheduler diario — route: inline
-- [ ] T5 (S1) Conectores gated: Amadeus Developers, Brand24 trial, ICCA/Cvent manual — route: inline
+  Gated: solo ingesta manual/API con key, nunca scraping login/paywall. Stubs en extract/gated_*.py que hacen skip si no hay key/archivo; plantillas en data/raw/manual/.
+- [x] T6 Web estático + ECharts + destinos Colombia + línea Colmayor — route: inline — status: done — 28-oct — commit: 4e544a6/2ee7fbb/4706f31/58ba7d6
+  web/index.html + export/to_json.py (24 JSON); tabs Destinos/Reciente/Países/Medellín/Desglose/Marca; YoY años completos; norm_pais case-insensitive.
+- [x] T7 Boletín PDF automático — route: inline — status: done — 28-oct
+  web/informe.html (plantilla A4 espejo TEC, bullets ejecutivos auto, 8 gráficos ECharts sin animación) + report/build_pdf.py (sirve web/, Playwright espera __REPORT_READY__, imprime A4 con fondo) → informes/boletin_YYYY-MM-DD.pdf. Verificado: texto completo + canvas render (gasto 26 pts, carga sin dip parcial).
 
 ## Log
 - L1 (2026-10-27): "Ahora requiero que según estas fuentes, armemos un embudo automatizado que screpee todas las fuentes todos los días y alimente tableros, que pueden ser programados en python o Power BI"

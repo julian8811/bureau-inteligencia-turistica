@@ -5,6 +5,10 @@ daily:
   - dane_egit          # DANE anexos EGIT/ENH trimestrales (busca último vivo)
   - gdelt_marca        # GDELT timelinevol 7d: medellin turismo/bureau/seguridad (1 req/5s)
   - alerts_rss         # RSS de Google/Talkwalker Alerts (pegar feeds abajo)
+  - un_wb_arrivals     # World Bank ST.INT.ARVL (proxy UN, sin key)
+  - eurostat_tourism   # Eurostat tour_occ_ninat noches (sin key, carry si 500)
+  - oecd_tourism       # OECD SDMX (SKIP si no hay endpoint estable)
+  - wttc_eir           # WTTC EIR headline free (full gated -> SKIP honesto)
   # opcionales semanales (no diarios para no quemar cuota):
   # - tiktok_trends    # manual: exportar Top Ads/Trends 1x semana
   # - meta_ads         # manual: Meta Ad Library 1x semana

@@ -48,7 +48,10 @@ def run():
         jwrite(al.head(30), "menciones")
     gas = latest_raw("dane_egit_gasto_dia")
     if not gas.empty:
-        tot = gas[gas["concepto"].astype(str).str.contains("Total 24", na=False)].filter(["trimestre", "valor"])
+        gas["concepto"] = gas["concepto"].astype(str).str.strip().str.strip("'\"")
+        tot = gas[gas["concepto"] == "Total 24 ciudades y áreas metropolitanas"].filter(["trimestre", "valor"]).copy()
+        tot["valor"] = pd.to_numeric(tot["valor"], errors="coerce")
+        tot = tot.dropna()
         jwrite(tot, "gasto_dane")
     u3m = PROC / "ult3m_pais.csv"
     if u3m.exists():
