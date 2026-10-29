@@ -1,7 +1,7 @@
 """GDELT marca: escucha gratuita de noticias globales sobre Medellín turismo (reemplazo gratis de Brand24).
-Estrategia 28-oct anti-429:
+Estrategia 28-oct anti-429 (ajuste: pacing 15s + 3er reintento a 300s):
 - 1 sola query combinada/día (menos requests = menos ban)
-- backoff corto (la IP puede estar baneada por horas; no quemar el cron) + carry-forward del último bueno
+- backoff largo (la IP puede estar baneada por horas; no quemar el cron) + carry-forward del último bueno
 - volumen diario (timelinevol) ideal para picos: Feria, Ritvales, premios
 """
 import time
@@ -25,14 +25,14 @@ def timeseries_once(query: str) -> pd.DataFrame:
     return df
 
 def run():
-    # GDELT banea IPs con tráfico seguido: 2 intentos máx, el resto lo cubre el carry-forward
+    # GDELT banea IPs con tráfico seguido: 3 intentos máx, el resto lo cubre el carry-forward
     df = pd.DataFrame()
-    for wait in (0, 120):
+    for wait in (0, 120, 300):
         if wait:
             print(f"[gdelt] backoff {wait}s...")
             time.sleep(wait)
         try:
-            time.sleep(6)  # límite GDELT: 1 req / 5s
+            time.sleep(15)  # límite GDELT: 1 req / 5s, con margen
             df = timeseries_once(QUERY)
             if not df.empty:
                 break

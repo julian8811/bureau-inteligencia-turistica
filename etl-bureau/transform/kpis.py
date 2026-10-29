@@ -465,6 +465,287 @@ def kpis_desglose() -> dict:
         print(f"[transform][WARN] kpis_desglose: {e}")
     return out
 
+def _eu_ult_sum(df: pd.DataFrame) -> float:
+    """Suma de la columna numerica disponible en el ultimo time (T2)."""
+    tcol = next((c for c in df.columns if c.lower() in ("time", "year", "a_o", "periodo", "fecha")), None)
+    ncols = [c for c in df.columns if c != tcol and pd.to_numeric(df[c], errors="coerce").notna().any()]
+    if not ncols:
+        raise ValueError("sin columna numerica")
+    d = df.copy()
+    d["_v"] = pd.to_numeric(d[ncols[0]], errors="coerce")
+    if tcol is not None:
+        d = d[d[tcol] == d[tcol].max()]
+    return float(d["_v"].fillna(0).sum())
+
+
+def _seg_ult(df: pd.DataFrame) -> int:
+    """Filas del ultimo mes si trae fecha, si no total (T2)."""
+    fcol = next((c for c in df.columns if "fecha" in c.lower()), None)
+    if fcol is None:
+        return int(len(df))
+    f = pd.to_datetime(df[fcol], errors="coerce").dropna()
+    if f.empty:
+        return int(len(df))
+    return int((f.dt.strftime("%Y-%m") == f.dt.strftime("%Y-%m").max()).sum())
+
+
+def kpis_nuevas() -> dict:
+    """T2 (S1,S2): agrega las fuentes arrastradas con datos pero sin KPI.
+    Un try/except por fuente: si falta el CSV, SKIP individual sin tumbar el run."""
+    out: dict = {}
+    try:  # 1. wb_receipts: gasto emisor top (max RCPT.CD ultimo anio con dato) + COL mismo anio
+        df = latest_raw("wb_receipts")
+        if not df.empty and {"value", "indicator", "year"} <= set(df.columns):
+            df = df.copy()
+            df["value"] = pd.to_numeric(df["value"], errors="coerce")
+            rcpt = df[df["indicator"].astype(str).str.contains("RCPT", na=False)].dropna(subset=["value"])
+            if not rcpt.empty:
+                sub = rcpt[rcpt["year"] == rcpt["year"].max()]
+                out["gasto_emisor_top_usd"] = float(sub["value"].max())
+                co = sub[sub["countryiso3code"].astype(str) == "COL"]["value"] if "countryiso3code" in sub.columns else sub["value"].iloc[0:0]
+                if not co.empty:
+                    out["gasto_emisor_co_usd"] = float(co.iloc[0])
+    except Exception as e:
+        print(f"[transform][SKIP] wb_receipts: {e}")
+    try:  # 2. wb_departures: salidas COL ultimo anio con dato (ST.INT.DPRT)
+        df = latest_raw("wb_departures")
+        if not df.empty and {"value", "year"} <= set(df.columns):
+            df = df.copy()
+            df["value"] = pd.to_numeric(df["value"], errors="coerce")
+            if "indicator" in df.columns:
+                df = df[df["indicator"].astype(str).str.contains("DPRT", na=False)]
+            if "countryiso3code" in df.columns:
+                df = df[df["countryiso3code"].astype(str) == "COL"]
+            df = df.dropna(subset=["value"])
+            if not df.empty:
+                out["salidas_col_total"] = float(df[df["year"] == df["year"].max()]["value"].iloc[0])
+    except Exception as e:
+        print(f"[transform][SKIP] wb_departures: {e}")
+    for _name, _key in (("eurostat_tourism", "noches_eu_total"),
+                         ("eurostat_capacity", "camas_eu_total"),
+                         ("eurostat_demanda", "demanda_eu_viajes")):
+        try:  # 3-5. Eurostat: parse defensivo, dataset trazadora ignorada
+            df = latest_raw(_name)
+            if not df.empty:
+                out[_key] = _eu_ult_sum(df)
+        except Exception as e:
+            print(f"[transform][SKIP] {_name}: {e}")
+    try:  # 6. eurostat_aviation: pax ES ultimo time
+        df = latest_raw("eurostat_aviation")
+        if not df.empty and "geo" in df.columns:
+            pcol = [c for c in df.columns if "pass" in c.lower()][0]
+            df = df.copy()
+            df["passengers"] = pd.to_numeric(df[pcol], errors="coerce")
+            es = df[df["geo"].astype(str).str.contains("spain", case=False, na=False)].dropna(subset=["passengers"])
+            if not es.empty:
+                out["pax_eu_es"] = float(es[es["time"] == es["time"].max()]["passengers"].max())
+    except Exception as e:
+        print(f"[transform][SKIP] eurostat_aviation: {e}")
+    try:  # 7. RNT: filas
+        out["rnt_med_total"] = int(len(latest_raw("rnt_prestadores")))
+    except Exception as e:
+        print(f"[transform][SKIP] rnt_prestadores: {e}")
+    try:
+        out["rnt_ant_total"] = int(len(latest_raw("rnt_antioquia")))
+    except Exception as e:
+        print(f"[transform][SKIP] rnt_antioquia: {e}")
+    try:  # 8. seguridad: filas ultimo mes
+        df = latest_raw("seguridad_hurtos_med")
+        if not df.empty:
+            out["hurtos_med_ult"] = _seg_ult(df)
+    except Exception as e:
+        print(f"[transform][SKIP] seguridad_hurtos_med: {e}")
+    try:
+        df = latest_raw("seguridad_homicidios_med")
+        if not df.empty:
+            out["homicidios_med_ult"] = _seg_ult(df)
+    except Exception as e:
+        print(f"[transform][SKIP] seguridad_homicidios_med: {e}")
+    try:  # 9. ideam lluvia: ultimo valor numerico por fecha
+        df = latest_raw("ideam_lluvia_med")
+        if not df.empty:
+            vcol = next((c for c in df.columns if "valor" in c.lower()), None)
+            fcol = next((c for c in df.columns if "fecha" in c.lower()), None)
+            if vcol:
+                df = df.copy()
+                df["_v"] = pd.to_numeric(df[vcol], errors="coerce")
+                df = df.dropna(subset=["_v"])
+                if not df.empty:
+                    if fcol:
+                        df = df.sort_values(fcol)
+                    out["lluvia_med_mm"] = float(df["_v"].iloc[-1])
+    except Exception as e:
+        print(f"[transform][SKIP] ideam_lluvia_med: {e}")
+    try:  # 9b. aire: ultimo pm2_5
+        df = latest_raw("aire_med")
+        if not df.empty:
+            vcol = next((c for c in df.columns if "pm2" in c.lower()), None)
+            if vcol:
+                df = df.copy()
+                df["_v"] = pd.to_numeric(df[vcol], errors="coerce")
+                df = df.dropna(subset=["_v"])
+                if not df.empty:
+                    dcol = next((c for c in df.columns if "date" in c.lower() or "fecha" in c.lower()), None)
+                    if dcol:
+                        df = df.sort_values(dcol)
+                    out["pm25_med"] = float(df["_v"].iloc[-1])
+    except Exception as e:
+        print(f"[transform][SKIP] aire_med: {e}")
+    try:  # 10. terminales: suma pasajeros ultima ventana (columna defensiva)
+        df = latest_raw("terminales_med")
+        if not df.empty:
+            vcol = next((c for c in ("pasajeros", "vehiculos") if c in df.columns
+                         and pd.to_numeric(df[c], errors="coerce").notna().any()), None)
+            if vcol:
+                df = df.copy()
+                df["_v"] = pd.to_numeric(df[vcol], errors="coerce").fillna(0)
+                df["_m"] = df["mes"].astype(str).str.strip().str.lower().map(MES) if "mes" in df.columns else pd.NA
+                df["_y"] = pd.to_numeric(df["a_o"], errors="coerce") if "a_o" in df.columns else pd.NA
+                if pd.Series(df["_m"]).notna().any() and pd.Series(df["_y"]).notna().any():
+                    df = df.dropna(subset=["_m", "_y"])
+                    df = df[(df["_y"] == df["_y"].max()) & (df["_m"] == df[df["_y"] == df["_y"].max()]["_m"].max())]
+                out["pax_terminal_mes"] = int(df["_v"].sum())
+    except Exception as e:
+        print(f"[transform][SKIP] terminales_med: {e}")
+    try:  # 11. metro: suma ultimo periodo numerico disponible
+        df = latest_raw("movilidad_metro_med")
+        if not df.empty:
+            pcol = next((c for c in df.columns if "period" in c.lower()), None)
+            vcol = next((c for c in df.columns if c != pcol
+                         and pd.to_numeric(df[c], errors="coerce").notna().any()), None)
+            if vcol:
+                df = df.copy()
+                df["_v"] = pd.to_numeric(df[vcol], errors="coerce").fillna(0)
+                if pcol:
+                    df = df[df[pcol] == df[pcol].max()]
+                out["pax_metro_mes"] = int(df["_v"].sum())
+    except Exception as e:
+        print(f"[transform][SKIP] movilidad_metro_med: {e}")
+    try:  # 12. prensa: filas; wiki: suma views o filas
+        out["menciones_prensa_7d"] = int(len(latest_raw("prensa_rss")))
+    except Exception as e:
+        print(f"[transform][SKIP] prensa_rss: {e}")
+    try:
+        df = latest_raw("wikimedia_views")
+        if not df.empty:
+            vcol = next((c for c in df.columns if "view" in c.lower()), None)
+            v = pd.to_numeric(df[vcol], errors="coerce") if vcol else None
+            out["interes_wiki_30d"] = int(v.fillna(0).sum()) if v is not None and v.notna().any() else int(len(df))
+    except Exception as e:
+        print(f"[transform][SKIP] wikimedia_views: {e}")
+    try:  # 13. TRM: ultimo valor numerico
+        df = latest_raw("trm_co")
+        if not df.empty:
+            vcol = next((c for c in df.columns if "rate" in c.lower() or "valor" in c.lower() or "trm" in c.lower()), None)
+            if vcol is None:
+                vcol = next((c for c in df.columns
+                             if pd.to_numeric(df[c], errors="coerce").notna().any()), None)
+            if vcol:
+                v = pd.to_numeric(df[vcol], errors="coerce").dropna()
+                if not v.empty:
+                    out["trm_hoy"] = float(v.iloc[-1])
+    except Exception as e:
+        print(f"[transform][SKIP] trm_co: {e}")
+    try:  # 14. festivos: filas del anio
+        out["festivos_co_ano"] = int(len(latest_raw("festivos_co")))
+    except Exception as e:
+        print(f"[transform][SKIP] festivos_co: {e}")
+    try:  # 15. aerocivil: suma pasajeros si existe, si no filas (dataset trazador ignorado)
+        df = latest_raw("aerocivil_flota")
+        if not df.empty:
+            if "pasajeros" in df.columns and pd.to_numeric(df["pasajeros"], errors="coerce").notna().any():
+                out["pax_aerocivil_total"] = int(pd.to_numeric(df["pasajeros"], errors="coerce").fillna(0).sum())
+            else:
+                out["pax_aerocivil_total"] = int(len(df))
+    except Exception as e:
+        print(f"[transform][SKIP] aerocivil_flota: {e}")
+    return out
+
+
+def kpis_emisores() -> dict:
+    """T1 (S2,S3): escalares emisores/destinos/outbound SOLO desde PROC.
+    Lee pais_dashboard.csv y destinos_dashboard.csv; SKIP individual, jamas tumba el run."""
+    out: dict = {}
+    try:
+        p = PROC / "pais_dashboard.csv"
+        d = PROC / "destinos_dashboard.csv"
+        pai = pd.read_csv(p) if p.exists() else pd.DataFrame()
+        des = pd.read_csv(d) if d.exists() else pd.DataFrame()
+    except Exception as e:
+        print(f"[transform][SKIP] kpis_emisores read: {e}")
+        return {}
+    try:  # Emisores desde pais_dashboard
+        if not pai.empty:
+            y1 = str(pai["ano_ref"].iloc[0]) if "ano_ref" in pai.columns else ""
+            c_med, c_nac, c_sal = f"med_{y1}", f"nac_{y1}", f"sal_{y1}"
+            df = pai.copy()
+            for c in (c_med, c_nac, c_sal):
+                if c in df.columns:
+                    df[c] = pd.to_numeric(df[c], errors="coerce").fillna(0)
+            if c_med in df.columns:
+                df = df.sort_values(c_med, ascending=False).reset_index(drop=True)
+                for i, tag in ((0, "top1"), (1, "top2"), (2, "top3")):
+                    if len(df) > i:
+                        out[f"emisor_{tag}"] = str(df.loc[i, "pais"])
+                        out[f"emisor_{tag}_med"] = float(df.loc[i, c_med])
+                tot = float(df[c_med].sum())
+                if len(df) >= 5:
+                    out["emisor_top5_share"] = round(float(df[c_med].head(5).sum()) / max(tot, 1), 4)
+                yoy_col = "med_yoy" if "med_yoy" in df.columns else None
+                if yoy_col:
+                    df["_yoy"] = pd.to_numeric(df[yoy_col], errors="coerce")
+                    cand = df[df[c_med] > 1000].dropna(subset=["_yoy"])
+                    if not cand.empty:
+                        best = cand.sort_values("_yoy", ascending=False).iloc[0]
+                        out["emisor_crec_top"] = str(best["pais"])
+                        out["emisor_crec_top_yoy"] = float(best["_yoy"])
+    except Exception as e:
+        print(f"[transform][SKIP] kpis_emisores emisores: {e}")
+    try:  # Destinos desde destinos_dashboard
+        if not des.empty:
+            y1 = str(des["ano_ref"].iloc[0]) if "ano_ref" in des.columns else ""
+            c_lle = f"llegadas_{y1}"
+            if c_lle not in des.columns:
+                num = [c for c in des.columns if c.startswith("llegadas_") and not c.endswith("_ytd")]
+                c_lle = num[0] if num else None
+            df = des.copy()
+            if c_lle:
+                df[c_lle] = pd.to_numeric(df[c_lle], errors="coerce").fillna(0)
+                df = df.sort_values(c_lle, ascending=False).reset_index(drop=True)
+                out["destino_top"] = str(df.loc[0, "ciudad"])
+                out["destino_top_valor"] = float(df.loc[0, c_lle])
+                med = df[df["ciudad"].astype(str).str.contains("Medell", na=False)]
+                if not med.empty and "share" in df.columns:
+                    out["destino_med_share"] = float(pd.to_numeric(med["share"], errors="coerce").fillna(0).iloc[0])
+                elif not med.empty:
+                    out["destino_med_share"] = round(float(med[c_lle].iloc[0]) / max(float(df[c_lle].sum()), 1), 4)
+                if "yoy" in df.columns:
+                    df["_yoy"] = pd.to_numeric(df["yoy"], errors="coerce")
+                    cand = df.dropna(subset=["_yoy"])
+                    if not cand.empty:
+                        best = cand.sort_values("_yoy", ascending=False).iloc[0]
+                        out["destino_crec_top"] = str(best["ciudad"])
+                        out["destino_crec_top_yoy"] = float(best["_yoy"])
+    except Exception as e:
+        print(f"[transform][SKIP] kpis_emisores destinos: {e}")
+    try:  # Outbound desde pais_dashboard (columna sal_*)
+        if not pai.empty:
+            y1 = str(pai["ano_ref"].iloc[0]) if "ano_ref" in pai.columns else ""
+            c_sal = f"sal_{y1}"
+            if c_sal in pai.columns:
+                df = pai.copy()
+                df[c_sal] = pd.to_numeric(df[c_sal], errors="coerce").fillna(0)
+                out["salidas_total"] = float(df[c_sal].sum())
+                df = df.sort_values(c_sal, ascending=False).reset_index(drop=True)
+                out["salidas_top_dest"] = str(df.loc[0, "pais"])
+                out["salidas_top_valor"] = float(df.loc[0, c_sal])
+                if "sal_yoy" in df.columns:
+                    out["salidas_top_yoy"] = float(pd.to_numeric(df.loc[0, "sal_yoy"], errors="coerce"))
+    except Exception as e:
+        print(f"[transform][SKIP] kpis_emisores outbound: {e}")
+    return out
+
+
 def run():
     PROC.mkdir(parents=True, exist_ok=True)
     hoy = date.today().isoformat()
@@ -477,9 +758,11 @@ def run():
     mdt = kpis_medata()
     pai = kpis_pais()
     des = kpis_destinos()
+    emi = kpis_emisores()
     u3m = kpis_ult3m()
     dsg = kpis_desglose()
-    print(f"[transform] trends={len(trends)} alerts={len(alerts)} marca={marca} dem={dem} dane={dan} gdelt={gde} medata={mdt} paises={len(pai)} destinos={len(des)} ult3m={u3m} desglose={dsg}")
+    nva = kpis_nuevas()
+    print(f"[transform] trends={len(trends)} alerts={len(alerts)} marca={marca} dem={dem} dane={dan} gdelt={gde} medata={mdt} paises={len(pai)} destinos={len(des)} emisores={emi} ult3m={u3m} desglose={dsg} nuevas={nva}")
 
     # CRM interno (gated manual): si el Bureau deja su Excel en data/raw/manual/crm.xlsx se calculan KPIs MICE
     crm_path = RAW / "manual" / "crm.xlsx"
@@ -501,7 +784,7 @@ def run():
         print("[transform][SKIP] sin data/raw/manual/crm.xlsx -> KPIs MICE en 0 hasta carga manual")
         mice = {"win_rate": 0, "noches_mice": 0, "derrama_mice": 0, "pipeline_ponderado": 0}
 
-    kpi = pd.DataFrame([{"fecha": hoy, **marca, **dem, **dan, **gde, **mdt, **mice, **u3m,
+    kpi = pd.DataFrame([{"fecha": hoy, **marca, **dem, **dan, **gde, **mdt, **mice, **emi, **u3m, **nva,
                            **{k: v for k, v in dsg.items() if isinstance(v, (int, float))}}])
     p = PROC / f"kpis_{hoy}.csv"
     kpi.to_csv(p, index=False)
