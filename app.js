@@ -222,7 +222,8 @@
       celda("span-12", regionesOcupacion()) +
       celda("span-8", vozDigital()) +
       celda("span-4", icca()) +
-      celda("span-12", medataFigura()));
+      celda("span-12", medataFigura()) +
+      celda("span-12", marcaLLM()));
     html += grupo("Simulación", celda("span-12", conversion()));
     return html;
   }
@@ -280,6 +281,17 @@
       };
     });
     return block("Tarifa por zona", "Medata, pesos corrientes. La ficha se modificó el 14 de diciembre de 2023.", grupos.length ? Charts.grouped(grupos) : hueco("Medata", "Sin serie de zonas."));
+  }
+
+  function marcaLLM() {
+    var data = DATA.bureauMarca || {};
+    var serie = data.serie || [];
+    if (!serie.length) return hueco("Marca por LLM", "Corra scripts/alimentar_bureau.py para traer la clasificación del ETL.");
+    var total = serie.reduce(function (s, row) { return s + (row.n || 0); }, 0);
+    var items = serie.map(function (row, i) {
+      return { label: row.categoria, value: row.n, text: num(row.n) + " · " + num((row.share || 0) * 100, 1) + "%", color: Charts.palette[i % Charts.palette.length] };
+    });
+    return kpi("marca-llm", "Menciones LLM", num(total), esc(data.ventana || "ventana corriente")) + block("Conversación por tema (LLM)", "Tópico global: " + esc(data.top_topico_global || "—") + ".", Charts.bars(items, "#00AEAC"));
   }
 
   function vozDigital() {
@@ -832,7 +844,9 @@
     cargar("icca.json"),
     cargar("evi.json"),
     cargar("huella.json"),
-    cargar("manifiesto.json")
+    cargar("manifiesto.json"),
+    cargar("bureau_marca_llm.json"),
+    cargar("bureau_paises_2025_2026.json")
   ]).then(function (piezas) {
     DATA.conectividad = piezas[0];
     DATA.wikipedia = piezas[1];
@@ -843,6 +857,8 @@
     DATA.evi = piezas[6];
     DATA.huella = piezas[7];
     DATA.manifiesto = piezas[8];
+    DATA.bureauMarca = piezas[9];
+    DATA.bureauPaises = piezas[10];
     leerUrl();
     if (!DATA.conectividad || !DATA.ema || !DATA.icca) {
       document.getElementById("app").innerHTML = hueco("Faltan agregados", "Abra esta carpeta con un servidor local después de correr scripts/preparar_fuentes.py.");
