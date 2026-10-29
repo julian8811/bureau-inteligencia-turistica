@@ -221,6 +221,17 @@ window.CATALOGO = [
     universo: "RSS Google News/Reddit + prensa local de la ventana. No es encuesta ni censo de medios.",
     licencia: "Agregados propios del ETL; titulares de sus medios originales.",
     noMide: "El universo completo de la conversación ni histórico anterior a la ventana."
+  },
+
+  {
+    id: "informe-llm", tab: "informes", nombre: "Informe narrativo redactado por LLM",
+    pastilla: "Bureau · LLM", clase: "proxy",
+    fuenteTipo: "Secundaria", fuente: "ETL Bureau: warehouse PROC redactado con LLM (Groq), report/redactar_informe.py",
+    pedida: "Por corte", grano: "Secciones espejo TEC", unidad: "Hallazgos con cifra y fuente",
+    formula: "Cada cifra del texto se verifica contra el warehouse; la cifra sin fuente se rechaza y no se publica.",
+    universo: "Destinos, emisores, ult3m, conectividad, gasto/hotel y marca LLM del corte.",
+    licencia: "Agregados propios del ETL.",
+    noMide: "Flujos de Migración Colombia ni encuestas que el ETL no ingiere."
   }
 ];
 
