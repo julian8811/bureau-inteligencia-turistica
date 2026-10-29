@@ -5,6 +5,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from classify import llm_classify
 from dashboard import build_html
+from export import tableros_bureau_llm
 from extract import (
     aerocivil_flota,
     aire_med,
@@ -73,9 +74,10 @@ def main():
         rnt_antioquia.run,
         aerocivil_flota.run,
         aire_med.run,
-        kpis.run,
         llm_classify.run,
+        kpis.run,
         to_warehouse.run,
+        tableros_bureau_llm.run,
         build_html.run,
     ):
         try:

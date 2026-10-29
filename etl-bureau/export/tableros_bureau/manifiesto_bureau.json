@@ -1,0 +1,28 @@
+{
+ "generado": "2026-10-29",
+ "fuente": "ETL Bureau abierto (etl-bureau, data/processed)",
+ "licencia": "Datos abiertos procesados por el ETL Bureau; insumo Aerocivil/DANE abierto.",
+ "piezas": [
+  {
+   "archivo": "etl-bureau/export/tableros_bureau/paises_2025_2026.json",
+   "id": "paises_2025_2026",
+   "estado": "ok",
+   "n": 788
+  },
+  {
+   "archivo": "etl-bureau/export/tableros_bureau/marca_llm_2025_2026.json",
+   "id": "marca_llm_2025_2026",
+   "estado": "ok",
+   "n": 7
+  }
+ ],
+ "errores": [],
+ "mercados": [
+  "Colombia",
+  "Estados Unidos",
+  "México",
+  "Brasil",
+  "Europa"
+ ],
+ "nota": "Agregados PROC del ETL Bureau en schema tableros-bureau. Grano ANUAL por anio (2025 cerrado, 2026 YTD/enero-junio segun PROC); tableros-bureau usa grano mensual: no se inventan meses."
+}
