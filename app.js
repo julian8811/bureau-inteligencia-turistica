@@ -619,9 +619,19 @@
     if (!inf || !inf.secciones || !inf.secciones.length) {
       return hueco("Sin informe LLM", "Corra etl-bureau/report/redactar_informe.py con GROQ_API_KEY y publique data/open/informe_llm.json en este repo.");
     }
-    return '<p class="aviso">Redacción LLM verificada contra el warehouse. Corte ' + esc(inf.corte || "—") + ".</p>" +
+    var secs = inf.secciones.filter(function (sec) {
+      return !state.informesSel || state.informesSel.indexOf(sec.id) >= 0;
+    });
+    var checks = inf.secciones.map(function (sec) {
+      var on = !state.informesSel || state.informesSel.indexOf(sec.id) >= 0;
+      return '<label class="check"><input type="checkbox" data-infsec="' + esc(sec.id) + '"' + (on ? " checked" : "") + "> " + esc(sec.titulo || sec.id) + "</label>";
+    }).join("");
+    return '<p class="aviso">Redacción LLM verificada contra el warehouse. Corte ' + esc(inf.corte || "—") + ". La generación corre en el ETL (daily 06:00); aquí se elige qué ver y descargar.</p>" +
+      '<div class="opts"><span>Opciones · secciones:</span> ' + checks +
+      ' <a class="btn" href="data/open/informe_llm.json" download="informe_' + esc(inf.corte || "llm") + '.json">Descargar JSON</a>' +
+      ' <button class="btn" type="button" data-action="imprimir">Imprimir / PDF</button></div>' +
       grupo("Informe LLM · corte " + (inf.corte || "—"),
-        inf.secciones.map(function (sec) {
+        secs.map(function (sec) {
           return celda("span-12", block(sec.titulo || "Sección", (sec.bullets || []).length + " hallazgos.", ((sec.bullets || []).map(function (b) {
             return "<p>" + esc(b.texto || "") + (b.fuente ? " <span class='src'>(" + esc(b.fuente) + ")</span>" : "") + "</p>";
           }).join("")) + pie("Informe LLM · corte " + (inf.corte || "—"))));
@@ -754,6 +764,7 @@
       render();
       return;
     }
+    if (event.target.closest("[data-action='imprimir']")) { window.print(); return; }
     if (event.target.closest("[data-action='cerrar']") || event.target.classList.contains("modal-back")) {
       state.volverFicha = state.ficha || "";
       state.ficha = null;
@@ -803,6 +814,16 @@
     if (filtro === "anio") state.anio = Number(event.target.value);
     if (filtro === "pais") state.pais = event.target.value;
     if (filtro) { state.ficha = null; render(); }
+    var sec = event.target.getAttribute && event.target.getAttribute("data-infsec");
+    if (sec) {
+      var todas = ((DATA.informe || {}).secciones || []).map(function (x) { return x.id; });
+      var sel = state.informesSel || todas.slice();
+      var i = sel.indexOf(sec);
+      if (event.target.checked && i < 0) sel.push(sec);
+      if (!event.target.checked && i >= 0) sel.splice(i, 1);
+      state.informesSel = sel.length === todas.length ? null : sel;
+      render();
+    }
   });
 
   var tip = document.createElement("div");
