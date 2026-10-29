@@ -210,6 +210,17 @@ window.CATALOGO = [
     universo: "Miembros que respondieron. La n no aparece en el informe.",
     licencia: "Cifra citada.",
     noMide: "Una segunda escala de confianza ni un NPS. El texto menciona la confianza y no le asigna número."
+  },
+
+  {
+    id: "marca-llm", tab: "mercados", nombre: "Conversación por tema (LLM Bureau)",
+    pastilla: "Bureau · LLM", clase: "proxy",
+    fuenteTipo: "Secundaria", fuente: "ETL Bureau: alerts_rss + prensa_rss clasificados con LLM (Groq), scripts/alimentar_bureau.py",
+    pedida: "Diaria", grano: "Ventana corriente", unidad: "Menciones y participación",
+    formula: "Titulares de la ventana clasificados en MICE/vacacional/marca/seguridad/clima/infraestructura/otro; share sobre el total clasificado.",
+    universo: "RSS Google News/Reddit + prensa local de la ventana. No es encuesta ni censo de medios.",
+    licencia: "Agregados propios del ETL; titulares de sus medios originales.",
+    noMide: "El universo completo de la conversación ni histórico anterior a la ventana."
   }
 ];
 
