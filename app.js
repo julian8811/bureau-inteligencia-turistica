@@ -106,7 +106,7 @@
 
   function leerUrl() {
     var q = new URLSearchParams(location.search);
-    var tabs = ["mercados", "visitante", "captacion", "miembros"];
+    var tabs = ["mercados", "visitante", "captacion", "miembros", "informes"];
     if (tabs.indexOf(q.get("tab")) >= 0) state.tab = q.get("tab");
     var anio = Number(q.get("anio"));
     if (anio) state.anio = anio;
@@ -614,6 +614,20 @@
     return html;
   }
 
+  function vistaInformes() {
+    var inf = DATA.informe;
+    if (!inf || !inf.secciones || !inf.secciones.length) {
+      return hueco("Sin informe LLM", "Corra etl-bureau/report/redactar_informe.py con GROQ_API_KEY y publique data/open/informe_llm.json en este repo.");
+    }
+    return '<p class="aviso">Redacción LLM verificada contra el warehouse. Corte ' + esc(inf.corte || "—") + ".</p>" +
+      grupo("Informe LLM · corte " + (inf.corte || "—"),
+        inf.secciones.map(function (sec) {
+          return celda("span-12", block(sec.titulo || "Sección", (sec.bullets || []).length + " hallazgos.", ((sec.bullets || []).map(function (b) {
+            return "<p>" + esc(b.texto || "") + (b.fuente ? " <span class='src'>(" + esc(b.fuente) + ")</span>" : "") + "</p>";
+          }).join("")) + pie("Informe LLM · corte " + (inf.corte || "—"))));
+        }).join(""));
+  }
+
   function vidaSimulada() {
     var apertura = 190;
     var cuota = 2400000;
@@ -673,7 +687,8 @@
       mercados: ["¿Cómo se mueve la demanda de los mercados priorizados hacia Medellín?", "Pasajeros, interés digital, llegadas, ICCA y tarifas."],
       visitante: ["¿Quién llega, cuánto gasta, cuánto se queda y cómo evalúa el destino?", "Ola de la EVI en José María Córdova."],
       captacion: ["¿Qué organizadores avanzan, dónde se cae la candidatura y qué retorno deja cada segmento?", "Corte anual del informe de gestión 2025."],
-      miembros: ["¿Cuánto vale, cuánto participa y cuánto se queda cada miembro?", "Rueda de Negocios y padrón publicados en 2025."]
+      miembros: ["¿Cuánto vale, cuánto participa y cuánto se queda cada miembro?", "Rueda de Negocios y padrón publicados en 2025."],
+      informes: ["¿Qué dice el informe redactado por LLM sobre el corte?", "Narrativa verificada contra el warehouse, con fuente por hallazgo."]
     };
     var anos = [];
     (DATA.conectividad.serie || []).forEach(function (row) {
@@ -681,9 +696,9 @@
     });
     anos.sort();
     var pregunta = preguntas[state.tab];
-    var vista = { mercados: vistaMercados, visitante: vistaVisitante, captacion: vistaCaptacion, miembros: vistaMiembros }[state.tab]();
-    var nombresTab = { mercados: "Mercados", visitante: "Visitante", captacion: "Captación B2B", miembros: "Miembros" };
-    var ids = ["mercados", "visitante", "captacion", "miembros"];
+    var vista = { mercados: vistaMercados, visitante: vistaVisitante, captacion: vistaCaptacion, miembros: vistaMiembros, informes: vistaInformes }[state.tab]();
+    var nombresTab = { mercados: "Mercados", visitante: "Visitante", captacion: "Captación B2B", miembros: "Miembros", informes: "Informes" };
+    var ids = ["mercados", "visitante", "captacion", "miembros", "informes"];
     document.body.dataset.tablero = state.tab;
     document.getElementById("app").innerHTML =
       '<div class="mando"><div class="tabs" role="tablist" aria-label="Tableros">' + ids.map(function (id) {
@@ -861,7 +876,8 @@
     cargar("huella.json"),
     cargar("manifiesto.json"),
     cargar("bureau_marca_llm.json"),
-    cargar("bureau_paises_2025_2026.json")
+    cargar("bureau_paises_2025_2026.json"),
+    cargar("informe_llm.json")
   ]).then(function (piezas) {
     DATA.conectividad = piezas[0];
     DATA.wikipedia = piezas[1];
@@ -874,6 +890,7 @@
     DATA.manifiesto = piezas[8];
     DATA.bureauMarca = piezas[9];
     DATA.bureauPaises = piezas[10];
+    DATA.informe = piezas[11];
     leerUrl();
     if (!DATA.conectividad || !DATA.ema || !DATA.icca) {
       document.getElementById("app").innerHTML = hueco("Faltan agregados", "Abra esta carpeta con un servidor local después de correr scripts/preparar_fuentes.py.");
