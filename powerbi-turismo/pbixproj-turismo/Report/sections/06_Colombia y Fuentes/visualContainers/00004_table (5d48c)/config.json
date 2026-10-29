@@ -1,0 +1,90 @@
+{
+  "name": "20d0f31a41b7433f96f7f",
+  "layouts": [
+    {
+      "id": 0,
+      "position": {
+        "x": 60.0,
+        "y": 270.0,
+        "z": 1004,
+        "width": 1160.0,
+        "height": 200.0
+      }
+    }
+  ],
+  "singleVisual": {
+    "visualType": "tableEx",
+    "projections": {
+      "Values": [
+        {
+          "queryRef": "08_fact_colombia_Q1_2026.segmento"
+        },
+        {
+          "queryRef": "08_fact_colombia_Q1_2026.categoria"
+        },
+        {
+          "queryRef": "08_fact_colombia_Q1_2026.valor"
+        },
+        {
+          "queryRef": "08_fact_colombia_Q1_2026.var_pct"
+        }
+      ]
+    },
+    "prototypeQuery": {
+      "Version": 2,
+      "From": [
+        {
+          "Name": "t",
+          "Entity": "08_fact_colombia_Q1_2026"
+        }
+      ],
+      "Select": [
+        {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Source": "t"
+              }
+            },
+            "Property": "segmento"
+          },
+          "Name": "08_fact_colombia_Q1_2026.segmento"
+        },
+        {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Source": "t"
+              }
+            },
+            "Property": "categoria"
+          },
+          "Name": "08_fact_colombia_Q1_2026.categoria"
+        },
+        {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Source": "t"
+              }
+            },
+            "Property": "valor"
+          },
+          "Name": "08_fact_colombia_Q1_2026.valor"
+        },
+        {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Source": "t"
+              }
+            },
+            "Property": "var_pct"
+          },
+          "Name": "08_fact_colombia_Q1_2026.var_pct"
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

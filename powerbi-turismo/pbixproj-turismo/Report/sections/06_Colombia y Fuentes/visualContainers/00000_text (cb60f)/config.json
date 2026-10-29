@@ -1,0 +1,41 @@
+{
+  "name": "3d029fd60f5c4ffeb12a0",
+  "layouts": [
+    {
+      "id": 0,
+      "position": {
+        "x": 60.0,
+        "y": 20.0,
+        "z": 1000,
+        "width": 1160.0,
+        "height": 60.0
+      }
+    }
+  ],
+  "singleVisual": {
+    "visualType": "textbox",
+    "drillFilterOtherVisuals": true,
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Colombia Q1 2026 + trazabilidad de fuentes",
+                    "textStyle": {
+                      "fontSize": "20pt",
+                      "fontWeight": "bold",
+                      "color": "#172139"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,31 @@
+﻿table '10_dim_region'
+
+	column region
+		dataType: string
+		summarizeBy: none
+		sourceColumn: region
+
+	column orden
+		dataType: int64
+		summarizeBy: none
+		sourceColumn: orden
+
+	partition '10_dim_region' = m
+		mode: import
+		source =
+				let
+				        Source = #table(
+				            {"region","orden"},
+				            {
+				      {"Europa",1},
+				      {"Asia-Pacifico",2},
+				      {"Americas",3},
+				      {"Medio Oriente",4},
+				      {"Africa",5}
+				            }
+				        ),
+				        Typed = Table.TransformColumnTypes(Source, {{"region", type text},{"orden", Int64.Type}})
+				    in
+				        Typed
+
+	annotation PBI_ResultType = Table

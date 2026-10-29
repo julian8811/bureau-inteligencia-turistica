@@ -1,0 +1,90 @@
+{
+  "name": "03ea1678967b4663bf42d",
+  "layouts": [
+    {
+      "id": 0,
+      "position": {
+        "x": 660.0,
+        "y": 100.0,
+        "z": 1002,
+        "width": 560.0,
+        "height": 380.0
+      }
+    }
+  ],
+  "singleVisual": {
+    "visualType": "clusteredColumnChart",
+    "projections": {
+      "Category": [
+        {
+          "queryRef": "03_fact_llegadas_region_H1_2026.region",
+          "active": true
+        }
+      ],
+      "Y": [
+        {
+          "queryRef": "Average(03_fact_llegadas_region_H1_2026.crec_H1_2026_pct)"
+        }
+      ]
+    },
+    "prototypeQuery": {
+      "Version": 2,
+      "From": [
+        {
+          "Name": "t",
+          "Entity": "03_fact_llegadas_region_H1_2026"
+        }
+      ],
+      "Select": [
+        {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Source": "t"
+              }
+            },
+            "Property": "region"
+          },
+          "Name": "03_fact_llegadas_region_H1_2026.region"
+        },
+        {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Source": "t"
+                  }
+                },
+                "Property": "crec_H1_2026_pct"
+              }
+            },
+            "Function": 1
+          },
+          "Name": "Average(03_fact_llegadas_region_H1_2026.crec_H1_2026_pct)"
+        }
+      ],
+      "OrderBy": [
+        {
+          "Direction": 2,
+          "Expression": {
+            "Aggregation": {
+              "Expression": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Source": "t"
+                    }
+                  },
+                  "Property": "crec_H1_2026_pct"
+                }
+              },
+              "Function": 1
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

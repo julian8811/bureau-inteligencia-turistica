@@ -1,0 +1,63 @@
+{
+  "name": "d37b54f9d89a4a4483efc",
+  "layouts": [
+    {
+      "id": 0,
+      "position": {
+        "x": 360.0,
+        "y": 170.0,
+        "z": 1003,
+        "width": 270.0,
+        "height": 150.0
+      }
+    }
+  ],
+  "singleVisual": {
+    "visualType": "card",
+    "projections": {
+      "Values": [
+        {
+          "queryRef": "01_fact_llegadas_global.Llegadas H1 2026"
+        }
+      ]
+    },
+    "prototypeQuery": {
+      "Version": 2,
+      "From": [
+        {
+          "Name": "a",
+          "Entity": "01_fact_llegadas_global"
+        }
+      ],
+      "Select": [
+        {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Source": "a"
+              }
+            },
+            "Property": "Llegadas H1 2026"
+          },
+          "Name": "01_fact_llegadas_global.Llegadas H1 2026"
+        }
+      ],
+      "OrderBy": [
+        {
+          "Direction": 2,
+          "Expression": {
+            "Measure": {
+              "Expression": {
+                "SourceRef": {
+                  "Source": "a"
+                }
+              },
+              "Property": "Llegadas H1 2026"
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

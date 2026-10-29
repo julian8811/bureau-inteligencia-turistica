@@ -1,0 +1,39 @@
+{
+  "name": "e238e406052a4218ab90f",
+  "layouts": [
+    {
+      "id": 0,
+      "position": {
+        "x": 60.0,
+        "y": 105.0,
+        "z": 1001,
+        "width": 1160.0,
+        "height": 40.0
+      }
+    }
+  ],
+  "singleVisual": {
+    "visualType": "textbox",
+    "drillFilterOtherVisuals": true,
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Datos globales, regionales y tendencias del sector \u2014 UN Tourism \u00b7 WTTC \u00b7 IATA \u00b7 Eurostat \u00b7 STR \u00b7 Phocuswright \u00b7 Amadeus",
+                    "textStyle": {
+                      "fontSize": "12pt"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

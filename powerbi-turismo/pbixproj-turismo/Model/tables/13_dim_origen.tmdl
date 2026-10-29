@@ -1,0 +1,25 @@
+﻿table '13_dim_origen'
+
+	column origen
+		dataType: string
+		summarizeBy: none
+		sourceColumn: origen
+
+	partition '13_dim_origen' = m
+		mode: import
+		source =
+				let
+				        Source = #table(
+				            {"origen"},
+				            {
+				      {"Total"},
+				      {"Internacional"},
+				      {"Domestico"},
+				      {"Total record"}
+				            }
+				        ),
+				        Typed = Table.TransformColumnTypes(Source, {{"origen", type text}})
+				    in
+				        Typed
+
+	annotation PBI_ResultType = Table

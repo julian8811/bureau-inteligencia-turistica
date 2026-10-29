@@ -1,0 +1,41 @@
+{
+  "name": "ac6c45fa5e1f497d8b4c0",
+  "layouts": [
+    {
+      "id": 0,
+      "position": {
+        "x": 60.0,
+        "y": 20.0,
+        "z": 1000,
+        "width": 1160.0,
+        "height": 60.0
+      }
+    }
+  ],
+  "singleVisual": {
+    "visualType": "textbox",
+    "drillFilterOtherVisuals": true,
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Gasto tur\u00edstico y peso econ\u00f3mico \u00b7 UN Tourism \u00b7 WTTC \u00b7 Phocuswright",
+                    "textStyle": {
+                      "fontSize": "20pt",
+                      "fontWeight": "bold",
+                      "color": "#172139"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

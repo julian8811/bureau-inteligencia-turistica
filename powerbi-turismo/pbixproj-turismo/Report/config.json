@@ -1,0 +1,32 @@
+{
+  "version": "5.9",
+  "activeSectionIndex": 0,
+  "defaultDrillFilterOtherVisuals": true,
+  "themeCollection": {
+    "baseTheme": {
+      "name": "CY19SU06",
+      "version": "5.3",
+      "type": 2
+    },
+    "customTheme": {
+      "name": "Colmayor.json",
+      "version": "5.4",
+      "type": 1
+    }
+  },
+  "slowDataSourceSettings": {
+    "isCrossHighlightingDisabled": false,
+    "isSlicerSelectionsButtonEnabled": false,
+    "isFilterSelectionsButtonEnabled": false,
+    "isFieldWellButtonEnabled": false,
+    "isApplyAllButtonEnabled": false
+  },
+  "linguisticSchemaSyncVersion": 2,
+  "settings": {
+    "useNewFilterPaneExperience": true,
+    "allowChangeFilterTypes": true,
+    "useStylableVisualContainerHeader": true,
+    "exportDataMode": 1,
+    "allowDataPointLassoSelect": true
+  }
+}

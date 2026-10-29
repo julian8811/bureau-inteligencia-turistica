@@ -1,0 +1,9 @@
+﻿mercado,periodo,ocup_pct,revpar_var,nota,fuente,id_fuente
+Global,nov-2025,66,,Igual nov-2024,STR via UN,STR-26
+Global,mar-2026,64,,Igual mar-2025,STR via UN,STR-26
+Europa-Am-AsiaPac,mar-2026,65,,,STR via UN,STR-26
+Medio Oriente,ene-2026,75,,,STR via UN,STR-26
+Medio Oriente,mar-2026,48,,,STR via UN,STR-26
+31 mercados Europa,2025,,0.7,RevPAR,STR/TE ago-2025,STR-26
+31 mercados Europa,2026F,,1.2,ADR +0.8%,STR Q3 31/08/2026,STR-26
+Cadenas globales,H1 2026,,3.5,"RevPAR por ADR, ocup +/-1-2%",HospitalityNet H1,HOSP-26

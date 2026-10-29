@@ -1,0 +1,25 @@
+﻿model Model
+	culture: es-ES
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: es-ES
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+ref table dim_anio
+ref table '01_fact_llegadas_global'
+ref table '02_fact_llegadas_region_2025'
+ref table '03_fact_llegadas_region_H1_2026'
+ref table '04_fact_gasto'
+ref table '05_fact_eurostat_noches'
+ref table '06_fact_aereo_iata'
+ref table '07_fact_hotel_str'
+ref table '08_fact_colombia_Q1_2026'
+ref table '09_dim_fuente'
+ref table '10_dim_region'
+ref table '11_dim_periodo'
+ref table '12_dim_indicador_gasto'
+ref table '13_dim_origen'
+ref table '14_dim_indicador_aereo'
+ref table '15_dim_mercado'
+ref table '16_dim_segmento'

@@ -1,0 +1,39 @@
+{
+  "name": "2910cf0f5fae43b1870f5",
+  "layouts": [
+    {
+      "id": 0,
+      "position": {
+        "x": 60.0,
+        "y": 570.0,
+        "z": 1005,
+        "width": 1160.0,
+        "height": 60.0
+      }
+    }
+  ],
+  "singleVisual": {
+    "visualType": "textbox",
+    "drillFilterOtherVisuals": true,
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "2023: 1.260 M \u00b7 2024: 1.400 M (+11%) \u00b7 2025: 1.520 M (+4%, r\u00e9cord) \u00b7 Q1 2026: 307 M (+2%).",
+                    "textStyle": {
+                      "fontSize": "11pt"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

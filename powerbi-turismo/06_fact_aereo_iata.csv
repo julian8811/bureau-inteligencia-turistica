@@ -1,0 +1,13 @@
+﻿indicador,periodo,valor,unidad,var_pct,fuente,id_fuente
+Pax segmento,2019,4560,M,,IATA fact-sheet,IATA-26
+Pax segmento,2024,4781,M,,IATA fact-sheet,IATA-26
+Pax segmento,2025,4967,M E,,IATA fact-sheet,IATA-26
+Pax segmento,2026,5085,M F,,IATA fact-sheet,IATA-26
+Premium intl,2025,109.7,M,4.5,IATA WATS 16/07/2026,IATA-26
+RPK Q2,2026,-2.4,% YoY,-2.4,IATA Q2 Chartbook,IATA-26
+RPK Jul total,2026,0.2,% YoY,0.2,IATA Jul 2026,IATA-26
+RPK Jul intl,2026,-0.1,% YoY,-0.1,IATA Jul 2026,IATA-26
+RPK Jul dom,2026,0.6,% YoY,0.6,IATA Jul 2026,IATA-26
+ASK Ago,2026,0.3,% YoY,0.3,IATA Ago 2026,IATA-26
+PLF Ago,2026,85.1,%,-0.9,IATA Ago 2026,IATA-26
+RPK forecast,2026,4.9,% YoY,4.9,IATA Outlook dic-2025,IATA-26

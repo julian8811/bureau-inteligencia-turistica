@@ -1,0 +1,63 @@
+{
+  "name": "2de62cb72e554d19af68d",
+  "layouts": [
+    {
+      "id": 0,
+      "position": {
+        "x": 660.0,
+        "y": 170.0,
+        "z": 1004,
+        "width": 270.0,
+        "height": 150.0
+      }
+    }
+  ],
+  "singleVisual": {
+    "visualType": "card",
+    "projections": {
+      "Values": [
+        {
+          "queryRef": "04_fact_gasto.Receipts 2025 T"
+        }
+      ]
+    },
+    "prototypeQuery": {
+      "Version": 2,
+      "From": [
+        {
+          "Name": "a",
+          "Entity": "04_fact_gasto"
+        }
+      ],
+      "Select": [
+        {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Source": "a"
+              }
+            },
+            "Property": "Receipts 2025 T"
+          },
+          "Name": "04_fact_gasto.Receipts 2025 T"
+        }
+      ],
+      "OrderBy": [
+        {
+          "Direction": 2,
+          "Expression": {
+            "Measure": {
+              "Expression": {
+                "SourceRef": {
+                  "Source": "a"
+                }
+              },
+              "Property": "Receipts 2025 T"
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

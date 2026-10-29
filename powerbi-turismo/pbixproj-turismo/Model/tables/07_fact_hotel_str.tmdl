@@ -1,0 +1,66 @@
+﻿table '07_fact_hotel_str'
+
+	column mercado
+		dataType: string
+		summarizeBy: none
+		sourceColumn: mercado
+
+	column periodo
+		dataType: string
+		summarizeBy: none
+		sourceColumn: periodo
+
+	column ocup_pct
+		dataType: double
+		summarizeBy: average
+		sourceColumn: ocup_pct
+
+	column revpar_var
+		dataType: double
+		summarizeBy: average
+		sourceColumn: revpar_var
+
+	column nota
+		dataType: string
+		summarizeBy: none
+		sourceColumn: nota
+
+	column fuente
+		dataType: string
+		summarizeBy: none
+		sourceColumn: fuente
+
+	column id_fuente
+		dataType: string
+		isHidden
+		summarizeBy: none
+		sourceColumn: id_fuente
+
+	measure 'Ocup Global Mar-26 %' = CALCULATE(AVERAGE('07_fact_hotel_str'[ocup_pct]),'07_fact_hotel_str'[mercado]="Global",'07_fact_hotel_str'[periodo]="mar-2026")/100
+		formatString: 0.0%
+
+	measure 'RevPAR Europa 2026F %' = CALCULATE(AVERAGE('07_fact_hotel_str'[revpar_var]),'07_fact_hotel_str'[mercado]="31 mercados Europa",'07_fact_hotel_str'[periodo]="2026F")/100
+		formatString: 0.0%
+
+	partition '07_fact_hotel_str' = m
+		mode: import
+		source =
+				let
+				        Source = #table(
+				            {"mercado","periodo","ocup_pct","revpar_var","nota","fuente","id_fuente"},
+				            {
+				      {"Global","nov-2025",66,null,"Igual nov-2024","STR via UN","STR-26"},
+				      {"Global","mar-2026",64,null,"Igual mar-2025","STR via UN","STR-26"},
+				      {"Europa-Am-AsiaPac","mar-2026",65,null,null,"STR via UN","STR-26"},
+				      {"Medio Oriente","ene-2026",75,null,null,"STR via UN","STR-26"},
+				      {"Medio Oriente","mar-2026",48,null,null,"STR via UN","STR-26"},
+				      {"31 mercados Europa","2025",null,0.7,"RevPAR","STR/TE ago-2025","STR-26"},
+				      {"31 mercados Europa","2026F",null,1.2,"ADR +0.8%","STR Q3 31/08/2026","STR-26"},
+				      {"Cadenas globales","H1 2026",null,3.5,"RevPAR por ADR, ocup +/-1-2%","HospitalityNet H1","HOSP-26"}
+				            }
+				        ),
+				        Typed = Table.TransformColumnTypes(Source, {{"mercado", type text},{"periodo", type text},{"ocup_pct", type number},{"revpar_var", type number},{"nota", type text},{"fuente", type text},{"id_fuente", type text}})
+				    in
+				        Typed
+
+	annotation PBI_ResultType = Table

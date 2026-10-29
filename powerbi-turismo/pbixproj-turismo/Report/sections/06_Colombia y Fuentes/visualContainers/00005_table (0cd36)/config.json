@@ -1,0 +1,90 @@
+{
+  "name": "ce575a4bb2154650b96dd",
+  "layouts": [
+    {
+      "id": 0,
+      "position": {
+        "x": 60.0,
+        "y": 490.0,
+        "z": 1005,
+        "width": 1160.0,
+        "height": 190.0
+      }
+    }
+  ],
+  "singleVisual": {
+    "visualType": "tableEx",
+    "projections": {
+      "Values": [
+        {
+          "queryRef": "09_dim_fuente.base"
+        },
+        {
+          "queryRef": "09_dim_fuente.edicion"
+        },
+        {
+          "queryRef": "09_dim_fuente.acceso"
+        },
+        {
+          "queryRef": "09_dim_fuente.fecha_pub"
+        }
+      ]
+    },
+    "prototypeQuery": {
+      "Version": 2,
+      "From": [
+        {
+          "Name": "t",
+          "Entity": "09_dim_fuente"
+        }
+      ],
+      "Select": [
+        {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Source": "t"
+              }
+            },
+            "Property": "base"
+          },
+          "Name": "09_dim_fuente.base"
+        },
+        {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Source": "t"
+              }
+            },
+            "Property": "edicion"
+          },
+          "Name": "09_dim_fuente.edicion"
+        },
+        {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Source": "t"
+              }
+            },
+            "Property": "acceso"
+          },
+          "Name": "09_dim_fuente.acceso"
+        },
+        {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Source": "t"
+              }
+            },
+            "Property": "fecha_pub"
+          },
+          "Name": "09_dim_fuente.fecha_pub"
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

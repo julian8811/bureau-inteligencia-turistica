@@ -1,0 +1,177 @@
+// MEDIDAS DAX — Modelo Turismo 2025-2026 (Colmayor)
+// Pegar en: Modelado > Nueva medida (una por una). Tablas según CSV 01-09.
+
+/* ---------- Llegadas globales (01_fact_llegadas_global) ---------- */
+Llegadas M =
+SUM ( '01_fact_llegadas_global'[llegadas_M] )
+
+Llegadas 2025 =
+CALCULATE (
+    SUM ( '01_fact_llegadas_global'[llegadas_M] ),
+    '01_fact_llegadas_global'[periodo] = "2025 anual"
+)
+
+Llegadas H1 2026 =
+CALCULATE (
+    SUM ( '01_fact_llegadas_global'[llegadas_M] ),
+    '01_fact_llegadas_global'[periodo] = "H1 2026"
+)
+
+Var Llegadas YoY % =
+VAR Actual = [Llegadas M]
+VAR Base =
+    CALCULATE (
+        SUM ( '01_fact_llegadas_global'[llegadas_M] ),
+        FILTER (
+            ALL ( '01_fact_llegadas_global' ),
+            '01_fact_llegadas_global'[periodo] = "H1 2025"
+        )
+    )
+RETURN DIVIDE ( Actual - Base, Base ) * 100
+
+/* ---------- Regiones 2025 (02) ---------- */
+Llegadas Region 2025 M =
+SUM ( '02_fact_llegadas_region_2025'[llegadas_M_2025] )
+
+Share Region 2025 % =
+DIVIDE (
+    SUM ( '02_fact_llegadas_region_2025'[llegadas_M_2025] ),
+    CALCULATE (
+        SUM ( '02_fact_llegadas_region_2025'[llegadas_M_2025] ),
+        ALL ( '02_fact_llegadas_region_2025'[region] )
+    )
+) * 100
+
+/* ---------- H1 2026 por región (03) ---------- */
+Crec H1 2026 % =
+AVERAGE ( '03_fact_llegadas_region_H1_2026'[crec_H1_2026_pct] ) / 100   // formato 0.0% en el modelo
+
+Crec Min H1 % =
+MIN ( '03_fact_llegadas_region_H1_2026'[crec_H1_2026_pct] ) / 100   // peor región H1 (Medio Oriente)
+
+Alerta Region Negativa =
+IF (
+    SELECTEDVALUE ( '03_fact_llegadas_region_H1_2026'[crec_H1_2026_pct] ) < 0,
+    "🔴 Caída",
+    "🟢 Crece"
+)
+
+/* ---------- Gasto (04) ---------- */
+Receipts 2025 T =
+CALCULATE (
+    SUM ( '04_fact_gasto'[valor_USD_T] ),
+    '04_fact_gasto'[indicador] = "Receipts",
+    '04_fact_gasto'[anio] = 2025
+)
+
+Ratio Precio sobre Volumen =
+DIVIDE ( 5, 4 )   // Receipts +5% vs Llegadas +4% (2025). Documenta pricing-driven.
+
+WTTC 2026F T =
+CALCULATE (
+    SUM ( '04_fact_gasto'[valor_USD_T] ),
+    '04_fact_gasto'[indicador] = "WTTC PIB forecast"
+)
+
+Export Total 2025 T =
+CALCULATE (
+    SUM ( '04_fact_gasto'[valor_USD_T] ),
+    '04_fact_gasto'[indicador] = "Export total",
+    '04_fact_gasto'[anio] = 2025
+)
+
+/* ---------- Eurostat (05) ---------- */
+Noches M =
+SUM ( '05_fact_eurostat_noches'[noches_M] )
+
+Noches H1 2026 M =
+CALCULATE (
+    SUM ( '05_fact_eurostat_noches'[noches_M] ),
+    '05_fact_eurostat_noches'[periodo] = "H1 2026"
+)
+
+Noches Intl Share % =
+DIVIDE (
+    CALCULATE (
+        SUM ( '05_fact_eurostat_noches'[noches_M] ),
+        '05_fact_eurostat_noches'[origen] = "Internacional"
+    ),
+    CALCULATE (
+        SUM ( '05_fact_eurostat_noches'[noches_M] ),
+        ALL ( '05_fact_eurostat_noches'[origen] )
+    )
+) * 100
+
+/* ---------- Aéreo (06) ---------- */
+Pax Segmento M =
+CALCULATE (
+    SUM ( '06_fact_aereo_iata'[valor] ),
+    '06_fact_aereo_iata'[indicador] = "Pax segmento"
+)
+
+RPK Q2 2026 % =
+CALCULATE (
+    MAX ( '06_fact_aereo_iata'[var_pct] ),
+    '06_fact_aereo_iata'[indicador] = "RPK Q2"
+)
+
+Pax 2026F M =
+CALCULATE (
+    SUM ( '06_fact_aereo_iata'[valor] ),
+    '06_fact_aereo_iata'[indicador] = "Pax segmento",
+    '06_fact_aereo_iata'[periodo] = 2026
+)
+
+/* ---------- Hotel (07_fact_hotel_str) ---------- */
+Ocup Global Mar-26 % =
+CALCULATE (
+    AVERAGE ( '07_fact_hotel_str'[ocup_pct] ),
+    '07_fact_hotel_str'[mercado] = "Global",
+    '07_fact_hotel_str'[periodo] = "mar-2026"
+) / 100
+
+RevPAR Europa 2026F % =
+CALCULATE (
+    AVERAGE ( '07_fact_hotel_str'[revpar_var] ),
+    '07_fact_hotel_str'[mercado] = "31 mercados Europa",
+    '07_fact_hotel_str'[periodo] = "2026F"
+) / 100
+
+/* ---------- Colombia (08) ---------- */
+Visitantes CO Q1 M =
+CALCULATE (
+    SUM ( '08_fact_colombia_Q1_2026'[valor] ),
+    '08_fact_colombia_Q1_2026'[categoria] = "Extranjeros Q1 (M)"
+)
+
+Share Joven CO % =
+CALCULATE (
+    SUM ( '08_fact_colombia_Q1_2026'[valor] ),
+    '08_fact_colombia_Q1_2026'[categoria] = "18-49 share"
+)
+
+Mujeres CO Share % =
+CALCULATE (
+    SUM ( '08_fact_colombia_Q1_2026'[valor] ),
+    '08_fact_colombia_Q1_2026'[categoria] = "Mujeres share"
+) / 100
+
+Bogota Share % =
+CALCULATE (
+    SUM ( '08_fact_colombia_Q1_2026'[valor] ),
+    '08_fact_colombia_Q1_2026'[categoria] = "Bogota"
+) / 100
+
+Divisas Q1 USD M =
+CALCULATE (
+    SUM ( '08_fact_colombia_Q1_2026'[valor] ),
+    '08_fact_colombia_Q1_2026'[categoria] = "Q1 USD M"
+)
+
+/* ---------- Fuentes (09_dim_fuente) ---------- */
+N Fuentes =
+COUNTROWS ( '09_dim_fuente' )
+
+/* ---------- Formato ---------- */
+// Llegadas: 1 decimal + " M"  |  Moneda: $#,##0.00 T  |  %: 1 decimal + " %"
+// Colores KPI: positivo #108181, negativo #C0392B, base #172139 (tema Colmayor-theme.json)

@@ -1,0 +1,90 @@
+{
+  "name": "eea05f45eff7482bb1942",
+  "layouts": [
+    {
+      "id": 0,
+      "position": {
+        "x": 60.0,
+        "y": 100.0,
+        "z": 1001,
+        "width": 570.0,
+        "height": 380.0
+      }
+    }
+  ],
+  "singleVisual": {
+    "visualType": "clusteredColumnChart",
+    "projections": {
+      "Category": [
+        {
+          "queryRef": "02_fact_llegadas_region_2025.region",
+          "active": true
+        }
+      ],
+      "Y": [
+        {
+          "queryRef": "Sum(02_fact_llegadas_region_2025.llegadas_M_2025)"
+        }
+      ]
+    },
+    "prototypeQuery": {
+      "Version": 2,
+      "From": [
+        {
+          "Name": "t",
+          "Entity": "02_fact_llegadas_region_2025"
+        }
+      ],
+      "Select": [
+        {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Source": "t"
+              }
+            },
+            "Property": "region"
+          },
+          "Name": "02_fact_llegadas_region_2025.region"
+        },
+        {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Source": "t"
+                  }
+                },
+                "Property": "llegadas_M_2025"
+              }
+            },
+            "Function": 0
+          },
+          "Name": "Sum(02_fact_llegadas_region_2025.llegadas_M_2025)"
+        }
+      ],
+      "OrderBy": [
+        {
+          "Direction": 2,
+          "Expression": {
+            "Aggregation": {
+              "Expression": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Source": "t"
+                    }
+                  },
+                  "Property": "llegadas_M_2025"
+                }
+              },
+              "Function": 0
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

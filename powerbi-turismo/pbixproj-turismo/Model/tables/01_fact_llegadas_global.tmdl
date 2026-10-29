@@ -1,0 +1,78 @@
+﻿table '01_fact_llegadas_global'
+
+	column periodo
+		dataType: string
+		summarizeBy: none
+		sourceColumn: periodo
+
+	column anio
+		dataType: int64
+		isHidden
+		summarizeBy: none
+		sourceColumn: anio
+
+	column trimestre
+		dataType: string
+		summarizeBy: none
+		sourceColumn: trimestre
+
+	column llegadas_M
+		dataType: double
+		summarizeBy: sum
+		sourceColumn: llegadas_M
+
+	column var_pct
+		dataType: double
+		summarizeBy: average
+		sourceColumn: var_pct
+
+	column fuente
+		dataType: string
+		summarizeBy: none
+		sourceColumn: fuente
+
+	column fecha_pub
+		dataType: string
+		summarizeBy: none
+		sourceColumn: fecha_pub
+
+	column id_fuente
+		dataType: string
+		isHidden
+		summarizeBy: none
+		sourceColumn: id_fuente
+
+	measure 'Llegadas M' = SUM('01_fact_llegadas_global'[llegadas_M])
+		formatString: #,##0.0
+
+	measure 'Llegadas 2025' = CALCULATE(SUM('01_fact_llegadas_global'[llegadas_M]),'01_fact_llegadas_global'[periodo]="2025 anual")
+		formatString: #,##0
+
+	measure 'Llegadas H1 2026' = CALCULATE(SUM('01_fact_llegadas_global'[llegadas_M]),'01_fact_llegadas_global'[periodo]="H1 2026")
+		formatString: #,##0
+
+	measure 'Var Llegadas YoY %' = DIVIDE(CALCULATE(SUM('01_fact_llegadas_global'[llegadas_M]),'01_fact_llegadas_global'[periodo]="H1 2026")-CALCULATE(SUM('01_fact_llegadas_global'[llegadas_M]),'01_fact_llegadas_global'[periodo]="H1 2025"),CALCULATE(SUM('01_fact_llegadas_global'[llegadas_M]),'01_fact_llegadas_global'[periodo]="H1 2025"))
+		formatString: 0.0%
+
+	partition '01_fact_llegadas_global' = m
+		mode: import
+		source =
+				let
+				        Source = #table(
+				            {"periodo","anio","trimestre","llegadas_M","var_pct","fuente","fecha_pub","id_fuente"},
+				            {
+				      {"2023 anual",2023,null,1260,null,"UN Tourism (derivado 1400-140)","2025-01-21","UN-2024"},
+				      {"2024 anual",2024,null,1400,11.0,"UN Tourism Barometer Ene-2025","2025-01-21","UN-2024"},
+				      {"2025 anual",2025,null,1520,4.0,"UN Tourism Barometer Ene-2026","2026-01-20","UN-2025"},
+				      {"Q1 2025",2025,"Q1",301,null,"UN Tourism (307-6)","2026-06-02","UN-Q1-26"},
+				      {"Q1 2026",2026,"Q1",307,2.0,"UN Tourism Q1 Barometer","2026-06-02","UN-Q1-26"},
+				      {"Q2 2026",2026,"Q2",383,-1.0,"UN Tourism H1 Sep-2026 (690-307)","2026-10-08","UN-H1-26"},
+				      {"H1 2025",2025,"H1",687,null,"UN Tourism (690-3)","2026-09-18","UN-H1-26"},
+				      {"H1 2026",2026,"H1",690,0.4,"UN Tourism H1 Sep-2026 Vol24No3","2026-10-08","UN-H1-26"}
+				            }
+				        ),
+				        Typed = Table.TransformColumnTypes(Source, {{"periodo", type text},{"anio", Int64.Type},{"trimestre", type text},{"llegadas_M", type number},{"var_pct", type number},{"fuente", type text},{"fecha_pub", type text},{"id_fuente", type text}})
+				    in
+				        Typed
+
+	annotation PBI_ResultType = Table

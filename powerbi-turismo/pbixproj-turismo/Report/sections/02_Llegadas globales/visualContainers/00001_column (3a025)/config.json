@@ -1,0 +1,90 @@
+{
+  "name": "985bc689fd764249a223c",
+  "layouts": [
+    {
+      "id": 0,
+      "position": {
+        "x": 60.0,
+        "y": 100.0,
+        "z": 1001,
+        "width": 760.0,
+        "height": 380.0
+      }
+    }
+  ],
+  "singleVisual": {
+    "visualType": "clusteredColumnChart",
+    "projections": {
+      "Category": [
+        {
+          "queryRef": "01_fact_llegadas_global.periodo",
+          "active": true
+        }
+      ],
+      "Y": [
+        {
+          "queryRef": "Sum(01_fact_llegadas_global.llegadas_M)"
+        }
+      ]
+    },
+    "prototypeQuery": {
+      "Version": 2,
+      "From": [
+        {
+          "Name": "t",
+          "Entity": "01_fact_llegadas_global"
+        }
+      ],
+      "Select": [
+        {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Source": "t"
+              }
+            },
+            "Property": "periodo"
+          },
+          "Name": "01_fact_llegadas_global.periodo"
+        },
+        {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Source": "t"
+                  }
+                },
+                "Property": "llegadas_M"
+              }
+            },
+            "Function": 0
+          },
+          "Name": "Sum(01_fact_llegadas_global.llegadas_M)"
+        }
+      ],
+      "OrderBy": [
+        {
+          "Direction": 2,
+          "Expression": {
+            "Aggregation": {
+              "Expression": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Source": "t"
+                    }
+                  },
+                  "Property": "llegadas_M"
+                }
+              },
+              "Function": 0
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

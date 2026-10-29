@@ -1,0 +1,63 @@
+{
+  "name": "41c315fa945f405fbdff8",
+  "layouts": [
+    {
+      "id": 0,
+      "position": {
+        "x": 440.0,
+        "y": 100.0,
+        "z": 1002,
+        "width": 350.0,
+        "height": 150.0
+      }
+    }
+  ],
+  "singleVisual": {
+    "visualType": "card",
+    "projections": {
+      "Values": [
+        {
+          "queryRef": "04_fact_gasto.WTTC 2026F T"
+        }
+      ]
+    },
+    "prototypeQuery": {
+      "Version": 2,
+      "From": [
+        {
+          "Name": "a",
+          "Entity": "04_fact_gasto"
+        }
+      ],
+      "Select": [
+        {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Source": "a"
+              }
+            },
+            "Property": "WTTC 2026F T"
+          },
+          "Name": "04_fact_gasto.WTTC 2026F T"
+        }
+      ],
+      "OrderBy": [
+        {
+          "Direction": 2,
+          "Expression": {
+            "Measure": {
+              "Expression": {
+                "SourceRef": {
+                  "Source": "a"
+                }
+              },
+              "Property": "WTTC 2026F T"
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

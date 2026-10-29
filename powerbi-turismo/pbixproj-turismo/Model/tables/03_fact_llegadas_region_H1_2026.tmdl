@@ -1,0 +1,53 @@
+﻿table '03_fact_llegadas_region_H1_2026'
+
+	column region
+		dataType: string
+		summarizeBy: none
+		sourceColumn: region
+
+	column crec_H1_2026_pct
+		dataType: double
+		summarizeBy: average
+		sourceColumn: crec_H1_2026_pct
+
+	column detalle
+		dataType: string
+		summarizeBy: none
+		sourceColumn: detalle
+
+	column fuente
+		dataType: string
+		summarizeBy: none
+		sourceColumn: fuente
+
+	column id_fuente
+		dataType: string
+		isHidden
+		summarizeBy: none
+		sourceColumn: id_fuente
+
+	measure 'Crec H1 2026 %' = AVERAGE('03_fact_llegadas_region_H1_2026'[crec_H1_2026_pct])/100
+		formatString: 0.0%
+
+	measure 'Crec Min H1 %' = MIN('03_fact_llegadas_region_H1_2026'[crec_H1_2026_pct])/100
+		formatString: 0.0%
+
+	partition '03_fact_llegadas_region_H1_2026' = m
+		mode: import
+		source =
+				let
+				        Source = #table(
+				            {"region","crec_H1_2026_pct","detalle","fuente","id_fuente"},
+				            {
+				      {"Africa",4,"Lider H1","UN Tourism Sep-2026","UN-H1-26"},
+				      {"Europa",3,"~350M; Sur-Med +4, Centro-Este +4, Norte +3, Oeste -1 (jun -6% calor)","UN Tourism Sep-2026","UN-H1-26"},
+				      {"Americas",2,"Mixto","UN Tourism Sep-2026","UN-H1-26"},
+				      {"Asia-Pacifico",1,"-11% vs 2019; NE +3, Sur -5, SE -1 (jun -5%)","UN Tourism Sep-2026","UN-H1-26"},
+				      {"Medio Oriente",-22,"Empeora desde -14% Q1; era +39% vs 2019 en 2025","UN Tourism Sep-2026","UN-H1-26"}
+				            }
+				        ),
+				        Typed = Table.TransformColumnTypes(Source, {{"region", type text},{"crec_H1_2026_pct", type number},{"detalle", type text},{"fuente", type text},{"id_fuente", type text}})
+				    in
+				        Typed
+
+	annotation PBI_ResultType = Table

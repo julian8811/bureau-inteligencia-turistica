@@ -1,0 +1,175 @@
+{
+  "version": "1.0.0",
+  "diagrams": [
+    {
+      "name": "All tables",
+      "zoomValue": 60,
+      "isDefault": true,
+      "tables": [
+        "dim_anio",
+        "01_fact_llegadas_global",
+        "02_fact_llegadas_region_2025",
+        "03_fact_llegadas_region_H1_2026",
+        "04_fact_gasto",
+        "05_fact_eurostat_noches",
+        "06_fact_aereo_iata",
+        "07_fact_hotel_str",
+        "08_fact_colombia_Q1_2026",
+        "09_dim_fuente",
+        "10_dim_region",
+        "11_dim_periodo",
+        "12_dim_indicador_gasto",
+        "13_dim_origen",
+        "14_dim_indicador_aereo",
+        "15_dim_mercado",
+        "16_dim_segmento"
+      ],
+      "layout": {
+        "boundingBoxWidth": 1314.0,
+        "boundingBoxHeight": 1170.0,
+        "boundingBoxPosition": {
+          "x": 0,
+          "y": 0
+        },
+        "nodes": [
+          {
+            "height": 110.0,
+            "layedOut": true,
+            "left": 20.0,
+            "nodeIndex": "dim_anio",
+            "top": 20.0,
+            "width": 234.0
+          },
+          {
+            "height": 310.0,
+            "layedOut": true,
+            "left": 280.0,
+            "nodeIndex": "01_fact_llegadas_global",
+            "top": 20.0,
+            "width": 234.0
+          },
+          {
+            "height": 230.0,
+            "layedOut": true,
+            "left": 540.0,
+            "nodeIndex": "02_fact_llegadas_region_2025",
+            "top": 20.0,
+            "width": 234.0
+          },
+          {
+            "height": 210.0,
+            "layedOut": true,
+            "left": 800.0,
+            "nodeIndex": "03_fact_llegadas_region_H1_2026",
+            "top": 20.0,
+            "width": 234.0
+          },
+          {
+            "height": 270.0,
+            "layedOut": true,
+            "left": 1060.0,
+            "nodeIndex": "04_fact_gasto",
+            "top": 20.0,
+            "width": 234.0
+          },
+          {
+            "height": 270.0,
+            "layedOut": true,
+            "left": 20.0,
+            "nodeIndex": "05_fact_eurostat_noches",
+            "top": 360.0,
+            "width": 234.0
+          },
+          {
+            "height": 270.0,
+            "layedOut": true,
+            "left": 280.0,
+            "nodeIndex": "06_fact_aereo_iata",
+            "top": 360.0,
+            "width": 234.0
+          },
+          {
+            "height": 250.0,
+            "layedOut": true,
+            "left": 540.0,
+            "nodeIndex": "07_fact_hotel_str",
+            "top": 360.0,
+            "width": 234.0
+          },
+          {
+            "height": 290.0,
+            "layedOut": true,
+            "left": 800.0,
+            "nodeIndex": "08_fact_colombia_Q1_2026",
+            "top": 360.0,
+            "width": 234.0
+          },
+          {
+            "height": 230.0,
+            "layedOut": true,
+            "left": 1060.0,
+            "nodeIndex": "09_dim_fuente",
+            "top": 360.0,
+            "width": 234.0
+          },
+          {
+            "height": 110.0,
+            "layedOut": true,
+            "left": 20.0,
+            "nodeIndex": "10_dim_region",
+            "top": 700.0,
+            "width": 234.0
+          },
+          {
+            "height": 130.0,
+            "layedOut": true,
+            "left": 280.0,
+            "nodeIndex": "11_dim_periodo",
+            "top": 700.0,
+            "width": 234.0
+          },
+          {
+            "height": 110.0,
+            "layedOut": true,
+            "left": 540.0,
+            "nodeIndex": "12_dim_indicador_gasto",
+            "top": 700.0,
+            "width": 234.0
+          },
+          {
+            "height": 90.0,
+            "layedOut": true,
+            "left": 800.0,
+            "nodeIndex": "13_dim_origen",
+            "top": 700.0,
+            "width": 234.0
+          },
+          {
+            "height": 130.0,
+            "layedOut": true,
+            "left": 1060.0,
+            "nodeIndex": "14_dim_indicador_aereo",
+            "top": 700.0,
+            "width": 234.0
+          },
+          {
+            "height": 110.0,
+            "layedOut": true,
+            "left": 20.0,
+            "nodeIndex": "15_dim_mercado",
+            "top": 1040.0,
+            "width": 234.0
+          },
+          {
+            "height": 90.0,
+            "layedOut": true,
+            "left": 280.0,
+            "nodeIndex": "16_dim_segmento",
+            "top": 1040.0,
+            "width": 234.0
+          }
+        ]
+      }
+    }
+  ]
+}

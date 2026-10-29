@@ -1,0 +1,32 @@
+﻿table dim_anio
+
+	column anio
+		dataType: int64
+		isHidden
+		summarizeBy: none
+		sourceColumn: anio
+
+	column etiqueta
+		dataType: string
+		summarizeBy: none
+		sourceColumn: etiqueta
+
+	partition dim_anio = m
+		mode: import
+		source =
+				let
+				        Source = #table(
+				            {"anio","etiqueta"},
+				            {
+				      {2019,"2019"},
+				      {2023,"2023"},
+				      {2024,"2024"},
+				      {2025,"2025"},
+				      {2026,"2026"}
+				            }
+				        ),
+				        Typed = Table.TransformColumnTypes(Source, {{"anio", Int64.Type},{"etiqueta", type text}})
+				    in
+				        Typed
+
+	annotation PBI_ResultType = Table
