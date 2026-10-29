@@ -132,3 +132,4 @@ body[data-tablero="miembros"] .kpi{border-top-color:var(--teal-bright)}
   .modal dl{grid-template-columns:1fr}
   .kpi .value,.stock .v{font-size:24px}
 }
+.src{display:block;color:var(--text-2);font-size:12px;line-height:1.45;margin-top:8px}

@@ -79,6 +79,10 @@
     return '<div class="hueco"><strong>' + esc(titulo) + "</strong><p>" + texto + "</p></div>";
   }
 
+  function pie(texto) {
+    return '<p class="src">Fuente: ' + esc(texto) + "</p>";
+  }
+
   function notaSim(supuesto) {
     return '<p class="nota-sim"><span class="pastilla simulacion">Simulación</span> Simulación. No es una cifra del Bureau ni de una base abierta. Supuesto: ' + supuesto + "</p>";
   }
@@ -212,7 +216,7 @@
       kpi("icca", "Reuniones ICCA Medellín", "26", "puesto 103 · 2025") +
       "</div>";
     html += grupo("Conectividad", 
-      celda("span-12", block(titulo, pista, movimiento || hueco("Sin mes", "Este año no tiene pasajeros de ese país en el agregado."))) +
+      celda("span-12", block(titulo, pista, (movimiento || hueco("Sin mes", "Este año no tiene pasajeros de ese país en el agregado.")) + pie("Aerocivil gb6w-ynu4 · Año " + state.anio))) +
       celda("span-7", otrosOrigenes()) +
       celda("span-5", aeropuertos()) +
       celda("span-7", aerolineas()) +
@@ -239,7 +243,7 @@
         pais: row.pais,
         color: row.priorizado ? "#E9901E" : "#195855"
       };
-    }), "#195855"));
+    }), "#195855") + pie("Aerocivil gb6w-ynu4 · Año " + state.anio));
   }
 
   function aeropuertos() {
@@ -249,20 +253,20 @@
     var items = Object.keys(suma).map(function (k) {
       return { label: k === "MDE" ? "Córdova" : "Olaya Herrera", value: suma[k], color: COLOR[k] || "#108181", text: num(suma[k]) };
     });
-    return block("Llegadas por aeropuerto", items.length ? "Año " + state.anio + "." : "Corte pendiente.", items.length ? Charts.donut(items) : hueco("Sin corte", "Vuelva a correr el script de fuentes."));
+    return block("Llegadas por aeropuerto", items.length ? "Año " + state.anio + "." : "Corte pendiente.", (items.length ? Charts.donut(items) : hueco("Sin corte", "Vuelva a correr el script de fuentes.")) + pie("Aerocivil gb6w-ynu4 · Año " + state.anio));
   }
 
   function aerolineas() {
     var filas = (DATA.conectividad.aerolineas || []).filter(function (row) { return row.anio === state.anio; });
-    return block("Aerolíneas con más llegadas", filas.length ? "Ocho primeras del año." : "Corte pendiente.", filas.length ? Charts.bars(filas.map(function (row) {
+    return block("Aerolíneas con más llegadas", filas.length ? "Ocho primeras del año." : "Corte pendiente.", (filas.length ? Charts.bars(filas.map(function (row) {
       return { label: row.sigla || row.nombre, value: row.llegadas, text: num(row.llegadas) };
-    }), "#E9901E") : hueco("Sin corte", "Vuelva a correr el script de fuentes."));
+    }), "#E9901E") : hueco("Sin corte", "Vuelva a correr el script de fuentes.")) + pie("Aerocivil gb6w-ynu4 · Año " + state.anio));
   }
 
   function carga() {
     var filas = (DATA.conectividad.carga || []).filter(function (row) { return row.anio === state.anio; });
     var puntos = filas.map(function (row) { return { x: MESES[row.mes - 1], y: row.kg }; });
-    return block("Carga y correo", "Kilos en vuelos que tocan MDE o EOH.", puntos.length ? Charts.line(puntos, "#195855") : hueco("Sin corte", "Vuelva a correr el script de fuentes."));
+    return block("Carga y correo", "Kilos en vuelos que tocan MDE o EOH.", (puntos.length ? Charts.line(puntos, "#195855") : hueco("Sin corte", "Vuelva a correr el script de fuentes.")) + pie("Aerocivil gb6w-ynu4 · Año " + state.anio));
   }
 
   function medataFigura() {
@@ -280,7 +284,7 @@
         })
       };
     });
-    return block("Tarifa por zona", "Medata, pesos corrientes. La ficha se modificó el 14 de diciembre de 2023.", grupos.length ? Charts.grouped(grupos) : hueco("Medata", "Sin serie de zonas."));
+    return block("Tarifa por zona", "Medata, pesos corrientes. La ficha se modificó el 14 de diciembre de 2023.", (grupos.length ? Charts.grouped(grupos) : hueco("Medata", "Sin serie de zonas.")) + pie("DANE EMA + MEData (corte dic-2023) · Año " + state.anio));
   }
 
   function marcaLLM() {
@@ -291,7 +295,7 @@
     var items = serie.map(function (row, i) {
       return { label: row.categoria, value: row.n, text: num(row.n) + " · " + num((row.share || 0) * 100, 1) + "%", color: Charts.palette[i % Charts.palette.length] };
     });
-    return kpi("marca-llm", "Menciones LLM", num(total), esc(data.ventana || "ventana corriente")) + block("Conversación por tema (LLM)", "Tópico global: " + esc(data.top_topico_global || "—") + ".", Charts.bars(items, "#00AEAC"));
+    return kpi("marca-llm", "Menciones LLM", num(total), esc(data.ventana || "ventana corriente")) + block("Conversación por tema (LLM)", "Tópico global: " + esc(data.top_topico_global || "—") + ".", Charts.bars(items, "#00AEAC") + pie("ETL Bureau, titulares RSS clasificados con LLM · " + esc(data.ventana || "ventana corriente")));
   }
 
   function vozDigital() {
@@ -339,7 +343,7 @@
       var vistasCiudad = delAnio.filter(function (row) { return row.destino === ciudad; }).reduce(function (s, row) { return s + row.vistas; }, 0);
       notaCiudad = vistasCiudad ? "<p class='hint'>Artículo asociado a " + esc(etiquetaPais(state.pais)) + ": " + esc(ciudad) + ", " + num(vistasCiudad) + " vistas en " + state.anio + ".</p>" : "";
     }
-    return block("Interés digital", "Índice de Wikipedia de Medellín, base 100 en el primer trimestre de " + state.anio + ". GDELT, si falta, queda vacío.", (indice || "") + Charts.donut(barras) + notaCiudad + sov);
+    return block("Interés digital", "Índice de Wikipedia de Medellín, base 100 en el primer trimestre de " + state.anio + ". GDELT, si falta, queda vacío.", (indice || "") + Charts.donut(barras) + notaCiudad + sov + pie("Wikipedia CC0 + GDELT · Año " + state.anio));
   }
 
   function tarifas() {
@@ -355,20 +359,20 @@
         { name: "Cartagena", color: "#FBBB28", points: ocupAnio.map(function (row) { return { x: MESES[row.mes - 1], y: row.cartagena }; }) }
       ]);
     }
-    return block("Tarifa y ocupación", "La línea verde marca 100, el promedio regional del mes. La línea compara Antioquia, Bogotá y Cartagena.", linea + ocupacion);
+    return block("Tarifa y ocupación", "La línea verde marca 100, el promedio regional del mes. La línea compara Antioquia, Bogotá y Cartagena.", linea + ocupacion + pie("DANE EMA · Año " + state.anio));
   }
 
   function regionesOcupacion() {
     var ocup = DATA.ema && DATA.ema.ocupacion && DATA.ema.ocupacion.serie;
     var ocupAnio = filasAnio(ocup, state.anio);
     if (!ocupAnio.length || !ocupAnio[ocupAnio.length - 1].regiones) {
-      return block("Ocupación regional", "Hoja 4.2.", hueco("Sin regiones", "El agregado todavía no trae las doce regiones."));
+      return block("Ocupación regional", "Hoja 4.2.", hueco("Sin regiones", "El agregado todavía no trae las doce regiones.") + pie("DANE EMA hoja 4.2 · Año " + state.anio));
     }
     var corte = ocupAnio[ocupAnio.length - 1];
     var nombres = Object.keys(corte.regiones);
     return block("Ocupación de las regiones", "Porcentaje de la hoja 4.2 en " + MESES[corte.mes - 1] + " " + state.anio + ". Antioquia no es la ciudad de Medellín.", Charts.bars(nombres.map(function (nombre, i) {
       return { label: nombre, value: corte.regiones[nombre], text: num(corte.regiones[nombre], 1) + " %", color: Charts.palette[i % Charts.palette.length] };
-    })));
+    })) + pie("DANE EMA hoja 4.2 · " + MESES[corte.mes - 1] + " " + state.anio));
   }
 
   function icca() {
@@ -376,7 +380,7 @@
     var dona = Charts.donut(DATA.icca.ciudades.map(function (c, i) {
       return { label: c.ciudad, value: c.reuniones, color: colores[i], text: "puesto " + c.puesto };
     }));
-    return block("ICCA 2025", "Reuniones elegibles de las tres ciudades citadas. No es la participación sobre el mundo.", dona + hueco("No ICCA", "UFI publica barómetros globales, no la participación de Medellín."));
+    return block("ICCA 2025", "Reuniones elegibles de las tres ciudades citadas. No es la participación sobre el mundo.", dona + hueco("No ICCA", "UFI publica barómetros globales, no la participación de Medellín.") + pie("ICCA · corte 2025"));
   }
 
   function conversion() {
@@ -387,7 +391,7 @@
       var parte = (llegadas[m] || 0) / total * 100;
       return { label: m, value: parte, text: num(parte, 1) + " %", sim: true, pais: PAIS_DE_MERCADO[m] || "" };
     });
-    return block("Peso de llegadas entre mercados", pastilla("conversion"), Charts.bars(items, Charts.SIM) + notaSim("se reparte el peso de las llegadas Aerocivil de " + state.anio + " entre los cinco mercados. No es la tasa del CRM."));
+    return block("Peso de llegadas entre mercados", pastilla("conversion"), Charts.bars(items, Charts.SIM) + notaSim("se reparte el peso de las llegadas Aerocivil de " + state.anio + " entre los cinco mercados. No es la tasa del CRM.") + pie("Aerocivil \u00b7 A\u00f1o " + state.anio + " \u00b7 simulador"));
   }
 
   function vistaVisitante() {
@@ -417,17 +421,17 @@
       kpi("huella", "Huella estimada", huella && huella.kg_total != null ? num(huella.kg_total, 1) + " kg" : "—", "ida + alojamiento") +
       "</div>";
     html += grupo("Estadía",
-      celda("span-12", block("Gasto mensual de la estadía", "Promedio ponderado de los no residentes en José María Córdova. " + state.anio + ".", movimiento)) +
+      celda("span-12", block("Gasto mensual de la estadía", "Promedio ponderado de los no residentes en José María Córdova. " + state.anio + ".", movimiento + pie("EVI " + ola.ola))) +
       celda("span-6", block("Grupo de viaje", "Ponderado con el factor de expansión. n de encuestas: " + num(ola.n) + ".", Charts.donut((ola.grupo || []).map(function (g, i) {
         return { label: g.nombre, value: g.participacion, color: Charts.palette[i], text: num(g.participacion, 1) + "%" };
-      })))) +
+      })) + pie("EVI " + ola.ola))) +
       celda("span-6", block("Motivo del viaje", "Ola completa.", Charts.donut((ola.motivos || []).map(function (g, i) {
         return { label: g.nombre, value: g.participacion, color: Charts.palette[i], text: num(g.participacion, 1) + "%" };
-      })))) +
+      })) + pie("EVI " + ola.ola))) +
       celda("span-12", block("Residencia", "Países con al menos 0,5 % del peso de la ola. Un clic los selecciona.", Charts.bars((ola.residencia || []).map(function (g) {
         var codigo = fold(g.nombre);
         return { label: g.nombre, value: g.participacion, text: num(g.participacion, 1) + "%", pais: codigo, color: codigo === state.pais ? "#172139" : "#108181" };
-      }), "#108181"))));
+      }), "#108181") + pie("EVI " + ola.ola))));
     html += grupo("Huella y escenario",
       celda("span-6", compararOlas()) +
       celda("span-6", huellaBloque(huella, ola)) +
@@ -444,21 +448,21 @@
       { label: "Promotores", value: promotores, text: String(promotores), sim: true },
       { label: "Pasivos", value: pasivos, text: String(pasivos), sim: true },
       { label: "Detractores", value: detractores, text: String(detractores), sim: true }
-    ]) + "<p class='hint'>NPS del escenario: " + nps + ".</p>" + notaSim("46 promotores, 34 pasivos y 20 detractores de ejemplo. No usa el 4,9 de miembros ni la pregunta de recomendación de la EVI."));
+    ]) + "<p class='hint'>NPS del escenario: " + nps + ".</p>" + notaSim("46 promotores, 34 pasivos y 20 detractores de ejemplo. No usa el 4,9 de miembros ni la pregunta de recomendación de la EVI.") + pie("Simulador · ejemplo 46/34/20, no EVI/informe"));
   }
 
   function compararOlas() {
     var olas = (DATA.evi && DATA.evi.olas) || [];
-    if (olas.length < 2) return block("Olas", "Hace falta más de una ola para comparar.", "");
+    if (olas.length < 2) return block("Olas", "Hace falta más de una ola para comparar.", "" + pie("EVI"));
     return block("Gasto de las dos olas", "USD por persona. Cada barra es su propia ola, no un mes.", Charts.bars(olas.map(function (ola, i) {
       return { label: ola.ola, value: ola.gasto_estadia_usd, text: usd(ola.gasto_estadia_usd), color: i ? "#FBBB28" : "#E9901E" };
-    })));
+    })) + pie("EVI · por ola"));
   }
 
   function huellaBloque(huella, ola) {
     if (!huella || huella.kg_total == null) {
       var estado = (DATA.huella && DATA.huella.estado) || "Sin factores.";
-      return block("Huella", pastilla("huella"), hueco("Sin estimación", esc(estado) + " Las noches de la ola sí están en la tarjeta de estadía: " + num(ola.noches, 1) + "."));
+      return block("Huella", pastilla("huella"), hueco("Sin estimación", esc(estado) + " Las noches de la ola sí están en la tarjeta de estadía: " + num(ola.noches, 1) + ".") + pie("Huella Bureau · factores propios"));
     }
     var aire = DATA.huella && DATA.huella.factores && DATA.huella.factores.aereo_kg_por_pasajero_km;
     var hotel = DATA.huella && DATA.huella.factores && DATA.huella.factores.hotel_kg_por_noche;
@@ -466,7 +470,7 @@
     return block("Huella de la ola", "Tramo de ida. " + num(huella.km_ida, 0) + " km medios." + factores, Charts.bars([
       { label: "Vuelo", value: huella.kg_vuelo, text: num(huella.kg_vuelo, 1) + " kg" },
       { label: "Alojamiento", value: huella.kg_alojamiento, text: num(huella.kg_alojamiento, 1) + " kg" }
-    ], "#195855"));
+    ], "#195855") + pie("Huella Bureau · factores propios"));
   }
 
   function vistaCaptacion() {
@@ -490,12 +494,12 @@
       celda("span-5", block("Dentro de los 103", "59 internacionales y 44 nacionales. Los dólares no se reparten.", Charts.donut([
         { label: "Internacionales", value: inf.internacionales, color: "#108181", text: String(inf.internacionales) },
         { label: "Nacionales", value: inf.nacionales, color: "#E9901E", text: String(inf.nacionales) }
-      ]))) +
+      ]) + pie("Informe gestión 2025 · corte 2025"))) +
       celda("span-7", costoSimulado(aporteEvento)) +
       celda("span-12", calculadoraInspeccion()));
     html += grupo("Después de la candidatura",
       celda("span-7", perdidas()) +
-      celda("span-5", block("Eventos realizados", "Otro universo. No se suma al flujo de captación.", "<p>Medellín recibió <strong>" + num(inf.realizados.eventos) + "</strong> eventos, con " + num(inf.realizados.asistentes) + " asistentes y una derrama estimada de USD " + inf.realizados.derramaMillonesUsd + " millones.</p>")));
+      celda("span-5", block("Eventos realizados", "Otro universo. No se suma al flujo de captación.", "<p>Medellín recibió <strong>" + num(inf.realizados.eventos) + "</strong> eventos, con " + num(inf.realizados.asistentes) + " asistentes y una derrama estimada de USD " + inf.realizados.derramaMillonesUsd + " millones.</p>" + pie("Informe gestión 2025 · corte 2025"))));
     return html;
   }
 
@@ -527,7 +531,7 @@
         ]
       };
     });
-    return block("Prioridad de mercado", "Cada barra va de 0 a 100 dentro de su componente. El índice usa 40 % pasajeros, 30 % llegadas y 30 % gasto EVI. Colombia no tiene gasto en esa encuesta. No es el scoring de organizadores.", Charts.grouped(grupos));
+    return block("Prioridad de mercado", "Cada barra va de 0 a 100 dentro de su componente. El índice usa 40 % pasajeros, 30 % llegadas y 30 % gasto EVI. Colombia no tiene gasto en esa encuesta. No es el scoring de organizadores.", Charts.grouped(grupos) + pie("Aerocivil + EVI \u00b7 A\u00f1o " + state.anio));
   }
 
   function costoSimulado(aporteEvento) {
@@ -535,7 +539,7 @@
     return block("Impacto y costo", pastilla("roi"), Charts.bars([
       { label: "Impacto por evento", value: aporteEvento, text: usd(aporteEvento), color: "#108181" },
       { label: "Costo supuesto", value: costo, text: "USD 250.000", sim: true }
-    ], "#108181") + notaSim("una barra de costo de USD 250.000 por evento captado, al lado del impacto publicado. Los dólares no se parten entre los 59 internacionales y los 44 nacionales."));
+    ], "#108181") + notaSim("una barra de costo de USD 250.000 por evento captado, al lado del impacto publicado. Los dólares no se parten entre los 59 internacionales y los 44 nacionales.") + pie("Informe gestión 2025 · simulador"));
   }
 
   function ejemploInspeccion() {
@@ -554,14 +558,14 @@
       '<p class="hint">Candidaturas confirmadas después de la inspección, sobre inspecciones. El ejercicio no se guarda al recargar.</p>' +
       '<div class="calc"><label>Inspecciones<input data-calc="inspecciones" inputmode="numeric" value="' + esc(state.calc.inspecciones) + '"></label>' +
       '<label>Confirmadas<input data-calc="confirmadas" inputmode="numeric" value="' + esc(state.calc.confirmadas) + '"></label></div>' +
-      '<p class="mt"><strong>' + (tasa == null ? "Sin cálculo" : num(tasa * 100, 1) + " %") + "</strong></p>");
+      '<p class="mt"><strong>' + (tasa == null ? "Sin cálculo" : num(tasa * 100, 1) + " %") + "</strong></p>" + pie("Ejercicio del usuario · no se guarda"));
   }
 
   function perdidas() {
     var motivos = ["Precio", "Fechas", "Recinto", "Conectividad", "Decisión de la asociación", "Otro"];
     return block("Motivos de pérdida", pastilla("perdidas"), Charts.bars(motivos.map(function (m) {
       return { label: m, value: 1, text: "parte igual", sim: true };
-    }), Charts.SIM) + notaSim("la taxonomía publicada se reparte en partes iguales. No hay conteo de candidaturas perdidas."));
+    }), Charts.SIM) + notaSim("la taxonomía publicada se reparte en partes iguales. No hay conteo de candidaturas perdidas.") + pie("Taxonom\u00eda publicada \u00b7 simulador"));
   }
 
   function vistaMiembros() {
@@ -585,13 +589,13 @@
       celda("span-5", block("Citas de la rueda", "418 cumplieron expectativas y 15 no, sobre las mismas 433 citas. El informe redondea la efectividad a 96,5 %.", Charts.donut([
         { label: "Cumplieron", value: r.cumplieron, color: "#108181", text: String(r.cumplieron) },
         { label: "No cumplieron", value: r.citas - r.cumplieron, color: "#FBBB28", text: String(r.citas - r.cumplieron) }
-      ]))) +
+      ]) + pie("Informe gestión 2025 · corte 2025"))) +
       celda("span-7", block("Padrón de la rueda", "68 de los 200 activos fueron a la rueda. El resto del padrón no es deserción.", Charts.bars([
         { label: "En la rueda", value: r.miembros, text: String(r.miembros), color: "#00AEAC" },
         { label: "Activos sin rueda", value: inf.miembros - r.miembros, text: String(inf.miembros - r.miembros), color: "#172139" }
-      ]))) +
-      celda("span-6", block("Padrón", pastilla("retencion"), "<ul class='lista'><li><span>Activos al cierre</span><strong>" + inf.miembros + "</strong></li><li><span>Altas del año</span><strong>" + inf.altas + "</strong></li><li><span>Altas sobre el cierre</span><strong>" + num(altas * 100, 1) + " %</strong></li></ul><p class='hint'>23 / 200 no es la deserción. Falta el padrón de apertura.</p><p>Segmentos de las altas, sin conteo: " + esc(inf.segmentosAltas.join(", ")) + ".</p>")) +
-      celda("span-6", block("Expectativa del año", "Dos denominadores publicados. No es el valor de vida.", "<ul class='lista'><li><span>Por cita</span><strong>" + pesos(porCita) + "</strong></li><li><span>Por quien fue a la rueda</span><strong>" + pesos(porRueda) + "</strong></li><li><span>Por activo</span><strong>" + pesos(porActivo) + "</strong></li></ul>")));
+      ]) + pie("Informe gestión 2025 · corte 2025"))) +
+      celda("span-6", block("Padrón", pastilla("retencion"), "<ul class='lista'><li><span>Activos al cierre</span><strong>" + inf.miembros + "</strong></li><li><span>Altas del año</span><strong>" + inf.altas + "</strong></li><li><span>Altas sobre el cierre</span><strong>" + num(altas * 100, 1) + " %</strong></li></ul><p class='hint'>23 / 200 no es la deserción. Falta el padrón de apertura.</p><p>Segmentos de las altas, sin conteo: " + esc(inf.segmentosAltas.join(", ")) + ".</p>" + pie("Informe gestión 2025 · corte 2025"))) +
+      celda("span-6", block("Expectativa del año", "Dos denominadores publicados. No es el valor de vida.", "<ul class='lista'><li><span>Por cita</span><strong>" + pesos(porCita) + "</strong></li><li><span>Por quien fue a la rueda</span><strong>" + pesos(porRueda) + "</strong></li><li><span>Por activo</span><strong>" + pesos(porActivo) + "</strong></li></ul>" + pie("Informe gestión 2025 · corte 2025"))));
     html += grupo("Ejercicio y simulación",
       celda("span-6", calculadoraMiembros()) +
       celda("span-6", vidaSimulada()) +
@@ -608,14 +612,14 @@
     var vida = cuota * anos;
     return block("Valor de vida y deserción", pastilla("valor"), Charts.bars([
       { label: "Deserción del ejemplo", value: desercion, text: num(desercion, 1) + " %", sim: true }
-    ], Charts.SIM) + "<p class='hint'>Valor de vida del ejemplo: " + pesos(vida) + ".</p>" + notaSim("un padrón de apertura de 190, una cuota de $2.400.000 y 4 años. 23 sobre 200 no es la deserción."));
+    ], Charts.SIM) + "<p class='hint'>Valor de vida del ejemplo: " + pesos(vida) + ".</p>" + notaSim("un padrón de apertura de 190, una cuota de $2.400.000 y 4 años. 23 sobre 200 no es la deserci\u00f3n.") + pie("Simulador \u00b7 ejemplo 190/2.4M/4a\u00f1os"));
   }
 
   function confianzaSimulada() {
     return block("Confianza", pastilla("satisfaccion"), Charts.columns([
       { label: "Satisfacción", value: window.INFORME.satisfaccion, text: "4,9", color: "#108181" },
       { label: "Confianza", value: 3.2, text: "3,2", sim: true }
-    ]) + notaSim("una segunda marca en 3,2 sobre la escala de 1 a 5. El 4,9 sigue como satisfacción publicada."));
+    ]) + notaSim("una segunda marca en 3,2 sobre la escala de 1 a 5. El 4,9 sigue como satisfacci\u00f3n publicada.") + pie("Informe 4,9 + simulador 3,2"));
   }
 
   function calculadoraMiembros() {
@@ -633,7 +637,7 @@
       '<label>Cuota anual<input data-calc="cuota" inputmode="numeric" value="' + esc(state.calc.cuota) + '"></label>' +
       '<label>Años<input data-calc="anos" inputmode="numeric" value="' + esc(state.calc.anos) + '"></label></div>' +
       "<p class='mt'><strong>Deserción: " + (desercion == null ? "sin cálculo" : num(desercion * 100, 1) + " %") + "</strong></p>" + notaBajas +
-      "<p><strong>Valor de vida de ejercicio: " + (ltv == null ? "sin cálculo" : pesos(ltv)) + "</strong></p>");
+      "<p><strong>Valor de vida de ejercicio: " + (ltv == null ? "sin cálculo" : pesos(ltv)) + "</strong></p>" + pie("Ejercicio del usuario · no se guarda"));
   }
 
   function modal() {
