@@ -133,8 +133,12 @@
   function olaPara(anio) {
     var olas = (DATA.evi && DATA.evi.olas) || [];
     var nombre = anio <= 2024 ? "Agosto 2023 – julio 2024" : "Enero – junio 2025";
+    var cobertura = { "Agosto 2023 – julio 2024": [2023, 2024], "Enero – junio 2025": [2025] };
     var hallada = olas.find(function (ola) { return ola.ola === nombre; });
-    if (hallada) return { ola: hallada, aviso: anio >= 2026 ? "Última ola publicada. 2026 no tiene microdato en el catálogo 869." : "" };
+    if (hallada) {
+      var cubre = (cobertura[hallada.ola] || []).indexOf(anio) >= 0;
+      return { ola: hallada, aviso: cubre ? "" : "Última ola publicada (" + hallada.ola + "). " + anio + " no tiene microdato en el catálogo 869." };
+    }
     if (olas.length) return { ola: olas[olas.length - 1], aviso: "Se muestra la última ola publicada." };
     return { ola: null, aviso: "" };
   }
@@ -276,7 +280,9 @@
       if (row.tar_periodo && periodos.indexOf(row.tar_periodo) < 0) periodos.push(row.tar_periodo);
     });
     periodos.sort();
-    var grupos = periodos.slice(-6).map(function (periodo) {
+    var delAnio = periodos.filter(function (per) { return per.indexOf(String(state.anio)) === 0; });
+    if (!delAnio.length) return block("Tarifa por zona", "Medata, pesos corrientes. La ficha se modificó el 14 de diciembre de 2023.", hueco("Sin corte", "Medata no trae meses de " + state.anio + ". Último período publicado: " + periodos[periodos.length - 1] + ".") + pie("DANE EMA + MEData (corte dic-2023)"));
+    var grupos = delAnio.slice(-6).map(function (periodo) {
       return {
         label: MESES[Number(periodo.slice(4)) - 1] + " " + periodo.slice(2, 4),
         bars: serie.filter(function (row) { return row.tar_periodo === periodo; }).map(function (row) {
@@ -291,6 +297,10 @@
     var data = DATA.bureauMarca || {};
     var serie = data.serie || [];
     if (!serie.length) return hueco("Marca por LLM", "Corra scripts/alimentar_bureau.py para traer la clasificación del ETL.");
+    var mVent = String(data.ventana || data.fuente || "").match(/20\d{2}/);
+    var ventanaAnio = mVent ? Number(mVent[0]) : null;
+    var ventanaTxt = data.ventana || (mVent ? mVent[0] + " (ver fuente)" : "ventana corriente");
+    if (ventanaAnio && ventanaAnio !== state.anio) return hueco("Marca por LLM", "La clasificación LLM cubre la ventana " + ventanaTxt + ". Cambie el filtro a " + ventanaAnio + " para verla.");
     var total = serie.reduce(function (s, row) { return s + (row.n || 0); }, 0);
     var items = serie.map(function (row, i) {
       return { label: row.categoria, value: row.n, text: num(row.n) + " · " + num((row.share || 0) * 100, 1) + "%", color: Charts.palette[i % Charts.palette.length] };
@@ -421,7 +431,7 @@
       kpi("huella", "Huella estimada", huella && huella.kg_total != null ? num(huella.kg_total, 1) + " kg" : "—", "ida + alojamiento") +
       "</div>";
     html += grupo("Estadía",
-      celda("span-12", block("Gasto mensual de la estadía", "Promedio ponderado de los no residentes en José María Córdova. " + state.anio + ".", movimiento + pie("EVI " + ola.ola))) +
+      celda("span-12", block("Gasto mensual de la estadía", "Promedio ponderado de los no residentes en José María Córdova. " + (meses.length ? state.anio + "." : "Sin serie mensual en " + state.anio + "; composiciones de la ola " + ola.ola + "."), movimiento + pie("EVI " + ola.ola))) +
       celda("span-6", block("Grupo de viaje", "Ponderado con el factor de expansión. n de encuestas: " + num(ola.n) + ".", Charts.donut((ola.grupo || []).map(function (g, i) {
         return { label: g.nombre, value: g.participacion, color: Charts.palette[i], text: num(g.participacion, 1) + "%" };
       })) + pie("EVI " + ola.ola))) +
@@ -479,6 +489,7 @@
     var aporteAsistente = inf.impactoUsd / inf.asistentes;
     var html = "";
     if (state.anio !== 2025) html += '<p class="aviso">El informe citado es el corte 2025. El filtro de año no fabrica otro corte.</p>';
+    if (state.anio === 2026) html += '<p class="aviso">El gasto EVI del índice usa la última ola (enero – junio 2025). 2026 no tiene microdato.</p>';
     html += '<div class="stocks">' + inf.flujo.map(function (item) {
       return '<article class="stock"><div class="k">' + esc(item.etiqueta) + '</div><div class="v">' + esc(item.valor) + '</div><p>' + esc(item.detalle || item.universo) + "</p></article>";
     }).join("") + "</div>";
@@ -531,7 +542,7 @@
         ]
       };
     });
-    return block("Prioridad de mercado", "Cada barra va de 0 a 100 dentro de su componente. El índice usa 40 % pasajeros, 30 % llegadas y 30 % gasto EVI. Colombia no tiene gasto en esa encuesta. No es el scoring de organizadores.", Charts.grouped(grupos) + pie("Aerocivil + EVI \u00b7 A\u00f1o " + state.anio));
+    return block("Prioridad de mercado", "Cada barra va de 0 a 100 dentro de su componente. El índice usa 40 % pasajeros, 30 % llegadas y 30 % gasto EVI. Colombia no tiene gasto en esa encuesta. No es el scoring de organizadores.", Charts.grouped(grupos) + pie("Aerocivil A\u00f1o " + state.anio + " + EVI " + (paquete.ola ? paquete.ola.ola : "sin ola")));
   }
 
   function costoSimulado(aporteEvento) {
