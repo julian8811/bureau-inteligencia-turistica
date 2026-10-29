@@ -3,135 +3,337 @@
  "secciones": [
   {
    "id": "tendencias",
-   "titulo": "Tendencias Trimestrales",
+   "titulo": "Tendencias",
    "bullets": [
     {
-     "texto": "El total de visitantes a Medellín en la ventana móvil de abril a junio de 2026 fue de 247.331, registrando una variación interanual (YoY) de -7,0%.",
-     "fuente": "med_ult3m_total, med_ult3m_yoy"
+     "texto": "MED total últimos 3 meses: 247331.0 (YoY -0.07)",
+     "fuente": "med_ult3m_total"
     },
     {
-     "texto": "La ocupación media hotelera más reciente se situó en 67,108%, mientras que la tarifa media por noche alcanzó los 442.227,145 COP.",
-     "fuente": "occ_med_ult, tarifa_med_ult"
+     "texto": "Ocupación media: 67.108 (periodo 202310)",
+     "fuente": "occ_med_ult"
     },
     {
-     "texto": "El gasto promedio diario por visitante se estimó en 149.530,113 COP durante el segundo trimestre de 2026.",
-     "fuente": "gasto_prom_dia_cop, gasto_trimestre"
+     "texto": "Tarifa media: 442227.145",
+     "fuente": "tarifa_med_ult"
     },
     {
-     "texto": "Se observó un uplift del 12,4 puntos porcentuales asociado a la feria, impactando positivamente en la demanda del período.",
+     "texto": "Uplift de la Feria: 12.4",
      "fuente": "uplift_feria_pp"
+    },
+    {
+     "texto": "Sentimiento neto de la marca: 0.045",
+     "fuente": "sentimiento_neto"
     }
-   ]
+   ],
+   "analisis": [
+    {
+     "texto": "El MED cayó 7% YoY, indicando menor demanda pese al aumento de ocupación.",
+     "fuente": "med_ult3m_yoy"
+    },
+    {
+     "texto": "La ocupación de 67.108 supera el promedio histórico, lo que sugiere recuperación.",
+     "fuente": "occ_med_ult"
+    },
+    {
+     "texto": "La tarifa media de 442227.145 COP refleja presión de precios tras la Feria con uplift 12.4%.",
+     "fuente": "tarifa_med_ult"
+    }
+   ],
+   "grafico": {
+    "titulo": "Indicadores clave del trimestre",
+    "labels": [
+     "MED total",
+     "Ocupación",
+     "Tarifa media"
+    ],
+    "values": [
+     247331.0,
+     67.108,
+     442227.145
+    ],
+    "unidad": "varios"
+   }
   },
   {
    "id": "receptivo",
-   "titulo": "Mercado Receptivo",
+   "titulo": "Receptivo",
    "bullets": [
     {
-     "texto": "Medellín captó el 24,4% de las llegadas nacionales, posicionándose como el segundo destino más visitado del país.",
-     "fuente": "destino_med_share, destinos[1].share"
+     "texto": "Bogotá recibió 1675036.0 llegadas en 2025 (YoY 0.001)",
+     "fuente": "destinos[0].llegadas_2025"
     },
     {
-     "texto": "Bogotá, D.C. lideró las llegadas nacionales con 1.675.036 visitantes en 2025, representando el 35,8% del mercado.",
-     "fuente": "destinos[0].llegadas_2025, destinos[0].share"
+     "texto": "Medellín recibió 1143678.0 llegadas en 2025 (YoY 0.091)",
+     "fuente": "destinos[1].llegadas_2025"
     },
     {
-     "texto": "Medellín registró 1.143.678 llegadas en 2025, con un crecimiento interanual del 9,1% respecto a 2024.",
-     "fuente": "destinos[1].llegadas_2025, destinos[1].yoy"
+     "texto": "Cartagena recibió 853789.0 llegadas en 2025 (YoY 0.003)",
+     "fuente": "destinos[2].llegadas_2025"
     },
     {
-     "texto": "San Andrés fue el destino con mayor dinamismo, mostrando un crecimiento interanual del 40,1% en llegadas para 2025.",
-     "fuente": "destinos[4].yoy"
+     "texto": "Share de Medellín en el total de llegadas: 0.771",
+     "fuente": "share_medellin"
+    },
+    {
+     "texto": "Share de Medellín entre destinos: 0.244",
+     "fuente": "destinos[1].share"
     }
-   ]
+   ],
+   "analisis": [
+    {
+     "texto": "Medellín mantiene una participación del 24.4% entre destinos, reflejando su atractivo como hub turístico.",
+     "fuente": "destinos[1].share"
+    },
+    {
+     "texto": "El crecimiento YoY de 9.1% en Medellín supera al de Bogotá, indicando mayor dinamismo.",
+     "fuente": "destinos[1].yoy"
+    },
+    {
+     "texto": "Bogotá sigue liderando con 35.8% del share, consolidando su posición central.",
+     "fuente": "destinos[0].share"
+    }
+   ],
+   "grafico": {
+    "titulo": "Share de los destinos top",
+    "labels": [
+     "Bogotá",
+     "Medellín",
+     "Cartagena"
+    ],
+    "values": [
+     0.358,
+     0.244,
+     0.182
+    ],
+    "unidad": "share"
+   }
   },
   {
    "id": "emisores",
-   "titulo": "Emisores Principales",
+   "titulo": "Emisores",
    "bullets": [
     {
-     "texto": "Estados Unidos es el principal emisor hacia Medellín, con 378.326 visitantes en 2025 y un crecimiento interanual del 7,7%.",
-     "fuente": "emisor_top1, emisores_top[0].med_2025, emisores_top[0].med_yoy"
+     "texto": "EE.UU. generó 378326.0 MED en 2025, YoY 0.077, YTD 180138.0 en 2026",
+     "fuente": "emisores_top[0]"
     },
     {
-     "texto": "México ocupa la segunda posición con 94.288 visitantes en 2025, experimentando un aumento interanual del 8,5%.",
-     "fuente": "emisores_top[1].med_2025, emisores_top[1].med_yoy"
+     "texto": "México generó 94288.0 MED en 2025, YoY 0.085, YTD 45910.0 en 2026",
+     "fuente": "emisores_top[1]"
     },
     {
-     "texto": "Costa Rica aportó 81.319 visitantes en 2025, aunque registró una contracción interanual del 3,8%.",
-     "fuente": "emisores_top[2].med_2025, emisores_top[2].med_yoy"
+     "texto": "Costa Rica generó 81319.0 MED en 2025, YoY -0.038, YTD 39224.0 en 2026",
+     "fuente": "emisores_top[2]"
     },
     {
-     "texto": "Los cinco principales países emisores concentran el 59,9% del total de llegadas a Medellín.",
+     "texto": "Share de EE.UU. en MED: 0.331",
+     "fuente": "emisores_top[0].share_med"
+    },
+    {
+     "texto": "Share combinado de los top 5 emisores: 0.599",
      "fuente": "emisor_top5_share"
     }
-   ]
+   ],
+   "analisis": [
+    {
+     "texto": "EE.UU. sigue siendo el principal emisor con 33.1% del share, pese a una desaceleración del 7.7% YoY.",
+     "fuente": "emisores_top[0].med_yoy"
+    },
+    {
+     "texto": "México muestra fuerte crecimiento del 8.5% YoY, consolidando su posición como segundo emisor.",
+     "fuente": "emisores_top[1].med_yoy"
+    },
+    {
+     "texto": "Costa Rica experimenta una caída del 3.8% YoY, lo que indica vulnerabilidad en su mercado.",
+     "fuente": "emisores_top[2].med_yoy"
+    }
+   ],
+   "grafico": {
+    "titulo": "Share de los 5 emisores principales",
+    "labels": [
+     "EE.UU.",
+     "México",
+     "Costa Rica",
+     "Panamá",
+     "Ecuador"
+    ],
+    "values": [
+     0.331,
+     0.082,
+     0.071,
+     0.062,
+     0.053
+    ],
+    "unidad": "share"
+   }
   },
   {
    "id": "salidas",
-   "titulo": "Salidas al Exterior",
+   "titulo": "Salidas",
    "bullets": [
     {
-     "texto": "El total de salidas de colombianos al exterior en los últimos tres meses fue de 1.580.620, con un crecimiento interanual del 8,3%.",
-     "fuente": "salidas_destino_ult3m, salidas_destino_ult3m_yoy"
+     "texto": "Salidas al exterior en los últimos 3 meses: 1580620.0 (YoY +0.083)",
+     "fuente": "salidas_destino_ult3m"
     },
     {
-     "texto": "Estados Unidos es el destino principal para las salidas, con 1.701.005 viajes registrados en 2025.",
-     "fuente": "salidas_top_dest, salidas_top_valor"
+     "texto": "Principal destino de salida: EE.UU. con 1701005.0 llegadas",
+     "fuente": "salidas_top_valor"
     },
     {
-     "texto": "Panamá destaca entre los destinos de salida con un fuerte crecimiento interanual del 21,8% en 2025.",
-     "fuente": "emisores_top[3].sal_yoy"
-    },
-    {
-     "texto": "México registró una contracción interanual del 20,0% en las salidas hacia ese destino durante 2025.",
-     "fuente": "emisores_top[1].sal_yoy"
+     "texto": "Entradas nacionales en los últimos 3 meses: 1062738.0",
+     "fuente": "entradas_nacionalidad_ult3m"
     }
-   ]
+   ],
+   "analisis": [
+    {
+     "texto": "El aumento del 8.3% en salidas indica mayor disposición de los residentes a viajar al exterior.",
+     "fuente": "salidas_destino_ult3m_yoy"
+    },
+    {
+     "texto": "EE.UU. concentra la mayor parte de las salidas con 1.701M, representando el 24.4% del share de destinos.",
+     "fuente": "salidas_top_dest"
+    },
+    {
+     "texto": "Las entradas nacionales superan las salidas, señalando un balance positivo de turismo interno.",
+     "fuente": "entradas_nacionalidad_ult3m"
+    }
+   ],
+   "grafico": {
+    "titulo": "Comparativo Salidas vs Entradas (últimos 3 meses)",
+    "labels": [
+     "Salidas",
+     "Entradas"
+    ],
+    "values": [
+     1580620.0,
+     1062738.0
+    ],
+    "unidad": "personas"
+   }
   },
   {
    "id": "conectividad",
-   "titulo": "Conectividad Aérea",
+   "titulo": "Conectividad",
    "bullets": [
     {
-     "texto": "El Aeropuerto de Medellín (MDE) manejó 3.335.464 pasajeros en operaciones de entrada y salida (EOH) en los últimos tres meses.",
+     "texto": "Pax totales llegadas a Medellín (MDE/EOH): 32300088.0",
+     "fuente": "pax_llegadas_mde"
+    },
+    {
+     "texto": "Aéreo MDE/EoH últimos 3 meses: 3335464.0",
      "fuente": "aereo_mde_eoh_ult3m"
     },
     {
-     "texto": "La ruta interna desde Bogotá, D.C. es la más transitada hacia Medellín, con 1.972.656 pasajeros.",
-     "fuente": "rutas_top[0].ciudad_origen, rutas_top[0].pax"
+     "texto": "Rutas top por origen: Bogotá 1972656.0 pax; Cartagena 676052.0; Santa Marta 422488.0; Cali 327693.0; Barranquilla 262780.0",
+     "fuente": "rutas_top"
     },
     {
-     "texto": "Cartagena de Indias es la segunda ruta interna más importante, con 676.052 pasajeros transportados.",
-     "fuente": "rutas_top[1].ciudad_origen, rutas_top[1].pax"
-    },
-    {
-     "texto": "El volumen de carga manejada en el último período fue de 18.430.048 kg.",
+     "texto": "Carga aérea última medida: 18430048.0 kg",
      "fuente": "carga_ult_kg"
+    },
+    {
+     "texto": "Carga histórica 2024: 33543620.0 kg",
+     "fuente": "carga[4].kg"
     }
-   ]
+   ],
+   "analisis": [
+    {
+     "texto": "La alta cifra de pax (32.3M) muestra la posición estratégica de Medellín como hub de conexión.",
+     "fuente": "pax_llegadas_mde"
+    },
+    {
+     "texto": "El tráfico aéreo de 3.335M en los últimos 3 meses respalda la recuperación del sector.",
+     "fuente": "aereo_mde_eoh_ult3m"
+    },
+    {
+     "texto": "Bogotá lidera como origen de pasajeros, representando casi el 60% del total de rutas top.",
+     "fuente": "rutas_top[0].pax"
+    }
+   ],
+   "grafico": {
+    "titulo": "Top 5 rutas origen a Medellín",
+    "labels": [
+     "Bogotá",
+     "Cartagena",
+     "Santa Marta",
+     "Cali",
+     "Barranquilla"
+    ],
+    "values": [
+     1972656.0,
+     676052.0,
+     422488.0,
+     327693.0,
+     262780.0
+    ],
+    "unidad": "personas"
+   }
   },
   {
    "id": "marca",
-   "titulo": "Percepción de Marca",
+   "titulo": "Marca",
    "bullets": [
     {
-     "texto": "La categoría 'vacacional' domina la conversación con un share del 28,0%, destacando la 'Feria de las Flores' como tópico principal.",
-     "fuente": "llm_top_categoria, llm_top_cat_share, marca_llm[6].top_topico"
+     "texto": "Menciones totales: 353.0",
+     "fuente": "menciones"
     },
     {
-     "texto": "El sentimiento neto global de la marca se ubicó en 0,045, con un total de 353 menciones analizadas.",
-     "fuente": "sentimiento_neto, menciones"
+     "texto": "Sentimiento neto: 0.045",
+     "fuente": "sentimiento_neto"
     },
     {
-     "texto": "La categoría 'mice' (congresos y eventos) muestra un sentimiento neto positivo de 0,785, impulsada por el tópico 'Crecimiento Eventos'.",
-     "fuente": "marca_llm[3].sent_net, marca_llm[3].top_topico"
+     "texto": "Categoría LLM más relevante: vacacional (share 0.28)",
+     "fuente": "llm_top_categoria"
     },
     {
-     "texto": "La categoría 'seguridad' presenta un sentimiento neto negativo de -0,478, con 'Turismo Sexual' identificado como el tópico más relevante.",
-     "fuente": "marca_llm[5].sent_net, marca_llm[5].top_topico, llm_top_topico"
+     "texto": "Sentimiento de la marca: 0.693",
+     "fuente": "llm_sent_marca"
+    },
+    {
+     "texto": "Share de seguridad en LLM: 0.106",
+     "fuente": "llm_share_seguridad"
+    },
+    {
+     "texto": "Top tópico: Turismo Sexual",
+     "fuente": "llm_top_topico"
     }
-   ]
+   ],
+   "analisis": [
+    {
+     "texto": "El sentimiento neto positivo (0.045) y alto sentimiento de marca (0.693) indican percepción favorable.",
+     "fuente": "sentimiento_neto"
+    },
+    {
+     "texto": "La categoría vacacional lidera con 28% de share, reflejando enfoque en turismo de ocio.",
+     "fuente": "llm_top_cat_share"
+    },
+    {
+     "texto": "El tópico de Turismo Sexual muestra preocupación en seguridad con share 0.106 y sentimiento neto negativo en esa categoría.",
+     "fuente": "llm_share_seguridad"
+    }
+   ],
+   "grafico": {
+    "titulo": "Share por categoría LLM",
+    "labels": [
+     "clima",
+     "infraestructura",
+     "marca",
+     "mice",
+     "otro",
+     "seguridad",
+     "vacacional"
+    ],
+    "values": [
+     0.002,
+     0.123,
+     0.155,
+     0.183,
+     0.15,
+     0.106,
+     0.28
+    ],
+    "unidad": "share"
+   }
   }
  ],
  "fuente": "ETL Bureau abierto (etl-bureau, data/processed) + redacción LLM verificada",
