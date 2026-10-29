@@ -1,0 +1,342 @@
+{
+ "corte": "2026-10-29",
+ "secciones": [
+  {
+   "id": "tendencias",
+   "titulo": "Tendencias",
+   "bullets": [
+    {
+     "texto": "MED total últimos 3 meses: 247331.0 (YoY -0.07)",
+     "fuente": "med_ult3m_total"
+    },
+    {
+     "texto": "Ocupación media: 67.108 (periodo 202310)",
+     "fuente": "occ_med_ult"
+    },
+    {
+     "texto": "Tarifa media: 442227.145",
+     "fuente": "tarifa_med_ult"
+    },
+    {
+     "texto": "Uplift de la Feria: 12.4",
+     "fuente": "uplift_feria_pp"
+    },
+    {
+     "texto": "Sentimiento neto de la marca: 0.045",
+     "fuente": "sentimiento_neto"
+    }
+   ],
+   "analisis": [
+    {
+     "texto": "El MED cayó 7% YoY, indicando menor demanda pese al aumento de ocupación.",
+     "fuente": "med_ult3m_yoy"
+    },
+    {
+     "texto": "La ocupación de 67.108 supera el promedio histórico, lo que sugiere recuperación.",
+     "fuente": "occ_med_ult"
+    },
+    {
+     "texto": "La tarifa media de 442227.145 COP refleja presión de precios tras la Feria con uplift 12.4%.",
+     "fuente": "tarifa_med_ult"
+    }
+   ],
+   "grafico": {
+    "titulo": "Indicadores clave del trimestre",
+    "labels": [
+     "MED total",
+     "Ocupación",
+     "Tarifa media"
+    ],
+    "values": [
+     247331.0,
+     67.108,
+     442227.145
+    ],
+    "unidad": "varios"
+   }
+  },
+  {
+   "id": "receptivo",
+   "titulo": "Receptivo",
+   "bullets": [
+    {
+     "texto": "Bogotá recibió 1675036.0 llegadas en 2025 (YoY 0.001)",
+     "fuente": "destinos[0].llegadas_2025"
+    },
+    {
+     "texto": "Medellín recibió 1143678.0 llegadas en 2025 (YoY 0.091)",
+     "fuente": "destinos[1].llegadas_2025"
+    },
+    {
+     "texto": "Cartagena recibió 853789.0 llegadas en 2025 (YoY 0.003)",
+     "fuente": "destinos[2].llegadas_2025"
+    },
+    {
+     "texto": "Share de Medellín en el total de llegadas: 0.771",
+     "fuente": "share_medellin"
+    },
+    {
+     "texto": "Share de Medellín entre destinos: 0.244",
+     "fuente": "destinos[1].share"
+    }
+   ],
+   "analisis": [
+    {
+     "texto": "Medellín mantiene una participación del 24.4% entre destinos, reflejando su atractivo como hub turístico.",
+     "fuente": "destinos[1].share"
+    },
+    {
+     "texto": "El crecimiento YoY de 9.1% en Medellín supera al de Bogotá, indicando mayor dinamismo.",
+     "fuente": "destinos[1].yoy"
+    },
+    {
+     "texto": "Bogotá sigue liderando con 35.8% del share, consolidando su posición central.",
+     "fuente": "destinos[0].share"
+    }
+   ],
+   "grafico": {
+    "titulo": "Share de los destinos top",
+    "labels": [
+     "Bogotá",
+     "Medellín",
+     "Cartagena"
+    ],
+    "values": [
+     0.358,
+     0.244,
+     0.182
+    ],
+    "unidad": "share"
+   }
+  },
+  {
+   "id": "emisores",
+   "titulo": "Emisores",
+   "bullets": [
+    {
+     "texto": "EE.UU. generó 378326.0 MED en 2025, YoY 0.077, YTD 180138.0 en 2026",
+     "fuente": "emisores_top[0]"
+    },
+    {
+     "texto": "México generó 94288.0 MED en 2025, YoY 0.085, YTD 45910.0 en 2026",
+     "fuente": "emisores_top[1]"
+    },
+    {
+     "texto": "Costa Rica generó 81319.0 MED en 2025, YoY -0.038, YTD 39224.0 en 2026",
+     "fuente": "emisores_top[2]"
+    },
+    {
+     "texto": "Share de EE.UU. en MED: 0.331",
+     "fuente": "emisores_top[0].share_med"
+    },
+    {
+     "texto": "Share combinado de los top 5 emisores: 0.599",
+     "fuente": "emisor_top5_share"
+    }
+   ],
+   "analisis": [
+    {
+     "texto": "EE.UU. sigue siendo el principal emisor con 33.1% del share, pese a una desaceleración del 7.7% YoY.",
+     "fuente": "emisores_top[0].med_yoy"
+    },
+    {
+     "texto": "México muestra fuerte crecimiento del 8.5% YoY, consolidando su posición como segundo emisor.",
+     "fuente": "emisores_top[1].med_yoy"
+    },
+    {
+     "texto": "Costa Rica experimenta una caída del 3.8% YoY, lo que indica vulnerabilidad en su mercado.",
+     "fuente": "emisores_top[2].med_yoy"
+    }
+   ],
+   "grafico": {
+    "titulo": "Share de los 5 emisores principales",
+    "labels": [
+     "EE.UU.",
+     "México",
+     "Costa Rica",
+     "Panamá",
+     "Ecuador"
+    ],
+    "values": [
+     0.331,
+     0.082,
+     0.071,
+     0.062,
+     0.053
+    ],
+    "unidad": "share"
+   }
+  },
+  {
+   "id": "salidas",
+   "titulo": "Salidas",
+   "bullets": [
+    {
+     "texto": "Salidas al exterior en los últimos 3 meses: 1580620.0 (YoY +0.083)",
+     "fuente": "salidas_destino_ult3m"
+    },
+    {
+     "texto": "Principal destino de salida: EE.UU. con 1701005.0 llegadas",
+     "fuente": "salidas_top_valor"
+    },
+    {
+     "texto": "Entradas nacionales en los últimos 3 meses: 1062738.0",
+     "fuente": "entradas_nacionalidad_ult3m"
+    }
+   ],
+   "analisis": [
+    {
+     "texto": "El aumento del 8.3% en salidas indica mayor disposición de los residentes a viajar al exterior.",
+     "fuente": "salidas_destino_ult3m_yoy"
+    },
+    {
+     "texto": "EE.UU. concentra la mayor parte de las salidas con 1.701M, representando el 24.4% del share de destinos.",
+     "fuente": "salidas_top_dest"
+    },
+    {
+     "texto": "Las entradas nacionales superan las salidas, señalando un balance positivo de turismo interno.",
+     "fuente": "entradas_nacionalidad_ult3m"
+    }
+   ],
+   "grafico": {
+    "titulo": "Comparativo Salidas vs Entradas (últimos 3 meses)",
+    "labels": [
+     "Salidas",
+     "Entradas"
+    ],
+    "values": [
+     1580620.0,
+     1062738.0
+    ],
+    "unidad": "personas"
+   }
+  },
+  {
+   "id": "conectividad",
+   "titulo": "Conectividad",
+   "bullets": [
+    {
+     "texto": "Pax totales llegadas a Medellín (MDE/EOH): 32300088.0",
+     "fuente": "pax_llegadas_mde"
+    },
+    {
+     "texto": "Aéreo MDE/EoH últimos 3 meses: 3335464.0",
+     "fuente": "aereo_mde_eoh_ult3m"
+    },
+    {
+     "texto": "Rutas top por origen: Bogotá 1972656.0 pax; Cartagena 676052.0; Santa Marta 422488.0; Cali 327693.0; Barranquilla 262780.0",
+     "fuente": "rutas_top"
+    },
+    {
+     "texto": "Carga aérea última medida: 18430048.0 kg",
+     "fuente": "carga_ult_kg"
+    },
+    {
+     "texto": "Carga histórica 2024: 33543620.0 kg",
+     "fuente": "carga[4].kg"
+    }
+   ],
+   "analisis": [
+    {
+     "texto": "La alta cifra de pax (32.3M) muestra la posición estratégica de Medellín como hub de conexión.",
+     "fuente": "pax_llegadas_mde"
+    },
+    {
+     "texto": "El tráfico aéreo de 3.335M en los últimos 3 meses respalda la recuperación del sector.",
+     "fuente": "aereo_mde_eoh_ult3m"
+    },
+    {
+     "texto": "Bogotá lidera como origen de pasajeros, representando casi el 60% del total de rutas top.",
+     "fuente": "rutas_top[0].pax"
+    }
+   ],
+   "grafico": {
+    "titulo": "Top 5 rutas origen a Medellín",
+    "labels": [
+     "Bogotá",
+     "Cartagena",
+     "Santa Marta",
+     "Cali",
+     "Barranquilla"
+    ],
+    "values": [
+     1972656.0,
+     676052.0,
+     422488.0,
+     327693.0,
+     262780.0
+    ],
+    "unidad": "personas"
+   }
+  },
+  {
+   "id": "marca",
+   "titulo": "Marca",
+   "bullets": [
+    {
+     "texto": "Menciones totales: 353.0",
+     "fuente": "menciones"
+    },
+    {
+     "texto": "Sentimiento neto: 0.045",
+     "fuente": "sentimiento_neto"
+    },
+    {
+     "texto": "Categoría LLM más relevante: vacacional (share 0.28)",
+     "fuente": "llm_top_categoria"
+    },
+    {
+     "texto": "Sentimiento de la marca: 0.693",
+     "fuente": "llm_sent_marca"
+    },
+    {
+     "texto": "Share de seguridad en LLM: 0.106",
+     "fuente": "llm_share_seguridad"
+    },
+    {
+     "texto": "Top tópico: Turismo Sexual",
+     "fuente": "llm_top_topico"
+    }
+   ],
+   "analisis": [
+    {
+     "texto": "El sentimiento neto positivo (0.045) y alto sentimiento de marca (0.693) indican percepción favorable.",
+     "fuente": "sentimiento_neto"
+    },
+    {
+     "texto": "La categoría vacacional lidera con 28% de share, reflejando enfoque en turismo de ocio.",
+     "fuente": "llm_top_cat_share"
+    },
+    {
+     "texto": "El tópico de Turismo Sexual muestra preocupación en seguridad con share 0.106 y sentimiento neto negativo en esa categoría.",
+     "fuente": "llm_share_seguridad"
+    }
+   ],
+   "grafico": {
+    "titulo": "Share por categoría LLM",
+    "labels": [
+     "clima",
+     "infraestructura",
+     "marca",
+     "mice",
+     "otro",
+     "seguridad",
+     "vacacional"
+    ],
+    "values": [
+     0.002,
+     0.123,
+     0.155,
+     0.183,
+     0.15,
+     0.106,
+     0.28
+    ],
+    "unidad": "share"
+   }
+  }
+ ],
+ "fuente": "ETL Bureau abierto (etl-bureau, data/processed) + redacción LLM verificada",
+ "licencia": "Datos abiertos procesados por el ETL Bureau; insumo Aerocivil/DANE abierto.",
+ "estado": "ok"
+}
