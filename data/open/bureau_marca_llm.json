@@ -1,61 +1,11 @@
 {
  "id": "marca-llm",
  "titulo": "Conversación digital clasificada por LLM",
- "fuente": "ETL Bureau (alerts_rss + prensa_rss, Groq) 2026-10 a 2026-10",
+ "fuente": "ETL Bureau (alerts_rss + prensa_rss, Groq) 2025-2026",
  "url": "https://raw.githubusercontent.com/julian8811/bureau-inteligencia-turistica/main/etl-bureau/export/tableros_bureau/marca_llm_2025_2026.json",
  "licencia": "Agregados propios del ETL; titulares de sus medios originales.",
  "universo": "Titulares de la ventana corriente clasificados en MICE/vacacional/marca/seguridad/clima/infraestructura/otro.",
- "serie": [
-  {
-   "categoria": "vacacional",
-   "n": 121,
-   "share": 0.2801,
-   "sent_net": 0.545,
-   "top_topico": "Feria Flores"
-  },
-  {
-   "categoria": "mice",
-   "n": 79,
-   "share": 0.1829,
-   "sent_net": 0.785,
-   "top_topico": "Crecimiento Eventos"
-  },
-  {
-   "categoria": "marca",
-   "n": 67,
-   "share": 0.1551,
-   "sent_net": 0.851,
-   "top_topico": "turismo sostenible"
-  },
-  {
-   "categoria": "otro",
-   "n": 65,
-   "share": 0.1505,
-   "sent_net": 0.262,
-   "top_topico": "Ritvales 2025 cartel"
-  },
-  {
-   "categoria": "infraestructura",
-   "n": 53,
-   "share": 0.1227,
-   "sent_net": 0.453,
-   "top_topico": "Cierres Viales Feria"
-  },
-  {
-   "categoria": "seguridad",
-   "n": 46,
-   "share": 0.1065,
-   "sent_net": -0.478,
-   "top_topico": "Turismo Sexual"
-  },
-  {
-   "categoria": "clima",
-   "n": 1,
-   "share": 0.0023,
-   "sent_net": 0.0,
-   "top_topico": "Lluvias Medellín"
-  }
- ],
- "top_topico_global": "Feria Flores",
- "n_total": 432
+ "serie": [],
+ "top_topico_global": null,
+ "n_total": 0
 }
