@@ -90,6 +90,18 @@
    "id": "bureau-paises",
    "estado": "ok",
    "n": 788
+  },
+  {
+   "archivo": "data/open/bureau_marca_llm.json",
+   "id": "marca-llm",
+   "estado": "ok",
+   "n": 7
+  },
+  {
+   "archivo": "data/open/bureau_paises_2025_2026.json",
+   "id": "bureau-paises",
+   "estado": "ok",
+   "n": 788
   }
  ],
  "errores": [
