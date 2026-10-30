@@ -1,7 +1,7 @@
 name: daily-bureau
 on:
   schedule:
-    - cron: "0 11 * * *"  # 06:00 America/Bogota
+    - cron: "0 13 * * *"  # 08:00 America/Bogota (Colombia no tiene DST)
   workflow_dispatch:
 
 jobs:
