@@ -11,3 +11,4 @@ uvicorn>=0.29
 
 # Dashboard estatico HTML puro (sin Streamlit/Plotly desde 28-oct).
 # Legado: dashboard/app_streamlit_legacy.py solo para consulta, no se instala.
+playwright>=1.40
