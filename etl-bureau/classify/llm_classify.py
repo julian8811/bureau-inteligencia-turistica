@@ -24,8 +24,10 @@ import requests
 BASE = Path(__file__).resolve().parents[1]
 RAW = BASE / "data" / "raw"
 GROQ_URL = "https://api.groq.com/openai/v1/chat/completions"
-MODEL = "llama-3.3-70b-versatile"
-BATCH = 50
+# Groq retira modelos sin aviso largo (llama-3.3-70b-versatile murio el 16-ago-2026).
+# Orden: reemplazo oficial para clasificacion ES, luego flagship, luego liviano.
+MODELS = ["qwen/qwen3.8-27b", "openai/gpt-oss-120b", "openai/gpt-oss-20b"]
+BATCH = 25
 COLS = ["fecha", "medio", "titulo", "link", "categoria", "sentimiento", "topico", "modelo"]
 
 SYSTEM = (
@@ -67,24 +69,50 @@ def _load_titulares() -> pd.DataFrame:
     return out.drop_duplicates(subset=["titulo"]).reset_index(drop=True)
 
 
-def _chat(messages: list, api_key: str) -> str:
-    r = requests.post(
-        GROQ_URL,
-        headers={"Authorization": f"Bearer {api_key}", "Content-Type": "application/json"},
-        json={"model": MODEL, "messages": messages, "temperature": 0, "max_tokens": 4000},
-        timeout=90,
-    )
-    if r.status_code == 429:
-        print("[classify] 429 cuota -> backoff 60s + 1 reintento")
-        time.sleep(60)
-        r = requests.post(
-            GROQ_URL,
-            headers={"Authorization": f"Bearer {api_key}", "Content-Type": "application/json"},
-            json={"model": MODEL, "messages": messages, "temperature": 0, "max_tokens": 4000},
-            timeout=90,
-        )
-    r.raise_for_status()
-    return r.json()["choices"][0]["message"]["content"]
+_MODEL_USED = MODELS[0]
+
+
+def _payload(m: str, messages: list) -> dict:
+    return {"model": m, "messages": messages, "temperature": 0, "max_tokens": 4000}
+
+
+GEMINI_URL = "https://generativelanguage.googleapis.com/v1beta/openai/chat/completions"
+GEMINI_MODELS = ["gemini-3.6-flash"]
+
+
+def _chat(messages: list, api_key: str) -> tuple:
+    """Prueba modelos en orden; ante 404 pasa al siguiente, ante 429 reintenta; fallback a Gemini."""
+    global _MODEL_USED
+    last_err = None
+    provs = [(GROQ_URL, api_key, MODELS)]
+    gem_key = os.environ.get("GEMINI_API_KEY", "")
+    if gem_key:
+        provs.append((GEMINI_URL, gem_key, GEMINI_MODELS))
+    for url, key, modelos in provs:
+        headers = {"Authorization": f"Bearer {key}", "Content-Type": "application/json"}
+        for model in modelos:
+            for attempt in range(3):
+                if attempt:
+                    wait = 60 if attempt == 1 else 120
+                    print(f"[classify] 429 cuota -> backoff {wait}s (intento {attempt + 1}/3)")
+                    time.sleep(wait)
+                try:
+                    r = requests.post(url, headers=headers,
+                                      json=_payload(model, messages), timeout=90)
+                except Exception as e:
+                    last_err = e
+                    break
+                if r.status_code == 404:
+                    print(f"[classify] modelo retirado {model} -> siguiente")
+                    last_err = RuntimeError(f"404 {model}")
+                    break
+                if r.status_code == 429:
+                    last_err = RuntimeError("429 cuota")
+                    continue
+                r.raise_for_status()
+                _MODEL_USED = model
+                return r.json()["choices"][0]["message"]["content"], model
+    raise RuntimeError(f"sin modelos disponibles: {last_err}")
 
 
 def _parse(text: str) -> list:
@@ -105,10 +133,11 @@ def _classify_batch(items: list, api_key: str) -> list:
         f'{i}. {t["titulo"][:220]}' for i, t in enumerate(items)
     )
     try:
-        data = _parse(_chat(
+        text, model = _chat(
             [{"role": "system", "content": SYSTEM}, {"role": "user", "content": user}],
             api_key,
-        ))
+        )
+        data = _parse(text)
     except Exception as e:
         print(f"[classify][WARN] lote fallido: {str(e)[:150]}")
         return []
@@ -123,7 +152,7 @@ def _classify_batch(items: list, api_key: str) -> list:
             "titulo": it["titulo"], "link": it.get("link", ""),
             "categoria": str(d.get("cat", "otro")).lower()[:20],
             "sentimiento": str(d.get("sent", "neu")).lower()[:4],
-            "topico": str(d.get("top", ""))[:60], "modelo": MODEL,
+            "topico": str(d.get("top", ""))[:60], "modelo": _MODEL_USED,
         })
     return out
 
@@ -144,7 +173,7 @@ def run() -> list:
         chunk = recs[i:i + BATCH]
         rows.extend(_classify_batch(chunk, api_key))
         print(f"[classify] lote {i // BATCH + 1}: {len(rows)} clasificados de {len(recs)}")
-        time.sleep(3)  # pacing anti-429
+        time.sleep(15)  # pacing anti-429 (cuota free acotada en TPM)
     out = pd.DataFrame({c: [r.get(c, "") for r in rows] for c in COLS})
     p = RAW / _today() / "clasificacion_llm.csv"
     out.to_csv(p, index=False)
