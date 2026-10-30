@@ -42,3 +42,22 @@ jobs:
           git add etl-bureau/data/processed etl-bureau/export etl-bureau/web/data etl-bureau/informes 2>/dev/null || true
           git diff --cached --quiet || git commit -m "data(etl): daily $(date -u +%F)"
           git push origin HEAD:main || echo "sin cambios para pushear"
+      - name: subir PDFs del informe
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: informe-pdfs
+          path: etl-bureau/informes/*.pdf
+          retention-days: 30
+          if-no-files-found: warn
+      - name: subir informe JSON
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: informe-json
+          path: |
+            etl-bureau/export/informe_llm/*.json
+            etl-bureau/export/tableros_bureau/informe_llm.json
+            etl-bureau/web/data/informe_llm.json
+          retention-days: 30
+          if-no-files-found: warn
