@@ -188,6 +188,23 @@ def build_marca() -> tuple[dict, str | None]:
         )
 
 
+def build_informe() -> tuple[dict, str | None]:
+    """Lee export/informe_llm/informe_<corte>.json y lo deja en schema del tab Informes."""
+    try:
+        cands = sorted((BASE / "export" / "informe_llm").glob("informe_*.json"))
+        if not cands:
+            raise ValueError("sin informe_llm (corra report/redactar_informe.py)")
+        doc = json.loads(cands[-1].read_text(encoding="utf-8"))
+        secs = [x for x in doc.get("secciones", []) if x.get("bullets")]
+        if not secs:
+            raise ValueError("informe sin secciones con datos")
+        return ({"corte": doc.get("corte", ""), "secciones": secs,
+                 "fuente": FUENTE + " + redacción LLM verificada",
+                 "licencia": LICENCIA, "estado": "ok"}, "")
+    except Exception as exc:
+        return ({"corte": "", "secciones": [], "estado": "skip"}, f"informe_llm: {exc}")
+
+
 def _n(payload: dict, key: str = "serie") -> int:
     try:
         return len(payload.get(key) or payload.get("categorias") or [])
@@ -229,6 +246,21 @@ def main() -> int:
         }
     )
     print(f"[adapter] marca_llm_2025_2026: {piezas[-1]['n']} categorias -> {p}")
+
+    informe, err = build_informe()
+    if err:
+        errores.append(err)
+    p = OUT / "informe_llm.json"
+    p.write_text(json.dumps(informe, ensure_ascii=False, indent=1), encoding="utf-8")
+    piezas.append(
+        {
+            "archivo": "etl-bureau/export/tableros_bureau/informe_llm.json",
+            "id": "informe_llm",
+            "estado": informe.get("estado", "ok"),
+            "n": len(informe.get("secciones", [])),
+        }
+    )
+    print(f"[adapter] informe_llm: {piezas[-1]['n']} secciones -> {p}")
 
     manifiesto = {
         "generado": _dt.date.today().isoformat(),

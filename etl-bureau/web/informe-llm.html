@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Informe LLM de Turismo</title>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.5.1/dist/echarts.min.js"></script>
+<!-- SKILL diagramacion TEC: Montserrat = repliegue de Century Gothic; tokens navy Colmayor, tabla #0070C0/#00509D -->
+<link rel="icon" href="assets/favicon-32.png" sizes="32x32">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#172139;--teal:#00AEAC;--orange:#E9901E;--lime:#B4C42C;--teal2:#108181;--yellow:#FBBB28;--mut:#5A6C7D}
+*{box-sizing:border-box}
+body{font-family:'Montserrat',sans-serif;color:var(--navy);margin:0;background:#fff;font-size:12pt;line-height:1.55}
+@page{size:A4;margin:14mm 12mm 18mm 12mm}
+.cover{position:relative;height:270mm;overflow:hidden;page-break-after:always}
+.cover img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.cover .velo{position:absolute;inset:0;background:linear-gradient(180deg,rgba(23,33,57,.25) 0%,rgba(23,33,57,.78) 75%)}
+.cover .txt{position:absolute;left:28px;right:28px;bottom:34px;color:#fff}
+.cover h1{font-size:34pt;font-weight:800;margin:0 0 6px;line-height:1.1}
+.cover p{margin:3px 0;color:#e6ebf1;font-size:12pt}
+.cover .cred{font-size:8pt;color:#c6cfda}
+h2{font-size:17pt;font-weight:800;border-left:8px solid var(--orange);padding-left:10px;margin:16px 0 8px;page-break-after:avoid}
+.sec{page-break-inside:auto}
+.fig,.foto,.bul,.lectura{break-inside:avoid}
+.foto{border-radius:10px;overflow:hidden;margin:0 0 10px}
+.foto img{display:block;width:100%;height:200px;object-fit:cover}
+.foto figcaption{font-size:8pt;color:var(--mut);padding:3px 2px}
+.chart{height:330px;width:100%}
+.bul{background:#EEF1F5;border-left:6px solid var(--orange);border-radius:6px;padding:10px 14px;margin:8px 0;font-size:11.5pt}
+.lectura{background:#E6F6F5;border-left:6px solid var(--teal);border-radius:6px;padding:10px 14px;margin:8px 0;font-size:11.5pt}
+.lectura .k{font-weight:800;color:var(--teal2);font-size:9pt;letter-spacing:.4px}
+.src{font-size:8.5pt;color:var(--mut)}
+.indice{background:#F4F6F9;border-radius:10px;padding:14px 18px;margin:10px 0;page-break-inside:avoid}
+.indice li{margin:5px 0;font-size:11.5pt}
+table.tabla{width:100%;border-collapse:collapse;font-size:9.5pt;margin:8px 0}
+table.tabla th{background:#0070C0;color:#fff;text-align:left;padding:5px 8px}
+table.tabla td{padding:4px 8px;border-bottom:1px solid #D9D9D9}
+table.tabla td.num{text-align:right}
+table.tabla tr{break-inside:avoid}
+table.tabla tr.total td{background:#00509D;color:#fff;font-weight:800}
+.src{font-style:italic}
+.foot{margin-top:18px;border-top:2px solid var(--navy);padding-top:6px;font-size:8pt;color:var(--mut)}
+.pb{page-break-before:always}
+</style>
+</head>
+<body>
+<div class="cover">
+<img src="assets/logo_colmayor_blanco.png" alt="I.U. Colegio Mayor" style="position:absolute;top:22px;left:28px;height:54px;z-index:2">
+<img src="assets/fotos/st_cover.jpg" alt="Medellín de día">
+<div class="velo"></div>
+<div class="txt">
+<h1>Informe de Turismo<br>Medellín y Colombia</h1>
+<p id="cover-sub">Redacción LLM verificada contra el warehouse</p>
+<p class="cred">Fotos: bancos libres Openverse y Wikimedia Commons (créditos al pie).</p>
+</div>
+</div>
+<div class="indice"><strong>Contenido</strong><ol id="toc"></ol></div>
+<div id="secciones"></div>
+<h2 class="pb">Anexo · Top emisores (contexto)</h2>
+<div class="sec"><div class="fig"><div class="chart" id="c-emi" style="height:340px"></div>
+<p class="src">Fuente: warehouse ETL (paises), no redactado por el LLM.</p></div></div>
+<div class="foot">I.U. Colegio Mayor de Antioquia · Vigilada MinEducación · Uso académico/institucional · Cifras provisionales sujetas a ajuste.<br>Fotos: Openverse y Wikimedia Commons, licencias libres — ver web/assets/fotos/ATRIBUCIONES.md</div>
+<script>
+const PAL=['#172139','#00AEAC','#E9901E','#B4C42C','#108181','#FBBB28'];
+const FOTO={tendencias:['cover_medellin.jpg','Medellín nocturno'],receptivo:['botero.jpg','Plaza Botero, Medellín'],emisores:['st_emisores.jpg','En vuelo al atardecer'],salidas:['salidas.jpg','Sala de salidas, aeropuerto'],conectividad:['conectividad.jpg','Despegue'],marca:['cocora.jpg','Valle de Cocora'],visitante:['cartagena.jpg','Turista en Cartagena'],aereo:['metrocable.jpg','Metrocable, Medellín'],gestion:['bogota.jpg','Monserrate, Bogotá'],territorio:['guatape.jpg','Piedra del Peñol, Guatapé']};
+const TIPO={tendencias:'line',marca:'pie',visitante:'pie',territorio:'line'};
+const J=n=>fetch('data/'+n+'.json').then(r=>{if(!r.ok)throw n;return r.json();});
+const datatable=g=>{const tot=g.values.reduce((a,b)=>a+Number(b),0)||1;const rows=g.labels.map((l,k)=>{const v=Number(g.values[k]);return "<tr><td>"+esc(l)+"</td><td class=num>"+v.toLocaleString("es-CO")+"</td><td class=num>"+(100*v/tot).toFixed(1)+"%</td></tr>";}).join("");return "<table class=tabla><tr><th>Categoria</th><th>Valor</th><th>Part. %</th></tr>"+rows+"<tr class=total><td>Total</td><td class=num>"+tot.toLocaleString("es-CO")+"</td><td class=num>100,0%</td></tr></table>";};
+const esc=s=>String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+(async()=>{
+try{
+const inf=await J('informe_llm');
+document.getElementById('cover-sub').textContent=`Corte ${inf.corte} · ${inf.secciones.length} secciones redactadas por LLM y verificadas · ${new Date(inf.corte+'T12:00:00').toLocaleDateString('es-CO',{day:'numeric',month:'long',year:'numeric'})}`;
+document.getElementById('toc').innerHTML=inf.secciones.map(s=>`<li>${esc(s.titulo)}</li>`).join('');
+document.getElementById('secciones').innerHTML=inf.secciones.map((s,i)=>{
+  const foto=FOTO[s.id]||'cover_medellin.jpg';
+  const ana=(s.analisis||[]).map(b=>`<div class="lectura"><span class="k">LECTURA · </span>${esc(b.texto)}<div class="src">Fuente: ${esc(b.fuente||'—')}</div></div>`).join('');
+  const g=s.grafico||{};
+  const ok=g.labels&&g.values&&g.labels.length===g.values.length&&g.labels.length;
+  const chart=ok?`<div class="fig"><div class="chart" id="cg${i}"></div><p class="src">${esc(g.titulo||'')} · ${esc(g.unidad||'')} · Fuente: warehouse.</p></div>`+datatable(g):'';
+  return `<h2 class="pb">${esc(s.titulo)}</h2><div class="sec">`
+  +`<figure class="foto"><img src="assets/fotos/${FOTO[s.id]?FOTO[s.id][0]:'cover_medellin.jpg'}" alt="${esc(s.titulo)}" loading="eager"><figcaption>Foto ilustrativa: ${esc((FOTO[s.id]||[])[1]||'')} · Banco libre (ver créditos al pie).</figcaption></figure>`
+  +s.bullets.map(b=>`<div class="bul">${esc(b.texto)}<div class="src">Fuente: ${esc(b.fuente||'—')}</div></div>`).join('')
+  +ana+chart+`</div>`;
+}).join('');
+inf.secciones.forEach((s,i)=>{
+  const g=s.grafico||{};
+  if(!(g.labels&&g.values&&g.labels.length===g.values.length&&g.labels.length))return;
+  const e=echarts.init(document.getElementById('cg'+i),null,{renderer:'canvas'});
+  const tipo=TIPO[s.id]||'bar';
+  const base={tooltip:{trigger:tipo==='pie'?'item':'axis'},animation:false};
+  if(tipo==='pie'){
+    base.series=[{type:'pie',radius:['42%','68%'],data:g.labels.map((l,k)=>({name:l,value:g.values[k]})),itemStyle:{color:p=>PAL[p.dataIndex%PAL.length]},label:{fontSize:10,formatter:'{b}\n{d}%'}}];
+  }else if(tipo==='line'){
+    base.xAxis={type:'category',data:g.labels.map(esc),axisLabel:{fontSize:10}};
+    base.yAxis={};
+    base.series=[{type:'line',data:g.values,itemStyle:{color:PAL[i%PAL.length]},lineStyle:{width:3},symbolSize:7,label:{show:true,fontSize:9}}];
+  }else{
+    base.grid={left:110};
+    base.xAxis={};
+    base.yAxis={type:'category',data:g.labels.map(esc),axisLabel:{fontSize:10}};
+    base.series=[{type:'bar',data:g.values,itemStyle:{color:PAL[i%PAL.length]},label:{show:true,position:'right',fontSize:9,formatter:p=>Number(p.value).toLocaleString('es-CO')}}];
+  }
+  e.setOption(base);
+});
+const paises=await J('paises').catch(()=>[]);
+if(paises.length){const t=paises.slice(0,10);
+const e=echarts.init(document.getElementById('c-emi'),null,{renderer:'canvas'});
+e.setOption({tooltip:{},xAxis:{type:'category',data:t.map(p=>p.pais),axisLabel:{rotate:28,fontSize:10}},yAxis:{},series:[{type:'bar',data:t.map(p=>p['med_'+p.ano_ref]),itemStyle:{color:'#172139'},label:{show:true,fontSize:8}}],animation:false});}
+}catch(e){document.body.insertAdjacentHTML('beforeend','<p style="color:red">Sin informe: '+e+'. Corra report/redactar_informe.py con GROQ_API_KEY.</p>');}
+window.__REPORT_READY__=true;
+})();
+</script>
+</body>
+</html>

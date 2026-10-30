@@ -39,6 +39,10 @@ from extract import (
     wikimedia_views,
 )
 from load import to_warehouse
+from backend import writer as backend_writer
+from report import redactar_informe
+from report import publicar_pdfs
+from export import publicar as publicar_tableros
 from transform import kpis
 
 
@@ -77,6 +81,11 @@ def main():
         llm_classify.run,
         kpis.run,
         to_warehouse.run,
+        backend_writer.run,
+        redactar_informe.run,
+        publicar_pdfs.run,
+        publicar_tableros.push_export,
+        publicar_tableros.actualizar_tableros,
         tableros_bureau_llm.run,
         build_html.run,
     ):

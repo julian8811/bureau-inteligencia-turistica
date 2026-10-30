@@ -5,6 +5,9 @@ pyyaml>=6.0
 feedparser>=6.0
 openpyxl>=3.1
 pyarrow>=14.0
+psycopg[binary]>=3.1
+fastapi>=0.110
+uvicorn>=0.29
 
 # Dashboard estatico HTML puro (sin Streamlit/Plotly desde 28-oct).
 # Legado: dashboard/app_streamlit_legacy.py solo para consulta, no se instala.
