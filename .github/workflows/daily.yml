@@ -27,6 +27,14 @@ jobs:
       - run: python -m playwright install chromium --with-deps
       - name: daily ETL
         run: python etl-bureau/orchestration/daily.py
+      - name: avisar si fallo
+        if: failure()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh issue create --repo ${{ github.repository }} \
+            --title "[daily] falló $(date -u +%F)" \
+            --body "Corrida ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}. Revisar log y reintentar con workflow_dispatch." || true
       - name: commit data generada
         run: |
           git config user.name bureau-etl
