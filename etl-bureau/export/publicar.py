@@ -102,7 +102,11 @@ def actualizar_tableros(cache: str = "") -> dict:
         _git(repo, "-c", "user.name=bureau-etl", "-c",
              "user.email=bureau-etl@local", "commit", "-m",
              "data(tableros): sincroniza agregados del daily")
-        _git(repo, "push", "--force-with-lease", "origin", "publish-daily")
+        try:
+            _git(repo, "push", "origin", "--delete", "publish-daily")
+        except Exception:
+            pass
+        _git(repo, "push", "-u", "origin", "publish-daily")
         env = dict(os.environ, GIT_TERMINAL_PROMPT="0")
         env.pop("GITHUB_TOKEN", None)
         pr = subprocess.run(["gh", "pr", "create", "--repo", "julian8811/tableros-bureau",
@@ -118,6 +122,10 @@ def actualizar_tableros(cache: str = "") -> dict:
                             text=True, timeout=60, env=env, cwd=str(repo))
         if mg.returncode != 0:
             raise RuntimeError("gh pr merge: " + (mg.stderr or "")[:160])
+        try:
+            _git(repo, "push", "origin", "--delete", "publish-daily")
+        except Exception:
+            pass
         return {"status": "ok", "cambios": 1}
     except Exception as e:
         print(f"[publicar][SKIP] actualizar_tableros ({e})")
