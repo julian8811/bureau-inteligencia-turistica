@@ -71,6 +71,7 @@ def push_export(cache: str = "") -> dict:
              "user.email=bureau-etl@local", "commit", "-m",
              "data(etl): piezas tableros-bureau del daily")
         _git(repo, "push", "origin", "main")
+        print(f"[publicar] push_export ok {len(copiadas)} archivos")
         return {"status": "ok", "cambios": len(copiadas)}
     except Exception as e:
         print(f"[publicar][SKIP] push_export ({e})")
@@ -126,6 +127,7 @@ def actualizar_tableros(cache: str = "") -> dict:
             _git(repo, "push", "origin", "--delete", "publish-daily")
         except Exception:
             pass
+        print("[publicar] actualizar_tableros ok (PR mergeado o sin cambios)")
         return {"status": "ok", "cambios": 1}
     except Exception as e:
         print(f"[publicar][SKIP] actualizar_tableros ({e})")
