@@ -84,9 +84,9 @@ def main():
         backend_writer.run,
         redactar_informe.run,
         publicar_pdfs.run,
+        tableros_bureau_llm.run,  # adapter ANTES del publish: genera export/tableros_bureau/* que push/actualizar suben
         publicar_tableros.push_export,
         publicar_tableros.actualizar_tableros,
-        tableros_bureau_llm.run,
         build_html.run,
     ):
         try:
