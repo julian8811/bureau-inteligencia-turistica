@@ -1,2 +1,19 @@
 __pycache__/
 *.pyc
+
+# monorepo higiene (T1)
+node_modules/
+.vercel/
+.env*
+data/raw/
+data/processed/
+logs/
+informes/*.pdf
+web/data/*
+!web/data/.gitkeep
+dash_preview/
+*.pbit
+*.pdf
+!docs/*.pdf
+__pycache__/
+*.pyc
