@@ -1,0 +1,8403 @@
+{
+  "id": "wikipedia",
+  "fuente": "Wikimedia Pageviews API, proyectos es y en, agente user",
+  "url": "https://doc.wikimedia.org/generated-data-platform/aqs/analytics-api/",
+  "licencia": "CC0 1.0",
+  "descarga": "2026-10-24",
+  "universo": "Vistas mensuales de los artículos de ciudad. Proxy de interés digital, no de búsquedas en Google.",
+  "grano": "mensual, el tablero lo suma al trimestre",
+  "articulos": [
+    "es.wikipedia:Medellín",
+    "en.wikipedia:Medellín",
+    "es.wikipedia:Bogotá",
+    "en.wikipedia:Bogotá",
+    "es.wikipedia:Cartagena_de_Indias",
+    "en.wikipedia:Cartagena,_Colombia",
+    "es.wikipedia:Ciudad_de_México",
+    "en.wikipedia:Mexico_City",
+    "es.wikipedia:São_Paulo",
+    "en.wikipedia:São_Paulo",
+    "es.wikipedia:Lima",
+    "en.wikipedia:Lima",
+    "es.wikipedia:Ciudad_de_Panamá",
+    "en.wikipedia:Panama_City",
+    "es.wikipedia:Santo_Domingo",
+    "en.wikipedia:Santo_Domingo",
+    "es.wikipedia:Quito",
+    "en.wikipedia:Quito",
+    "es.wikipedia:Buenos_Aires",
+    "en.wikipedia:Buenos_Aires",
+    "es.wikipedia:Santiago_de_Chile",
+    "en.wikipedia:Santiago,_Chile",
+    "es.wikipedia:Madrid",
+    "en.wikipedia:Madrid"
+  ],
+  "destinos": [
+    "Medellín",
+    "Bogotá",
+    "Cartagena",
+    "Ciudad de México",
+    "São Paulo",
+    "Lima",
+    "Ciudad de Panamá",
+    "Santo Domingo",
+    "Quito",
+    "Buenos Aires",
+    "Santiago",
+    "Madrid"
+  ],
+  "serie": [
+    {
+      "anio": 2022,
+      "mes": 1,
+      "destino": "Medellín",
+      "vistas": 36169
+    },
+    {
+      "anio": 2022,
+      "mes": 2,
+      "destino": "Medellín",
+      "vistas": 34776
+    },
+    {
+      "anio": 2022,
+      "mes": 3,
+      "destino": "Medellín",
+      "vistas": 35682
+    },
+    {
+      "anio": 2022,
+      "mes": 4,
+      "destino": "Medellín",
+      "vistas": 36427
+    },
+    {
+      "anio": 2022,
+      "mes": 5,
+      "destino": "Medellín",
+      "vistas": 40192
+    },
+    {
+      "anio": 2022,
+      "mes": 6,
+      "destino": "Medellín",
+      "vistas": 34467
+    },
+    {
+      "anio": 2022,
+      "mes": 7,
+      "destino": "Medellín",
+      "vistas": 41475
+    },
+    {
+      "anio": 2022,
+      "mes": 8,
+      "destino": "Medellín",
+      "vistas": 46404
+    },
+    {
+      "anio": 2022,
+      "mes": 9,
+      "destino": "Medellín",
+      "vistas": 43938
+    },
+    {
+      "anio": 2022,
+      "mes": 10,
+      "destino": "Medellín",
+      "vistas": 44571
+    },
+    {
+      "anio": 2022,
+      "mes": 11,
+      "destino": "Medellín",
+      "vistas": 48141
+    },
+    {
+      "anio": 2022,
+      "mes": 12,
+      "destino": "Medellín",
+      "vistas": 36592
+    },
+    {
+      "anio": 2023,
+      "mes": 1,
+      "destino": "Medellín",
+      "vistas": 43729
+    },
+    {
+      "anio": 2023,
+      "mes": 2,
+      "destino": "Medellín",
+      "vistas": 43416
+    },
+    {
+      "anio": 2023,
+      "mes": 3,
+      "destino": "Medellín",
+      "vistas": 53275
+    },
+    {
+      "anio": 2023,
+      "mes": 4,
+      "destino": "Medellín",
+      "vistas": 43762
+    },
+    {
+      "anio": 2023,
+      "mes": 5,
+      "destino": "Medellín",
+      "vistas": 48373
+    },
+    {
+      "anio": 2023,
+      "mes": 6,
+      "destino": "Medellín",
+      "vistas": 47232
+    },
+    {
+      "anio": 2023,
+      "mes": 7,
+      "destino": "Medellín",
+      "vistas": 50607
+    },
+    {
+      "anio": 2023,
+      "mes": 8,
+      "destino": "Medellín",
+      "vistas": 53819
+    },
+    {
+      "anio": 2023,
+      "mes": 9,
+      "destino": "Medellín",
+      "vistas": 46122
+    },
+    {
+      "anio": 2023,
+      "mes": 10,
+      "destino": "Medellín",
+      "vistas": 49527
+    },
+    {
+      "anio": 2023,
+      "mes": 11,
+      "destino": "Medellín",
+      "vistas": 47191
+    },
+    {
+      "anio": 2023,
+      "mes": 12,
+      "destino": "Medellín",
+      "vistas": 47316
+    },
+    {
+      "anio": 2024,
+      "mes": 1,
+      "destino": "Medellín",
+      "vistas": 59673
+    },
+    {
+      "anio": 2024,
+      "mes": 2,
+      "destino": "Medellín",
+      "vistas": 46699
+    },
+    {
+      "anio": 2024,
+      "mes": 3,
+      "destino": "Medellín",
+      "vistas": 43285
+    },
+    {
+      "anio": 2024,
+      "mes": 4,
+      "destino": "Medellín",
+      "vistas": 42494
+    },
+    {
+      "anio": 2024,
+      "mes": 5,
+      "destino": "Medellín",
+      "vistas": 32219
+    },
+    {
+      "anio": 2024,
+      "mes": 6,
+      "destino": "Medellín",
+      "vistas": 26386
+    },
+    {
+      "anio": 2024,
+      "mes": 7,
+      "destino": "Medellín",
+      "vistas": 30666
+    },
+    {
+      "anio": 2024,
+      "mes": 8,
+      "destino": "Medellín",
+      "vistas": 30752
+    },
+    {
+      "anio": 2024,
+      "mes": 9,
+      "destino": "Medellín",
+      "vistas": 29294
+    },
+    {
+      "anio": 2024,
+      "mes": 10,
+      "destino": "Medellín",
+      "vistas": 31070
+    },
+    {
+      "anio": 2024,
+      "mes": 11,
+      "destino": "Medellín",
+      "vistas": 27227
+    },
+    {
+      "anio": 2024,
+      "mes": 12,
+      "destino": "Medellín",
+      "vistas": 26852
+    },
+    {
+      "anio": 2025,
+      "mes": 1,
+      "destino": "Medellín",
+      "vistas": 30206
+    },
+    {
+      "anio": 2025,
+      "mes": 2,
+      "destino": "Medellín",
+      "vistas": 26067
+    },
+    {
+      "anio": 2025,
+      "mes": 3,
+      "destino": "Medellín",
+      "vistas": 30215
+    },
+    {
+      "anio": 2025,
+      "mes": 4,
+      "destino": "Medellín",
+      "vistas": 24041
+    },
+    {
+      "anio": 2025,
+      "mes": 5,
+      "destino": "Medellín",
+      "vistas": 23508
+    },
+    {
+      "anio": 2025,
+      "mes": 6,
+      "destino": "Medellín",
+      "vistas": 21640
+    },
+    {
+      "anio": 2025,
+      "mes": 7,
+      "destino": "Medellín",
+      "vistas": 24680
+    },
+    {
+      "anio": 2025,
+      "mes": 8,
+      "destino": "Medellín",
+      "vistas": 27220
+    },
+    {
+      "anio": 2025,
+      "mes": 9,
+      "destino": "Medellín",
+      "vistas": 21798
+    },
+    {
+      "anio": 2025,
+      "mes": 10,
+      "destino": "Medellín",
+      "vistas": 21876
+    },
+    {
+      "anio": 2025,
+      "mes": 11,
+      "destino": "Medellín",
+      "vistas": 21456
+    },
+    {
+      "anio": 2025,
+      "mes": 12,
+      "destino": "Medellín",
+      "vistas": 18772
+    },
+    {
+      "anio": 2026,
+      "mes": 1,
+      "destino": "Medellín",
+      "vistas": 23249
+    },
+    {
+      "anio": 2026,
+      "mes": 2,
+      "destino": "Medellín",
+      "vistas": 18016
+    },
+    {
+      "anio": 2026,
+      "mes": 3,
+      "destino": "Medellín",
+      "vistas": 18194
+    },
+    {
+      "anio": 2026,
+      "mes": 4,
+      "destino": "Medellín",
+      "vistas": 17264
+    },
+    {
+      "anio": 2026,
+      "mes": 5,
+      "destino": "Medellín",
+      "vistas": 19993
+    },
+    {
+      "anio": 2026,
+      "mes": 6,
+      "destino": "Medellín",
+      "vistas": 16538
+    },
+    {
+      "anio": 2026,
+      "mes": 7,
+      "destino": "Medellín",
+      "vistas": 15726
+    },
+    {
+      "anio": 2026,
+      "mes": 8,
+      "destino": "Medellín",
+      "vistas": 19552
+    },
+    {
+      "anio": 2026,
+      "mes": 9,
+      "destino": "Medellín",
+      "vistas": 13691
+    },
+    {
+      "anio": 2026,
+      "mes": 10,
+      "destino": "Medellín",
+      "vistas": 391
+    },
+    {
+      "anio": 2022,
+      "mes": 1,
+      "destino": "Medellín",
+      "vistas": 46137
+    },
+    {
+      "anio": 2022,
+      "mes": 2,
+      "destino": "Medellín",
+      "vistas": 42964
+    },
+    {
+      "anio": 2022,
+      "mes": 3,
+      "destino": "Medellín",
+      "vistas": 41523
+    },
+    {
+      "anio": 2022,
+      "mes": 4,
+      "destino": "Medellín",
+      "vistas": 45903
+    },
+    {
+      "anio": 2022,
+      "mes": 5,
+      "destino": "Medellín",
+      "vistas": 40579
+    },
+    {
+      "anio": 2022,
+      "mes": 6,
+      "destino": "Medellín",
+      "vistas": 41408
+    },
+    {
+      "anio": 2022,
+      "mes": 7,
+      "destino": "Medellín",
+      "vistas": 47223
+    },
+    {
+      "anio": 2022,
+      "mes": 8,
+      "destino": "Medellín",
+      "vistas": 49346
+    },
+    {
+      "anio": 2022,
+      "mes": 9,
+      "destino": "Medellín",
+      "vistas": 44326
+    },
+    {
+      "anio": 2022,
+      "mes": 10,
+      "destino": "Medellín",
+      "vistas": 46555
+    },
+    {
+      "anio": 2022,
+      "mes": 11,
+      "destino": "Medellín",
+      "vistas": 49221
+    },
+    {
+      "anio": 2022,
+      "mes": 12,
+      "destino": "Medellín",
+      "vistas": 46394
+    },
+    {
+      "anio": 2023,
+      "mes": 1,
+      "destino": "Medellín",
+      "vistas": 51370
+    },
+    {
+      "anio": 2023,
+      "mes": 2,
+      "destino": "Medellín",
+      "vistas": 50221
+    },
+    {
+      "anio": 2023,
+      "mes": 3,
+      "destino": "Medellín",
+      "vistas": 61911
+    },
+    {
+      "anio": 2023,
+      "mes": 4,
+      "destino": "Medellín",
+      "vistas": 50812
+    },
+    {
+      "anio": 2023,
+      "mes": 5,
+      "destino": "Medellín",
+      "vistas": 50454
+    },
+    {
+      "anio": 2023,
+      "mes": 6,
+      "destino": "Medellín",
+      "vistas": 59523
+    },
+    {
+      "anio": 2023,
+      "mes": 7,
+      "destino": "Medellín",
+      "vistas": 51972
+    },
+    {
+      "anio": 2023,
+      "mes": 8,
+      "destino": "Medellín",
+      "vistas": 52164
+    },
+    {
+      "anio": 2023,
+      "mes": 9,
+      "destino": "Medellín",
+      "vistas": 47841
+    },
+    {
+      "anio": 2023,
+      "mes": 10,
+      "destino": "Medellín",
+      "vistas": 42010
+    },
+    {
+      "anio": 2023,
+      "mes": 11,
+      "destino": "Medellín",
+      "vistas": 44961
+    },
+    {
+      "anio": 2023,
+      "mes": 12,
+      "destino": "Medellín",
+      "vistas": 46271
+    },
+    {
+      "anio": 2024,
+      "mes": 1,
+      "destino": "Medellín",
+      "vistas": 112206
+    },
+    {
+      "anio": 2024,
+      "mes": 2,
+      "destino": "Medellín",
+      "vistas": 107342
+    },
+    {
+      "anio": 2024,
+      "mes": 3,
+      "destino": "Medellín",
+      "vistas": 52779
+    },
+    {
+      "anio": 2024,
+      "mes": 4,
+      "destino": "Medellín",
+      "vistas": 49870
+    },
+    {
+      "anio": 2024,
+      "mes": 5,
+      "destino": "Medellín",
+      "vistas": 39158
+    },
+    {
+      "anio": 2024,
+      "mes": 6,
+      "destino": "Medellín",
+      "vistas": 38192
+    },
+    {
+      "anio": 2024,
+      "mes": 7,
+      "destino": "Medellín",
+      "vistas": 46275
+    },
+    {
+      "anio": 2024,
+      "mes": 8,
+      "destino": "Medellín",
+      "vistas": 40175
+    },
+    {
+      "anio": 2024,
+      "mes": 9,
+      "destino": "Medellín",
+      "vistas": 39457
+    },
+    {
+      "anio": 2024,
+      "mes": 10,
+      "destino": "Medellín",
+      "vistas": 37582
+    },
+    {
+      "anio": 2024,
+      "mes": 11,
+      "destino": "Medellín",
+      "vistas": 36162
+    },
+    {
+      "anio": 2024,
+      "mes": 12,
+      "destino": "Medellín",
+      "vistas": 38704
+    },
+    {
+      "anio": 2025,
+      "mes": 1,
+      "destino": "Medellín",
+      "vistas": 45764
+    },
+    {
+      "anio": 2025,
+      "mes": 2,
+      "destino": "Medellín",
+      "vistas": 38083
+    },
+    {
+      "anio": 2025,
+      "mes": 3,
+      "destino": "Medellín",
+      "vistas": 46438
+    },
+    {
+      "anio": 2025,
+      "mes": 4,
+      "destino": "Medellín",
+      "vistas": 36953
+    },
+    {
+      "anio": 2025,
+      "mes": 5,
+      "destino": "Medellín",
+      "vistas": 37177
+    },
+    {
+      "anio": 2025,
+      "mes": 6,
+      "destino": "Medellín",
+      "vistas": 36771
+    },
+    {
+      "anio": 2025,
+      "mes": 7,
+      "destino": "Medellín",
+      "vistas": 37575
+    },
+    {
+      "anio": 2025,
+      "mes": 8,
+      "destino": "Medellín",
+      "vistas": 38674
+    },
+    {
+      "anio": 2025,
+      "mes": 9,
+      "destino": "Medellín",
+      "vistas": 33741
+    },
+    {
+      "anio": 2025,
+      "mes": 10,
+      "destino": "Medellín",
+      "vistas": 33019
+    },
+    {
+      "anio": 2025,
+      "mes": 11,
+      "destino": "Medellín",
+      "vistas": 31214
+    },
+    {
+      "anio": 2025,
+      "mes": 12,
+      "destino": "Medellín",
+      "vistas": 36956
+    },
+    {
+      "anio": 2026,
+      "mes": 1,
+      "destino": "Medellín",
+      "vistas": 46864
+    },
+    {
+      "anio": 2026,
+      "mes": 2,
+      "destino": "Medellín",
+      "vistas": 40025
+    },
+    {
+      "anio": 2026,
+      "mes": 3,
+      "destino": "Medellín",
+      "vistas": 35998
+    },
+    {
+      "anio": 2026,
+      "mes": 4,
+      "destino": "Medellín",
+      "vistas": 32386
+    },
+    {
+      "anio": 2026,
+      "mes": 5,
+      "destino": "Medellín",
+      "vistas": 32725
+    },
+    {
+      "anio": 2026,
+      "mes": 6,
+      "destino": "Medellín",
+      "vistas": 36957
+    },
+    {
+      "anio": 2026,
+      "mes": 7,
+      "destino": "Medellín",
+      "vistas": 43108
+    },
+    {
+      "anio": 2026,
+      "mes": 8,
+      "destino": "Medellín",
+      "vistas": 33347
+    },
+    {
+      "anio": 2026,
+      "mes": 9,
+      "destino": "Medellín",
+      "vistas": 26483
+    },
+    {
+      "anio": 2026,
+      "mes": 10,
+      "destino": "Medellín",
+      "vistas": 801
+    },
+    {
+      "anio": 2022,
+      "mes": 1,
+      "destino": "Bogotá",
+      "vistas": 57356
+    },
+    {
+      "anio": 2022,
+      "mes": 2,
+      "destino": "Bogotá",
+      "vistas": 58855
+    },
+    {
+      "anio": 2022,
+      "mes": 3,
+      "destino": "Bogotá",
+      "vistas": 62394
+    },
+    {
+      "anio": 2022,
+      "mes": 4,
+      "destino": "Bogotá",
+      "vistas": 58079
+    },
+    {
+      "anio": 2022,
+      "mes": 5,
+      "destino": "Bogotá",
+      "vistas": 62704
+    },
+    {
+      "anio": 2022,
+      "mes": 6,
+      "destino": "Bogotá",
+      "vistas": 64547
+    },
+    {
+      "anio": 2022,
+      "mes": 7,
+      "destino": "Bogotá",
+      "vistas": 68162
+    },
+    {
+      "anio": 2022,
+      "mes": 8,
+      "destino": "Bogotá",
+      "vistas": 87703
+    },
+    {
+      "anio": 2022,
+      "mes": 9,
+      "destino": "Bogotá",
+      "vistas": 77674
+    },
+    {
+      "anio": 2022,
+      "mes": 10,
+      "destino": "Bogotá",
+      "vistas": 75772
+    },
+    {
+      "anio": 2022,
+      "mes": 11,
+      "destino": "Bogotá",
+      "vistas": 82395
+    },
+    {
+      "anio": 2022,
+      "mes": 12,
+      "destino": "Bogotá",
+      "vistas": 63539
+    },
+    {
+      "anio": 2023,
+      "mes": 1,
+      "destino": "Bogotá",
+      "vistas": 76114
+    },
+    {
+      "anio": 2023,
+      "mes": 2,
+      "destino": "Bogotá",
+      "vistas": 74263
+    },
+    {
+      "anio": 2023,
+      "mes": 3,
+      "destino": "Bogotá",
+      "vistas": 87216
+    },
+    {
+      "anio": 2023,
+      "mes": 4,
+      "destino": "Bogotá",
+      "vistas": 73038
+    },
+    {
+      "anio": 2023,
+      "mes": 5,
+      "destino": "Bogotá",
+      "vistas": 82041
+    },
+    {
+      "anio": 2023,
+      "mes": 6,
+      "destino": "Bogotá",
+      "vistas": 74745
+    },
+    {
+      "anio": 2023,
+      "mes": 7,
+      "destino": "Bogotá",
+      "vistas": 83144
+    },
+    {
+      "anio": 2023,
+      "mes": 8,
+      "destino": "Bogotá",
+      "vistas": 92605
+    },
+    {
+      "anio": 2023,
+      "mes": 9,
+      "destino": "Bogotá",
+      "vistas": 73139
+    },
+    {
+      "anio": 2023,
+      "mes": 10,
+      "destino": "Bogotá",
+      "vistas": 79810
+    },
+    {
+      "anio": 2023,
+      "mes": 11,
+      "destino": "Bogotá",
+      "vistas": 69891
+    },
+    {
+      "anio": 2023,
+      "mes": 12,
+      "destino": "Bogotá",
+      "vistas": 64253
+    },
+    {
+      "anio": 2024,
+      "mes": 1,
+      "destino": "Bogotá",
+      "vistas": 87383
+    },
+    {
+      "anio": 2024,
+      "mes": 2,
+      "destino": "Bogotá",
+      "vistas": 68399
+    },
+    {
+      "anio": 2024,
+      "mes": 3,
+      "destino": "Bogotá",
+      "vistas": 65910
+    },
+    {
+      "anio": 2024,
+      "mes": 4,
+      "destino": "Bogotá",
+      "vistas": 69245
+    },
+    {
+      "anio": 2024,
+      "mes": 5,
+      "destino": "Bogotá",
+      "vistas": 52705
+    },
+    {
+      "anio": 2024,
+      "mes": 6,
+      "destino": "Bogotá",
+      "vistas": 42658
+    },
+    {
+      "anio": 2024,
+      "mes": 7,
+      "destino": "Bogotá",
+      "vistas": 47674
+    },
+    {
+      "anio": 2024,
+      "mes": 8,
+      "destino": "Bogotá",
+      "vistas": 54238
+    },
+    {
+      "anio": 2024,
+      "mes": 9,
+      "destino": "Bogotá",
+      "vistas": 47945
+    },
+    {
+      "anio": 2024,
+      "mes": 10,
+      "destino": "Bogotá",
+      "vistas": 53696
+    },
+    {
+      "anio": 2024,
+      "mes": 11,
+      "destino": "Bogotá",
+      "vistas": 41729
+    },
+    {
+      "anio": 2024,
+      "mes": 12,
+      "destino": "Bogotá",
+      "vistas": 37321
+    },
+    {
+      "anio": 2025,
+      "mes": 1,
+      "destino": "Bogotá",
+      "vistas": 42698
+    },
+    {
+      "anio": 2025,
+      "mes": 2,
+      "destino": "Bogotá",
+      "vistas": 37899
+    },
+    {
+      "anio": 2025,
+      "mes": 3,
+      "destino": "Bogotá",
+      "vistas": 42284
+    },
+    {
+      "anio": 2025,
+      "mes": 4,
+      "destino": "Bogotá",
+      "vistas": 37078
+    },
+    {
+      "anio": 2025,
+      "mes": 5,
+      "destino": "Bogotá",
+      "vistas": 35662
+    },
+    {
+      "anio": 2025,
+      "mes": 6,
+      "destino": "Bogotá",
+      "vistas": 38789
+    },
+    {
+      "anio": 2025,
+      "mes": 7,
+      "destino": "Bogotá",
+      "vistas": 37184
+    },
+    {
+      "anio": 2025,
+      "mes": 8,
+      "destino": "Bogotá",
+      "vistas": 41917
+    },
+    {
+      "anio": 2025,
+      "mes": 9,
+      "destino": "Bogotá",
+      "vistas": 31575
+    },
+    {
+      "anio": 2025,
+      "mes": 10,
+      "destino": "Bogotá",
+      "vistas": 32809
+    },
+    {
+      "anio": 2025,
+      "mes": 11,
+      "destino": "Bogotá",
+      "vistas": 30243
+    },
+    {
+      "anio": 2025,
+      "mes": 12,
+      "destino": "Bogotá",
+      "vistas": 27809
+    },
+    {
+      "anio": 2026,
+      "mes": 1,
+      "destino": "Bogotá",
+      "vistas": 31723
+    },
+    {
+      "anio": 2026,
+      "mes": 2,
+      "destino": "Bogotá",
+      "vistas": 26783
+    },
+    {
+      "anio": 2026,
+      "mes": 3,
+      "destino": "Bogotá",
+      "vistas": 28080
+    },
+    {
+      "anio": 2026,
+      "mes": 4,
+      "destino": "Bogotá",
+      "vistas": 26688
+    },
+    {
+      "anio": 2026,
+      "mes": 5,
+      "destino": "Bogotá",
+      "vistas": 27181
+    },
+    {
+      "anio": 2026,
+      "mes": 6,
+      "destino": "Bogotá",
+      "vistas": 27562
+    },
+    {
+      "anio": 2026,
+      "mes": 7,
+      "destino": "Bogotá",
+      "vistas": 26431
+    },
+    {
+      "anio": 2026,
+      "mes": 8,
+      "destino": "Bogotá",
+      "vistas": 34192
+    },
+    {
+      "anio": 2026,
+      "mes": 9,
+      "destino": "Bogotá",
+      "vistas": 21898
+    },
+    {
+      "anio": 2026,
+      "mes": 10,
+      "destino": "Bogotá",
+      "vistas": 731
+    },
+    {
+      "anio": 2022,
+      "mes": 1,
+      "destino": "Bogotá",
+      "vistas": 58395
+    },
+    {
+      "anio": 2022,
+      "mes": 2,
+      "destino": "Bogotá",
+      "vistas": 53394
+    },
+    {
+      "anio": 2022,
+      "mes": 3,
+      "destino": "Bogotá",
+      "vistas": 73205
+    },
+    {
+      "anio": 2022,
+      "mes": 4,
+      "destino": "Bogotá",
+      "vistas": 54895
+    },
+    {
+      "anio": 2022,
+      "mes": 5,
+      "destino": "Bogotá",
+      "vistas": 56474
+    },
+    {
+      "anio": 2022,
+      "mes": 6,
+      "destino": "Bogotá",
+      "vistas": 56423
+    },
+    {
+      "anio": 2022,
+      "mes": 7,
+      "destino": "Bogotá",
+      "vistas": 57000
+    },
+    {
+      "anio": 2022,
+      "mes": 8,
+      "destino": "Bogotá",
+      "vistas": 67213
+    },
+    {
+      "anio": 2022,
+      "mes": 9,
+      "destino": "Bogotá",
+      "vistas": 70457
+    },
+    {
+      "anio": 2022,
+      "mes": 10,
+      "destino": "Bogotá",
+      "vistas": 68190
+    },
+    {
+      "anio": 2022,
+      "mes": 11,
+      "destino": "Bogotá",
+      "vistas": 70237
+    },
+    {
+      "anio": 2022,
+      "mes": 12,
+      "destino": "Bogotá",
+      "vistas": 59659
+    },
+    {
+      "anio": 2023,
+      "mes": 1,
+      "destino": "Bogotá",
+      "vistas": 63064
+    },
+    {
+      "anio": 2023,
+      "mes": 2,
+      "destino": "Bogotá",
+      "vistas": 57920
+    },
+    {
+      "anio": 2023,
+      "mes": 3,
+      "destino": "Bogotá",
+      "vistas": 70874
+    },
+    {
+      "anio": 2023,
+      "mes": 4,
+      "destino": "Bogotá",
+      "vistas": 61155
+    },
+    {
+      "anio": 2023,
+      "mes": 5,
+      "destino": "Bogotá",
+      "vistas": 58793
+    },
+    {
+      "anio": 2023,
+      "mes": 6,
+      "destino": "Bogotá",
+      "vistas": 56576
+    },
+    {
+      "anio": 2023,
+      "mes": 7,
+      "destino": "Bogotá",
+      "vistas": 59121
+    },
+    {
+      "anio": 2023,
+      "mes": 8,
+      "destino": "Bogotá",
+      "vistas": 62422
+    },
+    {
+      "anio": 2023,
+      "mes": 9,
+      "destino": "Bogotá",
+      "vistas": 53670
+    },
+    {
+      "anio": 2023,
+      "mes": 10,
+      "destino": "Bogotá",
+      "vistas": 54208
+    },
+    {
+      "anio": 2023,
+      "mes": 11,
+      "destino": "Bogotá",
+      "vistas": 54470
+    },
+    {
+      "anio": 2023,
+      "mes": 12,
+      "destino": "Bogotá",
+      "vistas": 55037
+    },
+    {
+      "anio": 2024,
+      "mes": 1,
+      "destino": "Bogotá",
+      "vistas": 68882
+    },
+    {
+      "anio": 2024,
+      "mes": 2,
+      "destino": "Bogotá",
+      "vistas": 59750
+    },
+    {
+      "anio": 2024,
+      "mes": 3,
+      "destino": "Bogotá",
+      "vistas": 57498
+    },
+    {
+      "anio": 2024,
+      "mes": 4,
+      "destino": "Bogotá",
+      "vistas": 64104
+    },
+    {
+      "anio": 2024,
+      "mes": 5,
+      "destino": "Bogotá",
+      "vistas": 49004
+    },
+    {
+      "anio": 2024,
+      "mes": 6,
+      "destino": "Bogotá",
+      "vistas": 43829
+    },
+    {
+      "anio": 2024,
+      "mes": 7,
+      "destino": "Bogotá",
+      "vistas": 52682
+    },
+    {
+      "anio": 2024,
+      "mes": 8,
+      "destino": "Bogotá",
+      "vistas": 48100
+    },
+    {
+      "anio": 2024,
+      "mes": 9,
+      "destino": "Bogotá",
+      "vistas": 50480
+    },
+    {
+      "anio": 2024,
+      "mes": 10,
+      "destino": "Bogotá",
+      "vistas": 47093
+    },
+    {
+      "anio": 2024,
+      "mes": 11,
+      "destino": "Bogotá",
+      "vistas": 47557
+    },
+    {
+      "anio": 2024,
+      "mes": 12,
+      "destino": "Bogotá",
+      "vistas": 47897
+    },
+    {
+      "anio": 2025,
+      "mes": 1,
+      "destino": "Bogotá",
+      "vistas": 57097
+    },
+    {
+      "anio": 2025,
+      "mes": 2,
+      "destino": "Bogotá",
+      "vistas": 50158
+    },
+    {
+      "anio": 2025,
+      "mes": 3,
+      "destino": "Bogotá",
+      "vistas": 47579
+    },
+    {
+      "anio": 2025,
+      "mes": 4,
+      "destino": "Bogotá",
+      "vistas": 45013
+    },
+    {
+      "anio": 2025,
+      "mes": 5,
+      "destino": "Bogotá",
+      "vistas": 45773
+    },
+    {
+      "anio": 2025,
+      "mes": 6,
+      "destino": "Bogotá",
+      "vistas": 47503
+    },
+    {
+      "anio": 2025,
+      "mes": 7,
+      "destino": "Bogotá",
+      "vistas": 45938
+    },
+    {
+      "anio": 2025,
+      "mes": 8,
+      "destino": "Bogotá",
+      "vistas": 51807
+    },
+    {
+      "anio": 2025,
+      "mes": 9,
+      "destino": "Bogotá",
+      "vistas": 44194
+    },
+    {
+      "anio": 2025,
+      "mes": 10,
+      "destino": "Bogotá",
+      "vistas": 45484
+    },
+    {
+      "anio": 2025,
+      "mes": 11,
+      "destino": "Bogotá",
+      "vistas": 43461
+    },
+    {
+      "anio": 2025,
+      "mes": 12,
+      "destino": "Bogotá",
+      "vistas": 44780
+    },
+    {
+      "anio": 2026,
+      "mes": 1,
+      "destino": "Bogotá",
+      "vistas": 59270
+    },
+    {
+      "anio": 2026,
+      "mes": 2,
+      "destino": "Bogotá",
+      "vistas": 42142
+    },
+    {
+      "anio": 2026,
+      "mes": 3,
+      "destino": "Bogotá",
+      "vistas": 42598
+    },
+    {
+      "anio": 2026,
+      "mes": 4,
+      "destino": "Bogotá",
+      "vistas": 41542
+    },
+    {
+      "anio": 2026,
+      "mes": 5,
+      "destino": "Bogotá",
+      "vistas": 46213
+    },
+    {
+      "anio": 2026,
+      "mes": 6,
+      "destino": "Bogotá",
+      "vistas": 52026
+    },
+    {
+      "anio": 2026,
+      "mes": 7,
+      "destino": "Bogotá",
+      "vistas": 57209
+    },
+    {
+      "anio": 2026,
+      "mes": 8,
+      "destino": "Bogotá",
+      "vistas": 49834
+    },
+    {
+      "anio": 2026,
+      "mes": 9,
+      "destino": "Bogotá",
+      "vistas": 40019
+    },
+    {
+      "anio": 2026,
+      "mes": 10,
+      "destino": "Bogotá",
+      "vistas": 1405
+    },
+    {
+      "anio": 2022,
+      "mes": 1,
+      "destino": "Cartagena",
+      "vistas": 31261
+    },
+    {
+      "anio": 2022,
+      "mes": 2,
+      "destino": "Cartagena",
+      "vistas": 32431
+    },
+    {
+      "anio": 2022,
+      "mes": 3,
+      "destino": "Cartagena",
+      "vistas": 35409
+    },
+    {
+      "anio": 2022,
+      "mes": 4,
+      "destino": "Cartagena",
+      "vistas": 33696
+    },
+    {
+      "anio": 2022,
+      "mes": 5,
+      "destino": "Cartagena",
+      "vistas": 40165
+    },
+    {
+      "anio": 2022,
+      "mes": 6,
+      "destino": "Cartagena",
+      "vistas": 40781
+    },
+    {
+      "anio": 2022,
+      "mes": 7,
+      "destino": "Cartagena",
+      "vistas": 39088
+    },
+    {
+      "anio": 2022,
+      "mes": 8,
+      "destino": "Cartagena",
+      "vistas": 47345
+    },
+    {
+      "anio": 2022,
+      "mes": 9,
+      "destino": "Cartagena",
+      "vistas": 45670
+    },
+    {
+      "anio": 2022,
+      "mes": 10,
+      "destino": "Cartagena",
+      "vistas": 46057
+    },
+    {
+      "anio": 2022,
+      "mes": 11,
+      "destino": "Cartagena",
+      "vistas": 48976
+    },
+    {
+      "anio": 2022,
+      "mes": 12,
+      "destino": "Cartagena",
+      "vistas": 30878
+    },
+    {
+      "anio": 2023,
+      "mes": 1,
+      "destino": "Cartagena",
+      "vistas": 43745
+    },
+    {
+      "anio": 2023,
+      "mes": 2,
+      "destino": "Cartagena",
+      "vistas": 45964
+    },
+    {
+      "anio": 2023,
+      "mes": 3,
+      "destino": "Cartagena",
+      "vistas": 50867
+    },
+    {
+      "anio": 2023,
+      "mes": 4,
+      "destino": "Cartagena",
+      "vistas": 42319
+    },
+    {
+      "anio": 2023,
+      "mes": 5,
+      "destino": "Cartagena",
+      "vistas": 52170
+    },
+    {
+      "anio": 2023,
+      "mes": 6,
+      "destino": "Cartagena",
+      "vistas": 51427
+    },
+    {
+      "anio": 2023,
+      "mes": 7,
+      "destino": "Cartagena",
+      "vistas": 45695
+    },
+    {
+      "anio": 2023,
+      "mes": 8,
+      "destino": "Cartagena",
+      "vistas": 46777
+    },
+    {
+      "anio": 2023,
+      "mes": 9,
+      "destino": "Cartagena",
+      "vistas": 41358
+    },
+    {
+      "anio": 2023,
+      "mes": 10,
+      "destino": "Cartagena",
+      "vistas": 42454
+    },
+    {
+      "anio": 2023,
+      "mes": 11,
+      "destino": "Cartagena",
+      "vistas": 40979
+    },
+    {
+      "anio": 2023,
+      "mes": 12,
+      "destino": "Cartagena",
+      "vistas": 37519
+    },
+    {
+      "anio": 2024,
+      "mes": 1,
+      "destino": "Cartagena",
+      "vistas": 53947
+    },
+    {
+      "anio": 2024,
+      "mes": 2,
+      "destino": "Cartagena",
+      "vistas": 43722
+    },
+    {
+      "anio": 2024,
+      "mes": 3,
+      "destino": "Cartagena",
+      "vistas": 43122
+    },
+    {
+      "anio": 2024,
+      "mes": 4,
+      "destino": "Cartagena",
+      "vistas": 39226
+    },
+    {
+      "anio": 2024,
+      "mes": 5,
+      "destino": "Cartagena",
+      "vistas": 36730
+    },
+    {
+      "anio": 2024,
+      "mes": 6,
+      "destino": "Cartagena",
+      "vistas": 30117
+    },
+    {
+      "anio": 2024,
+      "mes": 7,
+      "destino": "Cartagena",
+      "vistas": 32270
+    },
+    {
+      "anio": 2024,
+      "mes": 8,
+      "destino": "Cartagena",
+      "vistas": 31765
+    },
+    {
+      "anio": 2024,
+      "mes": 9,
+      "destino": "Cartagena",
+      "vistas": 29433
+    },
+    {
+      "anio": 2024,
+      "mes": 10,
+      "destino": "Cartagena",
+      "vistas": 29612
+    },
+    {
+      "anio": 2024,
+      "mes": 11,
+      "destino": "Cartagena",
+      "vistas": 25994
+    },
+    {
+      "anio": 2024,
+      "mes": 12,
+      "destino": "Cartagena",
+      "vistas": 22029
+    },
+    {
+      "anio": 2025,
+      "mes": 1,
+      "destino": "Cartagena",
+      "vistas": 29539
+    },
+    {
+      "anio": 2025,
+      "mes": 2,
+      "destino": "Cartagena",
+      "vistas": 24105
+    },
+    {
+      "anio": 2025,
+      "mes": 3,
+      "destino": "Cartagena",
+      "vistas": 26129
+    },
+    {
+      "anio": 2025,
+      "mes": 4,
+      "destino": "Cartagena",
+      "vistas": 22322
+    },
+    {
+      "anio": 2025,
+      "mes": 5,
+      "destino": "Cartagena",
+      "vistas": 21551
+    },
+    {
+      "anio": 2025,
+      "mes": 6,
+      "destino": "Cartagena",
+      "vistas": 19070
+    },
+    {
+      "anio": 2025,
+      "mes": 7,
+      "destino": "Cartagena",
+      "vistas": 22808
+    },
+    {
+      "anio": 2025,
+      "mes": 8,
+      "destino": "Cartagena",
+      "vistas": 22554
+    },
+    {
+      "anio": 2025,
+      "mes": 9,
+      "destino": "Cartagena",
+      "vistas": 18853
+    },
+    {
+      "anio": 2025,
+      "mes": 10,
+      "destino": "Cartagena",
+      "vistas": 17964
+    },
+    {
+      "anio": 2025,
+      "mes": 11,
+      "destino": "Cartagena",
+      "vistas": 17872
+    },
+    {
+      "anio": 2025,
+      "mes": 12,
+      "destino": "Cartagena",
+      "vistas": 15634
+    },
+    {
+      "anio": 2026,
+      "mes": 1,
+      "destino": "Cartagena",
+      "vistas": 18525
+    },
+    {
+      "anio": 2026,
+      "mes": 2,
+      "destino": "Cartagena",
+      "vistas": 15440
+    },
+    {
+      "anio": 2026,
+      "mes": 3,
+      "destino": "Cartagena",
+      "vistas": 16511
+    },
+    {
+      "anio": 2026,
+      "mes": 4,
+      "destino": "Cartagena",
+      "vistas": 15773
+    },
+    {
+      "anio": 2026,
+      "mes": 5,
+      "destino": "Cartagena",
+      "vistas": 15157
+    },
+    {
+      "anio": 2026,
+      "mes": 6,
+      "destino": "Cartagena",
+      "vistas": 13433
+    },
+    {
+      "anio": 2026,
+      "mes": 7,
+      "destino": "Cartagena",
+      "vistas": 14202
+    },
+    {
+      "anio": 2026,
+      "mes": 8,
+      "destino": "Cartagena",
+      "vistas": 15468
+    },
+    {
+      "anio": 2026,
+      "mes": 9,
+      "destino": "Cartagena",
+      "vistas": 11966
+    },
+    {
+      "anio": 2026,
+      "mes": 10,
+      "destino": "Cartagena",
+      "vistas": 440
+    },
+    {
+      "anio": 2022,
+      "mes": 1,
+      "destino": "Cartagena",
+      "vistas": 36522
+    },
+    {
+      "anio": 2022,
+      "mes": 2,
+      "destino": "Cartagena",
+      "vistas": 34581
+    },
+    {
+      "anio": 2022,
+      "mes": 3,
+      "destino": "Cartagena",
+      "vistas": 35341
+    },
+    {
+      "anio": 2022,
+      "mes": 4,
+      "destino": "Cartagena",
+      "vistas": 32890
+    },
+    {
+      "anio": 2022,
+      "mes": 5,
+      "destino": "Cartagena",
+      "vistas": 30335
+    },
+    {
+      "anio": 2022,
+      "mes": 6,
+      "destino": "Cartagena",
+      "vistas": 30304
+    },
+    {
+      "anio": 2022,
+      "mes": 7,
+      "destino": "Cartagena",
+      "vistas": 29728
+    },
+    {
+      "anio": 2022,
+      "mes": 8,
+      "destino": "Cartagena",
+      "vistas": 34235
+    },
+    {
+      "anio": 2022,
+      "mes": 9,
+      "destino": "Cartagena",
+      "vistas": 32414
+    },
+    {
+      "anio": 2022,
+      "mes": 10,
+      "destino": "Cartagena",
+      "vistas": 35445
+    },
+    {
+      "anio": 2022,
+      "mes": 11,
+      "destino": "Cartagena",
+      "vistas": 38543
+    },
+    {
+      "anio": 2022,
+      "mes": 12,
+      "destino": "Cartagena",
+      "vistas": 36251
+    },
+    {
+      "anio": 2023,
+      "mes": 1,
+      "destino": "Cartagena",
+      "vistas": 43046
+    },
+    {
+      "anio": 2023,
+      "mes": 2,
+      "destino": "Cartagena",
+      "vistas": 40263
+    },
+    {
+      "anio": 2023,
+      "mes": 3,
+      "destino": "Cartagena",
+      "vistas": 42785
+    },
+    {
+      "anio": 2023,
+      "mes": 4,
+      "destino": "Cartagena",
+      "vistas": 31751
+    },
+    {
+      "anio": 2023,
+      "mes": 5,
+      "destino": "Cartagena",
+      "vistas": 33259
+    },
+    {
+      "anio": 2023,
+      "mes": 6,
+      "destino": "Cartagena",
+      "vistas": 40267
+    },
+    {
+      "anio": 2023,
+      "mes": 7,
+      "destino": "Cartagena",
+      "vistas": 42556
+    },
+    {
+      "anio": 2023,
+      "mes": 8,
+      "destino": "Cartagena",
+      "vistas": 36272
+    },
+    {
+      "anio": 2023,
+      "mes": 9,
+      "destino": "Cartagena",
+      "vistas": 32420
+    },
+    {
+      "anio": 2023,
+      "mes": 10,
+      "destino": "Cartagena",
+      "vistas": 30366
+    },
+    {
+      "anio": 2023,
+      "mes": 11,
+      "destino": "Cartagena",
+      "vistas": 34215
+    },
+    {
+      "anio": 2023,
+      "mes": 12,
+      "destino": "Cartagena",
+      "vistas": 40889
+    },
+    {
+      "anio": 2024,
+      "mes": 1,
+      "destino": "Cartagena",
+      "vistas": 57657
+    },
+    {
+      "anio": 2024,
+      "mes": 2,
+      "destino": "Cartagena",
+      "vistas": 44919
+    },
+    {
+      "anio": 2024,
+      "mes": 3,
+      "destino": "Cartagena",
+      "vistas": 38773
+    },
+    {
+      "anio": 2024,
+      "mes": 4,
+      "destino": "Cartagena",
+      "vistas": 32722
+    },
+    {
+      "anio": 2024,
+      "mes": 5,
+      "destino": "Cartagena",
+      "vistas": 29303
+    },
+    {
+      "anio": 2024,
+      "mes": 6,
+      "destino": "Cartagena",
+      "vistas": 26650
+    },
+    {
+      "anio": 2024,
+      "mes": 7,
+      "destino": "Cartagena",
+      "vistas": 29563
+    },
+    {
+      "anio": 2024,
+      "mes": 8,
+      "destino": "Cartagena",
+      "vistas": 29607
+    },
+    {
+      "anio": 2024,
+      "mes": 9,
+      "destino": "Cartagena",
+      "vistas": 27847
+    },
+    {
+      "anio": 2024,
+      "mes": 10,
+      "destino": "Cartagena",
+      "vistas": 27666
+    },
+    {
+      "anio": 2024,
+      "mes": 11,
+      "destino": "Cartagena",
+      "vistas": 28870
+    },
+    {
+      "anio": 2024,
+      "mes": 12,
+      "destino": "Cartagena",
+      "vistas": 31348
+    },
+    {
+      "anio": 2025,
+      "mes": 1,
+      "destino": "Cartagena",
+      "vistas": 41488
+    },
+    {
+      "anio": 2025,
+      "mes": 2,
+      "destino": "Cartagena",
+      "vistas": 30778
+    },
+    {
+      "anio": 2025,
+      "mes": 3,
+      "destino": "Cartagena",
+      "vistas": 69348
+    },
+    {
+      "anio": 2025,
+      "mes": 4,
+      "destino": "Cartagena",
+      "vistas": 26753
+    },
+    {
+      "anio": 2025,
+      "mes": 5,
+      "destino": "Cartagena",
+      "vistas": 26065
+    },
+    {
+      "anio": 2025,
+      "mes": 6,
+      "destino": "Cartagena",
+      "vistas": 23833
+    },
+    {
+      "anio": 2025,
+      "mes": 7,
+      "destino": "Cartagena",
+      "vistas": 24579
+    },
+    {
+      "anio": 2025,
+      "mes": 8,
+      "destino": "Cartagena",
+      "vistas": 25275
+    },
+    {
+      "anio": 2025,
+      "mes": 9,
+      "destino": "Cartagena",
+      "vistas": 22237
+    },
+    {
+      "anio": 2025,
+      "mes": 10,
+      "destino": "Cartagena",
+      "vistas": 22319
+    },
+    {
+      "anio": 2025,
+      "mes": 11,
+      "destino": "Cartagena",
+      "vistas": 23981
+    },
+    {
+      "anio": 2025,
+      "mes": 12,
+      "destino": "Cartagena",
+      "vistas": 25268
+    },
+    {
+      "anio": 2026,
+      "mes": 1,
+      "destino": "Cartagena",
+      "vistas": 32790
+    },
+    {
+      "anio": 2026,
+      "mes": 2,
+      "destino": "Cartagena",
+      "vistas": 25663
+    },
+    {
+      "anio": 2026,
+      "mes": 3,
+      "destino": "Cartagena",
+      "vistas": 25031
+    },
+    {
+      "anio": 2026,
+      "mes": 4,
+      "destino": "Cartagena",
+      "vistas": 22569
+    },
+    {
+      "anio": 2026,
+      "mes": 5,
+      "destino": "Cartagena",
+      "vistas": 21103
+    },
+    {
+      "anio": 2026,
+      "mes": 6,
+      "destino": "Cartagena",
+      "vistas": 20773
+    },
+    {
+      "anio": 2026,
+      "mes": 7,
+      "destino": "Cartagena",
+      "vistas": 22580
+    },
+    {
+      "anio": 2026,
+      "mes": 8,
+      "destino": "Cartagena",
+      "vistas": 22783
+    },
+    {
+      "anio": 2026,
+      "mes": 9,
+      "destino": "Cartagena",
+      "vistas": 20796
+    },
+    {
+      "anio": 2026,
+      "mes": 10,
+      "destino": "Cartagena",
+      "vistas": 639
+    },
+    {
+      "anio": 2022,
+      "mes": 1,
+      "destino": "Ciudad de México",
+      "vistas": 97288
+    },
+    {
+      "anio": 2022,
+      "mes": 2,
+      "destino": "Ciudad de México",
+      "vistas": 91638
+    },
+    {
+      "anio": 2022,
+      "mes": 3,
+      "destino": "Ciudad de México",
+      "vistas": 100836
+    },
+    {
+      "anio": 2022,
+      "mes": 4,
+      "destino": "Ciudad de México",
+      "vistas": 93661
+    },
+    {
+      "anio": 2022,
+      "mes": 5,
+      "destino": "Ciudad de México",
+      "vistas": 100175
+    },
+    {
+      "anio": 2022,
+      "mes": 6,
+      "destino": "Ciudad de México",
+      "vistas": 96511
+    },
+    {
+      "anio": 2022,
+      "mes": 7,
+      "destino": "Ciudad de México",
+      "vistas": 95184
+    },
+    {
+      "anio": 2022,
+      "mes": 8,
+      "destino": "Ciudad de México",
+      "vistas": 103892
+    },
+    {
+      "anio": 2022,
+      "mes": 9,
+      "destino": "Ciudad de México",
+      "vistas": 128967
+    },
+    {
+      "anio": 2022,
+      "mes": 10,
+      "destino": "Ciudad de México",
+      "vistas": 126942
+    },
+    {
+      "anio": 2022,
+      "mes": 11,
+      "destino": "Ciudad de México",
+      "vistas": 145425
+    },
+    {
+      "anio": 2022,
+      "mes": 12,
+      "destino": "Ciudad de México",
+      "vistas": 96628
+    },
+    {
+      "anio": 2023,
+      "mes": 1,
+      "destino": "Ciudad de México",
+      "vistas": 121365
+    },
+    {
+      "anio": 2023,
+      "mes": 2,
+      "destino": "Ciudad de México",
+      "vistas": 106543
+    },
+    {
+      "anio": 2023,
+      "mes": 3,
+      "destino": "Ciudad de México",
+      "vistas": 118768
+    },
+    {
+      "anio": 2023,
+      "mes": 4,
+      "destino": "Ciudad de México",
+      "vistas": 92702
+    },
+    {
+      "anio": 2023,
+      "mes": 5,
+      "destino": "Ciudad de México",
+      "vistas": 103130
+    },
+    {
+      "anio": 2023,
+      "mes": 6,
+      "destino": "Ciudad de México",
+      "vistas": 100854
+    },
+    {
+      "anio": 2023,
+      "mes": 7,
+      "destino": "Ciudad de México",
+      "vistas": 83490
+    },
+    {
+      "anio": 2023,
+      "mes": 8,
+      "destino": "Ciudad de México",
+      "vistas": 88940
+    },
+    {
+      "anio": 2023,
+      "mes": 9,
+      "destino": "Ciudad de México",
+      "vistas": 103466
+    },
+    {
+      "anio": 2023,
+      "mes": 10,
+      "destino": "Ciudad de México",
+      "vistas": 101784
+    },
+    {
+      "anio": 2023,
+      "mes": 11,
+      "destino": "Ciudad de México",
+      "vistas": 92629
+    },
+    {
+      "anio": 2023,
+      "mes": 12,
+      "destino": "Ciudad de México",
+      "vistas": 81970
+    },
+    {
+      "anio": 2024,
+      "mes": 1,
+      "destino": "Ciudad de México",
+      "vistas": 98126
+    },
+    {
+      "anio": 2024,
+      "mes": 2,
+      "destino": "Ciudad de México",
+      "vistas": 94479
+    },
+    {
+      "anio": 2024,
+      "mes": 3,
+      "destino": "Ciudad de México",
+      "vistas": 94631
+    },
+    {
+      "anio": 2024,
+      "mes": 4,
+      "destino": "Ciudad de México",
+      "vistas": 94111
+    },
+    {
+      "anio": 2024,
+      "mes": 5,
+      "destino": "Ciudad de México",
+      "vistas": 86975
+    },
+    {
+      "anio": 2024,
+      "mes": 6,
+      "destino": "Ciudad de México",
+      "vistas": 85569
+    },
+    {
+      "anio": 2024,
+      "mes": 7,
+      "destino": "Ciudad de México",
+      "vistas": 66049
+    },
+    {
+      "anio": 2024,
+      "mes": 8,
+      "destino": "Ciudad de México",
+      "vistas": 69316
+    },
+    {
+      "anio": 2024,
+      "mes": 9,
+      "destino": "Ciudad de México",
+      "vistas": 87058
+    },
+    {
+      "anio": 2024,
+      "mes": 10,
+      "destino": "Ciudad de México",
+      "vistas": 91242
+    },
+    {
+      "anio": 2024,
+      "mes": 11,
+      "destino": "Ciudad de México",
+      "vistas": 75526
+    },
+    {
+      "anio": 2024,
+      "mes": 12,
+      "destino": "Ciudad de México",
+      "vistas": 65914
+    },
+    {
+      "anio": 2025,
+      "mes": 1,
+      "destino": "Ciudad de México",
+      "vistas": 76416
+    },
+    {
+      "anio": 2025,
+      "mes": 2,
+      "destino": "Ciudad de México",
+      "vistas": 71588
+    },
+    {
+      "anio": 2025,
+      "mes": 3,
+      "destino": "Ciudad de México",
+      "vistas": 78953
+    },
+    {
+      "anio": 2025,
+      "mes": 4,
+      "destino": "Ciudad de México",
+      "vistas": 60607
+    },
+    {
+      "anio": 2025,
+      "mes": 5,
+      "destino": "Ciudad de México",
+      "vistas": 63751
+    },
+    {
+      "anio": 2025,
+      "mes": 6,
+      "destino": "Ciudad de México",
+      "vistas": 60442
+    },
+    {
+      "anio": 2025,
+      "mes": 7,
+      "destino": "Ciudad de México",
+      "vistas": 62420
+    },
+    {
+      "anio": 2025,
+      "mes": 8,
+      "destino": "Ciudad de México",
+      "vistas": 59031
+    },
+    {
+      "anio": 2025,
+      "mes": 9,
+      "destino": "Ciudad de México",
+      "vistas": 68533
+    },
+    {
+      "anio": 2025,
+      "mes": 10,
+      "destino": "Ciudad de México",
+      "vistas": 65837
+    },
+    {
+      "anio": 2025,
+      "mes": 11,
+      "destino": "Ciudad de México",
+      "vistas": 58384
+    },
+    {
+      "anio": 2025,
+      "mes": 12,
+      "destino": "Ciudad de México",
+      "vistas": 51397
+    },
+    {
+      "anio": 2026,
+      "mes": 1,
+      "destino": "Ciudad de México",
+      "vistas": 51853
+    },
+    {
+      "anio": 2026,
+      "mes": 2,
+      "destino": "Ciudad de México",
+      "vistas": 50405
+    },
+    {
+      "anio": 2026,
+      "mes": 3,
+      "destino": "Ciudad de México",
+      "vistas": 50794
+    },
+    {
+      "anio": 2026,
+      "mes": 4,
+      "destino": "Ciudad de México",
+      "vistas": 49772
+    },
+    {
+      "anio": 2026,
+      "mes": 5,
+      "destino": "Ciudad de México",
+      "vistas": 51516
+    },
+    {
+      "anio": 2026,
+      "mes": 6,
+      "destino": "Ciudad de México",
+      "vistas": 70944
+    },
+    {
+      "anio": 2026,
+      "mes": 7,
+      "destino": "Ciudad de México",
+      "vistas": 66940
+    },
+    {
+      "anio": 2026,
+      "mes": 8,
+      "destino": "Ciudad de México",
+      "vistas": 46377
+    },
+    {
+      "anio": 2026,
+      "mes": 9,
+      "destino": "Ciudad de México",
+      "vistas": 50896
+    },
+    {
+      "anio": 2026,
+      "mes": 10,
+      "destino": "Ciudad de México",
+      "vistas": 1601
+    },
+    {
+      "anio": 2022,
+      "mes": 1,
+      "destino": "Ciudad de México",
+      "vistas": 134702
+    },
+    {
+      "anio": 2022,
+      "mes": 2,
+      "destino": "Ciudad de México",
+      "vistas": 127736
+    },
+    {
+      "anio": 2022,
+      "mes": 3,
+      "destino": "Ciudad de México",
+      "vistas": 139891
+    },
+    {
+      "anio": 2022,
+      "mes": 4,
+      "destino": "Ciudad de México",
+      "vistas": 133428
+    },
+    {
+      "anio": 2022,
+      "mes": 5,
+      "destino": "Ciudad de México",
+      "vistas": 138644
+    },
+    {
+      "anio": 2022,
+      "mes": 6,
+      "destino": "Ciudad de México",
+      "vistas": 143134
+    },
+    {
+      "anio": 2022,
+      "mes": 7,
+      "destino": "Ciudad de México",
+      "vistas": 139084
+    },
+    {
+      "anio": 2022,
+      "mes": 8,
+      "destino": "Ciudad de México",
+      "vistas": 144931
+    },
+    {
+      "anio": 2022,
+      "mes": 9,
+      "destino": "Ciudad de México",
+      "vistas": 148209
+    },
+    {
+      "anio": 2022,
+      "mes": 10,
+      "destino": "Ciudad de México",
+      "vistas": 205879
+    },
+    {
+      "anio": 2022,
+      "mes": 11,
+      "destino": "Ciudad de México",
+      "vistas": 234775
+    },
+    {
+      "anio": 2022,
+      "mes": 12,
+      "destino": "Ciudad de México",
+      "vistas": 204218
+    },
+    {
+      "anio": 2023,
+      "mes": 1,
+      "destino": "Ciudad de México",
+      "vistas": 215021
+    },
+    {
+      "anio": 2023,
+      "mes": 2,
+      "destino": "Ciudad de México",
+      "vistas": 151183
+    },
+    {
+      "anio": 2023,
+      "mes": 3,
+      "destino": "Ciudad de México",
+      "vistas": 178738
+    },
+    {
+      "anio": 2023,
+      "mes": 4,
+      "destino": "Ciudad de México",
+      "vistas": 158859
+    },
+    {
+      "anio": 2023,
+      "mes": 5,
+      "destino": "Ciudad de México",
+      "vistas": 153673
+    },
+    {
+      "anio": 2023,
+      "mes": 6,
+      "destino": "Ciudad de México",
+      "vistas": 150086
+    },
+    {
+      "anio": 2023,
+      "mes": 7,
+      "destino": "Ciudad de México",
+      "vistas": 143456
+    },
+    {
+      "anio": 2023,
+      "mes": 8,
+      "destino": "Ciudad de México",
+      "vistas": 145489
+    },
+    {
+      "anio": 2023,
+      "mes": 9,
+      "destino": "Ciudad de México",
+      "vistas": 137103
+    },
+    {
+      "anio": 2023,
+      "mes": 10,
+      "destino": "Ciudad de México",
+      "vistas": 151624
+    },
+    {
+      "anio": 2023,
+      "mes": 11,
+      "destino": "Ciudad de México",
+      "vistas": 136907
+    },
+    {
+      "anio": 2023,
+      "mes": 12,
+      "destino": "Ciudad de México",
+      "vistas": 136456
+    },
+    {
+      "anio": 2024,
+      "mes": 1,
+      "destino": "Ciudad de México",
+      "vistas": 151765
+    },
+    {
+      "anio": 2024,
+      "mes": 2,
+      "destino": "Ciudad de México",
+      "vistas": 149067
+    },
+    {
+      "anio": 2024,
+      "mes": 3,
+      "destino": "Ciudad de México",
+      "vistas": 146075
+    },
+    {
+      "anio": 2024,
+      "mes": 4,
+      "destino": "Ciudad de México",
+      "vistas": 143319
+    },
+    {
+      "anio": 2024,
+      "mes": 5,
+      "destino": "Ciudad de México",
+      "vistas": 136521
+    },
+    {
+      "anio": 2024,
+      "mes": 6,
+      "destino": "Ciudad de México",
+      "vistas": 134012
+    },
+    {
+      "anio": 2024,
+      "mes": 7,
+      "destino": "Ciudad de México",
+      "vistas": 117277
+    },
+    {
+      "anio": 2024,
+      "mes": 8,
+      "destino": "Ciudad de México",
+      "vistas": 118942
+    },
+    {
+      "anio": 2024,
+      "mes": 9,
+      "destino": "Ciudad de México",
+      "vistas": 123847
+    },
+    {
+      "anio": 2024,
+      "mes": 10,
+      "destino": "Ciudad de México",
+      "vistas": 145521
+    },
+    {
+      "anio": 2024,
+      "mes": 11,
+      "destino": "Ciudad de México",
+      "vistas": 134049
+    },
+    {
+      "anio": 2024,
+      "mes": 12,
+      "destino": "Ciudad de México",
+      "vistas": 121366
+    },
+    {
+      "anio": 2025,
+      "mes": 1,
+      "destino": "Ciudad de México",
+      "vistas": 144107
+    },
+    {
+      "anio": 2025,
+      "mes": 2,
+      "destino": "Ciudad de México",
+      "vistas": 129702
+    },
+    {
+      "anio": 2025,
+      "mes": 3,
+      "destino": "Ciudad de México",
+      "vistas": 135523
+    },
+    {
+      "anio": 2025,
+      "mes": 4,
+      "destino": "Ciudad de México",
+      "vistas": 117572
+    },
+    {
+      "anio": 2025,
+      "mes": 5,
+      "destino": "Ciudad de México",
+      "vistas": 123705
+    },
+    {
+      "anio": 2025,
+      "mes": 6,
+      "destino": "Ciudad de México",
+      "vistas": 120075
+    },
+    {
+      "anio": 2025,
+      "mes": 7,
+      "destino": "Ciudad de México",
+      "vistas": 114183
+    },
+    {
+      "anio": 2025,
+      "mes": 8,
+      "destino": "Ciudad de México",
+      "vistas": 116171
+    },
+    {
+      "anio": 2025,
+      "mes": 9,
+      "destino": "Ciudad de México",
+      "vistas": 116281
+    },
+    {
+      "anio": 2025,
+      "mes": 10,
+      "destino": "Ciudad de México",
+      "vistas": 127102
+    },
+    {
+      "anio": 2025,
+      "mes": 11,
+      "destino": "Ciudad de México",
+      "vistas": 116959
+    },
+    {
+      "anio": 2025,
+      "mes": 12,
+      "destino": "Ciudad de México",
+      "vistas": 109568
+    },
+    {
+      "anio": 2026,
+      "mes": 1,
+      "destino": "Ciudad de México",
+      "vistas": 117684
+    },
+    {
+      "anio": 2026,
+      "mes": 2,
+      "destino": "Ciudad de México",
+      "vistas": 123300
+    },
+    {
+      "anio": 2026,
+      "mes": 3,
+      "destino": "Ciudad de México",
+      "vistas": 107522
+    },
+    {
+      "anio": 2026,
+      "mes": 4,
+      "destino": "Ciudad de México",
+      "vistas": 103174
+    },
+    {
+      "anio": 2026,
+      "mes": 5,
+      "destino": "Ciudad de México",
+      "vistas": 116502
+    },
+    {
+      "anio": 2026,
+      "mes": 6,
+      "destino": "Ciudad de México",
+      "vistas": 193616
+    },
+    {
+      "anio": 2026,
+      "mes": 7,
+      "destino": "Ciudad de México",
+      "vistas": 253418
+    },
+    {
+      "anio": 2026,
+      "mes": 8,
+      "destino": "Ciudad de México",
+      "vistas": 88300
+    },
+    {
+      "anio": 2026,
+      "mes": 9,
+      "destino": "Ciudad de México",
+      "vistas": 94257
+    },
+    {
+      "anio": 2026,
+      "mes": 10,
+      "destino": "Ciudad de México",
+      "vistas": 2944
+    },
+    {
+      "anio": 2022,
+      "mes": 1,
+      "destino": "São Paulo",
+      "vistas": 17251
+    },
+    {
+      "anio": 2022,
+      "mes": 2,
+      "destino": "São Paulo",
+      "vistas": 16522
+    },
+    {
+      "anio": 2022,
+      "mes": 3,
+      "destino": "São Paulo",
+      "vistas": 18675
+    },
+    {
+      "anio": 2022,
+      "mes": 4,
+      "destino": "São Paulo",
+      "vistas": 19405
+    },
+    {
+      "anio": 2022,
+      "mes": 5,
+      "destino": "São Paulo",
+      "vistas": 18958
+    },
+    {
+      "anio": 2022,
+      "mes": 6,
+      "destino": "São Paulo",
+      "vistas": 18406
+    },
+    {
+      "anio": 2022,
+      "mes": 7,
+      "destino": "São Paulo",
+      "vistas": 20095
+    },
+    {
+      "anio": 2022,
+      "mes": 8,
+      "destino": "São Paulo",
+      "vistas": 23289
+    },
+    {
+      "anio": 2022,
+      "mes": 9,
+      "destino": "São Paulo",
+      "vistas": 23632
+    },
+    {
+      "anio": 2022,
+      "mes": 10,
+      "destino": "São Paulo",
+      "vistas": 32961
+    },
+    {
+      "anio": 2022,
+      "mes": 11,
+      "destino": "São Paulo",
+      "vistas": 28695
+    },
+    {
+      "anio": 2022,
+      "mes": 12,
+      "destino": "São Paulo",
+      "vistas": 21520
+    },
+    {
+      "anio": 2023,
+      "mes": 1,
+      "destino": "São Paulo",
+      "vistas": 25306
+    },
+    {
+      "anio": 2023,
+      "mes": 2,
+      "destino": "São Paulo",
+      "vistas": 23054
+    },
+    {
+      "anio": 2023,
+      "mes": 3,
+      "destino": "São Paulo",
+      "vistas": 24247
+    },
+    {
+      "anio": 2023,
+      "mes": 4,
+      "destino": "São Paulo",
+      "vistas": 20954
+    },
+    {
+      "anio": 2023,
+      "mes": 5,
+      "destino": "São Paulo",
+      "vistas": 24435
+    },
+    {
+      "anio": 2023,
+      "mes": 6,
+      "destino": "São Paulo",
+      "vistas": 25247
+    },
+    {
+      "anio": 2023,
+      "mes": 7,
+      "destino": "São Paulo",
+      "vistas": 25902
+    },
+    {
+      "anio": 2023,
+      "mes": 8,
+      "destino": "São Paulo",
+      "vistas": 36785
+    },
+    {
+      "anio": 2023,
+      "mes": 9,
+      "destino": "São Paulo",
+      "vistas": 28959
+    },
+    {
+      "anio": 2023,
+      "mes": 10,
+      "destino": "São Paulo",
+      "vistas": 28116
+    },
+    {
+      "anio": 2023,
+      "mes": 11,
+      "destino": "São Paulo",
+      "vistas": 30397
+    },
+    {
+      "anio": 2023,
+      "mes": 12,
+      "destino": "São Paulo",
+      "vistas": 20735
+    },
+    {
+      "anio": 2024,
+      "mes": 1,
+      "destino": "São Paulo",
+      "vistas": 25351
+    },
+    {
+      "anio": 2024,
+      "mes": 2,
+      "destino": "São Paulo",
+      "vistas": 22418
+    },
+    {
+      "anio": 2024,
+      "mes": 3,
+      "destino": "São Paulo",
+      "vistas": 21909
+    },
+    {
+      "anio": 2024,
+      "mes": 4,
+      "destino": "São Paulo",
+      "vistas": 24181
+    },
+    {
+      "anio": 2024,
+      "mes": 5,
+      "destino": "São Paulo",
+      "vistas": 20835
+    },
+    {
+      "anio": 2024,
+      "mes": 6,
+      "destino": "São Paulo",
+      "vistas": 16711
+    },
+    {
+      "anio": 2024,
+      "mes": 7,
+      "destino": "São Paulo",
+      "vistas": 16533
+    },
+    {
+      "anio": 2024,
+      "mes": 8,
+      "destino": "São Paulo",
+      "vistas": 19666
+    },
+    {
+      "anio": 2024,
+      "mes": 9,
+      "destino": "São Paulo",
+      "vistas": 19376
+    },
+    {
+      "anio": 2024,
+      "mes": 10,
+      "destino": "São Paulo",
+      "vistas": 21499
+    },
+    {
+      "anio": 2024,
+      "mes": 11,
+      "destino": "São Paulo",
+      "vistas": 20484
+    },
+    {
+      "anio": 2024,
+      "mes": 12,
+      "destino": "São Paulo",
+      "vistas": 16376
+    },
+    {
+      "anio": 2025,
+      "mes": 1,
+      "destino": "São Paulo",
+      "vistas": 17767
+    },
+    {
+      "anio": 2025,
+      "mes": 2,
+      "destino": "São Paulo",
+      "vistas": 16662
+    },
+    {
+      "anio": 2025,
+      "mes": 3,
+      "destino": "São Paulo",
+      "vistas": 18290
+    },
+    {
+      "anio": 2025,
+      "mes": 4,
+      "destino": "São Paulo",
+      "vistas": 17059
+    },
+    {
+      "anio": 2025,
+      "mes": 5,
+      "destino": "São Paulo",
+      "vistas": 17383
+    },
+    {
+      "anio": 2025,
+      "mes": 6,
+      "destino": "São Paulo",
+      "vistas": 16522
+    },
+    {
+      "anio": 2025,
+      "mes": 7,
+      "destino": "São Paulo",
+      "vistas": 16088
+    },
+    {
+      "anio": 2025,
+      "mes": 8,
+      "destino": "São Paulo",
+      "vistas": 15984
+    },
+    {
+      "anio": 2025,
+      "mes": 9,
+      "destino": "São Paulo",
+      "vistas": 16198
+    },
+    {
+      "anio": 2025,
+      "mes": 10,
+      "destino": "São Paulo",
+      "vistas": 16992
+    },
+    {
+      "anio": 2025,
+      "mes": 11,
+      "destino": "São Paulo",
+      "vistas": 16735
+    },
+    {
+      "anio": 2025,
+      "mes": 12,
+      "destino": "São Paulo",
+      "vistas": 11842
+    },
+    {
+      "anio": 2026,
+      "mes": 1,
+      "destino": "São Paulo",
+      "vistas": 12610
+    },
+    {
+      "anio": 2026,
+      "mes": 2,
+      "destino": "São Paulo",
+      "vistas": 11937
+    },
+    {
+      "anio": 2026,
+      "mes": 3,
+      "destino": "São Paulo",
+      "vistas": 12520
+    },
+    {
+      "anio": 2026,
+      "mes": 4,
+      "destino": "São Paulo",
+      "vistas": 12579
+    },
+    {
+      "anio": 2026,
+      "mes": 5,
+      "destino": "São Paulo",
+      "vistas": 12434
+    },
+    {
+      "anio": 2026,
+      "mes": 6,
+      "destino": "São Paulo",
+      "vistas": 10580
+    },
+    {
+      "anio": 2026,
+      "mes": 7,
+      "destino": "São Paulo",
+      "vistas": 11101
+    },
+    {
+      "anio": 2026,
+      "mes": 8,
+      "destino": "São Paulo",
+      "vistas": 11786
+    },
+    {
+      "anio": 2026,
+      "mes": 9,
+      "destino": "São Paulo",
+      "vistas": 12147
+    },
+    {
+      "anio": 2026,
+      "mes": 10,
+      "destino": "São Paulo",
+      "vistas": 459
+    },
+    {
+      "anio": 2022,
+      "mes": 1,
+      "destino": "São Paulo",
+      "vistas": 76294
+    },
+    {
+      "anio": 2022,
+      "mes": 2,
+      "destino": "São Paulo",
+      "vistas": 68993
+    },
+    {
+      "anio": 2022,
+      "mes": 3,
+      "destino": "São Paulo",
+      "vistas": 71528
+    },
+    {
+      "anio": 2022,
+      "mes": 4,
+      "destino": "São Paulo",
+      "vistas": 68544
+    },
+    {
+      "anio": 2022,
+      "mes": 5,
+      "destino": "São Paulo",
+      "vistas": 72377
+    },
+    {
+      "anio": 2022,
+      "mes": 6,
+      "destino": "São Paulo",
+      "vistas": 70307
+    },
+    {
+      "anio": 2022,
+      "mes": 7,
+      "destino": "São Paulo",
+      "vistas": 72234
+    },
+    {
+      "anio": 2022,
+      "mes": 8,
+      "destino": "São Paulo",
+      "vistas": 83586
+    },
+    {
+      "anio": 2022,
+      "mes": 9,
+      "destino": "São Paulo",
+      "vistas": 77023
+    },
+    {
+      "anio": 2022,
+      "mes": 10,
+      "destino": "São Paulo",
+      "vistas": 91159
+    },
+    {
+      "anio": 2022,
+      "mes": 11,
+      "destino": "São Paulo",
+      "vistas": 109715
+    },
+    {
+      "anio": 2022,
+      "mes": 12,
+      "destino": "São Paulo",
+      "vistas": 109907
+    },
+    {
+      "anio": 2023,
+      "mes": 1,
+      "destino": "São Paulo",
+      "vistas": 97118
+    },
+    {
+      "anio": 2023,
+      "mes": 2,
+      "destino": "São Paulo",
+      "vistas": 80879
+    },
+    {
+      "anio": 2023,
+      "mes": 3,
+      "destino": "São Paulo",
+      "vistas": 87293
+    },
+    {
+      "anio": 2023,
+      "mes": 4,
+      "destino": "São Paulo",
+      "vistas": 74264
+    },
+    {
+      "anio": 2023,
+      "mes": 5,
+      "destino": "São Paulo",
+      "vistas": 78398
+    },
+    {
+      "anio": 2023,
+      "mes": 6,
+      "destino": "São Paulo",
+      "vistas": 81740
+    },
+    {
+      "anio": 2023,
+      "mes": 7,
+      "destino": "São Paulo",
+      "vistas": 84106
+    },
+    {
+      "anio": 2023,
+      "mes": 8,
+      "destino": "São Paulo",
+      "vistas": 88546
+    },
+    {
+      "anio": 2023,
+      "mes": 9,
+      "destino": "São Paulo",
+      "vistas": 76351
+    },
+    {
+      "anio": 2023,
+      "mes": 10,
+      "destino": "São Paulo",
+      "vistas": 73815
+    },
+    {
+      "anio": 2023,
+      "mes": 11,
+      "destino": "São Paulo",
+      "vistas": 97063
+    },
+    {
+      "anio": 2023,
+      "mes": 12,
+      "destino": "São Paulo",
+      "vistas": 78513
+    },
+    {
+      "anio": 2024,
+      "mes": 1,
+      "destino": "São Paulo",
+      "vistas": 90565
+    },
+    {
+      "anio": 2024,
+      "mes": 2,
+      "destino": "São Paulo",
+      "vistas": 81685
+    },
+    {
+      "anio": 2024,
+      "mes": 3,
+      "destino": "São Paulo",
+      "vistas": 79495
+    },
+    {
+      "anio": 2024,
+      "mes": 4,
+      "destino": "São Paulo",
+      "vistas": 79170
+    },
+    {
+      "anio": 2024,
+      "mes": 5,
+      "destino": "São Paulo",
+      "vistas": 76863
+    },
+    {
+      "anio": 2024,
+      "mes": 6,
+      "destino": "São Paulo",
+      "vistas": 68628
+    },
+    {
+      "anio": 2024,
+      "mes": 7,
+      "destino": "São Paulo",
+      "vistas": 71067
+    },
+    {
+      "anio": 2024,
+      "mes": 8,
+      "destino": "São Paulo",
+      "vistas": 84886
+    },
+    {
+      "anio": 2024,
+      "mes": 9,
+      "destino": "São Paulo",
+      "vistas": 115411
+    },
+    {
+      "anio": 2024,
+      "mes": 10,
+      "destino": "São Paulo",
+      "vistas": 74387
+    },
+    {
+      "anio": 2024,
+      "mes": 11,
+      "destino": "São Paulo",
+      "vistas": 86697
+    },
+    {
+      "anio": 2024,
+      "mes": 12,
+      "destino": "São Paulo",
+      "vistas": 79412
+    },
+    {
+      "anio": 2025,
+      "mes": 1,
+      "destino": "São Paulo",
+      "vistas": 76560
+    },
+    {
+      "anio": 2025,
+      "mes": 2,
+      "destino": "São Paulo",
+      "vistas": 72028
+    },
+    {
+      "anio": 2025,
+      "mes": 3,
+      "destino": "São Paulo",
+      "vistas": 81329
+    },
+    {
+      "anio": 2025,
+      "mes": 4,
+      "destino": "São Paulo",
+      "vistas": 72408
+    },
+    {
+      "anio": 2025,
+      "mes": 5,
+      "destino": "São Paulo",
+      "vistas": 75400
+    },
+    {
+      "anio": 2025,
+      "mes": 6,
+      "destino": "São Paulo",
+      "vistas": 72865
+    },
+    {
+      "anio": 2025,
+      "mes": 7,
+      "destino": "São Paulo",
+      "vistas": 75882
+    },
+    {
+      "anio": 2025,
+      "mes": 8,
+      "destino": "São Paulo",
+      "vistas": 74108
+    },
+    {
+      "anio": 2025,
+      "mes": 9,
+      "destino": "São Paulo",
+      "vistas": 104707
+    },
+    {
+      "anio": 2025,
+      "mes": 10,
+      "destino": "São Paulo",
+      "vistas": 75609
+    },
+    {
+      "anio": 2025,
+      "mes": 11,
+      "destino": "São Paulo",
+      "vistas": 84969
+    },
+    {
+      "anio": 2025,
+      "mes": 12,
+      "destino": "São Paulo",
+      "vistas": 67994
+    },
+    {
+      "anio": 2026,
+      "mes": 1,
+      "destino": "São Paulo",
+      "vistas": 70565
+    },
+    {
+      "anio": 2026,
+      "mes": 2,
+      "destino": "São Paulo",
+      "vistas": 63262
+    },
+    {
+      "anio": 2026,
+      "mes": 3,
+      "destino": "São Paulo",
+      "vistas": 79916
+    },
+    {
+      "anio": 2026,
+      "mes": 4,
+      "destino": "São Paulo",
+      "vistas": 62328
+    },
+    {
+      "anio": 2026,
+      "mes": 5,
+      "destino": "São Paulo",
+      "vistas": 75491
+    },
+    {
+      "anio": 2026,
+      "mes": 6,
+      "destino": "São Paulo",
+      "vistas": 78271
+    },
+    {
+      "anio": 2026,
+      "mes": 7,
+      "destino": "São Paulo",
+      "vistas": 77037
+    },
+    {
+      "anio": 2026,
+      "mes": 8,
+      "destino": "São Paulo",
+      "vistas": 58776
+    },
+    {
+      "anio": 2026,
+      "mes": 9,
+      "destino": "São Paulo",
+      "vistas": 60416
+    },
+    {
+      "anio": 2026,
+      "mes": 10,
+      "destino": "São Paulo",
+      "vistas": 2011
+    },
+    {
+      "anio": 2022,
+      "mes": 1,
+      "destino": "Lima",
+      "vistas": 39574
+    },
+    {
+      "anio": 2022,
+      "mes": 2,
+      "destino": "Lima",
+      "vistas": 33144
+    },
+    {
+      "anio": 2022,
+      "mes": 3,
+      "destino": "Lima",
+      "vistas": 36882
+    },
+    {
+      "anio": 2022,
+      "mes": 4,
+      "destino": "Lima",
+      "vistas": 41378
+    },
+    {
+      "anio": 2022,
+      "mes": 5,
+      "destino": "Lima",
+      "vistas": 41390
+    },
+    {
+      "anio": 2022,
+      "mes": 6,
+      "destino": "Lima",
+      "vistas": 43231
+    },
+    {
+      "anio": 2022,
+      "mes": 7,
+      "destino": "Lima",
+      "vistas": 50045
+    },
+    {
+      "anio": 2022,
+      "mes": 8,
+      "destino": "Lima",
+      "vistas": 52993
+    },
+    {
+      "anio": 2022,
+      "mes": 9,
+      "destino": "Lima",
+      "vistas": 50784
+    },
+    {
+      "anio": 2022,
+      "mes": 10,
+      "destino": "Lima",
+      "vistas": 52151
+    },
+    {
+      "anio": 2022,
+      "mes": 11,
+      "destino": "Lima",
+      "vistas": 52706
+    },
+    {
+      "anio": 2022,
+      "mes": 12,
+      "destino": "Lima",
+      "vistas": 41138
+    },
+    {
+      "anio": 2023,
+      "mes": 1,
+      "destino": "Lima",
+      "vistas": 50009
+    },
+    {
+      "anio": 2023,
+      "mes": 2,
+      "destino": "Lima",
+      "vistas": 41454
+    },
+    {
+      "anio": 2023,
+      "mes": 3,
+      "destino": "Lima",
+      "vistas": 54186
+    },
+    {
+      "anio": 2023,
+      "mes": 4,
+      "destino": "Lima",
+      "vistas": 44339
+    },
+    {
+      "anio": 2023,
+      "mes": 5,
+      "destino": "Lima",
+      "vistas": 49078
+    },
+    {
+      "anio": 2023,
+      "mes": 6,
+      "destino": "Lima",
+      "vistas": 47489
+    },
+    {
+      "anio": 2023,
+      "mes": 7,
+      "destino": "Lima",
+      "vistas": 52126
+    },
+    {
+      "anio": 2023,
+      "mes": 8,
+      "destino": "Lima",
+      "vistas": 49594
+    },
+    {
+      "anio": 2023,
+      "mes": 9,
+      "destino": "Lima",
+      "vistas": 46389
+    },
+    {
+      "anio": 2023,
+      "mes": 10,
+      "destino": "Lima",
+      "vistas": 48766
+    },
+    {
+      "anio": 2023,
+      "mes": 11,
+      "destino": "Lima",
+      "vistas": 45687
+    },
+    {
+      "anio": 2023,
+      "mes": 12,
+      "destino": "Lima",
+      "vistas": 38755
+    },
+    {
+      "anio": 2024,
+      "mes": 1,
+      "destino": "Lima",
+      "vistas": 47766
+    },
+    {
+      "anio": 2024,
+      "mes": 2,
+      "destino": "Lima",
+      "vistas": 39640
+    },
+    {
+      "anio": 2024,
+      "mes": 3,
+      "destino": "Lima",
+      "vistas": 43350
+    },
+    {
+      "anio": 2024,
+      "mes": 4,
+      "destino": "Lima",
+      "vistas": 46662
+    },
+    {
+      "anio": 2024,
+      "mes": 5,
+      "destino": "Lima",
+      "vistas": 36972
+    },
+    {
+      "anio": 2024,
+      "mes": 6,
+      "destino": "Lima",
+      "vistas": 32496
+    },
+    {
+      "anio": 2024,
+      "mes": 7,
+      "destino": "Lima",
+      "vistas": 34357
+    },
+    {
+      "anio": 2024,
+      "mes": 8,
+      "destino": "Lima",
+      "vistas": 36054
+    },
+    {
+      "anio": 2024,
+      "mes": 9,
+      "destino": "Lima",
+      "vistas": 35516
+    },
+    {
+      "anio": 2024,
+      "mes": 10,
+      "destino": "Lima",
+      "vistas": 33286
+    },
+    {
+      "anio": 2024,
+      "mes": 11,
+      "destino": "Lima",
+      "vistas": 29203
+    },
+    {
+      "anio": 2024,
+      "mes": 12,
+      "destino": "Lima",
+      "vistas": 25582
+    },
+    {
+      "anio": 2025,
+      "mes": 1,
+      "destino": "Lima",
+      "vistas": 50991
+    },
+    {
+      "anio": 2025,
+      "mes": 2,
+      "destino": "Lima",
+      "vistas": 29242
+    },
+    {
+      "anio": 2025,
+      "mes": 3,
+      "destino": "Lima",
+      "vistas": 27978
+    },
+    {
+      "anio": 2025,
+      "mes": 4,
+      "destino": "Lima",
+      "vistas": 33978
+    },
+    {
+      "anio": 2025,
+      "mes": 5,
+      "destino": "Lima",
+      "vistas": 29294
+    },
+    {
+      "anio": 2025,
+      "mes": 6,
+      "destino": "Lima",
+      "vistas": 25586
+    },
+    {
+      "anio": 2025,
+      "mes": 7,
+      "destino": "Lima",
+      "vistas": 28515
+    },
+    {
+      "anio": 2025,
+      "mes": 8,
+      "destino": "Lima",
+      "vistas": 25870
+    },
+    {
+      "anio": 2025,
+      "mes": 9,
+      "destino": "Lima",
+      "vistas": 23934
+    },
+    {
+      "anio": 2025,
+      "mes": 10,
+      "destino": "Lima",
+      "vistas": 25108
+    },
+    {
+      "anio": 2025,
+      "mes": 11,
+      "destino": "Lima",
+      "vistas": 24042
+    },
+    {
+      "anio": 2025,
+      "mes": 12,
+      "destino": "Lima",
+      "vistas": 19173
+    },
+    {
+      "anio": 2026,
+      "mes": 1,
+      "destino": "Lima",
+      "vistas": 22451
+    },
+    {
+      "anio": 2026,
+      "mes": 2,
+      "destino": "Lima",
+      "vistas": 16426
+    },
+    {
+      "anio": 2026,
+      "mes": 3,
+      "destino": "Lima",
+      "vistas": 17681
+    },
+    {
+      "anio": 2026,
+      "mes": 4,
+      "destino": "Lima",
+      "vistas": 21577
+    },
+    {
+      "anio": 2026,
+      "mes": 5,
+      "destino": "Lima",
+      "vistas": 19111
+    },
+    {
+      "anio": 2026,
+      "mes": 6,
+      "destino": "Lima",
+      "vistas": 19903
+    },
+    {
+      "anio": 2026,
+      "mes": 7,
+      "destino": "Lima",
+      "vistas": 19267
+    },
+    {
+      "anio": 2026,
+      "mes": 8,
+      "destino": "Lima",
+      "vistas": 18511
+    },
+    {
+      "anio": 2026,
+      "mes": 9,
+      "destino": "Lima",
+      "vistas": 17088
+    },
+    {
+      "anio": 2026,
+      "mes": 10,
+      "destino": "Lima",
+      "vistas": 502
+    },
+    {
+      "anio": 2022,
+      "mes": 1,
+      "destino": "Lima",
+      "vistas": 39383
+    },
+    {
+      "anio": 2022,
+      "mes": 2,
+      "destino": "Lima",
+      "vistas": 37343
+    },
+    {
+      "anio": 2022,
+      "mes": 3,
+      "destino": "Lima",
+      "vistas": 38411
+    },
+    {
+      "anio": 2022,
+      "mes": 4,
+      "destino": "Lima",
+      "vistas": 41808
+    },
+    {
+      "anio": 2022,
+      "mes": 5,
+      "destino": "Lima",
+      "vistas": 43928
+    },
+    {
+      "anio": 2022,
+      "mes": 6,
+      "destino": "Lima",
+      "vistas": 38153
+    },
+    {
+      "anio": 2022,
+      "mes": 7,
+      "destino": "Lima",
+      "vistas": 39742
+    },
+    {
+      "anio": 2022,
+      "mes": 8,
+      "destino": "Lima",
+      "vistas": 45151
+    },
+    {
+      "anio": 2022,
+      "mes": 9,
+      "destino": "Lima",
+      "vistas": 42760
+    },
+    {
+      "anio": 2022,
+      "mes": 10,
+      "destino": "Lima",
+      "vistas": 46514
+    },
+    {
+      "anio": 2022,
+      "mes": 11,
+      "destino": "Lima",
+      "vistas": 48848
+    },
+    {
+      "anio": 2022,
+      "mes": 12,
+      "destino": "Lima",
+      "vistas": 52565
+    },
+    {
+      "anio": 2023,
+      "mes": 1,
+      "destino": "Lima",
+      "vistas": 47813
+    },
+    {
+      "anio": 2023,
+      "mes": 2,
+      "destino": "Lima",
+      "vistas": 42405
+    },
+    {
+      "anio": 2023,
+      "mes": 3,
+      "destino": "Lima",
+      "vistas": 49733
+    },
+    {
+      "anio": 2023,
+      "mes": 4,
+      "destino": "Lima",
+      "vistas": 40898
+    },
+    {
+      "anio": 2023,
+      "mes": 5,
+      "destino": "Lima",
+      "vistas": 45887
+    },
+    {
+      "anio": 2023,
+      "mes": 6,
+      "destino": "Lima",
+      "vistas": 45689
+    },
+    {
+      "anio": 2023,
+      "mes": 7,
+      "destino": "Lima",
+      "vistas": 45521
+    },
+    {
+      "anio": 2023,
+      "mes": 8,
+      "destino": "Lima",
+      "vistas": 45202
+    },
+    {
+      "anio": 2023,
+      "mes": 9,
+      "destino": "Lima",
+      "vistas": 44348
+    },
+    {
+      "anio": 2023,
+      "mes": 10,
+      "destino": "Lima",
+      "vistas": 44810
+    },
+    {
+      "anio": 2023,
+      "mes": 11,
+      "destino": "Lima",
+      "vistas": 43620
+    },
+    {
+      "anio": 2023,
+      "mes": 12,
+      "destino": "Lima",
+      "vistas": 42879
+    },
+    {
+      "anio": 2024,
+      "mes": 1,
+      "destino": "Lima",
+      "vistas": 53052
+    },
+    {
+      "anio": 2024,
+      "mes": 2,
+      "destino": "Lima",
+      "vistas": 44748
+    },
+    {
+      "anio": 2024,
+      "mes": 3,
+      "destino": "Lima",
+      "vistas": 44850
+    },
+    {
+      "anio": 2024,
+      "mes": 4,
+      "destino": "Lima",
+      "vistas": 49347
+    },
+    {
+      "anio": 2024,
+      "mes": 5,
+      "destino": "Lima",
+      "vistas": 50176
+    },
+    {
+      "anio": 2024,
+      "mes": 6,
+      "destino": "Lima",
+      "vistas": 45755
+    },
+    {
+      "anio": 2024,
+      "mes": 7,
+      "destino": "Lima",
+      "vistas": 46934
+    },
+    {
+      "anio": 2024,
+      "mes": 8,
+      "destino": "Lima",
+      "vistas": 44358
+    },
+    {
+      "anio": 2024,
+      "mes": 9,
+      "destino": "Lima",
+      "vistas": 45792
+    },
+    {
+      "anio": 2024,
+      "mes": 10,
+      "destino": "Lima",
+      "vistas": 40566
+    },
+    {
+      "anio": 2024,
+      "mes": 11,
+      "destino": "Lima",
+      "vistas": 44855
+    },
+    {
+      "anio": 2024,
+      "mes": 12,
+      "destino": "Lima",
+      "vistas": 37876
+    },
+    {
+      "anio": 2025,
+      "mes": 1,
+      "destino": "Lima",
+      "vistas": 97711
+    },
+    {
+      "anio": 2025,
+      "mes": 2,
+      "destino": "Lima",
+      "vistas": 44728
+    },
+    {
+      "anio": 2025,
+      "mes": 3,
+      "destino": "Lima",
+      "vistas": 39304
+    },
+    {
+      "anio": 2025,
+      "mes": 4,
+      "destino": "Lima",
+      "vistas": 44406
+    },
+    {
+      "anio": 2025,
+      "mes": 5,
+      "destino": "Lima",
+      "vistas": 46257
+    },
+    {
+      "anio": 2025,
+      "mes": 6,
+      "destino": "Lima",
+      "vistas": 36054
+    },
+    {
+      "anio": 2025,
+      "mes": 7,
+      "destino": "Lima",
+      "vistas": 38928
+    },
+    {
+      "anio": 2025,
+      "mes": 8,
+      "destino": "Lima",
+      "vistas": 38024
+    },
+    {
+      "anio": 2025,
+      "mes": 9,
+      "destino": "Lima",
+      "vistas": 36985
+    },
+    {
+      "anio": 2025,
+      "mes": 10,
+      "destino": "Lima",
+      "vistas": 44114
+    },
+    {
+      "anio": 2025,
+      "mes": 11,
+      "destino": "Lima",
+      "vistas": 40336
+    },
+    {
+      "anio": 2025,
+      "mes": 12,
+      "destino": "Lima",
+      "vistas": 35281
+    },
+    {
+      "anio": 2026,
+      "mes": 1,
+      "destino": "Lima",
+      "vistas": 40273
+    },
+    {
+      "anio": 2026,
+      "mes": 2,
+      "destino": "Lima",
+      "vistas": 35267
+    },
+    {
+      "anio": 2026,
+      "mes": 3,
+      "destino": "Lima",
+      "vistas": 38982
+    },
+    {
+      "anio": 2026,
+      "mes": 4,
+      "destino": "Lima",
+      "vistas": 36408
+    },
+    {
+      "anio": 2026,
+      "mes": 5,
+      "destino": "Lima",
+      "vistas": 36664
+    },
+    {
+      "anio": 2026,
+      "mes": 6,
+      "destino": "Lima",
+      "vistas": 48177
+    },
+    {
+      "anio": 2026,
+      "mes": 7,
+      "destino": "Lima",
+      "vistas": 46639
+    },
+    {
+      "anio": 2026,
+      "mes": 8,
+      "destino": "Lima",
+      "vistas": 34872
+    },
+    {
+      "anio": 2026,
+      "mes": 9,
+      "destino": "Lima",
+      "vistas": 33870
+    },
+    {
+      "anio": 2026,
+      "mes": 10,
+      "destino": "Lima",
+      "vistas": 1095
+    },
+    {
+      "anio": 2022,
+      "mes": 1,
+      "destino": "Ciudad de Panamá",
+      "vistas": 10200
+    },
+    {
+      "anio": 2022,
+      "mes": 2,
+      "destino": "Ciudad de Panamá",
+      "vistas": 10179
+    },
+    {
+      "anio": 2022,
+      "mes": 3,
+      "destino": "Ciudad de Panamá",
+      "vistas": 11394
+    },
+    {
+      "anio": 2022,
+      "mes": 4,
+      "destino": "Ciudad de Panamá",
+      "vistas": 12319
+    },
+    {
+      "anio": 2022,
+      "mes": 5,
+      "destino": "Ciudad de Panamá",
+      "vistas": 12547
+    },
+    {
+      "anio": 2022,
+      "mes": 6,
+      "destino": "Ciudad de Panamá",
+      "vistas": 12622
+    },
+    {
+      "anio": 2022,
+      "mes": 7,
+      "destino": "Ciudad de Panamá",
+      "vistas": 13328
+    },
+    {
+      "anio": 2022,
+      "mes": 8,
+      "destino": "Ciudad de Panamá",
+      "vistas": 17253
+    },
+    {
+      "anio": 2022,
+      "mes": 9,
+      "destino": "Ciudad de Panamá",
+      "vistas": 16339
+    },
+    {
+      "anio": 2022,
+      "mes": 10,
+      "destino": "Ciudad de Panamá",
+      "vistas": 17408
+    },
+    {
+      "anio": 2022,
+      "mes": 11,
+      "destino": "Ciudad de Panamá",
+      "vistas": 19476
+    },
+    {
+      "anio": 2022,
+      "mes": 12,
+      "destino": "Ciudad de Panamá",
+      "vistas": 11750
+    },
+    {
+      "anio": 2023,
+      "mes": 1,
+      "destino": "Ciudad de Panamá",
+      "vistas": 14955
+    },
+    {
+      "anio": 2023,
+      "mes": 2,
+      "destino": "Ciudad de Panamá",
+      "vistas": 16105
+    },
+    {
+      "anio": 2023,
+      "mes": 3,
+      "destino": "Ciudad de Panamá",
+      "vistas": 15079
+    },
+    {
+      "anio": 2023,
+      "mes": 4,
+      "destino": "Ciudad de Panamá",
+      "vistas": 14423
+    },
+    {
+      "anio": 2023,
+      "mes": 5,
+      "destino": "Ciudad de Panamá",
+      "vistas": 12669
+    },
+    {
+      "anio": 2023,
+      "mes": 6,
+      "destino": "Ciudad de Panamá",
+      "vistas": 13285
+    },
+    {
+      "anio": 2023,
+      "mes": 7,
+      "destino": "Ciudad de Panamá",
+      "vistas": 13874
+    },
+    {
+      "anio": 2023,
+      "mes": 8,
+      "destino": "Ciudad de Panamá",
+      "vistas": 18218
+    },
+    {
+      "anio": 2023,
+      "mes": 9,
+      "destino": "Ciudad de Panamá",
+      "vistas": 13365
+    },
+    {
+      "anio": 2023,
+      "mes": 10,
+      "destino": "Ciudad de Panamá",
+      "vistas": 16708
+    },
+    {
+      "anio": 2023,
+      "mes": 11,
+      "destino": "Ciudad de Panamá",
+      "vistas": 13939
+    },
+    {
+      "anio": 2023,
+      "mes": 12,
+      "destino": "Ciudad de Panamá",
+      "vistas": 10407
+    },
+    {
+      "anio": 2024,
+      "mes": 1,
+      "destino": "Ciudad de Panamá",
+      "vistas": 16527
+    },
+    {
+      "anio": 2024,
+      "mes": 2,
+      "destino": "Ciudad de Panamá",
+      "vistas": 12191
+    },
+    {
+      "anio": 2024,
+      "mes": 3,
+      "destino": "Ciudad de Panamá",
+      "vistas": 14058
+    },
+    {
+      "anio": 2024,
+      "mes": 4,
+      "destino": "Ciudad de Panamá",
+      "vistas": 15221
+    },
+    {
+      "anio": 2024,
+      "mes": 5,
+      "destino": "Ciudad de Panamá",
+      "vistas": 13729
+    },
+    {
+      "anio": 2024,
+      "mes": 6,
+      "destino": "Ciudad de Panamá",
+      "vistas": 12168
+    },
+    {
+      "anio": 2024,
+      "mes": 7,
+      "destino": "Ciudad de Panamá",
+      "vistas": 13072
+    },
+    {
+      "anio": 2024,
+      "mes": 8,
+      "destino": "Ciudad de Panamá",
+      "vistas": 12768
+    },
+    {
+      "anio": 2024,
+      "mes": 9,
+      "destino": "Ciudad de Panamá",
+      "vistas": 10340
+    },
+    {
+      "anio": 2024,
+      "mes": 10,
+      "destino": "Ciudad de Panamá",
+      "vistas": 11842
+    },
+    {
+      "anio": 2024,
+      "mes": 11,
+      "destino": "Ciudad de Panamá",
+      "vistas": 9672
+    },
+    {
+      "anio": 2024,
+      "mes": 12,
+      "destino": "Ciudad de Panamá",
+      "vistas": 8239
+    },
+    {
+      "anio": 2025,
+      "mes": 1,
+      "destino": "Ciudad de Panamá",
+      "vistas": 10779
+    },
+    {
+      "anio": 2025,
+      "mes": 2,
+      "destino": "Ciudad de Panamá",
+      "vistas": 8230
+    },
+    {
+      "anio": 2025,
+      "mes": 3,
+      "destino": "Ciudad de Panamá",
+      "vistas": 8114
+    },
+    {
+      "anio": 2025,
+      "mes": 4,
+      "destino": "Ciudad de Panamá",
+      "vistas": 8099
+    },
+    {
+      "anio": 2025,
+      "mes": 5,
+      "destino": "Ciudad de Panamá",
+      "vistas": 7653
+    },
+    {
+      "anio": 2025,
+      "mes": 6,
+      "destino": "Ciudad de Panamá",
+      "vistas": 7168
+    },
+    {
+      "anio": 2025,
+      "mes": 7,
+      "destino": "Ciudad de Panamá",
+      "vistas": 8222
+    },
+    {
+      "anio": 2025,
+      "mes": 8,
+      "destino": "Ciudad de Panamá",
+      "vistas": 9491
+    },
+    {
+      "anio": 2025,
+      "mes": 9,
+      "destino": "Ciudad de Panamá",
+      "vistas": 8330
+    },
+    {
+      "anio": 2025,
+      "mes": 10,
+      "destino": "Ciudad de Panamá",
+      "vistas": 8226
+    },
+    {
+      "anio": 2025,
+      "mes": 11,
+      "destino": "Ciudad de Panamá",
+      "vistas": 8330
+    },
+    {
+      "anio": 2025,
+      "mes": 12,
+      "destino": "Ciudad de Panamá",
+      "vistas": 6035
+    },
+    {
+      "anio": 2026,
+      "mes": 1,
+      "destino": "Ciudad de Panamá",
+      "vistas": 8714
+    },
+    {
+      "anio": 2026,
+      "mes": 2,
+      "destino": "Ciudad de Panamá",
+      "vistas": 5753
+    },
+    {
+      "anio": 2026,
+      "mes": 3,
+      "destino": "Ciudad de Panamá",
+      "vistas": 5996
+    },
+    {
+      "anio": 2026,
+      "mes": 4,
+      "destino": "Ciudad de Panamá",
+      "vistas": 5850
+    },
+    {
+      "anio": 2026,
+      "mes": 5,
+      "destino": "Ciudad de Panamá",
+      "vistas": 6189
+    },
+    {
+      "anio": 2026,
+      "mes": 6,
+      "destino": "Ciudad de Panamá",
+      "vistas": 6595
+    },
+    {
+      "anio": 2026,
+      "mes": 7,
+      "destino": "Ciudad de Panamá",
+      "vistas": 6490
+    },
+    {
+      "anio": 2026,
+      "mes": 8,
+      "destino": "Ciudad de Panamá",
+      "vistas": 6735
+    },
+    {
+      "anio": 2026,
+      "mes": 9,
+      "destino": "Ciudad de Panamá",
+      "vistas": 5925
+    },
+    {
+      "anio": 2026,
+      "mes": 10,
+      "destino": "Ciudad de Panamá",
+      "vistas": 173
+    },
+    {
+      "anio": 2022,
+      "mes": 1,
+      "destino": "Ciudad de Panamá",
+      "vistas": 25697
+    },
+    {
+      "anio": 2022,
+      "mes": 2,
+      "destino": "Ciudad de Panamá",
+      "vistas": 23506
+    },
+    {
+      "anio": 2022,
+      "mes": 3,
+      "destino": "Ciudad de Panamá",
+      "vistas": 28258
+    },
+    {
+      "anio": 2022,
+      "mes": 4,
+      "destino": "Ciudad de Panamá",
+      "vistas": 26890
+    },
+    {
+      "anio": 2022,
+      "mes": 5,
+      "destino": "Ciudad de Panamá",
+      "vistas": 24497
+    },
+    {
+      "anio": 2022,
+      "mes": 6,
+      "destino": "Ciudad de Panamá",
+      "vistas": 22561
+    },
+    {
+      "anio": 2022,
+      "mes": 7,
+      "destino": "Ciudad de Panamá",
+      "vistas": 24243
+    },
+    {
+      "anio": 2022,
+      "mes": 8,
+      "destino": "Ciudad de Panamá",
+      "vistas": 26694
+    },
+    {
+      "anio": 2022,
+      "mes": 9,
+      "destino": "Ciudad de Panamá",
+      "vistas": 25628
+    },
+    {
+      "anio": 2022,
+      "mes": 10,
+      "destino": "Ciudad de Panamá",
+      "vistas": 27134
+    },
+    {
+      "anio": 2022,
+      "mes": 11,
+      "destino": "Ciudad de Panamá",
+      "vistas": 29299
+    },
+    {
+      "anio": 2022,
+      "mes": 12,
+      "destino": "Ciudad de Panamá",
+      "vistas": 27749
+    },
+    {
+      "anio": 2023,
+      "mes": 1,
+      "destino": "Ciudad de Panamá",
+      "vistas": 32155
+    },
+    {
+      "anio": 2023,
+      "mes": 2,
+      "destino": "Ciudad de Panamá",
+      "vistas": 29367
+    },
+    {
+      "anio": 2023,
+      "mes": 3,
+      "destino": "Ciudad de Panamá",
+      "vistas": 35003
+    },
+    {
+      "anio": 2023,
+      "mes": 4,
+      "destino": "Ciudad de Panamá",
+      "vistas": 29630
+    },
+    {
+      "anio": 2023,
+      "mes": 5,
+      "destino": "Ciudad de Panamá",
+      "vistas": 29253
+    },
+    {
+      "anio": 2023,
+      "mes": 6,
+      "destino": "Ciudad de Panamá",
+      "vistas": 28244
+    },
+    {
+      "anio": 2023,
+      "mes": 7,
+      "destino": "Ciudad de Panamá",
+      "vistas": 37560
+    },
+    {
+      "anio": 2023,
+      "mes": 8,
+      "destino": "Ciudad de Panamá",
+      "vistas": 33111
+    },
+    {
+      "anio": 2023,
+      "mes": 9,
+      "destino": "Ciudad de Panamá",
+      "vistas": 29128
+    },
+    {
+      "anio": 2023,
+      "mes": 10,
+      "destino": "Ciudad de Panamá",
+      "vistas": 27152
+    },
+    {
+      "anio": 2023,
+      "mes": 11,
+      "destino": "Ciudad de Panamá",
+      "vistas": 29762
+    },
+    {
+      "anio": 2023,
+      "mes": 12,
+      "destino": "Ciudad de Panamá",
+      "vistas": 29584
+    },
+    {
+      "anio": 2024,
+      "mes": 1,
+      "destino": "Ciudad de Panamá",
+      "vistas": 35840
+    },
+    {
+      "anio": 2024,
+      "mes": 2,
+      "destino": "Ciudad de Panamá",
+      "vistas": 31177
+    },
+    {
+      "anio": 2024,
+      "mes": 3,
+      "destino": "Ciudad de Panamá",
+      "vistas": 31000
+    },
+    {
+      "anio": 2024,
+      "mes": 4,
+      "destino": "Ciudad de Panamá",
+      "vistas": 27451
+    },
+    {
+      "anio": 2024,
+      "mes": 5,
+      "destino": "Ciudad de Panamá",
+      "vistas": 26771
+    },
+    {
+      "anio": 2024,
+      "mes": 6,
+      "destino": "Ciudad de Panamá",
+      "vistas": 26399
+    },
+    {
+      "anio": 2024,
+      "mes": 7,
+      "destino": "Ciudad de Panamá",
+      "vistas": 26790
+    },
+    {
+      "anio": 2024,
+      "mes": 8,
+      "destino": "Ciudad de Panamá",
+      "vistas": 25217
+    },
+    {
+      "anio": 2024,
+      "mes": 9,
+      "destino": "Ciudad de Panamá",
+      "vistas": 26252
+    },
+    {
+      "anio": 2024,
+      "mes": 10,
+      "destino": "Ciudad de Panamá",
+      "vistas": 25366
+    },
+    {
+      "anio": 2024,
+      "mes": 11,
+      "destino": "Ciudad de Panamá",
+      "vistas": 25964
+    },
+    {
+      "anio": 2024,
+      "mes": 12,
+      "destino": "Ciudad de Panamá",
+      "vistas": 33178
+    },
+    {
+      "anio": 2025,
+      "mes": 1,
+      "destino": "Ciudad de Panamá",
+      "vistas": 43899
+    },
+    {
+      "anio": 2025,
+      "mes": 2,
+      "destino": "Ciudad de Panamá",
+      "vistas": 31441
+    },
+    {
+      "anio": 2025,
+      "mes": 3,
+      "destino": "Ciudad de Panamá",
+      "vistas": 27647
+    },
+    {
+      "anio": 2025,
+      "mes": 4,
+      "destino": "Ciudad de Panamá",
+      "vistas": 25004
+    },
+    {
+      "anio": 2025,
+      "mes": 5,
+      "destino": "Ciudad de Panamá",
+      "vistas": 24622
+    },
+    {
+      "anio": 2025,
+      "mes": 6,
+      "destino": "Ciudad de Panamá",
+      "vistas": 21479
+    },
+    {
+      "anio": 2025,
+      "mes": 7,
+      "destino": "Ciudad de Panamá",
+      "vistas": 23636
+    },
+    {
+      "anio": 2025,
+      "mes": 8,
+      "destino": "Ciudad de Panamá",
+      "vistas": 24843
+    },
+    {
+      "anio": 2025,
+      "mes": 9,
+      "destino": "Ciudad de Panamá",
+      "vistas": 24467
+    },
+    {
+      "anio": 2025,
+      "mes": 10,
+      "destino": "Ciudad de Panamá",
+      "vistas": 23469
+    },
+    {
+      "anio": 2025,
+      "mes": 11,
+      "destino": "Ciudad de Panamá",
+      "vistas": 22822
+    },
+    {
+      "anio": 2025,
+      "mes": 12,
+      "destino": "Ciudad de Panamá",
+      "vistas": 24454
+    },
+    {
+      "anio": 2026,
+      "mes": 1,
+      "destino": "Ciudad de Panamá",
+      "vistas": 31007
+    },
+    {
+      "anio": 2026,
+      "mes": 2,
+      "destino": "Ciudad de Panamá",
+      "vistas": 22863
+    },
+    {
+      "anio": 2026,
+      "mes": 3,
+      "destino": "Ciudad de Panamá",
+      "vistas": 24484
+    },
+    {
+      "anio": 2026,
+      "mes": 4,
+      "destino": "Ciudad de Panamá",
+      "vistas": 23000
+    },
+    {
+      "anio": 2026,
+      "mes": 5,
+      "destino": "Ciudad de Panamá",
+      "vistas": 26381
+    },
+    {
+      "anio": 2026,
+      "mes": 6,
+      "destino": "Ciudad de Panamá",
+      "vistas": 32515
+    },
+    {
+      "anio": 2026,
+      "mes": 7,
+      "destino": "Ciudad de Panamá",
+      "vistas": 24640
+    },
+    {
+      "anio": 2026,
+      "mes": 8,
+      "destino": "Ciudad de Panamá",
+      "vistas": 24193
+    },
+    {
+      "anio": 2026,
+      "mes": 9,
+      "destino": "Ciudad de Panamá",
+      "vistas": 22866
+    },
+    {
+      "anio": 2026,
+      "mes": 10,
+      "destino": "Ciudad de Panamá",
+      "vistas": 783
+    },
+    {
+      "anio": 2022,
+      "mes": 1,
+      "destino": "Santo Domingo",
+      "vistas": 28507
+    },
+    {
+      "anio": 2022,
+      "mes": 2,
+      "destino": "Santo Domingo",
+      "vistas": 27877
+    },
+    {
+      "anio": 2022,
+      "mes": 3,
+      "destino": "Santo Domingo",
+      "vistas": 25530
+    },
+    {
+      "anio": 2022,
+      "mes": 4,
+      "destino": "Santo Domingo",
+      "vistas": 21504
+    },
+    {
+      "anio": 2022,
+      "mes": 5,
+      "destino": "Santo Domingo",
+      "vistas": 23897
+    },
+    {
+      "anio": 2022,
+      "mes": 6,
+      "destino": "Santo Domingo",
+      "vistas": 21331
+    },
+    {
+      "anio": 2022,
+      "mes": 7,
+      "destino": "Santo Domingo",
+      "vistas": 21354
+    },
+    {
+      "anio": 2022,
+      "mes": 8,
+      "destino": "Santo Domingo",
+      "vistas": 26245
+    },
+    {
+      "anio": 2022,
+      "mes": 9,
+      "destino": "Santo Domingo",
+      "vistas": 29584
+    },
+    {
+      "anio": 2022,
+      "mes": 10,
+      "destino": "Santo Domingo",
+      "vistas": 39389
+    },
+    {
+      "anio": 2022,
+      "mes": 11,
+      "destino": "Santo Domingo",
+      "vistas": 37772
+    },
+    {
+      "anio": 2022,
+      "mes": 12,
+      "destino": "Santo Domingo",
+      "vistas": 23746
+    },
+    {
+      "anio": 2023,
+      "mes": 1,
+      "destino": "Santo Domingo",
+      "vistas": 30560
+    },
+    {
+      "anio": 2023,
+      "mes": 2,
+      "destino": "Santo Domingo",
+      "vistas": 32128
+    },
+    {
+      "anio": 2023,
+      "mes": 3,
+      "destino": "Santo Domingo",
+      "vistas": 38793
+    },
+    {
+      "anio": 2023,
+      "mes": 4,
+      "destino": "Santo Domingo",
+      "vistas": 32253
+    },
+    {
+      "anio": 2023,
+      "mes": 5,
+      "destino": "Santo Domingo",
+      "vistas": 34030
+    },
+    {
+      "anio": 2023,
+      "mes": 6,
+      "destino": "Santo Domingo",
+      "vistas": 30819
+    },
+    {
+      "anio": 2023,
+      "mes": 7,
+      "destino": "Santo Domingo",
+      "vistas": 28660
+    },
+    {
+      "anio": 2023,
+      "mes": 8,
+      "destino": "Santo Domingo",
+      "vistas": 30111
+    },
+    {
+      "anio": 2023,
+      "mes": 9,
+      "destino": "Santo Domingo",
+      "vistas": 31562
+    },
+    {
+      "anio": 2023,
+      "mes": 10,
+      "destino": "Santo Domingo",
+      "vistas": 32386
+    },
+    {
+      "anio": 2023,
+      "mes": 11,
+      "destino": "Santo Domingo",
+      "vistas": 30845
+    },
+    {
+      "anio": 2023,
+      "mes": 12,
+      "destino": "Santo Domingo",
+      "vistas": 24764
+    },
+    {
+      "anio": 2024,
+      "mes": 1,
+      "destino": "Santo Domingo",
+      "vistas": 35320
+    },
+    {
+      "anio": 2024,
+      "mes": 2,
+      "destino": "Santo Domingo",
+      "vistas": 28225
+    },
+    {
+      "anio": 2024,
+      "mes": 3,
+      "destino": "Santo Domingo",
+      "vistas": 29034
+    },
+    {
+      "anio": 2024,
+      "mes": 4,
+      "destino": "Santo Domingo",
+      "vistas": 26819
+    },
+    {
+      "anio": 2024,
+      "mes": 5,
+      "destino": "Santo Domingo",
+      "vistas": 21866
+    },
+    {
+      "anio": 2024,
+      "mes": 6,
+      "destino": "Santo Domingo",
+      "vistas": 16530
+    },
+    {
+      "anio": 2024,
+      "mes": 7,
+      "destino": "Santo Domingo",
+      "vistas": 16399
+    },
+    {
+      "anio": 2024,
+      "mes": 8,
+      "destino": "Santo Domingo",
+      "vistas": 20182
+    },
+    {
+      "anio": 2024,
+      "mes": 9,
+      "destino": "Santo Domingo",
+      "vistas": 22804
+    },
+    {
+      "anio": 2024,
+      "mes": 10,
+      "destino": "Santo Domingo",
+      "vistas": 25315
+    },
+    {
+      "anio": 2024,
+      "mes": 11,
+      "destino": "Santo Domingo",
+      "vistas": 19745
+    },
+    {
+      "anio": 2024,
+      "mes": 12,
+      "destino": "Santo Domingo",
+      "vistas": 17671
+    },
+    {
+      "anio": 2025,
+      "mes": 1,
+      "destino": "Santo Domingo",
+      "vistas": 24895
+    },
+    {
+      "anio": 2025,
+      "mes": 2,
+      "destino": "Santo Domingo",
+      "vistas": 20050
+    },
+    {
+      "anio": 2025,
+      "mes": 3,
+      "destino": "Santo Domingo",
+      "vistas": 20565
+    },
+    {
+      "anio": 2025,
+      "mes": 4,
+      "destino": "Santo Domingo",
+      "vistas": 24875
+    },
+    {
+      "anio": 2025,
+      "mes": 5,
+      "destino": "Santo Domingo",
+      "vistas": 18122
+    },
+    {
+      "anio": 2025,
+      "mes": 6,
+      "destino": "Santo Domingo",
+      "vistas": 15358
+    },
+    {
+      "anio": 2025,
+      "mes": 7,
+      "destino": "Santo Domingo",
+      "vistas": 16578
+    },
+    {
+      "anio": 2025,
+      "mes": 8,
+      "destino": "Santo Domingo",
+      "vistas": 17042
+    },
+    {
+      "anio": 2025,
+      "mes": 9,
+      "destino": "Santo Domingo",
+      "vistas": 14934
+    },
+    {
+      "anio": 2025,
+      "mes": 10,
+      "destino": "Santo Domingo",
+      "vistas": 16363
+    },
+    {
+      "anio": 2025,
+      "mes": 11,
+      "destino": "Santo Domingo",
+      "vistas": 13446
+    },
+    {
+      "anio": 2025,
+      "mes": 12,
+      "destino": "Santo Domingo",
+      "vistas": 10100
+    },
+    {
+      "anio": 2026,
+      "mes": 1,
+      "destino": "Santo Domingo",
+      "vistas": 13086
+    },
+    {
+      "anio": 2026,
+      "mes": 2,
+      "destino": "Santo Domingo",
+      "vistas": 12378
+    },
+    {
+      "anio": 2026,
+      "mes": 3,
+      "destino": "Santo Domingo",
+      "vistas": 12039
+    },
+    {
+      "anio": 2026,
+      "mes": 4,
+      "destino": "Santo Domingo",
+      "vistas": 10716
+    },
+    {
+      "anio": 2026,
+      "mes": 5,
+      "destino": "Santo Domingo",
+      "vistas": 10592
+    },
+    {
+      "anio": 2026,
+      "mes": 6,
+      "destino": "Santo Domingo",
+      "vistas": 9533
+    },
+    {
+      "anio": 2026,
+      "mes": 7,
+      "destino": "Santo Domingo",
+      "vistas": 10984
+    },
+    {
+      "anio": 2026,
+      "mes": 8,
+      "destino": "Santo Domingo",
+      "vistas": 11566
+    },
+    {
+      "anio": 2026,
+      "mes": 9,
+      "destino": "Santo Domingo",
+      "vistas": 9980
+    },
+    {
+      "anio": 2026,
+      "mes": 10,
+      "destino": "Santo Domingo",
+      "vistas": 359
+    },
+    {
+      "anio": 2022,
+      "mes": 1,
+      "destino": "Santo Domingo",
+      "vistas": 29591
+    },
+    {
+      "anio": 2022,
+      "mes": 2,
+      "destino": "Santo Domingo",
+      "vistas": 28595
+    },
+    {
+      "anio": 2022,
+      "mes": 3,
+      "destino": "Santo Domingo",
+      "vistas": 31645
+    },
+    {
+      "anio": 2022,
+      "mes": 4,
+      "destino": "Santo Domingo",
+      "vistas": 29985
+    },
+    {
+      "anio": 2022,
+      "mes": 5,
+      "destino": "Santo Domingo",
+      "vistas": 40948
+    },
+    {
+      "anio": 2022,
+      "mes": 6,
+      "destino": "Santo Domingo",
+      "vistas": 35206
+    },
+    {
+      "anio": 2022,
+      "mes": 7,
+      "destino": "Santo Domingo",
+      "vistas": 36913
+    },
+    {
+      "anio": 2022,
+      "mes": 8,
+      "destino": "Santo Domingo",
+      "vistas": 38075
+    },
+    {
+      "anio": 2022,
+      "mes": 9,
+      "destino": "Santo Domingo",
+      "vistas": 37666
+    },
+    {
+      "anio": 2022,
+      "mes": 10,
+      "destino": "Santo Domingo",
+      "vistas": 39172
+    },
+    {
+      "anio": 2022,
+      "mes": 11,
+      "destino": "Santo Domingo",
+      "vistas": 40068
+    },
+    {
+      "anio": 2022,
+      "mes": 12,
+      "destino": "Santo Domingo",
+      "vistas": 35847
+    },
+    {
+      "anio": 2023,
+      "mes": 1,
+      "destino": "Santo Domingo",
+      "vistas": 41742
+    },
+    {
+      "anio": 2023,
+      "mes": 2,
+      "destino": "Santo Domingo",
+      "vistas": 41336
+    },
+    {
+      "anio": 2023,
+      "mes": 3,
+      "destino": "Santo Domingo",
+      "vistas": 47855
+    },
+    {
+      "anio": 2023,
+      "mes": 4,
+      "destino": "Santo Domingo",
+      "vistas": 39386
+    },
+    {
+      "anio": 2023,
+      "mes": 5,
+      "destino": "Santo Domingo",
+      "vistas": 42301
+    },
+    {
+      "anio": 2023,
+      "mes": 6,
+      "destino": "Santo Domingo",
+      "vistas": 36505
+    },
+    {
+      "anio": 2023,
+      "mes": 7,
+      "destino": "Santo Domingo",
+      "vistas": 39223
+    },
+    {
+      "anio": 2023,
+      "mes": 8,
+      "destino": "Santo Domingo",
+      "vistas": 40813
+    },
+    {
+      "anio": 2023,
+      "mes": 9,
+      "destino": "Santo Domingo",
+      "vistas": 35127
+    },
+    {
+      "anio": 2023,
+      "mes": 10,
+      "destino": "Santo Domingo",
+      "vistas": 35272
+    },
+    {
+      "anio": 2023,
+      "mes": 11,
+      "destino": "Santo Domingo",
+      "vistas": 46607
+    },
+    {
+      "anio": 2023,
+      "mes": 12,
+      "destino": "Santo Domingo",
+      "vistas": 39172
+    },
+    {
+      "anio": 2024,
+      "mes": 1,
+      "destino": "Santo Domingo",
+      "vistas": 44820
+    },
+    {
+      "anio": 2024,
+      "mes": 2,
+      "destino": "Santo Domingo",
+      "vistas": 37902
+    },
+    {
+      "anio": 2024,
+      "mes": 3,
+      "destino": "Santo Domingo",
+      "vistas": 48208
+    },
+    {
+      "anio": 2024,
+      "mes": 4,
+      "destino": "Santo Domingo",
+      "vistas": 36900
+    },
+    {
+      "anio": 2024,
+      "mes": 5,
+      "destino": "Santo Domingo",
+      "vistas": 34874
+    },
+    {
+      "anio": 2024,
+      "mes": 6,
+      "destino": "Santo Domingo",
+      "vistas": 30296
+    },
+    {
+      "anio": 2024,
+      "mes": 7,
+      "destino": "Santo Domingo",
+      "vistas": 29940
+    },
+    {
+      "anio": 2024,
+      "mes": 8,
+      "destino": "Santo Domingo",
+      "vistas": 30770
+    },
+    {
+      "anio": 2024,
+      "mes": 9,
+      "destino": "Santo Domingo",
+      "vistas": 30173
+    },
+    {
+      "anio": 2024,
+      "mes": 10,
+      "destino": "Santo Domingo",
+      "vistas": 33678
+    },
+    {
+      "anio": 2024,
+      "mes": 11,
+      "destino": "Santo Domingo",
+      "vistas": 29588
+    },
+    {
+      "anio": 2024,
+      "mes": 12,
+      "destino": "Santo Domingo",
+      "vistas": 30755
+    },
+    {
+      "anio": 2025,
+      "mes": 1,
+      "destino": "Santo Domingo",
+      "vistas": 35738
+    },
+    {
+      "anio": 2025,
+      "mes": 2,
+      "destino": "Santo Domingo",
+      "vistas": 30368
+    },
+    {
+      "anio": 2025,
+      "mes": 3,
+      "destino": "Santo Domingo",
+      "vistas": 33597
+    },
+    {
+      "anio": 2025,
+      "mes": 4,
+      "destino": "Santo Domingo",
+      "vistas": 73245
+    },
+    {
+      "anio": 2025,
+      "mes": 5,
+      "destino": "Santo Domingo",
+      "vistas": 36769
+    },
+    {
+      "anio": 2025,
+      "mes": 6,
+      "destino": "Santo Domingo",
+      "vistas": 33827
+    },
+    {
+      "anio": 2025,
+      "mes": 7,
+      "destino": "Santo Domingo",
+      "vistas": 37648
+    },
+    {
+      "anio": 2025,
+      "mes": 8,
+      "destino": "Santo Domingo",
+      "vistas": 37149
+    },
+    {
+      "anio": 2025,
+      "mes": 9,
+      "destino": "Santo Domingo",
+      "vistas": 34674
+    },
+    {
+      "anio": 2025,
+      "mes": 10,
+      "destino": "Santo Domingo",
+      "vistas": 40296
+    },
+    {
+      "anio": 2025,
+      "mes": 11,
+      "destino": "Santo Domingo",
+      "vistas": 35775
+    },
+    {
+      "anio": 2025,
+      "mes": 12,
+      "destino": "Santo Domingo",
+      "vistas": 33551
+    },
+    {
+      "anio": 2026,
+      "mes": 1,
+      "destino": "Santo Domingo",
+      "vistas": 30266
+    },
+    {
+      "anio": 2026,
+      "mes": 2,
+      "destino": "Santo Domingo",
+      "vistas": 30491
+    },
+    {
+      "anio": 2026,
+      "mes": 3,
+      "destino": "Santo Domingo",
+      "vistas": 32726
+    },
+    {
+      "anio": 2026,
+      "mes": 4,
+      "destino": "Santo Domingo",
+      "vistas": 25357
+    },
+    {
+      "anio": 2026,
+      "mes": 5,
+      "destino": "Santo Domingo",
+      "vistas": 26580
+    },
+    {
+      "anio": 2026,
+      "mes": 6,
+      "destino": "Santo Domingo",
+      "vistas": 25603
+    },
+    {
+      "anio": 2026,
+      "mes": 7,
+      "destino": "Santo Domingo",
+      "vistas": 27273
+    },
+    {
+      "anio": 2026,
+      "mes": 8,
+      "destino": "Santo Domingo",
+      "vistas": 29237
+    },
+    {
+      "anio": 2026,
+      "mes": 9,
+      "destino": "Santo Domingo",
+      "vistas": 26788
+    },
+    {
+      "anio": 2026,
+      "mes": 10,
+      "destino": "Santo Domingo",
+      "vistas": 929
+    },
+    {
+      "anio": 2022,
+      "mes": 1,
+      "destino": "Quito",
+      "vistas": 20906
+    },
+    {
+      "anio": 2022,
+      "mes": 2,
+      "destino": "Quito",
+      "vistas": 20044
+    },
+    {
+      "anio": 2022,
+      "mes": 3,
+      "destino": "Quito",
+      "vistas": 19480
+    },
+    {
+      "anio": 2022,
+      "mes": 4,
+      "destino": "Quito",
+      "vistas": 17924
+    },
+    {
+      "anio": 2022,
+      "mes": 5,
+      "destino": "Quito",
+      "vistas": 24151
+    },
+    {
+      "anio": 2022,
+      "mes": 6,
+      "destino": "Quito",
+      "vistas": 26213
+    },
+    {
+      "anio": 2022,
+      "mes": 7,
+      "destino": "Quito",
+      "vistas": 25369
+    },
+    {
+      "anio": 2022,
+      "mes": 8,
+      "destino": "Quito",
+      "vistas": 27184
+    },
+    {
+      "anio": 2022,
+      "mes": 9,
+      "destino": "Quito",
+      "vistas": 27945
+    },
+    {
+      "anio": 2022,
+      "mes": 10,
+      "destino": "Quito",
+      "vistas": 32024
+    },
+    {
+      "anio": 2022,
+      "mes": 11,
+      "destino": "Quito",
+      "vistas": 34976
+    },
+    {
+      "anio": 2022,
+      "mes": 12,
+      "destino": "Quito",
+      "vistas": 25366
+    },
+    {
+      "anio": 2023,
+      "mes": 1,
+      "destino": "Quito",
+      "vistas": 28458
+    },
+    {
+      "anio": 2023,
+      "mes": 2,
+      "destino": "Quito",
+      "vistas": 27933
+    },
+    {
+      "anio": 2023,
+      "mes": 3,
+      "destino": "Quito",
+      "vistas": 27198
+    },
+    {
+      "anio": 2023,
+      "mes": 4,
+      "destino": "Quito",
+      "vistas": 24379
+    },
+    {
+      "anio": 2023,
+      "mes": 5,
+      "destino": "Quito",
+      "vistas": 27642
+    },
+    {
+      "anio": 2023,
+      "mes": 6,
+      "destino": "Quito",
+      "vistas": 27840
+    },
+    {
+      "anio": 2023,
+      "mes": 7,
+      "destino": "Quito",
+      "vistas": 26957
+    },
+    {
+      "anio": 2023,
+      "mes": 8,
+      "destino": "Quito",
+      "vistas": 31962
+    },
+    {
+      "anio": 2023,
+      "mes": 9,
+      "destino": "Quito",
+      "vistas": 29016
+    },
+    {
+      "anio": 2023,
+      "mes": 10,
+      "destino": "Quito",
+      "vistas": 31739
+    },
+    {
+      "anio": 2023,
+      "mes": 11,
+      "destino": "Quito",
+      "vistas": 27348
+    },
+    {
+      "anio": 2023,
+      "mes": 12,
+      "destino": "Quito",
+      "vistas": 30065
+    },
+    {
+      "anio": 2024,
+      "mes": 1,
+      "destino": "Quito",
+      "vistas": 38103
+    },
+    {
+      "anio": 2024,
+      "mes": 2,
+      "destino": "Quito",
+      "vistas": 23023
+    },
+    {
+      "anio": 2024,
+      "mes": 3,
+      "destino": "Quito",
+      "vistas": 22574
+    },
+    {
+      "anio": 2024,
+      "mes": 4,
+      "destino": "Quito",
+      "vistas": 24887
+    },
+    {
+      "anio": 2024,
+      "mes": 5,
+      "destino": "Quito",
+      "vistas": 21136
+    },
+    {
+      "anio": 2024,
+      "mes": 6,
+      "destino": "Quito",
+      "vistas": 16915
+    },
+    {
+      "anio": 2024,
+      "mes": 7,
+      "destino": "Quito",
+      "vistas": 16224
+    },
+    {
+      "anio": 2024,
+      "mes": 8,
+      "destino": "Quito",
+      "vistas": 15428
+    },
+    {
+      "anio": 2024,
+      "mes": 9,
+      "destino": "Quito",
+      "vistas": 19884
+    },
+    {
+      "anio": 2024,
+      "mes": 10,
+      "destino": "Quito",
+      "vistas": 22871
+    },
+    {
+      "anio": 2024,
+      "mes": 11,
+      "destino": "Quito",
+      "vistas": 20104
+    },
+    {
+      "anio": 2024,
+      "mes": 12,
+      "destino": "Quito",
+      "vistas": 17768
+    },
+    {
+      "anio": 2025,
+      "mes": 1,
+      "destino": "Quito",
+      "vistas": 17231
+    },
+    {
+      "anio": 2025,
+      "mes": 2,
+      "destino": "Quito",
+      "vistas": 15202
+    },
+    {
+      "anio": 2025,
+      "mes": 3,
+      "destino": "Quito",
+      "vistas": 14810
+    },
+    {
+      "anio": 2025,
+      "mes": 4,
+      "destino": "Quito",
+      "vistas": 15852
+    },
+    {
+      "anio": 2025,
+      "mes": 5,
+      "destino": "Quito",
+      "vistas": 12492
+    },
+    {
+      "anio": 2025,
+      "mes": 6,
+      "destino": "Quito",
+      "vistas": 10970
+    },
+    {
+      "anio": 2025,
+      "mes": 7,
+      "destino": "Quito",
+      "vistas": 12609
+    },
+    {
+      "anio": 2025,
+      "mes": 8,
+      "destino": "Quito",
+      "vistas": 13396
+    },
+    {
+      "anio": 2025,
+      "mes": 9,
+      "destino": "Quito",
+      "vistas": 12174
+    },
+    {
+      "anio": 2025,
+      "mes": 10,
+      "destino": "Quito",
+      "vistas": 13866
+    },
+    {
+      "anio": 2025,
+      "mes": 11,
+      "destino": "Quito",
+      "vistas": 17107
+    },
+    {
+      "anio": 2025,
+      "mes": 12,
+      "destino": "Quito",
+      "vistas": 12707
+    },
+    {
+      "anio": 2026,
+      "mes": 1,
+      "destino": "Quito",
+      "vistas": 11780
+    },
+    {
+      "anio": 2026,
+      "mes": 2,
+      "destino": "Quito",
+      "vistas": 8676
+    },
+    {
+      "anio": 2026,
+      "mes": 3,
+      "destino": "Quito",
+      "vistas": 9328
+    },
+    {
+      "anio": 2026,
+      "mes": 4,
+      "destino": "Quito",
+      "vistas": 10888
+    },
+    {
+      "anio": 2026,
+      "mes": 5,
+      "destino": "Quito",
+      "vistas": 10332
+    },
+    {
+      "anio": 2026,
+      "mes": 6,
+      "destino": "Quito",
+      "vistas": 12358
+    },
+    {
+      "anio": 2026,
+      "mes": 7,
+      "destino": "Quito",
+      "vistas": 10596
+    },
+    {
+      "anio": 2026,
+      "mes": 8,
+      "destino": "Quito",
+      "vistas": 9116
+    },
+    {
+      "anio": 2026,
+      "mes": 9,
+      "destino": "Quito",
+      "vistas": 8721
+    },
+    {
+      "anio": 2026,
+      "mes": 10,
+      "destino": "Quito",
+      "vistas": 287
+    },
+    {
+      "anio": 2022,
+      "mes": 1,
+      "destino": "Quito",
+      "vistas": 27567
+    },
+    {
+      "anio": 2022,
+      "mes": 2,
+      "destino": "Quito",
+      "vistas": 25532
+    },
+    {
+      "anio": 2022,
+      "mes": 3,
+      "destino": "Quito",
+      "vistas": 26556
+    },
+    {
+      "anio": 2022,
+      "mes": 4,
+      "destino": "Quito",
+      "vistas": 28246
+    },
+    {
+      "anio": 2022,
+      "mes": 5,
+      "destino": "Quito",
+      "vistas": 28437
+    },
+    {
+      "anio": 2022,
+      "mes": 6,
+      "destino": "Quito",
+      "vistas": 29284
+    },
+    {
+      "anio": 2022,
+      "mes": 7,
+      "destino": "Quito",
+      "vistas": 28225
+    },
+    {
+      "anio": 2022,
+      "mes": 8,
+      "destino": "Quito",
+      "vistas": 36855
+    },
+    {
+      "anio": 2022,
+      "mes": 9,
+      "destino": "Quito",
+      "vistas": 33898
+    },
+    {
+      "anio": 2022,
+      "mes": 10,
+      "destino": "Quito",
+      "vistas": 35913
+    },
+    {
+      "anio": 2022,
+      "mes": 11,
+      "destino": "Quito",
+      "vistas": 63990
+    },
+    {
+      "anio": 2022,
+      "mes": 12,
+      "destino": "Quito",
+      "vistas": 33669
+    },
+    {
+      "anio": 2023,
+      "mes": 1,
+      "destino": "Quito",
+      "vistas": 35296
+    },
+    {
+      "anio": 2023,
+      "mes": 2,
+      "destino": "Quito",
+      "vistas": 29822
+    },
+    {
+      "anio": 2023,
+      "mes": 3,
+      "destino": "Quito",
+      "vistas": 34639
+    },
+    {
+      "anio": 2023,
+      "mes": 4,
+      "destino": "Quito",
+      "vistas": 29017
+    },
+    {
+      "anio": 2023,
+      "mes": 5,
+      "destino": "Quito",
+      "vistas": 33629
+    },
+    {
+      "anio": 2023,
+      "mes": 6,
+      "destino": "Quito",
+      "vistas": 30225
+    },
+    {
+      "anio": 2023,
+      "mes": 7,
+      "destino": "Quito",
+      "vistas": 32654
+    },
+    {
+      "anio": 2023,
+      "mes": 8,
+      "destino": "Quito",
+      "vistas": 45704
+    },
+    {
+      "anio": 2023,
+      "mes": 9,
+      "destino": "Quito",
+      "vistas": 28836
+    },
+    {
+      "anio": 2023,
+      "mes": 10,
+      "destino": "Quito",
+      "vistas": 29080
+    },
+    {
+      "anio": 2023,
+      "mes": 11,
+      "destino": "Quito",
+      "vistas": 26500
+    },
+    {
+      "anio": 2023,
+      "mes": 12,
+      "destino": "Quito",
+      "vistas": 27895
+    },
+    {
+      "anio": 2024,
+      "mes": 1,
+      "destino": "Quito",
+      "vistas": 45349
+    },
+    {
+      "anio": 2024,
+      "mes": 2,
+      "destino": "Quito",
+      "vistas": 26023
+    },
+    {
+      "anio": 2024,
+      "mes": 3,
+      "destino": "Quito",
+      "vistas": 25536
+    },
+    {
+      "anio": 2024,
+      "mes": 4,
+      "destino": "Quito",
+      "vistas": 31721
+    },
+    {
+      "anio": 2024,
+      "mes": 5,
+      "destino": "Quito",
+      "vistas": 22898
+    },
+    {
+      "anio": 2024,
+      "mes": 6,
+      "destino": "Quito",
+      "vistas": 23067
+    },
+    {
+      "anio": 2024,
+      "mes": 7,
+      "destino": "Quito",
+      "vistas": 23895
+    },
+    {
+      "anio": 2024,
+      "mes": 8,
+      "destino": "Quito",
+      "vistas": 21385
+    },
+    {
+      "anio": 2024,
+      "mes": 9,
+      "destino": "Quito",
+      "vistas": 29964
+    },
+    {
+      "anio": 2024,
+      "mes": 10,
+      "destino": "Quito",
+      "vistas": 23914
+    },
+    {
+      "anio": 2024,
+      "mes": 11,
+      "destino": "Quito",
+      "vistas": 22148
+    },
+    {
+      "anio": 2024,
+      "mes": 12,
+      "destino": "Quito",
+      "vistas": 23346
+    },
+    {
+      "anio": 2025,
+      "mes": 1,
+      "destino": "Quito",
+      "vistas": 25249
+    },
+    {
+      "anio": 2025,
+      "mes": 2,
+      "destino": "Quito",
+      "vistas": 23951
+    },
+    {
+      "anio": 2025,
+      "mes": 3,
+      "destino": "Quito",
+      "vistas": 25782
+    },
+    {
+      "anio": 2025,
+      "mes": 4,
+      "destino": "Quito",
+      "vistas": 26774
+    },
+    {
+      "anio": 2025,
+      "mes": 5,
+      "destino": "Quito",
+      "vistas": 27517
+    },
+    {
+      "anio": 2025,
+      "mes": 6,
+      "destino": "Quito",
+      "vistas": 23201
+    },
+    {
+      "anio": 2025,
+      "mes": 7,
+      "destino": "Quito",
+      "vistas": 25248
+    },
+    {
+      "anio": 2025,
+      "mes": 8,
+      "destino": "Quito",
+      "vistas": 25316
+    },
+    {
+      "anio": 2025,
+      "mes": 9,
+      "destino": "Quito",
+      "vistas": 25075
+    },
+    {
+      "anio": 2025,
+      "mes": 10,
+      "destino": "Quito",
+      "vistas": 26034
+    },
+    {
+      "anio": 2025,
+      "mes": 11,
+      "destino": "Quito",
+      "vistas": 28314
+    },
+    {
+      "anio": 2025,
+      "mes": 12,
+      "destino": "Quito",
+      "vistas": 26588
+    },
+    {
+      "anio": 2026,
+      "mes": 1,
+      "destino": "Quito",
+      "vistas": 28553
+    },
+    {
+      "anio": 2026,
+      "mes": 2,
+      "destino": "Quito",
+      "vistas": 26285
+    },
+    {
+      "anio": 2026,
+      "mes": 3,
+      "destino": "Quito",
+      "vistas": 25986
+    },
+    {
+      "anio": 2026,
+      "mes": 4,
+      "destino": "Quito",
+      "vistas": 23561
+    },
+    {
+      "anio": 2026,
+      "mes": 5,
+      "destino": "Quito",
+      "vistas": 24099
+    },
+    {
+      "anio": 2026,
+      "mes": 6,
+      "destino": "Quito",
+      "vistas": 40144
+    },
+    {
+      "anio": 2026,
+      "mes": 7,
+      "destino": "Quito",
+      "vistas": 38205
+    },
+    {
+      "anio": 2026,
+      "mes": 8,
+      "destino": "Quito",
+      "vistas": 24565
+    },
+    {
+      "anio": 2026,
+      "mes": 9,
+      "destino": "Quito",
+      "vistas": 23561
+    },
+    {
+      "anio": 2026,
+      "mes": 10,
+      "destino": "Quito",
+      "vistas": 697
+    },
+    {
+      "anio": 2022,
+      "mes": 1,
+      "destino": "Buenos Aires",
+      "vistas": 77696
+    },
+    {
+      "anio": 2022,
+      "mes": 2,
+      "destino": "Buenos Aires",
+      "vistas": 80942
+    },
+    {
+      "anio": 2022,
+      "mes": 3,
+      "destino": "Buenos Aires",
+      "vistas": 90331
+    },
+    {
+      "anio": 2022,
+      "mes": 4,
+      "destino": "Buenos Aires",
+      "vistas": 104749
+    },
+    {
+      "anio": 2022,
+      "mes": 5,
+      "destino": "Buenos Aires",
+      "vistas": 101983
+    },
+    {
+      "anio": 2022,
+      "mes": 6,
+      "destino": "Buenos Aires",
+      "vistas": 95322
+    },
+    {
+      "anio": 2022,
+      "mes": 7,
+      "destino": "Buenos Aires",
+      "vistas": 93354
+    },
+    {
+      "anio": 2022,
+      "mes": 8,
+      "destino": "Buenos Aires",
+      "vistas": 105993
+    },
+    {
+      "anio": 2022,
+      "mes": 9,
+      "destino": "Buenos Aires",
+      "vistas": 103971
+    },
+    {
+      "anio": 2022,
+      "mes": 10,
+      "destino": "Buenos Aires",
+      "vistas": 108309
+    },
+    {
+      "anio": 2022,
+      "mes": 11,
+      "destino": "Buenos Aires",
+      "vistas": 120173
+    },
+    {
+      "anio": 2022,
+      "mes": 12,
+      "destino": "Buenos Aires",
+      "vistas": 128537
+    },
+    {
+      "anio": 2023,
+      "mes": 1,
+      "destino": "Buenos Aires",
+      "vistas": 100837
+    },
+    {
+      "anio": 2023,
+      "mes": 2,
+      "destino": "Buenos Aires",
+      "vistas": 98651
+    },
+    {
+      "anio": 2023,
+      "mes": 3,
+      "destino": "Buenos Aires",
+      "vistas": 122558
+    },
+    {
+      "anio": 2023,
+      "mes": 4,
+      "destino": "Buenos Aires",
+      "vistas": 107608
+    },
+    {
+      "anio": 2023,
+      "mes": 5,
+      "destino": "Buenos Aires",
+      "vistas": 105096
+    },
+    {
+      "anio": 2023,
+      "mes": 6,
+      "destino": "Buenos Aires",
+      "vistas": 98987
+    },
+    {
+      "anio": 2023,
+      "mes": 7,
+      "destino": "Buenos Aires",
+      "vistas": 94947
+    },
+    {
+      "anio": 2023,
+      "mes": 8,
+      "destino": "Buenos Aires",
+      "vistas": 105188
+    },
+    {
+      "anio": 2023,
+      "mes": 9,
+      "destino": "Buenos Aires",
+      "vistas": 84050
+    },
+    {
+      "anio": 2023,
+      "mes": 10,
+      "destino": "Buenos Aires",
+      "vistas": 95184
+    },
+    {
+      "anio": 2023,
+      "mes": 11,
+      "destino": "Buenos Aires",
+      "vistas": 98141
+    },
+    {
+      "anio": 2023,
+      "mes": 12,
+      "destino": "Buenos Aires",
+      "vistas": 84641
+    },
+    {
+      "anio": 2024,
+      "mes": 1,
+      "destino": "Buenos Aires",
+      "vistas": 83399
+    },
+    {
+      "anio": 2024,
+      "mes": 2,
+      "destino": "Buenos Aires",
+      "vistas": 73139
+    },
+    {
+      "anio": 2024,
+      "mes": 3,
+      "destino": "Buenos Aires",
+      "vistas": 84101
+    },
+    {
+      "anio": 2024,
+      "mes": 4,
+      "destino": "Buenos Aires",
+      "vistas": 84941
+    },
+    {
+      "anio": 2024,
+      "mes": 5,
+      "destino": "Buenos Aires",
+      "vistas": 74350
+    },
+    {
+      "anio": 2024,
+      "mes": 6,
+      "destino": "Buenos Aires",
+      "vistas": 59530
+    },
+    {
+      "anio": 2024,
+      "mes": 7,
+      "destino": "Buenos Aires",
+      "vistas": 58897
+    },
+    {
+      "anio": 2024,
+      "mes": 8,
+      "destino": "Buenos Aires",
+      "vistas": 60309
+    },
+    {
+      "anio": 2024,
+      "mes": 9,
+      "destino": "Buenos Aires",
+      "vistas": 61503
+    },
+    {
+      "anio": 2024,
+      "mes": 10,
+      "destino": "Buenos Aires",
+      "vistas": 67389
+    },
+    {
+      "anio": 2024,
+      "mes": 11,
+      "destino": "Buenos Aires",
+      "vistas": 59159
+    },
+    {
+      "anio": 2024,
+      "mes": 12,
+      "destino": "Buenos Aires",
+      "vistas": 50779
+    },
+    {
+      "anio": 2025,
+      "mes": 1,
+      "destino": "Buenos Aires",
+      "vistas": 54291
+    },
+    {
+      "anio": 2025,
+      "mes": 2,
+      "destino": "Buenos Aires",
+      "vistas": 53221
+    },
+    {
+      "anio": 2025,
+      "mes": 3,
+      "destino": "Buenos Aires",
+      "vistas": 60583
+    },
+    {
+      "anio": 2025,
+      "mes": 4,
+      "destino": "Buenos Aires",
+      "vistas": 55748
+    },
+    {
+      "anio": 2025,
+      "mes": 5,
+      "destino": "Buenos Aires",
+      "vistas": 59053
+    },
+    {
+      "anio": 2025,
+      "mes": 6,
+      "destino": "Buenos Aires",
+      "vistas": 46207
+    },
+    {
+      "anio": 2025,
+      "mes": 7,
+      "destino": "Buenos Aires",
+      "vistas": 44778
+    },
+    {
+      "anio": 2025,
+      "mes": 8,
+      "destino": "Buenos Aires",
+      "vistas": 50212
+    },
+    {
+      "anio": 2025,
+      "mes": 9,
+      "destino": "Buenos Aires",
+      "vistas": 48460
+    },
+    {
+      "anio": 2025,
+      "mes": 10,
+      "destino": "Buenos Aires",
+      "vistas": 52644
+    },
+    {
+      "anio": 2025,
+      "mes": 11,
+      "destino": "Buenos Aires",
+      "vistas": 45044
+    },
+    {
+      "anio": 2025,
+      "mes": 12,
+      "destino": "Buenos Aires",
+      "vistas": 39672
+    },
+    {
+      "anio": 2026,
+      "mes": 1,
+      "destino": "Buenos Aires",
+      "vistas": 38734
+    },
+    {
+      "anio": 2026,
+      "mes": 2,
+      "destino": "Buenos Aires",
+      "vistas": 34565
+    },
+    {
+      "anio": 2026,
+      "mes": 3,
+      "destino": "Buenos Aires",
+      "vistas": 38355
+    },
+    {
+      "anio": 2026,
+      "mes": 4,
+      "destino": "Buenos Aires",
+      "vistas": 40549
+    },
+    {
+      "anio": 2026,
+      "mes": 5,
+      "destino": "Buenos Aires",
+      "vistas": 39069
+    },
+    {
+      "anio": 2026,
+      "mes": 6,
+      "destino": "Buenos Aires",
+      "vistas": 36964
+    },
+    {
+      "anio": 2026,
+      "mes": 7,
+      "destino": "Buenos Aires",
+      "vistas": 44092
+    },
+    {
+      "anio": 2026,
+      "mes": 8,
+      "destino": "Buenos Aires",
+      "vistas": 36339
+    },
+    {
+      "anio": 2026,
+      "mes": 9,
+      "destino": "Buenos Aires",
+      "vistas": 32468
+    },
+    {
+      "anio": 2026,
+      "mes": 10,
+      "destino": "Buenos Aires",
+      "vistas": 1029
+    },
+    {
+      "anio": 2022,
+      "mes": 1,
+      "destino": "Buenos Aires",
+      "vistas": 81966
+    },
+    {
+      "anio": 2022,
+      "mes": 2,
+      "destino": "Buenos Aires",
+      "vistas": 80542
+    },
+    {
+      "anio": 2022,
+      "mes": 3,
+      "destino": "Buenos Aires",
+      "vistas": 78849
+    },
+    {
+      "anio": 2022,
+      "mes": 4,
+      "destino": "Buenos Aires",
+      "vistas": 79314
+    },
+    {
+      "anio": 2022,
+      "mes": 5,
+      "destino": "Buenos Aires",
+      "vistas": 77313
+    },
+    {
+      "anio": 2022,
+      "mes": 6,
+      "destino": "Buenos Aires",
+      "vistas": 70746
+    },
+    {
+      "anio": 2022,
+      "mes": 7,
+      "destino": "Buenos Aires",
+      "vistas": 74407
+    },
+    {
+      "anio": 2022,
+      "mes": 8,
+      "destino": "Buenos Aires",
+      "vistas": 78088
+    },
+    {
+      "anio": 2022,
+      "mes": 9,
+      "destino": "Buenos Aires",
+      "vistas": 77537
+    },
+    {
+      "anio": 2022,
+      "mes": 10,
+      "destino": "Buenos Aires",
+      "vistas": 81085
+    },
+    {
+      "anio": 2022,
+      "mes": 11,
+      "destino": "Buenos Aires",
+      "vistas": 118992
+    },
+    {
+      "anio": 2022,
+      "mes": 12,
+      "destino": "Buenos Aires",
+      "vistas": 318945
+    },
+    {
+      "anio": 2023,
+      "mes": 1,
+      "destino": "Buenos Aires",
+      "vistas": 109475
+    },
+    {
+      "anio": 2023,
+      "mes": 2,
+      "destino": "Buenos Aires",
+      "vistas": 85649
+    },
+    {
+      "anio": 2023,
+      "mes": 3,
+      "destino": "Buenos Aires",
+      "vistas": 101203
+    },
+    {
+      "anio": 2023,
+      "mes": 4,
+      "destino": "Buenos Aires",
+      "vistas": 96868
+    },
+    {
+      "anio": 2023,
+      "mes": 5,
+      "destino": "Buenos Aires",
+      "vistas": 88801
+    },
+    {
+      "anio": 2023,
+      "mes": 6,
+      "destino": "Buenos Aires",
+      "vistas": 83634
+    },
+    {
+      "anio": 2023,
+      "mes": 7,
+      "destino": "Buenos Aires",
+      "vistas": 84607
+    },
+    {
+      "anio": 2023,
+      "mes": 8,
+      "destino": "Buenos Aires",
+      "vistas": 89959
+    },
+    {
+      "anio": 2023,
+      "mes": 9,
+      "destino": "Buenos Aires",
+      "vistas": 83871
+    },
+    {
+      "anio": 2023,
+      "mes": 10,
+      "destino": "Buenos Aires",
+      "vistas": 91517
+    },
+    {
+      "anio": 2023,
+      "mes": 11,
+      "destino": "Buenos Aires",
+      "vistas": 119841
+    },
+    {
+      "anio": 2023,
+      "mes": 12,
+      "destino": "Buenos Aires",
+      "vistas": 97326
+    },
+    {
+      "anio": 2024,
+      "mes": 1,
+      "destino": "Buenos Aires",
+      "vistas": 103555
+    },
+    {
+      "anio": 2024,
+      "mes": 2,
+      "destino": "Buenos Aires",
+      "vistas": 90691
+    },
+    {
+      "anio": 2024,
+      "mes": 3,
+      "destino": "Buenos Aires",
+      "vistas": 98521
+    },
+    {
+      "anio": 2024,
+      "mes": 4,
+      "destino": "Buenos Aires",
+      "vistas": 536969
+    },
+    {
+      "anio": 2024,
+      "mes": 5,
+      "destino": "Buenos Aires",
+      "vistas": 87761
+    },
+    {
+      "anio": 2024,
+      "mes": 6,
+      "destino": "Buenos Aires",
+      "vistas": 73815
+    },
+    {
+      "anio": 2024,
+      "mes": 7,
+      "destino": "Buenos Aires",
+      "vistas": 81824
+    },
+    {
+      "anio": 2024,
+      "mes": 8,
+      "destino": "Buenos Aires",
+      "vistas": 72767
+    },
+    {
+      "anio": 2024,
+      "mes": 9,
+      "destino": "Buenos Aires",
+      "vistas": 75292
+    },
+    {
+      "anio": 2024,
+      "mes": 10,
+      "destino": "Buenos Aires",
+      "vistas": 119760
+    },
+    {
+      "anio": 2024,
+      "mes": 11,
+      "destino": "Buenos Aires",
+      "vistas": 82099
+    },
+    {
+      "anio": 2024,
+      "mes": 12,
+      "destino": "Buenos Aires",
+      "vistas": 82892
+    },
+    {
+      "anio": 2025,
+      "mes": 1,
+      "destino": "Buenos Aires",
+      "vistas": 81822
+    },
+    {
+      "anio": 2025,
+      "mes": 2,
+      "destino": "Buenos Aires",
+      "vistas": 80933
+    },
+    {
+      "anio": 2025,
+      "mes": 3,
+      "destino": "Buenos Aires",
+      "vistas": 82651
+    },
+    {
+      "anio": 2025,
+      "mes": 4,
+      "destino": "Buenos Aires",
+      "vistas": 98207
+    },
+    {
+      "anio": 2025,
+      "mes": 5,
+      "destino": "Buenos Aires",
+      "vistas": 83102
+    },
+    {
+      "anio": 2025,
+      "mes": 6,
+      "destino": "Buenos Aires",
+      "vistas": 66670
+    },
+    {
+      "anio": 2025,
+      "mes": 7,
+      "destino": "Buenos Aires",
+      "vistas": 67194
+    },
+    {
+      "anio": 2025,
+      "mes": 8,
+      "destino": "Buenos Aires",
+      "vistas": 70706
+    },
+    {
+      "anio": 2025,
+      "mes": 9,
+      "destino": "Buenos Aires",
+      "vistas": 71558
+    },
+    {
+      "anio": 2025,
+      "mes": 10,
+      "destino": "Buenos Aires",
+      "vistas": 73753
+    },
+    {
+      "anio": 2025,
+      "mes": 11,
+      "destino": "Buenos Aires",
+      "vistas": 70828
+    },
+    {
+      "anio": 2025,
+      "mes": 12,
+      "destino": "Buenos Aires",
+      "vistas": 68888
+    },
+    {
+      "anio": 2026,
+      "mes": 1,
+      "destino": "Buenos Aires",
+      "vistas": 74638
+    },
+    {
+      "anio": 2026,
+      "mes": 2,
+      "destino": "Buenos Aires",
+      "vistas": 65488
+    },
+    {
+      "anio": 2026,
+      "mes": 3,
+      "destino": "Buenos Aires",
+      "vistas": 71674
+    },
+    {
+      "anio": 2026,
+      "mes": 4,
+      "destino": "Buenos Aires",
+      "vistas": 67647
+    },
+    {
+      "anio": 2026,
+      "mes": 5,
+      "destino": "Buenos Aires",
+      "vistas": 65579
+    },
+    {
+      "anio": 2026,
+      "mes": 6,
+      "destino": "Buenos Aires",
+      "vistas": 85223
+    },
+    {
+      "anio": 2026,
+      "mes": 7,
+      "destino": "Buenos Aires",
+      "vistas": 180243
+    },
+    {
+      "anio": 2026,
+      "mes": 8,
+      "destino": "Buenos Aires",
+      "vistas": 63849
+    },
+    {
+      "anio": 2026,
+      "mes": 9,
+      "destino": "Buenos Aires",
+      "vistas": 64117
+    },
+    {
+      "anio": 2026,
+      "mes": 10,
+      "destino": "Buenos Aires",
+      "vistas": 2000
+    },
+    {
+      "anio": 2022,
+      "mes": 1,
+      "destino": "Santiago",
+      "vistas": 37592
+    },
+    {
+      "anio": 2022,
+      "mes": 2,
+      "destino": "Santiago",
+      "vistas": 35707
+    },
+    {
+      "anio": 2022,
+      "mes": 3,
+      "destino": "Santiago",
+      "vistas": 39035
+    },
+    {
+      "anio": 2022,
+      "mes": 4,
+      "destino": "Santiago",
+      "vistas": 40253
+    },
+    {
+      "anio": 2022,
+      "mes": 5,
+      "destino": "Santiago",
+      "vistas": 42424
+    },
+    {
+      "anio": 2022,
+      "mes": 6,
+      "destino": "Santiago",
+      "vistas": 41068
+    },
+    {
+      "anio": 2022,
+      "mes": 7,
+      "destino": "Santiago",
+      "vistas": 43951
+    },
+    {
+      "anio": 2022,
+      "mes": 8,
+      "destino": "Santiago",
+      "vistas": 47853
+    },
+    {
+      "anio": 2022,
+      "mes": 9,
+      "destino": "Santiago",
+      "vistas": 47641
+    },
+    {
+      "anio": 2022,
+      "mes": 10,
+      "destino": "Santiago",
+      "vistas": 49768
+    },
+    {
+      "anio": 2022,
+      "mes": 11,
+      "destino": "Santiago",
+      "vistas": 52716
+    },
+    {
+      "anio": 2022,
+      "mes": 12,
+      "destino": "Santiago",
+      "vistas": 40562
+    },
+    {
+      "anio": 2023,
+      "mes": 1,
+      "destino": "Santiago",
+      "vistas": 45957
+    },
+    {
+      "anio": 2023,
+      "mes": 2,
+      "destino": "Santiago",
+      "vistas": 45677
+    },
+    {
+      "anio": 2023,
+      "mes": 3,
+      "destino": "Santiago",
+      "vistas": 55160
+    },
+    {
+      "anio": 2023,
+      "mes": 4,
+      "destino": "Santiago",
+      "vistas": 48130
+    },
+    {
+      "anio": 2023,
+      "mes": 5,
+      "destino": "Santiago",
+      "vistas": 48932
+    },
+    {
+      "anio": 2023,
+      "mes": 6,
+      "destino": "Santiago",
+      "vistas": 47421
+    },
+    {
+      "anio": 2023,
+      "mes": 7,
+      "destino": "Santiago",
+      "vistas": 47247
+    },
+    {
+      "anio": 2023,
+      "mes": 8,
+      "destino": "Santiago",
+      "vistas": 48262
+    },
+    {
+      "anio": 2023,
+      "mes": 9,
+      "destino": "Santiago",
+      "vistas": 45168
+    },
+    {
+      "anio": 2023,
+      "mes": 10,
+      "destino": "Santiago",
+      "vistas": 43189
+    },
+    {
+      "anio": 2023,
+      "mes": 11,
+      "destino": "Santiago",
+      "vistas": 42235
+    },
+    {
+      "anio": 2023,
+      "mes": 12,
+      "destino": "Santiago",
+      "vistas": 38778
+    },
+    {
+      "anio": 2024,
+      "mes": 1,
+      "destino": "Santiago",
+      "vistas": 47838
+    },
+    {
+      "anio": 2024,
+      "mes": 2,
+      "destino": "Santiago",
+      "vistas": 42915
+    },
+    {
+      "anio": 2024,
+      "mes": 3,
+      "destino": "Santiago",
+      "vistas": 40349
+    },
+    {
+      "anio": 2024,
+      "mes": 4,
+      "destino": "Santiago",
+      "vistas": 39624
+    },
+    {
+      "anio": 2024,
+      "mes": 5,
+      "destino": "Santiago",
+      "vistas": 34939
+    },
+    {
+      "anio": 2024,
+      "mes": 6,
+      "destino": "Santiago",
+      "vistas": 30877
+    },
+    {
+      "anio": 2024,
+      "mes": 7,
+      "destino": "Santiago",
+      "vistas": 30495
+    },
+    {
+      "anio": 2024,
+      "mes": 8,
+      "destino": "Santiago",
+      "vistas": 30788
+    },
+    {
+      "anio": 2024,
+      "mes": 9,
+      "destino": "Santiago",
+      "vistas": 31158
+    },
+    {
+      "anio": 2024,
+      "mes": 10,
+      "destino": "Santiago",
+      "vistas": 31990
+    },
+    {
+      "anio": 2024,
+      "mes": 11,
+      "destino": "Santiago",
+      "vistas": 31811
+    },
+    {
+      "anio": 2024,
+      "mes": 12,
+      "destino": "Santiago",
+      "vistas": 27781
+    },
+    {
+      "anio": 2025,
+      "mes": 1,
+      "destino": "Santiago",
+      "vistas": 31451
+    },
+    {
+      "anio": 2025,
+      "mes": 2,
+      "destino": "Santiago",
+      "vistas": 29280
+    },
+    {
+      "anio": 2025,
+      "mes": 3,
+      "destino": "Santiago",
+      "vistas": 30287
+    },
+    {
+      "anio": 2025,
+      "mes": 4,
+      "destino": "Santiago",
+      "vistas": 27389
+    },
+    {
+      "anio": 2025,
+      "mes": 5,
+      "destino": "Santiago",
+      "vistas": 26979
+    },
+    {
+      "anio": 2025,
+      "mes": 6,
+      "destino": "Santiago",
+      "vistas": 24451
+    },
+    {
+      "anio": 2025,
+      "mes": 7,
+      "destino": "Santiago",
+      "vistas": 27127
+    },
+    {
+      "anio": 2025,
+      "mes": 8,
+      "destino": "Santiago",
+      "vistas": 27040
+    },
+    {
+      "anio": 2025,
+      "mes": 9,
+      "destino": "Santiago",
+      "vistas": 24739
+    },
+    {
+      "anio": 2025,
+      "mes": 10,
+      "destino": "Santiago",
+      "vistas": 26908
+    },
+    {
+      "anio": 2025,
+      "mes": 11,
+      "destino": "Santiago",
+      "vistas": 25842
+    },
+    {
+      "anio": 2025,
+      "mes": 12,
+      "destino": "Santiago",
+      "vistas": 23074
+    },
+    {
+      "anio": 2026,
+      "mes": 1,
+      "destino": "Santiago",
+      "vistas": 21705
+    },
+    {
+      "anio": 2026,
+      "mes": 2,
+      "destino": "Santiago",
+      "vistas": 19773
+    },
+    {
+      "anio": 2026,
+      "mes": 3,
+      "destino": "Santiago",
+      "vistas": 21537
+    },
+    {
+      "anio": 2026,
+      "mes": 4,
+      "destino": "Santiago",
+      "vistas": 22424
+    },
+    {
+      "anio": 2026,
+      "mes": 5,
+      "destino": "Santiago",
+      "vistas": 21063
+    },
+    {
+      "anio": 2026,
+      "mes": 6,
+      "destino": "Santiago",
+      "vistas": 17756
+    },
+    {
+      "anio": 2026,
+      "mes": 7,
+      "destino": "Santiago",
+      "vistas": 19987
+    },
+    {
+      "anio": 2026,
+      "mes": 8,
+      "destino": "Santiago",
+      "vistas": 19411
+    },
+    {
+      "anio": 2026,
+      "mes": 9,
+      "destino": "Santiago",
+      "vistas": 18154
+    },
+    {
+      "anio": 2026,
+      "mes": 10,
+      "destino": "Santiago",
+      "vistas": 498
+    },
+    {
+      "anio": 2022,
+      "mes": 1,
+      "destino": "Santiago",
+      "vistas": 2985
+    },
+    {
+      "anio": 2022,
+      "mes": 2,
+      "destino": "Santiago",
+      "vistas": 2700
+    },
+    {
+      "anio": 2022,
+      "mes": 3,
+      "destino": "Santiago",
+      "vistas": 3300
+    },
+    {
+      "anio": 2022,
+      "mes": 4,
+      "destino": "Santiago",
+      "vistas": 3397
+    },
+    {
+      "anio": 2022,
+      "mes": 5,
+      "destino": "Santiago",
+      "vistas": 4052
+    },
+    {
+      "anio": 2022,
+      "mes": 6,
+      "destino": "Santiago",
+      "vistas": 2898
+    },
+    {
+      "anio": 2022,
+      "mes": 7,
+      "destino": "Santiago",
+      "vistas": 3029
+    },
+    {
+      "anio": 2022,
+      "mes": 8,
+      "destino": "Santiago",
+      "vistas": 3326
+    },
+    {
+      "anio": 2022,
+      "mes": 9,
+      "destino": "Santiago",
+      "vistas": 2984
+    },
+    {
+      "anio": 2022,
+      "mes": 10,
+      "destino": "Santiago",
+      "vistas": 3045
+    },
+    {
+      "anio": 2022,
+      "mes": 11,
+      "destino": "Santiago",
+      "vistas": 3223
+    },
+    {
+      "anio": 2022,
+      "mes": 12,
+      "destino": "Santiago",
+      "vistas": 28328
+    },
+    {
+      "anio": 2023,
+      "mes": 1,
+      "destino": "Santiago",
+      "vistas": 3638
+    },
+    {
+      "anio": 2023,
+      "mes": 2,
+      "destino": "Santiago",
+      "vistas": 3726
+    },
+    {
+      "anio": 2023,
+      "mes": 3,
+      "destino": "Santiago",
+      "vistas": 3766
+    },
+    {
+      "anio": 2023,
+      "mes": 4,
+      "destino": "Santiago",
+      "vistas": 3213
+    },
+    {
+      "anio": 2023,
+      "mes": 5,
+      "destino": "Santiago",
+      "vistas": 3330
+    },
+    {
+      "anio": 2023,
+      "mes": 6,
+      "destino": "Santiago",
+      "vistas": 2809
+    },
+    {
+      "anio": 2023,
+      "mes": 7,
+      "destino": "Santiago",
+      "vistas": 2914
+    },
+    {
+      "anio": 2023,
+      "mes": 8,
+      "destino": "Santiago",
+      "vistas": 3100
+    },
+    {
+      "anio": 2023,
+      "mes": 9,
+      "destino": "Santiago",
+      "vistas": 2931
+    },
+    {
+      "anio": 2023,
+      "mes": 10,
+      "destino": "Santiago",
+      "vistas": 2682
+    },
+    {
+      "anio": 2023,
+      "mes": 11,
+      "destino": "Santiago",
+      "vistas": 2677
+    },
+    {
+      "anio": 2023,
+      "mes": 12,
+      "destino": "Santiago",
+      "vistas": 33890
+    },
+    {
+      "anio": 2024,
+      "mes": 1,
+      "destino": "Santiago",
+      "vistas": 2704
+    },
+    {
+      "anio": 2024,
+      "mes": 2,
+      "destino": "Santiago",
+      "vistas": 2624
+    },
+    {
+      "anio": 2024,
+      "mes": 3,
+      "destino": "Santiago",
+      "vistas": 2917
+    },
+    {
+      "anio": 2024,
+      "mes": 4,
+      "destino": "Santiago",
+      "vistas": 2363
+    },
+    {
+      "anio": 2024,
+      "mes": 5,
+      "destino": "Santiago",
+      "vistas": 2196
+    },
+    {
+      "anio": 2024,
+      "mes": 6,
+      "destino": "Santiago",
+      "vistas": 2273
+    },
+    {
+      "anio": 2024,
+      "mes": 7,
+      "destino": "Santiago",
+      "vistas": 2250
+    },
+    {
+      "anio": 2024,
+      "mes": 8,
+      "destino": "Santiago",
+      "vistas": 2275
+    },
+    {
+      "anio": 2024,
+      "mes": 9,
+      "destino": "Santiago",
+      "vistas": 2087
+    },
+    {
+      "anio": 2024,
+      "mes": 10,
+      "destino": "Santiago",
+      "vistas": 2262
+    },
+    {
+      "anio": 2024,
+      "mes": 11,
+      "destino": "Santiago",
+      "vistas": 2009
+    },
+    {
+      "anio": 2024,
+      "mes": 12,
+      "destino": "Santiago",
+      "vistas": 33480
+    },
+    {
+      "anio": 2025,
+      "mes": 1,
+      "destino": "Santiago",
+      "vistas": 2335
+    },
+    {
+      "anio": 2025,
+      "mes": 2,
+      "destino": "Santiago",
+      "vistas": 1853
+    },
+    {
+      "anio": 2025,
+      "mes": 3,
+      "destino": "Santiago",
+      "vistas": 2142
+    },
+    {
+      "anio": 2025,
+      "mes": 4,
+      "destino": "Santiago",
+      "vistas": 1918
+    },
+    {
+      "anio": 2025,
+      "mes": 5,
+      "destino": "Santiago",
+      "vistas": 1873
+    },
+    {
+      "anio": 2025,
+      "mes": 6,
+      "destino": "Santiago",
+      "vistas": 1786
+    },
+    {
+      "anio": 2025,
+      "mes": 7,
+      "destino": "Santiago",
+      "vistas": 1724
+    },
+    {
+      "anio": 2025,
+      "mes": 8,
+      "destino": "Santiago",
+      "vistas": 1782
+    },
+    {
+      "anio": 2025,
+      "mes": 9,
+      "destino": "Santiago",
+      "vistas": 1789
+    },
+    {
+      "anio": 2025,
+      "mes": 10,
+      "destino": "Santiago",
+      "vistas": 1832
+    },
+    {
+      "anio": 2025,
+      "mes": 11,
+      "destino": "Santiago",
+      "vistas": 2006
+    },
+    {
+      "anio": 2025,
+      "mes": 12,
+      "destino": "Santiago",
+      "vistas": 34000
+    },
+    {
+      "anio": 2026,
+      "mes": 1,
+      "destino": "Santiago",
+      "vistas": 1689
+    },
+    {
+      "anio": 2026,
+      "mes": 2,
+      "destino": "Santiago",
+      "vistas": 1407
+    },
+    {
+      "anio": 2026,
+      "mes": 3,
+      "destino": "Santiago",
+      "vistas": 1667
+    },
+    {
+      "anio": 2026,
+      "mes": 4,
+      "destino": "Santiago",
+      "vistas": 1498
+    },
+    {
+      "anio": 2026,
+      "mes": 5,
+      "destino": "Santiago",
+      "vistas": 1520
+    },
+    {
+      "anio": 2026,
+      "mes": 6,
+      "destino": "Santiago",
+      "vistas": 1627
+    },
+    {
+      "anio": 2026,
+      "mes": 7,
+      "destino": "Santiago",
+      "vistas": 1928
+    },
+    {
+      "anio": 2026,
+      "mes": 8,
+      "destino": "Santiago",
+      "vistas": 1502
+    },
+    {
+      "anio": 2026,
+      "mes": 9,
+      "destino": "Santiago",
+      "vistas": 1695
+    },
+    {
+      "anio": 2026,
+      "mes": 10,
+      "destino": "Santiago",
+      "vistas": 54
+    },
+    {
+      "anio": 2022,
+      "mes": 1,
+      "destino": "Madrid",
+      "vistas": 81570
+    },
+    {
+      "anio": 2022,
+      "mes": 2,
+      "destino": "Madrid",
+      "vistas": 76027
+    },
+    {
+      "anio": 2022,
+      "mes": 3,
+      "destino": "Madrid",
+      "vistas": 85741
+    },
+    {
+      "anio": 2022,
+      "mes": 4,
+      "destino": "Madrid",
+      "vistas": 96224
+    },
+    {
+      "anio": 2022,
+      "mes": 5,
+      "destino": "Madrid",
+      "vistas": 104819
+    },
+    {
+      "anio": 2022,
+      "mes": 6,
+      "destino": "Madrid",
+      "vistas": 87919
+    },
+    {
+      "anio": 2022,
+      "mes": 7,
+      "destino": "Madrid",
+      "vistas": 89311
+    },
+    {
+      "anio": 2022,
+      "mes": 8,
+      "destino": "Madrid",
+      "vistas": 98153
+    },
+    {
+      "anio": 2022,
+      "mes": 9,
+      "destino": "Madrid",
+      "vistas": 105741
+    },
+    {
+      "anio": 2022,
+      "mes": 10,
+      "destino": "Madrid",
+      "vistas": 116801
+    },
+    {
+      "anio": 2022,
+      "mes": 11,
+      "destino": "Madrid",
+      "vistas": 124963
+    },
+    {
+      "anio": 2022,
+      "mes": 12,
+      "destino": "Madrid",
+      "vistas": 100759
+    },
+    {
+      "anio": 2023,
+      "mes": 1,
+      "destino": "Madrid",
+      "vistas": 114381
+    },
+    {
+      "anio": 2023,
+      "mes": 2,
+      "destino": "Madrid",
+      "vistas": 102460
+    },
+    {
+      "anio": 2023,
+      "mes": 3,
+      "destino": "Madrid",
+      "vistas": 108480
+    },
+    {
+      "anio": 2023,
+      "mes": 4,
+      "destino": "Madrid",
+      "vistas": 97307
+    },
+    {
+      "anio": 2023,
+      "mes": 5,
+      "destino": "Madrid",
+      "vistas": 117076
+    },
+    {
+      "anio": 2023,
+      "mes": 6,
+      "destino": "Madrid",
+      "vistas": 93529
+    },
+    {
+      "anio": 2023,
+      "mes": 7,
+      "destino": "Madrid",
+      "vistas": 92492
+    },
+    {
+      "anio": 2023,
+      "mes": 8,
+      "destino": "Madrid",
+      "vistas": 102921
+    },
+    {
+      "anio": 2023,
+      "mes": 9,
+      "destino": "Madrid",
+      "vistas": 96747
+    },
+    {
+      "anio": 2023,
+      "mes": 10,
+      "destino": "Madrid",
+      "vistas": 94763
+    },
+    {
+      "anio": 2023,
+      "mes": 11,
+      "destino": "Madrid",
+      "vistas": 95371
+    },
+    {
+      "anio": 2023,
+      "mes": 12,
+      "destino": "Madrid",
+      "vistas": 91416
+    },
+    {
+      "anio": 2024,
+      "mes": 1,
+      "destino": "Madrid",
+      "vistas": 114213
+    },
+    {
+      "anio": 2024,
+      "mes": 2,
+      "destino": "Madrid",
+      "vistas": 89693
+    },
+    {
+      "anio": 2024,
+      "mes": 3,
+      "destino": "Madrid",
+      "vistas": 96220
+    },
+    {
+      "anio": 2024,
+      "mes": 4,
+      "destino": "Madrid",
+      "vistas": 98675
+    },
+    {
+      "anio": 2024,
+      "mes": 5,
+      "destino": "Madrid",
+      "vistas": 83263
+    },
+    {
+      "anio": 2024,
+      "mes": 6,
+      "destino": "Madrid",
+      "vistas": 63935
+    },
+    {
+      "anio": 2024,
+      "mes": 7,
+      "destino": "Madrid",
+      "vistas": 63846
+    },
+    {
+      "anio": 2024,
+      "mes": 8,
+      "destino": "Madrid",
+      "vistas": 68263
+    },
+    {
+      "anio": 2024,
+      "mes": 9,
+      "destino": "Madrid",
+      "vistas": 69173
+    },
+    {
+      "anio": 2024,
+      "mes": 10,
+      "destino": "Madrid",
+      "vistas": 76877
+    },
+    {
+      "anio": 2024,
+      "mes": 11,
+      "destino": "Madrid",
+      "vistas": 73538
+    },
+    {
+      "anio": 2024,
+      "mes": 12,
+      "destino": "Madrid",
+      "vistas": 70312
+    },
+    {
+      "anio": 2025,
+      "mes": 1,
+      "destino": "Madrid",
+      "vistas": 74919
+    },
+    {
+      "anio": 2025,
+      "mes": 2,
+      "destino": "Madrid",
+      "vistas": 67286
+    },
+    {
+      "anio": 2025,
+      "mes": 3,
+      "destino": "Madrid",
+      "vistas": 76308
+    },
+    {
+      "anio": 2025,
+      "mes": 4,
+      "destino": "Madrid",
+      "vistas": 69433
+    },
+    {
+      "anio": 2025,
+      "mes": 5,
+      "destino": "Madrid",
+      "vistas": 70797
+    },
+    {
+      "anio": 2025,
+      "mes": 6,
+      "destino": "Madrid",
+      "vistas": 55797
+    },
+    {
+      "anio": 2025,
+      "mes": 7,
+      "destino": "Madrid",
+      "vistas": 56918
+    },
+    {
+      "anio": 2025,
+      "mes": 8,
+      "destino": "Madrid",
+      "vistas": 64392
+    },
+    {
+      "anio": 2025,
+      "mes": 9,
+      "destino": "Madrid",
+      "vistas": 59859
+    },
+    {
+      "anio": 2025,
+      "mes": 10,
+      "destino": "Madrid",
+      "vistas": 65288
+    },
+    {
+      "anio": 2025,
+      "mes": 11,
+      "destino": "Madrid",
+      "vistas": 66116
+    },
+    {
+      "anio": 2025,
+      "mes": 12,
+      "destino": "Madrid",
+      "vistas": 59481
+    },
+    {
+      "anio": 2026,
+      "mes": 1,
+      "destino": "Madrid",
+      "vistas": 62846
+    },
+    {
+      "anio": 2026,
+      "mes": 2,
+      "destino": "Madrid",
+      "vistas": 52725
+    },
+    {
+      "anio": 2026,
+      "mes": 3,
+      "destino": "Madrid",
+      "vistas": 57322
+    },
+    {
+      "anio": 2026,
+      "mes": 4,
+      "destino": "Madrid",
+      "vistas": 62113
+    },
+    {
+      "anio": 2026,
+      "mes": 5,
+      "destino": "Madrid",
+      "vistas": 60933
+    },
+    {
+      "anio": 2026,
+      "mes": 6,
+      "destino": "Madrid",
+      "vistas": 49709
+    },
+    {
+      "anio": 2026,
+      "mes": 7,
+      "destino": "Madrid",
+      "vistas": 51243
+    },
+    {
+      "anio": 2026,
+      "mes": 8,
+      "destino": "Madrid",
+      "vistas": 49122
+    },
+    {
+      "anio": 2026,
+      "mes": 9,
+      "destino": "Madrid",
+      "vistas": 49270
+    },
+    {
+      "anio": 2026,
+      "mes": 10,
+      "destino": "Madrid",
+      "vistas": 1634
+    },
+    {
+      "anio": 2022,
+      "mes": 1,
+      "destino": "Madrid",
+      "vistas": 87706
+    },
+    {
+      "anio": 2022,
+      "mes": 2,
+      "destino": "Madrid",
+      "vistas": 91461
+    },
+    {
+      "anio": 2022,
+      "mes": 3,
+      "destino": "Madrid",
+      "vistas": 86277
+    },
+    {
+      "anio": 2022,
+      "mes": 4,
+      "destino": "Madrid",
+      "vistas": 95537
+    },
+    {
+      "anio": 2022,
+      "mes": 5,
+      "destino": "Madrid",
+      "vistas": 116965
+    },
+    {
+      "anio": 2022,
+      "mes": 6,
+      "destino": "Madrid",
+      "vistas": 92781
+    },
+    {
+      "anio": 2022,
+      "mes": 7,
+      "destino": "Madrid",
+      "vistas": 91189
+    },
+    {
+      "anio": 2022,
+      "mes": 8,
+      "destino": "Madrid",
+      "vistas": 98563
+    },
+    {
+      "anio": 2022,
+      "mes": 9,
+      "destino": "Madrid",
+      "vistas": 98918
+    },
+    {
+      "anio": 2022,
+      "mes": 10,
+      "destino": "Madrid",
+      "vistas": 104942
+    },
+    {
+      "anio": 2022,
+      "mes": 11,
+      "destino": "Madrid",
+      "vistas": 102150
+    },
+    {
+      "anio": 2022,
+      "mes": 12,
+      "destino": "Madrid",
+      "vistas": 97121
+    },
+    {
+      "anio": 2023,
+      "mes": 1,
+      "destino": "Madrid",
+      "vistas": 102360
+    },
+    {
+      "anio": 2023,
+      "mes": 2,
+      "destino": "Madrid",
+      "vistas": 96887
+    },
+    {
+      "anio": 2023,
+      "mes": 3,
+      "destino": "Madrid",
+      "vistas": 105876
+    },
+    {
+      "anio": 2023,
+      "mes": 4,
+      "destino": "Madrid",
+      "vistas": 104726
+    },
+    {
+      "anio": 2023,
+      "mes": 5,
+      "destino": "Madrid",
+      "vistas": 111514
+    },
+    {
+      "anio": 2023,
+      "mes": 6,
+      "destino": "Madrid",
+      "vistas": 93290
+    },
+    {
+      "anio": 2023,
+      "mes": 7,
+      "destino": "Madrid",
+      "vistas": 100456
+    },
+    {
+      "anio": 2023,
+      "mes": 8,
+      "destino": "Madrid",
+      "vistas": 92883
+    },
+    {
+      "anio": 2023,
+      "mes": 9,
+      "destino": "Madrid",
+      "vistas": 95999
+    },
+    {
+      "anio": 2023,
+      "mes": 10,
+      "destino": "Madrid",
+      "vistas": 90693
+    },
+    {
+      "anio": 2023,
+      "mes": 11,
+      "destino": "Madrid",
+      "vistas": 88929
+    },
+    {
+      "anio": 2023,
+      "mes": 12,
+      "destino": "Madrid",
+      "vistas": 77998
+    },
+    {
+      "anio": 2024,
+      "mes": 1,
+      "destino": "Madrid",
+      "vistas": 106794
+    },
+    {
+      "anio": 2024,
+      "mes": 2,
+      "destino": "Madrid",
+      "vistas": 91179
+    },
+    {
+      "anio": 2024,
+      "mes": 3,
+      "destino": "Madrid",
+      "vistas": 97369
+    },
+    {
+      "anio": 2024,
+      "mes": 4,
+      "destino": "Madrid",
+      "vistas": 115679
+    },
+    {
+      "anio": 2024,
+      "mes": 5,
+      "destino": "Madrid",
+      "vistas": 106708
+    },
+    {
+      "anio": 2024,
+      "mes": 6,
+      "destino": "Madrid",
+      "vistas": 91249
+    },
+    {
+      "anio": 2024,
+      "mes": 7,
+      "destino": "Madrid",
+      "vistas": 90165
+    },
+    {
+      "anio": 2024,
+      "mes": 8,
+      "destino": "Madrid",
+      "vistas": 80976
+    },
+    {
+      "anio": 2024,
+      "mes": 9,
+      "destino": "Madrid",
+      "vistas": 85473
+    },
+    {
+      "anio": 2024,
+      "mes": 10,
+      "destino": "Madrid",
+      "vistas": 88250
+    },
+    {
+      "anio": 2024,
+      "mes": 11,
+      "destino": "Madrid",
+      "vistas": 85888
+    },
+    {
+      "anio": 2024,
+      "mes": 12,
+      "destino": "Madrid",
+      "vistas": 79637
+    },
+    {
+      "anio": 2025,
+      "mes": 1,
+      "destino": "Madrid",
+      "vistas": 86067
+    },
+    {
+      "anio": 2025,
+      "mes": 2,
+      "destino": "Madrid",
+      "vistas": 79919
+    },
+    {
+      "anio": 2025,
+      "mes": 3,
+      "destino": "Madrid",
+      "vistas": 93983
+    },
+    {
+      "anio": 2025,
+      "mes": 4,
+      "destino": "Madrid",
+      "vistas": 92271
+    },
+    {
+      "anio": 2025,
+      "mes": 5,
+      "destino": "Madrid",
+      "vistas": 96095
+    },
+    {
+      "anio": 2025,
+      "mes": 6,
+      "destino": "Madrid",
+      "vistas": 75792
+    },
+    {
+      "anio": 2025,
+      "mes": 7,
+      "destino": "Madrid",
+      "vistas": 73074
+    },
+    {
+      "anio": 2025,
+      "mes": 8,
+      "destino": "Madrid",
+      "vistas": 75252
+    },
+    {
+      "anio": 2025,
+      "mes": 9,
+      "destino": "Madrid",
+      "vistas": 80188
+    },
+    {
+      "anio": 2025,
+      "mes": 10,
+      "destino": "Madrid",
+      "vistas": 81864
+    },
+    {
+      "anio": 2025,
+      "mes": 11,
+      "destino": "Madrid",
+      "vistas": 78159
+    },
+    {
+      "anio": 2025,
+      "mes": 12,
+      "destino": "Madrid",
+      "vistas": 71589
+    },
+    {
+      "anio": 2026,
+      "mes": 1,
+      "destino": "Madrid",
+      "vistas": 78807
+    },
+    {
+      "anio": 2026,
+      "mes": 2,
+      "destino": "Madrid",
+      "vistas": 68789
+    },
+    {
+      "anio": 2026,
+      "mes": 3,
+      "destino": "Madrid",
+      "vistas": 80564
+    },
+    {
+      "anio": 2026,
+      "mes": 4,
+      "destino": "Madrid",
+      "vistas": 79669
+    },
+    {
+      "anio": 2026,
+      "mes": 5,
+      "destino": "Madrid",
+      "vistas": 82356
+    },
+    {
+      "anio": 2026,
+      "mes": 6,
+      "destino": "Madrid",
+      "vistas": 75995
+    },
+    {
+      "anio": 2026,
+      "mes": 7,
+      "destino": "Madrid",
+      "vistas": 113223
+    },
+    {
+      "anio": 2026,
+      "mes": 8,
+      "destino": "Madrid",
+      "vistas": 73651
+    },
+    {
+      "anio": 2026,
+      "mes": 9,
+      "destino": "Madrid",
+      "vistas": 75608
+    },
+    {
+      "anio": 2026,
+      "mes": 10,
+      "destino": "Madrid",
+      "vistas": 2276
+    }
+  ]
+}

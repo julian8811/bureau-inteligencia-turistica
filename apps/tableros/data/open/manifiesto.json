@@ -1,0 +1,186 @@
+{
+ "generado": "2026-10-24",
+ "piezas": [
+  {
+   "archivo": "data/open/conectividad.json",
+   "id": "conectividad",
+   "estado": "ok",
+   "n": 270
+  },
+  {
+   "archivo": "data/open/wikipedia.json",
+   "id": "wikipedia",
+   "estado": "ok",
+   "n": 1392
+  },
+  {
+   "archivo": "data/open/ema.json",
+   "id": "ema",
+   "estado": "ok",
+   "n": 56
+  },
+  {
+   "archivo": "data/open/medata_tarifas.json",
+   "id": "medata_tarifas",
+   "estado": "ok",
+   "n": 360
+  },
+  {
+   "archivo": "data/open/icca.json",
+   "id": "icca",
+   "estado": "ok",
+   "n": 3
+  },
+  {
+   "archivo": "data/open/evi.json",
+   "id": "evi",
+   "estado": "ok",
+   "n": 2
+  },
+  {
+   "archivo": "data/open/huella.json",
+   "id": "huella",
+   "estado": "ok",
+   "n": 2
+  },
+  {
+   "archivo": "data/open/bureau_marca_llm.json",
+   "id": "marca-llm",
+   "estado": "ok",
+   "n": 7
+  },
+  {
+   "archivo": "data/open/bureau_paises_2025_2026.json",
+   "id": "bureau-paises",
+   "estado": "ok",
+   "n": 788
+  },
+  {
+   "archivo": "data/open/bureau_marca_llm.json",
+   "id": "marca-llm",
+   "estado": "ok",
+   "n": 7
+  },
+  {
+   "archivo": "data/open/bureau_paises_2025_2026.json",
+   "id": "bureau-paises",
+   "estado": "ok",
+   "n": 788
+  },
+  {
+   "archivo": "data/open/bureau_marca_llm.json",
+   "id": "marca-llm",
+   "estado": "ok",
+   "n": 7
+  },
+  {
+   "archivo": "data/open/bureau_paises_2025_2026.json",
+   "id": "bureau-paises",
+   "estado": "ok",
+   "n": 788
+  },
+  {
+   "archivo": "data/open/bureau_marca_llm.json",
+   "id": "marca-llm",
+   "estado": "ok",
+   "n": 7
+  },
+  {
+   "archivo": "data/open/bureau_paises_2025_2026.json",
+   "id": "bureau-paises",
+   "estado": "ok",
+   "n": 788
+  },
+  {
+   "archivo": "data/open/bureau_marca_llm.json",
+   "id": "marca-llm",
+   "estado": "ok",
+   "n": 7
+  },
+  {
+   "archivo": "data/open/bureau_paises_2025_2026.json",
+   "id": "bureau-paises",
+   "estado": "ok",
+   "n": 788
+  },
+  {
+   "archivo": "data/open/bureau_marca_llm.json",
+   "id": "marca-llm",
+   "estado": "ok",
+   "n": 7
+  },
+  {
+   "archivo": "data/open/bureau_paises_2025_2026.json",
+   "id": "bureau-paises",
+   "estado": "ok",
+   "n": 788
+  },
+  {
+   "archivo": "data/open/bureau_marca_llm.json",
+   "id": "marca-llm",
+   "estado": "ok",
+   "n": 0
+  },
+  {
+   "archivo": "data/open/bureau_paises_2025_2026.json",
+   "id": "bureau-paises",
+   "estado": "ok",
+   "n": 788
+  },
+  {
+   "archivo": "data/open/bureau_marca_llm.json",
+   "id": "marca-llm",
+   "estado": "ok",
+   "n": 0
+  },
+  {
+   "archivo": "data/open/bureau_paises_2025_2026.json",
+   "id": "bureau-paises",
+   "estado": "ok",
+   "n": 788
+  },
+  {
+   "archivo": "data/open/bureau_marca_llm.json",
+   "id": "marca-llm",
+   "estado": "ok",
+   "n": 0
+  },
+  {
+   "archivo": "data/open/bureau_paises_2025_2026.json",
+   "id": "bureau-paises",
+   "estado": "ok",
+   "n": 788
+  },
+  {
+   "archivo": "data/open/bureau_marca_llm.json",
+   "id": "marca-llm",
+   "estado": "ok",
+   "n": 0
+  },
+  {
+   "archivo": "data/open/bureau_paises_2025_2026.json",
+   "id": "bureau-paises",
+   "estado": "ok",
+   "n": 788
+  }
+ ],
+ "errores": [
+  "gdelt: RuntimeError: GDELT respondió 429 Too Many Requests. No se inventan menciones."
+ ],
+ "mercados": [
+  "Colombia",
+  "Estados Unidos",
+  "México",
+  "Brasil",
+  "Europa"
+ ],
+ "destinos_comparables": [
+  "Medellín",
+  "Bogotá",
+  "Cartagena",
+  "Ciudad de México",
+  "São Paulo",
+  "Lima"
+ ],
+ "nota": "Agregados para el tablero. Sin filas de encuesta y sin XLSX crudos. Las simulaciones del navegador no entran aquí."
+}

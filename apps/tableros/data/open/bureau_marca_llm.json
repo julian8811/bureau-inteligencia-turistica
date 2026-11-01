@@ -1,0 +1,11 @@
+{
+ "id": "marca-llm",
+ "titulo": "Conversación digital clasificada por LLM",
+ "fuente": "ETL Bureau (alerts_rss + prensa_rss, Groq) 2025-2026",
+ "url": "https://raw.githubusercontent.com/julian8811/bureau-inteligencia-turistica/main/etl-bureau/export/tableros_bureau/marca_llm_2025_2026.json",
+ "licencia": "Agregados propios del ETL; titulares de sus medios originales.",
+ "universo": "Titulares de la ventana corriente clasificados en MICE/vacacional/marca/seguridad/clima/infraestructura/otro.",
+ "serie": [],
+ "top_topico_global": null,
+ "n_total": 0
+}

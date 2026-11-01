@@ -1,0 +1,66 @@
+{
+  "id": "huella",
+  "fuente": "Distancias OurAirports hasta MDE, noches de la EVI y factores de conversión del gobierno del Reino Unido 2026",
+  "url": "https://assets.publishing.service.gov.uk/media/6a6c9748862aaf18d9c62ac9/ghg-conversion-factors-2026-flat-format-revised.xlsx",
+  "licencia": "Los factores se publican para el reporte de GEI. El uso fuera de ese reporte queda bajo responsabilidad de quien los aplica.",
+  "descarga": "2026-10-24",
+  "nota": "Tramo de ida, no el regreso. El factor de hotel se aplica por noche de persona, sin observar si el grupo comparte habitación. Estimación, no medición directa.",
+  "factores": {
+    "url": "https://assets.publishing.service.gov.uk/media/6a6c9748862aaf18d9c62ac9/ghg-conversion-factors-2026-flat-format-revised.xlsx",
+    "aereo_kg_por_pasajero_km": {
+      "factor": 0.15282,
+      "fila": "21_316_3168_11_1 | Scope 3 | Business travel- air | Flights | Long-haul, to/from UK | Average passenger | With RF | passenger.km | kg CO2e | 0.15282",
+      "hoja": "Factors by Category"
+    },
+    "hotel_kg_por_noche": {
+      "factor": 14.7,
+      "fila": "29_600_4010_13_1 | Scope 3 | Hotel stay | Hotel stay | Colombia | Room per night | kg CO2e | 14.7",
+      "hoja": "Factors by Category"
+    }
+  },
+  "aeropuerto_mde": {
+    "lat": 6.16454,
+    "lon": -75.4231,
+    "nombre": "Jose Maria Córdova International Airport"
+  },
+  "distancias_km": {
+    "ESTADOS UNIDOS": 2243.3,
+    "MEXICO": 2951.9,
+    "BRASIL": 4551.2,
+    "ESPANA": 8031.3,
+    "REINO UNIDO": 8432.7,
+    "FRANCIA": 8614.6,
+    "ALEMANIA": 9053.0,
+    "ITALIA": 9358.8,
+    "PAISES BAJOS": 8798.9,
+    "HOLANDA": 8798.9,
+    "PORTUGAL": 7531.4,
+    "ARGENTINA": 4889.6,
+    "CHILE": 4425.7,
+    "PERU": 2030.9,
+    "ECUADOR": 771.4,
+    "PANAMA": 543.1,
+    "COSTA RICA": 1056.6,
+    "CANADA": 4191.3,
+    "VENEZUELA": 1050.4,
+    "REPUBLICA DOMINICANA": 1577.0
+  },
+  "serie": [
+    {
+      "ola": "Agosto 2023 – julio 2024",
+      "km_ida": 2627.2,
+      "kg_vuelo": 401.49,
+      "kg_alojamiento": 131.56,
+      "kg_total": 533.05,
+      "cobertura_peso": 496743.6
+    },
+    {
+      "ola": "Enero – junio 2025",
+      "km_ida": 2839.1,
+      "kg_vuelo": 433.87,
+      "kg_alojamiento": 125.1,
+      "kg_total": 558.97,
+      "cobertura_peso": 267623.6
+    }
+  ]
+}
