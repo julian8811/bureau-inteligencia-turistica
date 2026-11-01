@@ -1,0 +1,25 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "manifiesto",
+  "description": "Manifiesto de piezas publicadas (ETL y front). Contrato mínimo T4.",
+  "type": "object",
+  "required": ["piezas"],
+  "properties": {
+    "generado": {"type": "string"},
+    "fuente": {"type": "string"},
+    "licencia": {"type": "string"},
+    "piezas": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["archivo", "id", "estado"],
+        "properties": {
+          "archivo": {"type": "string"},
+          "id": {"type": "string"},
+          "estado": {"type": "string", "enum": ["ok", "SKIP"]},
+          "n": {"type": "number"}
+        }
+      }
+    }
+  }
+}
