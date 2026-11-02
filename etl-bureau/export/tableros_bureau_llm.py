@@ -18,6 +18,7 @@ from __future__ import annotations
 import csv
 import datetime as _dt
 import json
+import urllib.parse
 from pathlib import Path
 
 BASE = Path(__file__).resolve().parents[1]
@@ -188,6 +189,70 @@ def build_marca() -> tuple[dict, str | None]:
         )
 
 
+def _medio_de(feed: str, link: str) -> str:
+    """Etiqueta corta del medio: query del RSS de Google News o host del link."""
+    try:
+        q = urllib.parse.parse_qs(urllib.parse.urlsplit(feed or "").query).get("q", [""])[0]
+        if q:
+            return urllib.parse.unquote_plus(q).strip()[:60]
+    except Exception:
+        pass
+    try:
+        return urllib.parse.urlsplit(link or "").netloc.replace("www.", "")[:60]
+    except Exception:
+        return ""
+
+
+def build_prensa() -> tuple[dict, str | None]:
+    """Menciones en prensa (Google News RSS): serie semanal + últimos titulares."""
+    try:
+        srows = _read_csv(PROC / "desglose_alertas_serie.csv")
+        serie = [{"semana": r.get("fecha", ""), "n": _num(r.get("n"))} for r in srows if r.get("fecha")]
+        serie = serie[-26:]
+        if not serie:
+            raise ValueError("desglose_alertas_serie.csv sin semanas con datos")
+        mendoc = json.loads((BASE / "web" / "data" / "menciones.json").read_text(encoding="utf-8"))
+        titulares = [
+            {
+                "fecha": str(r.get("fecha", "")),
+                "titulo": str(r.get("titulo", "")),
+                "medio": _medio_de(str(r.get("feed", "")), str(r.get("link", ""))),
+                "link": str(r.get("link", "")),
+            }
+            for r in (mendoc if isinstance(mendoc, list) else [])
+            if str(r.get("titulo", "")).strip()
+        ][:15]
+        krows = _read_csv(PROC / "kpis_historico.csv")
+        sent = None
+        if krows:
+            try:
+                sent = float(str(krows[-1].get("sentimiento_neto") or 0))
+            except (TypeError, ValueError):
+                sent = None
+        payload = {
+            "id": "prensa_medios",
+            "fuente": "ETL Bureau (Google News RSS + Reddit, sin login)",
+            "licencia": LICENCIA,
+            "grano": "semanal",
+            "generado": _dt.date.today().isoformat(),
+            "ventana_serie": [serie[0]["semana"], serie[-1]["semana"]],
+            "serie": serie,
+            "titulares": titulares,
+            "sentimiento_neto": sent,
+            "n_total_menciones": sum(d["n"] for d in serie),
+        }
+        return payload, None
+    except Exception as exc:  # SKIP honesto
+        return (
+            {"id": "prensa_medios", "estado": "SKIP",
+             "motivo": f"{type(exc).__name__}: {exc}",
+             "fuente": "ETL Bureau (Google News RSS + Reddit, sin login)",
+             "licencia": LICENCIA, "grano": "semanal",
+             "serie": [], "titulares": []},
+            f"prensa: {exc}",
+        )
+
+
 def build_informe() -> tuple[dict, str | None]:
     """Lee export/informe_llm/informe_<corte>.json y lo deja en schema del tab Informes."""
     try:
@@ -246,6 +311,21 @@ def main() -> int:
         }
     )
     print(f"[adapter] marca_llm_2025_2026: {piezas[-1]['n']} categorias -> {p}")
+
+    prensa, err = build_prensa()
+    if err:
+        errores.append(err)
+    p = OUT / "prensa_medios.json"
+    p.write_text(json.dumps(prensa, ensure_ascii=False, indent=1), encoding="utf-8")
+    piezas.append(
+        {
+            "archivo": "etl-bureau/export/tableros_bureau/prensa_medios.json",
+            "id": "prensa_medios",
+            "estado": prensa.get("estado", "ok"),
+            "n": _n(prensa),
+        }
+    )
+    print(f"[adapter] prensa_medios: {piezas[-1]['n']} semanas -> {p}")
 
     informe, err = build_informe()
     if err:

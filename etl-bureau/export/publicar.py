@@ -10,7 +10,7 @@ from pathlib import Path
 
 BASE = Path(__file__).resolve().parents[1]
 EXPORT = BASE / "export" / "tableros_bureau"
-PIEZAS = ["paises_2025_2026.json", "marca_llm_2025_2026.json",
+PIEZAS = ["paises_2025_2026.json", "marca_llm_2025_2026.json", "prensa_medios.json",
           "informe_llm.json", "manifiesto_bureau.json"]
 BIT_URL = os.environ.get("PUBLISH_BIT_URL") or "git@github.com:julian8811/bureau-inteligencia-turistica.git"
 TAB_URL = os.environ.get("PUBLISH_TAB_URL") or "git@github.com:julian8811/tableros-bureau.git"
