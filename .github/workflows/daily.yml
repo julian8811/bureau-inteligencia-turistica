@@ -1,3 +1,12 @@
+# Monorepo T5: ETL vive en apps/etl, front en apps/tableros.
+# Vercel: Root Directory del proyecto = apps/tableros (setting del dashboard,
+# no se versiona). Hasta el cutover, el daily sigue publicando al repo viejo
+# tableros-bureau vía PUBLISH_TAB_URL para no romper tableros-bureau.vercel.app.
+# FRAGIL: TABLEROS_PAT con push cruzado a DOS repos (BIT+TAB). Si el PAT rota
+# o caduca, mueren ambos publishes (ver apps/etl/export/publicar.py).
+# Migración: cuando Vercel lea este repo, el push TAB se apaga y el push BIT
+# pasa a github.token (mismo repo, sin PAT). Nombres de secrets intactos a
+# propósito; ningún valor tocado.
 name: daily-bureau
 on:
   schedule:
@@ -22,11 +31,11 @@ jobs:
         with:
           python-version: "3.12"
           cache: pip
-          cache-dependency-path: etl-bureau/requirements.txt
-      - run: pip install -r etl-bureau/requirements.txt
+          cache-dependency-path: apps/etl/requirements.txt
+      - run: pip install -r apps/etl/requirements.txt
       - run: python -m playwright install chromium --with-deps
       - name: daily ETL
-        run: python etl-bureau/orchestration/daily.py
+        run: python apps/etl/orchestration/daily.py
       - name: avisar si fallo
         if: failure()
         env:
@@ -39,7 +48,7 @@ jobs:
         run: |
           git config user.name bureau-etl
           git config user.email bureau-etl@local
-          git add etl-bureau/data/processed etl-bureau/export etl-bureau/web/data etl-bureau/informes 2>/dev/null || true
+          git add apps/etl/data/processed apps/etl/export apps/etl/web/data apps/etl/informes 2>/dev/null || true
           git diff --cached --quiet || git commit -m "data(etl): daily $(date -u +%F)"
           git push origin HEAD:main || echo "sin cambios para pushear"
       - name: subir PDFs del informe
@@ -47,7 +56,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: informe-pdfs
-          path: etl-bureau/informes/*.pdf
+          path: apps/etl/informes/*.pdf
           retention-days: 30
           if-no-files-found: warn
       - name: subir informe JSON
@@ -56,8 +65,8 @@ jobs:
         with:
           name: informe-json
           path: |
-            etl-bureau/export/informe_llm/*.json
-            etl-bureau/export/tableros_bureau/informe_llm.json
-            etl-bureau/web/data/informe_llm.json
+            apps/etl/export/informe_llm/*.json
+            apps/etl/export/tableros_bureau/informe_llm.json
+            apps/etl/web/data/informe_llm.json
           retention-days: 30
           if-no-files-found: warn
