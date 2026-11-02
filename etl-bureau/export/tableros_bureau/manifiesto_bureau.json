@@ -20,6 +20,30 @@
    "id": "informe_llm",
    "estado": "ok",
    "n": 10
+  },
+  {
+   "archivo": "etl-bureau/export/tableros_bureau/oferta_territorio_2025_2026.json",
+   "id": "oferta_territorio_2025_2026",
+   "estado": "ok",
+   "n": 12
+  },
+  {
+   "archivo": "etl-bureau/export/tableros_bureau/seguridad_2025_2026.json",
+   "id": "seguridad_2025_2026",
+   "estado": "ok",
+   "n": 99
+  },
+  {
+   "archivo": "etl-bureau/export/tableros_bureau/clima_aire_2025_2026.json",
+   "id": "clima_aire_2025_2026",
+   "estado": "ok",
+   "n": 80
+  },
+  {
+   "archivo": "etl-bureau/export/tableros_bureau/conectividad_benchmark_2025_2026.json",
+   "id": "conectividad_benchmark_2025_2026",
+   "estado": "ok",
+   "n": 6743
   }
  ],
  "errores": [],

@@ -1,0 +1,550 @@
+{
+  "id": "bureau-seguridad",
+  "generado": "2026-11-02",
+  "ventana": "2018-07 a 2026-09",
+  "fuente": "ETL Bureau, SIEDCO Policia Nacional",
+  "serie_mensual": [
+    {
+      "periodo": "2018-07",
+      "homicidios": 0,
+      "hurtos": 1005
+    },
+    {
+      "periodo": "2018-08",
+      "homicidios": 0,
+      "hurtos": 2343
+    },
+    {
+      "periodo": "2018-09",
+      "homicidios": 0,
+      "hurtos": 1935
+    },
+    {
+      "periodo": "2018-10",
+      "homicidios": 25,
+      "hurtos": 2016
+    },
+    {
+      "periodo": "2018-11",
+      "homicidios": 45,
+      "hurtos": 1876
+    },
+    {
+      "periodo": "2018-12",
+      "homicidios": 56,
+      "hurtos": 1782
+    },
+    {
+      "periodo": "2019-01",
+      "homicidios": 53,
+      "hurtos": 1713
+    },
+    {
+      "periodo": "2019-02",
+      "homicidios": 45,
+      "hurtos": 1834
+    },
+    {
+      "periodo": "2019-03",
+      "homicidios": 55,
+      "hurtos": 2142
+    },
+    {
+      "periodo": "2019-04",
+      "homicidios": 73,
+      "hurtos": 1998
+    },
+    {
+      "periodo": "2019-05",
+      "homicidios": 74,
+      "hurtos": 2273
+    },
+    {
+      "periodo": "2019-06",
+      "homicidios": 42,
+      "hurtos": 2134
+    },
+    {
+      "periodo": "2019-07",
+      "homicidios": 41,
+      "hurtos": 2299
+    },
+    {
+      "periodo": "2019-08",
+      "homicidios": 48,
+      "hurtos": 2702
+    },
+    {
+      "periodo": "2019-09",
+      "homicidios": 38,
+      "hurtos": 2239
+    },
+    {
+      "periodo": "2019-10",
+      "homicidios": 35,
+      "hurtos": 2353
+    },
+    {
+      "periodo": "2019-11",
+      "homicidios": 30,
+      "hurtos": 2727
+    },
+    {
+      "periodo": "2019-12",
+      "homicidios": 42,
+      "hurtos": 2849
+    },
+    {
+      "periodo": "2020-01",
+      "homicidios": 27,
+      "hurtos": 2520
+    },
+    {
+      "periodo": "2020-02",
+      "homicidios": 44,
+      "hurtos": 1946
+    },
+    {
+      "periodo": "2020-03",
+      "homicidios": 23,
+      "hurtos": 1281
+    },
+    {
+      "periodo": "2020-04",
+      "homicidios": 21,
+      "hurtos": 501
+    },
+    {
+      "periodo": "2020-05",
+      "homicidios": 42,
+      "hurtos": 924
+    },
+    {
+      "periodo": "2020-06",
+      "homicidios": 32,
+      "hurtos": 1170
+    },
+    {
+      "periodo": "2020-07",
+      "homicidios": 26,
+      "hurtos": 1323
+    },
+    {
+      "periodo": "2020-08",
+      "homicidios": 38,
+      "hurtos": 1370
+    },
+    {
+      "periodo": "2020-09",
+      "homicidios": 33,
+      "hurtos": 1580
+    },
+    {
+      "periodo": "2020-10",
+      "homicidios": 27,
+      "hurtos": 1619
+    },
+    {
+      "periodo": "2020-11",
+      "homicidios": 25,
+      "hurtos": 1656
+    },
+    {
+      "periodo": "2020-12",
+      "homicidios": 28,
+      "hurtos": 1886
+    },
+    {
+      "periodo": "2021-01",
+      "homicidios": 35,
+      "hurtos": 1452
+    },
+    {
+      "periodo": "2021-02",
+      "homicidios": 26,
+      "hurtos": 1542
+    },
+    {
+      "periodo": "2021-03",
+      "homicidios": 31,
+      "hurtos": 1897
+    },
+    {
+      "periodo": "2021-04",
+      "homicidios": 38,
+      "hurtos": 1403
+    },
+    {
+      "periodo": "2021-05",
+      "homicidios": 37,
+      "hurtos": 1752
+    },
+    {
+      "periodo": "2021-06",
+      "homicidios": 43,
+      "hurtos": 1940
+    },
+    {
+      "periodo": "2021-07",
+      "homicidios": 27,
+      "hurtos": 2058
+    },
+    {
+      "periodo": "2021-08",
+      "homicidios": 29,
+      "hurtos": 2320
+    },
+    {
+      "periodo": "2021-09",
+      "homicidios": 27,
+      "hurtos": 2073
+    },
+    {
+      "periodo": "2021-10",
+      "homicidios": 29,
+      "hurtos": 2499
+    },
+    {
+      "periodo": "2021-11",
+      "homicidios": 26,
+      "hurtos": 2386
+    },
+    {
+      "periodo": "2021-12",
+      "homicidios": 43,
+      "hurtos": 2381
+    },
+    {
+      "periodo": "2022-01",
+      "homicidios": 25,
+      "hurtos": 2079
+    },
+    {
+      "periodo": "2022-02",
+      "homicidios": 29,
+      "hurtos": 2345
+    },
+    {
+      "periodo": "2022-03",
+      "homicidios": 35,
+      "hurtos": 2682
+    },
+    {
+      "periodo": "2022-04",
+      "homicidios": 29,
+      "hurtos": 2536
+    },
+    {
+      "periodo": "2022-05",
+      "homicidios": 34,
+      "hurtos": 2172
+    },
+    {
+      "periodo": "2022-06",
+      "homicidios": 34,
+      "hurtos": 1825
+    },
+    {
+      "periodo": "2022-07",
+      "homicidios": 31,
+      "hurtos": 1876
+    },
+    {
+      "periodo": "2022-08",
+      "homicidios": 22,
+      "hurtos": 2546
+    },
+    {
+      "periodo": "2022-09",
+      "homicidios": 28,
+      "hurtos": 2573
+    },
+    {
+      "periodo": "2022-10",
+      "homicidios": 30,
+      "hurtos": 2753
+    },
+    {
+      "periodo": "2022-11",
+      "homicidios": 33,
+      "hurtos": 2734
+    },
+    {
+      "periodo": "2022-12",
+      "homicidios": 28,
+      "hurtos": 2612
+    },
+    {
+      "periodo": "2023-01",
+      "homicidios": 28,
+      "hurtos": 2461
+    },
+    {
+      "periodo": "2023-02",
+      "homicidios": 27,
+      "hurtos": 2524
+    },
+    {
+      "periodo": "2023-03",
+      "homicidios": 37,
+      "hurtos": 2684
+    },
+    {
+      "periodo": "2023-04",
+      "homicidios": 25,
+      "hurtos": 2805
+    },
+    {
+      "periodo": "2023-05",
+      "homicidios": 24,
+      "hurtos": 3103
+    },
+    {
+      "periodo": "2023-06",
+      "homicidios": 29,
+      "hurtos": 2867
+    },
+    {
+      "periodo": "2023-07",
+      "homicidios": 32,
+      "hurtos": 2539
+    },
+    {
+      "periodo": "2023-08",
+      "homicidios": 36,
+      "hurtos": 2650
+    },
+    {
+      "periodo": "2023-09",
+      "homicidios": 33,
+      "hurtos": 2687
+    },
+    {
+      "periodo": "2023-10",
+      "homicidios": 32,
+      "hurtos": 2526
+    },
+    {
+      "periodo": "2023-11",
+      "homicidios": 25,
+      "hurtos": 2717
+    },
+    {
+      "periodo": "2023-12",
+      "homicidios": 31,
+      "hurtos": 2876
+    },
+    {
+      "periodo": "2024-01",
+      "homicidios": 26,
+      "hurtos": 2360
+    },
+    {
+      "periodo": "2024-02",
+      "homicidios": 27,
+      "hurtos": 2274
+    },
+    {
+      "periodo": "2024-03",
+      "homicidios": 34,
+      "hurtos": 2070
+    },
+    {
+      "periodo": "2024-04",
+      "homicidios": 16,
+      "hurtos": 2364
+    },
+    {
+      "periodo": "2024-05",
+      "homicidios": 19,
+      "hurtos": 2475
+    },
+    {
+      "periodo": "2024-06",
+      "homicidios": 18,
+      "hurtos": 2164
+    },
+    {
+      "periodo": "2024-07",
+      "homicidios": 21,
+      "hurtos": 2189
+    },
+    {
+      "periodo": "2024-08",
+      "homicidios": 35,
+      "hurtos": 2322
+    },
+    {
+      "periodo": "2024-09",
+      "homicidios": 31,
+      "hurtos": 2103
+    },
+    {
+      "periodo": "2024-10",
+      "homicidios": 28,
+      "hurtos": 1895
+    },
+    {
+      "periodo": "2024-11",
+      "homicidios": 25,
+      "hurtos": 1642
+    },
+    {
+      "periodo": "2024-12",
+      "homicidios": 29,
+      "hurtos": 1314
+    },
+    {
+      "periodo": "2025-01",
+      "homicidios": 26,
+      "hurtos": 1586
+    },
+    {
+      "periodo": "2025-02",
+      "homicidios": 19,
+      "hurtos": 1803
+    },
+    {
+      "periodo": "2025-03",
+      "homicidios": 40,
+      "hurtos": 2049
+    },
+    {
+      "periodo": "2025-04",
+      "homicidios": 22,
+      "hurtos": 1888
+    },
+    {
+      "periodo": "2025-05",
+      "homicidios": 39,
+      "hurtos": 2003
+    },
+    {
+      "periodo": "2025-06",
+      "homicidios": 20,
+      "hurtos": 1809
+    },
+    {
+      "periodo": "2025-07",
+      "homicidios": 32,
+      "hurtos": 1703
+    },
+    {
+      "periodo": "2025-08",
+      "homicidios": 25,
+      "hurtos": 2287
+    },
+    {
+      "periodo": "2025-09",
+      "homicidios": 24,
+      "hurtos": 2167
+    },
+    {
+      "periodo": "2025-10",
+      "homicidios": 26,
+      "hurtos": 2722
+    },
+    {
+      "periodo": "2025-11",
+      "homicidios": 23,
+      "hurtos": 2575
+    },
+    {
+      "periodo": "2025-12",
+      "homicidios": 37,
+      "hurtos": 2332
+    },
+    {
+      "periodo": "2026-01",
+      "homicidios": 28,
+      "hurtos": 2374
+    },
+    {
+      "periodo": "2026-02",
+      "homicidios": 14,
+      "hurtos": 1909
+    },
+    {
+      "periodo": "2026-03",
+      "homicidios": 31,
+      "hurtos": 2502
+    },
+    {
+      "periodo": "2026-04",
+      "homicidios": 23,
+      "hurtos": 2215
+    },
+    {
+      "periodo": "2026-05",
+      "homicidios": 16,
+      "hurtos": 2482
+    },
+    {
+      "periodo": "2026-06",
+      "homicidios": 25,
+      "hurtos": 2068
+    },
+    {
+      "periodo": "2026-07",
+      "homicidios": 20,
+      "hurtos": 2120
+    },
+    {
+      "periodo": "2026-08",
+      "homicidios": 21,
+      "hurtos": 2076
+    },
+    {
+      "periodo": "2026-09",
+      "homicidios": 5,
+      "hurtos": 1162
+    }
+  ],
+  "top_zonas": [
+    {
+      "zona": "URBANA",
+      "homicidios": 2851,
+      "hurtos": null
+    },
+    {
+      "zona": "RURAL",
+      "homicidios": 150,
+      "hurtos": null
+    }
+  ],
+  "top_modalidades": [
+    {
+      "modalidad": "SICARIATO",
+      "n": 1385
+    },
+    {
+      "modalidad": "RIÑAS",
+      "n": 955
+    },
+    {
+      "modalidad": "ATRACO",
+      "n": 198
+    },
+    {
+      "modalidad": "SIGNOS DE VIOLENCIA FÍSICA (TORTURA)",
+      "n": 143
+    },
+    {
+      "modalidad": "POR ESTABLECER",
+      "n": 101
+    },
+    {
+      "modalidad": "ENFRENTAMIENTO ENTRE DELINCUENCIA COMUN",
+      "n": 67
+    },
+    {
+      "modalidad": "VIOLENCIA INTRAFAMILIAR",
+      "n": 64
+    },
+    {
+      "modalidad": "LINCHAMIENTO",
+      "n": 29
+    }
+  ],
+  "estado": "ok"
+}

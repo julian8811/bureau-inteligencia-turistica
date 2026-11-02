@@ -1,0 +1,533 @@
+{
+  "id": "bureau-oferta",
+  "generado": "2026-11-02",
+  "ventana": "2025-2026",
+  "fuente": "RNT + MeData + DANE-EGIT (raw 2026-11-02)",
+  "serie": {
+    "rnt": {
+      "prestadores": 971,
+      "habitaciones": 2583,
+      "camas": 6445,
+      "top_municipios": [
+        {
+          "municipio": "MEDELLIN",
+          "prestadores": 522
+        },
+        {
+          "municipio": "SABANETA",
+          "prestadores": 78
+        },
+        {
+          "municipio": "ENVIGADO",
+          "prestadores": 29
+        },
+        {
+          "municipio": "RIONEGRO",
+          "prestadores": 25
+        },
+        {
+          "municipio": "BELLO",
+          "prestadores": 23
+        },
+        {
+          "municipio": "GUATAPE",
+          "prestadores": 21
+        },
+        {
+          "municipio": "SOPETRAN",
+          "prestadores": 21
+        },
+        {
+          "municipio": "PEÑOL",
+          "prestadores": 20
+        }
+      ],
+      "por_categoria": [
+        {
+          "categoria": "VIVIENDAS TURÍSTICAS",
+          "prestadores": 744,
+          "habitaciones": 1427,
+          "camas": 4457
+        },
+        {
+          "categoria": "AGENCIAS DE VIAJES",
+          "prestadores": 129,
+          "habitaciones": 0,
+          "camas": 0
+        },
+        {
+          "categoria": "ESTABLECIMIENTOS DE ALOJAMIENTO TURÍSTICO",
+          "prestadores": 56,
+          "habitaciones": 1156,
+          "camas": 1988
+        },
+        {
+          "categoria": "GUIAS DE TURISMO",
+          "prestadores": 17,
+          "habitaciones": 0,
+          "camas": 0
+        },
+        {
+          "categoria": "ARRENDADORES DE VEHÍCULOS PARA TURISMO NACIONAL E INTERNACIONAL",
+          "prestadores": 8,
+          "habitaciones": 0,
+          "camas": 0
+        },
+        {
+          "categoria": "ESTABLECIMIENTOS DE GASTRONOMÍA",
+          "prestadores": 5,
+          "habitaciones": 0,
+          "camas": 0
+        },
+        {
+          "categoria": "OPERADORES PROFESIONALES DE CONGRESOS FERIAS Y CONVENCIONES",
+          "prestadores": 5,
+          "habitaciones": 0,
+          "camas": 0
+        },
+        {
+          "categoria": "ORGANIZADORES DE BODA DESTINO",
+          "prestadores": 2,
+          "habitaciones": 0,
+          "camas": 0
+        },
+        {
+          "categoria": "OPERADORES DE PLATAFORMAS ELECTRÓNICAS O DIGITALES DE SERVICIOS TURÍSTICOS",
+          "prestadores": 2,
+          "habitaciones": 0,
+          "camas": 0
+        },
+        {
+          "categoria": "OFICINAS DE REPRESENTACION TURÍSTICA",
+          "prestadores": 1,
+          "habitaciones": 0,
+          "camas": 0
+        },
+        {
+          "categoria": "EMPRESAS DE TRANSPORTE TERRESTRE AUTOMOTOR",
+          "prestadores": 1,
+          "habitaciones": 0,
+          "camas": 0
+        },
+        {
+          "categoria": "CONCESIONARIOS DE SERVICIOS TURÍSTICOS EN PARQUE",
+          "prestadores": 1,
+          "habitaciones": 0,
+          "camas": 0
+        }
+      ]
+    },
+    "tarifa_zona": [
+      {
+        "zona": "CENTRO",
+        "periodo": 202303,
+        "valor": 89987.6772875817
+      },
+      {
+        "zona": "LAURELES",
+        "periodo": 202303,
+        "valor": 189879.4896110372
+      },
+      {
+        "zona": "POBLADO",
+        "periodo": 202303,
+        "valor": 492212.6283004358
+      }
+    ],
+    "ocupacion_zonas": [
+      {
+        "zona": "CENTRO",
+        "prom": 40.37,
+        "n_meses": 195
+      },
+      {
+        "zona": "LAURELES",
+        "prom": 51.24,
+        "n_meses": 195
+      },
+      {
+        "zona": "POBLADO",
+        "prom": 62.2,
+        "n_meses": 195
+      }
+    ],
+    "temporadas": [
+      {
+        "evento": "feria",
+        "occ_evento": 70.84,
+        "occ_base": 57.22,
+        "uplift_pp": 13.62,
+        "n_periodos": 244,
+        "occ_prom": 70.84
+      },
+      {
+        "evento": "mitad",
+        "occ_evento": 54.12,
+        "occ_base": 57.22,
+        "uplift_pp": -3.1,
+        "n_periodos": 19,
+        "occ_prom": 54.12
+      },
+      {
+        "evento": "moda",
+        "occ_evento": 76.89,
+        "occ_base": 57.22,
+        "uplift_pp": 19.67,
+        "n_periodos": 96,
+        "occ_prom": 76.89
+      },
+      {
+        "evento": "receso",
+        "occ_evento": 61.78,
+        "occ_base": 57.22,
+        "uplift_pp": 4.56,
+        "n_periodos": 264,
+        "occ_prom": 61.78
+      },
+      {
+        "evento": "santa",
+        "occ_evento": 47.2,
+        "occ_base": 57.22,
+        "uplift_pp": -10.02,
+        "n_periodos": 252,
+        "occ_prom": 47.2
+      },
+      {
+        "evento": "tex",
+        "occ_evento": 75.67,
+        "occ_base": 57.22,
+        "uplift_pp": 18.45,
+        "n_periodos": 128,
+        "occ_prom": 75.67
+      }
+    ],
+    "turismo_interno": {
+      "conceptos": [
+        "Población total",
+        "Población total que realizó turismo interno",
+        "Porcentaje de personas que realizaron turismo interno"
+      ],
+      "serie": {
+        "Población total": [
+          {
+            "trimestre": "I - 2019",
+            "valor": 20502.712
+          },
+          {
+            "trimestre": "II - 2019",
+            "valor": 20634.557
+          },
+          {
+            "trimestre": "III - 2019",
+            "valor": 20763.408
+          },
+          {
+            "trimestre": "IV- 2019",
+            "valor": 20882.846
+          },
+          {
+            "trimestre": "I - 2020",
+            "valor": 20995.453
+          },
+          {
+            "trimestre": "II - 2020",
+            "valor": 21101.649
+          },
+          {
+            "trimestre": "III - 2020",
+            "valor": 21194.878
+          },
+          {
+            "trimestre": "IV - 2020",
+            "valor": 21273.567
+          },
+          {
+            "trimestre": "I - 2021",
+            "valor": 21350.552
+          },
+          {
+            "trimestre": "II - 2021",
+            "valor": 21422.311
+          },
+          {
+            "trimestre": "III - 2021",
+            "valor": 21492.58
+          },
+          {
+            "trimestre": "IV - 2021",
+            "valor": 21558.93
+          },
+          {
+            "trimestre": "I - 2022",
+            "valor": 21621.686
+          },
+          {
+            "trimestre": "II - 2022",
+            "valor": 21682.411
+          },
+          {
+            "trimestre": "III - 2022",
+            "valor": 21743.451
+          },
+          {
+            "trimestre": "IV - 2022",
+            "valor": 21804.953
+          },
+          {
+            "trimestre": "I - 2023",
+            "valor": 21867.706
+          },
+          {
+            "trimestre": "II - 2023",
+            "valor": 21932.26
+          },
+          {
+            "trimestre": "III - 2023",
+            "valor": 22001.143
+          },
+          {
+            "trimestre": "IV - 2023",
+            "valor": 22073.033
+          },
+          {
+            "trimestre": "I - 2024",
+            "valor": 22146.254
+          },
+          {
+            "trimestre": "II - 2024",
+            "valor": 22218.528
+          },
+          {
+            "trimestre": "III - 2024",
+            "valor": 22289.213
+          },
+          {
+            "trimestre": "IV - 2024",
+            "valor": 22357.377
+          },
+          {
+            "trimestre": "I - 2026",
+            "valor": 22687.098
+          },
+          {
+            "trimestre": "II - 2026",
+            "valor": 22752.806
+          }
+        ],
+        "Población total que realizó turismo interno": [
+          {
+            "trimestre": "I - 2019",
+            "valor": 2528.886
+          },
+          {
+            "trimestre": "II - 2019",
+            "valor": 2079.802
+          },
+          {
+            "trimestre": "III - 2019",
+            "valor": 1864.324
+          },
+          {
+            "trimestre": "IV- 2019",
+            "valor": 1758.804
+          },
+          {
+            "trimestre": "I - 2020",
+            "valor": 1889.456
+          },
+          {
+            "trimestre": "II - 2020",
+            "valor": 75.964
+          },
+          {
+            "trimestre": "III - 2020",
+            "valor": 289.177
+          },
+          {
+            "trimestre": "IV - 2020",
+            "valor": 1002.866
+          },
+          {
+            "trimestre": "I - 2021",
+            "valor": 1305.456
+          },
+          {
+            "trimestre": "II - 2021",
+            "valor": 1076.187
+          },
+          {
+            "trimestre": "III - 2021",
+            "valor": 1196.496
+          },
+          {
+            "trimestre": "IV - 2021",
+            "valor": 1350.14
+          },
+          {
+            "trimestre": "I - 2022",
+            "valor": 1459.233
+          },
+          {
+            "trimestre": "II - 2022",
+            "valor": 1450.162
+          },
+          {
+            "trimestre": "III - 2022",
+            "valor": 1385.211
+          },
+          {
+            "trimestre": "IV - 2022",
+            "valor": 1317.837
+          },
+          {
+            "trimestre": "I - 2023",
+            "valor": 1888.694
+          },
+          {
+            "trimestre": "II - 2023",
+            "valor": 1900.156
+          },
+          {
+            "trimestre": "III - 2023",
+            "valor": 1538.134
+          },
+          {
+            "trimestre": "IV - 2023",
+            "valor": 1661.028
+          },
+          {
+            "trimestre": "I - 2024",
+            "valor": 1970.94377
+          },
+          {
+            "trimestre": "II - 2024",
+            "valor": 1426.547
+          },
+          {
+            "trimestre": "III - 2024",
+            "valor": 1730.073
+          },
+          {
+            "trimestre": "IV - 2024",
+            "valor": 1476.024
+          },
+          {
+            "trimestre": "I - 2026",
+            "valor": 2778.575
+          },
+          {
+            "trimestre": "II - 2026",
+            "valor": 1967.941
+          }
+        ],
+        "Porcentaje de personas que realizaron turismo interno": [
+          {
+            "trimestre": "I - 2019",
+            "valor": 12.3344
+          },
+          {
+            "trimestre": "II - 2019",
+            "valor": 10.07922
+          },
+          {
+            "trimestre": "III - 2019",
+            "valor": 8.97889
+          },
+          {
+            "trimestre": "IV- 2019",
+            "valor": 8.42224
+          },
+          {
+            "trimestre": "I - 2020",
+            "valor": 8.99936
+          },
+          {
+            "trimestre": "II - 2020",
+            "valor": 0.35999
+          },
+          {
+            "trimestre": "III - 2020",
+            "valor": 1.36437
+          },
+          {
+            "trimestre": "IV - 2020",
+            "valor": 4.71414
+          },
+          {
+            "trimestre": "I - 2021",
+            "valor": 6.11439
+          },
+          {
+            "trimestre": "II - 2021",
+            "valor": 5.02367
+          },
+          {
+            "trimestre": "III - 2021",
+            "valor": 5.56702
+          },
+          {
+            "trimestre": "IV - 2021",
+            "valor": 6.26257
+          },
+          {
+            "trimestre": "I - 2022",
+            "valor": 6.74893
+          },
+          {
+            "trimestre": "II - 2022",
+            "valor": 6.68819
+          },
+          {
+            "trimestre": "III - 2022",
+            "valor": 6.3707
+          },
+          {
+            "trimestre": "IV - 2022",
+            "valor": 6.04375
+          },
+          {
+            "trimestre": "I - 2023",
+            "valor": 8.63691
+          },
+          {
+            "trimestre": "II - 2023",
+            "valor": 8.66375
+          },
+          {
+            "trimestre": "III - 2023",
+            "valor": 6.99116
+          },
+          {
+            "trimestre": "IV - 2023",
+            "valor": 7.52515
+          },
+          {
+            "trimestre": "I - 2024",
+            "valor": 8.89967
+          },
+          {
+            "trimestre": "II - 2024",
+            "valor": 6.42053
+          },
+          {
+            "trimestre": "III - 2024",
+            "valor": 7.762
+          },
+          {
+            "trimestre": "IV - 2024",
+            "valor": 6.602
+          },
+          {
+            "trimestre": "I - 2026",
+            "valor": 12.247
+          },
+          {
+            "trimestre": "II - 2026",
+            "valor": 8.649
+          }
+        ]
+      }
+    }
+  },
+  "estado": "ok"
+}
