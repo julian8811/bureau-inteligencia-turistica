@@ -23,19 +23,17 @@ MAX_PAGES = 5  # 5000 filas recientes por dataset
 
 
 def _query_reciente(dataset: str) -> pd.DataFrame:
-    """Orden reciente en servidor si el esquema lo permite (fallback :id)."""
-    for params in ({"$order": "a_o DESC"}, {"$order": ":id DESC"}):
-        try:
-            df = paginate_socrata(
-                dataset, params, page_size=PAGE_SIZE, max_pages=MAX_PAGES
-            )
-        except Exception as e:
-            print(f"[extract][WARN] aerocivil_flota {dataset} {params}: {str(e)[:150]}")
-            continue
-        if not df.empty:
-            return df
-        print(f"[extract][WARN] aerocivil_flota {dataset} {params}: vacio")
-    return pd.DataFrame()
+    """Un intento SIN $order (el que funciona; barrido 01-nov: w9ei-uhm3
+    falla con $order y trae dato al reintentar sin order). Sin segundo
+    intento redundante: el recorte al ano maximo se hace en cliente."""
+    try:
+        df = paginate_socrata(dataset, {}, page_size=PAGE_SIZE, max_pages=MAX_PAGES)
+    except Exception as e:
+        print(f"[extract][WARN] aerocivil_flota {dataset} sin order: {str(e)[:150]}")
+        return pd.DataFrame()
+    if df.empty:
+        print(f"[extract][WARN] aerocivil_flota {dataset} sin order: vacio")
+    return df
 
 
 def _recortar_ano_maximo(df: pd.DataFrame) -> pd.DataFrame:

@@ -1,4 +1,4 @@
-"""Eurostat avia_paoc (+fallback avia_par) — pasajeros aereos (conectividad emisores).
+"""Eurostat avia_paoc — pasajeros aereos (conectividad emisores).
 
 Tematica: vacacional/MICE — conectividad aerea UE + Espana (emisor clave).
 Patron eurostat_tourism.py: filtros minimos geo+time contra
@@ -7,8 +7,8 @@ Evidencia 29-oct-2026 (curl): avia_paoc sin filtros -> 413 (pide async);
 con filtros geo=EU27_2020,ES + time=2023,2024 -> 200 con dato.
 avia_par con los mismos filtros -> 404
 "ERR_NOT_FOUND_4: AVIA_PAR (DATA_FLOW:ALL,1.0) is not available
-for dissemination." Se prueba avia_paoc primero y avia_par como fallback.
-Si ambas fallan -> carry-forward via save_or_carry, nunca tumba el daily.
+for dissemination." Podado del daily 31-oct-2026 (S2/S3).
+Si avia_paoc falla -> carry-forward via save_or_carry, nunca tumba el daily.
 """
 
 import itertools
@@ -18,7 +18,7 @@ import requests
 
 from .base import UA, save_or_carry
 
-DATASETS = ["avia_paoc", "avia_par"]
+DATASETS = ["avia_paoc"]
 GEOS = ["EU27_2020", "ES"]
 TIMES = ["2023", "2024"]
 COLUMNS = ["geo", "time", "passengers"]
@@ -68,7 +68,7 @@ def _parse_jsonstat(payload: dict) -> pd.DataFrame:
 
 
 def run_pax(geos=None, times=None) -> pd.DataFrame:
-    """run() individual: query minima geo+time; avia_paoc primero, avia_par fallback."""
+    """run() individual: query minima geo+time a avia_paoc (unico dataset vivo)."""
     geos = geos or GEOS
     times = times or TIMES
     for dataset in DATASETS:

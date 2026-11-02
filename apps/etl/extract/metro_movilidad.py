@@ -1,6 +1,9 @@
-"""Movilidad Medellín para eventos MICE: Metro + terminales de transporte.
+"""Movilidad Medellín para eventos MICE: Metro (único en el daily).
 - Metro: MEData Alcaldía (CSV pasajeros movilizados mensual, verificado 28-oct-2026).
-- Terminales: Socrata eze3-t67n (salidas/destinos, proxy de llegada terrestre a eventos).
+- Terminales: FUERA del daily desde 31-oct-2026 (S2/S3) — el extractor
+  canónico de terminales es extract/terminales_med.py (alimenta pax_terminal_mes);
+  run_terminales() queda solo como legado/manual y no lo llama run().
+  No se borra historia en data/raw.
 Límites pequeños + carry-forward si hoy falla. Nunca tumba el daily.
 """
 from io import StringIO
@@ -35,6 +38,7 @@ def run_metro_pasajeros() -> Path:
 
 
 def run_terminales() -> Path:
+    """Legado/manual: FUERA del daily (S2/S3 31-oct-2026). Ver terminales_med."""
     try:
         df = paginate_socrata(
             TERMINALES,
@@ -49,7 +53,8 @@ def run_terminales() -> Path:
 
 
 def run() -> list[Path]:
-    return [run_metro_pasajeros(), run_terminales()]
+    """Daily: solo Metro. Terminales va por terminales_med (pax_terminal_mes)."""
+    return [run_metro_pasajeros()]
 
 
 if __name__ == "__main__":

@@ -7,6 +7,9 @@ Via paginate_socrata, sin key: hasta 5000 filas recientes por dataset
 ($order :id DESC, recorte al anio maximo en cliente si hay columna).
 Dos run_* individuales + agregador que une ambas patas con columna
 dataset y guarda data/raw/<hoy>/terminales_med.csv via save_or_carry.
+Es el extractor canónico de terminales del daily (31-oct-2026 S2/S3:
+metro_movilidad.run_terminales quedó fuera del daily); alimenta
+pax_terminal_mes en transform/kpis.py.
 Trazabilidad: buses intermunicipales que sostienen temporada vacacional
 y llegada de asistentes MICE por tierra.
 """

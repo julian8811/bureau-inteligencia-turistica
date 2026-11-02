@@ -78,16 +78,27 @@ def _payload(m: str, messages: list) -> dict:
 
 GEMINI_URL = "https://generativelanguage.googleapis.com/v1beta/openai/chat/completions"
 GEMINI_MODELS = ["gemini-3.6-flash"]
+CEREBRAS_URL = "https://api.cerebras.ai/v1/chat/completions"
+CEREBRAS_MODELS = ["llama-3.3-70b"]
+MISTRAL_URL = "https://api.mistral.ai/v1/chat/completions"
+MISTRAL_MODELS = ["mistral-small-latest"]
 
 
 def _chat(messages: list, api_key: str) -> tuple:
     """Prueba modelos en orden; ante 404 pasa al siguiente, ante 429 reintenta; fallback a Gemini."""
     global _MODEL_USED
     last_err = None
-    provs = [(GROQ_URL, api_key, MODELS)]
-    gem_key = os.environ.get("GEMINI_API_KEY", "")
-    if gem_key:
-        provs.append((GEMINI_URL, gem_key, GEMINI_MODELS))
+    provs = []
+    if api_key:
+        provs.append((GROQ_URL, api_key, MODELS))
+    for env_key, url, modelos in (
+        ("GEMINI_API_KEY", GEMINI_URL, GEMINI_MODELS),
+        ("CEREBRAS_API_KEY", CEREBRAS_URL, CEREBRAS_MODELS),
+        ("MISTRAL_API_KEY", MISTRAL_URL, MISTRAL_MODELS),
+    ):
+        key = os.environ.get(env_key, "")
+        if key:
+            provs.append((url, key, modelos))
     for url, key, modelos in provs:
         headers = {"Authorization": f"Bearer {key}", "Content-Type": "application/json"}
         for model in modelos:
@@ -160,8 +171,9 @@ def _classify_batch(items: list, api_key: str) -> list:
 def run() -> list:
     """Clasifica los titulares de hoy. Sin key -> SKIP limpio."""
     api_key = os.getenv("GROQ_API_KEY", "")
-    if not api_key:
-        print("[classify][SKIP] sin GROQ_API_KEY (gratis en console.groq.com) -> skip")
+    if not any(os.getenv(k, "") for k in ("GROQ_API_KEY", "GEMINI_API_KEY",
+                                             "CEREBRAS_API_KEY", "MISTRAL_API_KEY")):
+        print("[classify][SKIP] sin keys LLM -> skip")
         return []
     df = _load_titulares()
     if df.empty:

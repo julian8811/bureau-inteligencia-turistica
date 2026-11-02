@@ -1,8 +1,9 @@
 """GDELT marca: escucha gratuita de noticias globales sobre Medellín turismo (reemplazo gratis de Brand24).
-Estrategia 28-oct anti-429 (ajuste: pacing 15s + 3er reintento a 300s):
+Estrategia 01-nov fast-fail (fuentes-warn-dead-skip S3: GDELT muerta, 429 siempre, 0 filas):
 - 1 sola query combinada/día (menos requests = menos ban)
-- backoff largo (la IP puede estar baneada por horas; no quemar el cron) + carry-forward del último bueno
-- volumen diario (timelinevol) ideal para picos: Feria, Ritvales, premios
+- 429 -> SKIP directo sin reintento (el carry-forward cubre; reintentar quema ~7 min del daily)
+- error de red (conexion/timeout) -> 1 unico reintento corto de 5s
+- resto de errores -> SKIP directo; jamas levanta, mismo CSV via save_or_carry
 """
 import time
 import requests
@@ -11,6 +12,8 @@ from .base import save_or_carry
 
 QUERY = '("Medellin" AND (tourism OR turismo OR travel OR hotel OR "Bureau"))'
 COLS = ["date", "value", "query"]
+NETWORK_RETRY_WAIT = 5
+_NETWORK_ERRORS = (requests.exceptions.ConnectionError, requests.exceptions.Timeout)
 
 def timeseries_once(query: str) -> pd.DataFrame:
     r = requests.get(
@@ -24,20 +27,31 @@ def timeseries_once(query: str) -> pd.DataFrame:
     df["query"] = "medellin_turismo_combined"
     return df
 
+def _is_rate_limited(exc: Exception) -> bool:
+    resp = getattr(exc, "response", None)
+    if resp is not None and getattr(resp, "status_code", None) == 429:
+        return True
+    return "429" in str(exc)
+
+
 def run():
-    # GDELT banea IPs con tráfico seguido: 3 intentos máx, el resto lo cubre el carry-forward
+    # Fast-fail: GDELT responde 429 siempre (ambos lados caidos). 1 intento;
+    # ante 429 SKIP directo, ante error de red 1 reintento de 5s, resto SKIP.
     df = pd.DataFrame()
-    for wait in (0, 120, 300):
-        if wait:
-            print(f"[gdelt] backoff {wait}s...")
-            time.sleep(wait)
-        try:
-            time.sleep(15)  # límite GDELT: 1 req / 5s, con margen
-            df = timeseries_once(QUERY)
-            if not df.empty:
-                break
-        except Exception as e:
-            print(f"[gdelt][WARN] intento fallido: {str(e)[:150]}")
+    try:
+        df = timeseries_once(QUERY)
+    except Exception as e:
+        if _is_rate_limited(e):
+            print(f"[gdelt][SKIP] 429 rate-limit, sin reintento -> carry; {str(e)[:120]}")
+        elif isinstance(e, _NETWORK_ERRORS):
+            print(f"[gdelt][WARN] error de red, 1 reintento en {NETWORK_RETRY_WAIT}s: {str(e)[:120]}")
+            time.sleep(NETWORK_RETRY_WAIT)
+            try:
+                df = timeseries_once(QUERY)
+            except Exception as e2:
+                print(f"[gdelt][SKIP] reintento fallido -> carry; {str(e2)[:120]}")
+        else:
+            print(f"[gdelt][SKIP] {str(e)[:150]} -> carry")
     return save_or_carry(df, "gdelt_marca", columns=COLS)
 
 if __name__ == "__main__":

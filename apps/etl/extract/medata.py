@@ -3,10 +3,16 @@ Hallazgo 28-oct: portal vivo pero series de turismo congeladas en 2023 (SITUR de
 Uso: baseline histórico (ocupación, tarifa, PITS, llegadas MDE por país) para estacionalidad y
 benchmarks. Lo fresco diario sigue viniendo de Socrata nacional + DANE.
 Descarga liviana (<1MB total), con reintento https->http.
+
+Fase 2 (T4 S1-S3, 2026-11-01): portal re-verificado sin datasets nuevos sin key
+(CKAN apagado: /api/3/action -> 404; solo CSVs Drupal directos; serie fresca
+máxima 202310). SKIP honesto: sin URLs nuevas inventadas. Cobertura extra vía
+derivados locales: medata_pits_mensual (PITS por periodo), medata_ocupacion_zonas
+(ranking zonas) y medata_eventos_uplift (6 eventos vs base). Jamás levanta.
 """
 import requests
 import pandas as pd
-from .base import save, UA
+from .base import save, save_or_carry, UA
 
 FILES = {
     # nombre_local: url_csv
@@ -53,17 +59,112 @@ def shrink_travel_metrics(df: pd.DataFrame) -> pd.DataFrame:
         print(f"[medata][WARN] shrink travel_metrics: {e}")
         return df.head(0)
 
+def build_pits_mensual(df: pd.DataFrame) -> pd.DataFrame:
+    """PITS crudo -> agregado por periodo: visitas totales + puntos activos.
+    pit_totalvisitas -1 = sin dato -> cuenta como 0 (no resta). Vacío -> vacío."""
+    try:
+        if df.empty or not {"pit_periodo", "pit_totalvisitas", "pit_nombre"} <= set(df.columns):
+            return pd.DataFrame()
+        d = df.copy()  # type: ignore[assignment]
+        d["_v"] = pd.to_numeric(d["pit_totalvisitas"], errors="coerce").fillna(0)  # type: ignore[call-overload]
+        d["_v"] = d["_v"].clip(lower=0)  # type: ignore[attr-defined]
+        periods = sorted(d["pit_periodo"].dropna().unique().tolist())  # type: ignore[attr-defined]
+        rows: list = []
+        for p in periods:
+            sub = d[d["pit_periodo"] == p]  # type: ignore[assignment]
+            act = sub[sub["_v"] > 0]["pit_nombre"].dropna().unique()  # type: ignore[attr-defined]
+            rows.append({"pit_periodo": p,
+                         "visitas_total": int(sub["_v"].sum()),  # type: ignore[attr-defined]
+                         "puntos_activos": int(len(act))})
+        return pd.DataFrame(rows)
+    except Exception as e:
+        print(f"[medata][WARN] build_pits_mensual: {e}")
+        return pd.DataFrame()
+
+
+def build_zonas_ranking(df: pd.DataFrame) -> pd.DataFrame:
+    """Ocupación por zona -> ranking: ocupación promedio + meses con dato por zona."""
+    try:
+        if df.empty or not {"ocu_periodo", "ocu_valor", "ocu_zona"} <= set(df.columns):
+            return pd.DataFrame()
+        d = df.copy()  # type: ignore[assignment]
+        d["_v"] = pd.to_numeric(d["ocu_valor"], errors="coerce")  # type: ignore[call-overload]
+        d = d.dropna(subset=["_v"])  # type: ignore[assignment]
+        if d.empty:  # type: ignore[attr-defined]
+            return pd.DataFrame()
+        zonas = sorted(d["ocu_zona"].dropna().unique().tolist())  # type: ignore[attr-defined]
+        rows = []
+        for z in zonas:
+            sub = d[d["ocu_zona"] == z]  # type: ignore[assignment]
+            rows.append({"ocu_zona": z,
+                         "ocu_prom": round(float(sub["_v"].mean()), 2),  # type: ignore[attr-defined]
+                         "n_meses": int(sub["_v"].count())})  # type: ignore[attr-defined]
+        out = pd.DataFrame(rows)
+        return out.sort_values("ocu_prom", ascending=False).reset_index(drop=True) if not out.empty else out  # type: ignore[attr-defined]
+    except Exception as e:
+        print(f"[medata][WARN] build_zonas_ranking: {e}")
+        return pd.DataFrame()
+
+
+def build_eventos_uplift(frames: dict) -> pd.DataFrame:
+    """Dict {evento: df_ocupa} + clave 'base' -> uplift pp promedio por evento.
+    Sin 'base' o sin eventos -> vacío (SKIP honesto, la agenda fresca no existe)."""
+    try:
+        base = frames.get("base")
+        if base is None or base.empty or "ocu_valor" not in base.columns:  # type: ignore[attr-defined]
+            return pd.DataFrame()
+        bv = float(pd.to_numeric(base["ocu_valor"], errors="coerce").dropna().mean())  # type: ignore[call-overload,attr-defined]
+        rows: list = []
+        for tag, f_ in frames.items():
+            if tag == "base" or f_.empty or "ocu_valor" not in f_.columns:  # type: ignore[attr-defined]
+                continue
+            ev = float(pd.to_numeric(f_["ocu_valor"], errors="coerce").dropna().mean())  # type: ignore[call-overload,attr-defined]
+            rows.append({"evento": tag, "occ_evento": round(ev, 2),
+                         "occ_base": round(bv, 2), "uplift_pp": round(ev - bv, 2)})
+        out = pd.DataFrame(rows)
+        return out.sort_values("uplift_pp", ascending=False).reset_index(drop=True) if not out.empty else out
+    except Exception as e:
+        print(f"[medata][WARN] build_eventos_uplift: {e}")
+        return pd.DataFrame()
+
+
 def run():
     outs = []
+    frames: dict = {}
     for name, url in FILES.items():
         try:
             df = fetch(url)
             if name == "medata_travel_metrics" and not df.empty:
                 df = shrink_travel_metrics(df)
+            if name in ("medata_ocupacion_med", "medata_ocupacion_zona",
+                        "medata_pits", "medata_occ_feria", "medata_occ_moda",
+                        "medata_occ_tex", "medata_occ_santa", "medata_occ_mitad",
+                        "medata_occ_receso"):
+                frames[name] = df
             outs.append(save(df, name))
         except Exception as e:
             print(f"[medata][WARN] {name}: {e}")
             outs.append(save(pd.DataFrame(), name))
+    # Fase 2: derivados locales (más zonas/categorías), cada uno con su try/except.
+    try:
+        outs.append(save_or_carry(build_pits_mensual(frames.get("medata_pits", pd.DataFrame())),
+                                  "medata_pits_mensual"))
+    except Exception as e:
+        print(f"[medata][SKIP] medata_pits_mensual: {e}")
+    try:
+        outs.append(save_or_carry(build_zonas_ranking(frames.get("medata_ocupacion_zona", pd.DataFrame())),
+                                  "medata_ocupacion_zonas"))
+    except Exception as e:
+        print(f"[medata][SKIP] medata_ocupacion_zonas: {e}")
+    try:
+        ev = {"base": frames.get("medata_ocupacion_med", pd.DataFrame())}
+        for name, tag in (("medata_occ_feria", "feria"), ("medata_occ_moda", "moda"),
+                          ("medata_occ_tex", "tex"), ("medata_occ_santa", "santa"),
+                          ("medata_occ_mitad", "mitad"), ("medata_occ_receso", "receso")):
+            ev[tag] = frames.get(name, pd.DataFrame())
+        outs.append(save_or_carry(build_eventos_uplift(ev), "medata_eventos_uplift"))
+    except Exception as e:
+        print(f"[medata][SKIP] medata_eventos_uplift: {e}")
     return outs
 
 if __name__ == "__main__":

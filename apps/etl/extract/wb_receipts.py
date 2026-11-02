@@ -6,12 +6,16 @@ https://api.worldbank.org/v2/country/COL;ESP;USA/indicator/ST.INT.ARVL?format=js
 Si un indicador/pais falla -> SKIP honesto con carry-forward, nunca tumba el daily.
 """
 
+import time
+
 import pandas as pd
 import requests
 
 from .base import UA, save_or_carry
 
 COUNTRIES = ["COL", "USA", "ESP", "MEX", "PAN", "WLD"]
+MAX_RETRIES = 2  # reintentos cortos tras 429/red (barrido 01-nov: algun 429)
+BACKOFF_S = 2  # espera base entre reintentos (corta: no quemar el daily)
 # Spec: ST.INT.RCPT + ST.INT.XPND. La API v2 rechaza los codigos sin sufijo
 # (error 120 "Invalid value"); se usan las variantes .CD (current US$),
 # que son el mismo concepto documentado por el Banco Mundial.
@@ -27,39 +31,50 @@ def _empty() -> pd.DataFrame:
 def run_indicator(code: str, indicator: str) -> pd.DataFrame:
     """run() individual: un indicador de un pais via World Bank v2."""
     url = f"https://api.worldbank.org/v2/country/{code}/indicator/{indicator}"
-    try:
-        r = requests.get(
-            url,
-            params={"format": "json", "date": YEARS, "per_page": 50},
-            headers=UA,
-            timeout=60,
-        )
-        r.raise_for_status()
-        payload = r.json()
-        rows = payload[1] if isinstance(payload, list) and len(payload) > 1 else []
-        recs = []
-        for row in rows or []:
-            recs.append(
-                {
-                    "countryiso3code": code,
-                    "country": (row.get("country") or {}).get("value", ""),
-                    "year": row.get("date", ""),
-                    "value": row.get("value"),
-                    "indicator": indicator,
-                }
+    last_err: Exception | None = None
+    for attempt in range(MAX_RETRIES + 1):
+        try:
+            r = requests.get(
+                url,
+                params={"format": "json", "date": YEARS, "per_page": 50},
+                headers=UA,
+                timeout=60,
             )
-        df = pd.DataFrame(recs).reindex(columns=COLUMNS)
-        print(f"[extract] wb_receipts {code}/{indicator}: {len(df)} filas")
-        return df
-    except Exception as e:
-        print(f"[extract][WARN] wb_receipts {code}/{indicator}: {e}")
-        return _empty()
+            r.raise_for_status()
+            payload = r.json()
+            rows = payload[1] if isinstance(payload, list) and len(payload) > 1 else []
+            recs = []
+            for row in rows or []:
+                recs.append(
+                    {
+                        "countryiso3code": code,
+                        "country": (row.get("country") or {}).get("value", ""),
+                        "year": row.get("date", ""),
+                        "value": row.get("value"),
+                        "indicator": indicator,
+                    }
+                )
+            df = pd.DataFrame(recs).reindex(columns=COLUMNS)
+            print(f"[extract] wb_receipts {code}/{indicator}: {len(df)} filas")
+            return df
+        except Exception as e:
+            last_err = e
+            print(
+                f"[extract][WARN] wb_receipts {code}/{indicator} intento {attempt + 1}: {e}"
+            )
+            if attempt < MAX_RETRIES:
+                time.sleep(BACKOFF_S * (attempt + 1))
+    print(f"[extract][WARN] wb_receipts {code}/{indicator} agotado: {last_err}")
+    return _empty()
 
 
 def run():
     """run() agregador: concatena paises x indicadores y guarda data/raw/<hoy>/wb_receipts.csv."""
     try:
         frames = [run_indicator(c, i) for c in COUNTRIES for i in INDICATORS]
+        # Filtrar vacios antes de concat (evita FutureWarning de concat
+        # con frames totalmente vacios; barrido 01-nov).
+        frames = [f for f in frames if not f.empty]
         df = pd.concat(frames, ignore_index=True) if frames else _empty()
     except Exception as e:
         print(f"[extract][WARN] wb_receipts agregador: {e}")

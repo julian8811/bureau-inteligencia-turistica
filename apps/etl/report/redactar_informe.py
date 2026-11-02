@@ -24,6 +24,10 @@ GROQ_URL = "https://api.groq.com/openai/v1/chat/completions"
 MODELS = ["qwen/qwen3.8-27b", "openai/gpt-oss-120b", "openai/gpt-oss-20b"]
 GEMINI_URL = "https://generativelanguage.googleapis.com/v1beta/openai/chat/completions"
 GEMINI_MODELS = ["gemini-3.6-flash"]
+CEREBRAS_URL = "https://api.cerebras.ai/v1/chat/completions"
+CEREBRAS_MODELS = ["llama-3.3-70b"]
+MISTRAL_URL = "https://api.mistral.ai/v1/chat/completions"
+MISTRAL_MODELS = ["mistral-small-latest"]
 
 SECCIONES = [
     ("tendencias", "Tendencias", "trimestre movil, ocupacion y tarifa con YoY"),
@@ -52,7 +56,8 @@ SYSTEM = (
     "Por sección agregas 'analisis' (2-3 bullets que interpretan el dato: por qué "
     "importa, qué explica el cambio, con cifras del contexto) y 'grafico' "
     "(values en las unidades exactas del contexto: fracciones como 0.607, "
-    "no porcentajes como 60.7) "
+    "no porcentajes como 60.7; PROHIBIDO expresar en miles/millones "
+    "('miles COP', 149.53 por 149530): usa la cifra completa del contexto) "
     "({'titulo', 'labels' (máx 10 categorías), 'values' (solo cifras del contexto), "
     "'unidad'}). Respondes SOLO un JSON {\"secciones\": [{\"id\", \"titulo\", "
     "\"bullets\": [{\"texto\", \"fuente\"}], \"analisis\": [{\"texto\", "
@@ -297,10 +302,12 @@ def _trivial(tok: str, cands: set[float]) -> bool:
 
 
 def _match(a: float, nums_ctx: list[float]) -> bool:
-    # Misma cantidad en otra escala (fracción <-> porcentaje) y con otro signo
+    # Misma cantidad en otra escala (fracción <-> porcentaje, unidades <-> miles)
+    # y con otro signo
     # (el regex borra el "-" en texto y contexto: la dirección la da la prosa,
-    # el validador exige la magnitud). Se prueban a, -a, a*100 y a/100.
-    escalas = {a, -a, a * 100, a / 100, -a * 100, -a / 100} if a != 0 else {a}
+    # el validador exige la magnitud). Se prueban a, -a, a*100, a/100, a*1000 y a/1000.
+    escalas = {a, -a, a * 100, a / 100, -a * 100, -a / 100,
+               a * 1000, a / 1000, -a * 1000, -a / 1000} if a != 0 else {a}
     for v in escalas:
         for c in nums_ctx:
             if abs(c) >= 1:
@@ -347,6 +354,10 @@ def _proveedores():
         provs.append(("groq", GROQ_URL, os.environ["GROQ_API_KEY"], MODELS))
     if os.environ.get("GEMINI_API_KEY", ""):
         provs.append(("gemini", GEMINI_URL, os.environ["GEMINI_API_KEY"], GEMINI_MODELS))
+    if os.environ.get("CEREBRAS_API_KEY", ""):
+        provs.append(("cerebras", CEREBRAS_URL, os.environ["CEREBRAS_API_KEY"], CEREBRAS_MODELS))
+    if os.environ.get("MISTRAL_API_KEY", ""):
+        provs.append(("mistral", MISTRAL_URL, os.environ["MISTRAL_API_KEY"], MISTRAL_MODELS))
     return provs
 
 
@@ -376,7 +387,7 @@ def _llamar(ctx_dump: str) -> dict:
 
 def run(out_dir: str = "", contexto: dict | None = None) -> dict:
     if not _proveedores():
-        print("[informe][SKIP] sin GROQ_API_KEY ni GEMINI_API_KEY")
+        print("[informe][SKIP] sin GROQ_API_KEY ni GEMINI_API_KEY ni CEREBRAS_API_KEY ni MISTRAL_API_KEY")
         return {"status": "skip"}
     ctx = contexto if contexto is not None else build_contexto()
     if not ctx:
@@ -413,9 +424,10 @@ def run(out_dir: str = "", contexto: dict | None = None) -> dict:
     informe = {"corte": corte, "generado": corte, "secciones": secs}
     dest = out / f"informe_{corte}.json"
     dest.write_text(json.dumps(informe, ensure_ascii=False, indent=1))
-    web = BASE / "web" / "data" / "informe_llm.json"
-    web.parent.mkdir(parents=True, exist_ok=True)
-    web.write_text(json.dumps(informe, ensure_ascii=False, indent=1))
+    if not out_dir:
+        web = BASE / "web" / "data" / "informe_llm.json"
+        web.parent.mkdir(parents=True, exist_ok=True)
+        web.write_text(json.dumps(informe, ensure_ascii=False, indent=1))
     _guardar_backend(corte, secs)
     return {"status": "ok", "path": str(dest), "secciones": len(secs)}
 

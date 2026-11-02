@@ -1,8 +1,8 @@
 """Eurostat demanda — participacion/viajes de los emisores.
 
-Prueba datasets en orden [tour_dem_ttot, tour_dem_toac, tour_dem_ttmd] con los
-mismos filtros minimos (geo EU27_2020+ES+DE+FR+IT, time 2023:2024); se queda con
-el primero que de 200 con dato.
+Dataset vivo: tour_dem_ttmd (tour_dem_ttot/tour_dem_toac -> 404,
+podados del daily 31-oct-2026 S2/S3) con filtros minimos
+(geo EU27_2020+ES+DE+FR+IT, time 2023:2024).
 Patron: eurostat_tourism.py (query minima geo+time, parse JSON-stat, carry-forward).
 Nunca tumba el daily: todo try/except, timeout <=30s, sin nuevas dependencias.
 """
@@ -12,7 +12,7 @@ import requests
 
 from .base import UA, save_or_carry
 
-DATASETS = ["tour_dem_ttot", "tour_dem_toac", "tour_dem_ttmd"]
+DATASETS = ["tour_dem_ttmd"]
 GEOS = ["EU27_2020", "ES", "DE", "FR", "IT"]
 TIMES = ["2023", "2024"]
 COLUMNS = ["geo", "time", "value", "dataset"]
@@ -88,7 +88,7 @@ def run_dataset(dataset: str, geos=None, times=None) -> pd.DataFrame:
 
 
 def run():
-    """run() agregador: primer dataset con 200+dato gana; guarda eurostat_demanda.csv."""
+    """run() agregador: dataset vivo tour_dem_ttmd; guarda eurostat_demanda.csv."""
     df = _empty()
     try:
         for dataset in DATASETS:

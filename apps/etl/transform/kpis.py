@@ -3,8 +3,9 @@ Tablas: fact_demanda, fact_mice, fact_marca, dim_fecha, dim_mercado.
 Fórmulas espejo del Excel: win_rate=ganados/recibidos, derrama=asist*gasto*estadía,
 revpar=occ*adr, sentimiento=(pos-neg)/total, engagement=inter/alcance.
 """
-from pathlib import Path
 from datetime import date
+from pathlib import Path
+
 import pandas as pd
 
 PROC = Path(__file__).resolve().parents[1] / "data" / "processed"
@@ -119,6 +120,64 @@ def kpis_medata() -> dict:
         print(f"[transform][WARN] kpis_medata: {e}")
     return out
 
+
+MEDATA_EXTRA_ZEROS = {
+    "pits_mensual_ult": 0, "pits_mensual_periodo": "", "pits_puntos_activos": 0,
+    "zonas_top": "", "zonas_n": 0,
+    "eventos_uplift_max_tag": "", "eventos_uplift_max_pp": 0.0,
+}
+
+
+def kpis_medata_extra() -> dict:  # type: ignore[no-untyped-def]
+    """T4 (S1-S3): derivados fase 2 (PITS mensual, ranking zonas, uplift eventos).
+    Sin CSV -> ceros (SKIP honesto), nunca levanta."""
+    try:
+        pits = latest_raw("medata_pits_mensual")
+        zonas = latest_raw("medata_ocupacion_zonas")
+        uplift = latest_raw("medata_eventos_uplift")
+        if pits.empty and zonas.empty and uplift.empty:  # type: ignore[attr-defined]
+            print("[transform][SKIP] medata_extra: sin CSVs -> 0")
+            return dict(MEDATA_EXTRA_ZEROS)
+        out: dict = dict(MEDATA_EXTRA_ZEROS)
+    except Exception as e:
+        print(f"[transform][SKIP] medata_extra: {e}")
+        return dict(MEDATA_EXTRA_ZEROS)
+    try:  # PITS: ultimo periodo
+        if not pits.empty and {"pit_periodo", "visitas_total"} <= set(pits.columns):  # type: ignore[attr-defined]
+            p = pits.copy()  # type: ignore[assignment]
+            p["pit_periodo"] = p["pit_periodo"].astype(str)  # type: ignore[attr-defined]
+            last = str(p["pit_periodo"].max())  # type: ignore[attr-defined]
+            sub = p[p["pit_periodo"] == last]  # type: ignore[assignment,attr-defined]
+            out["pits_mensual_ult"] = int(pd.to_numeric(sub["visitas_total"], errors="coerce").fillna(0).sum())  # type: ignore[call-overload,attr-defined]
+            out["pits_mensual_periodo"] = last
+            if "puntos_activos" in sub.columns:  # type: ignore[attr-defined]
+                out["pits_puntos_activos"] = int(pd.to_numeric(sub["puntos_activos"], errors="coerce").fillna(0).sum())  # type: ignore[call-overload,attr-defined]
+    except Exception as e:
+        print(f"[transform][SKIP] medata_extra pits: {e}")
+    try:  # Zonas: top promedio
+        if not zonas.empty and {"ocu_zona", "ocu_prom"} <= set(zonas.columns):  # type: ignore[attr-defined]
+            z = zonas.copy()  # type: ignore[assignment]
+            z["ocu_prom"] = pd.to_numeric(z["ocu_prom"], errors="coerce")  # type: ignore[call-overload]
+            z = z.dropna(subset=["ocu_prom"])  # type: ignore[assignment]
+            if not z.empty:  # type: ignore[attr-defined]
+                top = z.sort_values("ocu_prom", ascending=False).iloc[0]  # type: ignore[attr-defined]
+                out["zonas_top"] = str(top["ocu_zona"])
+                out["zonas_n"] = int(len(z))  # type: ignore[arg-type]
+    except Exception as e:
+        print(f"[transform][SKIP] medata_extra zonas: {e}")
+    try:  # Uplift: max pp
+        if not uplift.empty and {"evento", "uplift_pp"} <= set(uplift.columns):  # type: ignore[attr-defined]
+            u = uplift.copy()  # type: ignore[assignment]
+            u["_pp"] = pd.to_numeric(u["uplift_pp"], errors="coerce")  # type: ignore[call-overload]
+            u = u.dropna(subset=["_pp"])  # type: ignore[assignment]
+            if not u.empty:  # type: ignore[attr-defined]
+                best = u.sort_values("_pp", ascending=False).iloc[0]  # type: ignore[attr-defined]
+                out["eventos_uplift_max_tag"] = str(best["evento"])
+                out["eventos_uplift_max_pp"] = round(float(best["_pp"]), 2)
+    except Exception as e:
+        print(f"[transform][SKIP] medata_extra uplift: {e}")
+    return out
+
 # Normalización de países entre fuentes (Migración usa gentilicios/variantes distintas; case-insensitive porque 2026 viene en Title Case distinto)
 PAIS_ALIAS = {
     "estados unidos de america": "Estados Unidos",
@@ -186,7 +245,6 @@ def kpis_pais() -> pd.DataFrame:
         nac = latest_raw("entradas_nacionalidad")
         aer = latest_raw("aereo_mde_eoh")
         sal = latest_raw("salidas_destino")
-        tre = latest_raw("google_trends")
         frames = {}
         if not med.empty:
             med["pais"] = med["paisoeeresidencia"].map(norm_pais)
@@ -293,7 +351,6 @@ def trim3(df: pd.DataFrame, val_col: str, mes_col: str) -> tuple[pd.DataFrame, s
     d["mes_n"] = d["mes_n"].astype(int)
     max_y, max_m = d["a_o"].max(), int(d[d["a_o"] == d["a_o"].max()]["mes_n"].max())
     # ventana: últimos 3 meses desde el máximo
-    end = max_y, max_m
     win = []
     y, m = int(max_y), max_m
     for _ in range(3):
@@ -746,6 +803,334 @@ def kpis_emisores() -> dict:
     return out
 
 
+def kpis_llm() -> dict:
+    """Agrega clasificacion LLM: marca_llm.csv por categoria + escalares.
+    Sin clasificacion_llm.csv (sin key) -> SKIP honesto con dict vacio."""
+    out: dict = {}
+    try:
+        df = latest_raw("clasificacion_llm")
+        if df.empty or "categoria" not in df.columns:
+            print("[transform][SKIP] sin clasificacion_llm.csv -> capa LLM en 0 (falta GROQ_API_KEY)")
+            return out
+        df = df.copy()
+        df["categoria"] = df["categoria"].astype(str).str.lower()
+        df["sentimiento"] = df["sentimiento"].astype(str).str.lower()
+        tot = max(len(df), 1)
+        g = df.groupby("categoria")
+        agg = pd.DataFrame({
+            "n": g.size(),
+            "share": (g.size() / tot).round(4),
+            "pos": g.apply(lambda x: int((x["sentimiento"] == "pos").sum()), include_groups=False),
+            "neu": g.apply(lambda x: int((x["sentimiento"] == "neu").sum()), include_groups=False),
+            "neg": g.apply(lambda x: int((x["sentimiento"] == "neg").sum()), include_groups=False),
+        })
+        agg["sent_net"] = ((agg["pos"] - agg["neg"]) / agg["n"].replace(0, 1)).round(3)
+        agg["top_topico"] = g["topico"].agg(
+            lambda s: str(s.mode().iloc[0])[:60] if not s.mode().empty else "") if "topico" in df.columns else ""
+        agg.to_csv(PROC / "marca_llm.csv")
+        print(f"[transform] marca_llm: {len(agg)} categorias")
+        top = agg["n"].idxmax()
+        marca_cats = [c for c in ("marca", "mice", "vacacional") if c in agg.index]
+        pm = df[df["categoria"].isin(marca_cats)] if marca_cats else df.iloc[0:0]
+        n_pm = max(len(pm), 1)
+        out = {
+            "llm_menciones_clasif": int(len(df)),
+            "llm_top_categoria": str(top),
+            "llm_top_cat_share": round(float(agg.loc[top, "share"]), 4),
+            "llm_sent_net": round(float((df["sentimiento"] == "pos").sum() - (df["sentimiento"] == "neg").sum()) / tot, 3),
+            "llm_sent_marca": round(float((pm["sentimiento"] == "pos").sum() - (pm["sentimiento"] == "neg").sum()) / n_pm, 3),
+            "llm_share_seguridad": round(float(agg.loc["seguridad", "share"]) if "seguridad" in agg.index else 0.0, 4),
+            "llm_top_topico": str(df["topico"].mode().iloc[0])[:60] if "topico" in df.columns and not df["topico"].mode().empty else "",
+        }
+    except Exception as e:
+        print(f"[transform][SKIP] kpis_llm: {e}")
+    return out
+
+
+def kpis_amadeus() -> dict:  # type: ignore[no-untyped-def]
+    """T1 (S2): ofertas Amadeus dev: conteos + precio mediano por ruta + periodo.
+    Sin CSV -> ceros (SKIP honesto), nunca levanta. Patron kpis_p1."""
+    try:
+        df = latest_raw("amadeus_ofertas")
+        if df.empty or not {"origen", "destino", "precio"} <= set(df.columns):  # type: ignore[attr-defined]
+            print("[transform][SKIP] amadeus_ofertas: sin CSV -> 0")
+            return {"amadeus_ofertas_total": 0, "amadeus_rutas": 0}
+        df = df.copy()  # type: ignore[assignment]
+        df["precio"] = pd.to_numeric(df["precio"], errors="coerce")  # type: ignore[call-overload]
+        df = df.dropna(subset=["precio"])  # type: ignore[assignment]
+        if df.empty:  # type: ignore[attr-defined]
+            return {"amadeus_ofertas_total": 0, "amadeus_rutas": 0}
+        df["ruta"] = df["origen"].astype(str) + "_" + df["destino"].astype(str)  # type: ignore[attr-defined]
+        out: dict = {"amadeus_ofertas_total": int(len(df)),  # type: ignore[arg-type]
+                       "amadeus_rutas": int(df["ruta"].nunique())}  # type: ignore[attr-defined]
+        if "periodo" in df.columns:  # type: ignore[attr-defined]
+            out["amadeus_periodo"] = str(df["periodo"].max())  # type: ignore[attr-defined]
+        med = df.groupby("ruta")["precio"].median()  # type: ignore[attr-defined]
+        for ruta, val in med.items():
+            key = "amadeus_mediana_" + "".join(c if c.isalnum() else "_" for c in str(ruta))
+            out[key] = round(float(val), 2)
+        return out
+    except Exception as e:
+        print(f"[transform][SKIP] amadeus_ofertas: {e}")
+        return {"amadeus_ofertas_total": 0, "amadeus_rutas": 0}
+
+
+def kpis_brand24() -> dict:  # type: ignore[no-untyped-def]
+    """T2 (S3): menciones Brand24 trial: conteos + share por fuente + sentimiento neto.
+    Sin CSV -> ceros (SKIP honesto), nunca levanta. Patron kpis_amadeus."""
+    try:
+        df = latest_raw("brand24_menciones")
+        if df.empty or not {"fuente", "sentimiento"} <= set(df.columns):  # type: ignore[attr-defined]
+            print("[transform][SKIP] brand24_menciones: sin CSV -> 0")
+            return {"brand24_menciones_total": 0, "brand24_sentimiento_neto": 0.0}
+        df = df.copy()  # type: ignore[assignment]
+        total = int(len(df))  # type: ignore[arg-type]
+        sent = df["sentimiento"].astype(str).str.strip().str.lower()  # type: ignore[attr-defined]
+        pos = int(sent.isin({"pos", "positive", "positivo", "positiva"}).sum())
+        neg = int(sent.isin({"neg", "negative", "negativo", "negativa"}).sum())
+        out: dict = {"brand24_menciones_total": total,
+                       "brand24_sentimiento_neto": round((pos - neg) / max(total, 1), 3)}
+        if "alcance" in df.columns:  # type: ignore[attr-defined]
+            out["brand24_alcance_total"] = int(
+                pd.to_numeric(df["alcance"], errors="coerce").fillna(0).sum()  # type: ignore[call-overload]
+            )
+        if "periodo" in df.columns:  # type: ignore[attr-defined]
+            out["brand24_periodo"] = str(df["periodo"].max())  # type: ignore[attr-defined]
+        src = df["fuente"].astype(str).str.strip().str.lower()  # type: ignore[attr-defined]
+        for name, cnt in src.value_counts().items():
+            key = "brand24_share_" + "".join(c if c.isalnum() else "_" for c in str(name))
+            out[key] = round(float(cnt) / max(total, 1), 3)
+        return out
+    except Exception as e:
+        print(f"[transform][SKIP] brand24_menciones: {e}")
+        return {"brand24_menciones_total": 0, "brand24_sentimiento_neto": 0.0}
+
+
+def kpis_flightpowers() -> dict:  # type: ignore[no-untyped-def]
+    """FlightPowers (reemplazo Amadeus, S1-S4): conteos + precio mediano por ruta + periodo.
+    Sin CSV -> ceros (SKIP honesto), nunca levanta. Patron kpis_amadeus."""
+    try:
+        df = latest_raw("flightpowers_ofertas")
+        if df.empty or not {"origen", "destino", "precio"} <= set(df.columns):  # type: ignore[attr-defined]
+            print("[transform][SKIP] flightpowers_ofertas: sin CSV -> 0")
+            return {"flightpowers_ofertas_total": 0, "flightpowers_rutas": 0}
+        df = df.copy()  # type: ignore[assignment]
+        df["precio"] = pd.to_numeric(df["precio"], errors="coerce")  # type: ignore[call-overload]
+        df = df.dropna(subset=["precio"])  # type: ignore[assignment]
+        if df.empty:  # type: ignore[attr-defined]
+            return {"flightpowers_ofertas_total": 0, "flightpowers_rutas": 0}
+        df["ruta"] = df["origen"].astype(str) + "_" + df["destino"].astype(str)  # type: ignore[attr-defined]
+        out: dict = {"flightpowers_ofertas_total": int(len(df)),  # type: ignore[arg-type]
+                       "flightpowers_rutas": int(df["ruta"].nunique())}  # type: ignore[attr-defined]
+        if "periodo" in df.columns:  # type: ignore[attr-defined]
+            out["flightpowers_periodo"] = str(df["periodo"].max())  # type: ignore[attr-defined]
+        med = df.groupby("ruta")["precio"].median()  # type: ignore[attr-defined]
+        for ruta, val in med.items():
+            key = "flightpowers_mediana_" + "".join(c if c.isalnum() else "_" for c in str(ruta))
+            out[key] = round(float(val), 2)
+        return out
+    except Exception as e:
+        print(f"[transform][SKIP] flightpowers_ofertas: {e}")
+        return {"flightpowers_ofertas_total": 0, "flightpowers_rutas": 0}
+
+
+def kpis_hoteles() -> dict:  # type: ignore[no-untyped-def]
+    """T1 (S1-S3): hoteles FlightPowers: conteo + precio mediano + periodo.
+    Sin CSV -> ceros (SKIP honesto), nunca levanta. Patron kpis_flightpowers."""
+    try:
+        df = latest_raw("flightpowers_hoteles")
+        if df.empty or not {"ciudad", "hotel", "precio"} <= set(df.columns):  # type: ignore[attr-defined]
+            print("[transform][SKIP] flightpowers_hoteles: sin CSV -> 0")
+            return {"flightpowers_hoteles_total": 0}
+        df = df.copy()  # type: ignore[assignment]
+        df["precio"] = pd.to_numeric(df["precio"], errors="coerce")  # type: ignore[call-overload]
+        df = df.dropna(subset=["precio"])  # type: ignore[assignment]
+        if df.empty:  # type: ignore[attr-defined]
+            return {"flightpowers_hoteles_total": 0}
+        out: dict = {"flightpowers_hoteles_total": int(len(df)),  # type: ignore[arg-type]
+                       "flightpowers_hoteles_mediana": round(float(df["precio"].median()), 2)}  # type: ignore[attr-defined]
+        if "periodo" in df.columns:  # type: ignore[attr-defined]
+            out["flightpowers_hoteles_periodo"] = str(df["periodo"].max())  # type: ignore[attr-defined]
+        return out
+    except Exception as e:
+        print(f"[transform][SKIP] flightpowers_hoteles: {e}")
+        return {"flightpowers_hoteles_total": 0}
+
+
+def kpis_aerodatabox() -> dict:  # type: ignore[no-untyped-def]
+    """T1 (S1-S3): estado vuelos MDE/EOH: programados vs retrasados.
+    Retrasado = retraso_min > 0 o estado delayed/cancelled/diverted.
+    Sin CSV -> ceros (SKIP honesto), nunca levanta."""
+    try:
+        df = latest_raw("aerodatabox_mde")
+        if df.empty or "estado" not in df.columns:  # type: ignore[attr-defined]
+            print("[transform][SKIP] aerodatabox_mde: sin CSV -> 0")
+            return {"aerodatabox_vuelos_total": 0, "aerodatabox_retrasados": 0}
+        df = df.copy()  # type: ignore[assignment]
+        total = int(len(df))  # type: ignore[arg-type]
+        est = df["estado"].astype(str).str.strip().str.lower()  # type: ignore[attr-defined]
+        ret = df["retraso_min"] if "retraso_min" in df.columns else 0  # type: ignore[attr-defined,assignment]
+        ret = pd.to_numeric(ret, errors="coerce").fillna(0)  # type: ignore[call-overload]
+        mal_estado = est.str.contains("delay|cancel|divert", na=False)
+        retrasados = int(((ret > 0) | mal_estado).sum())
+        out: dict = {"aerodatabox_vuelos_total": total,
+                       "aerodatabox_retrasados": retrasados,
+                       "aerodatabox_puntuales": total - retrasados}
+        if "aeropuerto" in df.columns:  # type: ignore[attr-defined]
+            out["aerodatabox_aeropuertos"] = int(df["aeropuerto"].nunique())  # type: ignore[attr-defined]
+        return out
+    except Exception as e:
+        print(f"[transform][SKIP] aerodatabox_mde: {e}")
+        return {"aerodatabox_vuelos_total": 0, "aerodatabox_retrasados": 0}
+
+
+def kpis_operaciones() -> dict:  # type: ignore[no-untyped-def]
+    """T2 (S1-S3): operaciones aereas Socrata jh8x-n6h6: total + top aeropuerto.
+    Sin CSV -> ceros (SKIP honesto), nunca levanta. Columnas defensivas
+    (el esquema Socrata puede variar): busca columna de valor y de aeropuerto."""
+    try:
+        df = latest_raw("operaciones_aereas")
+        if df.empty:  # type: ignore[attr-defined]
+            print("[transform][SKIP] operaciones_aereas: sin CSV -> 0")
+            return {"operaciones_total": 0, "operaciones_top_aeropuerto": ""}
+        df = df.copy()  # type: ignore[assignment]
+        df.columns = [str(c).strip().lower() for c in df.columns]  # type: ignore[attr-defined]
+        vcol = next((c for c in df.columns  # type: ignore[attr-defined]
+                     if any(k in c for k in ("operacion", "vuelos", "total", "valor", "numero"))
+                     and pd.to_numeric(df[c], errors="coerce").notna().any()), None)  # type: ignore[call-overload]
+        acol = next((c for c in df.columns  # type: ignore[attr-defined]
+                     if any(k in c for k in ("aeropuerto", "aerop", "origen", "destino", "ciudad"))), None)
+        if vcol:
+            df["_v"] = pd.to_numeric(df[vcol], errors="coerce").fillna(0)  # type: ignore[call-overload]
+            total = int(df["_v"].sum())  # type: ignore[attr-defined]
+        else:
+            total = int(len(df))  # type: ignore[arg-type]
+        top = ""
+        if acol:
+            g = df.groupby(df[acol].astype(str))["_v"].sum() if vcol else df[acol].astype(str).value_counts()  # type: ignore[attr-defined]
+            top = str(g.idxmax()) if len(g) else ""  # type: ignore[attr-defined]
+        return {"operaciones_total": total, "operaciones_top_aeropuerto": top}
+    except Exception as e:
+        print(f"[transform][SKIP] operaciones_aereas: {e}")
+        return {"operaciones_total": 0, "operaciones_top_aeropuerto": ""}
+
+
+def kpis_migrantes() -> dict:  # type: ignore[no-untyped-def]
+    """T2 (S1-S3): migrantes a Colombia Socrata c4mm-qn8q: total + top nacionalidad.
+    Sin CSV -> ceros (SKIP honesto), nunca levanta. Columnas defensivas."""
+    try:
+        df = latest_raw("migrantes_co")
+        if df.empty:  # type: ignore[attr-defined]
+            print("[transform][SKIP] migrantes_co: sin CSV -> 0")
+            return {"migrantes_total": 0, "migrantes_top_nacionalidad": ""}
+        df = df.copy()  # type: ignore[assignment]
+        df.columns = [str(c).strip().lower() for c in df.columns]  # type: ignore[attr-defined]
+        vcol = next((c for c in df.columns  # type: ignore[attr-defined]
+                     if any(k in c for k in ("total", "migrantes", "cantidad", "valor", "numero"))
+                     and pd.to_numeric(df[c], errors="coerce").notna().any()), None)  # type: ignore[call-overload]
+        ncol = next((c for c in df.columns  # type: ignore[attr-defined]
+                     if any(k in c for k in ("nacionalidad", "pais", "origen"))), None)
+        if vcol:
+            df["_v"] = pd.to_numeric(df[vcol], errors="coerce").fillna(0)  # type: ignore[call-overload]
+            total = int(df["_v"].sum())  # type: ignore[attr-defined]
+        else:
+            total = int(len(df))  # type: ignore[arg-type]
+        top = ""
+        if ncol:
+            g = df.groupby(df[ncol].astype(str))["_v"].sum() if vcol else df[ncol].astype(str).value_counts()  # type: ignore[attr-defined]
+            top = str(g.idxmax()) if len(g) else ""  # type: ignore[attr-defined]
+        return {"migrantes_total": total, "migrantes_top_nacionalidad": top}
+    except Exception as e:
+        print(f"[transform][SKIP] migrantes_co: {e}")
+        return {"migrantes_total": 0, "migrantes_top_nacionalidad": ""}
+
+
+def kpis_opentripmap() -> dict:  # type: ignore[no-untyped-def]
+    """T3 (S1-S3): POIs turisticos OpenTripMap Medellin: total + top kind.
+    Sin CSV -> ceros (SKIP honesto), nunca levanta. kinds viene como
+    lista separada por comas ("cultural,museums"); se desagrega para el top."""
+    try:
+        df = latest_raw("opentripmap_med")
+        if df.empty:  # type: ignore[attr-defined]
+            print("[transform][SKIP] opentripmap_med: sin CSV -> 0")
+            return {"opentripmap_pois_total": 0, "opentripmap_top_kind": ""}
+        df = df.copy()  # type: ignore[assignment]
+        df.columns = [str(c).strip().lower() for c in df.columns]  # type: ignore[attr-defined]
+        total = int(len(df))  # type: ignore[arg-type]
+        top = ""
+        if "kinds" in df.columns:  # type: ignore[attr-defined]
+            flat = []
+            for cell in df["kinds"].astype(str):  # type: ignore[attr-defined]
+                for k in cell.split(","):
+                    k = k.strip().lower()
+                    if k and k != "nan":
+                        flat.append(k)
+            if flat:
+                top = str(pd.Series(flat).value_counts().idxmax())
+        return {"opentripmap_pois_total": total, "opentripmap_top_kind": top}
+    except Exception as e:
+        print(f"[transform][SKIP] opentripmap_med: {e}")
+        return {"opentripmap_pois_total": 0, "opentripmap_top_kind": ""}
+
+
+def kpis_p1() -> dict:  # type: ignore[no-untyped-def]
+    """T4 (S2,S3,S4): KPIs de la tanda P1 (EMA + Ticketmaster + OpenSky states).
+    Un try/except por fuente: si falta el CSV, SKIP individual sin tumbar el run.
+    Escribe desglose_ema.csv / desglose_eventos.csv en PROC
+    (to_warehouse los espeja a web/data solo).
+    NOTA tipos: pandas stubs incompletos (igual que el resto del archivo,
+    verificado por ejecución); los ignores cubren solo este bloque nuevo."""
+    out: dict = {}
+    try:  # 1. EMA: ultimo periodo por indicador clave
+        df = latest_raw("dane_ema")
+        if not df.empty and {"periodo", "indicador", "valor"} <= set(df.columns):
+            df = df.copy()  # type: ignore[assignment]
+            df["valor"] = pd.to_numeric(df["valor"], errors="coerce")  # type: ignore[call-overload]
+            df = df.dropna(subset=["valor"])  # type: ignore[assignment]
+            if not df.empty:  # type: ignore[attr-defined]
+                ult = str(df["periodo"].max())  # type: ignore[attr-defined]
+                out["ema_periodo"] = ult
+                d = df[df["periodo"] == ult]  # type: ignore[assignment]
+                # excluye variantes año-corrido/12-meses; deja var anual + niveles
+                no12 = d[~d["indicador"].astype(str).str.contains("año corrido|12 meses", na=False)]  # type: ignore[assignment,attr-defined]
+                pool = no12 if not no12.empty else d  # type: ignore[attr-defined]
+                nac = pool[pool["indicador"].astype(str).str.contains("Total nacional", na=False)]  # type: ignore[assignment,attr-defined]
+                ant = pool[pool["indicador"].astype(str).str.contains("Antioquia", na=False)]  # type: ignore[assignment,attr-defined]
+                base = nac if not nac.empty else (ant if not ant.empty else pool)  # type: ignore[attr-defined]
+                for pat, key in (("ingreso", "ema_ingresos_ult"),
+                                  ("personal ocupado", "ema_personal_ult"),
+                                  ("salario", "ema_salarios_ult"),
+                                  ("ocupaci", "ema_ocupacion_ult")):
+                    sub = base[base["indicador"].astype(str).str.contains(pat, case=False, na=False)]  # type: ignore[assignment,attr-defined]
+                    if not sub.empty:  # type: ignore[attr-defined]
+                        out[key] = float(sub["valor"].iloc[-1])  # type: ignore[attr-defined]
+                piv = df.pivot_table(index="periodo", columns="indicador",  # type: ignore[attr-defined]
+                                       values="valor", aggfunc="last")
+                piv.to_csv(PROC / "desglose_ema.csv")  # type: ignore[attr-defined]
+    except Exception as e:
+        print(f"[transform][SKIP] dane_ema: {e}")
+    try:  # 2. Ticketmaster: agenda proxima (hoy en adelante)
+        df = latest_raw("ticketmaster_eventos")
+        if not df.empty and "fecha" in df.columns:  # type: ignore[attr-defined]
+            df = df.copy()  # type: ignore[assignment]
+            hoy = date.today().isoformat()
+            fut = df[df["fecha"].astype(str) >= hoy].sort_values("fecha")  # type: ignore[assignment,attr-defined]
+            out["eventos_prox_total"] = int(len(fut))  # type: ignore[arg-type]
+            if not fut.empty:  # type: ignore[attr-defined]
+                out["eventos_prox_nombre"] = str(fut["nombre"].iloc[0])[:80]  # type: ignore[attr-defined]
+                out["eventos_prox_fecha"] = str(fut["fecha"].iloc[0])  # type: ignore[attr-defined]
+            fut.head(50).to_csv(PROC / "desglose_eventos.csv", index=False)  # type: ignore[attr-defined]
+    except Exception as e:
+        print(f"[transform][SKIP] ticketmaster_eventos: {e}")
+    try:  # 3. OpenSky: snapshot states (sin flujos: /flights exige auth)
+        df = latest_raw("opensky_states")
+        if not df.empty:  # type: ignore[attr-defined]
+            out["opensky_en_vuelo"] = int(len(df))  # type: ignore[arg-type]
+    except Exception as e:
+        print(f"[transform][SKIP] opensky: {e}")
+    return out
+
+
 def run():
     PROC.mkdir(parents=True, exist_ok=True)
     hoy = date.today().isoformat()
@@ -756,13 +1141,24 @@ def run():
     dan = kpis_dane()
     gde = kpis_gdelt()
     mdt = kpis_medata()
+    mex = kpis_medata_extra()
     pai = kpis_pais()
     des = kpis_destinos()
     emi = kpis_emisores()
     u3m = kpis_ult3m()
     dsg = kpis_desglose()
     nva = kpis_nuevas()
-    print(f"[transform] trends={len(trends)} alerts={len(alerts)} marca={marca} dem={dem} dane={dan} gdelt={gde} medata={mdt} paises={len(pai)} destinos={len(des)} emisores={emi} ult3m={u3m} desglose={dsg} nuevas={nva}")
+    llm = kpis_llm()
+    p1 = kpis_p1()
+    amd = kpis_amadeus()
+    brd = kpis_brand24()
+    flp = kpis_flightpowers()
+    hot = kpis_hoteles()
+    aero = kpis_aerodatabox()
+    ope = kpis_operaciones()
+    mig = kpis_migrantes()
+    otp = kpis_opentripmap()
+    print(f"[transform] trends={len(trends)} alerts={len(alerts)} marca={marca} dem={dem} dane={dan} gdelt={gde} medata={mdt} medata_extra={mex} paises={len(pai)} destinos={len(des)} emisores={emi} ult3m={u3m} desglose={dsg} nuevas={nva} llm={llm} p1={p1} amadeus={amd} brand24={brd} flightpowers={flp} hoteles={hot} aerodatabox={aero} operaciones={ope} migrantes={mig} opentripmap={otp}")
 
     # CRM interno (gated manual): si el Bureau deja su Excel en data/raw/manual/crm.xlsx se calculan KPIs MICE
     crm_path = RAW / "manual" / "crm.xlsx"
@@ -784,7 +1180,7 @@ def run():
         print("[transform][SKIP] sin data/raw/manual/crm.xlsx -> KPIs MICE en 0 hasta carga manual")
         mice = {"win_rate": 0, "noches_mice": 0, "derrama_mice": 0, "pipeline_ponderado": 0}
 
-    kpi = pd.DataFrame([{"fecha": hoy, **marca, **dem, **dan, **gde, **mdt, **mice, **emi, **u3m, **nva,
+    kpi = pd.DataFrame([{"fecha": hoy, **marca, **dem, **dan, **gde, **mdt, **mex, **mice, **emi, **u3m, **nva, **llm, **p1, **amd, **brd, **flp, **hot, **aero, **ope, **mig, **otp,
                            **{k: v for k, v in dsg.items() if isinstance(v, (int, float))}}])
     p = PROC / f"kpis_{hoy}.csv"
     kpi.to_csv(p, index=False)

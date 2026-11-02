@@ -27,6 +27,10 @@ def test_write_idempotente(monkeypatch):
     import psycopg
     _scrub_env(monkeypatch)
     monkeypatch.setenv("BACKEND_DATABASE_URL", TEST_URL)
+    with psycopg.connect(TEST_URL) as con:
+        with con.cursor() as cur:
+            cur.execute("DELETE FROM marca_llm")
+            cur.execute("DELETE FROM clasificacion_llm")
     r1 = writer.run()
     assert r1["status"] == "ok"
     assert r1["marca"] >= 1

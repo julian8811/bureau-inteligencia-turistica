@@ -8,7 +8,7 @@ El runner diario solo toca fuentes abiertas (Tier-1).
 
 ## Estructura
 - `config/sources.yml` — qué se corre diario vs manual
-- `extract/` — un script por fuente Tier-1, guarda `data/raw/YYYY-MM-DD/fuente.*`
+- `extract/` — un script por fuente Tier-1, guarda `data/raw/YYYY-MM-DD/fuente.*` (P1: `dane_ema` mensual DANE, `ticketmaster_eventos` con `TICKETMASTER_KEY`, `opensky_mde` en vivo sin key)
 - `transform/kpis.py` — pandas → modelo estrella + 30 KPIs del Plan Dashboard
 - `load/to_warehouse.py` — Parquet + SQLite `data/processed/bureau.duckdb/sqlite`
 - `orchestration/daily.py` — corre todo, loggea, sale 0 aunque una fuente falle

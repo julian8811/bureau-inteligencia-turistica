@@ -16,12 +16,16 @@ LLUVIA = "s54a-sgyg"
 MUNI = "Medellín"
 
 
-def _q(dataset: str, order: str | None = None) -> pd.DataFrame:
+def _q(
+    dataset: str, order: str | None = None, page_size: int = 1500, max_pages: int = 2
+) -> pd.DataFrame:
     try:
         params = {"municipio": MUNI}
         if order:
             params["$order"] = order
-        return paginate_socrata(dataset, params, page_size=1500, max_pages=2)
+        return paginate_socrata(
+            dataset, params, page_size=page_size, max_pages=max_pages
+        )
     except Exception as e:
         print(f"[ideam_clima][WARN] {dataset}: {str(e)[:150]}")
         return pd.DataFrame()
@@ -46,8 +50,14 @@ def run_estaciones() -> Path:
 
 
 def run_lluvia() -> Path:
+    # Barrido 01-nov: s54a-sgyg da timeout en offset=0 con $order.
+    # Primer intento por el camino liviano (sin $order, pagina menor);
+    # si viene vacio, reintento con $order. Red final: carry-forward.
     try:
-        df = _q(LLUVIA, "fechaobservacion DESC")
+        df = _q(LLUVIA, page_size=1000, max_pages=1)
+        if df.empty:
+            print("[ideam_clima][WARN] lluvia sin $order vacia, reintento con $order")
+            df = _q(LLUVIA, "fechaobservacion DESC", page_size=1000, max_pages=1)
     except Exception as e:
         print(f"[ideam_clima][WARN] lluvia: {str(e)[:150]}")
         df = pd.DataFrame()

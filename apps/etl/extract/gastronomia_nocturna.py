@@ -2,7 +2,10 @@
 - OSM Overpass: amenity restaurante/bar/café/pub/nightclub en bbox Medellín (sin key).
   Si la red bloquea Overpass -> SKIP honesto con carry-forward.
 - Alumbrado: Socrata datasets queryables de alumbrado en Antioquia (proxy noche).
-Límites pequeños (máx 3000 nodos, timeout ≤25s). Nunca tumba el daily.
+Límites pequeños (máx 3000 nodos, timeout corto). Nunca tumba el daily.
+Barrido 01-nov: Overpass con timeouts/406 (OSM muerto) mientras alumbrados
+trae 1000 filas -> OSM a intento único corto (15s, primer host, sin reintentos
+largos); alumbrados intacto.
 """
 from pathlib import Path
 
@@ -21,21 +24,28 @@ BBOX = "6.05,-75.65,6.45,-75.40"
 ALUMBRADO_CANDIDATOS = ["5upz-u2vi"]  # parque lumínico Sabaneta (Valle de Aburrá)
 
 
+OSM_TIMEOUT_S = 15  # intento unico corto (barrido 01-nov: OSM muerto)
+
+
 def _overpass_query() -> dict:
-    q = (f"[out:json][timeout:20];("
-         f'node["amenity"~"restaurant|bar|cafe|fast_food|pub|nightclub"]({BBOX});'
-         f'way["amenity"~"restaurant|bar|cafe|fast_food|pub|nightclub"]({BBOX});'
-         f");out center 3000;")
-    last = ""
-    for host in OVERPASS:
-        try:
-            r = requests.post(host, data={"data": q}, headers=UA, timeout=25)
-            r.raise_for_status()
-            return r.json()
-        except Exception as e:
-            last = str(e)[:130]
-            print(f"[gastronomia_nocturna][WARN] overpass {host}: {last}")
-    raise RuntimeError(f"overpass sin respuesta ({last})")
+    # Intento UNICO y corto: solo el primer host, 15s. Sin reintentos largos:
+    # si OSM esta caido, SKIP honesto con carry y el daily sigue (alumbrados
+    # trae el dato de noche igual).
+    q = (
+        f"[out:json][timeout:15];("
+        f'node["amenity"~"restaurant|bar|cafe|fast_food|pub|nightclub"]({BBOX});'
+        f'way["amenity"~"restaurant|bar|cafe|fast_food|pub|nightclub"]({BBOX});'
+        f");out center 3000;"
+    )
+    host = OVERPASS[0]
+    try:
+        r = requests.post(host, data={"data": q}, headers=UA, timeout=OSM_TIMEOUT_S)
+        r.raise_for_status()
+        return r.json()
+    except Exception as e:
+        last = str(e)[:130]
+        print(f"[gastronomia_nocturna][WARN] overpass {host}: {last}")
+        raise RuntimeError(f"overpass sin respuesta ({last})") from e
 
 
 def run_osm_gastronomia() -> Path:

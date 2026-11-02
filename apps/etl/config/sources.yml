@@ -2,13 +2,16 @@
 daily:
   - google_trends      # pytrends: "vuelos Medellín" por origen (429-safe, stub si falla)
   - socrata_co         # datos.gov.co REAL: 7wm8-w5ad Medellín no-residentes + 96sh-4v8d entradas + gb6w-ynu4 MDE/EOH
+  - socrata_operaciones # jh8x-n6h6 operaciones aéreas acumuladas (sin key)
+  - socrata_migrantes  # c4mm-qn8q migrantes a Colombia (sin key)
   - dane_egit          # DANE anexos EGIT/ENH trimestrales (busca último vivo)
+  - dane_ema           # DANE EMA mensual (anex-EMA-mesAAAA)
   - gdelt_marca        # GDELT timelinevol 7d: medellin turismo/bureau/seguridad (1 req/5s)
   - alerts_rss         # RSS de Google/Talkwalker Alerts (pegar feeds abajo)
   - un_wb_arrivals     # World Bank ST.INT.ARVL (proxy UN, sin key)
   - eurostat_tourism   # Eurostat tour_occ_ninat noches (sin key, carry si 500)
   - wb_receipts        # WB gasto/ingreso RCPT/XPND (proxy UN)
-  - eurostat_aviation  # Eurostat avia_par pax (sin key, SKIP 404 -> carry)
+  - eurostat_aviation  # Eurostat avia_paoc pax (sin key, SKIP 404 -> carry)
   - eurostat_arrivals  # Eurostat tour_occ_arnat llegadas (sin key)
   - openmeteo_med      # Open-Meteo clima Medellin 7d+30d (sin key)
   - trm_co             # TRM USD->COP ER-API (sin key, derrama)
@@ -17,18 +20,23 @@ daily:
   - prensa_rss         # El Colombiano+Alcaldia+MinCIT RSS (marca noticias)
   - rnt_prestadores    # Socrata RNT prestadores Medellin (oferta formal)
   - seguridad_med      # Socrata hurtos+homicidios Medellin (marca/seguridad)
-  - metro_movilidad    # Metro/DAGRD movilizacion (movilidad eventos)
+  - metro_movilidad    # Metro Medellin (terminales va por terminales_med)
   - ideam_clima        # IDEAM estaciones+lluvia Medellin (clima)
   - conectividad_aerea # OurAirports MDE/EOH + OpenFlights rutas (conectividad)
+  - opensky_mde    # OpenSky en vivo MDE/EOH + flujos 24h (sin key, 429-safe)
+  - ticketmaster_eventos # agenda Medellín (TICKETMASTER_KEY, SKIP sin key)
+  - opentripmap_med    # POIs 30km (OPENTRIPMAP_KEY gratis, SKIP sin key)
   - gastronomia_nocturna # OSM gastronomia + alumbrados (oferta nocturna)
   - wb_departures      # WB salidas DPRT + gasto XPND.CD (emisores)
   - eurostat_capacity  # Eurostat tour_cap_nat camas/plazas (oferta)
   - eurostat_demanda   # Eurostat tour_dem_ttmd viajes (demanda)
-  - terminales_med    # Terminales Medellin buses/pax (movilidad)
+  - terminales_med    # Terminales Medellin buses/pax (canonico terminales)
   - rnt_antioquia      # RNT Antioquia sin Medellin (oferta regional)
   - aerocivil_flota    # Traficoruta por equipo+ruta (conectividad)
   - aire_med           # PM2.5 Medellin Open-Meteo (eventos)
-  # opcionales semanales (no diarios para no quemar cuota):
+  # opcionales fuera del diario (nadie los lee: ni KPIs ni dashboard):
+  # - openmeteo_med      # clima 7d+30d (re-cablear solo si un KPI lo usa)
+  # - conectividad_aerea # snapshot estatico (re-cablear como mensual)
   # - tiktok_trends    # manual: exportar Top Ads/Trends 1x semana
   # - meta_ads         # manual: Meta Ad Library 1x semana
 
@@ -40,6 +48,8 @@ gated_manual:
   - amadeus_feed        # solo con contrato -> data/raw/manual/
   - amadeus_dev         # env AMADEUS_KEY (developers.amadeus.com)
   - brand24             # env BRAND24_KEY o CSV trial en manual/
+  - flightpowers        # env FLIGHTPOWERS_KEY (RapidAPI, BASIC 10/mes)
+  - aerodatabox           # misma RapidAPI key (estado MDE/EOH en vivo)
   - icca_cvent          # rankings anuales + RFP CRM interno
   - crm_interno         # data/raw/manual/crm.xlsx (RFP/eventos/miembros/Wompi)
   - situr               # SITUR Antioquia: portal caído hoy -> carga manual mensual hasta tener endpoint
