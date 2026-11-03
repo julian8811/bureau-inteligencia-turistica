@@ -56,6 +56,12 @@
    "id": "owid_benchmark_2025_2026",
    "estado": "ok",
    "n": 53
+  },
+  {
+   "archivo": "etl-bureau/export/tableros_bureau/sit_emisores_2025_2026.json",
+   "id": "sit_emisores_2025_2026",
+   "estado": "ok",
+   "n": 5
   }
  ],
  "errores": [],
