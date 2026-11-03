@@ -1,20 +1,19 @@
-From f8398bcfdfcab8c08de05cc311ea45f4217065a2 Mon Sep 17 00:00:00 2001
+From b0c797a1a8a8a52d07142a25368b3068aba0477c Mon Sep 17 00:00:00 2001
 From: Cursor Agent <cursoragent@cursor.com>
-Date: Tue, 3 Nov 2026 05:21:11 +0000
+Date: Tue, 3 Nov 2026 06:08:08 +0000
 Subject: [PATCH] =?UTF-8?q?feat(ui):=20sumar=20SARIMA,=20la=20EMA=20larga?=
  =?UTF-8?q?=20y=20la=20TRM=20mensual=20al=20pron=C3=B3stico?=
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 
-El grupo Pronóstico pasa de 10 a 13 series. La línea de OWID deja de
-meter comandos de path en el atributo points.
+El bloque muestra las 13 series, la nota de los 12 meses en ocupación e ingresos, y la polilínea de OWID con coordenadas.
 ---
  app.js                           |   12 +-
  data/catalog.js                  |   10 +-
- data/open/bureau_pronostico.json | 1053 +++++++++++++++++++++++++-----
+ data/open/bureau_pronostico.json | 1056 +++++++++++++++++++++++++-----
  data/open/manifiesto.json        |    2 +-
- 4 files changed, 894 insertions(+), 183 deletions(-)
+ 4 files changed, 897 insertions(+), 183 deletions(-)
 
 diff --git a/app.js b/app.js
 index ddbf96b..9a5bd12 100644
@@ -72,7 +71,7 @@ index 15e6f24..e4f47c8 100644
  ];
  
 diff --git a/data/open/bureau_pronostico.json b/data/open/bureau_pronostico.json
-index 9c5034c..6d3450c 100644
+index 9c5034c..d005795 100644
 --- a/data/open/bureau_pronostico.json
 +++ b/data/open/bureau_pronostico.json
 @@ -2,30 +2,36 @@
@@ -799,7 +798,7 @@ index 9c5034c..6d3450c 100644
      }
     ],
     "historico": [
-@@ -1263,46 +1547,47 @@
+@@ -1263,46 +1547,48 @@
     "pronostico": [
      {
       "periodo": "2026-09",
@@ -863,11 +862,12 @@ index 9c5034c..6d3450c 100644
      "Ocupación de la región Antioquia en la EMA. No es la ciudad de Medellín ni un hotel.",
 -    "Se publica «Holt-Winters»: tuvo el menor error absoluto en los últimos 6 meses.",
 +    "La serie corta del tablero arranca en 2022. El anexo EMA agrega los meses anteriores, desde 2019-01, porque desde 2022 los valores coinciden.",
++    "En la prueba de 12 meses, de septiembre de 2025 a agosto de 2026 y con la misma regla, se publicaría el mes anterior (MAE 2.66). Lo que se publica aquí sigue siendo el ensayo de 6 meses.",
 +    "Se publica «gradiente con rezagos»: tuvo el menor error absoluto en los últimos 6 meses.",
      "La banda es el percentil 80 del error absoluto en los últimos 6 meses observados. No es un intervalo de confianza.",
      "No mide causas, reservas ni el CRM. Solo prolonga la serie mensual observada."
     ]
-@@ -1313,17 +1598,17 @@
+@@ -1313,17 +1599,17 @@
     "nombre": "Índice de tarifa hotelera de Antioquia",
     "unidad": "índice",
     "decimales": 2,
@@ -891,7 +891,7 @@ index 9c5034c..6d3450c 100644
     "comparacion": [
      {
       "modelo": "estacional",
-@@ -1337,11 +1622,23 @@
+@@ -1337,11 +1623,23 @@
       "mae": 2.67,
       "mape": 1.7
      },
@@ -915,7 +915,7 @@ index 9c5034c..6d3450c 100644
      }
     ],
     "historico": [
-@@ -1445,46 +1742,434 @@
+@@ -1445,46 +1743,436 @@
     "pronostico": [
      {
       "periodo": "2026-09",
@@ -1171,6 +1171,7 @@ index 9c5034c..6d3450c 100644
 +   "n_observado": 92,
 +   "notas": [
 +    "Ocupación nacional de la EMA. No es Antioquia ni un hotel de Medellín.",
++    "En la prueba de 12 meses, de septiembre de 2025 a agosto de 2026 y con la misma regla, se publicaría «gradiente con rezagos» (MAE 1.49); el mes anterior queda en 1.52. Lo que se publica aquí sigue siendo el ensayo de 6 meses.",
 +    "Se publica «SARIMA»: tuvo el menor error absoluto en los últimos 6 meses.",
 +    "La banda es el percentil 80 del error absoluto en los últimos 6 meses observados. No es un intervalo de confianza.",
 +    "No mide causas, reservas ni el CRM. Solo prolonga la serie mensual observada."
@@ -1365,11 +1366,12 @@ index 9c5034c..6d3450c 100644
 +   "n_observado": 140,
 +   "notas": [
 +    "Índice nacional de ingresos reales de alojamiento, base 2019=100. No es la tarifa de Antioquia ni el IPC.",
++    "En la prueba de 12 meses, de septiembre de 2025 a agosto de 2026 y con la misma regla, se publicaría el mes anterior (MAE 6.23). Lo que se publica aquí sigue siendo el ensayo de 6 meses.",
 +    "Se publica «Holt-Winters»: tuvo el menor error absoluto en los últimos 6 meses.",
      "La banda es el percentil 80 del error absoluto en los últimos 6 meses observados. No es un intervalo de confianza.",
      "No mide causas, reservas ni el CRM. Solo prolonga la serie mensual observada."
     ]
-@@ -1519,11 +2204,23 @@
+@@ -1519,11 +2207,23 @@
       "mae": 7.3,
       "mape": 84.2
      },
@@ -1393,7 +1395,7 @@ index 9c5034c..6d3450c 100644
      }
     ],
     "historico": [
-@@ -1679,17 +2376,17 @@
+@@ -1679,17 +2379,17 @@
     "nombre": "Hurtos en Medellín",
     "unidad": "casos",
     "decimales": 0,
@@ -1417,7 +1419,7 @@ index 9c5034c..6d3450c 100644
     "comparacion": [
      {
       "modelo": "estacional",
-@@ -1703,11 +2400,23 @@
+@@ -1703,11 +2403,23 @@
       "mae": 490.8,
       "mape": 33.1
      },
@@ -1441,7 +1443,7 @@ index 9c5034c..6d3450c 100644
      }
     ],
     "historico": [
-@@ -1811,47 +2520,47 @@
+@@ -1811,47 +2523,47 @@
     "pronostico": [
      {
       "periodo": "2026-10",

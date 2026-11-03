@@ -458,6 +458,29 @@ def construir_serie(spec, periodos, valores, libs):
                 "Los últimos meses del gradiente salen iguales: al usar su propio "
                 "pronóstico como entrada, el árbol deja de mover la serie."
             )
+    if spec["id"] in ("ocupacion_nacional", "ocupacion_antioquia", "ingresos_reales") and len(periodos) >= 48:
+        _, reales12, brutos12 = evaluar(valores, meses, periodos, 12)
+        maes12 = {}
+        for nombre in ORDEN:
+            pred12 = brutos12.get(nombre)
+            if not pred12:
+                continue
+            pred_r = [redondear(recortar(v, piso, techo), dec) for v in pred12]
+            maes12[nombre] = mae(reales12, pred_r)
+        if "estacional" in maes12:
+            gan12 = elegir(maes12)
+            if gan12 == "estacional":
+                detalle = f"se publicaría el mes anterior (MAE {redondear(maes12['estacional'], 2)})"
+            else:
+                detalle = (
+                    f"se publicaría «{ETIQUETAS[gan12]}» (MAE {redondear(maes12[gan12], 2)}); "
+                    f"el mes anterior queda en {redondear(maes12['estacional'], 2)}"
+                )
+            notas.append(
+                "En la prueba de 12 meses, de septiembre de 2025 a agosto de 2026 y con la misma regla, "
+                + detalle
+                + ". Lo que se publica aquí sigue siendo el ensayo de 6 meses."
+            )
     notas.append(_nota_eleccion(ganador, maes))
     notas.append(NOTA_BANDA)
     notas.append(NOTA_CAUSA)
