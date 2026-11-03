@@ -6,6 +6,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from classify import llm_classify
 from dashboard import build_html
 from export import bureau_runner
+from models import pronosticar
 from export import tableros_bureau_llm
 from extract import (
     aerocivil_flota,
@@ -91,7 +92,8 @@ def main():
         backend_writer.run,
         redactar_informe.run,
         publicar_pdfs.run,
-        bureau_runner.run,  # piezas bureau_* ANTES del adapter y del publish
+        bureau_runner.run,  # piezas bureau_* ANTES del pronóstico y del publish
+        pronosticar.run,  # lee la seguridad ya exportada; no tumba el JSON si falla
         tableros_bureau_llm.run,
         publicar_tableros.push_export,
         publicar_tableros.actualizar_tableros,

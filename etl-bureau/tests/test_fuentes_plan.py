@@ -17,6 +17,20 @@ def test_daily_importa():
     assert nombres == []
 
 
+def test_trm_mensual_es_el_promedio_del_mes():
+    import pandas as pd
+    from extract.trm_co import mensual_desde_diaria
+    df = pd.DataFrame([
+        {"date": "2026-10-01", "rate_cop": "100"},
+        {"date": "2026-10-03", "rate_cop": "300"},
+        {"date": "2026-11-01", "rate_cop": "400"},
+        {"date": "", "rate_cop": "1"},
+    ])
+    out = mensual_desde_diaria(df)
+    assert list(out["periodo"]) == ["2026-10", "2026-11"]
+    assert out["trm"].iloc[0] == 200
+
+
 def test_trm_oficial_ordena_y_descarta_vacios():
     from extract.trm_co import rows_from_socrata
     df = rows_from_socrata([
