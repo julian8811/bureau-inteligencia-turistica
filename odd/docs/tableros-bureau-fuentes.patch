@@ -1,0 +1,2052 @@
+From 40a4afaf400e63f0363e1b3aeb004209fbae03dc Mon Sep 17 00:00:00 2001
+From: Cursor Agent <cursoragent@cursor.com>
+Date: Tue, 3 Nov 2026 03:40:58 +0000
+Subject: [PATCH] feat(ui): mostrar avisos, SISAIRE, BTS e IPC en el tablero
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+El calendario trae festivos de los emisores y los avisos de viaje. El clima suma el PM2.5 medido. Conectividad muestra sillas EE. UU.–Colombia y el IPC nacional. El refresco mensual de preparar_fuentes ya no borra las piezas del ETL del manifiesto.
+---
+ .github/workflows/fuentes-mensuales.yml |   27 +
+ app.js                                  |   41 +-
+ data/catalog.js                         |   18 +-
+ data/open/bureau_calendario.json        | 1145 ++++++++++++++++++++++-
+ data/open/bureau_clima.json             |   50 +-
+ data/open/bureau_conectividad.json      |  545 ++++++++++-
+ scripts/alimentar_bureau.py             |    5 +
+ scripts/preparar_fuentes.py             |   12 +-
+ 8 files changed, 1818 insertions(+), 25 deletions(-)
+ create mode 100644 .github/workflows/fuentes-mensuales.yml
+
+diff --git a/.github/workflows/fuentes-mensuales.yml b/.github/workflows/fuentes-mensuales.yml
+new file mode 100644
+index 0000000..c28f02b
+--- /dev/null
++++ b/.github/workflows/fuentes-mensuales.yml
+@@ -0,0 +1,27 @@
++name: fuentes-mensuales
++on:
++  schedule:
++    - cron: "0 14 2 * *"  # día 2, 09:00 America/Bogota
++  workflow_dispatch:
++
++permissions:
++  contents: write
++
++jobs:
++  preparar:
++    runs-on: ubuntu-latest
++    timeout-minutes: 90
++    steps:
++      - uses: actions/checkout@v4
++      - uses: actions/setup-python@v5
++        with:
++          python-version: "3.12"
++      - run: pip install openpyxl
++      - run: python scripts/preparar_fuentes.py
++      - name: publicar agregados
++        run: |
++          git config user.name tableros-etl
++          git config user.email tableros-etl@local
++          git add data/open
++          git diff --cached --quiet || git commit -m "data: fuentes mensuales $(date -u +%F)"
++          git push
+diff --git a/app.js b/app.js
+index fa61fc1..cce4ea2 100644
+--- a/app.js
++++ b/app.js
+@@ -383,23 +383,28 @@
+     var data = DATA.bureauClima || {};
+     var serie = data.serie || [];
+     var pm25 = data.pm25_serie || [];
++    var sisaire = data.sisaire_pm25 || [];
+     var pron = data.pronostico || [];
+-    if (!serie.length && !pm25.length && !pron.length) return hueco("Clima", "Corra scripts/alimentar_bureau.py para traer el clima del ETL.");
++    if (!serie.length && !pm25.length && !pron.length && !sisaire.length) return hueco("Clima", "Corra scripts/alimentar_bureau.py para traer el clima del ETL.");
+     var lluvia = serie.map(function (row) { return { x: row.periodo, y: row.mm_prom }; });
+     var aire = pm25.map(function (row) { return { x: row.fecha, y: row.pm2_5 }; });
++    var medido = sisaire.map(function (row) { return { x: row.fecha, y: row.pm2_5 }; });
+     var futuro = pron.map(function (row) { return { x: row.date, y: row.prec_mean }; });
+     return block("Clima y calidad del aire", "Lluvia mensual, PM2.5 y pronóstico ensemble. " + esc(data.ventana || "") + ".",
+       "<h3>Lluvia mensual (mm prom.)</h3>" + Charts.line(lluvia, "#108181") +
+-      "<h3>PM2.5</h3>" + Charts.line(aire, "#E9901E") +
++      "<h3>PM2.5 modelado</h3>" + Charts.line(aire, "#E9901E") +
++      (medido.length ? "<h3>PM2.5 medido (SISAIRE, AMVA)</h3>" + Charts.line(medido, "#172139") : "") +
+       "<h3>Pronóstico de precipitación media</h3>" + Charts.line(futuro, "#00AEAC") +
+-      pie("ETL Bureau · IDEAM + Open-Meteo + aire_med" + extraido("bureauClima")));
++      pie("ETL Bureau · IDEAM + Open-Meteo + SISAIRE" + extraido("bureauClima")));
+   }
+ 
+   function bloqueCalendario() {
+     var data = DATA.bureauCalendario || {};
+     var festivos = data.serie || [];
+     var est = data.estaciones || {};
+-    if (!festivos.length && !est.total) return hueco('Calendario', 'Corra scripts/alimentar_bureau.py para traer el calendario del ETL.');
++    var avisos = data.avisos_viaje || [];
++    var emisores = data.festivos_emisores || [];
++    if (!festivos.length && !est.total && !avisos.length && !emisores.length) return hueco('Calendario', 'Corra scripts/alimentar_bureau.py para traer el calendario del ETL.');
+     var porEstado = est.por_estado || {};
+     var barras = Object.keys(porEstado).map(function (k, i) {
+       return { label: k, value: porEstado[k], text: num(porEstado[k]), color: Charts.palette[i % Charts.palette.length] };
+@@ -420,14 +425,28 @@
+       }).join('');
+       return '<div><h4>' + esc(titulo) + ' <span class="pastilla">' + porMes[k].length + '</span></h4><ul>' + items + '</ul></div>';
+     }).join('');
++    var porPais = {};
++    emisores.forEach(function (f) {
++      var k = f.pais || "?";
++      porPais[k] = (porPais[k] || 0) + 1;
++    });
++    var paises = Object.keys(porPais).sort().map(function (k) {
++      return "<li><span>" + esc(k) + "</span><strong>" + num(porPais[k]) + "</strong></li>";
++    }).join("");
++    var listaAvisos = avisos.map(function (a) {
++      return "<li><span>" + esc(a.pais) + "</span><strong>" + esc(a.nivel || a.titulo) + "</strong><p class='hint'>" + esc(a.resumen || "") + "</p></li>";
++    }).join("");
+     return '<div class="kpi-row">' +
+       kpi('bureau-calendario', 'Feriados', num(festivos.length), esc(data.ventana || '')) +
+       kpi('bureau-calendario', 'Estaciones IDEAM', num(est.total || 0), 'red con reporte') +
++      kpi('bureau-calendario', 'Avisos de viaje', num(avisos.length), 'EE. UU., Canadá, Reino Unido') +
+       '</div>' +
+-      block('Calendario y contexto', 'Feriados nacionales y red IDEAM. ' + esc(data.ventana || '') + '.',
++      block('Calendario y contexto', 'Feriados nacionales, emisores y avisos de viaje. ' + esc(data.ventana || '') + '.',
+       '<h3>Feriados por mes</h3><div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px;align-items:start;">' + tarjetas + '</div>' +
++      (paises ? "<h3>Feriados de mercados emisores</h3><ul class='lista'>" + paises + "</ul>" : "") +
++      (listaAvisos ? "<h3>Avisos de viaje hacia Colombia</h3><ul class='lista'>" + listaAvisos + "</ul>" : "") +
+       '<h3>Estaciones por estado</h3>' + Charts.bars(barras, '#108181') +
+-      pie('ETL Bureau · festivos CO + IDEAM' + extraido('bureauCalendario')));
++      pie('ETL Bureau · festivos CO + IDEAM + avisos de viaje' + extraido('bureauCalendario')));
+   }
+   function bloqueSit() {
+     var data = DATA.bureauSit || {};
+@@ -517,8 +536,15 @@
+     var ultimoOp = ops.length ? ops[ops.length - 1] : null;
+     var ultimoTrm = trm.length ? trm[trm.length - 1] : null;
+     var dig = wiki.map(function (row) { return { x: row.periodo, y: row.views }; });
++    var bts = data.bts_colombia || [];
++    var ipc = data.ipc_colombia || [];
++    var ultimoBts = bts.length ? bts[bts.length - 1] : null;
++    var ultimoIpc = ipc.length ? ipc[ipc.length - 1] : null;
+     var corteTxt = "operaciones " + esc(cortes.operaciones || "—") + " · TRM " + esc(cortes.trm || "—") +
+       " · UE " + esc(cortes.benchmark_eu || "—") + " · digital " + esc(cortes.wikimedia || "—");
++    var extra = "";
++    if (ultimoBts) extra += "<p class='hint'>EE. UU.–Colombia " + esc(ultimoBts.year) + (ultimoBts.mes ? "-" + esc(ultimoBts.mes) : "") + ": " + num(ultimoBts.llegadas_sillas) + " sillas de llegada y " + num(ultimoBts.llegadas_pax) + " pasajeros (BTS T-100, país, no el aeropuerto).</p>";
++    if (ultimoIpc) extra += "<p class='hint'>IPC nacional " + esc(ultimoIpc.anio) + "-" + esc(ultimoIpc.mes) + ": " + num(ultimoIpc.indice, 2) + ". Es el total del país, no la tarifa de Medellín.</p>";
+     return '<div class="kpi-row">' +
+       kpi("bureau-conectividad", "Operaciones", ultimoOp ? num(ultimoOp.y) : "—", ultimoOp ? ultimoOp.x : "") +
+       kpi("bureau-conectividad", "TRM", ultimoTrm ? num(ultimoTrm.cop_per_usd, 0) : "—", ultimoTrm ? String(ultimoTrm.date).slice(0, 10) : "") +
+@@ -526,7 +552,8 @@
+       block("Conectividad", corteTxt + ".",
+       "<h3>Operaciones aéreas</h3>" + Charts.line(ops, "#108181") +
+       "<h3>Señal digital (vistas)</h3>" + Charts.line(dig, "#00AEAC") +
+-      pie("ETL Bureau · Aerocivil/Eurostat/Wikimedia" + extraido("bureauConectividad")));
++      extra +
++      pie("ETL Bureau · Aerocivil/Eurostat/Wikimedia/BTS" + extraido("bureauConectividad")));
+   }
+ 
+   function tarifas() {
+diff --git a/data/catalog.js b/data/catalog.js
+index 0c93b63..13dc84b 100644
+--- a/data/catalog.js
++++ b/data/catalog.js
+@@ -13,12 +13,12 @@ window.CATALOGO = [
+   {
+     id: "busqueda", tab: "mercados", nombre: "Intención de búsqueda y share of voice digital",
+     pastilla: "Proxy", clase: "proxy",
+-    fuenteTipo: "Secundaria", fuente: "Wikimedia Pageviews (CC0) y GDELT DOC 2.0",
++    fuenteTipo: "Secundaria", fuente: "Google News RSS y Reddit, vía ETL Bureau",
+     pedida: "Trimestral", grano: "Mensual, sumado al trimestre", unidad: "Índice y participación",
+-    formula: "Vistas o menciones de Medellín divididas por la suma del set de destinos.",
+-    universo: "Artículos de Wikipedia en español e inglés, y menciones del nombre de la ciudad en medios de GDELT.",
+-    licencia: "CC0 para Wikimedia. GDELT exige cita a https://www.gdeltproject.org/",
+-    noMide: "Búsquedas de Google. La API de Trends sigue en alfa cerrada y no se usa."
++    formula: "Titulares de la ventana y conteo semanal. La participación es sobre las menciones de esa ventana.",
++    universo: "RSS de Google News y Reddit que lee el ETL. data/open/wikipedia.json queda en el repo y esta pantalla no lo lee.",
++    licencia: "Agregados propios del ETL. Los titulares siguen siendo de sus medios.",
++    noMide: "Búsquedas de Google ni el universo de GDELT. El DOC API responde 429 y salió de esta ficha."
+   },
+   {
+     id: "reservas", tab: "mercados", nombre: "Reservas hacia Medellín",
+@@ -259,10 +259,10 @@ window.CATALOGO = [
+   {
+     id: "bureau-clima", tab: "visitante", nombre: "Clima y calidad del aire (ETL Bureau)",
+     pastilla: "Bureau", clase: "proxy",
+-    fuenteTipo: "Secundaria", fuente: "ETL Bureau, IDEAM + Open-Meteo + aire_med 2026-08..2026-11-08",
++    fuenteTipo: "Secundaria", fuente: "ETL Bureau, IDEAM + Open-Meteo + SISAIRE (AMVA)",
+     pedida: "Diaria", grano: "Mensual, horario y día", unidad: "mm, µg/m³ y °C",
+-    formula: "Lluvia mensual agregada, PM2.5 por hora y pronóstico ensemble de 7 días.",
+-    universo: "Lluvia mensual agregada, PM2.5 diario, pronóstico ensemble 7 días.",
++    formula: "Lluvia mensual agregada, PM2.5 modelado, PM2.5 medido en estaciones AMVA y pronóstico ensemble de 7 días.",
++    universo: "Lluvia mensual, PM2.5 modelado, PM2.5 de SISAIRE y pronóstico de 7 días.",
+     licencia: "Datos abiertos IDEAM/Open-Meteo; agregados propios del ETL.",
+     noMide: "El microclima por comuna ni alertas en tiempo real."
+   },
+@@ -281,7 +281,7 @@ window.CATALOGO = [
+   {
+     id: "bureau-calendario", tab: "visitante", nombre: "Calendario y contexto (ETL Bureau)",
+     pastilla: "Bureau · ETL", clase: "proxy",
+-    fuenteTipo: "Secundaria", fuente: "ETL Bureau: festivos CO + IDEAM, scripts/alimentar_bureau.py",
++    fuenteTipo: "Secundaria", fuente: "ETL Bureau: festivos CO y emisores, avisos de viaje US/CA/UK, IDEAM",
+     pedida: "Por corte", grano: "Fecha (feriados) + inventario (estaciones)", unidad: "Fechas y conteos",
+     formula: "Lista de feriados del corte y conteo de estaciones por estado/categoría/municipio.",
+     universo: "Feriados nacionales y red de estaciones IDEAM con reporte en Medellín.",
+diff --git a/data/open/bureau_calendario.json b/data/open/bureau_calendario.json
+index 75ee6da..d365f5a 100644
+--- a/data/open/bureau_calendario.json
++++ b/data/open/bureau_calendario.json
+@@ -1,7 +1,7 @@
+ {
+  "id": "bureau-calendario",
+  "titulo": "Calendario y contexto (ETL Bureau)",
+- "fuente": "ETL Bureau, festivos CO + IDEAM 2025-2026",
++ "fuente": "ETL Bureau, festivos CO y emisores + avisos de viaje + IDEAM 2025-2026",
+  "ventana": "2025-2026",
+  "url": "https://raw.githubusercontent.com/julian8811/bureau-inteligencia-turistica/main/etl-bureau/export/tableros_bureau/calendario_contexto_2025_2026.json",
+  "licencia": "Datos abiertos; agregados propios del ETL.",
+@@ -181,5 +181,1146 @@
+   ],
+   "con_coordenadas": 413
+  },
+- "corte": "2026-12-25"
++ "corte": "2026-12-25",
++ "festivos_emisores": [
++  {
++   "date": "2025-01-01",
++   "nombre": "Confraternização Universal",
++   "pais": "BR"
++  },
++  {
++   "date": "2025-03-03",
++   "nombre": "Carnaval",
++   "pais": "BR"
++  },
++  {
++   "date": "2025-03-04",
++   "nombre": "Carnaval",
++   "pais": "BR"
++  },
++  {
++   "date": "2025-04-18",
++   "nombre": "Sexta-feira Santa",
++   "pais": "BR"
++  },
++  {
++   "date": "2025-04-20",
++   "nombre": "Domingo de Páscoa",
++   "pais": "BR"
++  },
++  {
++   "date": "2025-04-21",
++   "nombre": "Dia de Tiradentes",
++   "pais": "BR"
++  },
++  {
++   "date": "2025-05-01",
++   "nombre": "Dia do Trabalhador",
++   "pais": "BR"
++  },
++  {
++   "date": "2025-06-19",
++   "nombre": "Corpus Christi",
++   "pais": "BR"
++  },
++  {
++   "date": "2025-07-09",
++   "nombre": "Revolução Constitucionalista de 1932",
++   "pais": "BR"
++  },
++  {
++   "date": "2025-09-07",
++   "nombre": "Dia da Independência",
++   "pais": "BR"
++  },
++  {
++   "date": "2025-10-12",
++   "nombre": "Nossa Senhora Aparecida",
++   "pais": "BR"
++  },
++  {
++   "date": "2025-11-02",
++   "nombre": "Dia de Finados",
++   "pais": "BR"
++  },
++  {
++   "date": "2025-11-15",
++   "nombre": "Proclamação da República",
++   "pais": "BR"
++  },
++  {
++   "date": "2025-11-20",
++   "nombre": "Dia da Consciência Negra",
++   "pais": "BR"
++  },
++  {
++   "date": "2025-12-25",
++   "nombre": "Natal",
++   "pais": "BR"
++  },
++  {
++   "date": "2026-01-01",
++   "nombre": "Confraternização Universal",
++   "pais": "BR"
++  },
++  {
++   "date": "2026-02-16",
++   "nombre": "Carnaval",
++   "pais": "BR"
++  },
++  {
++   "date": "2026-02-17",
++   "nombre": "Carnaval",
++   "pais": "BR"
++  },
++  {
++   "date": "2026-04-03",
++   "nombre": "Sexta-feira Santa",
++   "pais": "BR"
++  },
++  {
++   "date": "2026-04-05",
++   "nombre": "Domingo de Páscoa",
++   "pais": "BR"
++  },
++  {
++   "date": "2026-04-21",
++   "nombre": "Dia de Tiradentes",
++   "pais": "BR"
++  },
++  {
++   "date": "2026-05-01",
++   "nombre": "Dia do Trabalhador",
++   "pais": "BR"
++  },
++  {
++   "date": "2026-06-04",
++   "nombre": "Corpus Christi",
++   "pais": "BR"
++  },
++  {
++   "date": "2026-07-09",
++   "nombre": "Revolução Constitucionalista de 1932",
++   "pais": "BR"
++  },
++  {
++   "date": "2026-09-07",
++   "nombre": "Dia da Independência",
++   "pais": "BR"
++  },
++  {
++   "date": "2026-10-12",
++   "nombre": "Nossa Senhora Aparecida",
++   "pais": "BR"
++  },
++  {
++   "date": "2026-11-02",
++   "nombre": "Dia de Finados",
++   "pais": "BR"
++  },
++  {
++   "date": "2026-11-15",
++   "nombre": "Proclamação da República",
++   "pais": "BR"
++  },
++  {
++   "date": "2026-11-20",
++   "nombre": "Dia da Consciência Negra",
++   "pais": "BR"
++  },
++  {
++   "date": "2026-12-25",
++   "nombre": "Natal",
++   "pais": "BR"
++  },
++  {
++   "date": "2025-01-01",
++   "nombre": "Día de Año Nuevo",
++   "pais": "DO"
++  },
++  {
++   "date": "2025-01-06",
++   "nombre": "Día de Reyes",
++   "pais": "DO"
++  },
++  {
++   "date": "2025-01-21",
++   "nombre": "Día de Nuestra Señora de la Altagracia",
++   "pais": "DO"
++  },
++  {
++   "date": "2025-01-26",
++   "nombre": "Día del Natalicio de Juan Pablo Duarte",
++   "pais": "DO"
++  },
++  {
++   "date": "2025-02-27",
++   "nombre": "Día de la Independencia de la República Dominicana",
++   "pais": "DO"
++  },
++  {
++   "date": "2025-04-18",
++   "nombre": "Good Friday",
++   "pais": "DO"
++  },
++  {
++   "date": "2025-05-01",
++   "nombre": "Día del Trabajador",
++   "pais": "DO"
++  },
++  {
++   "date": "2025-05-28",
++   "nombre": "Día de las Madres",
++   "pais": "DO"
++  },
++  {
++   "date": "2025-06-19",
++   "nombre": "Corpus Christi",
++   "pais": "DO"
++  },
++  {
++   "date": "2025-08-16",
++   "nombre": "Día de la Restauración Dominicana",
++   "pais": "DO"
++  },
++  {
++   "date": "2025-09-24",
++   "nombre": "Nuestra Senora de las Mercedes",
++   "pais": "DO"
++  },
++  {
++   "date": "2025-11-06",
++   "nombre": "Día de la Constitución",
++   "pais": "DO"
++  },
++  {
++   "date": "2025-12-25",
++   "nombre": "Navidad",
++   "pais": "DO"
++  },
++  {
++   "date": "2026-01-01",
++   "nombre": "Día de Año Nuevo",
++   "pais": "DO"
++  },
++  {
++   "date": "2026-01-06",
++   "nombre": "Día de Reyes",
++   "pais": "DO"
++  },
++  {
++   "date": "2026-01-21",
++   "nombre": "Día de Nuestra Señora de la Altagracia",
++   "pais": "DO"
++  },
++  {
++   "date": "2026-01-26",
++   "nombre": "Día del Natalicio de Juan Pablo Duarte",
++   "pais": "DO"
++  },
++  {
++   "date": "2026-02-27",
++   "nombre": "Día de la Independencia de la República Dominicana",
++   "pais": "DO"
++  },
++  {
++   "date": "2026-04-03",
++   "nombre": "Good Friday",
++   "pais": "DO"
++  },
++  {
++   "date": "2026-05-01",
++   "nombre": "Día del Trabajador",
++   "pais": "DO"
++  },
++  {
++   "date": "2026-05-28",
++   "nombre": "Día de las Madres",
++   "pais": "DO"
++  },
++  {
++   "date": "2026-06-04",
++   "nombre": "Corpus Christi",
++   "pais": "DO"
++  },
++  {
++   "date": "2026-08-16",
++   "nombre": "Día de la Restauración Dominicana",
++   "pais": "DO"
++  },
++  {
++   "date": "2026-09-24",
++   "nombre": "Nuestra Senora de las Mercedes",
++   "pais": "DO"
++  },
++  {
++   "date": "2026-11-06",
++   "nombre": "Día de la Constitución",
++   "pais": "DO"
++  },
++  {
++   "date": "2026-12-25",
++   "nombre": "Navidad",
++   "pais": "DO"
++  },
++  {
++   "date": "2025-01-01",
++   "nombre": "Año Nuevo",
++   "pais": "ES"
++  },
++  {
++   "date": "2025-01-06",
++   "nombre": "Día de Reyes / Epifanía del Señor",
++   "pais": "ES"
++  },
++  {
++   "date": "2025-02-28",
++   "nombre": "Día de Andalucía",
++   "pais": "ES"
++  },
++  {
++   "date": "2025-03-01",
++   "nombre": "Dia de les Illes Balears",
++   "pais": "ES"
++  },
++  {
++   "date": "2025-04-17",
++   "nombre": "Jueves Santo",
++   "pais": "ES"
++  },
++  {
++   "date": "2025-04-18",
++   "nombre": "Viernes Santo",
++   "pais": "ES"
++  },
++  {
++   "date": "2025-04-21",
++   "nombre": "Lunes de Pascua",
++   "pais": "ES"
++  },
++  {
++   "date": "2025-04-23",
++   "nombre": "Día de Castilla y León",
++   "pais": "ES"
++  },
++  {
++   "date": "2025-04-23",
++   "nombre": "San Jorge (Día de Aragón)",
++   "pais": "ES"
++  },
++  {
++   "date": "2025-05-01",
++   "nombre": "Fiesta del trabajo",
++   "pais": "ES"
++  },
++  {
++   "date": "2025-05-02",
++   "nombre": "Fiesta de la Comunidad de Madrid",
++   "pais": "ES"
++  },
++  {
++   "date": "2025-05-17",
++   "nombre": "Día das Letras Galegas",
++   "pais": "ES"
++  },
++  {
++   "date": "2025-05-30",
++   "nombre": "Día de Canarias",
++   "pais": "ES"
++  },
++  {
++   "date": "2025-05-31",
++   "nombre": "Día de la Región Castilla-La Mancha",
++   "pais": "ES"
++  },
++  {
++   "date": "2025-06-09",
++   "nombre": "Día de La Rioja",
++   "pais": "ES"
++  },
++  {
++   "date": "2025-06-09",
++   "nombre": "Día de la Región de Murcia",
++   "pais": "ES"
++  },
++  {
++   "date": "2025-06-19",
++   "nombre": "Corpus Christi",
++   "pais": "ES"
++  },
++  {
++   "date": "2025-06-24",
++   "nombre": "Sant Joan",
++   "pais": "ES"
++  },
++  {
++   "date": "2025-07-25",
++   "nombre": "Santiago Apóstol",
++   "pais": "ES"
++  },
++  {
++   "date": "2025-07-28",
++   "nombre": "Día de las Instituciones de Cantabria",
++   "pais": "ES"
++  },
++  {
++   "date": "2025-08-15",
++   "nombre": "Asunción",
++   "pais": "ES"
++  },
++  {
++   "date": "2025-09-08",
++   "nombre": "Día de Asturias",
++   "pais": "ES"
++  },
++  {
++   "date": "2025-09-08",
++   "nombre": "Día de Extremadura",
++   "pais": "ES"
++  },
++  {
++   "date": "2025-09-11",
++   "nombre": "Diada Nacional de Catalunya",
++   "pais": "ES"
++  },
++  {
++   "date": "2025-09-15",
++   "nombre": "Festividad de la Bien Aparecida",
++   "pais": "ES"
++  },
++  {
++   "date": "2025-10-09",
++   "nombre": "Dia de la Comunitat Valenciana",
++   "pais": "ES"
++  },
++  {
++   "date": "2025-10-12",
++   "nombre": "Fiesta Nacional de España",
++   "pais": "ES"
++  },
++  {
++   "date": "2025-11-01",
++   "nombre": "Día de todos los Santos",
++   "pais": "ES"
++  },
++  {
++   "date": "2025-12-06",
++   "nombre": "Día de la Constitución",
++   "pais": "ES"
++  },
++  {
++   "date": "2025-12-08",
++   "nombre": "Inmaculada Concepción",
++   "pais": "ES"
++  },
++  {
++   "date": "2025-12-25",
++   "nombre": "Navidad",
++   "pais": "ES"
++  },
++  {
++   "date": "2025-12-26",
++   "nombre": "Feast of Saint Stephen",
++   "pais": "ES"
++  },
++  {
++   "date": "2026-01-01",
++   "nombre": "Año Nuevo",
++   "pais": "ES"
++  },
++  {
++   "date": "2026-01-06",
++   "nombre": "Día de Reyes / Epifanía del Señor",
++   "pais": "ES"
++  },
++  {
++   "date": "2026-02-28",
++   "nombre": "Día de Andalucía",
++   "pais": "ES"
++  },
++  {
++   "date": "2026-03-01",
++   "nombre": "Dia de les Illes Balears",
++   "pais": "ES"
++  },
++  {
++   "date": "2026-04-02",
++   "nombre": "Jueves Santo",
++   "pais": "ES"
++  },
++  {
++   "date": "2026-04-03",
++   "nombre": "Viernes Santo",
++   "pais": "ES"
++  },
++  {
++   "date": "2026-04-06",
++   "nombre": "Lunes de Pascua",
++   "pais": "ES"
++  },
++  {
++   "date": "2026-04-23",
++   "nombre": "Día de Castilla y León",
++   "pais": "ES"
++  },
++  {
++   "date": "2026-04-23",
++   "nombre": "San Jorge (Día de Aragón)",
++   "pais": "ES"
++  },
++  {
++   "date": "2026-05-01",
++   "nombre": "Fiesta del trabajo",
++   "pais": "ES"
++  },
++  {
++   "date": "2026-05-02",
++   "nombre": "Fiesta de la Comunidad de Madrid",
++   "pais": "ES"
++  },
++  {
++   "date": "2026-05-17",
++   "nombre": "Día das Letras Galegas",
++   "pais": "ES"
++  },
++  {
++   "date": "2026-05-30",
++   "nombre": "Día de Canarias",
++   "pais": "ES"
++  },
++  {
++   "date": "2026-05-31",
++   "nombre": "Día de la Región Castilla-La Mancha",
++   "pais": "ES"
++  },
++  {
++   "date": "2026-06-04",
++   "nombre": "Corpus Christi",
++   "pais": "ES"
++  },
++  {
++   "date": "2026-06-09",
++   "nombre": "Día de La Rioja",
++   "pais": "ES"
++  },
++  {
++   "date": "2026-06-09",
++   "nombre": "Día de la Región de Murcia",
++   "pais": "ES"
++  },
++  {
++   "date": "2026-06-24",
++   "nombre": "Sant Joan",
++   "pais": "ES"
++  },
++  {
++   "date": "2026-07-25",
++   "nombre": "Santiago Apóstol",
++   "pais": "ES"
++  },
++  {
++   "date": "2026-07-28",
++   "nombre": "Día de las Instituciones de Cantabria",
++   "pais": "ES"
++  },
++  {
++   "date": "2026-08-15",
++   "nombre": "Asunción",
++   "pais": "ES"
++  },
++  {
++   "date": "2026-09-08",
++   "nombre": "Día de Asturias",
++   "pais": "ES"
++  },
++  {
++   "date": "2026-09-08",
++   "nombre": "Día de Extremadura",
++   "pais": "ES"
++  },
++  {
++   "date": "2026-09-11",
++   "nombre": "Diada Nacional de Catalunya",
++   "pais": "ES"
++  },
++  {
++   "date": "2026-09-15",
++   "nombre": "Festividad de la Bien Aparecida",
++   "pais": "ES"
++  },
++  {
++   "date": "2026-10-09",
++   "nombre": "Dia de la Comunitat Valenciana",
++   "pais": "ES"
++  },
++  {
++   "date": "2026-10-12",
++   "nombre": "Fiesta Nacional de España",
++   "pais": "ES"
++  },
++  {
++   "date": "2026-11-01",
++   "nombre": "Día de todos los Santos",
++   "pais": "ES"
++  },
++  {
++   "date": "2026-12-06",
++   "nombre": "Día de la Constitución",
++   "pais": "ES"
++  },
++  {
++   "date": "2026-12-08",
++   "nombre": "Inmaculada Concepción",
++   "pais": "ES"
++  },
++  {
++   "date": "2026-12-25",
++   "nombre": "Navidad",
++   "pais": "ES"
++  },
++  {
++   "date": "2026-12-26",
++   "nombre": "Feast of Saint Stephen",
++   "pais": "ES"
++  },
++  {
++   "date": "2025-01-01",
++   "nombre": "Jour de l'an",
++   "pais": "FR"
++  },
++  {
++   "date": "2025-04-21",
++   "nombre": "Lundi de Pâques",
++   "pais": "FR"
++  },
++  {
++   "date": "2025-05-01",
++   "nombre": "Fête du Travail",
++   "pais": "FR"
++  },
++  {
++   "date": "2025-05-08",
++   "nombre": "Victoire 1945",
++   "pais": "FR"
++  },
++  {
++   "date": "2025-05-29",
++   "nombre": "Ascension",
++   "pais": "FR"
++  },
++  {
++   "date": "2025-06-09",
++   "nombre": "Lundi de Pentecôte",
++   "pais": "FR"
++  },
++  {
++   "date": "2025-07-14",
++   "nombre": "Fête nationale",
++   "pais": "FR"
++  },
++  {
++   "date": "2025-08-15",
++   "nombre": "Assomption",
++   "pais": "FR"
++  },
++  {
++   "date": "2025-11-01",
++   "nombre": "Toussaint",
++   "pais": "FR"
++  },
++  {
++   "date": "2025-11-11",
++   "nombre": "Armistice 1918",
++   "pais": "FR"
++  },
++  {
++   "date": "2025-12-25",
++   "nombre": "Noël",
++   "pais": "FR"
++  },
++  {
++   "date": "2026-01-01",
++   "nombre": "Jour de l'an",
++   "pais": "FR"
++  },
++  {
++   "date": "2026-04-06",
++   "nombre": "Lundi de Pâques",
++   "pais": "FR"
++  },
++  {
++   "date": "2026-05-01",
++   "nombre": "Fête du Travail",
++   "pais": "FR"
++  },
++  {
++   "date": "2026-05-08",
++   "nombre": "Victoire 1945",
++   "pais": "FR"
++  },
++  {
++   "date": "2026-05-14",
++   "nombre": "Ascension",
++   "pais": "FR"
++  },
++  {
++   "date": "2026-05-25",
++   "nombre": "Lundi de Pentecôte",
++   "pais": "FR"
++  },
++  {
++   "date": "2026-07-14",
++   "nombre": "Fête nationale",
++   "pais": "FR"
++  },
++  {
++   "date": "2026-08-15",
++   "nombre": "Assomption",
++   "pais": "FR"
++  },
++  {
++   "date": "2026-11-01",
++   "nombre": "Toussaint",
++   "pais": "FR"
++  },
++  {
++   "date": "2026-11-11",
++   "nombre": "Armistice 1918",
++   "pais": "FR"
++  },
++  {
++   "date": "2026-12-25",
++   "nombre": "Noël",
++   "pais": "FR"
++  },
++  {
++   "date": "2025-01-01",
++   "nombre": "Año Nuevo",
++   "pais": "MX"
++  },
++  {
++   "date": "2025-02-03",
++   "nombre": "Día de la Constitución",
++   "pais": "MX"
++  },
++  {
++   "date": "2025-03-17",
++   "nombre": "Natalicio de Benito Juárez",
++   "pais": "MX"
++  },
++  {
++   "date": "2025-04-17",
++   "nombre": "Jueves Santo",
++   "pais": "MX"
++  },
++  {
++   "date": "2025-04-18",
++   "nombre": "Viernes Santo",
++   "pais": "MX"
++  },
++  {
++   "date": "2025-05-01",
++   "nombre": "Día del Trabajo",
++   "pais": "MX"
++  },
++  {
++   "date": "2025-09-16",
++   "nombre": "Día de la Independencia",
++   "pais": "MX"
++  },
++  {
++   "date": "2025-11-17",
++   "nombre": "Día de la Revolución",
++   "pais": "MX"
++  },
++  {
++   "date": "2025-12-25",
++   "nombre": "Navidad",
++   "pais": "MX"
++  },
++  {
++   "date": "2026-01-01",
++   "nombre": "Año Nuevo",
++   "pais": "MX"
++  },
++  {
++   "date": "2026-02-02",
++   "nombre": "Día de la Constitución",
++   "pais": "MX"
++  },
++  {
++   "date": "2026-03-16",
++   "nombre": "Natalicio de Benito Juárez",
++   "pais": "MX"
++  },
++  {
++   "date": "2026-04-02",
++   "nombre": "Jueves Santo",
++   "pais": "MX"
++  },
++  {
++   "date": "2026-04-03",
++   "nombre": "Viernes Santo",
++   "pais": "MX"
++  },
++  {
++   "date": "2026-05-01",
++   "nombre": "Día del Trabajo",
++   "pais": "MX"
++  },
++  {
++   "date": "2026-09-16",
++   "nombre": "Día de la Independencia",
++   "pais": "MX"
++  },
++  {
++   "date": "2026-11-16",
++   "nombre": "Día de la Revolución",
++   "pais": "MX"
++  },
++  {
++   "date": "2026-12-25",
++   "nombre": "Navidad",
++   "pais": "MX"
++  },
++  {
++   "date": "2025-01-01",
++   "nombre": "Año Nuevo",
++   "pais": "PA"
++  },
++  {
++   "date": "2025-01-09",
++   "nombre": "Día de los Mártires",
++   "pais": "PA"
++  },
++  {
++   "date": "2025-03-03",
++   "nombre": "Lunes de Carnaval",
++   "pais": "PA"
++  },
++  {
++   "date": "2025-03-04",
++   "nombre": "Martes de Carnaval",
++   "pais": "PA"
++  },
++  {
++   "date": "2025-04-18",
++   "nombre": "Viernes Santo",
++   "pais": "PA"
++  },
++  {
++   "date": "2025-05-01",
++   "nombre": "Día del Trabajo",
++   "pais": "PA"
++  },
++  {
++   "date": "2025-11-03",
++   "nombre": "Separación de Panamá de Colombia",
++   "pais": "PA"
++  },
++  {
++   "date": "2025-11-04",
++   "nombre": "Día de los Símbolos Patrios",
++   "pais": "PA"
++  },
++  {
++   "date": "2025-11-05",
++   "nombre": "Consolidación de la Separación de Panamá de Colombia",
++   "pais": "PA"
++  },
++  {
++   "date": "2025-11-10",
++   "nombre": "Primer Grito de Independencia de la Villa de Los Santos",
++   "pais": "PA"
++  },
++  {
++   "date": "2025-11-28",
++   "nombre": "Independencia de Panamá de España",
++   "pais": "PA"
++  },
++  {
++   "date": "2025-12-08",
++   "nombre": "Día de las Madres",
++   "pais": "PA"
++  },
++  {
++   "date": "2025-12-20",
++   "nombre": "Día de Duelo Nacional",
++   "pais": "PA"
++  },
++  {
++   "date": "2025-12-25",
++   "nombre": "Navidad",
++   "pais": "PA"
++  },
++  {
++   "date": "2026-01-01",
++   "nombre": "Año Nuevo",
++   "pais": "PA"
++  },
++  {
++   "date": "2026-01-09",
++   "nombre": "Día de los Mártires",
++   "pais": "PA"
++  },
++  {
++   "date": "2026-02-16",
++   "nombre": "Lunes de Carnaval",
++   "pais": "PA"
++  },
++  {
++   "date": "2026-02-17",
++   "nombre": "Martes de Carnaval",
++   "pais": "PA"
++  },
++  {
++   "date": "2026-04-03",
++   "nombre": "Viernes Santo",
++   "pais": "PA"
++  },
++  {
++   "date": "2026-05-01",
++   "nombre": "Día del Trabajo",
++   "pais": "PA"
++  },
++  {
++   "date": "2026-11-03",
++   "nombre": "Separación de Panamá de Colombia",
++   "pais": "PA"
++  },
++  {
++   "date": "2026-11-04",
++   "nombre": "Día de los Símbolos Patrios",
++   "pais": "PA"
++  },
++  {
++   "date": "2026-11-05",
++   "nombre": "Consolidación de la Separación de Panamá de Colombia",
++   "pais": "PA"
++  },
++  {
++   "date": "2026-11-10",
++   "nombre": "Primer Grito de Independencia de la Villa de Los Santos",
++   "pais": "PA"
++  },
++  {
++   "date": "2026-11-28",
++   "nombre": "Independencia de Panamá de España",
++   "pais": "PA"
++  },
++  {
++   "date": "2026-12-08",
++   "nombre": "Día de las Madres",
++   "pais": "PA"
++  },
++  {
++   "date": "2026-12-21",
++   "nombre": "Día de Duelo Nacional",
++   "pais": "PA"
++  },
++  {
++   "date": "2026-12-25",
++   "nombre": "Navidad",
++   "pais": "PA"
++  },
++  {
++   "date": "2025-01-01",
++   "nombre": "New Year's Day",
++   "pais": "US"
++  },
++  {
++   "date": "2025-01-20",
++   "nombre": "Martin Luther King, Jr. Day",
++   "pais": "US"
++  },
++  {
++   "date": "2025-02-12",
++   "nombre": "Lincoln's Birthday",
++   "pais": "US"
++  },
++  {
++   "date": "2025-02-17",
++   "nombre": "Washington's Birthday",
++   "pais": "US"
++  },
++  {
++   "date": "2025-04-18",
++   "nombre": "Good Friday",
++   "pais": "US"
++  },
++  {
++   "date": "2025-04-18",
++   "nombre": "Good Friday",
++   "pais": "US"
++  },
++  {
++   "date": "2025-05-08",
++   "nombre": "Truman Day",
++   "pais": "US"
++  },
++  {
++   "date": "2025-05-26",
++   "nombre": "Memorial Day",
++   "pais": "US"
++  },
++  {
++   "date": "2025-06-19",
++   "nombre": "Juneteenth National Independence Day",
++   "pais": "US"
++  },
++  {
++   "date": "2025-07-04",
++   "nombre": "Independence Day",
++   "pais": "US"
++  },
++  {
++   "date": "2025-09-01",
++   "nombre": "Labor Day",
++   "pais": "US"
++  },
++  {
++   "date": "2025-10-13",
++   "nombre": "Columbus Day",
++   "pais": "US"
++  },
++  {
++   "date": "2025-10-13",
++   "nombre": "Columbus Day",
++   "pais": "US"
++  },
++  {
++   "date": "2025-10-13",
++   "nombre": "Indigenous Peoples' Day",
++   "pais": "US"
++  },
++  {
++   "date": "2025-11-11",
++   "nombre": "Veterans Day",
++   "pais": "US"
++  },
++  {
++   "date": "2025-11-27",
++   "nombre": "Thanksgiving Day",
++   "pais": "US"
++  },
++  {
++   "date": "2025-12-25",
++   "nombre": "Christmas Day",
++   "pais": "US"
++  },
++  {
++   "date": "2026-01-01",
++   "nombre": "New Year's Day",
++   "pais": "US"
++  },
++  {
++   "date": "2026-01-19",
++   "nombre": "Martin Luther King, Jr. Day",
++   "pais": "US"
++  },
++  {
++   "date": "2026-02-12",
++   "nombre": "Lincoln's Birthday",
++   "pais": "US"
++  },
++  {
++   "date": "2026-02-16",
++   "nombre": "Washington's Birthday",
++   "pais": "US"
++  },
++  {
++   "date": "2026-04-03",
++   "nombre": "Good Friday",
++   "pais": "US"
++  },
++  {
++   "date": "2026-04-03",
++   "nombre": "Good Friday",
++   "pais": "US"
++  },
++  {
++   "date": "2026-05-08",
++   "nombre": "Truman Day",
++   "pais": "US"
++  },
++  {
++   "date": "2026-05-25",
++   "nombre": "Memorial Day",
++   "pais": "US"
++  },
++  {
++   "date": "2026-06-19",
++   "nombre": "Juneteenth National Independence Day",
++   "pais": "US"
++  },
++  {
++   "date": "2026-07-03",
++   "nombre": "Independence Day",
++   "pais": "US"
++  },
++  {
++   "date": "2026-09-07",
++   "nombre": "Labor Day",
++   "pais": "US"
++  },
++  {
++   "date": "2026-10-12",
++   "nombre": "Columbus Day",
++   "pais": "US"
++  },
++  {
++   "date": "2026-10-12",
++   "nombre": "Columbus Day",
++   "pais": "US"
++  },
++  {
++   "date": "2026-10-12",
++   "nombre": "Indigenous Peoples' Day",
++   "pais": "US"
++  },
++  {
++   "date": "2026-11-11",
++   "nombre": "Veterans Day",
++   "pais": "US"
++  },
++  {
++   "date": "2026-11-26",
++   "nombre": "Thanksgiving Day",
++   "pais": "US"
++  },
++  {
++   "date": "2026-12-25",
++   "nombre": "Christmas Day",
++   "pais": "US"
++  }
++ ],
++ "avisos_viaje": [
++  {
++   "pais": "Estados Unidos",
++   "fuente": "US State Dept",
++   "nivel": "Colombia - Level 3: Reconsider Travel",
++   "titulo": "Colombia - Level 3: Reconsider Travel",
++   "actualizado": "2026-03-30T20:00:00-04:00",
++   "resumen": "Reconsider travel to Colombia due to&nbsp; crime, terrorism, civil unrest, &nbsp; kidnapping, and natural disasters. &nbsp;Some areas have an increased risk. Read the entire Travel Advisory. Violent crime is common in many areas of Colombia, including murder, assault, and robbery",
++   "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.col.html"
++  },
++  {
++   "pais": "Canadá",
++   "fuente": "Global Affairs Canada",
++   "nivel": "Exercise a high degree of caution (with regional advisories)",
++   "titulo": "Colombia",
++   "actualizado": "November 2, 2026 10:32 EST",
++   "resumen": "Health - Travel health notice for yellow fever was removed",
++   "url": "https://travel.gc.ca/destinations/colombia"
++  },
++  {
++   "pais": "Reino Unido",
++   "fuente": "FCDO",
++   "nivel": "avoid_all_but_essential_travel_to_parts",
++   "titulo": "Colombia travel advice",
++   "actualizado": "2026-10-30T00:40:46+00:00",
++   "resumen": "New information about the the temporary deployment of security forces in the city of Cucuta (‘Warnings and Insurance’ page).",
++   "url": "https://www.gov.uk/foreign-travel-advice/colombia"
++  }
++ ]
+ }
+\ No newline at end of file
+diff --git a/data/open/bureau_clima.json b/data/open/bureau_clima.json
+index 4c88980..8fbec2c 100644
+--- a/data/open/bureau_clima.json
++++ b/data/open/bureau_clima.json
+@@ -1,7 +1,7 @@
+ {
+  "id": "bureau-clima",
+  "titulo": "Clima y calidad del aire (ETL Bureau)",
+- "fuente": "ETL Bureau, IDEAM + Open-Meteo + aire_med 2026-08..2026-11-08",
++ "fuente": "ETL Bureau, IDEAM + Open-Meteo + aire_med 2026-08..2026-11-08 + SISAIRE",
+  "ventana": "2026-08..2026-11-08",
+  "url": "https://raw.githubusercontent.com/julian8811/bureau-inteligencia-turistica/main/etl-bureau/export/tableros_bureau/clima_aire_2025_2026.json",
+  "licencia": "Datos abiertos IDEAM/Open-Meteo; agregados propios del ETL.",
+@@ -354,5 +354,51 @@
+    "prec_p90": 6.4
+   }
+  ],
+- "corte": "2026-08"
++ "corte": "2026-08",
++ "sisaire_pm25": [
++  {
++   "fecha": "2025-12-21",
++   "pm2_5": 17.86
++  },
++  {
++   "fecha": "2025-12-22",
++   "pm2_5": 14.81
++  },
++  {
++   "fecha": "2025-12-23",
++   "pm2_5": 13.69
++  },
++  {
++   "fecha": "2025-12-24",
++   "pm2_5": 17.63
++  },
++  {
++   "fecha": "2025-12-25",
++   "pm2_5": 20.27
++  },
++  {
++   "fecha": "2025-12-26",
++   "pm2_5": 14.62
++  },
++  {
++   "fecha": "2025-12-27",
++   "pm2_5": 14.26
++  },
++  {
++   "fecha": "2025-12-28",
++   "pm2_5": 15.04
++  },
++  {
++   "fecha": "2025-12-29",
++   "pm2_5": 16.73
++  },
++  {
++   "fecha": "2025-12-30",
++   "pm2_5": 16.02
++  },
++  {
++   "fecha": "2025-12-31",
++   "pm2_5": 18.05
++  }
++ ]
+ }
+\ No newline at end of file
+diff --git a/data/open/bureau_conectividad.json b/data/open/bureau_conectividad.json
+index 523ecbd..8c7ac81 100644
+--- a/data/open/bureau_conectividad.json
++++ b/data/open/bureau_conectividad.json
+@@ -7,6 +7,54 @@
+  "licencia": "Agregados propios del ETL; fuentes primarias datos.gov.co / Eurostat.",
+  "universo": "Operaciones aéreas, TRM, benchmarks UE y señal digital. Sin fuentes descontinuadas.",
+  "serie": [
++  {
++   "periodo": "2024-01",
++   "operaciones": 13873
++  },
++  {
++   "periodo": "2024-02",
++   "operaciones": 13536
++  },
++  {
++   "periodo": "2024-03",
++   "operaciones": 14389
++  },
++  {
++   "periodo": "2024-04",
++   "operaciones": 14386
++  },
++  {
++   "periodo": "2024-05",
++   "operaciones": 15110
++  },
++  {
++   "periodo": "2024-06",
++   "operaciones": 14564
++  },
++  {
++   "periodo": "2024-07",
++   "operaciones": 15316
++  },
++  {
++   "periodo": "2024-08",
++   "operaciones": 15716
++  },
++  {
++   "periodo": "2024-09",
++   "operaciones": 14452
++  },
++  {
++   "periodo": "2024-10",
++   "operaciones": 15037
++  },
++  {
++   "periodo": "2024-11",
++   "operaciones": 14489
++  },
++  {
++   "periodo": "2024-12",
++   "operaciones": 16040
++  },
+   {
+    "periodo": "2025-01",
+    "operaciones": 15133
+@@ -86,12 +134,164 @@
+  ],
+  "trm_serie": [
+   {
+-   "date": "2026-11-01",
+-   "cop_per_usd": 3201.17310615
++   "date": "2026-09-04",
++   "cop_per_usd": 3141.36
++  },
++  {
++   "date": "2026-09-05",
++   "cop_per_usd": 3126.08
++  },
++  {
++   "date": "2026-09-09",
++   "cop_per_usd": 3116.47
++  },
++  {
++   "date": "2026-09-10",
++   "cop_per_usd": 3099.48
++  },
++  {
++   "date": "2026-09-11",
++   "cop_per_usd": 3101.0
++  },
++  {
++   "date": "2026-09-12",
++   "cop_per_usd": 3072.27
++  },
++  {
++   "date": "2026-09-15",
++   "cop_per_usd": 3109.3
++  },
++  {
++   "date": "2026-09-16",
++   "cop_per_usd": 3100.45
++  },
++  {
++   "date": "2026-09-17",
++   "cop_per_usd": 3128.46
++  },
++  {
++   "date": "2026-09-18",
++   "cop_per_usd": 3151.73
++  },
++  {
++   "date": "2026-09-19",
++   "cop_per_usd": 3192.92
++  },
++  {
++   "date": "2026-09-22",
++   "cop_per_usd": 3192.53
++  },
++  {
++   "date": "2026-09-23",
++   "cop_per_usd": 3208.66
++  },
++  {
++   "date": "2026-09-24",
++   "cop_per_usd": 3264.39
++  },
++  {
++   "date": "2026-09-25",
++   "cop_per_usd": 3329.61
++  },
++  {
++   "date": "2026-09-26",
++   "cop_per_usd": 3306.86
++  },
++  {
++   "date": "2026-09-29",
++   "cop_per_usd": 3349.63
++  },
++  {
++   "date": "2026-09-30",
++   "cop_per_usd": 3341.23
++  },
++  {
++   "date": "2026-10-01",
++   "cop_per_usd": 3312.84
++  },
++  {
++   "date": "2026-10-02",
++   "cop_per_usd": 3307.73
++  },
++  {
++   "date": "2026-10-03",
++   "cop_per_usd": 3273.49
++  },
++  {
++   "date": "2026-10-06",
++   "cop_per_usd": 3209.78
++  },
++  {
++   "date": "2026-10-07",
++   "cop_per_usd": 3216.01
++  },
++  {
++   "date": "2026-10-08",
++   "cop_per_usd": 3238.88
++  },
++  {
++   "date": "2026-10-09",
++   "cop_per_usd": 3218.75
++  },
++  {
++   "date": "2026-10-10",
++   "cop_per_usd": 3194.44
++  },
++  {
++   "date": "2026-10-14",
++   "cop_per_usd": 3181.74
++  },
++  {
++   "date": "2026-10-15",
++   "cop_per_usd": 3197.65
++  },
++  {
++   "date": "2026-10-16",
++   "cop_per_usd": 3170.46
++  },
++  {
++   "date": "2026-10-17",
++   "cop_per_usd": 3174.67
++  },
++  {
++   "date": "2026-10-20",
++   "cop_per_usd": 3156.32
++  },
++  {
++   "date": "2026-10-21",
++   "cop_per_usd": 3163.76
+   },
+   {
+-   "date": "Mon, 02 Nov 2026 00:02:31 +0000",
+-   "cop_per_usd": 3192.232311
++   "date": "2026-10-22",
++   "cop_per_usd": 3191.47
++  },
++  {
++   "date": "2026-10-23",
++   "cop_per_usd": 3185.01
++  },
++  {
++   "date": "2026-10-24",
++   "cop_per_usd": 3158.43
++  },
++  {
++   "date": "2026-10-27",
++   "cop_per_usd": 3157.94
++  },
++  {
++   "date": "2026-10-28",
++   "cop_per_usd": 3148.02
++  },
++  {
++   "date": "2026-10-29",
++   "cop_per_usd": 3162.35
++  },
++  {
++   "date": "2026-10-30",
++   "cop_per_usd": 3166.91
++  },
++  {
++   "date": "2026-10-31",
++   "cop_per_usd": 3182.99
+   }
+  ],
+  "benchmark_eu": [
+@@ -38951,5 +39151,342 @@
+   "gastronomia_osm_med.csv: sin filas de datos (vacia)",
+   "emisores_contexto.csv: sin filas de datos (solo header)",
+   "migrantes_co.csv: sin filas de datos (fuente muerta)"
++ ],
++ "bts_colombia": [
++  {
++   "year": "2024",
++   "mes": "08",
++   "llegadas_sillas": 313024,
++   "llegadas_pax": 273133,
++   "salidas_sillas": 313381
++  },
++  {
++   "year": "2024",
++   "mes": "09",
++   "llegadas_sillas": 247830,
++   "llegadas_pax": 215809,
++   "salidas_sillas": 247022
++  },
++  {
++   "year": "2024",
++   "mes": "10",
++   "llegadas_sillas": 251232,
++   "llegadas_pax": 204172,
++   "salidas_sillas": 251132
++  },
++  {
++   "year": "2024",
++   "mes": "11",
++   "llegadas_sillas": 255030,
++   "llegadas_pax": 202148,
++   "salidas_sillas": 255397
++  },
++  {
++   "year": "2024",
++   "mes": "12",
++   "llegadas_sillas": 344003,
++   "llegadas_pax": 266927,
++   "salidas_sillas": 344110
++  },
++  {
++   "year": "2025",
++   "mes": "01",
++   "llegadas_sillas": 319738,
++   "llegadas_pax": 269340,
++   "salidas_sillas": 320263
++  },
++  {
++   "year": "2025",
++   "mes": "02",
++   "llegadas_sillas": 246282,
++   "llegadas_pax": 180922,
++   "salidas_sillas": 246360
++  },
++  {
++   "year": "2025",
++   "mes": "03",
++   "llegadas_sillas": 278463,
++   "llegadas_pax": 226973,
++   "salidas_sillas": 277907
++  },
++  {
++   "year": "2025",
++   "mes": "04",
++   "llegadas_sillas": 262971,
++   "llegadas_pax": 220419,
++   "salidas_sillas": 262186
++  },
++  {
++   "year": "2025",
++   "mes": "05",
++   "llegadas_sillas": 277556,
++   "llegadas_pax": 218398,
++   "salidas_sillas": 278435
++  },
++  {
++   "year": "2025",
++   "mes": "06",
++   "llegadas_sillas": 324308,
++   "llegadas_pax": 265454,
++   "salidas_sillas": 325298
++  },
++  {
++   "year": "2025",
++   "mes": "07",
++   "llegadas_sillas": 345412,
++   "llegadas_pax": 276578,
++   "salidas_sillas": 346090
++  },
++  {
++   "year": "2025",
++   "mes": "08",
++   "llegadas_sillas": 339488,
++   "llegadas_pax": 284396,
++   "salidas_sillas": 340253
++  },
++  {
++   "year": "2025",
++   "mes": "09",
++   "llegadas_sillas": 267630,
++   "llegadas_pax": 215405,
++   "salidas_sillas": 267952
++  },
++  {
++   "year": "2025",
++   "mes": "10",
++   "llegadas_sillas": 273367,
++   "llegadas_pax": 213755,
++   "salidas_sillas": 274190
++  },
++  {
++   "year": "2025",
++   "mes": "11",
++   "llegadas_sillas": 286020,
++   "llegadas_pax": 216243,
++   "salidas_sillas": 287642
++  },
++  {
++   "year": "2025",
++   "mes": "12",
++   "llegadas_sillas": 357339,
++   "llegadas_pax": 270325,
++   "salidas_sillas": 357608
++  },
++  {
++   "year": "2026",
++   "mes": "01",
++   "llegadas_sillas": 325930,
++   "llegadas_pax": 280539,
++   "salidas_sillas": 325897
++  },
++  {
++   "year": "2026",
++   "mes": "02",
++   "llegadas_sillas": 261142,
++   "llegadas_pax": 194484,
++   "salidas_sillas": 260903
++  },
++  {
++   "year": "2026",
++   "mes": "03",
++   "llegadas_sillas": 302516,
++   "llegadas_pax": 248783,
++   "salidas_sillas": 302734
++  },
++  {
++   "year": "2026",
++   "mes": "04",
++   "llegadas_sillas": 277432,
++   "llegadas_pax": 224184,
++   "salidas_sillas": 276554
++  },
++  {
++   "year": "2026",
++   "mes": "05",
++   "llegadas_sillas": 255874,
++   "llegadas_pax": 208370,
++   "salidas_sillas": 255970
++  },
++  {
++   "year": "2026",
++   "mes": "06",
++   "llegadas_sillas": 293644,
++   "llegadas_pax": 248658,
++   "salidas_sillas": 292966
++  },
++  {
++   "year": "2026",
++   "mes": "07",
++   "llegadas_sillas": 318691,
++   "llegadas_pax": 251254,
++   "salidas_sillas": 318622
++  }
++ ],
++ "ipc_colombia": [
++  {
++   "anio": 2024,
++   "mes": 1,
++   "indice": 138.98
++  },
++  {
++   "anio": 2025,
++   "mes": 1,
++   "indice": 146.24
++  },
++  {
++   "anio": 2026,
++   "mes": 1,
++   "indice": 154.07
++  },
++  {
++   "anio": 2024,
++   "mes": 2,
++   "indice": 140.49
++  },
++  {
++   "anio": 2025,
++   "mes": 2,
++   "indice": 147.9
++  },
++  {
++   "anio": 2026,
++   "mes": 2,
++   "indice": 155.73
++  },
++  {
++   "anio": 2024,
++   "mes": 3,
++   "indice": 141.48
++  },
++  {
++   "anio": 2025,
++   "mes": 3,
++   "indice": 148.68
++  },
++  {
++   "anio": 2026,
++   "mes": 3,
++   "indice": 156.94
++  },
++  {
++   "anio": 2024,
++   "mes": 4,
++   "indice": 142.32
++  },
++  {
++   "anio": 2025,
++   "mes": 4,
++   "indice": 149.66
++  },
++  {
++   "anio": 2026,
++   "mes": 4,
++   "indice": 158.17
++  },
++  {
++   "anio": 2024,
++   "mes": 5,
++   "indice": 142.92
++  },
++  {
++   "anio": 2025,
++   "mes": 5,
++   "indice": 150.14
++  },
++  {
++   "anio": 2026,
++   "mes": 5,
++   "indice": 158.91
++  },
++  {
++   "anio": 2024,
++   "mes": 6,
++   "indice": 143.38
++  },
++  {
++   "anio": 2025,
++   "mes": 6,
++   "indice": 150.3
++  },
++  {
++   "anio": 2026,
++   "mes": 6,
++   "indice": 159.53
++  },
++  {
++   "anio": 2024,
++   "mes": 7,
++   "indice": 143.67
++  },
++  {
++   "anio": 2025,
++   "mes": 7,
++   "indice": 150.71
++  },
++  {
++   "anio": 2026,
++   "mes": 7,
++   "indice": 159.79
++  },
++  {
++   "anio": 2024,
++   "mes": 8,
++   "indice": 143.67
++  },
++  {
++   "anio": 2025,
++   "mes": 8,
++   "indice": 150.99
++  },
++  {
++   "anio": 2026,
++   "mes": 8,
++   "indice": 160.42
++  },
++  {
++   "anio": 2024,
++   "mes": 9,
++   "indice": 144.02
++  },
++  {
++   "anio": 2025,
++   "mes": 9,
++   "indice": 151.48
++  },
++  {
++   "anio": 2026,
++   "mes": 9,
++   "indice": 161.0
++  },
++  {
++   "anio": 2024,
++   "mes": 10,
++   "indice": 143.83
++  },
++  {
++   "anio": 2025,
++   "mes": 10,
++   "indice": 151.76
++  },
++  {
++   "anio": 2024,
++   "mes": 11,
++   "indice": 144.22
++  },
++  {
++   "anio": 2025,
++   "mes": 11,
++   "indice": 151.87
++  },
++  {
++   "anio": 2024,
++   "mes": 12,
++   "indice": 144.88
++  },
++  {
++   "anio": 2025,
++   "mes": 12,
++   "indice": 152.27
++  }
+  ]
+ }
+\ No newline at end of file
+diff --git a/scripts/alimentar_bureau.py b/scripts/alimentar_bureau.py
+index e3e703f..d621e1b 100644
+--- a/scripts/alimentar_bureau.py
++++ b/scripts/alimentar_bureau.py
+@@ -204,6 +204,7 @@ def clima():
+         "universo": "Lluvia mensual agregada, PM2.5 diario, pronóstico ensemble 7 días.",
+         "serie": src.get("lluvia_mensual", []),
+         "pm25_serie": src.get("pm25_serie", []),
++        "sisaire_pm25": src.get("sisaire_pm25", []),
+         "pronostico": src.get("pronostico", []),
+         "corte": max([r.get("periodo", "") for r in src.get("lluvia_mensual", [])] or [""]),
+     })
+@@ -227,6 +228,8 @@ def conectividad_bench():
+         "universo": "Operaciones aéreas, TRM, benchmarks UE y señal digital. Sin fuentes descontinuadas.",
+         "serie": src.get("operaciones_serie", []),
+         "trm_serie": src.get("trm_serie", []),
++        "bts_colombia": src.get("bts_colombia", []),
++        "ipc_colombia": src.get("ipc_colombia", []),
+         "benchmark_eu": src.get("benchmark_eu", []),
+         "wikimedia_serie": src.get("wikimedia_serie", []),
+         "cortes": src.get("cortes", {}),
+@@ -252,6 +255,8 @@ def calendario():
+         "licencia": "Datos abiertos; agregados propios del ETL.",
+         "universo": "Feriados nacionales y red de estaciones IDEAM con reporte en Medellín.",
+         "serie": src.get("festivos", []),
++        "festivos_emisores": src.get("festivos_emisores", []),
++        "avisos_viaje": src.get("avisos_viaje", []),
+         "estaciones": src.get("estaciones", {}),
+         "corte": max([r.get("date", "") for r in src.get("festivos", [])] or [""]),
+     })
+diff --git a/scripts/preparar_fuentes.py b/scripts/preparar_fuentes.py
+index 3a0ed1f..6a81ca3 100644
+--- a/scripts/preparar_fuentes.py
++++ b/scripts/preparar_fuentes.py
+@@ -981,9 +981,19 @@ def main():
+     piezas.append({"archivo": write("huella.json", huella), "id": "huella", "estado": huella.get("estado", "ok"), "n": len(huella.get("serie") or [])})
+     print("evi", piezas[-2])
+     print("huella", piezas[-1])
++    previas = []
++    if (OUT / "manifiesto.json").exists():
++        try:
++            anterior = json.loads((OUT / "manifiesto.json").read_text(encoding="utf-8"))
++            previas = [
++                p for p in anterior.get("piezas", [])
++                if str(p.get("id") or "").startswith(("bureau", "marca", "prensa", "informe"))
++            ]
++        except Exception:
++            previas = []
+     manifiesto = {
+         "generado": HOY,
+-        "piezas": piezas,
++        "piezas": piezas + previas,
+         "errores": errores,
+         "mercados": MERCADOS,
+         "destinos_comparables": DESTINOS,
+-- 
+2.43.0
+
