@@ -38,7 +38,7 @@ daily:
   - fx_cop              # EUR/MXN/BRL; el COP oficial va por trm_co
   - openmeteo_ensemble
   # models/pronosticar.py corre después de bureau_runner y antes de publicar:
-  # estacional, Holt-Winters y gradiente con rezagos; se publica el de menor MAE
+  # mes anterior, Holt-Winters, SARIMA, gradiente y LightGBM; se publica el menor MAE
   # opcionales fuera del diario (nadie los lee: ni KPIs ni dashboard):
   # - openmeteo_med      # clima 7d+30d (re-cablear solo si un KPI lo usa)
   # - conectividad_aerea # snapshot estatico (re-cablear como mensual)

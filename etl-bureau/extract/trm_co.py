@@ -33,6 +33,44 @@ def rows_from_socrata(payload) -> pd.DataFrame:
     return df
 
 
+def mensual_desde_diaria(df: pd.DataFrame) -> pd.DataFrame:
+    """Promedio del mes calendario. periodo YYYY-MM y trm a 2 decimales."""
+    vacio = pd.DataFrame(columns=["periodo", "trm"])
+    if df is None or df.empty or "date" not in df.columns or "rate_cop" not in df.columns:
+        return vacio
+    work = df.copy()
+    work["periodo"] = work["date"].astype(str).str.slice(0, 7)
+    work["rate_cop"] = pd.to_numeric(work["rate_cop"], errors="coerce")
+    work = work.dropna(subset=["periodo", "rate_cop"])
+    work = work[work["periodo"].str.match(r"\d{4}-\d{2}")]
+    if work.empty:
+        return vacio
+    grupo = work.groupby("periodo", as_index=False)["rate_cop"].mean()
+    grupo["trm"] = grupo["rate_cop"].map(float)
+    return grupo[["periodo", "trm"]].sort_values("periodo").reset_index(drop=True)
+
+
+def fetch_historia() -> pd.DataFrame:
+    """TRM diaria desde 2015, para el promedio mensual. Vacío si Socrata no responde."""
+    try:
+        r = requests.get(
+            OFICIAL,
+            params={
+                "$select": "vigenciadesde,valor",
+                "$where": "vigenciadesde >= '2015-01-01T00:00:00.000'",
+                "$order": "vigenciadesde",
+                "$limit": "20000",
+            },
+            headers=UA,
+            timeout=90,
+        )
+        r.raise_for_status()
+        return rows_from_socrata(r.json())
+    except Exception as e:
+        print(f"[extract][WARN] trm_co historia: {e}")
+        return _empty()
+
+
 def run_rate() -> pd.DataFrame:
     try:
         r = requests.get(
@@ -69,10 +107,17 @@ def run():
         print(f"[extract][WARN] trm_co agregador: {e}")
         df = _empty()
     try:
-        return [save_or_carry(df, "trm_co", COLUMNS)]
+        rutas = [save_or_carry(df, "trm_co", COLUMNS)]
     except Exception as e:
         print(f"[extract][WARN] trm_co save: {e}")
-        return []
+        rutas = []
+    try:
+        mensual = mensual_desde_diaria(fetch_historia())
+        if not mensual.empty:
+            save_or_carry(mensual, "trm_mensual", ["periodo", "trm"])
+    except Exception as e:
+        print(f"[extract][WARN] trm_mensual: {e}")
+    return rutas
 
 
 if __name__ == "__main__":

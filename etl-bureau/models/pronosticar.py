@@ -1,13 +1,14 @@
 """Pronóstico a 6 meses para el tablero.
 
-Tres modelos, un ensayo y una regla de desempate. El ensayo son los
+Cinco modelos, un ensayo y una regla de desempate. El ensayo son los
 últimos 6 meses observados. Gana el menor error absoluto (MAE). Si otro
-queda a menos del 2 %, se publica el más simple: estacional, luego
-Holt-Winters, luego el gradiente. La banda es el percentil 80 de ese
-error; no es un intervalo de confianza.
+queda a menos del 2 %, se publica el más simple: el mes anterior, luego
+Holt-Winters, luego SARIMA, luego el gradiente, luego LightGBM. La banda
+es el percentil 80 de ese error; no es un intervalo de confianza.
 
-Con 54 a 96 meses no se entrena una red. Operaciones, BTS, IPC, OWID,
-SISAIRE, TRM y EVI quedan fuera: el grano o el largo no alcanzan.
+No se publica una red, ni Prophet, ni Chronos, ni un ensamble, ni la TRM
+como causa de otra serie. Operaciones, BTS, IPC, OWID, SISAIRE y EVI
+quedan fuera: el grano o el largo no alcanzan.
 """
 import json
 import math
@@ -27,9 +28,11 @@ MARGEN = 1.02
 ETIQUETAS = {
     "estacional": "repetir el mismo mes del año anterior",
     "holt_winters": "Holt-Winters",
+    "sarima": "SARIMA",
     "gradiente": "gradiente con rezagos",
+    "lightgbm": "LightGBM",
 }
-ORDEN = ("estacional", "holt_winters", "gradiente")
+ORDEN = ("estacional", "holt_winters", "sarima", "gradiente", "lightgbm")
 
 NOTA_BANDA = (
     "La banda es el percentil 80 del error absoluto en los últimos 6 meses "
@@ -130,6 +133,105 @@ def _mes_siguiente(mes, pasos):
     return ((int(mes) - 1 + pasos) % 12) + 1
 
 
+def indicador_covid(periodos):
+    """1 de mar-2020 a jun-2021, 0,5 de jul a dic-2021, 0 en el resto y en el horizonte."""
+    out = []
+    for periodo in periodos:
+        if "2020-03" <= periodo <= "2021-06":
+            out.append(1.0)
+        elif "2021-07" <= periodo <= "2021-12":
+            out.append(0.5)
+        else:
+            out.append(0.0)
+    return out
+
+
+def sarima_lleva_covid(periodos):
+    """Solo si la serie cruza el choque y el indicador no es constante."""
+    if not periodos or periodos[0] > "2021-12" or periodos[-1] < "2020-03":
+        return False
+    return len(set(indicador_covid(periodos))) > 1
+
+
+def pronostico_sarima(train, periodos, horizonte):
+    if len(train) < PERIODO * 2 or len(periodos) != len(train):
+        return None
+    try:
+        import numpy as np
+        from statsmodels.tsa.statespace.sarimax import SARIMAX
+    except Exception:
+        return None
+    futuros = [siguiente_periodo(periodos[-1], h) for h in range(1, horizonte + 1)]
+    y = [float(v) for v in train]
+    try:
+        with warnings.catch_warnings():
+            warnings.simplefilter("ignore")
+            if sarima_lleva_covid(periodos):
+                exog = np.asarray(indicador_covid(periodos), dtype=float).reshape(-1, 1)
+                exog_f = np.asarray(indicador_covid(futuros), dtype=float).reshape(-1, 1)
+                modelo = SARIMAX(
+                    y,
+                    exog=exog,
+                    order=(1, 0, 1),
+                    seasonal_order=(1, 1, 0, 12),
+                    trend="c",
+                )
+                ajuste = modelo.fit(disp=False)
+                pred = [float(v) for v in ajuste.forecast(horizonte, exog=exog_f)]
+            else:
+                modelo = SARIMAX(
+                    y,
+                    order=(1, 0, 1),
+                    seasonal_order=(1, 1, 0, 12),
+                    trend="c",
+                )
+                ajuste = modelo.fit(disp=False)
+                pred = [float(v) for v in ajuste.forecast(horizonte)]
+    except Exception:
+        return None
+    if len(pred) != horizonte or any(not math.isfinite(v) for v in pred):
+        return None
+    return pred
+
+
+def pronostico_lightgbm(train, horizonte):
+    if len(train) < PERIODO * 2:
+        return None
+    try:
+        import numpy as np
+        import lightgbm as lgb
+    except Exception:
+        return None
+    lags = (1, 2, 3, 12)
+    x, y = [], []
+    for i in range(PERIODO, len(train)):
+        x.append([float(train[i - lag]) for lag in lags])
+        y.append(float(train[i]))
+    if len(x) < 12:
+        return None
+    try:
+        reg = lgb.LGBMRegressor(
+            n_estimators=200,
+            num_leaves=8,
+            random_state=0,
+            verbose=-1,
+            n_jobs=1,
+        )
+        reg.fit(np.asarray(x, dtype=float), np.asarray(y, dtype=float))
+        hist = [float(v) for v in train]
+        pred = []
+        for _ in range(horizonte):
+            feats = np.asarray([[hist[-lag] for lag in lags]], dtype=float)
+            punto = float(reg.predict(feats)[0])
+            if not math.isfinite(punto):
+                return None
+            pred.append(punto)
+            hist.append(punto)
+        return pred
+    except Exception:
+        return None
+
+
 def pronostico_gradiente(train, meses, horizonte):
     if len(train) < PERIODO * 2 or len(meses) != len(train):
         return None
@@ -204,26 +306,37 @@ def siguiente_periodo(periodo, pasos=1):
 
 
 def _librerias():
-    tiene = {"holt_winters": True, "gradiente": True}
+    tiene = {"holt_winters": True, "sarima": True, "gradiente": True, "lightgbm": True}
     try:
         import statsmodels.tsa.holtwinters  # noqa: F401
     except Exception:
         tiene["holt_winters"] = False
     try:
+        import statsmodels.tsa.statespace.sarimax  # noqa: F401
+    except Exception:
+        tiene["sarima"] = False
+    try:
         import sklearn.ensemble  # noqa: F401
     except Exception:
         tiene["gradiente"] = False
+    try:
+        import lightgbm  # noqa: F401
+    except Exception:
+        tiene["lightgbm"] = False
     return tiene
 
 
-def evaluar(valores, meses, horizonte):
+def evaluar(valores, meses, periodos, horizonte):
     train = valores[:-horizonte]
     reales = valores[-horizonte:]
     meses_train = meses[:-horizonte]
+    per_train = list(periodos[:-horizonte])
     brutos = {
         "estacional": pronostico_estacional(train, horizonte),
         "holt_winters": pronostico_holt(train, horizonte),
+        "sarima": pronostico_sarima(train, per_train, horizonte),
         "gradiente": pronostico_gradiente(train, meses_train, horizonte),
+        "lightgbm": pronostico_lightgbm(train, horizonte),
     }
     return train, reales, brutos
 
@@ -241,13 +354,17 @@ def _nota_eleccion(ganador, maes):
     )
 
 
-def proyectar(modelo, valores, meses):
+def proyectar(modelo, valores, meses, periodos):
     if modelo == "estacional":
         return pronostico_estacional(valores, HORIZONTE)
     if modelo == "holt_winters":
         return pronostico_holt(valores, HORIZONTE)
+    if modelo == "sarima":
+        return pronostico_sarima(valores, periodos, HORIZONTE)
     if modelo == "gradiente":
         return pronostico_gradiente(valores, meses, HORIZONTE)
+    if modelo == "lightgbm":
+        return pronostico_lightgbm(valores, HORIZONTE)
     return None
 
 
@@ -275,7 +392,7 @@ def construir_serie(spec, periodos, valores, libs):
             "Entra el promedio de esos vecinos, no el punto crudo."
         )
     meses = [int(p[5:7]) for p in periodos]
-    _, reales, brutos = evaluar(valores, meses, HOLDOUT)
+    _, reales, brutos = evaluar(valores, meses, periodos, HOLDOUT)
     comparacion = []
     maes = {}
     for nombre in ORDEN:
@@ -298,7 +415,7 @@ def construir_serie(spec, periodos, valores, libs):
     if "estacional" not in maes:
         return None
     ganador = elegir(maes)
-    futuro = proyectar(ganador, valores, meses)
+    futuro = proyectar(ganador, valores, meses, periodos)
     if not futuro:
         ganador = "estacional"
         futuro = pronostico_estacional(valores, HORIZONTE)
@@ -403,14 +520,18 @@ def frase_resumen(series):
 
 
 DESCARTADOS = [
-    "Red neuronal: las series tienen entre 54 y 96 meses. No alcanza para un modelo profundo.",
+    "Red neuronal y Chronos-Bolt: las series tienen entre 54 y 142 meses. No se publica un modelo profundo.",
+    "Prophet queda fuera: pide CmdStan y este ensayo no lo usa.",
+    "El ensamble ponderado por 1/MAPE no es la regla de este tablero. Aquí gana el menor MAE a 6 meses y, dentro del 2 %, el modelo más simple.",
+    "SARIMAX con log(TRM) como causa quedó último en el backtest de 12 meses del otro ejercicio. La TRM se pronostica sola.",
     "Operaciones aéreas (31 meses), BTS T-100 (24) e IPC nacional (33) se quedan cortos para un ensayo de 6 meses y una estacionalidad de 12.",
     "El agregado de países es anual. No se inventan meses.",
     "OWID Colombia es anual y en esta descarga corta en 2022.",
     "SISAIRE tiene 11 días y cierra en 2025-12-31.",
-    "La TRM oficial publicada es una ventana de días, no una serie de este horizonte.",
+    "La TRM del día sigue siendo una ventana corta. El pronóstico usa el promedio mensual, que es otra serie.",
     "La lluvia del corte es un mes y la EVI es una ola semestral.",
     "Llegadas por país del archivo anual y el benchmark europeo no entran: otro grano, u otra pregunta.",
+    "Notas, PDF y guías del catálogo de 55 fuentes no son una serie mensual verificada.",
 ]
 
 
@@ -418,6 +539,8 @@ def construir(crudas):
     libs = _librerias()
     series = []
     for spec in crudas["specs"]:
+        if spec["id"] not in crudas["periodos"]:
+            continue
         fila = construir_serie(spec, crudas["periodos"][spec["id"]], crudas["valores"][spec["id"]], libs)
         if fila:
             series.append(fila)
@@ -429,7 +552,11 @@ def construir(crudas):
         "generado": max(cortes) if cortes else "",
         "horizonte_meses": HORIZONTE,
         "holdout_meses": HOLDOUT,
-        "fuente": "Aerocivil (cinco mercados), EMA Antioquia (ocupación y tarifa) y SIEDCO Medellín (homicidios y hurtos).",
+        "fuente": (
+            "Aerocivil (cinco mercados), EMA (ocupación nacional y de Antioquia, "
+            "ingresos reales de alojamiento y tarifa de Antioquia), SIEDCO Medellín "
+            "(homicidios y hurtos) y TRM mensual de la Superfinanciera (datos.gov.co 32sa-8pi3)."
+        ),
         "resumen": {
             "n": len(series),
             "por_modelo": {nombre: sum(1 for s in series if s["modelo"] == nombre) for nombre in ORDEN},
@@ -437,8 +564,9 @@ def construir(crudas):
             "frase": frase_resumen(series) if series else "Sin series.",
         },
         "fuera": (
-            "No se modelan una red neuronal ni las series cortas o de otro grano: "
-            "operaciones aéreas, BTS, IPC, OWID, SISAIRE, TRM y EVI."
+            "No se publican Prophet, Chronos, un ensamble ni la TRM como causa de otra serie. "
+            "Tampoco las series cortas o de otro grano: operaciones aéreas, BTS, IPC, OWID, SISAIRE y EVI. "
+            "La TRM pronosticada es el promedio mensual, no la tasa del día."
         ),
         "descartados": DESCARTADOS,
         "series": series,
@@ -488,6 +616,20 @@ def _specs():
         ],
     })
     specs.append({
+        "id": "trm_mensual",
+        "tab": "mercados",
+        "nombre": "TRM promedio mensual",
+        "unidad": "COP por USD",
+        "decimales": 2,
+        "piso": 0,
+        "techo": None,
+        "caer_ceros": False,
+        "notas": [
+            "Promedio mensual de la TRM oficial (Superfinanciera, datos.gov.co 32sa-8pi3). "
+            "No es la tasa de un día ni una causa de las llegadas.",
+        ],
+    })
+    specs.append({
         "id": "ocupacion_antioquia",
         "tab": "visitante",
         "nombre": "Ocupación hotelera de Antioquia",
@@ -508,6 +650,31 @@ def _specs():
         "techo": None,
         "caer_ceros": False,
         "notas": ["Índice de tarifa de Antioquia en la EMA. No es el IPC nacional ni la tarifa de un hotel."],
+    })
+    specs.append({
+        "id": "ocupacion_nacional",
+        "tab": "visitante",
+        "nombre": "Ocupación hotelera nacional",
+        "unidad": "%",
+        "decimales": 2,
+        "piso": 0,
+        "techo": 100,
+        "caer_ceros": False,
+        "notas": ["Ocupación nacional de la EMA. No es Antioquia ni un hotel de Medellín."],
+    })
+    specs.append({
+        "id": "ingresos_reales",
+        "tab": "visitante",
+        "nombre": "Ingresos reales de alojamiento",
+        "unidad": "índice",
+        "decimales": 2,
+        "piso": 0,
+        "techo": None,
+        "caer_ceros": False,
+        "notas": [
+            "Índice nacional de ingresos reales de alojamiento, base 2019=100. "
+            "No es la tarifa de Antioquia ni el IPC.",
+        ],
     })
     specs.append({
         "id": "homicidios",
@@ -619,13 +786,144 @@ def leer_slim(path=INSUMOS):
     return doc
 
 
+def coincide_desde(corta_p, corta_v, larga_p, larga_v, desde="2022-01", tol=0.02):
+    """True si, desde `desde`, cada mes corto está en la serie larga dentro de `tol`."""
+    larga = {p: float(v) for p, v in zip(larga_p, larga_v)}
+    vistos = 0
+    for periodo, valor in zip(corta_p, corta_v):
+        if periodo < desde:
+            continue
+        vistos += 1
+        if periodo not in larga or abs(larga[periodo] - float(valor)) > tol:
+            return False
+    return vistos > 0
+
+
+def _poner(crudas, serie_id, periodos, valores):
+    crudas["periodos"][serie_id] = list(periodos)
+    crudas["valores"][serie_id] = [float(v) for v in valores]
+
+
+def _ultimo_raw(nombre):
+    raw = BASE / "data" / "raw"
+    if not raw.exists():
+        return None
+    cands = sorted(raw.glob(f"*/{nombre}"))
+    return cands[-1] if cands else None
+
+
+def leer_ema_vivo():
+    bruto = os.environ.get("EMA_XLSX")
+    path = Path(bruto) if bruto else _ultimo_raw("dane_ema.xlsx")
+    if path is None or not path.exists():
+        return None
+    try:
+        from .anexo_ema import leer_anexo
+        return leer_anexo(path)
+    except Exception:
+        return None
+
+
+def leer_trm_vivo():
+    path = _ultimo_raw("trm_mensual.csv")
+    if path is None or not path.exists():
+        return None
+    try:
+        import pandas as pd
+        df = pd.read_csv(path)
+    except Exception:
+        return None
+    if df.empty or "periodo" not in df.columns or "trm" not in df.columns:
+        return None
+    df = df.dropna(subset=["periodo", "trm"]).sort_values("periodo")
+    if df.empty:
+        return None
+    periodos = [str(p)[:7] for p in df["periodo"]]
+    valores = [float(v) for v in df["trm"]]
+    return periodos, valores
+
+
+def _desde_slim(crudas, slim, serie_id):
+    if serie_id in crudas["periodos"] or serie_id not in slim.get("periodos", {}):
+        return
+    _poner(crudas, serie_id, slim["periodos"][serie_id], slim["valores"][serie_id])
+
+
+def completar(crudas):
+    """El anexo EMA y el CSV de TRM mensual alargan el insumo. Si no están, queda el JSON."""
+    slim = None
+
+    def respaldo():
+        nonlocal slim
+        if slim is None:
+            try:
+                slim = leer_slim()
+            except Exception:
+                slim = {"periodos": {}, "valores": {}}
+        return slim
+
+    ema = leer_ema_vivo()
+    nota_antioquia = None
+    if ema:
+        for serie_id in ("ocupacion_nacional", "ingresos_reales"):
+            _poner(crudas, serie_id, *ema[serie_id])
+        larga_p, larga_v = ema["ocupacion_antioquia"]
+        if "ocupacion_antioquia" in crudas["periodos"]:
+            corta_p = crudas["periodos"]["ocupacion_antioquia"]
+            corta_v = crudas["valores"]["ocupacion_antioquia"]
+            if coincide_desde(corta_p, corta_v, larga_p, larga_v) and len(larga_p) >= len(corta_p):
+                _poner(crudas, "ocupacion_antioquia", larga_p, larga_v)
+                if larga_p[0] < "2022-01":
+                    nota_antioquia = (
+                        "La serie corta del tablero arranca en 2022. El anexo EMA agrega los meses "
+                        "anteriores, desde "
+                        + larga_p[0]
+                        + ", porque desde 2022 los valores coinciden."
+                    )
+            # Si no coincide, se queda la corta.
+        else:
+            _poner(crudas, "ocupacion_antioquia", larga_p, larga_v)
+    else:
+        previo = respaldo()
+        for serie_id in ("ocupacion_nacional", "ingresos_reales"):
+            _desde_slim(crudas, previo, serie_id)
+        if "ocupacion_antioquia" in crudas["periodos"] and "ocupacion_antioquia" in previo.get("periodos", {}):
+            corta_p = crudas["periodos"]["ocupacion_antioquia"]
+            larga_p = previo["periodos"]["ocupacion_antioquia"]
+            if len(larga_p) > len(corta_p) and coincide_desde(
+                corta_p,
+                crudas["valores"]["ocupacion_antioquia"],
+                larga_p,
+                previo["valores"]["ocupacion_antioquia"],
+            ):
+                _poner(crudas, "ocupacion_antioquia", larga_p, previo["valores"]["ocupacion_antioquia"])
+                if larga_p[0] < "2022-01":
+                    nota_antioquia = (
+                        "La serie corta del tablero arranca en 2022. El anexo EMA agrega los meses "
+                        "anteriores, desde "
+                        + larga_p[0]
+                        + ", porque desde 2022 los valores coinciden."
+                    )
+
+    trm = leer_trm_vivo()
+    if trm:
+        _poner(crudas, "trm_mensual", *trm)
+    else:
+        _desde_slim(crudas, respaldo(), "trm_mensual")
+
+    crudas["specs"] = _specs()
+    if nota_antioquia:
+        for spec in crudas["specs"]:
+            if spec["id"] == "ocupacion_antioquia":
+                spec["notas"].append(nota_antioquia)
+    return crudas
+
+
 def cargar():
     vivo = leer_vivo()
-    if vivo and len(vivo["periodos"]) >= 8:
-        return vivo
-    slim = leer_slim()
-    slim["specs"] = _specs()
-    return slim
+    if not (vivo and len(vivo.get("periodos") or {}) >= 8):
+        vivo = leer_slim()
+    return completar(vivo)
 
 
 def run():
@@ -648,8 +946,6 @@ def run():
 
 
 if __name__ == "__main__":
-    vivo = leer_vivo()
-    if vivo:
-        guardar_insumos(vivo)
-        print(f"[pronostico] insumos {INSUMOS.name}")
+    guardar_insumos(cargar())
+    print(f"[pronostico] insumos {INSUMOS.name}")
     raise SystemExit(0 if run().get("status") == "ok" else 1)
