@@ -153,6 +153,9 @@ def test_el_corte_publicado_declara_ganador_y_banda():
     assert por_id["ocupacion_nacional"]["mae"] == 1.59
     assert por_id["ingresos_reales"]["modelo"] == "holt_winters"
     assert por_id["ingresos_reales"]["mae"] == 3.52
+    assert any("se publicaría el mes anterior (MAE 2.66)" in n for n in por_id["ocupacion_antioquia"]["notas"])
+    assert any("gradiente con rezagos" in n and "1.49" in n for n in por_id["ocupacion_nacional"]["notas"])
+    assert any("se publicaría el mes anterior (MAE 6.23)" in n for n in por_id["ingresos_reales"]["notas"])
     assert por_id["trm_mensual"]["n_observado"] == 142
     assert por_id["trm_mensual"]["corte"] == "2026-10"
     assert por_id["trm_mensual"]["modelo"] == "holt_winters"

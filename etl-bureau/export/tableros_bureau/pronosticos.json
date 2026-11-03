@@ -1587,6 +1587,7 @@
    "notas": [
     "Ocupación de la región Antioquia en la EMA. No es la ciudad de Medellín ni un hotel.",
     "La serie corta del tablero arranca en 2022. El anexo EMA agrega los meses anteriores, desde 2019-01, porque desde 2022 los valores coinciden.",
+    "En la prueba de 12 meses, de septiembre de 2025 a agosto de 2026 y con la misma regla, se publicaría el mes anterior (MAE 2.66). Lo que se publica aquí sigue siendo el ensayo de 6 meses.",
     "Se publica «gradiente con rezagos»: tuvo el menor error absoluto en los últimos 6 meses.",
     "La banda es el percentil 80 del error absoluto en los últimos 6 meses observados. No es un intervalo de confianza.",
     "No mide causas, reservas ni el CRM. Solo prolonga la serie mensual observada."
@@ -1975,6 +1976,7 @@
    "n_observado": 92,
    "notas": [
     "Ocupación nacional de la EMA. No es Antioquia ni un hotel de Medellín.",
+    "En la prueba de 12 meses, de septiembre de 2025 a agosto de 2026 y con la misma regla, se publicaría «gradiente con rezagos» (MAE 1.49); el mes anterior queda en 1.52. Lo que se publica aquí sigue siendo el ensayo de 6 meses.",
     "Se publica «SARIMA»: tuvo el menor error absoluto en los últimos 6 meses.",
     "La banda es el percentil 80 del error absoluto en los últimos 6 meses observados. No es un intervalo de confianza.",
     "No mide causas, reservas ni el CRM. Solo prolonga la serie mensual observada."
@@ -2169,6 +2171,7 @@
    "n_observado": 140,
    "notas": [
     "Índice nacional de ingresos reales de alojamiento, base 2019=100. No es la tarifa de Antioquia ni el IPC.",
+    "En la prueba de 12 meses, de septiembre de 2025 a agosto de 2026 y con la misma regla, se publicaría el mes anterior (MAE 6.23). Lo que se publica aquí sigue siendo el ensayo de 6 meses.",
     "Se publica «Holt-Winters»: tuvo el menor error absoluto en los últimos 6 meses.",
     "La banda es el percentil 80 del error absoluto en los últimos 6 meses observados. No es un intervalo de confianza.",
     "No mide causas, reservas ni el CRM. Solo prolonga la serie mensual observada."

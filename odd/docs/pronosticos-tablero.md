@@ -15,6 +15,8 @@ No entra Prophet (pide CmdStan), ni Chronos-Bolt, ni el ensamble ponderado por 1
 
 El SARIMA de este ETL, en esa misma ventana de 12 meses y sin cambiar lo que sale en el tablero, repite el MAPE de aquel repo: ocupación nacional 3,81 %, Antioquia 6,30 %, ingresos reales 7,00 %.
 
+Con la regla de este tablero, esa ventana de 12 meses no coronaría el mismo modelo que el semestre. Antioquia publicaría el mes anterior (MAE 2,66). La ocupación nacional publicaría el gradiente (MAE 1,49; el mes anterior queda en 1,52). Los ingresos publicarían el mes anterior (MAE 6,23). El LightGBM de aquí usa solo rezagos, así que no es el de 300 árboles de aquel repo y no gana esa ventana. Lo que se publica sigue siendo el ensayo de 6 meses. La nota de cada serie lo dice.
+
 ## Qué más quedó fuera
 
 Hacen falta meses, no un modelo más grande. Llegadas Aerocivil de los cinco mercados: 54 meses, enero de 2022 a junio de 2026. Tarifa de Antioquia: 56 meses, hasta agosto de 2026. Homicidios y hurtos de Medellín (SIEDCO): la serie de homicidios queda en 96 meses porque julio, agosto y septiembre de 2018 vienen en 0.
@@ -79,11 +81,11 @@ Brasil: SARIMA gana el MAE (394,8 contra 503,7 del gradiente y 771,5 del mes ant
 
 TRM: Holt-Winters baja el MAE de 702,21 a 373,98 pesos. LightGBM queda en 374,07, peor que Holt-Winters. Noviembre de 2026 sale en 3.237,78. No es la tasa de un día ni una causa de las llegadas.
 
-Ocupación de Antioquia: el gradiente, ya con los 92 meses, baja el error de 3,51 a 2,24 puntos. De 51,45 % en agosto el punto va a 51,23 % en septiembre y a 49,59 % en febrero de 2027, banda ±3,24. Es la región, no la ciudad de Medellín.
+Ocupación de Antioquia: el gradiente, ya con los 92 meses, baja el error de 3,51 a 2,24 puntos. De 51,45 % en agosto el punto va a 51,23 % en septiembre y a 49,59 % en febrero de 2027, banda ±3,24. Es la región, no la ciudad de Medellín. En los 12 meses la misma regla publicaría el mes anterior.
 
-Ocupación nacional: SARIMA baja el MAE de 1,95 a 1,59. Septiembre sale en 47,73 % (agosto cerró en 49,21 %), banda ±3,16. No es Antioquia ni un hotel.
+Ocupación nacional: SARIMA baja el MAE de 1,95 a 1,59. Septiembre sale en 47,73 % (agosto cerró en 49,21 %), banda ±3,16. No es Antioquia ni un hotel. En los 12 meses la regla publicaría el gradiente.
 
-Ingresos reales: Holt-Winters baja el MAE de 8,06 a 3,52. De 89,08 en agosto el punto va a 86,20 en septiembre y a 102,36 en diciembre, banda ±4,51. No es la tarifa ni el IPC.
+Ingresos reales: Holt-Winters baja el MAE de 8,06 a 3,52. De 89,08 en agosto el punto va a 86,20 en septiembre y a 102,36 en diciembre, banda ±4,51. No es la tarifa ni el IPC. En los 12 meses la regla publicaría el mes anterior.
 
 Tarifa de Antioquia: SARIMA queda en 1,83 (MAPE 1,1 %) y el gradiente en 1,86. Septiembre sale en 159,37 y febrero de 2027 en 173,41, banda ±1,90. El mes anterior se queda atrás (MAE 8,04) porque el nivel viene subiendo.
 
