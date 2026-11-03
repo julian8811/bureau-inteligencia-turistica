@@ -2,7 +2,7 @@
   "id": "bureau-oferta",
   "generado": "2026-11-02",
   "ventana": "2025-2026",
-  "fuente": "RNT + MeData + DANE-EGIT (raw 2026-11-02)",
+  "fuente": "RNT + DANE-EGIT (raw 2026-11-02)",
   "serie": {
     "rnt": {
       "prestadores": 971,
@@ -115,92 +115,9 @@
           "habitaciones": 0,
           "camas": 0
         }
-      ]
+      ],
+      "corte": "2026-10"
     },
-    "tarifa_zona": [
-      {
-        "zona": "CENTRO",
-        "periodo": 202303,
-        "valor": 89987.6772875817
-      },
-      {
-        "zona": "LAURELES",
-        "periodo": 202303,
-        "valor": 189879.4896110372
-      },
-      {
-        "zona": "POBLADO",
-        "periodo": 202303,
-        "valor": 492212.6283004358
-      }
-    ],
-    "ocupacion_zonas": [
-      {
-        "zona": "CENTRO",
-        "prom": 40.37,
-        "n_meses": 195
-      },
-      {
-        "zona": "LAURELES",
-        "prom": 51.24,
-        "n_meses": 195
-      },
-      {
-        "zona": "POBLADO",
-        "prom": 62.2,
-        "n_meses": 195
-      }
-    ],
-    "temporadas": [
-      {
-        "evento": "feria",
-        "occ_evento": 70.84,
-        "occ_base": 57.22,
-        "uplift_pp": 13.62,
-        "n_periodos": 244,
-        "occ_prom": 70.84
-      },
-      {
-        "evento": "mitad",
-        "occ_evento": 54.12,
-        "occ_base": 57.22,
-        "uplift_pp": -3.1,
-        "n_periodos": 19,
-        "occ_prom": 54.12
-      },
-      {
-        "evento": "moda",
-        "occ_evento": 76.89,
-        "occ_base": 57.22,
-        "uplift_pp": 19.67,
-        "n_periodos": 96,
-        "occ_prom": 76.89
-      },
-      {
-        "evento": "receso",
-        "occ_evento": 61.78,
-        "occ_base": 57.22,
-        "uplift_pp": 4.56,
-        "n_periodos": 264,
-        "occ_prom": 61.78
-      },
-      {
-        "evento": "santa",
-        "occ_evento": 47.2,
-        "occ_base": 57.22,
-        "uplift_pp": -10.02,
-        "n_periodos": 252,
-        "occ_prom": 47.2
-      },
-      {
-        "evento": "tex",
-        "occ_evento": 75.67,
-        "occ_base": 57.22,
-        "uplift_pp": 18.45,
-        "n_periodos": 128,
-        "occ_prom": 75.67
-      }
-    ],
     "turismo_interno": {
       "conceptos": [
         "Población total",
@@ -526,8 +443,18 @@
             "valor": 8.649
           }
         ]
-      }
+      },
+      "corte": "II - 2026"
     }
   },
+  "cortes": {
+    "rnt": "2026-10",
+    "turismo_interno": "II - 2026"
+  },
+  "retiradas": [
+    "medata_tarifa_zona.csv: corta en 2023-03",
+    "medata_ocupacion_zonas.csv: agregado sin fecha",
+    "medata_occ_*.csv + medata_eventos_uplift.csv: datos 2015-2021"
+  ],
   "estado": "ok"
 }

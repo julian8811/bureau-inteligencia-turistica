@@ -25,7 +25,7 @@
    "archivo": "etl-bureau/export/tableros_bureau/oferta_territorio_2025_2026.json",
    "id": "oferta_territorio_2025_2026",
    "estado": "ok",
-   "n": 12
+   "n": 79
   },
   {
    "archivo": "etl-bureau/export/tableros_bureau/seguridad_2025_2026.json",
@@ -43,7 +43,7 @@
    "archivo": "etl-bureau/export/tableros_bureau/conectividad_benchmark_2025_2026.json",
    "id": "conectividad_benchmark_2025_2026",
    "estado": "ok",
-   "n": 6743
+   "n": 6494
   },
   {
    "archivo": "etl-bureau/export/tableros_bureau/calendario_contexto_2025_2026.json",

@@ -10,6 +10,11 @@ otro repo.
 Nota de estilo: pandas solo se usa para cargar el CSV; toda la
 agregacion es Python puro sobre registros dict para no depender de
 los stubs de tipos de pandas.
+
+Fuentes descontinuadas (retiradas 2026-11-02, ver `retiradas` en el
+payload): flota Aerocivil (solo ene-feb 2020), terminales (a 2023-12),
+metro (a 2020-12), travel_metrics (a 2023-09), tarifa por zona
+(a 2023-03), costos TieredTravel (ceros), opensky (snapshot sin serie).
 """
 from __future__ import annotations
 
@@ -25,10 +30,20 @@ import pandas as pd
 BASE = Path(__file__).resolve().parents[1]
 RAW_DIR = BASE / "data" / "raw" / "2026-11-02"
 OUT = BASE / "export" / "tableros_bureau" / "conectividad_benchmark_2025_2026.json"
-FUENTE = "ETL Bureau, Aerocivil/terminales/DANE/Eurostat/WB/Wikimedia"
+FUENTE = "ETL Bureau, Aerocivil/Eurostat/WB/Wikimedia"
 GENERADO = date.today().isoformat()
 
 _YEAR_RE = re.compile(r"(?:19|20)\d{2}")
+
+RETIRADAS = [
+    "aerocivil_flota.csv: solo ene-feb 2020, sin serie vigente",
+    "terminales_med.csv: corta en 2023-12",
+    "movilidad_metro_med.csv: corta en 2020-12",
+    "medata_travel_metrics.csv: corta en 2023-09",
+    "medata_tarifa_zona.csv: corta en 2023-03",
+    "tieredtravel_med.csv: una fila de ceros",
+    "opensky_states.csv: snapshot puntual, sin serie temporal",
+]
 
 
 def _per(s: str) -> str:
@@ -40,12 +55,6 @@ def _per(s: str) -> str:
     if m:
         return f"{m.group(1)}-{m.group(2)}"
     return s.strip()
-
-MESES_ES = {
-    "ENERO": "01", "FEBRERO": "02", "MARZO": "03", "ABRIL": "04",
-    "MAYO": "05", "JUNIO": "06", "JULIO": "07", "AGOSTO": "08",
-    "SEPTIEMBRE": "09", "OCTUBRE": "10", "NOVIEMBRE": "11", "DICIEMBRE": "12",
-}
 
 
 def _records(name: str) -> list[dict[str, Any]] | None:
@@ -83,40 +92,6 @@ def _int(v: float | None) -> int:
     return int(v) if v is not None else 0
 
 
-def _oferta(notas: list[str]) -> dict[str, Any]:
-    rows = _records("aerocivil_flota.csv")
-    if rows is None:
-        notas.append("oferta_aerea: aerocivil_flota.csv ausente o vacio, bloque omitido")
-        return {"top_rutas": []}
-    if not {"origen", "destino", "sillas_ofrecidas", "n_mero_de_vuelos"}.issubset(rows[0].keys()):
-        notas.append("oferta_aerea: columnas esperadas ausentes, bloque omitido")
-        return {"top_rutas": []}
-    acc: dict[str, list[float]] = {}
-    for r in rows:
-        o = str(r.get("origen", "")).strip()
-        d = str(r.get("destino", "")).strip()
-        if not o or not d:
-            continue
-        ruta = f"{o}-{d}"
-        s = _num(r.get("sillas_ofrecidas")) or 0.0
-        v = _num(r.get("n_mero_de_vuelos")) or 0.0
-        if ruta in acc:
-            acc[ruta][0] += s
-            acc[ruta][1] += v
-        else:
-            acc[ruta] = [s, v]
-    if not acc:
-        notas.append("oferta_aerea: sin filas validas, bloque omitido")
-        return {"top_rutas": []}
-    top = sorted(acc.items(), key=lambda kv: kv[1][0], reverse=True)[:10]
-    return {
-        "top_rutas": [
-            {"ruta": ruta, "sillas": int(s), "vuelos": int(v)}
-            for ruta, (s, v) in top
-        ]
-    }
-
-
 def _operaciones(notas: list[str]) -> list[dict[str, Any]]:
     rows = _records("operaciones_aereas.csv")
     if rows is None:
@@ -136,56 +111,6 @@ def _operaciones(notas: list[str]) -> list[dict[str, Any]]:
         notas.append("operaciones: sin filas validas, bloque omitido")
         return []
     return [{"periodo": p, "operaciones": int(v)} for p, v in sorted(acc.items())]
-
-
-def _terrestre(notas: list[str]) -> list[dict[str, Any]]:
-    rows = _records("terminales_med.csv")
-    if rows is None:
-        notas.append("terrestre: terminales_med.csv ausente o vacio, bloque omitido")
-        return []
-    if not {"a_o", "mes", "vehiculos", "pasajeros"}.issubset(rows[0].keys()):
-        notas.append("terrestre: columnas esperadas ausentes, bloque omitido")
-        return []
-    acc: dict[str, list[float]] = {}
-    for r in rows:
-        pax = _num(r.get("pasajeros"))
-        veh = _num(r.get("vehiculos"))
-        if pax is None and veh is None:
-            continue
-        mm = MESES_ES.get(str(r.get("mes", "")).strip().upper(), "00")
-        periodo = f"{str(r.get('a_o', '')).strip()}-{mm}"
-        cur = acc.get(periodo, [0.0, 0.0])
-        cur[0] += pax or 0.0
-        cur[1] += veh or 0.0
-        acc[periodo] = cur
-    if not acc:
-        notas.append("terrestre: sin filas validas, bloque omitido")
-        return []
-    return [
-        {"periodo": p, "pasajeros": int(v[0]), "vehiculos": int(v[1])}
-        for p, v in sorted(acc.items())
-    ]
-
-
-def _metro(notas: list[str]) -> list[dict[str, Any]]:
-    rows = _records("movilidad_metro_med.csv")
-    if rows is None:
-        notas.append("metro: movilidad_metro_med.csv ausente o vacio, bloque omitido")
-        return []
-    if not {"pas_periodo", "pas_valor"}.issubset(rows[0].keys()):
-        notas.append("metro: columnas esperadas ausentes, bloque omitido")
-        return []
-    acc: dict[str, float] = {}
-    for r in rows:
-        per = _per(str(r.get("pas_periodo", "").strip()))
-        v = _num(r.get("pas_valor"))
-        if not per or v is None:
-            continue
-        acc[per] = acc.get(per, 0.0) + v
-    if not acc:
-        notas.append("metro: sin filas validas, bloque omitido")
-        return []
-    return [{"periodo": p, "valor": int(v)} for p, v in sorted(acc.items())]
 
 
 def _trm(notas: list[str]) -> list[dict[str, Any]]:
@@ -214,20 +139,20 @@ def _trm(notas: list[str]) -> list[dict[str, Any]]:
     return out
 
 
-def _costos(notas: list[str]) -> list[dict[str, Any]]:
-    rows = _records("tieredtravel_med.csv")
-    if rows is None:
-        notas.append("costos: tieredtravel_med.csv ausente o vacio, bloque omitido")
-        return []
-    out: list[dict[str, Any]] = []
-    for r in rows:
-        row = dict(r)
-        for k in ("costo_budget", "costo_mid", "costo_luxury", "n_hoteles", "n_atracciones"):
-            if k in row:
-                v = _num(row[k])
-                row[k] = v if v is None else (int(v) if v.is_integer() else v)
-        out.append(row)
-    return out
+def _trm_fecha(dt: str) -> str:
+    """Normaliza fecha TRM/FX a YYYY-MM-DD (raw trae ISO o RFC2822)."""
+    s = dt.strip()
+    m = re.search(r"(\d{4})-(\d{2})-(\d{2})", s)
+    if m:
+        return f"{m.group(1)}-{m.group(2)}-{m.group(3)}"
+    m = re.search(r"(\d{1,2}) (\w{3}) (\d{4})", s)
+    if m:
+        meses = {"Jan": "01", "Feb": "02", "Mar": "03", "Apr": "04",
+                 "May": "05", "Jun": "06", "Jul": "07", "Aug": "08",
+                 "Sep": "09", "Oct": "10", "Nov": "11", "Dec": "12"}
+        mes = meses.get(m.group(2), "01")
+        return f"{m.group(3)}-{mes}-{m.group(1).zfill(2)}"
+    return s
 
 
 def _bench_eu(notas: list[str]) -> list[dict[str, Any]]:
@@ -264,40 +189,6 @@ def _bench_eu(notas: list[str]) -> list[dict[str, Any]]:
     return out
 
 
-def _bench_mundo(notas: list[str]) -> list[dict[str, Any]]:
-    spec = [
-        ("wb_arrivals.csv", "arrivals", "wb_arrivals"),
-        ("wb_departures.csv", "value", "wb_departures"),
-        ("wb_receipts.csv", "value", "wb_receipts"),
-    ]
-    out: list[dict[str, Any]] = []
-    for fname, vcol, ds in spec:
-        rows = _records(fname)
-        if rows is None:
-            notas.append(f"benchmark_mundo: {fname} ausente o vacio, sub-bloque omitido")
-            continue
-        if not {"countryiso3code", "country", "year", vcol}.issubset(rows[0].keys()):
-            notas.append(f"benchmark_mundo: {fname} sin columnas esperadas, sub-bloque omitido")
-            continue
-        for r in rows:
-            v = _num(r.get(vcol))
-            if v is None:
-                continue
-            try:
-                anio = int(str(r.get("year", "")).strip()[:4])
-            except ValueError:
-                continue
-            out.append({"iso3": str(r.get("countryiso3code", "")).strip(),
-                        "pais": str(r.get("country", "")).strip(),
-                        "anio": anio, "valor": v,
-                        "indicador": str(r.get("indicator", "")).strip(),
-                        "dataset": ds})
-    if not out:
-        notas.append("benchmark_mundo: sin filas validas, bloque omitido")
-    out.sort(key=lambda d: (str(d["dataset"]), str(d["iso3"]), int(d["anio"])))
-    return out
-
-
 def _wikimedia(notas: list[str]) -> list[dict[str, Any]]:
     rows = _records("wikimedia_views.csv")
     if rows is None:
@@ -317,14 +208,6 @@ def _wikimedia(notas: list[str]) -> list[dict[str, Any]]:
         notas.append("wikimedia: sin filas validas, bloque omitido")
         return []
     return [{"periodo": p, "views": int(v)} for p, v in sorted(acc.items())]
-
-
-def _travel(notas: list[str]) -> list[dict[str, Any]]:
-    rows = _records("medata_travel_metrics.csv")
-    if rows is None:
-        notas.append("travel_metrics: medata_travel_metrics.csv ausente o vacio, bloque omitido")
-        return []
-    return [dict(r) for r in rows]
 
 
 def _skips() -> list[str]:
@@ -351,26 +234,11 @@ def _skips() -> list[str]:
 def main() -> int:
     notas: list[str] = []
     try:
-        oferta = _oferta(notas)
         operaciones = _operaciones(notas)
-        terrestre = _terrestre(notas)
-        metro = _metro(notas)
         trm = _trm(notas)
-        costos = _costos(notas)
         bench_eu = _bench_eu(notas)
-        bench_mundo = _bench_mundo(notas)
         wiki = _wikimedia(notas)
-        travel = _travel(notas)
         skips = _skips()
-        # opensky_states.csv: snapshot puntual, sin serie temporal
-        open_rows = _records("opensky_states.csv")
-        if open_rows is not None:
-            notas.append(
-                "opensky: opensky_states.csv trae snapshot puntual "
-                f"({len(open_rows)} estados), sin serie temporal; no incluido en output"
-            )
-        else:
-            notas.append("opensky: opensky_states.csv ausente o vacio, bloque omitido")
     except Exception as e:  # jamas tumbar: degradar a skip
         payload: dict[str, Any] = {
             "id": "bureau-conectividad-bench",
@@ -380,44 +248,36 @@ def main() -> int:
             "estado": "skip",
             "motivo": f"excepcion no controlada: {e}",
             "skips": _skips(),
+            "retiradas": RETIRADAS,
         }
         OUT.parent.mkdir(parents=True, exist_ok=True)
         OUT.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
         print(f"OK {OUT} estado=skip motivo={e}")
         return 0
 
-    extremos: list[str] = []
-    extremos += [str(b["periodo"]) for b in operaciones]
-    extremos += [str(b["periodo"]) for b in terrestre]
-    extremos += [str(b["periodo"]) for b in metro]
-    extremos += [str(b["periodo"]) for b in wiki]
-    for d in trm:
-        m = _YEAR_RE.search(str(d.get("date", "")))
-        if m:
-            extremos.append(m.group(0))
-    extremos += [str(b["anio"]) for b in bench_eu + bench_mundo]
-    ventana = f"{min(extremos)}..{max(extremos)}" if extremos else RAW_DIR.name
+    cortes = {
+        "operaciones": max((b["periodo"] for b in operaciones), default=""),
+        "trm": max((_trm_fecha(str(d.get("date", ""))) for d in trm), default=""),
+        "benchmark_eu": max((b["anio"] for b in bench_eu), default=0),
+        "wikimedia": max((b["periodo"] for b in wiki), default=""),
+    }
+    extremos = [cortes["operaciones"], cortes["wikimedia"]]
+    extremos += [str(b["anio"]) for b in bench_eu]
+    ventana = f"{min(extremos)}..{max(extremos)}" if all(extremos) else RAW_DIR.name
 
-    nucleo = bool(
-        oferta["top_rutas"] or operaciones or terrestre or metro or trm
-        or costos or bench_eu or bench_mundo or wiki or travel
-    )
+    nucleo = bool(operaciones or trm or bench_eu or wiki)
     payload = {
         "id": "bureau-conectividad-bench",
         "generado": GENERADO,
         "ventana": ventana,
         "fuente": FUENTE,
-        "oferta_aerea": oferta,
         "operaciones_serie": operaciones,
-        "terrestre_serie": terrestre,
-        "metro_serie": metro,
         "trm_serie": trm,
-        "costos_destino": costos,
         "benchmark_eu": bench_eu,
-        "benchmark_mundo": bench_mundo,
         "wikimedia_serie": wiki,
-        "travel_metrics": travel,
+        "cortes": cortes,
         "skips": skips,
+        "retiradas": RETIRADAS,
         "estado": "ok" if nucleo else "skip",
     }
     if notas:
@@ -428,10 +288,9 @@ def main() -> int:
     OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
     print(f"OK {OUT} estado={payload['estado']} "
-          f"rutas={len(oferta['top_rutas'])} ops={len(operaciones)} "
-          f"terr={len(terrestre)} metro={len(metro)} trm={len(trm)} "
-          f"costos={len(costos)} eu={len(bench_eu)} mundo={len(bench_mundo)} "
-          f"wiki={len(wiki)} travel={len(travel)} skips={len(skips)}")
+          f"ops={len(operaciones)} trm={len(trm)} "
+          f"eu={len(bench_eu)} "
+          f"wiki={len(wiki)} skips={len(skips)}")
     for n in notas:
         print(f"NOTA: {n}")
     return 0

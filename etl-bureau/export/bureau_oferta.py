@@ -5,6 +5,10 @@ oferta para `alimentar_bureau.py` (repo tableros-bureau).
 
 Solo stdlib + pandas. Lectura defensiva: archivo ausente o vacio ->
 {"estado": "skip", "motivo": ...}, exit 0, nunca tumba.
+
+Fuentes retiradas 2026-11-02 (sin datos actuales, ver `retiradas` en el
+payload): tarifa por zona (a 2023-03), ocupacion por zonas (agregado sin
+fecha), uplift de temporadas (datos 2015-2021).
 """
 
 import contextlib
@@ -23,20 +27,24 @@ OUT = Path(__file__).resolve().parent / "tableros_bureau" / "oferta_territorio_2
 
 ID = "bureau-oferta"
 VENTANA = "2025-2026"
-FUENTE = "RNT + MeData + DANE-EGIT (raw 2026-11-02)"
+FUENTE = "RNT + DANE-EGIT (raw 2026-11-02)"
 
 RNT_FILES = ["rnt_antioquia.csv", "rnt_prestadores.csv"]
-REQUIRED_FILES = [
-    "medata_tarifa_zona.csv",
-    "medata_ocupacion_zonas.csv",
-    "medata_eventos_uplift.csv",
-    "dane_egit_turismo_interno.csv",
+REQUIRED_FILES = ["dane_egit_turismo_interno.csv"]
+
+RETIRADAS = [
+    "medata_tarifa_zona.csv: corta en 2023-03",
+    "medata_ocupacion_zonas.csv: agregado sin fecha",
+    "medata_occ_*.csv + medata_eventos_uplift.csv: datos 2015-2021",
 ]
-EVENTOS = ["feria", "mitad", "moda", "receso", "santa", "tex"]
-OCC_FILES = {e: f"medata_occ_{e}.csv" for e in EVENTOS}
 
 TRIM_RE = re.compile(r"^([IV]+)\s*-\s*(\d{4})$")
 ROMAN = {"I": 1, "II": 2, "III": 3, "IV": 4}
+MESES_ES = {
+    "ENERO": "01", "FEBRERO": "02", "MARZO": "03", "ABRIL": "04",
+    "MAYO": "05", "JUNIO": "06", "JULIO": "07", "AGOSTO": "08",
+    "SEPTIEMBRE": "09", "OCTUBRE": "10", "NOVIEMBRE": "11", "DICIEMBRE": "12",
+}
 
 
 def hoy():
@@ -55,6 +63,7 @@ def skip(motivo):
                 "serie": {},
                 "estado": "skip",
                 "motivo": motivo,
+                "retiradas": RETIRADAS,
             },
             ensure_ascii=False,
             indent=2,
@@ -99,6 +108,14 @@ def build_rnt(dfs):
         e[1] += h
         e[2] += c
     por_cat = sorted(agg.items(), key=lambda kv: kv[1][0], reverse=True)
+    cortes = set()
+    for col_ano, col_per in (("ano", "periodo"),):
+        if col_ano in df.columns:
+            for a, p in zip(df[col_ano].astype(str), df[col_per].astype(str) if col_per in df.columns else [""] * len(df), strict=False):
+                a = a.strip()
+                if re.fullmatch(r"20\d{2}", a):
+                    mes = MESES_ES.get(p.strip().upper(), "01")
+                    cortes.add(f"{a}-{mes}")
     return {
         "prestadores": int(len(df)),
         "habitaciones": int(sum(habs)),
@@ -115,57 +132,8 @@ def build_rnt(dfs):
             }
             for cat, v in por_cat
         ],
+        "corte": max(cortes) if cortes else "",
     }
-
-
-def build_tarifa_zona(df):
-    df = df.copy()
-    df["tar_periodo"] = pd.to_numeric(df["tar_periodo"], errors="coerce")
-    df["tar_valor"] = pd.to_numeric(df["tar_valor"], errors="coerce")
-    df = df.dropna(subset=["tar_periodo", "tar_valor"])
-    df["tar_zona"] = df["tar_zona"].astype(str).str.strip()
-    idx = df.groupby("tar_zona")["tar_periodo"].idxmax()
-    latest = df.loc[idx].sort_values("tar_zona")
-    return [
-        {"zona": r["tar_zona"], "periodo": int(r["tar_periodo"]), "valor": float(r["tar_valor"])}
-        for r in latest.to_dict(orient="records")
-    ]
-
-
-def build_ocupacion_zonas(df):
-    df = df.copy()
-    df["ocu_zona"] = df["ocu_zona"].astype(str).str.strip()
-    return [
-        {
-            "zona": r["ocu_zona"],
-            "prom": float(r["ocu_prom"]),
-            "n_meses": int(r["n_meses"]),
-        }
-        for r in df.sort_values("ocu_zona").to_dict(orient="records")
-    ]
-
-
-def build_temporadas(uplift_df, occ_dfs):
-    up = uplift_df.copy()
-    up["evento"] = up["evento"].astype(str).str.strip().str.lower()
-    up = up.set_index("evento")
-    bloques = []
-    for e in EVENTOS:
-        occ = occ_dfs[e].copy()
-        occ["ocu_valor"] = pd.to_numeric(occ["ocu_valor"], errors="coerce")
-        vals = occ["ocu_valor"].dropna()
-        row = up.loc[e] if e in up.index else None
-        bloques.append(
-            {
-                "evento": e,
-                "occ_evento": float(row["occ_evento"]) if row is not None else None,
-                "occ_base": float(row["occ_base"]) if row is not None else None,
-                "uplift_pp": float(row["uplift_pp"]) if row is not None else None,
-                "n_periodos": int(len(vals)),
-                "occ_prom": round(float(vals.mean()), 2) if len(vals) else None,
-            }
-        )
-    return bloques
 
 
 def trim_key(t):
@@ -195,15 +163,14 @@ def build_turismo_interno(df, cap=5):
             {"trimestre": str(r["trimestre"]).strip(), "valor": float(r["valor"])}
             for r in sub.to_dict(orient="records")
         ]
-    return {"conceptos": conceptos, "serie": serie}
+    cortes = [k for subs in serie.values() for k in (r["trimestre"] for r in subs)]
+    corte = max(cortes, key=lambda t: trim_key(t) or (0, 0)) if cortes else ""
+    return {"conceptos": conceptos, "serie": serie, "corte": corte}
 
 
 def main():
     try:
         faltantes = [f for f in REQUIRED_FILES if (RAW_DIR / f).is_file() is False]
-        faltantes += [
-            f"medata_occ_{e}.csv" for e in EVENTOS if not (RAW_DIR / OCC_FILES[e]).is_file()
-        ]
         rnt_dfs = []
         for f in RNT_FILES:
             df = load_csv(f)
@@ -213,7 +180,7 @@ def main():
             faltantes = RNT_FILES + faltantes
 
         vacios = []
-        for f in REQUIRED_FILES + [OCC_FILES[e] for e in EVENTOS]:
+        for f in REQUIRED_FILES:
             p = RAW_DIR / f
             if p.is_file() and p.stat().st_size == 0:
                 vacios.append(f)
@@ -226,23 +193,15 @@ def main():
             skip("RAW " + "; ".join(motivos))
             return 0
 
-        tarifa = load_csv("medata_tarifa_zona.csv")
-        ocup = load_csv("medata_ocupacion_zonas.csv")
-        uplift = load_csv("medata_eventos_uplift.csv")
         turismo = load_csv("dane_egit_turismo_interno.csv")
-        occ_dfs = {e: load_csv(OCC_FILES[e]) for e in EVENTOS}
-        todo = [tarifa, ocup, uplift, turismo] + list(occ_dfs.values())
-        if any(d is None or d.empty for d in todo):
-            skip("RAW ilegible o sin filas en uno o mas archivos requeridos")
+        if turismo is None or turismo.empty:
+            skip("RAW ilegible o sin filas en dane_egit_turismo_interno.csv")
             return 0
 
-        serie = {
-            "rnt": build_rnt(rnt_dfs),
-            "tarifa_zona": build_tarifa_zona(tarifa),
-            "ocupacion_zonas": build_ocupacion_zonas(ocup),
-            "temporadas": build_temporadas(uplift, occ_dfs),
-            "turismo_interno": build_turismo_interno(turismo),
-        }
+        rnt = build_rnt(rnt_dfs)
+        t_interno = build_turismo_interno(turismo)
+        serie = {"rnt": rnt, "turismo_interno": t_interno}
+        cortes = {"rnt": rnt.get("corte", ""), "turismo_interno": t_interno.get("corte", "")}
         OUT.parent.mkdir(parents=True, exist_ok=True)
         OUT.write_text(
             json.dumps(
@@ -252,6 +211,8 @@ def main():
                     "ventana": VENTANA,
                     "fuente": FUENTE,
                     "serie": serie,
+                    "cortes": cortes,
+                    "retiradas": RETIRADAS,
                     "estado": "ok",
                 },
                 ensure_ascii=False,
