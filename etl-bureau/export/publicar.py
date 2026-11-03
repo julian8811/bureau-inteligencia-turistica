@@ -23,6 +23,7 @@ PIEZAS = [
     "calendario_contexto_2025_2026.json",
     "owid_benchmark_2025_2026.json",
     "sit_emisores_2025_2026.json",
+    "pronosticos.json",
 ]
 BIT_URL = os.environ.get("PUBLISH_BIT_URL") or "git@github.com:julian8811/bureau-inteligencia-turistica.git"
 TAB_URL = os.environ.get("PUBLISH_TAB_URL") or "git@github.com:julian8811/tableros-bureau.git"
