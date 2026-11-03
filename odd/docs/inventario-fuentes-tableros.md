@@ -1,5 +1,7 @@
 # Inventario de fuentes del tablero y propuesta de fuentes nuevas
 
+Ejecución del plan (2 de noviembre de 2026): el daily ya no importa módulos que no están en el repo; los exportadores `bureau_*` corren antes de publicar y un skip no pisa un JSON bueno; la TRM oficial, los avisos de viaje, los festivos de los emisores, SISAIRE, la EMA, el IPC nacional y el T-100 EE. UU.–Colombia quedaron cableados. Siguen fuera, porque exigen key o un extracto del Bureau: Ticketmaster, Tripadvisor, Google Places, YouTube, Travelpayouts, OpenSky, Search Console, el CRM y el libro de miembros.
+
 Revisión del 2 de noviembre de 2026 (hora Colombia) sobre:
 
 - Tablero publicado: https://tableros-bureau.vercel.app/ (repo `julian8811/tableros-bureau`, `data/open/*.json`).

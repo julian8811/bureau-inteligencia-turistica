@@ -29,7 +29,9 @@ def _overpass_query() -> dict:
     last = ""
     for host in OVERPASS:
         try:
-            r = requests.post(host, data={"data": q}, headers=UA, timeout=25)
+            headers = dict(UA)
+            headers["Accept"] = "*/*"
+            r = requests.post(host, data={"data": q}, headers=headers, timeout=25)
             r.raise_for_status()
             return r.json()
         except Exception as e:

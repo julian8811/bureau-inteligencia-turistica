@@ -1,44 +1,83 @@
-"""GDELT marca: escucha gratuita de noticias globales sobre Medellín turismo (reemplazo gratis de Brand24).
-Estrategia 28-oct anti-429 (ajuste: pacing 15s + 3er reintento a 300s):
-- 1 sola query combinada/día (menos requests = menos ban)
-- backoff largo (la IP puede estar baneada por horas; no quemar el cron) + carry-forward del último bueno
-- volumen diario (timelinevol) ideal para picos: Feria, Ritvales, premios
+"""Volumen de menciones de Medellín en el último corte de GDELT 2.0.
+
+El DOC API responde 429 de forma persistente. En su lugar se baja el
+GKG de los últimos 15 minutos (lastupdate.txt) y se cuentan las líneas
+que mencionan Medellín. No hay espera de minutos: si falla, carry-forward.
 """
-import time
-import requests
+
+import io
+import zipfile
+from datetime import datetime, timedelta
+
 import pandas as pd
+import requests
+
 from .base import save_or_carry
 
-QUERY = '("Medellin" AND (tourism OR turismo OR travel OR hotel OR "Bureau"))'
 COLS = ["date", "value", "query"]
+LAST = "https://data.gdeltproject.org/gdeltv2/lastupdate.txt"
 
-def timeseries_once(query: str) -> pd.DataFrame:
-    r = requests.get(
-        "https://api.gdeltproject.org/api/v2/doc/doc",
-        params={"query": query, "mode": "timelinevol", "format": "json", "timespan": "7days"},
-        timeout=30,
-    )
-    r.raise_for_status()
-    data = r.json().get("timeline", [{}])[0].get("data", [])
-    df = pd.DataFrame(data)
-    df["query"] = "medellin_turismo_combined"
-    return df
+
+def count_medellin(blob: bytes) -> int:
+    n = 0
+    with zipfile.ZipFile(io.BytesIO(blob)) as zf:
+        name = zf.namelist()[0]
+        with zf.open(name) as fh:
+            for raw in fh:
+                low = raw.lower()
+                if b"medellin" in low or b"medell\xc3\xadn" in low:
+                    n += 1
+    return n
+
+
+def _fecha(url: str) -> str:
+    nombre = url.rsplit("/", 1)[-1]
+    digitos = "".join(ch for ch in nombre if ch.isdigit())[:8]
+    try:
+        return datetime.strptime(digitos, "%Y%m%d").date().isoformat()
+    except ValueError:
+        return ""
+
+
+def _cortes(url: str, n: int = 4) -> list[str]:
+    nombre = url.rsplit("/", 1)[-1]
+    sello = "".join(ch for ch in nombre if ch.isdigit())[:14]
+    base = url.rsplit("/", 1)[0]
+    inicio = datetime.strptime(sello, "%Y%m%d%H%M%S")
+    return [
+        f"{base}/{(inicio - timedelta(minutes=15 * i)).strftime('%Y%m%d%H%M%S')}.gkg.csv.zip"
+        for i in range(n)
+    ]
+
 
 def run():
-    # GDELT banea IPs con tráfico seguido: 3 intentos máx, el resto lo cubre el carry-forward
-    df = pd.DataFrame()
-    for wait in (0, 120, 300):
-        if wait:
-            print(f"[gdelt] backoff {wait}s...")
-            time.sleep(wait)
-        try:
-            time.sleep(15)  # límite GDELT: 1 req / 5s, con margen
-            df = timeseries_once(QUERY)
-            if not df.empty:
+    df = pd.DataFrame(columns=COLS)
+    try:
+        meta = requests.get(LAST, timeout=30)
+        meta.raise_for_status()
+        url = ""
+        for line in meta.text.splitlines():
+            parts = line.split()
+            if parts and parts[-1].endswith(".gkg.csv.zip"):
+                url = parts[-1]
                 break
-        except Exception as e:
-            print(f"[gdelt][WARN] intento fallido: {str(e)[:150]}")
+        if url.startswith("http://"):
+            url = "https://" + url[len("http://"):]
+        if not url:
+            raise RuntimeError("lastupdate sin GKG")
+        total = 0
+        for corte in _cortes(url):
+            blob = requests.get(corte, timeout=90)
+            if blob.status_code != 200:
+                print(f"[gdelt][WARN] {corte.rsplit('/', 1)[-1]}: {blob.status_code}")
+                continue
+            total += count_medellin(blob.content)
+        df = pd.DataFrame([{"date": _fecha(url), "value": total, "query": "medellin_gkg_1h"}])
+        print(f"[extract] gdelt_marca: {total} menciones en la última hora ({_fecha(url)})")
+    except Exception as e:
+        print(f"[gdelt][WARN] {str(e)[:180]}")
     return save_or_carry(df, "gdelt_marca", columns=COLS)
+
 
 if __name__ == "__main__":
     run()

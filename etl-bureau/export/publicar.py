@@ -10,8 +10,20 @@ from pathlib import Path
 
 BASE = Path(__file__).resolve().parents[1]
 EXPORT = BASE / "export" / "tableros_bureau"
-PIEZAS = ["paises_2025_2026.json", "marca_llm_2025_2026.json", "prensa_medios.json",
-          "informe_llm.json", "manifiesto_bureau.json"]
+PIEZAS = [
+    "paises_2025_2026.json",
+    "marca_llm_2025_2026.json",
+    "prensa_medios.json",
+    "informe_llm.json",
+    "manifiesto_bureau.json",
+    "oferta_territorio_2025_2026.json",
+    "seguridad_2025_2026.json",
+    "clima_aire_2025_2026.json",
+    "conectividad_benchmark_2025_2026.json",
+    "calendario_contexto_2025_2026.json",
+    "owid_benchmark_2025_2026.json",
+    "sit_emisores_2025_2026.json",
+]
 BIT_URL = os.environ.get("PUBLISH_BIT_URL") or "git@github.com:julian8811/bureau-inteligencia-turistica.git"
 TAB_URL = os.environ.get("PUBLISH_TAB_URL") or "git@github.com:julian8811/tableros-bureau.git"
 CACHE = Path(os.environ.get("PUBLISH_CACHE_DIR") or Path.home() / ".cache" / "bureau-publish")

@@ -15,7 +15,7 @@ from pathlib import Path
 import pandas as pd
 
 BASE = Path(__file__).resolve().parents[1]
-RAW_DIR = BASE / "data" / "raw" / "2026-11-02"
+RAW_DIR = BASE / "data" / "raw"
 OUT = BASE / "export" / "tableros_bureau" / "clima_aire_2025_2026.json"
 FUENTE = "ETL Bureau, IDEAM + Open-Meteo + aire_med"
 GENERADO = date.today().isoformat()
@@ -96,25 +96,55 @@ def _pronostico(notas: list[str]) -> list[dict]:
     return out
 
 
+def _sisaire(notas: list[str]) -> list[dict]:
+    df = _load("sisaire_amva.csv")
+    if df is None:
+        notas.append("sisaire: sisaire_amva.csv ausente o vacio, bloque omitido")
+        return []
+    if not {"fecha", "pm2_5"}.issubset(df.columns):
+        notas.append("sisaire: columnas esperadas ausentes, bloque omitido")
+        return []
+    df = df.dropna(subset=["fecha", "pm2_5"])
+    out = []
+    for row in df.to_dict(orient="records"):
+        try:
+            out.append({"fecha": str(row["fecha"])[:10], "pm2_5": round(float(row["pm2_5"]), 2)})
+        except (TypeError, ValueError):
+            continue
+    return out
+
+
+def _usar_raw() -> None:
+    global RAW_DIR
+    from export.rawutil import latest_raw
+    found = latest_raw(BASE)
+    if found is not None:
+        RAW_DIR = found
+
+
 def main() -> int:
+    _usar_raw()
     notas: list[str] = []
     lluvia = _lluvia(notas)
     pm25 = _pm25(notas)
     pron = _pronostico(notas)
+    sisaire = _sisaire(notas)
 
     periodos = [b["periodo"] for b in lluvia]
     fechas = [b["date"] for b in pron]
     extremos = periodos + fechas + [b["fecha"][:10] for b in pm25 if b["fecha"]]
+    extremos += [b["fecha"] for b in sisaire]
     ventana = f"{min(extremos)}..{max(extremos)}" if extremos else RAW_DIR.name
 
-    nucleo = bool(lluvia or pm25 or pron)
+    nucleo = bool(lluvia or pm25 or pron or sisaire)
     payload: dict = {
         "id": "bureau-clima",
         "generado": GENERADO,
         "ventana": ventana,
-        "fuente": FUENTE,
+        "fuente": FUENTE + " + SISAIRE",
         "lluvia_mensual": lluvia,
         "pm25_serie": pm25,
+        "sisaire_pm25": sisaire,
         "pronostico": pron,
         "estado": "ok" if nucleo else "skip",
     }
@@ -126,7 +156,7 @@ def main() -> int:
     OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
     print(f"OK {OUT} estado={payload['estado']} "
-          f"lluvia={len(lluvia)} pm25={len(pm25)} pron={len(pron)}")
+          f"lluvia={len(lluvia)} pm25={len(pm25)} sisaire={len(sisaire)} pron={len(pron)}")
     for n in notas:
         print(f"NOTA: {n}")
     return 0

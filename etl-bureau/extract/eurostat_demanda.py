@@ -12,7 +12,7 @@ import requests
 
 from .base import UA, save_or_carry
 
-DATASETS = ["tour_dem_ttot", "tour_dem_toac", "tour_dem_ttmd"]
+DATASETS = ["tour_dem_ttmd"]
 GEOS = ["EU27_2020", "ES", "DE", "FR", "IT"]
 TIMES = ["2023", "2024"]
 COLUMNS = ["geo", "time", "value", "dataset"]

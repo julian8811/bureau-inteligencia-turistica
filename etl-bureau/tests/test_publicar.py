@@ -4,20 +4,17 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-FILES = ["paises_2025_2026.json", "marca_llm_2025_2026.json", "informe_llm.json", "manifiesto_bureau.json"]
-
-
 def test_copia_solo_piezas(tmp_path, monkeypatch):
     from export import publicar
     for k in ("GITHUB_TOKEN", "GH_TOKEN"):
         monkeypatch.delenv(k, raising=False)
     src = tmp_path / "src"
     (src / "tableros_bureau").mkdir(parents=True)
-    for f in FILES + ["basura.txt"]:
+    for f in publicar.PIEZAS + ["basura.txt"]:
         (src / "tableros_bureau" / f).write_text("{}")
     dest = tmp_path / "dst" / "etl-bureau" / "export" / "tableros_bureau"
     out = publicar.copiar_piezas(src / "tableros_bureau", dest)
-    assert sorted(p.name for p in out) == sorted(FILES)
+    assert sorted(p.name for p in out) == sorted(publicar.PIEZAS)
     assert not (dest / "basura.txt").exists()
 
 

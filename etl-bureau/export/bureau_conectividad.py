@@ -28,7 +28,7 @@ from typing import Any
 import pandas as pd
 
 BASE = Path(__file__).resolve().parents[1]
-RAW_DIR = BASE / "data" / "raw" / "2026-11-02"
+RAW_DIR = BASE / "data" / "raw"
 OUT = BASE / "export" / "tableros_bureau" / "conectividad_benchmark_2025_2026.json"
 FUENTE = "ETL Bureau, Aerocivil/Eurostat/WB/Wikimedia"
 GENERADO = date.today().isoformat()
@@ -231,13 +231,31 @@ def _skips() -> list[str]:
     return skips
 
 
+def _tabla(nombre: str, columnas: set[str]) -> list[dict[str, Any]]:
+    rows = _records(nombre)
+    if rows is None or not columnas.issubset(rows[0].keys()):
+        return []
+    return rows
+
+
+def _usar_raw() -> None:
+    global RAW_DIR
+    from export.rawutil import latest_raw
+    found = latest_raw(BASE)
+    if found is not None:
+        RAW_DIR = found
+
+
 def main() -> int:
+    _usar_raw()
     notas: list[str] = []
     try:
         operaciones = _operaciones(notas)
         trm = _trm(notas)
         bench_eu = _bench_eu(notas)
         wiki = _wikimedia(notas)
+        bts = _tabla("bts_co.csv", {"year", "mes", "llegadas_sillas"})
+        ipc = _tabla("dane_ipc.csv", {"anio", "mes", "indice"})
         skips = _skips()
     except Exception as e:  # jamas tumbar: degradar a skip
         payload: dict[str, Any] = {
@@ -265,7 +283,7 @@ def main() -> int:
     extremos += [str(b["anio"]) for b in bench_eu]
     ventana = f"{min(extremos)}..{max(extremos)}" if all(extremos) else RAW_DIR.name
 
-    nucleo = bool(operaciones or trm or bench_eu or wiki)
+    nucleo = bool(operaciones or trm or bench_eu or wiki or bts or ipc)
     payload = {
         "id": "bureau-conectividad-bench",
         "generado": GENERADO,
@@ -275,6 +293,19 @@ def main() -> int:
         "trm_serie": trm,
         "benchmark_eu": bench_eu,
         "wikimedia_serie": wiki,
+        "bts_colombia": [
+            {"year": str(r.get("year", "")),
+             "mes": str(r.get("mes", "")).zfill(2) if str(r.get("mes", "")).strip() else "",
+             "llegadas_sillas": _int(_num(r.get("llegadas_sillas"))),
+             "llegadas_pax": _int(_num(r.get("llegadas_pax"))),
+             "salidas_sillas": _int(_num(r.get("salidas_sillas")))}
+            for r in bts if str(r.get("year", "")).strip()
+        ],
+        "ipc_colombia": [
+            {"anio": _int(_num(r.get("anio"))), "mes": _int(_num(r.get("mes"))),
+             "indice": _num(r.get("indice"))}
+            for r in ipc if _num(r.get("indice")) is not None
+        ],
         "cortes": cortes,
         "skips": skips,
         "retiradas": RETIRADAS,

@@ -22,7 +22,7 @@ from pathlib import Path
 import pandas as pd
 
 ROOT = Path(__file__).resolve().parent.parent  # etl-bureau/
-RAW_DIR = Path(sys.argv[1]) if len(sys.argv) > 1 else ROOT / "data" / "raw" / "2026-11-02"
+RAW_DIR = ROOT / "data" / "raw"
 OUT = Path(__file__).resolve().parent / "tableros_bureau" / "oferta_territorio_2025_2026.json"
 
 ID = "bureau-oferta"
@@ -169,7 +169,15 @@ def build_turismo_interno(df, cap=5):
 
 
 def main():
+    global RAW_DIR
     try:
+        from export.rawutil import latest_raw
+        if Path(sys.argv[0]).name.startswith("bureau_oferta") and len(sys.argv) > 1 and Path(sys.argv[1]).is_dir():
+            RAW_DIR = Path(sys.argv[1])
+        else:
+            found = latest_raw(ROOT)
+            if found is not None:
+                RAW_DIR = found
         faltantes = [f for f in REQUIRED_FILES if (RAW_DIR / f).is_file() is False]
         rnt_dfs = []
         for f in RNT_FILES:
