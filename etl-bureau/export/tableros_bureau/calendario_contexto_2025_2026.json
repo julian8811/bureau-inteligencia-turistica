@@ -1,0 +1,182 @@
+{
+  "id": "bureau-calendario",
+  "generado": "2026-11-02",
+  "ventana": "2025-2026",
+  "fuente": "ETL Bureau, festivos CO + IDEAM",
+  "festivos": [
+    {
+      "date": "2025-01-01",
+      "nombre": "Año Nuevo"
+    },
+    {
+      "date": "2025-01-06",
+      "nombre": "Día de los Reyes Magos"
+    },
+    {
+      "date": "2025-03-24",
+      "nombre": "Día de San José"
+    },
+    {
+      "date": "2025-04-17",
+      "nombre": "Jueves Santo"
+    },
+    {
+      "date": "2025-04-18",
+      "nombre": "Viernes Santo"
+    },
+    {
+      "date": "2025-05-01",
+      "nombre": "Primero de Mayo"
+    },
+    {
+      "date": "2025-06-02",
+      "nombre": "Ascensión del señor"
+    },
+    {
+      "date": "2025-06-23",
+      "nombre": "Corpus Christi"
+    },
+    {
+      "date": "2025-06-30",
+      "nombre": "San Pedro y San Pablo"
+    },
+    {
+      "date": "2025-06-30",
+      "nombre": "Sagrado Corazón"
+    },
+    {
+      "date": "2025-07-20",
+      "nombre": "Declaracion de la Independencia de Colombia"
+    },
+    {
+      "date": "2025-08-07",
+      "nombre": "Batalla de Boyacá"
+    },
+    {
+      "date": "2025-08-18",
+      "nombre": "La Asunción"
+    },
+    {
+      "date": "2025-10-13",
+      "nombre": "Día de la Raza"
+    },
+    {
+      "date": "2025-11-03",
+      "nombre": "Dia de los Santos"
+    },
+    {
+      "date": "2025-11-17",
+      "nombre": "Independencia de Cartagena"
+    },
+    {
+      "date": "2025-12-08",
+      "nombre": "La Inmaculada Concepción"
+    },
+    {
+      "date": "2025-12-25",
+      "nombre": "Navidad"
+    },
+    {
+      "date": "2026-01-01",
+      "nombre": "Año Nuevo"
+    },
+    {
+      "date": "2026-01-12",
+      "nombre": "Día de los Reyes Magos"
+    },
+    {
+      "date": "2026-03-23",
+      "nombre": "Día de San José"
+    },
+    {
+      "date": "2026-04-02",
+      "nombre": "Jueves Santo"
+    },
+    {
+      "date": "2026-04-03",
+      "nombre": "Viernes Santo"
+    },
+    {
+      "date": "2026-05-01",
+      "nombre": "Primero de Mayo"
+    },
+    {
+      "date": "2026-05-18",
+      "nombre": "Ascensión del señor"
+    },
+    {
+      "date": "2026-06-08",
+      "nombre": "Corpus Christi"
+    },
+    {
+      "date": "2026-06-15",
+      "nombre": "Sagrado Corazón"
+    },
+    {
+      "date": "2026-06-29",
+      "nombre": "San Pedro y San Pablo"
+    },
+    {
+      "date": "2026-07-13",
+      "nombre": "Día de la Virgen de Chiquinquirá"
+    },
+    {
+      "date": "2026-07-20",
+      "nombre": "Declaracion de la Independencia de Colombia"
+    },
+    {
+      "date": "2026-08-07",
+      "nombre": "Batalla de Boyacá"
+    },
+    {
+      "date": "2026-08-17",
+      "nombre": "La Asunción"
+    },
+    {
+      "date": "2026-10-12",
+      "nombre": "Día de la Raza"
+    },
+    {
+      "date": "2026-11-02",
+      "nombre": "Dia de los Santos"
+    },
+    {
+      "date": "2026-11-16",
+      "nombre": "Independencia de Cartagena"
+    },
+    {
+      "date": "2026-12-08",
+      "nombre": "La Inmaculada Concepción"
+    },
+    {
+      "date": "2026-12-25",
+      "nombre": "Navidad"
+    }
+  ],
+  "estaciones": {
+    "total": 413,
+    "por_estado": {
+      "Activa": 297,
+      "Suspendida": 116
+    },
+    "por_categoria": {
+      "Pluviométrica": 239,
+      "Meteorológica Especial": 51,
+      "Pluviográfica": 39,
+      "Limnimétrica": 30,
+      "Climatológica Ordinaria": 21,
+      "Limnigráfica": 15,
+      "Climatológica Principal": 9,
+      "Sinóptica Principal": 6,
+      "Ambiental": 3
+    },
+    "top_municipios": [
+      {
+        "municipio": "Medellín",
+        "n": 413
+      }
+    ],
+    "con_coordenadas": 413
+  },
+  "estado": "ok"
+}

@@ -44,6 +44,12 @@
    "id": "conectividad_benchmark_2025_2026",
    "estado": "ok",
    "n": 6743
+  },
+  {
+   "archivo": "etl-bureau/export/tableros_bureau/calendario_contexto_2025_2026.json",
+   "id": "calendario_contexto_2025_2026",
+   "estado": "ok",
+   "n": 450
   }
  ],
  "errores": [],
