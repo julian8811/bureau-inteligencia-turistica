@@ -1,0 +1,32 @@
+name: publicar tablero
+
+on:
+  workflow_dispatch:
+
+jobs:
+  parches:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Aplicar los parches del pronóstico en tableros-bureau
+        env:
+          TOKEN: ${{ secrets.TABLEROS_PAT }}
+        run: |
+          set -euo pipefail
+          if [ -z "${TOKEN}" ]; then
+            echo "falta el secreto TABLEROS_PAT"
+            exit 1
+          fi
+          git clone --depth 1 https://github.com/julian8811/tableros-bureau.git /tmp/tableros
+          cd /tmp/tableros
+          git config user.name bureau-etl
+          git config user.email bureau-etl@local
+          if grep -q "function bloquePronostico" app.js; then
+            echo "el bloque de pronóstico ya está en main"
+            exit 0
+          fi
+          git am "$GITHUB_WORKSPACE/odd/docs/tableros-bureau-fuentes.patch"
+          git am "$GITHUB_WORKSPACE/odd/docs/tableros-bureau-pronostico.patch"
+          git am "$GITHUB_WORKSPACE/odd/docs/tableros-bureau-ema.patch"
+          git push "https://x-access-token:${TOKEN}@github.com/julian8811/tableros-bureau.git" HEAD:main
+          echo "pronóstico publicado en tableros-bureau main"
