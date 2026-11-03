@@ -2,6 +2,10 @@ name: publicar tablero
 
 on:
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/publicar-tablero.yml
 
 jobs:
   parches:
