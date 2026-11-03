@@ -1,0 +1,328 @@
+{
+  "id": "bureau-owid",
+  "generado": "2026-11-02",
+  "ventana": "1995-2024",
+  "fuente": "ETL Bureau, Our World in Data (UN Tourism, llegadas internacionales)",
+  "serie": [
+    {
+      "pais": "Spain",
+      "iso3": "ESP",
+      "anio": 2024,
+      "valor": 93759300,
+      "region": "Europe"
+    },
+    {
+      "pais": "United States",
+      "iso3": "USA",
+      "anio": 2024,
+      "valor": 72390320,
+      "region": "North America"
+    },
+    {
+      "pais": "Italy",
+      "iso3": "ITA",
+      "anio": 2024,
+      "valor": 57725000,
+      "region": "Europe"
+    },
+    {
+      "pais": "Mexico",
+      "iso3": "MEX",
+      "anio": 2024,
+      "valor": 45038750,
+      "region": "North America"
+    },
+    {
+      "pais": "United Kingdom",
+      "iso3": "GBR",
+      "anio": 2024,
+      "valor": 38229570,
+      "region": "Europe"
+    },
+    {
+      "pais": "Germany",
+      "iso3": "DEU",
+      "anio": 2024,
+      "valor": 37420000,
+      "region": "Europe"
+    },
+    {
+      "pais": "Japan",
+      "iso3": "JPN",
+      "anio": 2024,
+      "valor": 36870000,
+      "region": "Asia"
+    },
+    {
+      "pais": "Saudi Arabia",
+      "iso3": "SAU",
+      "anio": 2024,
+      "valor": 29727444,
+      "region": "Asia"
+    },
+    {
+      "pais": "Portugal",
+      "iso3": "PRT",
+      "anio": 2024,
+      "valor": 28970000,
+      "region": "Europe"
+    },
+    {
+      "pais": "Hong Kong",
+      "iso3": "HKG",
+      "anio": 2024,
+      "valor": 21943900,
+      "region": "Asia"
+    },
+    {
+      "pais": "Canada",
+      "iso3": "CAN",
+      "anio": 2024,
+      "valor": 19913000,
+      "region": "North America"
+    },
+    {
+      "pais": "Poland",
+      "iso3": "POL",
+      "anio": 2024,
+      "valor": 19723000,
+      "region": "Europe"
+    },
+    {
+      "pais": "South Korea",
+      "iso3": "KOR",
+      "anio": 2024,
+      "valor": 16370000,
+      "region": "Asia"
+    },
+    {
+      "pais": "Macao",
+      "iso3": "MAC",
+      "anio": 2024,
+      "valor": 16043768,
+      "region": "Asia"
+    },
+    {
+      "pais": "Indonesia",
+      "iso3": "IDN",
+      "anio": 2024,
+      "valor": 13603000,
+      "region": "Asia"
+    },
+    {
+      "pais": "Romania",
+      "iso3": "ROU",
+      "anio": 2024,
+      "valor": 13353000,
+      "region": "Europe"
+    },
+    {
+      "pais": "Hungary",
+      "iso3": "HUN",
+      "anio": 2024,
+      "valor": 13155000,
+      "region": "Europe"
+    },
+    {
+      "pais": "Singapore",
+      "iso3": "SGP",
+      "anio": 2024,
+      "valor": 13025000,
+      "region": "Asia"
+    },
+    {
+      "pais": "Albania",
+      "iso3": "ALB",
+      "anio": 2024,
+      "valor": 11483000,
+      "region": "Europe"
+    },
+    {
+      "pais": "Kazakhstan",
+      "iso3": "KAZ",
+      "anio": 2024,
+      "valor": 10381566,
+      "region": "Asia"
+    },
+    {
+      "pais": "India",
+      "iso3": "IND",
+      "anio": 2024,
+      "valor": 9824000,
+      "region": "Asia"
+    },
+    {
+      "pais": "Belgium",
+      "iso3": "BEL",
+      "anio": 2024,
+      "valor": 9638000,
+      "region": "Europe"
+    },
+    {
+      "pais": "South Africa",
+      "iso3": "ZAF",
+      "anio": 2024,
+      "valor": 8919000,
+      "region": "Africa"
+    },
+    {
+      "pais": "Dominican Republic",
+      "iso3": "DOM",
+      "anio": 2024,
+      "valor": 8535701,
+      "region": "North America"
+    },
+    {
+      "pais": "Uzbekistan",
+      "iso3": "UZB",
+      "anio": 2024,
+      "valor": 7957213,
+      "region": "Asia"
+    }
+  ],
+  "colombia_serie": [
+    {
+      "anio": 1995,
+      "valor": 1399000
+    },
+    {
+      "anio": 1996,
+      "valor": 631000
+    },
+    {
+      "anio": 1997,
+      "valor": 639000
+    },
+    {
+      "anio": 1998,
+      "valor": 674000
+    },
+    {
+      "anio": 1999,
+      "valor": 546000
+    },
+    {
+      "anio": 2000,
+      "valor": 557000
+    },
+    {
+      "anio": 2001,
+      "valor": 616000
+    },
+    {
+      "anio": 2002,
+      "valor": 567000
+    },
+    {
+      "anio": 2003,
+      "valor": 625000
+    },
+    {
+      "anio": 2004,
+      "valor": 791000
+    },
+    {
+      "anio": 2005,
+      "valor": 933000
+    },
+    {
+      "anio": 2006,
+      "valor": 2045000
+    },
+    {
+      "anio": 2007,
+      "valor": 2254000
+    },
+    {
+      "anio": 2008,
+      "valor": 2317000
+    },
+    {
+      "anio": 2009,
+      "valor": 2364000
+    },
+    {
+      "anio": 2010,
+      "valor": 1405000
+    },
+    {
+      "anio": 2011,
+      "valor": 2043000
+    },
+    {
+      "anio": 2012,
+      "valor": 2180000
+    },
+    {
+      "anio": 2013,
+      "valor": 2288000
+    },
+    {
+      "anio": 2014,
+      "valor": 2552000
+    },
+    {
+      "anio": 2015,
+      "valor": 3099000
+    },
+    {
+      "anio": 2016,
+      "valor": 3370000
+    },
+    {
+      "anio": 2017,
+      "valor": 3712000
+    },
+    {
+      "anio": 2018,
+      "valor": 4020000
+    },
+    {
+      "anio": 2019,
+      "valor": 4169000
+    },
+    {
+      "anio": 2020,
+      "valor": 1252000
+    },
+    {
+      "anio": 2021,
+      "valor": 2127000
+    },
+    {
+      "anio": 2022,
+      "valor": 4519000
+    }
+  ],
+  "regiones_ultimo": [
+    {
+      "region": "Europe",
+      "valor": 354945326
+    },
+    {
+      "region": "Asia",
+      "valor": 207893892
+    },
+    {
+      "region": "North America",
+      "valor": 160773115
+    },
+    {
+      "region": "South America",
+      "valor": 19763729
+    },
+    {
+      "region": "Africa",
+      "valor": 11507927
+    },
+    {
+      "region": "Oceania",
+      "valor": 4903322
+    }
+  ],
+  "cortes": {
+    "mundial": 2024,
+    "colombia": 2022
+  },
+  "estado": "ok"
+}
