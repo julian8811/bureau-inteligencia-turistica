@@ -1,0 +1,147 @@
+{
+  "id": "bureau-consumo",
+  "generado": "2026-11-05",
+  "ventana": "2023-2025",
+  "fuente": "DANE CST + SIT Medellin + SITE/Credibanco/CityData (agregados publicos)",
+  "licencia": "Agregados propios del ETL; fuentes primarias DANE / SIT / Alcaldia-SITE. Sin datos bancarios individuales (reserva art. 15 Const. + Ley 1266/1581).",
+  "universo": "Gasto extranjero en Colombia (receptor CST), ticket por mercado emisor SIT, gasto Medellin con tarjeta SITE.",
+  "serie_mercados": [
+    {
+      "pais": "Francia",
+      "anio": 2025,
+      "llegadas": 9088,
+      "ticket_prom_cop": null,
+      "estancia_media_dias": null,
+      "gasto_estimado_cop": null,
+      "nota": "gasto_estimado = llegadas * ticket_prom cuando ambos existen; sino null"
+    },
+    {
+      "pais": "Panama",
+      "anio": 2025,
+      "llegadas": 68122,
+      "ticket_prom_cop": 307954,
+      "estancia_media_dias": 6.7,
+      "gasto_estimado_cop": 20978442388,
+      "nota": "gasto_estimado = llegadas * ticket_prom cuando ambos existen; sino null"
+    },
+    {
+      "pais": "Republica Dominicana",
+      "anio": 2025,
+      "llegadas": 60974,
+      "ticket_prom_cop": 432681,
+      "estancia_media_dias": 6,
+      "gasto_estimado_cop": 26382291294,
+      "nota": "gasto_estimado = llegadas * ticket_prom cuando ambos existen; sino null"
+    },
+    {
+      "pais": "Mexico",
+      "anio": 2025,
+      "llegadas": 88190,
+      "ticket_prom_cop": 272337,
+      "estancia_media_dias": 7.8,
+      "gasto_estimado_cop": 24017400030,
+      "nota": "gasto_estimado = llegadas * ticket_prom cuando ambos existen; sino null"
+    },
+    {
+      "pais": "USA",
+      "anio": 2025,
+      "llegadas": 439482,
+      "ticket_prom_cop": 313951,
+      "estancia_media_dias": 10.8,
+      "gasto_estimado_cop": 137975813382,
+      "nota": "gasto_estimado = llegadas * ticket_prom cuando ambos existen; sino null"
+    }
+  ],
+  "gasto_extranjero_co": {
+    "unidad": "miles_de_millones_cop_corrientes",
+    "estado": {
+      "2023": "definitivo",
+      "2024": "provisional",
+      "2025": "preliminar"
+    },
+    "total": {
+      "2023": 47937,
+      "2024": 50483,
+      "2025": 54704
+    },
+    "flujos_personas": {
+      "2023": 3883877,
+      "2024": 4421053,
+      "2025": 4589891
+    },
+    "pernoctaciones": {
+      "2023": 64432305,
+      "2024": 73343862,
+      "2025": 76144862
+    },
+    "desglose_2025": {
+      "transporte_aereo_pasajeros": 13991,
+      "alimentos_bebidas": 13296,
+      "alojamiento_visitantes": 7552,
+      "transporte_carretera": 6256,
+      "culturales_deportivos_recreativos": 5302,
+      "bienes_consumo": 6380,
+      "agencias_viajes_reservas": 302,
+      "otros_servicios": 1625
+    },
+    "fuente_url": "https://www.dane.gov.co/files/operaciones/CST/bol-CST-2025.pdf"
+  },
+  "gasto_medellin": {
+    "unidad": "millones_cop",
+    "gasto_tarjeta_medible": 4000000000000,
+    "transacciones_tarjeta": 16000000,
+    "cobertura_credibanco_pct": 45,
+    "gasto_total_estimado": 9000000000000,
+    "nota_estimado": "Extrapolacion SITE: Credibanco procesa ~45% de tx con tarjeta; sin contar efectivo.",
+    "split_medible": {
+      "internacional_pct": 49.1,
+      "nacional_pct": 50.9
+    },
+    "top_internacional": [
+      {
+        "pais": "Estados Unidos",
+        "gasto": 906000000000
+      },
+      {
+        "pais": "Mercado #2",
+        "gasto": 96000000000
+      }
+    ],
+    "top_nacional": [
+      {
+        "ciudad": "Bogota",
+        "gasto": 619000000000
+      },
+      {
+        "ciudad": "Cali",
+        "gasto": 65000000000
+      },
+      {
+        "ciudad": "Barranquilla",
+        "gasto": 42000000000
+      },
+      {
+        "ciudad": "Cartagena",
+        "gasto": 39000000000
+      },
+      {
+        "ciudad": "Pereira",
+        "gasto": 30000000000
+      }
+    ],
+    "fuente_url": "https://www.medellin.gov.co/es/sala-de-prensa/noticias/medellin-movio-alrededor-de-9-billones-en-turismo-durante-2025-segun-analisis-de-datos-del-sector/"
+  },
+  "series_disponibles": [
+    "llegadas (de pais_dashboard, ya existente)",
+    "ticket_prom_cop (serie_mercados)",
+    "gasto_estimado_cop (serie_mercados, llegadas*ticket)",
+    "gasto_receptor_total (gasto_extranjero_co.total)",
+    "gasto_medellin_tarjeta (gasto_medellin)"
+  ],
+  "notas": [
+    "CST 2024 provisional / 2025 preliminar: pueden revisarse en proxima publicacion DANE.",
+    "Ticket SIT solo donde el informe trae ticket POS; Francia queda null (sin vuelo directo ni ticket publicado).",
+    "Gasto Medellin internacional/nacional es sobre lo medible con tarjeta; el 25.5% nacional-real descuenta movilidad Valle de Aburra/Rionegro (informe SITE)."
+  ],
+  "estado": "ok"
+}
