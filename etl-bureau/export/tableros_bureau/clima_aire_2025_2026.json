@@ -1,8 +1,8 @@
 {
   "id": "bureau-clima",
-  "generado": "2026-11-02",
+  "generado": "2026-11-06",
   "ventana": "2026-08..2026-11-08",
-  "fuente": "ETL Bureau, IDEAM + Open-Meteo + aire_med + SISAIRE",
+  "fuente": "ETL Bureau, IDEAM + Open-Meteo + aire_med",
   "lluvia_mensual": [
     {
       "periodo": "2026-08",
@@ -351,51 +351,5 @@
       "prec_p90": 6.4
     }
   ],
-  "estado": "ok",
-  "sisaire_pm25": [
-    {
-      "fecha": "2025-12-21",
-      "pm2_5": 17.86
-    },
-    {
-      "fecha": "2025-12-22",
-      "pm2_5": 14.81
-    },
-    {
-      "fecha": "2025-12-23",
-      "pm2_5": 13.69
-    },
-    {
-      "fecha": "2025-12-24",
-      "pm2_5": 17.63
-    },
-    {
-      "fecha": "2025-12-25",
-      "pm2_5": 20.27
-    },
-    {
-      "fecha": "2025-12-26",
-      "pm2_5": 14.62
-    },
-    {
-      "fecha": "2025-12-27",
-      "pm2_5": 14.26
-    },
-    {
-      "fecha": "2025-12-28",
-      "pm2_5": 15.04
-    },
-    {
-      "fecha": "2025-12-29",
-      "pm2_5": 16.73
-    },
-    {
-      "fecha": "2025-12-30",
-      "pm2_5": 16.02
-    },
-    {
-      "fecha": "2025-12-31",
-      "pm2_5": 18.05
-    }
-  ]
+  "estado": "ok"
 }

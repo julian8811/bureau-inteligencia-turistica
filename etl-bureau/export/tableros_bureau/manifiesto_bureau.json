@@ -1,5 +1,5 @@
 {
- "generado": "2026-11-02",
+ "generado": "2026-11-06",
  "fuente": "ETL Bureau abierto (etl-bureau, data/processed)",
  "licencia": "Datos abiertos procesados por el ETL Bureau; insumo Aerocivil/DANE abierto.",
  "piezas": [
@@ -16,52 +16,16 @@
    "n": 6
   },
   {
+   "archivo": "etl-bureau/export/tableros_bureau/prensa_medios.json",
+   "id": "prensa_medios",
+   "estado": "ok",
+   "n": 26
+  },
+  {
    "archivo": "etl-bureau/export/tableros_bureau/informe_llm.json",
    "id": "informe_llm",
    "estado": "ok",
    "n": 10
-  },
-  {
-   "archivo": "etl-bureau/export/tableros_bureau/oferta_territorio_2025_2026.json",
-   "id": "oferta_territorio_2025_2026",
-   "estado": "ok",
-   "n": 79
-  },
-  {
-   "archivo": "etl-bureau/export/tableros_bureau/seguridad_2025_2026.json",
-   "id": "seguridad_2025_2026",
-   "estado": "ok",
-   "n": 99
-  },
-  {
-   "archivo": "etl-bureau/export/tableros_bureau/clima_aire_2025_2026.json",
-   "id": "clima_aire_2025_2026",
-   "estado": "ok",
-   "n": 80
-  },
-  {
-   "archivo": "etl-bureau/export/tableros_bureau/conectividad_benchmark_2025_2026.json",
-   "id": "conectividad_benchmark_2025_2026",
-   "estado": "ok",
-   "n": 6494
-  },
-  {
-   "archivo": "etl-bureau/export/tableros_bureau/calendario_contexto_2025_2026.json",
-   "id": "calendario_contexto_2025_2026",
-   "estado": "ok",
-   "n": 450
-  },
-  {
-   "archivo": "etl-bureau/export/tableros_bureau/owid_benchmark_2025_2026.json",
-   "id": "owid_benchmark_2025_2026",
-   "estado": "ok",
-   "n": 53
-  },
-  {
-   "archivo": "etl-bureau/export/tableros_bureau/sit_emisores_2025_2026.json",
-   "id": "sit_emisores_2025_2026",
-   "estado": "ok",
-   "n": 5
   }
  ],
  "errores": [],
