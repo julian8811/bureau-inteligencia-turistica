@@ -16,6 +16,8 @@ from backend import auth
 APPROVAL_ADMIN = "consultor.ceitto@colmayor.edu.co"
 APPROVAL_TTL_HOURS = 72
 GUEST_DEFAULT_DAYS = 90
+# Cloudflare delante de api.resend.com bloquea UAs de bot (1010): UA propio neutro.
+RESEND_UA = "bureau-etl/1.0"
 
 
 def ensure_access_schema(con) -> None:
@@ -50,7 +52,8 @@ def _send_resend(admin: str, subject: str, body: str) -> None:
         conn.request("POST", "/emails", body=payload,
                      headers={"Authorization": "Bearer " + key,
                               "Content-Type": "application/json",
-                              "Accept": "application/json"})
+                              "Accept": "application/json",
+                              "User-Agent": RESEND_UA})
         r = conn.getresponse()
         r.read()
         if r.status >= 300:
