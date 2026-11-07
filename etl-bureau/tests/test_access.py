@@ -83,14 +83,17 @@ def test_invitado_vencido_no_entra():
         assert auth.can_login(access.user_estado(con, "luz@externa.org")) is False
 
 
+_CAPTURED = {}
+
+
 class _FakeConn:
     status = 200
 
     def __init__(self, *a, **k):
         pass
 
-    def request(self, *a, **k):
-        pass
+    def request(self, method, url, body=None, headers=None):
+        _CAPTURED.update(method=method, url=url, headers=headers or {})
 
     def getresponse(self):
         return self
@@ -112,6 +115,8 @@ def test_resend_ok_no_usa_outbox(monkeypatch):
             row = cur.execute("SELECT COUNT(*) FROM approval_outbox").fetchone()
             n = row[0] if row else -1
         assert n == 0, "si Resend acepta, no hay outbox"
+        assert _CAPTURED.get("url") == "/emails"
+        assert _CAPTURED.get("headers", {}).get("User-Agent"), "Cloudflare bloquea sin UA"
 
 
 def test_resend_caido_cae_a_outbox(monkeypatch):
