@@ -1,4 +1,5 @@
 """Workflow solicitud→aprobación→alta + invitados. TDD: RED primero (T3: S3,S4,S5)."""
+import http.client
 import sys
 from pathlib import Path
 
@@ -80,3 +81,51 @@ def test_invitado_vencido_no_entra():
             cur.execute("UPDATE app_users SET expira_el = CURRENT_DATE - 1 WHERE email = 'luz@externa.org'")
         access.expire_guests(con)
         assert auth.can_login(access.user_estado(con, "luz@externa.org")) is False
+
+
+class _FakeConn:
+    status = 200
+
+    def __init__(self, *a, **k):
+        pass
+
+    def request(self, *a, **k):
+        pass
+
+    def getresponse(self):
+        return self
+
+    def read(self):
+        return b'{}'
+
+    def close(self):
+        pass
+
+
+def test_resend_ok_no_usa_outbox(monkeypatch):
+    from backend import access
+    monkeypatch.setenv("EMAIL_API_KEY", "re_test")
+    monkeypatch.setattr(http.client, "HTTPSConnection", _FakeConn)
+    with _con() as con:
+        access.request_access(con, "Luz", "luz@externa.org", "ONG", "ver", "invitado")
+        with con.cursor() as cur:
+            row = cur.execute("SELECT COUNT(*) FROM approval_outbox").fetchone()
+            n = row[0] if row else -1
+        assert n == 0, "si Resend acepta, no hay outbox"
+
+
+def test_resend_caido_cae_a_outbox(monkeypatch):
+    from backend import access
+    monkeypatch.setenv("EMAIL_API_KEY", "re_test")
+    monkeypatch.delenv("SMTP_HOST", raising=False)
+
+    class _Boom:
+        def __init__(self, *a, **k):
+            raise OSError("red caída")
+    monkeypatch.setattr(http.client, "HTTPSConnection", _Boom)
+    with _con() as con:
+        access.request_access(con, "Luz", "luz@externa.org", "ONG", "ver", "invitado")
+        with con.cursor() as cur:
+            row = cur.execute("SELECT COUNT(*) FROM approval_outbox").fetchone()
+            n = row[0] if row else -1
+        assert n == 1
