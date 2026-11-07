@@ -3,6 +3,8 @@
 S3: sin aprobación del admin no se entra (gate en activate_user + can_login).
 Aviso al admin por SMTP si hay SMTP_HOST, si no a approval_outbox (bandeja).
 """
+import http.client
+import json
 import os
 import secrets
 import smtplib
@@ -36,9 +38,35 @@ def _audit(con, email: str, evento: str, ok: bool) -> None:
         )
 
 
+def _send_resend(admin: str, subject: str, body: str) -> None:
+    key = os.environ.get("EMAIL_API_KEY", "").strip()
+    if not key:
+        raise RuntimeError("sin EMAIL_API_KEY")
+    sender = os.environ.get("EMAIL_FROM", "onboarding@resend.dev")
+    payload = json.dumps({"from": sender, "to": [admin],
+                          "subject": subject, "text": body}).encode()
+    conn = http.client.HTTPSConnection("api.resend.com", timeout=15)
+    try:
+        conn.request("POST", "/emails", body=payload,
+                     headers={"Authorization": "Bearer " + key,
+                              "Content-Type": "application/json",
+                              "Accept": "application/json"})
+        r = conn.getresponse()
+        r.read()
+        if r.status >= 300:
+            raise RuntimeError(f"resend status {r.status}")
+    finally:
+        conn.close()
+
+
 def _notify_admin(con, subject: str, body: str) -> dict:
     admin = os.environ.get("APPROVAL_ADMIN_EMAIL", APPROVAL_ADMIN)
     text = f"Para: {admin}\nAsunto: {subject}\n\n{body}"
+    try:
+        _send_resend(admin, subject, body)
+        return {"status": "sent", "to": admin, "via": "resend"}
+    except Exception as e:
+        print(f"[access][WARN] resend no disponible ({e}), pruebo smtp")
     host = os.environ.get("SMTP_HOST", "").strip()
     if host:
         try:
