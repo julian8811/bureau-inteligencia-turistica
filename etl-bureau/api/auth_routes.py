@@ -72,6 +72,13 @@ def login(request: Request, email: str = Form(""), password: str = Form(""),
         con.close()
 
 
+@router.get("/auth/csrf")
+def csrf():
+    # El front estatico no puede acunar HMAC sin el secreto: lo emite el server.
+    # No expone nada: verificar no requiere secreto del lado lector.
+    return {"csrf_token": sec.new_csrf_token()}
+
+
 @router.get("/auth/yo")
 def yo(user_id: str = Depends(sec.current_user)):
     return {"ok": True, "user_id": user_id}

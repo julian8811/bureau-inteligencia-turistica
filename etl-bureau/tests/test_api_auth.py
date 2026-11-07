@@ -142,3 +142,13 @@ def test_cors_permite_vercel(monkeypatch):
         "Access-Control-Request-Headers": "authorization,content-type",
     })
     assert r.headers.get("access-control-allow-origin") == "https://tableros-bureau.vercel.app"
+
+
+def test_csrf_publico_para_front(monkeypatch):
+    c = _client(monkeypatch)
+    r = c.get("/auth/csrf")
+    assert r.status_code == 200
+    token = r.json().get("csrf_token", "")
+    assert token, "el front estatico no puede acunar HMAC sin secreto"
+    from api.security import check_csrf_token
+    assert check_csrf_token(token, _secret())
