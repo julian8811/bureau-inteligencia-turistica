@@ -87,16 +87,21 @@ _CAPTURED = {}
 
 
 class _FakeConn:
-    status = 200
+    behaviors = {}
 
-    def __init__(self, *a, **k):
-        pass
+    def __init__(self, host, *a, **k):
+        self._host = host
 
     def request(self, method, url, body=None, headers=None):
-        _CAPTURED.update(method=method, url=url, headers=headers or {})
+        _CAPTURED.update(host=self._host, method=method, url=url,
+                         headers=headers or {})
 
     def getresponse(self):
         return self
+
+    @property
+    def status(self):
+        return _FakeConn.behaviors.get(self._host, 200)
 
     def read(self):
         return b'{}'
@@ -117,6 +122,26 @@ def test_resend_ok_no_usa_outbox(monkeypatch):
         assert n == 0, "si Resend acepta, no hay outbox"
         assert _CAPTURED.get("url") == "/emails"
         assert _CAPTURED.get("headers", {}).get("User-Agent"), "Cloudflare bloquea sin UA"
+
+
+def test_brevo_ok_tras_resend_caido(monkeypatch):
+    from backend import access
+    monkeypatch.setenv("EMAIL_API_KEY", "re_test")
+    monkeypatch.setenv("BREVO_API_KEY", "bv_test")
+    monkeypatch.setattr(http.client, "HTTPSConnection", _FakeConn)
+    _FakeConn.behaviors = {"api.resend.com": 500}
+    try:
+        with _con() as con:
+            access.request_access(con, "Luz", "luz@externa.org", "ONG", "ver", "invitado")
+            with con.cursor() as cur:
+                row = cur.execute("SELECT COUNT(*) FROM approval_outbox").fetchone()
+                n = row[0] if row else -1
+            assert n == 0, "si Brevo acepta, no hay outbox"
+            assert _CAPTURED.get("host") == "api.brevo.com"
+            assert _CAPTURED.get("url") == "/v3/smtp/email"
+            assert "api-key" in _CAPTURED.get("headers", {})
+    finally:
+        _FakeConn.behaviors = {}
 
 
 def test_resend_caido_cae_a_outbox(monkeypatch):
