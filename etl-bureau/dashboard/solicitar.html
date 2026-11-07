@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Solicitar acceso · Bureau Medellín</title>
+<style>:root{--navy:#172139;--teal:#00AEAC;--orange:#E9901E;--lime:#B4C42C;--teal2:#108181;--yellow:#FBBB28;--mut:#5A6C7D}
+*{box-sizing:border-box}body{font-family:Montserrat,Arial,sans-serif;color:var(--navy);margin:0;background:#fff;font-size:11pt}
+@page{size:A4;margin:14mm 12mm}header{background:var(--navy);color:#fff;padding:22px 26px}
+header h1{font-size:22pt;margin:10px 0 4px}header p{color:#cfd6df;font-size:10pt;margin:2px 0}
+header img{width:100%;max-width:560px}main{max-width:1100px;margin:0 auto;padding:0 16px 30px}
+nav.toc{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0}nav.toc a{background:#EEF1F5;border-radius:20px;padding:6px 14px;color:var(--navy);text-decoration:none;font-weight:700;font-size:10pt}
+h2{font-size:15pt;border-left:8px solid var(--orange);padding-left:10px;margin:24px 0 8px}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px}
+.kpi{background:#EEF1F5;border-left:6px solid var(--orange);border-radius:8px;padding:10px 14px}
+.kpi .v{font-size:1.35rem;font-weight:800}.kpi .l{font-size:.75rem;color:var(--mut)}
+table{width:100%;border-collapse:collapse;font-size:9pt;margin:8px 0}
+th{background:var(--navy);color:#fff;text-align:left;padding:5px 7px}
+td{padding:4px 7px;border-bottom:1px solid #e5e7eb}.num{text-align:right;font-variant-numeric:tabular-nums}
+.bul{background:#EEF1F5;border-left:6px solid var(--orange);border-radius:6px;padding:8px 12px;margin:6px 0;font-size:10pt}
+.src{font-size:8pt;color:var(--mut)}.foot{margin-top:18px;border-top:2px solid var(--navy);padding-top:6px;font-size:8pt;color:var(--mut)}
+.sec{page-break-inside:avoid}@media print{nav.toc{display:none}header{padding:14px}main{padding:0}}
+.card{background:#EEF1F5;border-left:6px solid var(--orange);border-radius:8px;padding:18px 20px;max-width:520px;margin:22px auto}label{display:block;font-size:10pt;font-weight:700;margin:10px 0 4px}input,select,textarea{width:100%;padding:8px 10px;border:2px solid var(--navy);border-radius:6px;font-size:11pt;font-family:inherit;color:var(--navy);background:#fff}button{background:var(--orange);color:#fff;border:none;border-radius:20px;padding:10px 26px;font-weight:700;font-size:11pt;margin-top:14px;cursor:pointer}.alt{text-align:center;margin-top:12px;font-size:10pt}</style>
+</head>
+<body>
+<header>
+<img src="assets/logo_colmayor_navy.png" alt="I.U. Colegio Mayor de Antioquia">
+<h1>Inteligencia Turística · Medellín y Antioquia</h1>
+<p>I.U. Colegio Mayor de Antioquia · Acceso restringido · ETL diario Python · HTML puro sin JS</p>
+</header>
+<main>
+<h2>Solicitar acceso</h2>
+<div class="card"><form method="post" action="/auth/solicitar">
+<input type="hidden" name="csrf_token" value="">
+<label for="nombre">Nombre completo</label>
+<input id="nombre" name="nombre" type="text" required>
+<label for="email">Correo</label>
+<input id="email" name="email" type="email" required>
+<label for="institucion">Institución</label>
+<input id="institucion" name="institucion" type="text" required>
+<label for="tipo">Tipo de acceso</label>
+<select id="tipo" name="tipo" required><option value="interno">ColMayor interno</option>
+<option value="invitado">Invitado</option></select>
+<label for="motivo">Motivo</label>
+<textarea id="motivo" name="motivo" rows="3" required></textarea>
+<button type="submit">Enviar solicitud</button>
+</form><p class="bul">Las solicitudes las aprueba el administrador (consultor.ceitto@colmayor.edu.co).</p></div>
+<p class="src">El acceso requiere aprobación del administrador. Sin aprobación no se puede entrar.</p>
+<div class="foot">I.U. Colegio Mayor de Antioquia · Vigilada MinEducación · Acceso institucional e invitados.</div>
+</main>
+</body>
+</html>

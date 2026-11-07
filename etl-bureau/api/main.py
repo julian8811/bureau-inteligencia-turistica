@@ -7,12 +7,16 @@ import os
 import sys
 from pathlib import Path
 
-from fastapi import FastAPI, HTTPException, Query
+from fastapi import Depends, FastAPI, HTTPException, Query
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+from api.auth_routes import router as auth_router
+from api.security import current_user, security_headers
 from backend import db
 
 app = FastAPI(title="bureau-llm-backend")
+app.middleware("http")(security_headers)
+app.include_router(auth_router)
 
 
 def _con():
@@ -38,7 +42,8 @@ def health():
 
 
 @app.get("/marca")
-def marca(dia: str = Query("", description="YYYY-MM-DD; vacio = ultimo dia")):
+def marca(dia: str = Query("", description="YYYY-MM-DD; vacio = ultimo dia"),
+          _user: str = Depends(current_user)):
     con = _con()
     try:
         with con.cursor() as cur:
@@ -50,14 +55,15 @@ def marca(dia: str = Query("", description="YYYY-MM-DD; vacio = ultimo dia")):
             cur.execute(
                 "SELECT categoria, n, share, sent_net, top_topico FROM marca_llm"
                 " WHERE dia = %s ORDER BY n DESC", (dia,))
-            cols = [d[0] for d in cur.description]
+            cols = [d[0] for d in (cur.description or [])]
             return {"dia": dia, "rows": [dict(zip(cols, r)) for r in cur.fetchall()]}
     finally:
         con.close()
 
 
 @app.get("/clasificacion")
-def clasificacion(dia: str = Query(""), categoria: str = Query(""), limit: int = Query(200, le=2000)):
+def clasificacion(dia: str = Query(""), categoria: str = Query(""), limit: int = Query(200, le=2000),
+                  _user: str = Depends(current_user)):
     con = _con()
     try:
         with con.cursor() as cur:
@@ -75,14 +81,15 @@ def clasificacion(dia: str = Query(""), categoria: str = Query(""), limit: int =
             q += " ORDER BY titulo LIMIT %s"
             params.append(limit)
             cur.execute(q, params)
-            cols = [d[0] for d in cur.description]
+            cols = [d[0] for d in (cur.description or [])]
             return {"dia": dia, "rows": [dict(zip(cols, r)) for r in cur.fetchall()]}
     finally:
         con.close()
 
 
 @app.get("/informes")
-def informes(corte: str = Query("", description="vacio = ultimo corte")):
+def informes(corte: str = Query("", description="vacio = ultimo corte"),
+              _user: str = Depends(current_user)):
     con = _con()
     try:
         with con.cursor() as cur:
@@ -94,7 +101,7 @@ def informes(corte: str = Query("", description="vacio = ultimo corte")):
             cur.execute(
                 "SELECT seccion, titulo, bullets, cifras FROM informes"
                 " WHERE corte = %s ORDER BY seccion", (corte,))
-            cols = [d[0] for d in cur.description]
+            cols = [d[0] for d in (cur.description or [])]
             return {"corte": corte, "rows": [dict(zip(cols, r)) for r in cur.fetchall()]}
     finally:
         con.close()
