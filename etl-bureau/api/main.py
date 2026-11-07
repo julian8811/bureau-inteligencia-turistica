@@ -8,6 +8,7 @@ import sys
 from pathlib import Path
 
 from fastapi import Depends, FastAPI, HTTPException, Query
+from fastapi.middleware.cors import CORSMiddleware
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from api.auth_routes import router as auth_router
@@ -16,6 +17,11 @@ from backend import db
 
 app = FastAPI(title="bureau-llm-backend")
 app.middleware("http")(security_headers)
+_cors = [o.strip() for o in os.environ.get(
+    "CORS_ORIGINS", "https://tableros-bureau.vercel.app").split(",") if o.strip()]
+app.add_middleware(CORSMiddleware, allow_origins=_cors,
+                   allow_methods=["GET", "POST", "OPTIONS"],
+                   allow_headers=["Authorization", "Content-Type"], max_age=600)
 app.include_router(auth_router)
 
 
