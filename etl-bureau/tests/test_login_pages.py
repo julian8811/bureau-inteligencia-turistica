@@ -50,3 +50,10 @@ def test_solicitud_y_pendiente_nombran_canal_aprobacion(tmp_path):
         assert field in sol, field
     pend = (Path(out) / "pendiente.html").read_text(encoding="utf-8")
     assert "consultor.ceitto@colmayor.edu.co" in pend, "S3: sin aprobación no se entra"
+
+
+def test_form_css_con_estados(tmp_path):
+    out = _build(tmp_path)
+    html = (Path(out) / "login.html").read_text(encoding="utf-8")
+    for token in ("focus-visible", ".error", "prefers-reduced-motion"):
+        assert token in html, token
