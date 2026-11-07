@@ -106,3 +106,39 @@ def test_login_sin_csrf_403(monkeypatch):
                                     "password": "Password-larga-2026",
                                     "totp": pyotp.TOTP(secret).now()})
     assert r.status_code == 403
+
+
+def test_login_devuelve_token_en_body(monkeypatch):
+    import pyotp
+    c = _client(monkeypatch)
+    secret = _alta()
+    r = _login(c, "ana@colmayor.edu.co", "Password-larga-2026", pyotp.TOTP(secret).now())
+    assert r.status_code == 200
+    assert r.json().get("token"), "el front Vercel necesita el token en el body"
+
+
+def test_yo_con_header_ok(monkeypatch):
+    import pyotp
+    c = _client(monkeypatch)
+    secret = _alta()
+    r = _login(c, "ana@colmayor.edu.co", "Password-larga-2026", pyotp.TOTP(secret).now())
+    token = r.json()["token"]
+    c.cookies.clear()
+    r2 = c.get("/auth/yo", headers={"Authorization": f"Bearer {token}"})
+    assert r2.status_code == 200, r2.text
+    assert r2.json().get("ok") is True
+
+
+def test_yo_sin_nada_401(monkeypatch):
+    c = _client(monkeypatch)
+    assert c.get("/auth/yo").status_code == 401
+
+
+def test_cors_permite_vercel(monkeypatch):
+    c = _client(monkeypatch)
+    r = c.options("/auth/login", headers={
+        "Origin": "https://tableros-bureau.vercel.app",
+        "Access-Control-Request-Method": "POST",
+        "Access-Control-Request-Headers": "authorization,content-type",
+    })
+    assert r.headers.get("access-control-allow-origin") == "https://tableros-bureau.vercel.app"

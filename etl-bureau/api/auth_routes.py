@@ -3,7 +3,7 @@ import hashlib
 import os
 from datetime import datetime, timedelta, timezone
 
-from fastapi import APIRouter, Form, HTTPException, Request
+from fastapi import APIRouter, Depends, Form, HTTPException, Request
 from fastapi.responses import JSONResponse
 
 from api import security as sec
@@ -60,7 +60,9 @@ def login(request: Request, email: str = Form(""), password: str = Form(""),
                         " VALUES (%s, %s, %s)", (digest, row[0], expira))
         _audit(con, email, "login_ok", True)
         con.commit()
-        resp = JSONResponse({"ok": True})
+        # El token va también en el body: el front Vercel (otro dominio) no recibe
+        # la cookie y lo guarda como cookie propia tras login (tradeoff XSS documentado).
+        resp = JSONResponse({"ok": True, "token": token})
         # Secure solo si el transporte es https (o AUTH_COOKIE_SECURE=1 tras proxy TLS).
         secure = request.url.scheme == "https" or os.environ.get("AUTH_COOKIE_SECURE") == "1"
         resp.set_cookie(sec.COOKIE, token, httponly=True, secure=secure,
@@ -68,6 +70,11 @@ def login(request: Request, email: str = Form(""), password: str = Form(""),
         return resp
     finally:
         con.close()
+
+
+@router.get("/auth/yo")
+def yo(user_id: str = Depends(sec.current_user)):
+    return {"ok": True, "user_id": user_id}
 
 
 @router.post("/auth/logout")

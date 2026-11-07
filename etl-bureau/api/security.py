@@ -88,6 +88,10 @@ def current_user(request: Request) -> str:
     from backend import auth as _auth
     from backend import db
     token = request.cookies.get(COOKIE, "")
+    if not token:
+        header = request.headers.get("authorization", "")
+        if header.lower().startswith("bearer "):
+            token = header[7:].strip()
     user_id = _auth.check_session_token(token, session_secret()) if token else None
     if not user_id:
         raise HTTPException(401, "sin sesión")
