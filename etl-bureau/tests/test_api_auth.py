@@ -134,6 +134,35 @@ def test_yo_sin_nada_401(monkeypatch):
     assert c.get("/auth/yo").status_code == 401
 
 
+def _pedido(con, email="gil@colmayor.edu.co"):
+    from backend import access
+    return access.request_access(con, "Gil", email, "ColMayor", "ver", "interno")
+
+
+def test_aprobar_get_muestra_pagina(monkeypatch):
+    import psycopg
+    c = _client(monkeypatch)
+    with psycopg.connect(TEST_URL, autocommit=True) as con:
+        tok = _pedido(con)
+    r = c.get("/auth/aprobar", params={"token": tok})
+    assert r.status_code == 200
+    assert "Gil" in r.text and "aprobar" in r.text.lower()
+    assert "<form" in r.text.lower()
+
+
+def test_aprobar_post_aprueba_y_persiste(monkeypatch):
+    import psycopg
+    c = _client(monkeypatch)
+    with psycopg.connect(TEST_URL, autocommit=True) as con:
+        tok = _pedido(con)
+    r = c.post("/auth/aprobar", data={"token": tok})
+    assert r.status_code == 200, r.text
+    with psycopg.connect(TEST_URL, autocommit=True) as con2:
+        row = con2.execute("SELECT aprobado FROM app_users WHERE email=%s",
+                           ("gil@colmayor.edu.co",)).fetchone()
+        assert row and row[0] is True
+
+
 def test_cors_permite_vercel(monkeypatch):
     c = _client(monkeypatch)
     r = c.options("/auth/login", headers={

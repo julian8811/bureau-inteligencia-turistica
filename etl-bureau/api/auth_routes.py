@@ -1,10 +1,11 @@
 """Rutas de autenticación que cablean T1-T3 a HTTP (T4)."""
 import hashlib
+import html
 import os
 from datetime import datetime, timedelta, timezone
 
 from fastapi import APIRouter, Depends, Form, HTTPException, Request
-from fastapi.responses import JSONResponse
+from fastapi.responses import HTMLResponse, JSONResponse
 
 from api import security as sec
 from backend import access, auth, db
@@ -118,18 +119,66 @@ def solicitar(request: Request, nombre: str = Form(""), email: str = Form(""),
     return {"ok": True, "estado": "pendiente"}
 
 
-@router.get("/auth/aprobar")
-def aprobar(token: str = ""):
+_PAGINA = ("<!DOCTYPE html><html lang=\"es\"><head><meta charset=\"utf-8\">"
+           "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">"
+           "<title>{titulo} · Bureau</title><style>"
+           "body{{font-family:Montserrat,Arial,sans-serif;background:#fff;color:#172139;margin:0}}"
+           "header{{background:#172139;color:#fff;padding:20px 24px}}"
+           "main{{max-width:560px;margin:24px auto;padding:0 16px}}"
+           ".card{{background:#EEF1F5;border-left:6px solid #E9901E;border-radius:8px;"
+           "padding:16px 18px;line-height:1.55}}"
+           "button{{background:#E9901E;color:#fff;border:none;border-radius:20px;"
+           "padding:10px 26px;font-weight:700;font-size:11pt;cursor:pointer;margin-top:10px}}"
+           "</style></head><body><header><h1 style=\"margin:0;font-size:1.2rem\">"
+           "Bureau · Aprobación de acceso</h1></header><main><div class=\"card\">"
+           "{cuerpo}</div></main></body></html>")
+
+
+def _pagina_aprobar(titulo: str, cuerpo: str) -> str:
+    return _PAGINA.format(titulo=titulo, cuerpo=cuerpo)
+
+
+@router.get("/auth/aprobar", response_class=HTMLResponse)
+def aprobar_pagina(token: str = ""):
+    con = _con()
+    try:
+        with con.cursor() as cur:
+            row = cur.execute("SELECT email, nombre, institucion, motivo, tipo, estado"
+                              " FROM access_requests WHERE token_aprobacion = %s",
+                              (token,)).fetchone()
+        if not row or row[5] != "pendiente":
+            return HTMLResponse(_pagina_aprobar(
+                "Enlace inválido", "<p>Este enlace ya fue usado o venció (72h).</p>"),
+                status_code=400)
+        email, nombre, inst, motivo, tipo, _ = row
+        e = html.escape
+        cuerpo = (f"<p><strong>{e(nombre)}</strong> ({e(email)}, {e(inst)}, {e(tipo)})"
+                  f" solicita acceso.</p><p>Motivo: {e(motivo)}</p>"
+                  f"<form method=\"post\" action=\"/auth/aprobar\">"
+                  f"<input type=\"hidden\" name=\"token\" value=\"{e(token)}\">"
+                  f"<button type=\"submit\">Aprobar acceso</button></form>")
+        return HTMLResponse(_pagina_aprobar("Aprobar acceso", cuerpo))
+    finally:
+        con.close()
+
+
+@router.post("/auth/aprobar", response_class=HTMLResponse)
+def aprobar_ok(token: str = Form("")):
     con = _con()
     try:
         try:
             email = access.approve_request(con, token, "admin")
-        except ValueError as e:
-            raise HTTPException(400, str(e)) from e
+        except ValueError:
+            return HTMLResponse(_pagina_aprobar(
+                "Enlace inválido", "<p>Este enlace ya fue usado o venció (72h).</p>"),
+                status_code=400)
         con.commit()
     finally:
         con.close()
-    return {"ok": True, "email": email}
+    return HTMLResponse(_pagina_aprobar(
+        "Acceso aprobado",
+        f"<p>Acceso aprobado para <strong>{html.escape(email)}</strong>."
+        " Ya puede activar su cuenta.</p>"))
 
 
 @router.post("/auth/activar-mfa")
