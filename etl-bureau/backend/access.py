@@ -17,7 +17,7 @@ APPROVAL_ADMIN = "consultor.ceitto@colmayor.edu.co"
 APPROVAL_TTL_HOURS = 72
 GUEST_DEFAULT_DAYS = 90
 # Cloudflare delante de api.resend.com bloquea UAs de bot (1010): UA propio neutro.
-RESEND_UA = "bureau-etl/1.0"
+EMAIL_UA = "bureau-etl/1.0"  # UAs de bot son bloqueadas (Cloudflare 1010): UA propio neutro
 
 
 def ensure_access_schema(con) -> None:
@@ -53,11 +53,34 @@ def _send_resend(admin: str, subject: str, body: str) -> None:
                      headers={"Authorization": "Bearer " + key,
                               "Content-Type": "application/json",
                               "Accept": "application/json",
-                              "User-Agent": RESEND_UA})
+                              "User-Agent": EMAIL_UA})
         r = conn.getresponse()
         r.read()
         if r.status >= 300:
             raise RuntimeError(f"resend status {r.status}")
+    finally:
+        conn.close()
+
+
+def _send_brevo(admin: str, subject: str, body: str) -> None:
+    key = os.environ.get("BREVO_API_KEY", "").strip()
+    if not key:
+        raise RuntimeError("sin BREVO_API_KEY")
+    sender = os.environ.get("BREVO_FROM", APPROVAL_ADMIN)
+    payload = json.dumps({"sender": {"email": sender, "name": "Bureau"},
+                          "to": [{"email": admin}],
+                          "subject": subject, "textContent": body}).encode()
+    conn = http.client.HTTPSConnection("api.brevo.com", timeout=15)
+    try:
+        conn.request("POST", "/v3/smtp/email", body=payload,
+                     headers={"api-key": key,
+                              "Content-Type": "application/json",
+                              "Accept": "application/json",
+                              "User-Agent": EMAIL_UA})
+        r = conn.getresponse()
+        r.read()
+        if r.status >= 300:
+            raise RuntimeError(f"brevo status {r.status}")
     finally:
         conn.close()
 
@@ -69,7 +92,12 @@ def _notify_admin(con, subject: str, body: str) -> dict:
         _send_resend(admin, subject, body)
         return {"status": "sent", "to": admin, "via": "resend"}
     except Exception as e:
-        print(f"[access][WARN] resend no disponible ({e}), pruebo smtp")
+        print(f"[access][WARN] resend no disponible ({e}), pruebo brevo")
+    try:
+        _send_brevo(admin, subject, body)
+        return {"status": "sent", "to": admin, "via": "brevo"}
+    except Exception as e:
+        print(f"[access][WARN] brevo no disponible ({e}), pruebo smtp")
     host = os.environ.get("SMTP_HOST", "").strip()
     if host:
         try:
