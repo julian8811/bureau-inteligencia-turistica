@@ -181,9 +181,20 @@ def aprobar_ok(token: str = Form("")):
         " Ya puede activar su cuenta.</p>"))
 
 
+def _qr_data_uri(uri: str) -> str:
+    import base64
+    import io
+
+    import qrcode
+    img = qrcode.make(uri, box_size=8, border=2)
+    buf = io.BytesIO()
+    img.save(buf, "PNG")
+    return "data:image/png;base64," + base64.b64encode(buf.getvalue()).decode()
+
+
 @router.post("/auth/activar-mfa")
 def activar_mfa(request: Request, email: str = Form(""), password: str = Form(""),
-                csrf_token: str = Form("")):
+                csrf_token: str = Form(""), qr: str = Form("")):
     if not sec.check_csrf_token(csrf_token):
         raise HTTPException(403, "csrf inválido")
     con = _con()
@@ -204,7 +215,13 @@ def activar_mfa(request: Request, email: str = Form(""), password: str = Form(""
         con.commit()
     finally:
         con.close()
-    return {"ok": True, "otpauth_uri": auth.totp_uri(secret, email)}
+    resp_body = {"ok": True, "otpauth_uri": auth.totp_uri(secret, email)}
+    if qr:
+        try:
+            resp_body["qr_png"] = _qr_data_uri(resp_body["otpauth_uri"])
+        except ImportError as e:
+            raise HTTPException(400, "qr no disponible") from e
+    return resp_body
 
 
 @router.post("/auth/confirmar-mfa")
