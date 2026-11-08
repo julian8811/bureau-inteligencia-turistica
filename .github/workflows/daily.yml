@@ -54,6 +54,8 @@ jobs:
             exit 0
           fi
           git commit -m "data(etl): daily $(date -u +%F)"
+          echo "--- resto sin stagear (diagnostico rebase):"
+          git status --short | grep -v "^??" | head -n 30 || true
           git pull --rebase origin main
           git push origin HEAD:main
       - name: subir PDFs del informe
