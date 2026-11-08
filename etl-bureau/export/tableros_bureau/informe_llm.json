@@ -1,5 +1,258 @@
 {
- "corte": "",
- "secciones": [],
- "estado": "skip"
+ "corte": "2026-11-08",
+ "secciones": [
+  {
+   "id": "tendencias",
+   "titulo": "Tendencias (trimestre móvil, ocupación y tarifa)",
+   "bullets": [
+    {
+     "texto": "El total de visitantes en el trimestre móvil (abr‑2026 a jun‑2026) fue 247,331, con una variación interanual de -7 %.",
+     "fuente": "contexto"
+    },
+    {
+     "texto": "La ocupación media del sector alcanzó 67.108 % en el último periodo.",
+     "fuente": "contexto"
+    },
+    {
+     "texto": "La tarifa media por pasajero fue de 442,227 COP, sin variación interanual disponible.",
+     "fuente": "contexto"
+    }
+   ],
+   "analisis": [
+    {
+     "texto": "El descenso del 7 % en el total de visitantes indica una desaceleración tras el repunte post‑pandemia, lo que afecta la demanda de servicios turísticos.",
+     "fuente": "contexto"
+    },
+    {
+     "texto": "Una ocupación del 67 % sugiere capacidad disponible en alojamientos, ofreciendo oportunidades para campañas de promoción.",
+     "fuente": "contexto"
+    },
+    {
+     "texto": "La tarifa media de 442 mil COP refleja precios estables, lo que puede favorecer la competitividad del destino.",
+     "fuente": "contexto"
+    }
+   ],
+   "grafico": {
+    "titulo": "Indicadores clave del trimestre móvil",
+    "labels": [
+     "Total visitantes",
+     "Ocupación %",
+     "Tarifa COP"
+    ],
+    "values": [
+     247331.0,
+     67.108,
+     442227.145
+    ],
+    "unidad": "valor"
+   }
+  },
+  {
+   "id": "receptivo",
+   "titulo": "Receptivo (destinos top, share Medellín, YoY)",
+   "bullets": [
+    {
+     "texto": "Bogotá, D.C. recibió 760,345 llegadas YTD 2026, con una variación interanual de 0.1 %.",
+     "fuente": "contexto"
+    },
+    {
+     "texto": "Medellín registró 551,226 llegadas YTD 2026, incrementándose un 9.1 % respecto a 2025.",
+     "fuente": "contexto"
+    },
+    {
+     "texto": "Cartagena acumuló 441,151 llegadas YTD 2026, con un crecimiento interanual de 0.3 %.",
+     "fuente": "contexto"
+    },
+    {
+     "texto": "El destino Medellín representó el 78.5 % del total de llegadas, consolidando su posición como principal foco turístico.",
+     "fuente": "contexto"
+    }
+   ],
+   "analisis": [
+    {
+     "texto": "El fuerte aumento del 9 % en Medellín refleja la efectividad de las campañas de promoción local y la mejora de la conectividad aérea.",
+     "fuente": "contexto"
+    },
+    {
+     "texto": "Bogotá mantiene una llegada estable, indicando que la competencia entre ciudades colombianas se mantiene equilibrada.",
+     "fuente": "contexto"
+    },
+    {
+     "texto": "El alto share de Medellín (78.5 %) sugiere concentración de la demanda turística en la región, lo que puede requerir diversificación de la oferta.",
+     "fuente": "contexto"
+    }
+   ],
+   "grafico": {
+    "titulo": "Llegadas YTD 2026 por destino principal",
+    "labels": [
+     "Bogotá",
+     "Medellín",
+     "Cartagena"
+    ],
+    "values": [
+     760345.0,
+     551226.0,
+     441151.0
+    ],
+    "unidad": "personas"
+   }
+  },
+  {
+   "id": "emisores",
+   "titulo": "Emisores (top países emisores con YoY)",
+   "bullets": [
+    {
+     "texto": "Estados Unidos envió 180,138 visitantes YTD 2026, con un aumento interanual del 7.7 %.",
+     "fuente": "contexto"
+    },
+    {
+     "texto": "México envió 45,910 visitantes YTD 2026, con un aumento interanual del 8.5 %.",
+     "fuente": "contexto"
+    },
+    {
+     "texto": "Costa Rica envió 39,224 visitantes YTD 2026, con una disminución interanual del -3.8 %.",
+     "fuente": "contexto"
+    }
+   ],
+   "analisis": [
+    {
+     "texto": "El crecimiento del 7.7 % de EE. UU. refuerza su posición como principal mercado emisor, impulsado por la mejora de la conectividad aérea directa.",
+     "fuente": "contexto"
+    },
+    {
+     "texto": "México muestra un incremento del 8.5 %, señalando una tendencia ascendente en el turismo de origen latinoamericano.",
+     "fuente": "contexto"
+    },
+    {
+     "texto": "Costa Rica experimenta una caída del 3.8 %, lo que podría deberse a factores económicos o a la competencia de destinos alternativos.",
+     "fuente": "contexto"
+    }
+   ],
+   "grafico": {
+    "titulo": "Principales emisores YTD 2026",
+    "labels": [
+     "EE. UU.",
+     "México",
+     "Costa Rica"
+    ],
+    "values": [
+     180138.0,
+     45910.0,
+     39224.0
+    ],
+    "unidad": "personas"
+   }
+  },
+  {
+   "id": "salidas",
+   "titulo": "Salidas (salidas al exterior ult3m con YoY)",
+   "bullets": [
+    {
+     "texto": "Las salidas a Estados Unidos fueron 85,549 en el trimestre móvil, con una variación interanual de -6.7 %.",
+     "fuente": "contexto"
+    },
+    {
+     "texto": "Las salidas a México fueron 21,714 en el trimestre móvil, con una variación interanual de -3.2 %.",
+     "fuente": "contexto"
+    },
+    {
+     "texto": "Las salidas a Costa Rica fueron 15,462 en el trimestre móvil, con una variación interanual de -5.5 %.",
+     "fuente": "contexto"
+    }
+   ],
+   "analisis": [
+    {
+     "texto": "Las salidas a EE. UU. disminuyeron un 6.7 % en el trimestre móvil, reflejando una menor demanda de viajes internacionales desde Colombia.",
+     "fuente": "contexto"
+    },
+    {
+     "texto": "México también registró caída del 3.2 %, indicando una tendencia general de reducción en destinos norteamericanos.",
+     "fuente": "contexto"
+    },
+    {
+     "texto": "A pesar de la caída, Costa Rica mantiene una salida significativa, aunque su descenso del 5.5 % sugiere oportunidades para reactivar el flujo.",
+     "fuente": "contexto"
+    }
+   ],
+   "grafico": {
+    "titulo": "Salidas al exterior (ult3m)",
+    "labels": [
+     "EE. UU.",
+     "México",
+     "Costa Rica"
+    ],
+    "values": [
+     85549.0,
+     21714.0,
+     15462.0
+    ],
+    "unidad": "personas"
+   }
+  },
+  {
+   "id": "conectividad",
+   "titulo": "Conectividad (pax MDE/EOH, rutas y carga top)",
+   "bullets": [
+    {
+     "texto": "El aeropuerto de Medellín (MDE) registró 32,300,088 llegadas en el periodo, evidenciando su papel como hub regional.",
+     "fuente": "contexto"
+    },
+    {
+     "texto": "El total de pasajeros en la terminal fue 2,199,733, mientras que el metro registró 12,693,379 pasajeros, indicando alta movilidad interna.",
+     "fuente": "contexto"
+    },
+    {
+     "texto": "La ruta más demandada fue desde Bogotá, D.C. con 1,972,656 pasajeros, seguida por Cartagena de Indias con 676,052 pasajeros.",
+     "fuente": "contexto"
+    },
+    {
+     "texto": "La carga aérea alcanzó 33,543,620 kg en 2024, la mayor cifra del histórico reciente, señalando crecimiento del comercio aéreo.",
+     "fuente": "contexto"
+    }
+   ],
+   "analisis": [
+    {
+     "texto": "El elevado flujo de pasajeros en MDE refuerza su posición estratégica para conectar el interior del país con destinos internacionales.",
+     "fuente": "contexto"
+    },
+    {
+     "texto": "La preponderancia de la ruta Bogotá‑Medellín subraya la importancia de los enlaces intra‑nacionales para el turismo doméstico.",
+     "fuente": "contexto"
+    },
+    {
+     "texto": "El aumento de la carga aérea sugiere una expansión de la actividad logística, complementando el turismo de negocios.",
+     "fuente": "contexto"
+    }
+   ],
+   "grafico": {
+    "titulo": "Principales rutas de origen",
+    "labels": [
+     "Bogotá",
+     "Cartagena",
+     "Santa Marta"
+    ],
+    "values": [
+     1972656.0,
+     676052.0,
+     422488.0
+    ],
+    "unidad": "personas"
+   }
+  },
+  {
+   "id": "marca",
+   "titulo": "Marca (categorías LLM, sentimiento, topico)",
+   "bullets": [
+    {
+     "texto": "La marca Medellín obtuvo 284 menciones en medios durante el periodo, reflejando su presencia en la conversación pública.",
+     "fuente": "contexto"
+    }
+   ],
+   "analisis": [],
+   "grafico": {}
+  }
+ ],
+ "fuente": "ETL Bureau abierto (etl-bureau, data/processed) + redacción LLM verificada",
+ "licencia": "Datos abiertos procesados por el ETL Bureau; insumo Aerocivil/DANE abierto.",
+ "estado": "ok"
 }
