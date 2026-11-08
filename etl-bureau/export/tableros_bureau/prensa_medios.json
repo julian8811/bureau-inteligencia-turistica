@@ -3,7 +3,7 @@
  "fuente": "ETL Bureau (Google News RSS + Reddit, sin login)",
  "licencia": "Datos abiertos procesados por el ETL Bureau; insumo Aerocivil/DANE abierto.",
  "grano": "semanal",
- "generado": "2026-11-06",
+ "generado": "2026-11-08",
  "ventana_serie": [
   "2026-W19",
   "2026-W45"
@@ -15,23 +15,23 @@
   },
   {
    "semana": "2026-W20",
-   "n": 1
+   "n": 2
   },
   {
    "semana": "2026-W21",
-   "n": 1
+   "n": 2
   },
   {
    "semana": "2026-W22",
-   "n": 1
+   "n": 2
   },
   {
    "semana": "2026-W23",
-   "n": 6
+   "n": 5
   },
   {
    "semana": "2026-W24",
-   "n": 6
+   "n": 4
   },
   {
    "semana": "2026-W25",
@@ -55,7 +55,7 @@
   },
   {
    "semana": "2026-W31",
-   "n": 19
+   "n": 18
   },
   {
    "semana": "2026-W32",
@@ -67,7 +67,7 @@
   },
   {
    "semana": "2026-W34",
-   "n": 2
+   "n": 3
   },
   {
    "semana": "2026-W35",
@@ -79,7 +79,7 @@
   },
   {
    "semana": "2026-W37",
-   "n": 2
+   "n": 3
   },
   {
    "semana": "2026-W38",
@@ -107,25 +107,25 @@
   },
   {
    "semana": "2026-W44",
-   "n": 6
+   "n": 5
   },
   {
    "semana": "2026-W45",
-   "n": 9
+   "n": 36
   }
  ],
  "titulares": [
   {
-   "fecha": "Fri, 06 Nov 2026 00:05:18 GMT",
-   "titulo": "Medellín apuesta por el turismo cultural y comunitario - HSB Noticias",
+   "fecha": "Sun, 08 Nov 2026 12:05:41 GMT",
+   "titulo": "Nuevo POT en Medellín: estos son los únicos barrios donde se permitirán las viviendas dedicadas al turismo - Newsroom RCN Radio",
    "medio": "Medellín turismo",
-   "link": "https://news.google.com/rss/articles/CBMikAFBVV95cUxPRTJpQ2Q0SjVGRXRvRkI3M0xEOEs5b3hBVm5qU29EUFg2NmlfTzRuaUw5ZDRRZklwbld1NnB6U09SRFVOZnNYOUlDSXJWRm9CbVZ2S2cyZGUxOEhsVWt5TWpJRFlpVmYyZDB3Tk1Qdm1qa3FndVNLc0NwVkZTdnItTDZsS01TdC1CNDRPZkJyb0o?oc=5"
+   "link": "https://news.google.com/rss/articles/CBMi3AFBVV95cUxQT2RFQTZZZGlBUDRoU1NTei1IbjBDU1B6T056ME5aVXhtMTFFdEdka2VRSmdUdkoyUWxBVnc3XzVVZDRZd3JUdjBsNGhIVy0xN3JCcjBqVnhfWVRiUl9jZFBlNVlGM21UUjZkcXIwZnRUZFNzcnlROFRNbmRsM2doYWV2UnQ0V1R4WTA1ZE1kVGxkYWZiSjhnNlRaQlh4TGprR19KcWZqQ0VhZFhhU25rdUM5dnVFLU1xM3hXMkJIS3ZSZ3ZDMlJHSnpsaVRKdnFWWmVBQXRMSy1ZREl0?oc=5"
   },
   {
-   "fecha": "Thu, 05 Nov 2026 17:57:21 GMT",
-   "titulo": "Medellín renueva su hoja de ruta: Concejo aprueba el nuevo POT con foco en vivienda y control al turismo - El Tiempo",
+   "fecha": "Sun, 08 Nov 2026 03:35:41 GMT",
+   "titulo": "El 2 % de los operadores de vivienda turística controla más de una cuarta parte de las rentas cortas en Medellín - El Armadillo",
    "medio": "Medellín turismo",
-   "link": "https://news.google.com/rss/articles/CBMi6gFBVV95cUxORXQwWnpnSDRhQTUteklmOXJvXzZnLUtwajBORE9hWDd1Ul9ITnpsdHo3N3hwVV9KQTYtWEZ2akRVcVRQekU2ZGNOUlUwVTVOM0V0M2tmWktaT3RvVTZUal9OMGNIdk92d0lZUTBFOS1zUFlVM04yRjNXZVlOWWpFWGl0RURYX0x0Z2QzYUYzX2pmako2Xzl5Tno4cndDUzB3MnhRbWt2dmJCc0NlU1BNSlJublNHZ2lqZFQ3YlRsOEJDcUZFS3ZDR1ZnVWNWaUFETWtDcll5OWtzaFNZeUxmVEE0bjk5UWVZRFHSAe8BQVVfeXFMT2VvNExLLWNaRGxHNWp5SVRBOW93bGlTbEhpYlY0T19jc0hreTlWRU9hNHRsNHhfZU56d28xVE1mTGhnLXI1c1J2a2pjNlItOGVsUkZ4YnpFRTNlTWVYQVphWHRILThtbDdST1RIVHdHM0o3VEdHY21aTHVzSEQyUUxhU1NNUzcyNEhwM3cydXpEeGtCa2hpRUpjd0JqRFFDVWtjUlUtajF2dHdkX0dFdFVhOEFseDVudE9lc0hpa3pIU1ZNQ0h6S1d2bDFBM2hmRnVGckQzM2h0bWdTdWRZLVVLaVQ5MXd5TzZMZldFU1k?oc=5"
+   "link": "https://news.google.com/rss/articles/CBMi5AFBVV95cUxObnJPbDRIRUN2XzRWaVFmMTFQcmhvRzFUZ3d0Z0lNbTh5blZfSFhvZkVUQWM2TklBbEg5bjdPc2xkaF94YTdwUW05Z1EyNGRIX0RWSzE4MDlvQkdNS2RqVWJhN2hGWVZaTnBHMHFrSWVsUWMtZGFvRl9HTlcyVGZKYk9SODJkMVh1c3lOdnYwbkdDY1FaMWVFUzlKMWF6Q3RqMGtRbU9pRURLVmFYRVdWb1VwMHN4S0JVMGxGYU1GeGhCREFIYkxNdEJTZW1WdkFlRWpNNDRUQlpleGswcUxrdzVfNU0?oc=5"
   },
   {
    "fecha": "Thu, 03 Sep 2026 07:00:00 GMT",
@@ -146,22 +146,28 @@
    "link": "https://news.google.com/rss/articles/CBMixwFBVV95cUxPOVlBTTItNktVTGVWMENIT0ZsRGNka1BTX2lZRHhmcXhvUmZHV2FuTjBhSVN0czVUcjB0TDFDZVpiMGhubHNqclJ4UlV1MU9WRWFQazhyWHFRUmRfWUtFb05LSUpKM3BQeUJ3M3JlajExZjUzRFM1WmZPM0kyOHU1ajVGeWUzdWlBcThjQkJ0Z182VlBhazhEWnVzcFNqR0ZQTThiVkdCWmtNVTViZ2ctazYxREl2Yk0zZF9DSFl0Ymw4V3otaEtz0gHHAUFVX3lxTE9oTG9HQjFmNjBrQklCVHhEUkZIV09kWC1DVFRwZGdLMVE3NUhuUTNOODRsZFhrTjZUejBrenN5U2RjejF1QWcwd3hhRnI5U1d2eEM2M1ZIalFNeUFrQTEyZzRPamZvQ2N3VGJ6M2JCaXhRZjlFV3JkSHhvUVhoRmVBaTV3STlkdEktY3MtNktWSkJ5ejBTTkRHUFU0eWxUbGQwdFVPbHIyRkdXZFBORFNNejBFdkYwMWhXc3NyVEM3LVoyT0laYlU?oc=5"
   },
   {
-   "fecha": "Thu, 05 Nov 2026 10:06:48 GMT",
-   "titulo": "La Guajira conquista nuevos espacios turísticos y comerciales en Medellín - La Guajira Hoy.com",
+   "fecha": "Thu, 05 Nov 2026 17:57:21 GMT",
+   "titulo": "Medellín renueva su hoja de ruta: Concejo aprueba el nuevo POT con foco en vivienda y control al turismo - El Tiempo",
    "medio": "Medellín turismo",
-   "link": "https://news.google.com/rss/articles/CBMisAFBVV95cUxNcDdEWXMyd1BWMDRPMHRlSWd3OU83YUpCUkRLQUlYX21td3g3dko3NGR0N2NBRHVuN2VvQkw2Q3JhTWlGNVpEMHpVQ1liYWI2UVRmblJnMzBsMlIydTh3TjZadlJTUFE3a0hNY3RzbjFWNU9naEtZUVJHWmh5UHFNOVJWWnZZQ3Y5UldKaVlmZ29EZXpWX2hsRFFrNGdzaV96aUstU2g4MWxMcWEyMkxsWA?oc=5"
+   "link": "https://news.google.com/rss/articles/CBMi6gFBVV95cUxORXQwWnpnSDRhQTUteklmOXJvXzZnLUtwajBORE9hWDd1Ul9ITnpsdHo3N3hwVV9KQTYtWEZ2akRVcVRQekU2ZGNOUlUwVTVOM0V0M2tmWktaT3RvVTZUal9OMGNIdk92d0lZUTBFOS1zUFlVM04yRjNXZVlOWWpFWGl0RURYX0x0Z2QzYUYzX2pmako2Xzl5Tno4cndDUzB3MnhRbWt2dmJCc0NlU1BNSlJublNHZ2lqZFQ3YlRsOEJDcUZFS3ZDR1ZnVWNWaUFETWtDcll5OWtzaFNZeUxmVEE0bjk5UWVZRFHSAe8BQVVfeXFMT2VvNExLLWNaRGxHNWp5SVRBOW93bGlTbEhpYlY0T19jc0hreTlWRU9hNHRsNHhfZU56d28xVE1mTGhnLXI1c1J2a2pjNlItOGVsUkZ4YnpFRTNlTWVYQVphWHRILThtbDdST1RIVHdHM0o3VEdHY21aTHVzSEQyUUxhU1NNUzcyNEhwM3cydXpEeGtCa2hpRUpjd0JqRFFDVWtjUlUtajF2dHdkX0dFdFVhOEFseDVudE9lc0hpa3pIU1ZNQ0h6S1d2bDFBM2hmRnVGckQzM2h0bWdTdWRZLVVLaVQ5MXd5TzZMZldFU1k?oc=5"
   },
   {
-   "fecha": "Tue, 03 Nov 2026 22:32:54 GMT",
-   "titulo": "Medellín y Cartagena recuperan conexión aérea directa: fechas y horarios - El Espectador",
+   "fecha": "Sat, 07 Nov 2026 11:55:09 GMT",
+   "titulo": "A una hora de Medellín: el rincón donde las empanadas, los dulces y los postres son un manjar y tienen su propia fiesta - Revista Semana",
    "medio": "Medellín turismo",
-   "link": "https://news.google.com/rss/articles/CBMirgFBVV95cUxNUmhXUGlnNG40MEU0ZmlTbjEwRmZPV1lJWGxxQWMyTTZSTC16UVdUY0t2UGMtaWRydzI4SjE0dUZkbXZjY1BGM1A4RjZVbFZqVElzOGVNYmdrUGQtR3hRUDJudUYtemVGSWJQMWlDQ0FzY1VMdEpDLUxCY2JQcThUT1pVVHptOHducEx4SFp6RXRRSF9nSmFOTTllcG84dFItWnNJWlNJNVJpRW04Q3fSAcIBQVVfeXFMUDA1Wmp1X3dEYmVEeXVwTUd0UGZBLUFXU19ONkdSQ1Vwd09WUlhoQ20waXBWSnBFLXJMNDFWWlpScWFXdGZWVDBfLXNaRjFHemZFbDduTWNVVE5CUXBENUh0ZXlfalFzemliQ09FY3JVNEZIVFI0alNsN3N4MVRXUmcya0pDNlh5eHY5N0NXSG1sNHcyQk80U0RKVW1zZ3h5ckFzRGVWd2NaT1pSSjlsVVNxQ2xySVFfeV92NnpqdGJwWUE?oc=5"
+   "link": "https://news.google.com/rss/articles/CBMi-AFBVV95cUxNOE5ONllBNTRXd3JqZkc4Umw4bjFIWWlOZ2VWVkVNNUlhU1E0X3FTSmlZU0dTQ1VaWDFONW1uU0Z2TWFDYkVvZ2l5SFIzaEdNWXZIQUJ6WkFINFhOX3Z1Vk93ZE41OENzNFhsX1VNR1FXY0loR3FERUNnLXA4NzhCbEtoanJfWmt0OFlHcUI1ZkdFY21VSVFyQllFQjVfdEVsOTVOTlY5T2ZnZVlvX3JTd1JJeXhTYXRNZG5wOEQ3LWFJLW5VTVdHaG5yQXNpcGJtT1BSbmIyZGtheFU1NjhKa1lKYkhGRi0tbk53RFBRQ05Zb1k5ZGhkdg?oc=5"
   },
   {
-   "fecha": "Sat, 10 Oct 2026 07:00:00 GMT",
-   "titulo": "Avianca cancela su ruta Medellín-Buenos Aires por Jetsmart - REPORTUR.com",
+   "fecha": "Thu, 05 Nov 2026 23:05:00 GMT",
+   "titulo": "Spain Talks 2026: Medellín fue escenario de un turismo que conecta culturas y sostenibilidad - Ladevi",
    "medio": "Medellín turismo",
-   "link": "https://news.google.com/rss/articles/CBMitAFBVV95cUxQWTVETDhjcDNCSTJzcEg5dWNMYl9fMi1vdi1NY2piQUxWSkk2cFV5dlQyZy1Xc0tMMHhfeFBEV2FOc0lRS3NQV09iSzQ4V0dMa3FXc1VMeXB0RHFHcXFWSTAyQm1VR1k5bDBpVDBsQlZlZVk0SjkzV3VtbklxNnptanV0QmpDc1IyOXRPQnFHMG5PSGVJVnY5enlKRzhOQUJGLUZ6RS1MZlBQYWZXclpTWUk1OFg?oc=5"
+   "link": "https://news.google.com/rss/articles/CBMi0wFBVV95cUxOWU5fYTF6WHprNWU0WHo5bFIwc2FjUFluLS1rOHJIc3FhekNNQnZSRHIxMFRaeGVrN0duUEM1UFp1dHFPcTJDa2dBRUtFN3ozOXJqTXFCNDdyQVk1c1AxQlk1QlM0SC1pZUh1bEtoN0lHbXh4SmJWMkk3cXZMYWkxMlFtc1VSV0dkTFAyblZMLXB5MWVUYmJPVUlHWkR0bk9IWjUwWHFLWGdjSldDUUpMRkV5TVRXUXZIUE1zWmxsN09GTEtWNWVTdHVvWGIwV2dkSmtZ0gHTAUFVX3lxTE5ZTl9hMXpYems1ZTRYejlsUjBzYWNQWW4tLWs4ckhzcWF6Q01CdlJEcjEwVFp4ZWs3R25QQzVQWnV0cU9xMkNrZ0FFS0U3ejM5cmpNcUI0N3JBWTVzUDFCWTVCUzRILWllSHVsS2g3SUdteHhKYlYySTdxdkxhaTEyUW1zVVJXR2RMUDJuVkwtcHkxZVRiYk9VSUdaRHRuT0haNTBYcUtYZ2NKV0NRSkxGRXlNVFdRdkhQTXNabGw3T0ZMS1Y1ZVN0dW9YYjBXZ2RKa1k?oc=5"
+  },
+  {
+   "fecha": "Thu, 05 Nov 2026 15:18:38 GMT",
+   "titulo": "Turismo de Caldas busca nuevos mercados tras su participación en feria de Medellín - Eje21",
+   "medio": "Medellín turismo",
+   "link": "https://news.google.com/rss/articles/CBMitwFBVV95cUxQRE1XUWYyMDBjTzdnMkdkMjFkMjJWTzBKYjc1THpGeE1TSEdyQ2EwZmdFRmVYdzEtbTFSc3NSQ09mT3VyNFFwSGQ3OVVGMmIyWEhaanljX1BtTkdaeHBveHlTX3NoVExObmc2QlJkRGdEWXQ3M1FhQ1ZUTkdUbHctNlNyTE9mWXAwQ25MeEl6a0YzdnM1cVEtWGRWWTBUZWs4MWVELU5FSFM4WjE4aDk2TDVFZFJDWG8?oc=5"
   },
   {
    "fecha": "Thu, 05 Nov 2026 18:05:24 GMT",
@@ -170,42 +176,36 @@
    "link": "https://news.google.com/rss/articles/CBMirwFBVV95cUxQeHhxckUwclpNVmZwenN4UHRNeHRBN0Q3d2M3UVI4VHBPeVhReTlLbkpUeHRwRzVBOXpCS3liLTM3UFRtT2hZQmRNRHc4NHN0TWdkY2dTSFc0a3ZsREhQcWlMMXl0bEpfS2oyLXE5dzU2aFdDVUY2ME9jRFZEMDVlcmhPWm5yZ0F1RFIzYjRsNFdXc3BTTlBHY1dVamItUHRPOXR1NWxqUEZtNVBlYXo0?oc=5"
   },
   {
-   "fecha": "Mon, 26 Oct 2026 07:00:00 GMT",
-   "titulo": "Medellín fortalece el turismo de Provenza con acciones articuladas de seguridad, infraestructura y sostenibilidad - Alcaldía de Medellín",
+   "fecha": "Tue, 03 Nov 2026 22:32:54 GMT",
+   "titulo": "Medellín y Cartagena recuperan conexión aérea directa: fechas y horarios - El Espectador",
    "medio": "Medellín turismo",
-   "link": "https://news.google.com/rss/articles/CBMi_AFBVV95cUxOMEdYMGFoUmxzT19UZzhVVjd4U0picmJld0pvUEd3Wk5HNW9MLV9vVV9GLXJYS2F5VDhhMEhIWGRfdzJCajA1cHZDc3dnNDVLS2pDeTZuSXVTbmlONzdvSFN1ZHdOcWlMMjVwclVPOGQ0c2E2cEIxMFlWN0RzTkhoUUZjR0VBWDhweVVqR3NEb2o2b0wzM3RWRXZCT05sNmpEV2hrQnYyS1REWEhUVG9VNTljOU9lUnZIMGY5MzJfVVRMQ3hVdjR0bTFNZ2RfSmRvT3EyY05xMjFhSFlGT1BELUlTN094V3pWTmxEemxGZUphM0E5TU9LcmpTb3A?oc=5"
+   "link": "https://news.google.com/rss/articles/CBMirgFBVV95cUxNUmhXUGlnNG40MEU0ZmlTbjEwRmZPV1lJWGxxQWMyTTZSTC16UVdUY0t2UGMtaWRydzI4SjE0dUZkbXZjY1BGM1A4RjZVbFZqVElzOGVNYmdrUGQtR3hRUDJudUYtemVGSWJQMWlDQ0FzY1VMdEpDLUxCY2JQcThUT1pVVHptOHducEx4SFp6RXRRSF9nSmFOTTllcG84dFItWnNJWlNJNVJpRW04Q3fSAcIBQVVfeXFMUDA1Wmp1X3dEYmVEeXVwTUd0UGZBLUFXU19ONkdSQ1Vwd09WUlhoQ20waXBWSnBFLXJMNDFWWlpScWFXdGZWVDBfLXNaRjFHemZFbDduTWNVVE5CUXBENUh0ZXlfalFzemliQ09FY3JVNEZIVFI0alNsN3N4MVRXUmcya0pDNlh5eHY5N0NXSG1sNHcyQk80U0RKVW1zZ3h5ckFzRGVWd2NaT1pSSjlsVVNxQ2xySVFfeV92NnpqdGJwWUE?oc=5"
   },
   {
-   "fecha": "Wed, 07 Oct 2026 07:00:00 GMT",
-   "titulo": "Medellín abre Hub de turismo que beneficiará a cerca de 2.800 pasajeros diarios que salen e ingresan a la ciudad - Alcaldía de Medellín",
+   "fecha": "Mon, 02 Nov 2026 14:50:09 GMT",
+   "titulo": "Colombia y Medellín reciben menos turistas extranjeros tras tres años de alza, ¿qué hay detrás? | El Colombiano - El Colombiano",
    "medio": "Medellín turismo",
-   "link": "https://news.google.com/rss/articles/CBMi_AFBVV95cUxQQVRLMmIyT0RCRFJJaGhURG5TU2taMnhPWGJEN25PZ0wtNjFzRW80TzlSekx5MDBFTlNQZE96aDRYeDUtUmxBeXQzT1oyR3plR3J2cEVFQ0FJZ3ZtQkMwMU0yRXNGYW1MNEZ2WUJvOGFrZnZKM1BtS1Y0cUVaRV9Fa1JxcktPMk1xOF9vUWRSOHI4YUF6ZWxJM1FIclR5OWdBTU83bDBnMmpzeUFqb0VPRjFDVUVvNHFSLW44Qlh0S1N1SEwxY1VOSWE5WUwwVEhZdGFBaTdyV05ra0ZReUtIMXBRUnl6SVdGRElFVUF1bm9DR0NpMk0zZVB3NHI?oc=5"
+   "link": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxNMktHSDUtdGhJd2xCOGhxMTVFT2Y1dFVzV3NPa3dfRlNXS2VSUEY1dDFEdWMxcmhPREI3Vk5SbUlmQ1ExQW1fV0hNZHdySGQ0enI5S0FCMlVjR0xxQlNqbW9WQXJIeW1xejVDdy1PQTZqVEtGc0EtYkc5Rl9tcjlVRVZBcTZSVUJVYXhpZG0zYi1MdVBhbFdadm9mRXRtZDh0bjJCaThEUDdmbU3SAbABQVVfeXFMUDJwdDFkZm9kR2xwdTg1YmltRThvd2NwSjMtQkhrMjRUTlZNVUZnRHpDWmtiMzRhTnpSREozbHFqSlVfU1BjWS1xQzBMTWk0VndfUjhoX0dwQWRmSV9MUVBaUjFzeFdCeVg5c3F3Uk9aWHRRTjFVMEFPS2hrSjlqdUtFSWg2cU1GSTlqUkV2WjZUcktVUnJYVF9OT1lSWWMwQzJIcVJkbXctTW5nSkVhMEw?oc=5"
   },
   {
-   "fecha": "Wed, 30 Sep 2026 07:00:00 GMT",
-   "titulo": "Medellín celebró una Semana del Turismo que impulsó talento y nuevas oportunidades - Alcaldía de Medellín",
+   "fecha": "Wed, 04 Nov 2026 19:34:39 GMT",
+   "titulo": "Viajeros en Airbnb movilizaron más de $3 billones en comercios locales de Medellín - Viviendo Santa Elena",
    "medio": "Medellín turismo",
-   "link": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxOb3MzMFJTTTlHczF6My1vQVNoZlNiSEVxY3R5V3dOZElyZXNYT3JGaURyeUV2cjhFbWhYMlpjOGd2Q1d2RndvMFQwYjNvTWt2WkxFcDFGNXl4RkxaTFdnUThiU2hGOE5qSzQ4ZThoeFRodWdTY3dTRXROQWpBOVVQTWJ6TnVrYXd2RkFsODQtSDkxSFF4dk9wazFNRXNFTGNhU1lSOHc4ODRyZ3JxS3VFay1wR29sMGdhTDI5dWt6UVhrWFB6RnpRUDhuYmQ0bzFtaGRTYg?oc=5"
+   "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxORk56ZEpsenc0VlBablhhdWZfWU9yUTJRVEJjZkxMWVV6MG0tQ0tPVHRHT2NNNHQ0WkNoTldjcnUxQXBreXNBR2wxVkdwcWduN2tvakZOVnBfSmVNQnZxTkhjalpXVjRKd253ZDJSQXg1M1BqVGZobEZtUHhCVktobmJxVXNvSmh4T3NGcHBrNmhtbTRleVhLZVBPR2NMVklaRm5TbjZ3amZ4Rnl2b1pVdUh3?oc=5"
   },
   {
-   "fecha": "Wed, 22 Jul 2026 07:00:00 GMT",
-   "titulo": "Medellín movió alrededor de $9 billones en turismo durante 2025, según análisis de datos del sector - Alcaldía de Medellín",
+   "fecha": "Wed, 04 Nov 2026 18:00:55 GMT",
+   "titulo": "Medellín fortalece el control tributario sobre las viviendas turísticas y alojamientos de corta estancia - Alcaldía de Medellín",
    "medio": "Medellín turismo",
-   "link": "https://news.google.com/rss/articles/CBMi6AFBVV95cUxPcnltMDR4UmVWeDVQajhxUnBPcHJOYXpQYkJtNnA3M0xYbWVwV2J0U2gyUG85YUtlQ0lOU2N6aVpiS3J2aDZ4SlpjeWNSQm0tT0NvNkRFdHhSOVFtQ1BUVUdLdF9ocUFLUEkyeFhHdTRnTVFEZVBaY0FRRDFFUERfTW9nMHdkWm9TQXppbjYtOU1uT05YLW9JbUVSV1VpRGhRbnB6c1pwdDdhYndVMTFNWG9qN0ZCUGVLT0pYTFhWd2lxaDhyTU1ONnFISGpDRm4tdmNZZUc0U3U0bFNCc1hJUjhtbzIyUENu?oc=5"
+   "link": "https://news.google.com/rss/articles/CBMi8gFBVV95cUxPR05NamxkRFNaTGJUOF9kMUoyemNldFIybjRLUGJsV2lOVDVPOERtZHVWMzYwanBFWmkyV2pVZzlNMlhJNjNvS1ZQQV9sY3dGcTVXQVhJZGdyUHFTTV9BR2RJc3h6VEhWcWNTUzJIcFRmcjdOWFpfQzRuRmhibVd5ZVJBblVxTFVkazMxaUFPWFNOUUM4Yk85ZU10cngwVnFLYkJ0dDJKMWhTc1pNemM0UjNiQ0NQdy0yeTY2OXJlU2FqR0lTRWtzOUlham5mekhzTERwWm5RMi1vLWZqSGpkMnpCS3RxVjU0TnZubDUwTHdOZw?oc=5"
   },
   {
-   "fecha": "Wed, 14 Oct 2026 07:00:00 GMT",
-   "titulo": "El sector turismo impulsa el recaudo del ICA en el Distrito de Medellín con un crecimiento del 10 % entre el 2024 y 2025. - Alcaldía de Medellín",
+   "fecha": "Sat, 07 Nov 2026 02:18:29 GMT",
+   "titulo": "Cotelco respaldó el POT en Medellín para regular oferta de vivienda turística - LaRepublica.co",
    "medio": "Medellín turismo",
-   "link": "https://news.google.com/rss/articles/CBMihAJBVV95cUxOWkhGenhhbVJPMDhhU0NJamZKcERWd3NEZE1ScHpGcWJwQ0xkWUdjZGxQYkZxZUROSDJUN19RVWlrXzZjUE9nc3Y5S19SZW11Wi1IR0h2M1hlelRMdFlzU0VzVWM4ZkRyZFprejVaeTFISEZQRVduVzRYbHJJZFdHNVdfNXZHUTRYVllkQ3EtSkVpZ2NDZWxDd01NQi1OWVhWNzh4MmdHdEVxWjUzbl9aM2JMeVlOSkh6NEt3Znk0Wm4wS3dhaGFaQy12NDgyNFpjcG1lVjR2dkt4RE5YWlEwTXlGM1A4MldWZ3EzT0NhWVBFeFgwRkoxRVZpNGE1N0s3cFJwXw?oc=5"
-  },
-  {
-   "fecha": "Fri, 19 Jun 2026 07:00:00 GMT",
-   "titulo": "Los datos son el nuevo mapa del turismo en Medellín - Alcaldía de Medellín",
-   "medio": "Medellín turismo",
-   "link": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxNTm4ybUMxX0lDWkpiTm1jNkpXblo0LUtiVl83eG92ZDlZeDZUVTlBRjhQRkU3YThnMUxVbTdzdEtVaWJ6T0FxZDRwejBPV2JDaGNTOHo0X1pjV3FBWFdINHVhVFVjR0xEWkR4NXFzZzRsWmxLQ2lrWmRzMEk1NlY0S1p6dzgzZFZ6S25XV1g2NVhMWWUxbzNuTWI5OU1HWUxpN3R0SnhaRGVJOE0?oc=5"
+   "link": "https://news.google.com/rss/articles/CBMivgFBVV95cUxPeHVTWEtDMXhhaHEtRnc0LVFRc3F6Q05DSU8tTVFJU3ZMRDVtVU1LR01FNjBQRFpacnNtZXBMREpnU080em5fVWRTbjJnV0h6Q3FWZG5PWXdPcFlWRXNKSktZS2wySTl0aVdoTUlLUWRINFZzcW9zWGpqOG1PYWtDYWJfLU5iblhyZWktZFd4UUlXWUtJbVVDcjU1MG5UeUk4RUtQOTZLWWVaU3c4cnFPYmlCd29wblRRR3lsekZn0gG-AUFVX3lxTFBBT0ZQWVg4ZjJjRi1yVGp4RFJ6VGp1MTlQRS0zU0VaSjJWeU1BcF9LczdqUU5OYUFKMnRhdWd6MGRBbHRoN25hRmZ3YndPenZyQk9MNVltcjZPdXQxcVhUWURWVmFtLVlWUGZPZEF4TFAxajA4QUQ3ZUtiV0ktbVE0QWZ6YW11ODRxeFhFNENDcENTLUxUY0xEMG1relQtLXpENEt1NVZKcWNGcGZ4ODFseFV1SDZWdzVkUDZDcmc?oc=5"
   }
  ],
- "sentimiento_neto": 0.028,
- "n_total_menciones": 112
+ "sentimiento_neto": 0.032,
+ "n_total_menciones": 139
 }

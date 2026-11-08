@@ -2,7 +2,7 @@
  "id": "bureau-pronostico",
  "estado": "ok",
  "titulo": "Pronóstico a 6 meses",
- "generado": "2026-10",
+ "generado": "2026-11",
  "horizonte_meses": 6,
  "holdout_meses": 6,
  "fuente": "Aerocivil (cinco mercados), EMA (ocupación nacional y de Antioquia, ingresos reales de alojamiento y tarifa de Antioquia), SIEDCO Medellín (homicidios y hurtos) y TRM mensual de la Superfinanciera (datos.gov.co 32sa-8pi3).",
@@ -10,13 +10,13 @@
   "n": 13,
   "por_modelo": {
    "estacional": 0,
-   "holt_winters": 5,
+   "holt_winters": 4,
    "sarima": 6,
-   "gradiente": 2,
+   "gradiente": 3,
    "lightgbm": 0
   },
   "superan_estacional": 13,
-  "frase": "Sobre las 13 series mensuales, el ensayo de 6 meses publica «Holt-Winters» en 5 series, «SARIMA» en 6 series, «gradiente con rezagos» en 2 series. Todas mejoran al repetir el mismo mes del año anterior."
+  "frase": "Sobre las 13 series mensuales, el ensayo de 6 meses publica «Holt-Winters» en 4 series, «SARIMA» en 6 series, «gradiente con rezagos» en 3 series. Todas mejoran al repetir el mismo mes del año anterior."
  },
  "fuera": "No se publican Prophet, Chronos, un ensamble ni la TRM como causa de otra serie. Tampoco las series cortas o de otro grano: operaciones aéreas, BTS, IPC, OWID, SISAIRE y EVI. La TRM pronosticada es el promedio mensual, no la tasa del día.",
  "descartados": [
@@ -1209,54 +1209,50 @@
    "nombre": "TRM promedio mensual",
    "unidad": "COP por USD",
    "decimales": 2,
-   "modelo": "holt_winters",
-   "modelo_etiqueta": "Holt-Winters",
-   "corte": "2026-10",
+   "modelo": "gradiente",
+   "modelo_etiqueta": "gradiente con rezagos",
+   "corte": "2026-11",
    "holdout_meses": 6,
-   "mae": 373.98,
-   "mape": 11.6,
-   "mae_estacional": 702.21,
+   "mae": 458.79,
+   "mape": 14.2,
+   "mae_estacional": 713.28,
    "supera_estacional": true,
    "empate_simple": false,
-   "modelo_mas_fino": "holt_winters",
-   "banda": 563.71,
+   "modelo_mas_fino": "gradiente",
+   "banda": 504.34,
    "comparacion": [
     {
      "modelo": "estacional",
      "etiqueta": "repetir el mismo mes del año anterior",
-     "mae": 702.21,
-     "mape": 21.4
+     "mae": 713.28,
+     "mape": 22.0
     },
     {
      "modelo": "holt_winters",
      "etiqueta": "Holt-Winters",
-     "mae": 373.98,
-     "mape": 11.6
+     "mae": 529.62,
+     "mape": 16.5
     },
     {
      "modelo": "sarima",
      "etiqueta": "SARIMA",
-     "mae": 410.22,
-     "mape": 12.7
+     "mae": 604.88,
+     "mape": 18.8
     },
     {
      "modelo": "gradiente",
      "etiqueta": "gradiente con rezagos",
-     "mae": 384.56,
-     "mape": 11.9
+     "mae": 458.79,
+     "mape": 14.2
     },
     {
      "modelo": "lightgbm",
      "etiqueta": "LightGBM",
-     "mae": 374.07,
-     "mape": 11.6
+     "mae": 484.22,
+     "mape": 15.1
     }
    ],
    "historico": [
-    {
-     "periodo": "2024-11",
-     "valor": 4411.83
-    },
     {
      "periodo": "2024-12",
      "valor": 4384.53
@@ -1348,51 +1344,55 @@
     {
      "periodo": "2026-10",
      "valor": 3198.62
+    },
+    {
+     "periodo": "2026-11",
+     "valor": 3230.72
     }
    ],
    "pronostico": [
     {
-     "periodo": "2026-11",
-     "valor": 3237.78,
-     "bajo": 2674.07,
-     "alto": 3801.49
-    },
-    {
      "periodo": "2026-12",
-     "valor": 3213.21,
-     "bajo": 2649.5,
-     "alto": 3776.92
+     "valor": 3199.85,
+     "bajo": 2695.51,
+     "alto": 3704.19
     },
     {
      "periodo": "2027-01",
-     "valor": 3167.25,
-     "bajo": 2603.54,
-     "alto": 3730.96
+     "valor": 3247.39,
+     "bajo": 2743.05,
+     "alto": 3751.73
     },
     {
      "periodo": "2027-02",
-     "valor": 3167.54,
-     "bajo": 2603.83,
-     "alto": 3731.25
+     "valor": 3266.18,
+     "bajo": 2761.84,
+     "alto": 3770.52
     },
     {
      "periodo": "2027-03",
-     "valor": 3199.83,
-     "bajo": 2636.12,
-     "alto": 3763.54
+     "valor": 3266.18,
+     "bajo": 2761.84,
+     "alto": 3770.52
     },
     {
      "periodo": "2027-04",
-     "valor": 3161.18,
-     "bajo": 2597.47,
-     "alto": 3724.89
+     "valor": 3250.65,
+     "bajo": 2746.31,
+     "alto": 3754.99
+    },
+    {
+     "periodo": "2027-05",
+     "valor": 3267.86,
+     "bajo": 2763.52,
+     "alto": 3772.2
     }
    ],
    "reparados": [],
-   "n_observado": 142,
+   "n_observado": 143,
    "notas": [
     "Promedio mensual de la TRM oficial (Superfinanciera, datos.gov.co 32sa-8pi3). No es la tasa de un día ni una causa de las llegadas.",
-    "Se publica «Holt-Winters»: tuvo el menor error absoluto en los últimos 6 meses.",
+    "Se publica «gradiente con rezagos»: tuvo el menor error absoluto en los últimos 6 meses.",
     "La banda es el percentil 80 del error absoluto en los últimos 6 meses observados. No es un intervalo de confianza.",
     "No mide causas, reservas ni el CRM. Solo prolonga la serie mensual observada."
    ]
