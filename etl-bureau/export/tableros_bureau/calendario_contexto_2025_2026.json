@@ -1,6 +1,6 @@
 {
   "id": "bureau-calendario",
-  "generado": "2026-11-05",
+  "generado": "2026-11-09",
   "ventana": "2025-2026",
   "fuente": "ETL Bureau, festivos CO + IDEAM",
   "festivos": [
@@ -153,9 +153,30 @@
       "nombre": "Navidad"
     }
   ],
-  "estaciones": {},
-  "estado": "ok",
-  "notas": [
-    "estaciones: ideam_estaciones_med.csv ausente o vacio, bloque omitido"
-  ]
+  "estaciones": {
+    "total": 352,
+    "por_estado": {
+      "Activa": 274,
+      "Suspendida": 78
+    },
+    "por_categoria": {
+      "Pluviométrica": 220,
+      "Meteorológica Especial": 50,
+      "Pluviográfica": 26,
+      "Limnimétrica": 20,
+      "Climatológica Ordinaria": 14,
+      "Limnigráfica": 10,
+      "Climatológica Principal": 6,
+      "Sinóptica Principal": 4,
+      "Ambiental": 2
+    },
+    "top_municipios": [
+      {
+        "municipio": "Medellín",
+        "n": 352
+      }
+    ],
+    "con_coordenadas": 352
+  },
+  "estado": "ok"
 }

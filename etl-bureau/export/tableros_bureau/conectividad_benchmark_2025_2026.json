@@ -5,6 +5,54 @@
   "fuente": "ETL Bureau, Aerocivil/Eurostat/WB/Wikimedia",
   "operaciones_serie": [
     {
+      "periodo": "2024-01",
+      "operaciones": 13873
+    },
+    {
+      "periodo": "2024-02",
+      "operaciones": 13536
+    },
+    {
+      "periodo": "2024-03",
+      "operaciones": 14389
+    },
+    {
+      "periodo": "2024-04",
+      "operaciones": 14386
+    },
+    {
+      "periodo": "2024-05",
+      "operaciones": 15110
+    },
+    {
+      "periodo": "2024-06",
+      "operaciones": 14564
+    },
+    {
+      "periodo": "2024-07",
+      "operaciones": 15316
+    },
+    {
+      "periodo": "2024-08",
+      "operaciones": 15716
+    },
+    {
+      "periodo": "2024-09",
+      "operaciones": 14452
+    },
+    {
+      "periodo": "2024-10",
+      "operaciones": 15037
+    },
+    {
+      "periodo": "2024-11",
+      "operaciones": 14489
+    },
+    {
+      "periodo": "2024-12",
+      "operaciones": 16040
+    },
+    {
       "periodo": "2025-01",
       "operaciones": 15133
     },
@@ -83,12 +131,12 @@
   ],
   "trm_serie": [
     {
-      "date": "2026-11-01",
-      "cop_per_usd": 3201.17310615
+      "date": "2026-11-08",
+      "cop_per_usd": 3240.66341607
     },
     {
-      "date": "Mon, 02 Nov 2026 00:02:31 +0000",
-      "cop_per_usd": 3192.232311
+      "date": "Mon, 09 Nov 2026",
+      "cop_per_usd": 3243.549
     }
   ],
   "benchmark_eu": [
@@ -38922,21 +38970,21 @@
   "wikimedia_serie": [
     {
       "periodo": "2026-10",
-      "views": 24409
+      "views": 18819
     },
     {
       "periodo": "2026-11",
-      "views": 712
+      "views": 5770
     }
   ],
   "cortes": {
     "operaciones": "2026-07",
-    "trm": "2026-11-02",
+    "trm": "2026-11-09",
     "benchmark_eu": 2024,
     "wikimedia": "2026-11"
   },
   "skips": [
-    "gastronomia_osm_med.csv: ausente o vacio (vacia)",
+    "gastronomia_osm_med.csv: sin filas de datos (vacia)",
     "emisores_contexto.csv: ausente o vacio (solo header)",
     "migrantes_co.csv: ausente o vacio (fuente muerta)"
   ],
