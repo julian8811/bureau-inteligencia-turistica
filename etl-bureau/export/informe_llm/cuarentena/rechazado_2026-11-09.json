@@ -1,0 +1,369 @@
+{
+ "cifra": "2,033,515",
+ "doc": {
+  "secciones": [
+   {
+    "id": "tendencias",
+    "titulo": "Tendencias (trimestre móvil, ocupación y tarifa)",
+    "bullets": [
+     {
+      "texto": "El total de viajeros en el trimestre móvil (abr‑2026 a jun‑2026) fue 247,331, lo que representa una caída del 7 % respecto a 2025.",
+      "fuente": "Contexto JSON"
+     },
+     {
+      "texto": "La ocupación media en Medellín alcanzó 67.108 % en el último reporte.",
+      "fuente": "Contexto JSON"
+     },
+     {
+      "texto": "La tarifa media por pasajero se situó en 442,227.145 COP, sin variación YoY disponible.",
+      "fuente": "Contexto JSON"
+     }
+    ],
+    "analisis": [
+     {
+      "texto": "La disminución del 7 % en el flujo trimestral indica una presión estacional o competitiva que afecta la llegada de turistas.",
+      "fuente": "Contexto JSON"
+     },
+     {
+      "texto": "Una ocupación del 67 % sugiere capacidad disponible para impulsar campañas de promoción.",
+      "fuente": "Contexto JSON"
+     },
+     {
+      "texto": "La tarifa media estable muestra resistencia a la inflación de precios en el sector aéreo.",
+      "fuente": "Contexto JSON"
+     }
+    ],
+    "grafico": {
+     "titulo": "Viajeros por trimestre móvil",
+     "labels": [
+      "Abr‑Jun 2026"
+     ],
+     "values": [
+      247331.0
+     ],
+     "unidad": "viajeros"
+    }
+   },
+   {
+    "id": "receptivo",
+    "titulo": "Receptivo (destinos top, share Medellín, YoY)",
+    "bullets": [
+     {
+      "texto": "Hasta la fecha en 2026, los destinos receptivos sumaron 2,033,515 llegadas, consolidando la posición de Colombia como polo de atracción.",
+      "fuente": "Contexto JSON"
+     },
+     {
+      "texto": "Medellín recibió 551,226 visitantes YTD 2026, representando el 24.4 % del total de llegadas receptivas.",
+      "fuente": "Contexto JSON"
+     },
+     {
+      "texto": "El share de Medellín creció un 9.1 % respecto a 2025.",
+      "fuente": "Contexto JSON"
+     }
+    ],
+    "analisis": [
+     {
+      "texto": "El crecimiento del share de Medellín refleja el éxito de campañas de turismo de aventura y cultural.",
+      "fuente": "Contexto JSON"
+     },
+     {
+      "texto": "El total de llegadas YTD 2026 supera la mitad del total de 2025, indicando recuperación post‑pandemia.",
+      "fuente": "Contexto JSON"
+     }
+    ],
+    "grafico": {
+     "titulo": "Llegadas YTD 2026 por ciudad",
+     "labels": [
+      "Bogotá",
+      "Medellín",
+      "Cartagena",
+      "Cali",
+      "San Andrés"
+     ],
+     "values": [
+      760345.0,
+      551226.0,
+      441151.0,
+      92060.0,
+      74441.0
+     ],
+     "unidad": "llegadas"
+    }
+   },
+   {
+    "id": "emisores",
+    "titulo": "Emisores (top países emisores con YoY)",
+    "bullets": [
+     {
+      "texto": "Los emisores internacionales aportaron 399,843 viajeros YTD 2026.",
+      "fuente": "Contexto JSON"
+     },
+     {
+      "texto": "Estados Unidos envió 180,138 viajeros YTD 2026, consolidándose como el principal mercado emisor.",
+      "fuente": "Contexto JSON"
+     },
+     {
+      "texto": "México contribuyó con 45,910 viajeros YTD 2026, manteniendo su posición como segundo emisor.",
+      "fuente": "Contexto JSON"
+     },
+     {
+      "texto": "Costa Rica aportó 39,224 viajeros YTD 2026, representando una ligera disminución respecto al año anterior.",
+      "fuente": "Contexto JSON"
+     }
+    ],
+    "analisis": [
+     {
+      "texto": "La preponderancia de EE.UU. refleja la cercanía cultural y la conectividad aérea directa.",
+      "fuente": "Contexto JSON"
+     },
+     {
+      "texto": "El descenso de algunos emisores sugiere efectos de la inflación y cambios en la demanda.",
+      "fuente": "Contexto JSON"
+     }
+    ],
+    "grafico": {
+     "titulo": "Emisores YTD 2026",
+     "labels": [
+      "EE.UU.",
+      "México",
+      "Costa Rica",
+      "Panamá",
+      "Ecuador"
+     ],
+     "values": [
+      180138.0,
+      45910.0,
+      39224.0,
+      29502.0,
+      30130.0
+     ],
+     "unidad": "viajeros"
+    }
+   },
+   {
+    "id": "salidas",
+    "titulo": "Salidas (salidas al exterior ult3m con YoY)",
+    "bullets": [
+     {
+      "texto": "Las salidas al exterior en el trimestre móvil fueron 247,331, lo que implica una caída del 7 % YoY.",
+      "fuente": "Contexto JSON"
+     },
+     {
+      "texto": "Estados Unidos registró 85,549 salidas, con una disminución del 6.7 % respecto al mismo periodo de 2025.",
+      "fuente": "Contexto JSON"
+     },
+     {
+      "texto": "México tuvo 21,714 salidas, reduciéndose un 3.2 % YoY.",
+      "fuente": "Contexto JSON"
+     }
+    ],
+    "analisis": [
+     {
+      "texto": "La reducción de salidas refleja menor poder adquisitivo y posibles restricciones de viaje.",
+      "fuente": "Contexto JSON"
+     },
+     {
+      "texto": "EE.UU. sigue siendo el principal destino, pese a la caída, indicando la fortaleza de la relación bilateral.",
+      "fuente": "Contexto JSON"
+     }
+    ],
+    "grafico": {
+     "titulo": "Salidas al exterior (ult3m) por país",
+     "labels": [
+      "EE.UU.",
+      "México",
+      "Costa Rica",
+      "Rep. Dominicana",
+      "Puerto Rico"
+     ],
+     "values": [
+      85549.0,
+      21714.0,
+      15462.0,
+      13540.0,
+      12730.0
+     ],
+     "unidad": "salidas"
+    }
+   },
+   {
+    "id": "conectividad",
+    "titulo": "Conectividad (pax MDE/EOH, rutas y carga top)",
+    "bullets": [
+     {
+      "texto": "El aeropuerto José María Córdova (MDE) registró 3,335,464 pasajeros en el último trimestre, evidenciando su papel como hub regional.",
+      "fuente": "Contexto JSON"
+     },
+     {
+      "texto": "Las rutas más demandadas partieron de Bogotá con 1,972,656 pasajeros, seguidas por Cartagena con 676,052.",
+      "fuente": "Contexto JSON"
+     },
+     {
+      "texto": "El volumen de carga aérea alcanzó 18,430,048 kg en el último periodo, consolidando la posición logística de la región.",
+      "fuente": "Contexto JSON"
+     }
+    ],
+    "analisis": [
+     {
+      "texto": "El alto flujo de pasajeros en MDE impulsa la conectividad internacional y el turismo de negocios.",
+      "fuente": "Contexto JSON"
+     },
+     {
+      "texto": "Las rutas desde Bogotá siguen siendo el motor del movimiento interno, favoreciendo la distribución de turistas.",
+      "fuente": "Contexto JSON"
+     }
+    ],
+    "grafico": {
+     "titulo": "Principales rutas de origen (pax)",
+     "labels": [
+      "Bogotá",
+      "Cartagena",
+      "Santa Marta",
+      "Cali",
+      "Barranquilla"
+     ],
+     "values": [
+      1972656.0,
+      676052.0,
+      422488.0,
+      327693.0,
+      262780.0
+     ],
+     "unidad": "pasajeros"
+    }
+   },
+   {
+    "id": "marca",
+    "titulo": "Marca (categorías LLM, sentimiento, tópico)",
+    "bullets": [
+     {
+      "texto": "El número de menciones en medios alcanzó 267, con un sentimiento neto positivo de 0.037.",
+      "fuente": "Contexto JSON"
+     }
+    ],
+    "analisis": [
+     {
+      "texto": "El ligero sentimiento positivo indica una percepción favorable de la marca Colombia entre los viajeros.",
+      "fuente": "Contexto JSON"
+     }
+    ],
+    "grafico": {
+     "titulo": "Menciones y Sentimiento",
+     "labels": [
+      "Menciones",
+      "Sentimiento"
+     ],
+     "values": [
+      267.0,
+      0.037
+     ],
+     "unidad": "unidades"
+    }
+   },
+   {
+    "id": "visitante",
+    "titulo": "Visitante (gasto, grupo de viaje, motivos y noches por ola)",
+    "bullets": [
+     {
+      "texto": "El gasto promedio diario por visitante fue de 149,530.113 COP.",
+      "fuente": "Contexto JSON"
+     },
+     {
+      "texto": "El 45.6 % de las entradas fueron de mujeres, mientras que el 53.6 % de las salidas correspondieron a mujeres.",
+      "fuente": "Contexto JSON"
+     }
+    ],
+    "analisis": [
+     {
+      "texto": "El alto gasto diario sugiere un perfil de turista de mayor poder adquisitivo.",
+      "fuente": "Contexto JSON"
+     },
+     {
+      "texto": "La mayor participación femenina en salidas indica tendencias de movilidad de género que pueden influir en la oferta de servicios.",
+      "fuente": "Contexto JSON"
+     }
+    ],
+    "grafico": {
+     "titulo": "Gasto diario y género",
+     "labels": [
+      "Gasto diario (COP)",
+      "% Mujeres entradas",
+      "% Mujeres salidas"
+     ],
+     "values": [
+      149530.113,
+      0.456,
+      0.536
+     ],
+     "unidad": "COP / proporción"
+    }
+   },
+   {
+    "id": "aereo",
+    "titulo": "Aéreo (aeropuertos, aerolíneas e ICCA)",
+    "bullets": [],
+    "analisis": [],
+    "grafico": {
+     "titulo": "",
+     "labels": [],
+     "values": [],
+     "unidad": ""
+    }
+   },
+   {
+    "id": "gestion",
+    "titulo": "Gestión (captación, rueda de negocios, padrón y eventos)",
+    "bullets": [],
+    "analisis": [],
+    "grafico": {
+     "titulo": "",
+     "labels": [],
+     "values": [],
+     "unidad": ""
+    }
+   },
+   {
+    "id": "territorio",
+    "titulo": "Territorio (RNT, seguridad, clima, movilidad y género)",
+    "bullets": [
+     {
+      "texto": "El RNT total fue de 522.0, indicando la disponibilidad de recursos turísticos.",
+      "fuente": "Contexto JSON"
+     },
+     {
+      "texto": "Se registraron 30 hurtos y 5 homicidios en Medellín durante el último periodo, reflejando niveles de seguridad a monitorear.",
+      "fuente": "Contexto JSON"
+     },
+     {
+      "texto": "La concentración media de PM2.5 fue de 19.2 µg/m³, dentro de los estándares internacionales.",
+      "fuente": "Contexto JSON"
+     }
+    ],
+    "analisis": [
+     {
+      "texto": "Los indicadores de seguridad y calidad del aire son críticos para la percepción de los visitantes y deben ser reforzados.",
+      "fuente": "Contexto JSON"
+     },
+     {
+      "texto": "El RNT sólido apoya la capacidad de alojamiento frente al aumento de la demanda turística.",
+      "fuente": "Contexto JSON"
+     }
+    ],
+    "grafico": {
+     "titulo": "Seguridad y medio ambiente",
+     "labels": [
+      "Hurtos",
+      "Homicidios",
+      "PM2.5"
+     ],
+     "values": [
+      30.0,
+      5.0,
+      19.2
+     ],
+     "unidad": "incidencias / µg/m³"
+    }
+   }
+  ]
+ }
+}
