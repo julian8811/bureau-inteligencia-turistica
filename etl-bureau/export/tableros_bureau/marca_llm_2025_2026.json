@@ -1,52 +1,10 @@
 {
  "id": "marca_llm_2025_2026",
+ "estado": "SKIP",
+ "motivo": "FileNotFoundError: [Errno 2] No such file or directory: '/home/runner/work/bureau-inteligencia-turistica/bureau-inteligencia-turistica/etl-bureau/data/processed/marca_llm.csv'",
  "fuente": "ETL Bureau abierto (etl-bureau, data/processed)",
  "licencia": "Datos abiertos procesados por el ETL Bureau; insumo Aerocivil/DANE abierto.",
- "ventana": "2026-10 a 2026-11",
- "categorias": [
-  {
-   "categoria": "vacacional",
-   "n": 180,
-   "share": 0.4276,
-   "sent_net": 0.572,
-   "top_topico": "Feria Flores programación"
-  },
-  {
-   "categoria": "otro",
-   "n": 71,
-   "share": 0.1686,
-   "sent_net": 0.211,
-   "top_topico": "Ritvales cartel"
-  },
-  {
-   "categoria": "marca",
-   "n": 46,
-   "share": 0.1093,
-   "sent_net": 0.913,
-   "top_topico": "premio turismo"
-  },
-  {
-   "categoria": "mice",
-   "n": 46,
-   "share": 0.1093,
-   "sent_net": 0.804,
-   "top_topico": "Semana del Turismo"
-  },
-  {
-   "categoria": "seguridad",
-   "n": 40,
-   "share": 0.095,
-   "sent_net": -0.75,
-   "top_topico": "accidente bus"
-  },
-  {
-   "categoria": "infraestructura",
-   "n": 38,
-   "share": 0.0903,
-   "sent_net": 0.211,
-   "top_topico": "Feria cierres viales"
-  }
- ],
- "top_topico_global": "Feria Flores programación",
- "n_total": 421
+ "ventana": "2025-2026",
+ "categorias": [],
+ "top_topico_global": null
 }
