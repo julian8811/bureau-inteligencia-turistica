@@ -5,18 +5,18 @@
  "generado": "2026-11",
  "horizonte_meses": 6,
  "holdout_meses": 6,
- "fuente": "EMA (ocupación e ingresos de alojamiento); SIEDCO Medellín (homicidios y hurtos); TRM mensual de la Superfinanciera (datos.gov.co 32sa-8pi3).",
+ "fuente": "Aerocivil (cinco mercados); EMA (ocupación e ingresos de alojamiento); SIEDCO Medellín (homicidios y hurtos); TRM mensual de la Superfinanciera (datos.gov.co 32sa-8pi3).",
  "resumen": {
-  "n": 6,
+  "n": 12,
   "por_modelo": {
    "estacional": 0,
-   "holt_winters": 2,
-   "sarima": 2,
-   "gradiente": 2,
+   "holt_winters": 3,
+   "sarima": 5,
+   "gradiente": 4,
    "lightgbm": 0
   },
-  "superan_estacional": 6,
-  "frase": "Sobre las 6 series mensuales, el ensayo de 6 meses publica «Holt-Winters» en 2 series, «SARIMA» en 2 series, «gradiente con rezagos» en 2 series. Todas mejoran al repetir el mismo mes del año anterior."
+  "superan_estacional": 12,
+  "frase": "Sobre las 12 series mensuales, el ensayo de 6 meses publica «Holt-Winters» en 3 series, «SARIMA» en 5 series, «gradiente con rezagos» en 4 series. Todas mejoran al repetir el mismo mes del año anterior."
  },
  "fuera": "No se publican Prophet, Chronos, un ensamble ni la TRM como causa de otra serie. Tampoco las series cortas o de otro grano: operaciones aéreas, BTS, IPC, OWID, SISAIRE y EVI. La TRM pronosticada es el promedio mensual, no la tasa del día.",
  "descartados": [
@@ -34,6 +34,1175 @@
   "Notas, PDF y guías del catálogo de 55 fuentes no son una serie mensual verificada."
  ],
  "series": [
+  {
+   "id": "llegadas_colombia",
+   "tab": "mercados",
+   "nombre": "Llegadas desde Colombia",
+   "unidad": "pasajeros",
+   "decimales": 0,
+   "modelo": "sarima",
+   "modelo_etiqueta": "SARIMA",
+   "corte": "2026-06",
+   "holdout_meses": 6,
+   "mae": 19177.5,
+   "mape": 4.9,
+   "mae_estacional": 29708.3,
+   "supera_estacional": true,
+   "empate_simple": false,
+   "modelo_mas_fino": "sarima",
+   "banda": 40198,
+   "comparacion": [
+    {
+     "modelo": "estacional",
+     "etiqueta": "repetir el mismo mes del año anterior",
+     "mae": 29708.3,
+     "mape": 7.7
+    },
+    {
+     "modelo": "holt_winters",
+     "etiqueta": "Holt-Winters",
+     "mae": 24362.7,
+     "mape": 6.9
+    },
+    {
+     "modelo": "sarima",
+     "etiqueta": "SARIMA",
+     "mae": 19177.5,
+     "mape": 4.9
+    },
+    {
+     "modelo": "gradiente",
+     "etiqueta": "gradiente con rezagos",
+     "mae": 33040.7,
+     "mape": 8.5
+    },
+    {
+     "modelo": "lightgbm",
+     "etiqueta": "LightGBM",
+     "mae": 37263.3,
+     "mape": 10.2
+    }
+   ],
+   "historico": [
+    {
+     "periodo": "2024-07",
+     "valor": 375153
+    },
+    {
+     "periodo": "2024-08",
+     "valor": 400708
+    },
+    {
+     "periodo": "2024-09",
+     "valor": 356042
+    },
+    {
+     "periodo": "2024-10",
+     "valor": 382615
+    },
+    {
+     "periodo": "2024-11",
+     "valor": 362274
+    },
+    {
+     "periodo": "2024-12",
+     "valor": 407324
+    },
+    {
+     "periodo": "2025-01",
+     "valor": 365497
+    },
+    {
+     "periodo": "2025-02",
+     "valor": 315737
+    },
+    {
+     "periodo": "2025-03",
+     "valor": 347394
+    },
+    {
+     "periodo": "2025-04",
+     "valor": 344979
+    },
+    {
+     "periodo": "2025-05",
+     "valor": 342678
+    },
+    {
+     "periodo": "2025-06",
+     "valor": 382459
+    },
+    {
+     "periodo": "2025-07",
+     "valor": 384735
+    },
+    {
+     "periodo": "2025-08",
+     "valor": 391985
+    },
+    {
+     "periodo": "2025-09",
+     "valor": 363740
+    },
+    {
+     "periodo": "2025-10",
+     "valor": 394878
+    },
+    {
+     "periodo": "2025-11",
+     "valor": 388248
+    },
+    {
+     "periodo": "2025-12",
+     "valor": 431837
+    },
+    {
+     "periodo": "2026-01",
+     "valor": 438763
+    },
+    {
+     "periodo": "2026-02",
+     "valor": 334682
+    },
+    {
+     "periodo": "2026-03",
+     "valor": 376818
+    },
+    {
+     "periodo": "2026-04",
+     "valor": 360759
+    },
+    {
+     "periodo": "2026-05",
+     "valor": 356385
+    },
+    {
+     "periodo": "2026-06",
+     "valor": 355331
+    }
+   ],
+   "pronostico": [
+    {
+     "periodo": "2026-07",
+     "valor": 369739,
+     "bajo": 329541,
+     "alto": 409937
+    },
+    {
+     "periodo": "2026-08",
+     "valor": 385157,
+     "bajo": 344959,
+     "alto": 425355
+    },
+    {
+     "periodo": "2026-09",
+     "valor": 357801,
+     "bajo": 317603,
+     "alto": 397999
+    },
+    {
+     "periodo": "2026-10",
+     "valor": 391022,
+     "bajo": 350824,
+     "alto": 431220
+    },
+    {
+     "periodo": "2026-11",
+     "valor": 384185,
+     "bajo": 343987,
+     "alto": 424383
+    },
+    {
+     "periodo": "2026-12",
+     "valor": 429716,
+     "bajo": 389518,
+     "alto": 469914
+    }
+   ],
+   "reparados": [],
+   "n_observado": 78,
+   "notas": [
+    "Llegadas Aerocivil realizadas del mercado Colombia. No son reservas ni el cupo de un aeropuerto.",
+    "Se publica «SARIMA»: tuvo el menor error absoluto en los últimos 6 meses.",
+    "La banda es el percentil 80 del error absoluto en los últimos 6 meses observados. No es un intervalo de confianza.",
+    "No mide causas, reservas ni el CRM. Solo prolonga la serie mensual observada."
+   ]
+  },
+  {
+   "id": "llegadas_estados_unidos",
+   "tab": "mercados",
+   "nombre": "Llegadas desde Estados Unidos",
+   "unidad": "pasajeros",
+   "decimales": 0,
+   "modelo": "gradiente",
+   "modelo_etiqueta": "gradiente con rezagos",
+   "corte": "2026-06",
+   "holdout_meses": 6,
+   "mae": 3490.0,
+   "mape": 6.7,
+   "mae_estacional": 5069.8,
+   "supera_estacional": true,
+   "empate_simple": false,
+   "modelo_mas_fino": "gradiente",
+   "banda": 2713,
+   "comparacion": [
+    {
+     "modelo": "estacional",
+     "etiqueta": "repetir el mismo mes del año anterior",
+     "mae": 5069.8,
+     "mape": 9.2
+    },
+    {
+     "modelo": "holt_winters",
+     "etiqueta": "Holt-Winters",
+     "mae": 13746.3,
+     "mape": 27.4
+    },
+    {
+     "modelo": "sarima",
+     "etiqueta": "SARIMA",
+     "mae": 4420.3,
+     "mape": 8.6
+    },
+    {
+     "modelo": "gradiente",
+     "etiqueta": "gradiente con rezagos",
+     "mae": 3490.0,
+     "mape": 6.7
+    },
+    {
+     "modelo": "lightgbm",
+     "etiqueta": "LightGBM",
+     "mae": 6018.7,
+     "mape": 11.0
+    }
+   ],
+   "historico": [
+    {
+     "periodo": "2024-07",
+     "valor": 59531
+    },
+    {
+     "periodo": "2024-08",
+     "valor": 58652
+    },
+    {
+     "periodo": "2024-09",
+     "valor": 41290
+    },
+    {
+     "periodo": "2024-10",
+     "valor": 47198
+    },
+    {
+     "periodo": "2024-11",
+     "valor": 49337
+    },
+    {
+     "periodo": "2024-12",
+     "valor": 73973
+    },
+    {
+     "periodo": "2025-01",
+     "valor": 62165
+    },
+    {
+     "periodo": "2025-02",
+     "valor": 43573
+    },
+    {
+     "periodo": "2025-03",
+     "valor": 47219
+    },
+    {
+     "periodo": "2025-04",
+     "valor": 43359
+    },
+    {
+     "periodo": "2025-05",
+     "valor": 49329
+    },
+    {
+     "periodo": "2025-06",
+     "valor": 63916
+    },
+    {
+     "periodo": "2025-07",
+     "valor": 71494
+    },
+    {
+     "periodo": "2025-08",
+     "valor": 62957
+    },
+    {
+     "periodo": "2025-09",
+     "valor": 36827
+    },
+    {
+     "periodo": "2025-10",
+     "valor": 56440
+    },
+    {
+     "periodo": "2025-11",
+     "valor": 52897
+    },
+    {
+     "periodo": "2025-12",
+     "valor": 82819
+    },
+    {
+     "periodo": "2026-01",
+     "valor": 69321
+    },
+    {
+     "periodo": "2026-02",
+     "valor": 47045
+    },
+    {
+     "periodo": "2026-03",
+     "valor": 53880
+    },
+    {
+     "periodo": "2026-04",
+     "valor": 45137
+    },
+    {
+     "periodo": "2026-05",
+     "valor": 50889
+    },
+    {
+     "periodo": "2026-06",
+     "valor": 54124
+    }
+   ],
+   "pronostico": [
+    {
+     "periodo": "2026-07",
+     "valor": 69654,
+     "bajo": 66941,
+     "alto": 72367
+    },
+    {
+     "periodo": "2026-08",
+     "valor": 68242,
+     "bajo": 65529,
+     "alto": 70955
+    },
+    {
+     "periodo": "2026-09",
+     "valor": 43255,
+     "bajo": 40542,
+     "alto": 45968
+    },
+    {
+     "periodo": "2026-10",
+     "valor": 60312,
+     "bajo": 57599,
+     "alto": 63025
+    },
+    {
+     "periodo": "2026-11",
+     "valor": 66086,
+     "bajo": 63373,
+     "alto": 68799
+    },
+    {
+     "periodo": "2026-12",
+     "valor": 74315,
+     "bajo": 71602,
+     "alto": 77028
+    }
+   ],
+   "reparados": [],
+   "n_observado": 78,
+   "notas": [
+    "Llegadas Aerocivil realizadas del mercado Estados Unidos. No son reservas ni el cupo de un aeropuerto.",
+    "Se publica «gradiente con rezagos»: tuvo el menor error absoluto en los últimos 6 meses.",
+    "La banda es el percentil 80 del error absoluto en los últimos 6 meses observados. No es un intervalo de confianza.",
+    "No mide causas, reservas ni el CRM. Solo prolonga la serie mensual observada."
+   ]
+  },
+  {
+   "id": "llegadas_mexico",
+   "tab": "mercados",
+   "nombre": "Llegadas desde México",
+   "unidad": "pasajeros",
+   "decimales": 0,
+   "modelo": "holt_winters",
+   "modelo_etiqueta": "Holt-Winters",
+   "corte": "2025-12",
+   "holdout_meses": 6,
+   "mae": 713.5,
+   "mape": 4.1,
+   "mae_estacional": 1686.0,
+   "supera_estacional": true,
+   "empate_simple": false,
+   "modelo_mas_fino": "holt_winters",
+   "banda": 1150,
+   "comparacion": [
+    {
+     "modelo": "estacional",
+     "etiqueta": "repetir el mismo mes del año anterior",
+     "mae": 1686.0,
+     "mape": 9.5
+    },
+    {
+     "modelo": "holt_winters",
+     "etiqueta": "Holt-Winters",
+     "mae": 713.5,
+     "mape": 4.1
+    },
+    {
+     "modelo": "sarima",
+     "etiqueta": "SARIMA",
+     "mae": 1866.2,
+     "mape": 10.6
+    },
+    {
+     "modelo": "gradiente",
+     "etiqueta": "gradiente con rezagos",
+     "mae": 1119.2,
+     "mape": 6.5
+    },
+    {
+     "modelo": "lightgbm",
+     "etiqueta": "LightGBM",
+     "mae": 836.3,
+     "mape": 4.8
+    }
+   ],
+   "historico": [
+    {
+     "periodo": "2024-01",
+     "valor": 15758
+    },
+    {
+     "periodo": "2024-02",
+     "valor": 13518
+    },
+    {
+     "periodo": "2024-03",
+     "valor": 15023
+    },
+    {
+     "periodo": "2024-04",
+     "valor": 12906
+    },
+    {
+     "periodo": "2024-05",
+     "valor": 13693
+    },
+    {
+     "periodo": "2024-06",
+     "valor": 15757
+    },
+    {
+     "periodo": "2024-07",
+     "valor": 21702
+    },
+    {
+     "periodo": "2024-08",
+     "valor": 17797
+    },
+    {
+     "periodo": "2024-09",
+     "valor": 16225
+    },
+    {
+     "periodo": "2024-10",
+     "valor": 16232
+    },
+    {
+     "periodo": "2024-11",
+     "valor": 18938
+    },
+    {
+     "periodo": "2024-12",
+     "valor": 14746
+    },
+    {
+     "periodo": "2025-01",
+     "valor": 15669
+    },
+    {
+     "periodo": "2025-02",
+     "valor": 12510
+    },
+    {
+     "periodo": "2025-03",
+     "valor": 13647
+    },
+    {
+     "periodo": "2025-04",
+     "valor": 15293
+    },
+    {
+     "periodo": "2025-05",
+     "valor": 15234
+    },
+    {
+     "periodo": "2025-06",
+     "valor": 15963
+    },
+    {
+     "periodo": "2025-07",
+     "valor": 19139
+    },
+    {
+     "periodo": "2025-08",
+     "valor": 16921
+    },
+    {
+     "periodo": "2025-09",
+     "valor": 16218
+    },
+    {
+     "periodo": "2025-10",
+     "valor": 16845
+    },
+    {
+     "periodo": "2025-11",
+     "valor": 16422
+    },
+    {
+     "periodo": "2025-12",
+     "valor": 18287
+    }
+   ],
+   "pronostico": [
+    {
+     "periodo": "2026-01",
+     "valor": 18107,
+     "bajo": 16957,
+     "alto": 19257
+    },
+    {
+     "periodo": "2026-02",
+     "valor": 15158,
+     "bajo": 14008,
+     "alto": 16308
+    },
+    {
+     "periodo": "2026-03",
+     "valor": 15870,
+     "bajo": 14720,
+     "alto": 17020
+    },
+    {
+     "periodo": "2026-04",
+     "valor": 16877,
+     "bajo": 15727,
+     "alto": 18027
+    },
+    {
+     "periodo": "2026-05",
+     "valor": 16901,
+     "bajo": 15751,
+     "alto": 18051
+    },
+    {
+     "periodo": "2026-06",
+     "valor": 18294,
+     "bajo": 17144,
+     "alto": 19444
+    }
+   ],
+   "reparados": [],
+   "n_observado": 66,
+   "notas": [
+    "Llegadas Aerocivil realizadas del mercado México. No son reservas ni el cupo de un aeropuerto.",
+    "Se publica «Holt-Winters»: tuvo el menor error absoluto en los últimos 6 meses.",
+    "La banda es el percentil 80 del error absoluto en los últimos 6 meses observados. No es un intervalo de confianza.",
+    "No mide causas, reservas ni el CRM. Solo prolonga la serie mensual observada."
+   ]
+  },
+  {
+   "id": "llegadas_brasil",
+   "tab": "mercados",
+   "nombre": "Llegadas desde Brasil",
+   "unidad": "pasajeros",
+   "decimales": 0,
+   "modelo": "sarima",
+   "modelo_etiqueta": "SARIMA",
+   "corte": "2026-06",
+   "holdout_meses": 6,
+   "mae": 361.3,
+   "mape": 38.7,
+   "mae_estacional": 751.3,
+   "supera_estacional": true,
+   "empate_simple": false,
+   "modelo_mas_fino": "sarima",
+   "banda": 513,
+   "comparacion": [
+    {
+     "modelo": "estacional",
+     "etiqueta": "repetir el mismo mes del año anterior",
+     "mae": 751.3,
+     "mape": 108.6
+    },
+    {
+     "modelo": "holt_winters",
+     "etiqueta": "Holt-Winters",
+     "mae": 603.3,
+     "mape": 48.7
+    },
+    {
+     "modelo": "sarima",
+     "etiqueta": "SARIMA",
+     "mae": 361.3,
+     "mape": 38.7
+    },
+    {
+     "modelo": "gradiente",
+     "etiqueta": "gradiente con rezagos",
+     "mae": 421.8,
+     "mape": 33.1
+    },
+    {
+     "modelo": "lightgbm",
+     "etiqueta": "LightGBM",
+     "mae": 427.0,
+     "mape": 40.8
+    }
+   ],
+   "historico": [
+    {
+     "periodo": "2024-07",
+     "valor": 732
+    },
+    {
+     "periodo": "2024-08",
+     "valor": 704
+    },
+    {
+     "periodo": "2024-09",
+     "valor": 928
+    },
+    {
+     "periodo": "2024-10",
+     "valor": 938
+    },
+    {
+     "periodo": "2024-11",
+     "valor": 1067
+    },
+    {
+     "periodo": "2024-12",
+     "valor": 2502
+    },
+    {
+     "periodo": "2025-01",
+     "valor": 2757
+    },
+    {
+     "periodo": "2025-02",
+     "valor": 1796
+    },
+    {
+     "periodo": "2025-03",
+     "valor": 2386
+    },
+    {
+     "periodo": "2025-04",
+     "valor": 1617
+    },
+    {
+     "periodo": "2025-05",
+     "valor": 1176
+    },
+    {
+     "periodo": "2025-06",
+     "valor": 1353
+    },
+    {
+     "periodo": "2025-07",
+     "valor": 847
+    },
+    {
+     "periodo": "2025-08",
+     "valor": 2095
+    },
+    {
+     "periodo": "2025-09",
+     "valor": 1118
+    },
+    {
+     "periodo": "2025-10",
+     "valor": 1208
+    },
+    {
+     "periodo": "2025-11",
+     "valor": 742
+    },
+    {
+     "periodo": "2025-12",
+     "valor": 763
+    },
+    {
+     "periodo": "2026-01",
+     "valor": 615
+    },
+    {
+     "periodo": "2026-02",
+     "valor": 616
+    },
+    {
+     "periodo": "2026-03",
+     "valor": 2128
+    },
+    {
+     "periodo": "2026-04",
+     "valor": 928
+    },
+    {
+     "periodo": "2026-05",
+     "valor": 938
+    },
+    {
+     "periodo": "2026-06",
+     "valor": 1354
+    }
+   ],
+   "pronostico": [
+    {
+     "periodo": "2026-07",
+     "valor": 1095,
+     "bajo": 582,
+     "alto": 1608
+    },
+    {
+     "periodo": "2026-08",
+     "valor": 1533,
+     "bajo": 1020,
+     "alto": 2046
+    },
+    {
+     "periodo": "2026-09",
+     "valor": 1263,
+     "bajo": 750,
+     "alto": 1776
+    },
+    {
+     "periodo": "2026-10",
+     "valor": 1289,
+     "bajo": 776,
+     "alto": 1802
+    },
+    {
+     "periodo": "2026-11",
+     "valor": 1175,
+     "bajo": 662,
+     "alto": 1688
+    },
+    {
+     "periodo": "2026-12",
+     "valor": 2049,
+     "bajo": 1536,
+     "alto": 2562
+    }
+   ],
+   "reparados": [
+    "2021-06",
+    "2022-05"
+   ],
+   "n_observado": 78,
+   "notas": [
+    "Llegadas Aerocivil realizadas del mercado Brasil. No son reservas ni el cupo de un aeropuerto.",
+    "Se corrigió 2021-06, 2022-05: el valor era menor al 15 % de la mediana y al 20 % de los dos meses vecinos. Entra el promedio de esos vecinos, no el punto crudo.",
+    "La banda (±513 pasajeros) es amplia frente al último mes (1354 pasajeros): el ensayo se mueve mucho y el punto no debe leerse como una meta.",
+    "Se publica «SARIMA»: tuvo el menor error absoluto en los últimos 6 meses.",
+    "La banda es el percentil 80 del error absoluto en los últimos 6 meses observados. No es un intervalo de confianza.",
+    "No mide causas, reservas ni el CRM. Solo prolonga la serie mensual observada."
+   ]
+  },
+  {
+   "id": "llegadas_europa",
+   "tab": "mercados",
+   "nombre": "Llegadas desde Europa",
+   "unidad": "pasajeros",
+   "decimales": 0,
+   "modelo": "gradiente",
+   "modelo_etiqueta": "gradiente con rezagos",
+   "corte": "2026-06",
+   "holdout_meses": 6,
+   "mae": 638.3,
+   "mape": 5.8,
+   "mae_estacional": 1180.5,
+   "supera_estacional": true,
+   "empate_simple": false,
+   "modelo_mas_fino": "gradiente",
+   "banda": 919,
+   "comparacion": [
+    {
+     "modelo": "estacional",
+     "etiqueta": "repetir el mismo mes del año anterior",
+     "mae": 1180.5,
+     "mape": 10.7
+    },
+    {
+     "modelo": "holt_winters",
+     "etiqueta": "Holt-Winters",
+     "mae": 2181.8,
+     "mape": 19.9
+    },
+    {
+     "modelo": "sarima",
+     "etiqueta": "SARIMA",
+     "mae": 970.0,
+     "mape": 8.7
+    },
+    {
+     "modelo": "gradiente",
+     "etiqueta": "gradiente con rezagos",
+     "mae": 638.3,
+     "mape": 5.8
+    },
+    {
+     "modelo": "lightgbm",
+     "etiqueta": "LightGBM",
+     "mae": 1117.8,
+     "mape": 10.1
+    }
+   ],
+   "historico": [
+    {
+     "periodo": "2024-07",
+     "valor": 11355
+    },
+    {
+     "periodo": "2024-08",
+     "valor": 10913
+    },
+    {
+     "periodo": "2024-09",
+     "valor": 9292
+    },
+    {
+     "periodo": "2024-10",
+     "valor": 11779
+    },
+    {
+     "periodo": "2024-11",
+     "valor": 11318
+    },
+    {
+     "periodo": "2024-12",
+     "valor": 11805
+    },
+    {
+     "periodo": "2025-01",
+     "valor": 11369
+    },
+    {
+     "periodo": "2025-02",
+     "valor": 8062
+    },
+    {
+     "periodo": "2025-03",
+     "valor": 8777
+    },
+    {
+     "periodo": "2025-04",
+     "valor": 9649
+    },
+    {
+     "periodo": "2025-05",
+     "valor": 10939
+    },
+    {
+     "periodo": "2025-06",
+     "valor": 12040
+    },
+    {
+     "periodo": "2025-07",
+     "valor": 13430
+    },
+    {
+     "periodo": "2025-08",
+     "valor": 13348
+    },
+    {
+     "periodo": "2025-09",
+     "valor": 11325
+    },
+    {
+     "periodo": "2025-10",
+     "valor": 13230
+    },
+    {
+     "periodo": "2025-11",
+     "valor": 12482
+    },
+    {
+     "periodo": "2025-12",
+     "valor": 13364
+    },
+    {
+     "periodo": "2026-01",
+     "valor": 12487
+    },
+    {
+     "periodo": "2026-02",
+     "valor": 9665
+    },
+    {
+     "periodo": "2026-03",
+     "valor": 9921
+    },
+    {
+     "periodo": "2026-04",
+     "valor": 11020
+    },
+    {
+     "periodo": "2026-05",
+     "valor": 12557
+    },
+    {
+     "periodo": "2026-06",
+     "valor": 12269
+    }
+   ],
+   "pronostico": [
+    {
+     "periodo": "2026-07",
+     "valor": 13142,
+     "bajo": 12223,
+     "alto": 14061
+    },
+    {
+     "periodo": "2026-08",
+     "valor": 13062,
+     "bajo": 12143,
+     "alto": 13981
+    },
+    {
+     "periodo": "2026-09",
+     "valor": 12674,
+     "bajo": 11755,
+     "alto": 13593
+    },
+    {
+     "periodo": "2026-10",
+     "valor": 13123,
+     "bajo": 12204,
+     "alto": 14042
+    },
+    {
+     "periodo": "2026-11",
+     "valor": 12929,
+     "bajo": 12010,
+     "alto": 13848
+    },
+    {
+     "periodo": "2026-12",
+     "valor": 13154,
+     "bajo": 12235,
+     "alto": 14073
+    }
+   ],
+   "reparados": [],
+   "n_observado": 72,
+   "notas": [
+    "Llegadas Aerocivil realizadas del mercado Europa. No son reservas ni el cupo de un aeropuerto.",
+    "Se publica «gradiente con rezagos»: tuvo el menor error absoluto en los últimos 6 meses.",
+    "La banda es el percentil 80 del error absoluto en los últimos 6 meses observados. No es un intervalo de confianza.",
+    "No mide causas, reservas ni el CRM. Solo prolonga la serie mensual observada."
+   ]
+  },
+  {
+   "id": "llegadas_cinco",
+   "tab": "mercados",
+   "nombre": "Llegadas de los cinco mercados",
+   "unidad": "pasajeros",
+   "decimales": 0,
+   "modelo": "sarima",
+   "modelo_etiqueta": "SARIMA",
+   "corte": "2025-12",
+   "holdout_meses": 6,
+   "mae": 16838.8,
+   "mape": 3.3,
+   "mae_estacional": 19417.8,
+   "supera_estacional": true,
+   "empate_simple": false,
+   "modelo_mas_fino": "sarima",
+   "banda": 26693,
+   "comparacion": [
+    {
+     "modelo": "estacional",
+     "etiqueta": "repetir el mismo mes del año anterior",
+     "mae": 19417.8,
+     "mape": 3.9
+    },
+    {
+     "modelo": "holt_winters",
+     "etiqueta": "Holt-Winters",
+     "mae": 22508.7,
+     "mape": 4.7
+    },
+    {
+     "modelo": "sarima",
+     "etiqueta": "SARIMA",
+     "mae": 16838.8,
+     "mape": 3.3
+    },
+    {
+     "modelo": "gradiente",
+     "etiqueta": "gradiente con rezagos",
+     "mae": 20321.0,
+     "mape": 4.1
+    },
+    {
+     "modelo": "lightgbm",
+     "etiqueta": "LightGBM",
+     "mae": 33570.5,
+     "mape": 6.7
+    }
+   ],
+   "historico": [
+    {
+     "periodo": "2024-01",
+     "valor": 392668
+    },
+    {
+     "periodo": "2024-02",
+     "valor": 364874
+    },
+    {
+     "periodo": "2024-03",
+     "valor": 393643
+    },
+    {
+     "periodo": "2024-04",
+     "valor": 392962
+    },
+    {
+     "periodo": "2024-05",
+     "valor": 425946
+    },
+    {
+     "periodo": "2024-06",
+     "valor": 452767
+    },
+    {
+     "periodo": "2024-07",
+     "valor": 468473
+    },
+    {
+     "periodo": "2024-08",
+     "valor": 488774
+    },
+    {
+     "periodo": "2024-09",
+     "valor": 423777
+    },
+    {
+     "periodo": "2024-10",
+     "valor": 458762
+    },
+    {
+     "periodo": "2024-11",
+     "valor": 442934
+    },
+    {
+     "periodo": "2024-12",
+     "valor": 510350
+    },
+    {
+     "periodo": "2025-01",
+     "valor": 457457
+    },
+    {
+     "periodo": "2025-02",
+     "valor": 381678
+    },
+    {
+     "periodo": "2025-03",
+     "valor": 419423
+    },
+    {
+     "periodo": "2025-04",
+     "valor": 414897
+    },
+    {
+     "periodo": "2025-05",
+     "valor": 419356
+    },
+    {
+     "periodo": "2025-06",
+     "valor": 475731
+    },
+    {
+     "periodo": "2025-07",
+     "valor": 489645
+    },
+    {
+     "periodo": "2025-08",
+     "valor": 487306
+    },
+    {
+     "periodo": "2025-09",
+     "valor": 429228
+    },
+    {
+     "periodo": "2025-10",
+     "valor": 482601
+    },
+    {
+     "periodo": "2025-11",
+     "valor": 470791
+    },
+    {
+     "periodo": "2025-12",
+     "valor": 547070
+    }
+   ],
+   "pronostico": [
+    {
+     "periodo": "2026-01",
+     "valor": 473197,
+     "bajo": 446504,
+     "alto": 499890
+    },
+    {
+     "periodo": "2026-02",
+     "valor": 408564,
+     "bajo": 381871,
+     "alto": 435257
+    },
+    {
+     "periodo": "2026-03",
+     "valor": 441326,
+     "bajo": 414633,
+     "alto": 468019
+    },
+    {
+     "periodo": "2026-04",
+     "valor": 435920,
+     "bajo": 409227,
+     "alto": 462613
+    },
+    {
+     "periodo": "2026-05",
+     "valor": 446992,
+     "bajo": 420299,
+     "alto": 473685
+    },
+    {
+     "periodo": "2026-06",
+     "valor": 493350,
+     "bajo": 466657,
+     "alto": 520043
+    }
+   ],
+   "reparados": [],
+   "n_observado": 66,
+   "notas": [
+    "Suma de Brasil, Colombia, Estados Unidos, Europa y México. Brasil en 2022-05 entra corregido, no con la llegada de 1 pasajero.",
+    "Se publica «SARIMA»: tuvo el menor error absoluto en los últimos 6 meses.",
+    "La banda es el percentil 80 del error absoluto en los últimos 6 meses observados. No es un intervalo de confianza.",
+    "No mide causas, reservas ni el CRM. Solo prolonga la serie mensual observada."
+   ]
+  },
   {
    "id": "trm_mensual",
    "tab": "mercados",
