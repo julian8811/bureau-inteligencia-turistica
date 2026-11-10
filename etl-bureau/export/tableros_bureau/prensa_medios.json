@@ -3,7 +3,7 @@
  "fuente": "ETL Bureau (Google News RSS + Reddit, sin login)",
  "licencia": "Datos abiertos procesados por el ETL Bureau; insumo Aerocivil/DANE abierto.",
  "grano": "semanal",
- "generado": "2026-11-09",
+ "generado": "2026-11-10",
  "ventana_serie": [
   "2026-W20",
   "2026-W46"
@@ -15,7 +15,7 @@
   },
   {
    "semana": "2026-W21",
-   "n": 2
+   "n": 1
   },
   {
    "semana": "2026-W22",
@@ -63,7 +63,7 @@
   },
   {
    "semana": "2026-W34",
-   "n": 3
+   "n": 2
   },
   {
    "semana": "2026-W35",
@@ -71,11 +71,11 @@
   },
   {
    "semana": "2026-W36",
-   "n": 3
+   "n": 4
   },
   {
    "semana": "2026-W37",
-   "n": 3
+   "n": 4
   },
   {
    "semana": "2026-W38",
@@ -107,25 +107,43 @@
   },
   {
    "semana": "2026-W45",
-   "n": 20
+   "n": 13
   },
   {
    "semana": "2026-W46",
-   "n": 3
+   "n": 9
   }
  ],
  "titulares": [
+  {
+   "fecha": "Tue, 10 Nov 2026 14:18:54 GMT",
+   "titulo": "Medellín rediseña su narrativa turística para mostrar sus territorios lejos de los estereotipos - Caracol Radio",
+   "medio": "Medellín turismo",
+   "link": "https://news.google.com/rss/articles/CBMiygFBVV95cUxNTUJWdjdzXy1BQjNHbDVmZkZaNFZPTVlCOXNVVEsycmYzQ1dfVUxJNE5XMmN0YThyd2pGN1BBWkszTUhBMHh0azlKemVsWWVqYkRxQkZTS0hPbnFvQVZYYXh2dldwRlVDRy1QSHduS0dpNnNMeW9iRU5kLXQ5SnlhMXZic0Z3YTA2cVlUSTgtQVV6TE5RMndETm1FeGN6S2FiVWlSYkQxajZnVGEwOHQtX0RQZjFFVE5qVWo3Sm83UXZlVlBWYktJWnBB?oc=5"
+  },
+  {
+   "fecha": "Tue, 10 Nov 2026 17:20:10 GMT",
+   "titulo": "Empresarios de Guatapé presentaron su oferta turística a agencias y operadores en Medellín - La Prensa Oriente",
+   "medio": "Medellín turismo",
+   "link": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxOdlJvdTJwWFBjQWpobnh1NzZiMkI0bFI4dXRnM042WDR1NzVSYmx4bUdaMndPZEltcU9MbkZMQzJRTWNSM1JVcUl3aERvSWM0VmdldjhfY3FBNnY1UkZkTWs0Rk9oNXdONjFaSGI2dFpaNWlDYjV5MDlVY1p4M0dfaF9oYjI4QTRvZHlxbm1FQ3U4MVUtS3lfRVlXMnlvM1hDRHN3Mk9lUTZkZ3VteFVNSUY5RlEzU18wVXQ3dWM5X1c3VUx3NjhDZW1LYVFlTGJ3cTMybmFQcw?oc=5"
+  },
+  {
+   "fecha": "Tue, 10 Nov 2026 00:24:52 GMT",
+   "titulo": "Empresarios de Guatapé buscan nuevos mercados en Medellín - MiOriente",
+   "medio": "Medellín turismo",
+   "link": "https://news.google.com/rss/articles/CBMiggFBVV95cUxPY0RBSWpTZXUwWUh5QUNucW90cDlVOHFtNU9ZN3UyNTNOSUF3OWNxNk96N3pNQnpGX29PckdqVjc3UHBGS21jY0pJVkZtR1dSNWJobnZmaC0xZ2I2RkktYjlEVmRDR2FKX3U4OEl4TEZxeHpwa280aHBLWTNOdEVDU05R?oc=5"
+  },
+  {
+   "fecha": "Thu, 03 Sep 2026 07:00:00 GMT",
+   "titulo": "¿Qué está pasando con el turismo en Medellín? Las cifras que deja el primer semestre de 2026 - Alcaldía de Medellín",
+   "medio": "Medellín turismo",
+   "link": "https://news.google.com/rss/articles/CBMi3wFBVV95cUxQNXNnb094aXNNRkZ0ZEpQVEhHV2FPT2ZmS2VwaHl2VExTMm40UUdEbE93YmxpbkxFVG0xYm9LV3duczNTZmpLbDNxN21KRHFmQ25HS2o4alBoZlZ5SUxVemU4LVR3QmFIYS0xT21USkpySHdrc2JNeWRXOUNPWUdpUThReDlQOG43NG9iVFl2Z2N6bGEtWmFscjBtQ0RtTFRwVDNyTEFFZ1d1QUdGdnRNTTA0MU9fM3dBRnN1YnFpWGpRU0wwUDc0Vy01Vy14T0JQYlNsMVZ6NVRXMFV1aWo4?oc=5"
+  },
   {
    "fecha": "Mon, 09 Nov 2026 08:14:13 GMT",
    "titulo": "Turismo en Medellín 2027: más visitantes, menos gasto - ABC Economía",
    "medio": "Medellín turismo",
    "link": "https://news.google.com/rss/articles/CBMieEFVX3lxTE5GbnpiZFRuNjk1djNFcDZHQ09XWmZQaWZYNFFHT2lYN1I4WkdhMloxdjBBZnBSSS14WkVBM1RtYzN5NDI4R1V2b0NxYTREaXJacURidkVZRERaWTRCenVIZWU0Nms3aGhDaGRYLUd4Y0JfRkpSY2NwTQ?oc=5"
-  },
-  {
-   "fecha": "Fri, 06 Nov 2026 21:13:16 GMT",
-   "titulo": "Medellín fortalece su turismo con 241 taxistas convertidos en embajadores de la ciudad - Caracol Radio",
-   "medio": "Medellín turismo",
-   "link": "https://news.google.com/rss/articles/CBMivgFBVV95cUxNYWtLOTNTeXJqTnNXeTAxcDUwcGNGdEE0b1hacEt3bHdMUUJ1NFZEa0F3WFdqa3k5UGl2X2xwSk00SVFuZTFnc25kekJ3bUEtY0xBSHhHQnB2RDZCQVZrQnRTMnlDN1JTakJ4aXMwMHpGRUkzemkzdUhDRDVJODFiZE1GclVZeG1yY1lvaVpvSDRXSVJJMVB6eklEbjFnOW9SYm5zc0tYa1lENVFOSTl2WjNhYmg5dEMtYlpiWUhR0gHSAUFVX3lxTE95Z3dNS2t0WTlCTUFmRzQ5RkxwZ3ozdmw4UUx4UFQ2VHdzZ19COUhUdkd0S3F3enpmZzFSYW9zaUFyYUNJaHhsamtrbVgyaGJIYUprdm5ISDdHVEVEdlJJOEpEd1MwYnFmQUdNT1RHVUJVM2hkMTJLNVNFeE0xcHc2eThMbmJjb3Y4T1JpTHQtVzVZYXlNQ0pWb1EwV0V6dWF4bHdnY0gzUlJrbzc4RHduSEgwUmxpQ1NwRjZ5eUlUREFRMFlXRUpqR0pfY0gyYUlrQQ?oc=5"
   },
   {
    "fecha": "Sun, 08 Nov 2026 03:35:41 GMT",
@@ -134,16 +152,16 @@
    "link": "https://news.google.com/rss/articles/CBMi5AFBVV95cUxObnJPbDRIRUN2XzRWaVFmMTFQcmhvRzFUZ3d0Z0lNbTh5blZfSFhvZkVUQWM2TklBbEg5bjdPc2xkaF94YTdwUW05Z1EyNGRIX0RWSzE4MDlvQkdNS2RqVWJhN2hGWVZaTnBHMHFrSWVsUWMtZGFvRl9HTlcyVGZKYk9SODJkMVh1c3lOdnYwbkdDY1FaMWVFUzlKMWF6Q3RqMGtRbU9pRURLVmFYRVdWb1VwMHN4S0JVMGxGYU1GeGhCREFIYkxNdEJTZW1WdkFlRWpNNDRUQlpleGswcUxrdzVfNU0?oc=5"
   },
   {
+   "fecha": "Tue, 10 Nov 2026 00:06:47 GMT",
+   "titulo": "Ni Cartagena ni Medellín, esta ciudad colombiana es la que más buscan para Fin de Año - Blu Radio",
+   "medio": "Medellín turismo",
+   "link": "https://news.google.com/rss/articles/CBMivwFBVV95cUxNRW90ZDFRVXdJT0R1YXRTdl95ZDY1ZVFjZ2d4Z2Rva09IWTVWejBrdHY2UlJMaDl0clRQMWNkb25yRVRzU0RVOGdNN1d5Ql9VTlZ6Q2Q4NjdCbi12WjkzMnh5c2xVSVFHMzF0N0JhelVkdWEtbXVhWFZwbzNFWkhfdzhGWnBaZGY4NUVXX1JaMnF2M2NjbUJkeFBqa29xLV95RzhjY210VkJnWFcxbk40cXdzcTZBZmhscXRKSlZ2Y9IBzAFBVV95cUxOSzVsZWxWdlFONDM2VkcxdDZwTGJRV1FhblhycG81dHNRSWlmRjdNOTU4eXFkQ1VIa0VVQ2JJcWpqaGVzNnVQd1YzZDRVemFnaGs1cW1YVHFDejVobzk0djFwOHp0U1pCZ0VZVjhrVGo2TV82Zmx6Qk9yTFB1VXMwOXR5My1fRDhJOVNxSE55THpaSFhaM3J2bHdQMV96cDhJUEhOYWRqaC1iMFNwVUxaNGN5alF1SV9jSTdJa0tWUWNFMmNCUXdyc203Y0c?oc=5"
+  },
+  {
    "fecha": "Sun, 08 Nov 2026 12:05:41 GMT",
    "titulo": "Nuevo POT en Medellín: estos son los únicos barrios donde se permitirán las viviendas dedicadas al turismo - Newsroom RCN Radio",
    "medio": "Medellín turismo",
    "link": "https://news.google.com/rss/articles/CBMi3AFBVV95cUxQT2RFQTZZZGlBUDRoU1NTei1IbjBDU1B6T056ME5aVXhtMTFFdEdka2VRSmdUdkoyUWxBVnc3XzVVZDRZd3JUdjBsNGhIVy0xN3JCcjBqVnhfWVRiUl9jZFBlNVlGM21UUjZkcXIwZnRUZFNzcnlROFRNbmRsM2doYWV2UnQ0V1R4WTA1ZE1kVGxkYWZiSjhnNlRaQlh4TGprR19KcWZqQ0VhZFhhU25rdUM5dnVFLU1xM3hXMkJIS3ZSZ3ZDMlJHSnpsaVRKdnFWWmVBQXRMSy1ZREl0?oc=5"
-  },
-  {
-   "fecha": "Mon, 26 Oct 2026 07:00:00 GMT",
-   "titulo": "Medellín fortalece el turismo de Provenza con acciones articuladas de seguridad, infraestructura y sostenibilidad - Alcaldía de Medellín",
-   "medio": "Medellín turismo",
-   "link": "https://news.google.com/rss/articles/CBMi_AFBVV95cUxOMEdYMGFoUmxzT19UZzhVVjd4U0picmJld0pvUEd3Wk5HNW9MLV9vVV9GLXJYS2F5VDhhMEhIWGRfdzJCajA1cHZDc3dnNDVLS2pDeTZuSXVTbmlONzdvSFN1ZHdOcWlMMjVwclVPOGQ0c2E2cEIxMFlWN0RzTkhoUUZjR0VBWDhweVVqR3NEb2o2b0wzM3RWRXZCT05sNmpEV2hrQnYyS1REWEhUVG9VNTljOU9lUnZIMGY5MzJfVVRMQ3hVdjR0bTFNZ2RfSmRvT3EyY05xMjFhSFlGT1BELUlTN094V3pWTmxEemxGZUphM0E5TU9LcmpTb3A?oc=5"
   },
   {
    "fecha": "Thu, 05 Nov 2026 17:57:21 GMT",
@@ -158,28 +176,22 @@
    "link": "https://news.google.com/rss/articles/CBMi-AFBVV95cUxNOE5ONllBNTRXd3JqZkc4Umw4bjFIWWlOZ2VWVkVNNUlhU1E0X3FTSmlZU0dTQ1VaWDFONW1uU0Z2TWFDYkVvZ2l5SFIzaEdNWXZIQUJ6WkFINFhOX3Z1Vk93ZE41OENzNFhsX1VNR1FXY0loR3FERUNnLXA4NzhCbEtoanJfWmt0OFlHcUI1ZkdFY21VSVFyQllFQjVfdEVsOTVOTlY5T2ZnZVlvX3JTd1JJeXhTYXRNZG5wOEQ3LWFJLW5VTVdHaG5yQXNpcGJtT1BSbmIyZGtheFU1NjhKa1lKYkhGRi0tbk53RFBRQ05Zb1k5ZGhkdg?oc=5"
   },
   {
-   "fecha": "Thu, 05 Nov 2026 23:05:00 GMT",
-   "titulo": "Spain Talks 2026: Medellín fue escenario de un turismo que conecta culturas y sostenibilidad - Ladevi",
-   "medio": "Medellín turismo",
-   "link": "https://news.google.com/rss/articles/CBMi0wFBVV95cUxOWU5fYTF6WHprNWU0WHo5bFIwc2FjUFluLS1rOHJIc3FhekNNQnZSRHIxMFRaeGVrN0duUEM1UFp1dHFPcTJDa2dBRUtFN3ozOXJqTXFCNDdyQVk1c1AxQlk1QlM0SC1pZUh1bEtoN0lHbXh4SmJWMkk3cXZMYWkxMlFtc1VSV0dkTFAyblZMLXB5MWVUYmJPVUlHWkR0bk9IWjUwWHFLWGdjSldDUUpMRkV5TVRXUXZIUE1zWmxsN09GTEtWNWVTdHVvWGIwV2dkSmtZ0gHTAUFVX3lxTE5ZTl9hMXpYems1ZTRYejlsUjBzYWNQWW4tLWs4ckhzcWF6Q01CdlJEcjEwVFp4ZWs3R25QQzVQWnV0cU9xMkNrZ0FFS0U3ejM5cmpNcUI0N3JBWTVzUDFCWTVCUzRILWllSHVsS2g3SUdteHhKYlYySTdxdkxhaTEyUW1zVVJXR2RMUDJuVkwtcHkxZVRiYk9VSUdaRHRuT0haNTBYcUtYZ2NKV0NRSkxGRXlNVFdRdkhQTXNabGw3T0ZMS1Y1ZVN0dW9YYjBXZ2RKa1k?oc=5"
-  },
-  {
    "fecha": "Sat, 07 Nov 2026 02:18:29 GMT",
    "titulo": "Cotelco respaldó el POT en Medellín para regular oferta de vivienda turística - LaRepublica.co",
    "medio": "Medellín turismo",
    "link": "https://news.google.com/rss/articles/CBMivgFBVV95cUxPeHVTWEtDMXhhaHEtRnc0LVFRc3F6Q05DSU8tTVFJU3ZMRDVtVU1LR01FNjBQRFpacnNtZXBMREpnU080em5fVWRTbjJnV0h6Q3FWZG5PWXdPcFlWRXNKSktZS2wySTl0aVdoTUlLUWRINFZzcW9zWGpqOG1PYWtDYWJfLU5iblhyZWktZFd4UUlXWUtJbVVDcjU1MG5UeUk4RUtQOTZLWWVaU3c4cnFPYmlCd29wblRRR3lsekZn0gG-AUFVX3lxTFBBT0ZQWVg4ZjJjRi1yVGp4RFJ6VGp1MTlQRS0zU0VaSjJWeU1BcF9LczdqUU5OYUFKMnRhdWd6MGRBbHRoN25hRmZ3YndPenZyQk9MNVltcjZPdXQxcVhUWURWVmFtLVlWUGZPZEF4TFAxajA4QUQ3ZUtiV0ktbVE0QWZ6YW11ODRxeFhFNENDcENTLUxUY0xEMG1relQtLXpENEt1NVZKcWNGcGZ4ODFseFV1SDZWdzVkUDZDcmc?oc=5"
   },
   {
-   "fecha": "Thu, 05 Nov 2026 15:18:38 GMT",
-   "titulo": "Turismo de Caldas busca nuevos mercados tras su participación en feria de Medellín - Eje21",
+   "fecha": "Thu, 05 Nov 2026 23:05:00 GMT",
+   "titulo": "Spain Talks 2026: Medellín fue escenario de un turismo que conecta culturas y sostenibilidad - Ladevi",
    "medio": "Medellín turismo",
-   "link": "https://news.google.com/rss/articles/CBMitwFBVV95cUxQRE1XUWYyMDBjTzdnMkdkMjFkMjJWTzBKYjc1THpGeE1TSEdyQ2EwZmdFRmVYdzEtbTFSc3NSQ09mT3VyNFFwSGQ3OVVGMmIyWEhaanljX1BtTkdaeHBveHlTX3NoVExObmc2QlJkRGdEWXQ3M1FhQ1ZUTkdUbHctNlNyTE9mWXAwQ25MeEl6a0YzdnM1cVEtWGRWWTBUZWs4MWVELU5FSFM4WjE4aDk2TDVFZFJDWG8?oc=5"
+   "link": "https://news.google.com/rss/articles/CBMi0wFBVV95cUxOWU5fYTF6WHprNWU0WHo5bFIwc2FjUFluLS1rOHJIc3FhekNNQnZSRHIxMFRaeGVrN0duUEM1UFp1dHFPcTJDa2dBRUtFN3ozOXJqTXFCNDdyQVk1c1AxQlk1QlM0SC1pZUh1bEtoN0lHbXh4SmJWMkk3cXZMYWkxMlFtc1VSV0dkTFAyblZMLXB5MWVUYmJPVUlHWkR0bk9IWjUwWHFLWGdjSldDUUpMRkV5TVRXUXZIUE1zWmxsN09GTEtWNWVTdHVvWGIwV2dkSmtZ0gHTAUFVX3lxTE5ZTl9hMXpYems1ZTRYejlsUjBzYWNQWW4tLWs4ckhzcWF6Q01CdlJEcjEwVFp4ZWs3R25QQzVQWnV0cU9xMkNrZ0FFS0U3ejM5cmpNcUI0N3JBWTVzUDFCWTVCUzRILWllSHVsS2g3SUdteHhKYlYySTdxdkxhaTEyUW1zVVJXR2RMUDJuVkwtcHkxZVRiYk9VSUdaRHRuT0haNTBYcUtYZ2NKV0NRSkxGRXlNVFdRdkhQTXNabGw3T0ZMS1Y1ZVN0dW9YYjBXZ2RKa1k?oc=5"
   },
   {
-   "fecha": "Thu, 05 Nov 2026 16:59:40 GMT",
-   "titulo": "Medellín tendrá nuevas reglas para construir, vivir y hacer negocios: lo que cambia con el nuevo POT - Teleantioquia",
+   "fecha": "Thu, 05 Nov 2026 18:05:24 GMT",
+   "titulo": "Medellín redefinió su modelo de turismo con una fuerte apuesta por la cultura - HSB Noticias",
    "medio": "Medellín turismo",
-   "link": "https://news.google.com/rss/articles/CBMi2wFBVV95cUxNV0VkSEFaR0gzTkRwSlpucXZhaFhaT21GaUdvSnQ5WXRveUN4dU93eXppREdiQ3ZzQWdNV2gtNGZkY3U4NnNsdDFlS2VsZlJ6eFo2cWFkMjhDM3ZfcEZ1VFcza2JLOWJpTV91eDllRno2RzFIZkMxV245a1FrRVQ2Q3Q5S0VseUZGeTVzWnZ6MDg2Sk94NUxCUlp6MmU5U0FBYnVKYTlMM0N6cXc1aG9YMkJCcmNpMkk5U3VuMnZrQVJjVnNjdDJFVmZueDdTQnhJNTBfN3F5MEhhMEnSAecBQVVfeXFMTllTY0RNby1PT21weWxuYktKdWpqQ0RadkpicnppV1h4Sk5MWWtQUVJmbGVJb0ZpbXp1VGlleTFTaGpYR2xQOC1sODczYW14NkwxSXlFcEZZSGYyRXFwOVBlbUR2bjd4bkJGMEYzdENUM0dscllvaEFKVy1rQzBiU3RHTmY3Ulgzc2w2TjdWeDNpdUhqYTJiY2U4QkdyMGFsN0JIejExQUNucFdyM2hpTVd0T1RLNnYzMjd6R3VKWll4YWRyOGpYMFkzLUJxU1RXMnlWc2liVWNuT2NJZ2FoazZBbmxYUkI0?oc=5"
+   "link": "https://news.google.com/rss/articles/CBMirwFBVV95cUxQeHhxckUwclpNVmZwenN4UHRNeHRBN0Q3d2M3UVI4VHBPeVhReTlLbkpUeHRwRzVBOXpCS3liLTM3UFRtT2hZQmRNRHc4NHN0TWdkY2dTSFc0a3ZsREhQcWlMMXl0bEpfS2oyLXE5dzU2aFdDVUY2ME9jRFZEMDVlcmhPWm5yZ0F1RFIzYjRsNFdXc3BTTlBHY1dVamItUHRPOXR1NWxqUEZtNVBlYXo0?oc=5"
   },
   {
    "fecha": "Mon, 19 Oct 2026 07:00:00 GMT",
@@ -188,24 +200,12 @@
    "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxPczl6ZXJNcVhfWVR4UDZqM3dTbERqRW1rNTdnekJkRll6cnNUSDVlRDNLMV9aTTBqaGpiZlBlZEJjRU1QWGVkVTFkOFJyQ2w3WnNUdXpsR3VuX1B2YUhwS2tqNVVNNkdVc1pqdVg1eWRiUXVvLW9FbFIySkx4akJHZ2pXZWZYWXVZ?oc=5"
   },
   {
-   "fecha": "Fri, 06 Nov 2026 23:17:49 GMT",
-   "titulo": "Medellín fortalece su competitividad turística con la formación de 241 taxistas como embajadores de ciudad - IFM Noticias",
+   "fecha": "Mon, 26 Oct 2026 07:00:00 GMT",
+   "titulo": "Medellín fortalece el turismo de Provenza con acciones articuladas de seguridad, infraestructura y sostenibilidad - Alcaldía de Medellín",
    "medio": "Medellín turismo",
-   "link": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxQN2RHcEZMb2VSdDhzV2JFRTNnMjBPb0pYVHhoQm1meGFCSWpOYWpNc3l2cFY5NkU5c1h2MmlvM2w1anNUU3RSSHUtWEFneHNMb0M4ek0xdEhxaWp0cnRxU1JwTXJsS1Fncy1ZLUVlQ2dfUTQ0bTdaZUFXU2xnRTB0T3BGcFBVUk5HTGlLN2lIWEJYcmw1YThZLXNITFIwQi00X3gxTF9qRE01Y3ZvV1lPZXlneTdtSVRCbUJMWHdIY0lfRXFybnpzYWx5N0FlMHpnbnJDOHhDdw?oc=5"
-  },
-  {
-   "fecha": "Thu, 03 Sep 2026 07:00:00 GMT",
-   "titulo": "¿Qué está pasando con el turismo en Medellín? Las cifras que deja el primer semestre de 2026 - Alcaldía de Medellín",
-   "medio": "Medellín turismo",
-   "link": "https://news.google.com/rss/articles/CBMi3wFBVV95cUxQNXNnb094aXNNRkZ0ZEpQVEhHV2FPT2ZmS2VwaHl2VExTMm40UUdEbE93YmxpbkxFVG0xYm9LV3duczNTZmpLbDNxN21KRHFmQ25HS2o4alBoZlZ5SUxVemU4LVR3QmFIYS0xT21USkpySHdrc2JNeWRXOUNPWUdpUThReDlQOG43NG9iVFl2Z2N6bGEtWmFscjBtQ0RtTFRwVDNyTEFFZ1d1QUdGdnRNTTA0MU9fM3dBRnN1YnFpWGpRU0wwUDc0Vy01Vy14T0JQYlNsMVZ6NVRXMFV1aWo4?oc=5"
-  },
-  {
-   "fecha": "Fri, 06 Nov 2026 22:32:19 GMT",
-   "titulo": "EN VIDEO | Nuevo POT de Medellín abre la posibilidad de construir 222.000 viviendas y cambia las reglas para alojamientos turísticos - Teleantioquia",
-   "medio": "Medellín turismo",
-   "link": "https://news.google.com/rss/articles/CBMihgJBVV95cUxQUXFvUnRmUkt5T215QUhibHlXZGd3eDlSdE50SEFNY0J2LVlxYUp5dExBY0RYYXNyRjJueTZPd0xoZy0td1dTZVpzR0x4Wklsd012MlRPSXFpc2RjVEdweV9XTlZWR0xiVUxQVlpaSVN4SkdNT0l0MENLb3h5alQtZjB4YnB2Smg2VEpqN2JRRVE0OW52YU9sWDhhWnU4UGJWZWdmNzV3N3BYVnpVOTB1VGJkOXh5Qi1CeVM0bl8tZHpJMXlrYzNXTnNud1BKX183b2hZa0JIZm5EYUUxNTBIS0l0MHJ4eEFfRS1DZEtrWjEyYmxYak1qSTZueWhSRkxVUFJKa3VR0gGSAkFVX3lxTE9RQ0tpX1ZLVXRkRWxOV2xOdDFuNkF3U1NIWUpHVG1oa2tHRVlIOW9TN0hKZjd2UF9IMEwtQUdDVnpxWU55ZFUwekFYWlEzcXJNaUJBWEFCRkFFZFBVOHNnUURzeDJ4V1dzTUdwNTFPUzgyR1VLdGVOZmpxcVJYZFlSWUNnY1VLQmxlNzROLU9NbmljUXpxYUl6Rk1FRjRiWm9BcDJxanZuXzJlM0FPcVBQU3VhTE9US2ZWTy02UkVOcDlNQmlvWnVUYmF2VlFTVzVsY1BOVU96YWk2LXVyaTJkd1M1Z0JuYmkxWHFUa1pVWVp4NzN1NmlOS3BnelpseGdWNS1pMkJmZUljUnBZZUkzYXc?oc=5"
+   "link": "https://news.google.com/rss/articles/CBMi_AFBVV95cUxOMEdYMGFoUmxzT19UZzhVVjd4U0picmJld0pvUEd3Wk5HNW9MLV9vVV9GLXJYS2F5VDhhMEhIWGRfdzJCajA1cHZDc3dnNDVLS2pDeTZuSXVTbmlONzdvSFN1ZHdOcWlMMjVwclVPOGQ0c2E2cEIxMFlWN0RzTkhoUUZjR0VBWDhweVVqR3NEb2o2b0wzM3RWRXZCT05sNmpEV2hrQnYyS1REWEhUVG9VNTljOU9lUnZIMGY5MzJfVVRMQ3hVdjR0bTFNZ2RfSmRvT3EyY05xMjFhSFlGT1BELUlTN094V3pWTmxEemxGZUphM0E5TU9LcmpTb3A?oc=5"
   }
  ],
  "sentimiento_neto": 0.037,
- "n_total_menciones": 123
+ "n_total_menciones": 122
 }

@@ -1,6 +1,6 @@
 {
   "id": "bureau-conectividad-bench",
-  "generado": "2026-11-09",
+  "generado": "2026-11-10",
   "ventana": "2023..2026-11",
   "fuente": "ETL Bureau, Aerocivil/Eurostat/WB/Wikimedia",
   "operaciones_serie": [
@@ -287,12 +287,12 @@
       "cop_per_usd": 3237.83
     },
     {
-      "date": "2026-11-09",
-      "cop_per_usd": 3238.06751146
+      "date": "2026-11-10",
+      "cop_per_usd": 3269.88
     },
     {
       "date": "2026-11-10",
-      "cop_per_usd": 3269.88
+      "cop_per_usd": 3275.0236257
     }
   ],
   "benchmark_eu": [
@@ -39126,11 +39126,11 @@
   "wikimedia_serie": [
     {
       "periodo": "2026-10",
-      "views": 18819
+      "views": 17901
     },
     {
       "periodo": "2026-11",
-      "views": 6557
+      "views": 7273
     }
   ],
   "bts_colombia": [
@@ -39468,6 +39468,11 @@
       "anio": 2026,
       "mes": 9,
       "indice": 161.0
+    },
+    {
+      "anio": 2026,
+      "mes": 10,
+      "indice": 161.32
     }
   ],
   "cortes": {
