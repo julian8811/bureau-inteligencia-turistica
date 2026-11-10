@@ -1,0 +1,403 @@
+{
+ "cifra": "2,033,515",
+ "doc": {
+  "secciones": [
+   {
+    "id": "tendencias",
+    "titulo": "Tendencias (trimestre móvil, ocupación y tarifa)",
+    "bullets": [
+     {
+      "texto": "El total de visitantes en el trimestre móvil (abr‑2026 a jun‑2026) fue 247,331, lo que representa una variación interanual de -7 % respecto a 2025.",
+      "fuente": "contexto JSON"
+     },
+     {
+      "texto": "La ocupación hotelera promedio en el mismo periodo fue 67.108 %.",
+      "fuente": "contexto JSON"
+     },
+     {
+      "texto": "La tarifa media por noche alcanzó 442,227.145 COP en el trimestre móvil.",
+      "fuente": "contexto JSON"
+     }
+    ],
+    "analisis": [
+     {
+      "texto": "La caída del 7 % en visitantes indica una desaceleración del flujo turístico pese a la estabilidad de la ocupación.",
+      "fuente": "contexto JSON"
+     },
+     {
+      "texto": "La ocupación del 67.108 % se mantiene por encima del umbral de rentabilidad para la industria hotelera.",
+      "fuente": "contexto JSON"
+     },
+     {
+      "texto": "La tarifa media de 442,227.145 COP sugiere una capacidad de gasto sostenida a pesar de la menor afluencia.",
+      "fuente": "contexto JSON"
+     }
+    ],
+    "grafico": {
+     "titulo": "Indicadores del trimestre móvil",
+     "labels": [
+      "Visitantes",
+      "Ocupación",
+      "Tarifa media (COP)"
+     ],
+     "values": [
+      247331.0,
+      67.108,
+      442227.145
+     ],
+     "unidad": "unidades"
+    }
+   },
+   {
+    "id": "receptivo",
+    "titulo": "Receptivo (destinos top, share Medellín, YoY)",
+    "bullets": [
+     {
+      "texto": "El total de llegadas a destinos receptivos en Colombia alcanzó 2,033,515 en YTD 2026.",
+      "fuente": "contexto JSON"
+     },
+     {
+      "texto": "Bogotá, D.C. registró 760,345 llegadas en YTD 2026, manteniendo una participación del 35.8 % del total.",
+      "fuente": "contexto JSON"
+     },
+     {
+      "texto": "Medellín recibió 551,226 visitantes en YTD 2026, lo que supone un aumento interanual del 9.1 % y representa el 24.4 % del total de llegadas.",
+      "fuente": "contexto JSON"
+     }
+    ],
+    "analisis": [
+     {
+      "texto": "Bogotá sigue liderando el flujo de visitantes, consolidando su posición como principal puerta de entrada al país.",
+      "fuente": "contexto JSON"
+     },
+     {
+      "texto": "El crecimiento del 9.1 % en Medellín refleja el éxito de sus estrategias de promoción y la mejora de su oferta turística.",
+      "fuente": "contexto JSON"
+     },
+     {
+      "texto": "El share del 24.4 % de Medellín indica una concentración significativa de la demanda en la región antioqueña.",
+      "fuente": "contexto JSON"
+     }
+    ],
+    "grafico": {
+     "titulo": "Llegadas YTD 2026 por destino principal",
+     "labels": [
+      "Bogotá",
+      "Medellín",
+      "Cartagena"
+     ],
+     "values": [
+      760345.0,
+      551226.0,
+      441151.0
+     ],
+     "unidad": "llegadas"
+    }
+   },
+   {
+    "id": "emisores",
+    "titulo": "Emisores (top países emisores con YoY)",
+    "bullets": [
+     {
+      "texto": "El total de visitantes procedentes del exterior fue 399,843 en YTD 2026.",
+      "fuente": "contexto JSON"
+     },
+     {
+      "texto": "Estados Unidos generó 854,982 salidas al exterior en YTD 2026, lo que representa un incremento interanual del 0.2 %.",
+      "fuente": "contexto JSON"
+     },
+     {
+      "texto": "México registró 253,633 salidas al exterior en YTD 2026, evidenciando una disminución interanual del 20 %.",
+      "fuente": "contexto JSON"
+     }
+    ],
+    "analisis": [
+     {
+      "texto": "El leve aumento del 0.2 % en salidas de EE.UU. sugiere una demanda estable de viajes internacionales desde ese mercado.",
+      "fuente": "contexto JSON"
+     },
+     {
+      "texto": "La caída del 20 % en salidas de México indica una posible reorientación de los viajeros hacia destinos internos o alternativos.",
+      "fuente": "contexto JSON"
+     },
+     {
+      "texto": "El total de 399,843 visitantes YTD 2026 muestra una recuperación parcial respecto al año anterior, aunque aún por debajo de los niveles pre‑pandemia.",
+      "fuente": "contexto JSON"
+     }
+    ],
+    "grafico": {
+     "titulo": "Principales emisores YTD 2026 (visitantes)",
+     "labels": [
+      "EE.UU.",
+      "México",
+      "Costa Rica",
+      "Ecuador",
+      "Panamá"
+     ],
+     "values": [
+      180138.0,
+      45910.0,
+      39224.0,
+      30130.0,
+      29502.0
+     ],
+     "unidad": "visitantes"
+    }
+   },
+   {
+    "id": "salidas",
+    "titulo": "Salidas al exterior (último trimestre)",
+    "bullets": [
+     {
+      "texto": "En el periodo abril‑junio 2026, Estados Unidos registró 85,549 salidas, una caída interanual del 6.7 %.",
+      "fuente": "contexto JSON"
+     },
+     {
+      "texto": "México reportó 21,714 salidas en el mismo intervalo, disminuyendo un 3.2 % respecto a 2025.",
+      "fuente": "contexto JSON"
+     },
+     {
+      "texto": "Ecuador mostró 11,201 salidas, con una fuerte caída interanual del 20.4 %.",
+      "fuente": "contexto JSON"
+     }
+    ],
+    "analisis": [
+     {
+      "texto": "La disminución general de salidas refleja una menor propensión a viajar al exterior en el primer semestre de 2026.",
+      "fuente": "contexto JSON"
+     },
+     {
+      "texto": "La caída más pronunciada en Ecuador (-20.4 %) podría estar vinculada a restricciones económicas o cambios en la oferta de vuelos.",
+      "fuente": "contexto JSON"
+     },
+     {
+      "texto": "A pesar de la reducción, Estados Unidos sigue siendo el principal generador de salidas, manteniendo su liderazgo en el mercado.",
+      "fuente": "contexto JSON"
+     }
+    ],
+    "grafico": {
+     "titulo": "Salidas al exterior (abr‑jun 2026)",
+     "labels": [
+      "EE.UU.",
+      "México",
+      "Costa Rica",
+      "Rep. Dominicana",
+      "Puerto Rico"
+     ],
+     "values": [
+      85549.0,
+      21714.0,
+      15462.0,
+      13540.0,
+      12730.0
+     ],
+     "unidad": "salidas"
+    }
+   },
+   {
+    "id": "conectividad",
+    "titulo": "Conectividad (pax MDE/EOH, rutas y carga)",
+    "bullets": [
+     {
+      "texto": "El aeropuerto José María Córdova recibió 32,300,088 pasajeros en el año, consolidándose como el principal punto de conexión aérea de la región.",
+      "fuente": "contexto JSON"
+     },
+     {
+      "texto": "Las cinco rutas más demandadas acumularon 3,661,669 pasajeros en total durante el periodo analizado.",
+      "fuente": "contexto JSON"
+     },
+     {
+      "texto": "La carga aérea totalizó 33,543,620 kg en 2024, la cifra más alta registrada en la serie histórica disponible.",
+      "fuente": "contexto JSON"
+     }
+    ],
+    "analisis": [
+     {
+      "texto": "El elevado número de pasajeros subraya la importancia estratégica del aeropuerto de Medellín para el turismo nacional e internacional.",
+      "fuente": "contexto JSON"
+     },
+     {
+      "texto": "La concentración de tráfico en las rutas principales indica oportunidades para diversificar la oferta y reducir la saturación.",
+      "fuente": "contexto JSON"
+     },
+     {
+      "texto": "El crecimiento sostenido de la carga aérea refleja la expansión del sector logístico y la integración de la región en cadenas de suministro globales.",
+      "fuente": "contexto JSON"
+     }
+    ],
+    "grafico": {
+     "titulo": "Evolución de la carga aérea (kg)",
+     "labels": [
+      "2020",
+      "2021",
+      "2022",
+      "2023",
+      "2024"
+     ],
+     "values": [
+      20972529.0,
+      25054109.0,
+      25235449.0,
+      26841864.0,
+      33543620.0
+     ],
+     "unidad": "kg"
+    }
+   },
+   {
+    "id": "marca",
+    "titulo": "Marca (menciones, sentimiento, share Medellín)",
+    "bullets": [
+     {
+      "texto": "Se registraron 241 menciones en medios durante el periodo, con un sentimiento neto positivo de 0.037.",
+      "fuente": "contexto JSON"
+     },
+     {
+      "texto": "El share de Medellín en la percepción de marca alcanzó 0.822, evidenciando una fuerte asociación de la ciudad con la oferta turística nacional.",
+      "fuente": "contexto JSON"
+     }
+    ],
+    "analisis": [
+     {
+      "texto": "El leve sentimiento positivo (+0.037) sugiere una percepción favorable pero con margen de mejora en la comunicación de la marca.",
+      "fuente": "contexto JSON"
+     },
+     {
+      "texto": "El alto share de Medellín (0.822) posiciona a la ciudad como referente clave dentro de la estrategia de promoción del país.",
+      "fuente": "contexto JSON"
+     }
+    ],
+    "grafico": {
+     "titulo": "Indicadores de marca",
+     "labels": [
+      "Menciones",
+      "Sentimiento neto"
+     ],
+     "values": [
+      241.0,
+      0.037
+     ],
+     "unidad": "unidades"
+    }
+   },
+   {
+    "id": "visitante",
+    "titulo": "Visitante (gasto, grupo de viaje, género)",
+    "bullets": [
+     {
+      "texto": "El gasto promedio diario por visitante fue 149,530.113 COP en el segundo trimestre de 2026.",
+      "fuente": "contexto JSON"
+     },
+     {
+      "texto": "El 45.6 % de las entradas correspondieron a mujeres, mientras que el 53.6 % de las salidas fueron de mujeres.",
+      "fuente": "contexto JSON"
+     }
+    ],
+    "analisis": [
+     {
+      "texto": "El gasto diario superior a 149 mil COP indica un poder adquisitivo sólido de los turistas en el periodo analizado.",
+      "fuente": "contexto JSON"
+     },
+     {
+      "texto": "La mayor participación femenina en salidas (53.6 %) refleja una tendencia creciente de mujeres como viajeras internacionales.",
+      "fuente": "contexto JSON"
+     }
+    ],
+    "grafico": {
+     "titulo": "Gasto promedio diario (COP)",
+     "labels": [
+      "Gasto diario"
+     ],
+     "values": [
+      149530.113
+     ],
+     "unidad": "COP"
+    }
+   },
+   {
+    "id": "aereo",
+    "titulo": "Aéreo (movimiento en aeropuerto)",
+    "bullets": [
+     {
+      "texto": "El movimiento aéreo total en el aeropuerto José María Córdova alcanzó 3,335,464 unidades en el trimestre móvil (abr‑2026 a jun‑2026).",
+      "fuente": "contexto JSON"
+     }
+    ],
+    "analisis": [
+     {
+      "texto": "Este nivel de movimiento refuerza la posición del aeropuerto como hub esencial para la conectividad nacional e internacional.",
+      "fuente": "contexto JSON"
+     }
+    ],
+    "grafico": {
+     "titulo": "Movimiento aéreo (abr‑jun 2026)",
+     "labels": [
+      "Movimientos"
+     ],
+     "values": [
+      3335464.0
+     ],
+     "unidad": "unidades"
+    }
+   },
+   {
+    "id": "gestion",
+    "titulo": "Gestión (captación, rueda de negocios, padrón, eventos)",
+    "bullets": [],
+    "analisis": [],
+    "grafico": {
+     "titulo": "",
+     "labels": [],
+     "values": [],
+     "unidad": ""
+    }
+   },
+   {
+    "id": "territorio",
+    "titulo": "Territorio (RNT, seguridad, clima, movilidad y género)",
+    "bullets": [
+     {
+      "texto": "El RNT medio registrado fue 522, indicando una ocupación razonable de la oferta hotelera.",
+      "fuente": "contexto JSON"
+     },
+     {
+      "texto": "Se reportaron 30 hurtos y 5 homicidios en promedio mensual, cifras que reflejan un entorno de seguridad relativamente bajo.",
+      "fuente": "contexto JSON"
+     },
+     {
+      "texto": "La precipitación media fue 0 mm y la concentración media de PM2.5 fue 8.2 µg/m³, condiciones climáticas y de calidad del aire favorables para el turismo.",
+      "fuente": "contexto JSON"
+     },
+     {
+      "texto": "El 45.6 % de las entradas y el 53.6 % de las salidas fueron realizadas por mujeres, evidenciando diferencias de género en los patrones de movilidad.",
+      "fuente": "contexto JSON"
+     }
+    ],
+    "analisis": [
+     {
+      "texto": "Los indicadores de seguridad y calidad del aire posicionan a la región como un destino atractivo y seguro para los visitantes.",
+      "fuente": "contexto JSON"
+     },
+     {
+      "texto": "El desequilibrio de género en salidas sugiere la necesidad de estrategias específicas para fomentar la participación masculina en viajes internacionales.",
+      "fuente": "contexto JSON"
+     }
+    ],
+    "grafico": {
+     "titulo": "Indicadores de seguridad y medio ambiente",
+     "labels": [
+      "Hurtos",
+      "Homicidios",
+      "PM2.5 (µg/m³)"
+     ],
+     "values": [
+      30.0,
+      5.0,
+      8.2
+     ],
+     "unidad": "unidades"
+    }
+   }
+  ]
+ }
+}
