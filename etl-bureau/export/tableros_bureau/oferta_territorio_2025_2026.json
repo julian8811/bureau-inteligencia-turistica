@@ -2,12 +2,12 @@
   "id": "bureau-oferta",
   "generado": "2026-11-11",
   "ventana": "2025-2026",
-  "fuente": "RNT + DANE-EGIT (raw latest)",
+  "fuente": "RNT + DANE-EGIT (raw 2026-11-02)",
   "serie": {
     "rnt": {
-      "prestadores": 971,
-      "habitaciones": 2583,
-      "camas": 6445,
+      "prestadores": 2421,
+      "habitaciones": 6571,
+      "camas": 17064,
       "top_municipios": [
         {
           "municipio": "MEDELLIN",
@@ -15,73 +15,103 @@
         },
         {
           "municipio": "SABANETA",
-          "prestadores": 78
+          "prestadores": 245
         },
         {
           "municipio": "ENVIGADO",
-          "prestadores": 29
+          "prestadores": 168
         },
         {
           "municipio": "RIONEGRO",
-          "prestadores": 25
-        },
-        {
-          "municipio": "BELLO",
-          "prestadores": 23
+          "prestadores": 113
         },
         {
           "municipio": "GUATAPE",
-          "prestadores": 21
-        },
-        {
-          "municipio": "SOPETRAN",
-          "prestadores": 21
+          "prestadores": 98
         },
         {
           "municipio": "PEÑOL",
-          "prestadores": 20
+          "prestadores": 80
+        },
+        {
+          "municipio": "SANTAFÉ DE ANTIOQUIA",
+          "prestadores": 78
+        },
+        {
+          "municipio": "BELLO",
+          "prestadores": 73
         }
       ],
       "por_categoria": [
         {
           "categoria": "VIVIENDAS TURÍSTICAS",
-          "prestadores": 744,
-          "habitaciones": 1427,
-          "camas": 4457
+          "prestadores": 1789,
+          "habitaciones": 3903,
+          "camas": 12185
         },
         {
           "categoria": "AGENCIAS DE VIAJES",
-          "prestadores": 129,
+          "prestadores": 312,
           "habitaciones": 0,
           "camas": 0
         },
         {
           "categoria": "ESTABLECIMIENTOS DE ALOJAMIENTO TURÍSTICO",
-          "prestadores": 56,
-          "habitaciones": 1156,
-          "camas": 1988
+          "prestadores": 184,
+          "habitaciones": 2668,
+          "camas": 4879
         },
         {
           "categoria": "GUIAS DE TURISMO",
-          "prestadores": 17,
-          "habitaciones": 0,
-          "camas": 0
-        },
-        {
-          "categoria": "ARRENDADORES DE VEHÍCULOS PARA TURISMO NACIONAL E INTERNACIONAL",
-          "prestadores": 8,
+          "prestadores": 58,
           "habitaciones": 0,
           "camas": 0
         },
         {
           "categoria": "ESTABLECIMIENTOS DE GASTRONOMÍA",
-          "prestadores": 5,
+          "prestadores": 19,
+          "habitaciones": 0,
+          "camas": 0
+        },
+        {
+          "categoria": "ARRENDADORES DE VEHÍCULOS PARA TURISMO NACIONAL E INTERNACIONAL",
+          "prestadores": 17,
           "habitaciones": 0,
           "camas": 0
         },
         {
           "categoria": "OPERADORES PROFESIONALES DE CONGRESOS FERIAS Y CONVENCIONES",
+          "prestadores": 11,
+          "habitaciones": 0,
+          "camas": 0
+        },
+        {
+          "categoria": "EMPRESAS DE TRANSPORTE TERRESTRE AUTOMOTOR",
+          "prestadores": 11,
+          "habitaciones": 0,
+          "camas": 0
+        },
+        {
+          "categoria": "OPERADORES DE PLATAFORMAS ELECTRÓNICAS O DIGITALES DE SERVICIOS TURÍSTICOS",
           "prestadores": 5,
+          "habitaciones": 0,
+          "camas": 0
+        },
+        {
+          "categoria": "BARES",
+          "prestadores": 4,
+          "habitaciones": 0,
+          "camas": 0
+        },
+        {
+          "categoria": "OFICINAS DE REPRESENTACION TURÍSTICA",
+          "prestadores": 3,
+          "habitaciones": 0,
+          "camas": 0
+        },
+        {
+          "categoria": "PARQUES TEMÁTICOS",
+          "prestadores": 3,
           "habitaciones": 0,
           "camas": 0
         },
@@ -92,25 +122,13 @@
           "camas": 0
         },
         {
-          "categoria": "OPERADORES DE PLATAFORMAS ELECTRÓNICAS O DIGITALES DE SERVICIOS TURÍSTICOS",
+          "categoria": "CONCESIONARIOS DE SERVICIOS TURÍSTICOS EN PARQUE",
           "prestadores": 2,
           "habitaciones": 0,
           "camas": 0
         },
         {
-          "categoria": "OFICINAS DE REPRESENTACION TURÍSTICA",
-          "prestadores": 1,
-          "habitaciones": 0,
-          "camas": 0
-        },
-        {
-          "categoria": "EMPRESAS DE TRANSPORTE TERRESTRE AUTOMOTOR",
-          "prestadores": 1,
-          "habitaciones": 0,
-          "camas": 0
-        },
-        {
-          "categoria": "CONCESIONARIOS DE SERVICIOS TURÍSTICOS EN PARQUE",
+          "categoria": "USUARIOS INDUSTRIALES OPERADORES O DESARROLLADORES DE SERVICIOS TURISTICOS DE LAS ZONAS FRANCAS",
           "prestadores": 1,
           "habitaciones": 0,
           "camas": 0

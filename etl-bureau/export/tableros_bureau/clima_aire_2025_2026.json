@@ -1,8 +1,8 @@
 {
   "id": "bureau-clima",
   "generado": "2026-11-11",
-  "ventana": "2026-11..2026-11-17",
-  "fuente": "ETL Bureau, IDEAM + Open-Meteo + aire_med",
+  "ventana": "2025-12-21..2026-11-17",
+  "fuente": "ETL Bureau, IDEAM + Open-Meteo + aire_med + SISAIRE",
   "lluvia_mensual": [
     {
       "periodo": "2026-11",
@@ -300,55 +300,101 @@
       "pm2_5": 9.8
     }
   ],
+  "sisaire_pm25": [
+    {
+      "fecha": "2025-12-21",
+      "pm2_5": 17.86
+    },
+    {
+      "fecha": "2025-12-22",
+      "pm2_5": 14.81
+    },
+    {
+      "fecha": "2025-12-23",
+      "pm2_5": 13.69
+    },
+    {
+      "fecha": "2025-12-24",
+      "pm2_5": 17.63
+    },
+    {
+      "fecha": "2025-12-25",
+      "pm2_5": 20.27
+    },
+    {
+      "fecha": "2025-12-26",
+      "pm2_5": 14.62
+    },
+    {
+      "fecha": "2025-12-27",
+      "pm2_5": 14.26
+    },
+    {
+      "fecha": "2025-12-28",
+      "pm2_5": 15.04
+    },
+    {
+      "fecha": "2025-12-29",
+      "pm2_5": 16.73
+    },
+    {
+      "fecha": "2025-12-30",
+      "pm2_5": 16.02
+    },
+    {
+      "fecha": "2025-12-31",
+      "pm2_5": 18.05
+    }
+  ],
   "pronostico": [
     {
       "date": "2026-11-11",
-      "tmax_mean": 28.526,
-      "prec_mean": 0.028,
+      "tmax_mean": 29.0,
+      "prec_mean": 0.0,
       "prec_p10": 0.0,
       "prec_p90": 0.0
     },
     {
       "date": "2026-11-12",
-      "tmax_mean": 27.992,
-      "prec_mean": 0.485,
+      "tmax_mean": 28.179,
+      "prec_mean": 0.3,
       "prec_p10": 0.0,
-      "prec_p90": 1.08
+      "prec_p90": 0.48
     },
     {
       "date": "2026-11-13",
-      "tmax_mean": 27.705,
-      "prec_mean": 2.654,
+      "tmax_mean": 28.069,
+      "prec_mean": 1.267,
       "prec_p10": 0.0,
-      "prec_p90": 9.36
+      "prec_p90": 5.46
     },
     {
       "date": "2026-11-14",
-      "tmax_mean": 27.815,
-      "prec_mean": 0.985,
+      "tmax_mean": 28.241,
+      "prec_mean": 0.61,
       "prec_p10": 0.0,
-      "prec_p90": 4.32
+      "prec_p90": 2.64
     },
     {
       "date": "2026-11-15",
-      "tmax_mean": 28.262,
-      "prec_mean": 3.174,
+      "tmax_mean": 27.792,
+      "prec_mean": 3.538,
       "prec_p10": 0.0,
-      "prec_p90": 12.8
+      "prec_p90": 10.64
     },
     {
       "date": "2026-11-16",
-      "tmax_mean": 23.149,
-      "prec_mean": 4.964,
+      "tmax_mean": 22.903,
+      "prec_mean": 7.451,
       "prec_p10": 0.0,
-      "prec_p90": 11.36
+      "prec_p90": 19.92
     },
     {
       "date": "2026-11-17",
-      "tmax_mean": 23.277,
-      "prec_mean": 5.528,
+      "tmax_mean": 23.123,
+      "prec_mean": 6.338,
       "prec_p10": 0.0,
-      "prec_p90": 14.56
+      "prec_p90": 15.92
     }
   ],
   "estado": "ok"

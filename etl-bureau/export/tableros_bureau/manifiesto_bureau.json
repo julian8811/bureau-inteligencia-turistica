@@ -7,13 +7,13 @@
    "archivo": "etl-bureau/export/tableros_bureau/paises_2025_2026.json",
    "id": "paises_2025_2026",
    "estado": "ok",
-   "n": 778
+   "n": 734
   },
   {
    "archivo": "etl-bureau/export/tableros_bureau/marca_llm_2025_2026.json",
    "id": "marca_llm_2025_2026",
-   "estado": "ok",
-   "n": 6
+   "estado": "SKIP",
+   "n": 0
   },
   {
    "archivo": "etl-bureau/export/tableros_bureau/prensa_medios.json",
@@ -25,10 +25,12 @@
    "archivo": "etl-bureau/export/tableros_bureau/informe_llm.json",
    "id": "informe_llm",
    "estado": "ok",
-   "n": 8
+   "n": 6
   }
  ],
- "errores": [],
+ "errores": [
+  "marca_llm: [Errno 2] No such file or directory: '/home/runner/work/bureau-inteligencia-turistica/bureau-inteligencia-turistica/etl-bureau/data/processed/marca_llm.csv'"
+ ],
  "mercados": [
   "Colombia",
   "Estados Unidos",

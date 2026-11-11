@@ -1,138 +1,13 @@
 {
   "id": "bureau-conectividad-bench",
   "generado": "2026-11-11",
-  "ventana": "2023..2026-11",
+  "ventana": "2026-11-11",
   "fuente": "ETL Bureau, Aerocivil/Eurostat/WB/Wikimedia",
-  "operaciones_serie": [
-    {
-      "periodo": "2024-01",
-      "operaciones": 13873
-    },
-    {
-      "periodo": "2024-02",
-      "operaciones": 13536
-    },
-    {
-      "periodo": "2024-03",
-      "operaciones": 14389
-    },
-    {
-      "periodo": "2024-04",
-      "operaciones": 14386
-    },
-    {
-      "periodo": "2024-05",
-      "operaciones": 15110
-    },
-    {
-      "periodo": "2024-06",
-      "operaciones": 14564
-    },
-    {
-      "periodo": "2024-07",
-      "operaciones": 15316
-    },
-    {
-      "periodo": "2024-08",
-      "operaciones": 15716
-    },
-    {
-      "periodo": "2024-09",
-      "operaciones": 14452
-    },
-    {
-      "periodo": "2024-10",
-      "operaciones": 15037
-    },
-    {
-      "periodo": "2024-11",
-      "operaciones": 14489
-    },
-    {
-      "periodo": "2024-12",
-      "operaciones": 16040
-    },
-    {
-      "periodo": "2025-01",
-      "operaciones": 15133
-    },
-    {
-      "periodo": "2025-02",
-      "operaciones": 12957
-    },
-    {
-      "periodo": "2025-03",
-      "operaciones": 14444
-    },
-    {
-      "periodo": "2025-04",
-      "operaciones": 14454
-    },
-    {
-      "periodo": "2025-05",
-      "operaciones": 14893
-    },
-    {
-      "periodo": "2025-06",
-      "operaciones": 14953
-    },
-    {
-      "periodo": "2025-07",
-      "operaciones": 15268
-    },
-    {
-      "periodo": "2025-08",
-      "operaciones": 16186
-    },
-    {
-      "periodo": "2025-09",
-      "operaciones": 14798
-    },
-    {
-      "periodo": "2025-10",
-      "operaciones": 15755
-    },
-    {
-      "periodo": "2025-11",
-      "operaciones": 14869
-    },
-    {
-      "periodo": "2025-12",
-      "operaciones": 16632
-    },
-    {
-      "periodo": "2026-01",
-      "operaciones": 16048
-    },
-    {
-      "periodo": "2026-02",
-      "operaciones": 13539
-    },
-    {
-      "periodo": "2026-03",
-      "operaciones": 15651
-    },
-    {
-      "periodo": "2026-04",
-      "operaciones": 15307
-    },
-    {
-      "periodo": "2026-05",
-      "operaciones": 15471
-    },
-    {
-      "periodo": "2026-06",
-      "operaciones": 15202
-    },
-    {
-      "periodo": "2026-07",
-      "operaciones": 16005
-    }
-  ],
+  "operaciones_serie": [],
   "trm_serie": [
     {
-      "date": "2026-11-10",
-      "cop_per_usd": 3275.0236257
+      "date": "2026-11-11",
+      "cop_per_usd": 3302.4645191
     },
     {
       "date": "Wed, 11 Nov 2026",
@@ -38977,8 +38852,350 @@
       "views": 8056
     }
   ],
+  "bts_colombia": [
+    {
+      "year": "2024",
+      "mes": "08",
+      "llegadas_sillas": 313024,
+      "llegadas_pax": 273133,
+      "salidas_sillas": 313381
+    },
+    {
+      "year": "2024",
+      "mes": "09",
+      "llegadas_sillas": 247830,
+      "llegadas_pax": 215809,
+      "salidas_sillas": 247022
+    },
+    {
+      "year": "2024",
+      "mes": "10",
+      "llegadas_sillas": 251232,
+      "llegadas_pax": 204172,
+      "salidas_sillas": 251132
+    },
+    {
+      "year": "2024",
+      "mes": "11",
+      "llegadas_sillas": 255030,
+      "llegadas_pax": 202148,
+      "salidas_sillas": 255397
+    },
+    {
+      "year": "2024",
+      "mes": "12",
+      "llegadas_sillas": 344003,
+      "llegadas_pax": 266927,
+      "salidas_sillas": 344110
+    },
+    {
+      "year": "2025",
+      "mes": "01",
+      "llegadas_sillas": 319738,
+      "llegadas_pax": 269340,
+      "salidas_sillas": 320263
+    },
+    {
+      "year": "2025",
+      "mes": "02",
+      "llegadas_sillas": 246282,
+      "llegadas_pax": 180922,
+      "salidas_sillas": 246360
+    },
+    {
+      "year": "2025",
+      "mes": "03",
+      "llegadas_sillas": 278463,
+      "llegadas_pax": 226973,
+      "salidas_sillas": 277907
+    },
+    {
+      "year": "2025",
+      "mes": "04",
+      "llegadas_sillas": 262971,
+      "llegadas_pax": 220419,
+      "salidas_sillas": 262186
+    },
+    {
+      "year": "2025",
+      "mes": "05",
+      "llegadas_sillas": 277556,
+      "llegadas_pax": 218398,
+      "salidas_sillas": 278435
+    },
+    {
+      "year": "2025",
+      "mes": "06",
+      "llegadas_sillas": 324308,
+      "llegadas_pax": 265454,
+      "salidas_sillas": 325298
+    },
+    {
+      "year": "2025",
+      "mes": "07",
+      "llegadas_sillas": 345412,
+      "llegadas_pax": 276578,
+      "salidas_sillas": 346090
+    },
+    {
+      "year": "2025",
+      "mes": "08",
+      "llegadas_sillas": 339488,
+      "llegadas_pax": 284396,
+      "salidas_sillas": 340253
+    },
+    {
+      "year": "2025",
+      "mes": "09",
+      "llegadas_sillas": 267630,
+      "llegadas_pax": 215405,
+      "salidas_sillas": 267952
+    },
+    {
+      "year": "2025",
+      "mes": "10",
+      "llegadas_sillas": 273367,
+      "llegadas_pax": 213755,
+      "salidas_sillas": 274190
+    },
+    {
+      "year": "2025",
+      "mes": "11",
+      "llegadas_sillas": 286020,
+      "llegadas_pax": 216243,
+      "salidas_sillas": 287642
+    },
+    {
+      "year": "2025",
+      "mes": "12",
+      "llegadas_sillas": 357339,
+      "llegadas_pax": 270325,
+      "salidas_sillas": 357608
+    },
+    {
+      "year": "2026",
+      "mes": "01",
+      "llegadas_sillas": 325930,
+      "llegadas_pax": 280539,
+      "salidas_sillas": 325897
+    },
+    {
+      "year": "2026",
+      "mes": "02",
+      "llegadas_sillas": 261142,
+      "llegadas_pax": 194484,
+      "salidas_sillas": 260903
+    },
+    {
+      "year": "2026",
+      "mes": "03",
+      "llegadas_sillas": 302516,
+      "llegadas_pax": 248783,
+      "salidas_sillas": 302734
+    },
+    {
+      "year": "2026",
+      "mes": "04",
+      "llegadas_sillas": 277432,
+      "llegadas_pax": 224184,
+      "salidas_sillas": 276554
+    },
+    {
+      "year": "2026",
+      "mes": "05",
+      "llegadas_sillas": 255874,
+      "llegadas_pax": 208370,
+      "salidas_sillas": 255970
+    },
+    {
+      "year": "2026",
+      "mes": "06",
+      "llegadas_sillas": 293644,
+      "llegadas_pax": 248658,
+      "salidas_sillas": 292966
+    },
+    {
+      "year": "2026",
+      "mes": "07",
+      "llegadas_sillas": 318691,
+      "llegadas_pax": 251254,
+      "salidas_sillas": 318622
+    }
+  ],
+  "ipc_colombia": [
+    {
+      "anio": 2024,
+      "mes": 1,
+      "indice": 138.98
+    },
+    {
+      "anio": 2024,
+      "mes": 2,
+      "indice": 140.49
+    },
+    {
+      "anio": 2024,
+      "mes": 3,
+      "indice": 141.48
+    },
+    {
+      "anio": 2024,
+      "mes": 4,
+      "indice": 142.32
+    },
+    {
+      "anio": 2024,
+      "mes": 5,
+      "indice": 142.92
+    },
+    {
+      "anio": 2024,
+      "mes": 6,
+      "indice": 143.38
+    },
+    {
+      "anio": 2024,
+      "mes": 7,
+      "indice": 143.67
+    },
+    {
+      "anio": 2024,
+      "mes": 8,
+      "indice": 143.67
+    },
+    {
+      "anio": 2024,
+      "mes": 9,
+      "indice": 144.02
+    },
+    {
+      "anio": 2024,
+      "mes": 10,
+      "indice": 143.83
+    },
+    {
+      "anio": 2024,
+      "mes": 11,
+      "indice": 144.22
+    },
+    {
+      "anio": 2024,
+      "mes": 12,
+      "indice": 144.88
+    },
+    {
+      "anio": 2025,
+      "mes": 1,
+      "indice": 146.24
+    },
+    {
+      "anio": 2025,
+      "mes": 2,
+      "indice": 147.9
+    },
+    {
+      "anio": 2025,
+      "mes": 3,
+      "indice": 148.68
+    },
+    {
+      "anio": 2025,
+      "mes": 4,
+      "indice": 149.66
+    },
+    {
+      "anio": 2025,
+      "mes": 5,
+      "indice": 150.14
+    },
+    {
+      "anio": 2025,
+      "mes": 6,
+      "indice": 150.3
+    },
+    {
+      "anio": 2025,
+      "mes": 7,
+      "indice": 150.71
+    },
+    {
+      "anio": 2025,
+      "mes": 8,
+      "indice": 150.99
+    },
+    {
+      "anio": 2025,
+      "mes": 9,
+      "indice": 151.48
+    },
+    {
+      "anio": 2025,
+      "mes": 10,
+      "indice": 151.76
+    },
+    {
+      "anio": 2025,
+      "mes": 11,
+      "indice": 151.87
+    },
+    {
+      "anio": 2025,
+      "mes": 12,
+      "indice": 152.27
+    },
+    {
+      "anio": 2026,
+      "mes": 1,
+      "indice": 154.07
+    },
+    {
+      "anio": 2026,
+      "mes": 2,
+      "indice": 155.73
+    },
+    {
+      "anio": 2026,
+      "mes": 3,
+      "indice": 156.94
+    },
+    {
+      "anio": 2026,
+      "mes": 4,
+      "indice": 158.17
+    },
+    {
+      "anio": 2026,
+      "mes": 5,
+      "indice": 158.91
+    },
+    {
+      "anio": 2026,
+      "mes": 6,
+      "indice": 159.53
+    },
+    {
+      "anio": 2026,
+      "mes": 7,
+      "indice": 159.79
+    },
+    {
+      "anio": 2026,
+      "mes": 8,
+      "indice": 160.42
+    },
+    {
+      "anio": 2026,
+      "mes": 9,
+      "indice": 161.0
+    },
+    {
+      "anio": 2026,
+      "mes": 10,
+      "indice": 161.32
+    }
+  ],
   "cortes": {
-    "operaciones": "2026-07",
+    "operaciones": "",
     "trm": "2026-11-11",
     "benchmark_eu": 2024,
     "wikimedia": "2026-11"
@@ -38997,5 +39214,8 @@
     "tieredtravel_med.csv: una fila de ceros",
     "opensky_states.csv: snapshot puntual, sin serie temporal"
   ],
-  "estado": "ok"
+  "estado": "ok",
+  "notas": [
+    "operaciones: operaciones_aereas.csv ausente o vacio, bloque omitido"
+  ]
 }
