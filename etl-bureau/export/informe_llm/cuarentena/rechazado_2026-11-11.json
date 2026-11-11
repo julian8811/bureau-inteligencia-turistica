@@ -1,0 +1,397 @@
+{
+ "cifra": "2.5",
+ "doc": {
+  "secciones": [
+   {
+    "id": "tendencias",
+    "titulo": "Tendencias de Demanda y Precios",
+    "bullets": [
+     {
+      "texto": "El total de visitantes en la ventana móvil de abril a junio de 2026 fue de 247.331, lo que representa una variación interanual negativa del 7,0%.",
+      "fuente": "med_ult3m_total, med_ult3m_yoy"
+     },
+     {
+      "texto": "La ocupación media hotelera registrada en el último período alcanzó el 67,108%, reflejando la dinámica de demanda actual en la ciudad.",
+      "fuente": "occ_med_ult"
+     },
+     {
+      "texto": "La tarifa media diaria se situó en 442.227,145 COP, estableciendo el nivel de precios vigente para el período de análisis.",
+      "fuente": "tarifa_med_ult"
+     }
+    ],
+    "analisis": [
+     {
+      "texto": "La caída del 7,0% en la ventana móvil de abril a junio de 2026 sugiere una moderación en la llegada de turistas respecto al mismo período del año anterior.",
+      "fuente": "med_ult3m_yoy"
+     },
+     {
+      "texto": "La combinación de una ocupación del 67,108% y una tarifa media de 442.227,145 COP indica un equilibrio entre la capacidad instalada y el poder de compra del visitante.",
+      "fuente": "occ_med_ult, tarifa_med_ult"
+     }
+    ],
+    "grafico": {
+     "titulo": "Ocupación y Tarifa Media",
+     "labels": [
+      "Ocupación Media",
+      "Tarifa Media"
+     ],
+     "values": [
+      67.108,
+      442227.145
+     ],
+     "unidad": "Mixto (% y COP)"
+    }
+   },
+   {
+    "id": "receptivo",
+    "titulo": "Mercado Receptivo",
+    "bullets": [
+     {
+      "texto": "El total de entradas por nacionalidad en la ventana móvil de abril a junio de 2026 sumó 1.062.738 visitantes.",
+      "fuente": "entradas_nacionalidad_ult3m"
+     },
+     {
+      "texto": "Medellín concentra el 81,7% del share de mercado en el análisis de destinos, confirmando su posición dominante.",
+      "fuente": "share_medellin"
+     },
+     {
+      "texto": "El gasto promedio diario por visitante se ubicó en 149.530,113 COP durante el segundo trimestre de 2026.",
+      "fuente": "gasto_prom_dia_cop"
+     }
+    ],
+    "analisis": [
+     {
+      "texto": "Un share del 81,7% demuestra que Medellín sigue siendo el principal imán turístico de la región, atrayendo la gran mayoría de los flujos internacionales.",
+      "fuente": "share_medellin"
+     },
+     {
+      "texto": "El gasto diario de 149.530,113 COP es un indicador clave para medir el impacto económico real del turismo en la economía local.",
+      "fuente": "gasto_prom_dia_cop"
+     }
+    ],
+    "grafico": {
+     "titulo": "Share de Mercado y Gasto",
+     "labels": [
+      "Share Medellín",
+      "Gasto Promedio Diario"
+     ],
+     "values": [
+      0.817,
+      149530.113
+     ],
+     "unidad": "Mixto (fracción y COP)"
+    }
+   },
+   {
+    "id": "emisores",
+    "titulo": "Países Emisores",
+    "bullets": [
+     {
+      "texto": "Estados Unidos lidera el ranking de emisores con 180.138 visitantes acumulados en el YTD 2026, manteniendo una variación interanual positiva del 7,7%.",
+      "fuente": "emisores_ytd_2026, emisores_top"
+     },
+     {
+      "texto": "México se posiciona en segundo lugar con 45.910 visitantes en el YTD 2026, mostrando un crecimiento interanual del 8,5%.",
+      "fuente": "emisores_ytd_2026, emisores_top"
+     },
+     {
+      "texto": "Costa Rica ocupa el tercer puesto con 39.224 visitantes en el YTD 2026, aunque registra una variación interanual negativa del 3,8%.",
+      "fuente": "emisores_ytd_2026, emisores_top"
+     },
+     {
+      "texto": "Ecuador suma 30.130 visitantes en el YTD 2026, con una variación interanual positiva del 1,0%.",
+      "fuente": "emisores_ytd_2026, emisores_top"
+     },
+     {
+      "texto": "Panamá aporta 29.502 visitantes en el YTD 2026, con un crecimiento interanual del 3,0%.",
+      "fuente": "emisores_ytd_2026, emisores_top"
+     },
+     {
+      "texto": "República Dominicana contribuye con 27.108 visitantes en el YTD 2026, presentando una variación interanual negativa del 3,7%.",
+      "fuente": "emisores_ytd_2026, emisores_top"
+     },
+     {
+      "texto": "Perú registra 23.980 visitantes en el YTD 2026, destacando por su fuerte variación interanual positiva del 23,7%.",
+      "fuente": "emisores_ytd_2026, emisores_top"
+     },
+     {
+      "texto": "Puerto Rico cierra el top 8 con 23.851 visitantes en el YTD 2026, exhibiendo una variación interanual excepcionalmente alta del 76,5%.",
+      "fuente": "emisores_ytd_2026, emisores_top"
+     }
+    ],
+    "analisis": [
+     {
+      "texto": "La concentración del 59,9% del mercado en los cinco principales emisores indica una dependencia significativa de mercados específicos, principalmente norteamericanos.",
+      "fuente": "emisor_top5_share"
+     },
+     {
+      "texto": "El crecimiento del 76,5% desde Puerto Rico sugiere una nueva tendencia o un cambio estructural en la conectividad o preferencia de ese mercado hacia Medellín.",
+      "fuente": "emisores_top"
+     }
+    ],
+    "grafico": {
+     "titulo": "Top 8 Emisores YTD 2026",
+     "labels": [
+      "Estados Unidos",
+      "México",
+      "Costa Rica",
+      "Ecuador",
+      "Panamá",
+      "Rep. Dominicana",
+      "Perú",
+      "Puerto Rico"
+     ],
+     "values": [
+      180138.0,
+      45910.0,
+      39224.0,
+      30130.0,
+      29502.0,
+      27108.0,
+      23980.0,
+      23851.0
+     ],
+     "unidad": "Visitantes"
+    }
+   },
+   {
+    "id": "salidas",
+    "titulo": "Salidas al Exterior",
+    "bullets": [
+     {
+      "texto": "Estados Unidos es el destino principal para las salidas de residentes, aunque el valor específico de salidas en el YTD 2026 se registra como 0,0 en la base de datos.",
+      "fuente": "salidas_top_dest, salidas_top_valor"
+     }
+    ],
+    "analisis": [
+     {
+      "texto": "La ausencia de datos numéricos positivos en las salidas al exterior impide un análisis detallado de la demanda de viaje de los residentes medellinenses hacia el extranjero.",
+      "fuente": "salidas_top_valor"
+     }
+    ],
+    "grafico": {
+     "titulo": "Salidas al Exterior",
+     "labels": [
+      "Estados Unidos"
+     ],
+     "values": [
+      0.0
+     ],
+     "unidad": "Visitantes"
+    }
+   },
+   {
+    "id": "conectividad",
+    "titulo": "Conectividad Aérea y Terrestre",
+    "bullets": [
+     {
+      "texto": "El aeropuerto de Medellín (MDE) registró 1.541.656 pasajeros en la ventana móvil de abril a junio de 2026.",
+      "fuente": "aereo_mde_eoh_ult3m"
+     },
+     {
+      "texto": "La terminal aérea procesó un total de 2.199.733 pasajeros en el mes de referencia, reflejando la intensidad operativa del hub.",
+      "fuente": "pax_terminal_mes"
+     },
+     {
+      "texto": "La ruta desde Bogotá, D.C. es la más transitada con 1.972.656 pasajeros, seguida por Cartagena de Indias con 676.052.",
+      "fuente": "rutas_top"
+     },
+     {
+      "texto": "El volumen de carga transportada en el último período fue de 18.430.048 kg, evidenciando la actividad logística del aeropuerto.",
+      "fuente": "carga_ult_kg"
+     }
+    ],
+    "analisis": [
+     {
+      "texto": "La predominancia de la ruta Bogotá-Medellín con casi 2 millones de pasajeros confirma la interdependencia económica y turística entre las dos principales ciudades del país.",
+      "fuente": "rutas_top"
+     },
+     {
+      "texto": "El movimiento de 18,4 millones de kg de carga posiciona al aeropuerto no solo como un nodo de pasajeros, sino también como un centro logístico relevante.",
+      "fuente": "carga_ult_kg"
+     }
+    ],
+    "grafico": {
+     "titulo": "Top 5 Rutas Internas",
+     "labels": [
+      "Bogotá",
+      "Cartagena",
+      "Santa Marta",
+      "Cali",
+      "Barranquilla"
+     ],
+     "values": [
+      1972656.0,
+      676052.0,
+      422488.0,
+      327693.0,
+      262780.0
+     ],
+     "unidad": "Pasajeros"
+    }
+   },
+   {
+    "id": "marca",
+    "titulo": "Marca Destino y Percepción",
+    "bullets": [
+     {
+      "texto": "Se registraron 240 menciones en las plataformas de análisis de sentimiento, con un sentimiento neto positivo de 0,038.",
+      "fuente": "menciones, sentimiento_neto"
+     },
+     {
+      "texto": "El análisis de tendencias de intención muestra una fuerte presencia de búsquedas asociadas a Estados Unidos (US) y México (MX) como mercados emisores.",
+      "fuente": "intencion_trends"
+     }
+    ],
+    "analisis": [
+     {
+      "texto": "Un sentimiento neto de 0,038, aunque positivo, es marginalmente bajo, lo que sugiere que la percepción general es neutra a ligeramente positiva, sin picos de entusiasmo extremo.",
+      "fuente": "sentimiento_neto"
+     },
+     {
+      "texto": "La correlación entre las tendencias de búsqueda (US, MX) y los datos de emisores valida la efectividad de la estrategia de marketing digital hacia estos mercados.",
+      "fuente": "intencion_trends, emisores_top"
+     }
+    ],
+    "grafico": {
+     "titulo": "Percepción de Marca",
+     "labels": [
+      "Menciones",
+      "Sentimiento Neto"
+     ],
+     "values": [
+      240.0,
+      0.038
+     ],
+     "unidad": "Mixto (Unidades y Fracción)"
+    }
+   },
+   {
+    "id": "visitante",
+    "titulo": "Perfil del Visitante",
+    "bullets": [
+     {
+      "texto": "El 45,6% de los visitantes que ingresan a la ciudad son mujeres, según el desglose de género en las entradas.",
+      "fuente": "genero_entradas_fem"
+     },
+     {
+      "texto": "El gasto promedio diario por visitante se mantuvo en 149.530,113 COP, un indicador clave del poder adquisitivo del turista.",
+      "fuente": "gasto_prom_dia_cop"
+     }
+    ],
+    "analisis": [
+     {
+      "texto": "La paridad casi equitativa en el género de los visitantes (45,6% femenino) indica que Medellín atrae de manera equilibrada a turistas de ambos sexos.",
+      "fuente": "genero_entradas_fem"
+     },
+     {
+      "texto": "El gasto diario cercano a los 150.000 COP sugiere un perfil de turista de gama media-alta, que invierte significativamente en alojamiento y experiencias.",
+      "fuente": "gasto_prom_dia_cop"
+     }
+    ],
+    "grafico": {
+     "titulo": "Perfil Económico y Demográfico",
+     "labels": [
+      "Gasto Promedio Diario",
+      "Porcentaje Femenino"
+     ],
+     "values": [
+      149530.113,
+      0.456
+     ],
+     "unidad": "Mixto (COP y Fracción)"
+    }
+   },
+   {
+    "id": "aereo",
+    "titulo": "Sector Aéreo",
+    "bullets": [
+     {
+      "texto": "El total de pasajeros de llegadas en el aeropuerto de Medellín (MDE) alcanzó los 32.300.088 en el período de referencia.",
+      "fuente": "pax_llegadas_mde"
+     },
+     {
+      "texto": "La carga aérea transportada en el último período fue de 18.430.048 kg, manteniendo la relevancia del hub logístico.",
+      "fuente": "carga_ult_kg"
+     }
+    ],
+    "analisis": [
+     {
+      "texto": "El volumen de 32,3 millones de pasajeros de llegada consolida a Medellín como uno de los hubs más importantes de Colombia en términos de tráfico internacional y doméstico.",
+      "fuente": "pax_llegadas_mde"
+     },
+     {
+      "texto": "La estabilidad en el volumen de carga (18,4 millones de kg) demuestra la resiliencia del sector logístico aéreo frente a las fluctuaciones de pasajeros.",
+      "fuente": "carga_ult_kg"
+     }
+    ],
+    "grafico": {
+     "titulo": "Volumen Aéreo",
+     "labels": [
+      "Pasajeros Llegadas",
+      "Carga (kg)"
+     ],
+     "values": [
+      32300088.0,
+      18430048.0
+     ],
+     "unidad": "Unidades"
+    }
+   },
+   {
+    "id": "gestion",
+    "titulo": "Gestión Turística",
+    "bullets": [],
+    "analisis": [],
+    "grafico": {
+     "titulo": "Gestión Turística",
+     "labels": [],
+     "values": [],
+     "unidad": "N/A"
+    }
+   },
+   {
+    "id": "territorio",
+    "titulo": "Territorio y Sostenibilidad",
+    "bullets": [
+     {
+      "texto": "La concentración de material particulado fino (PM2.5) se mantuvo en 9,8 microgramos por metro cúbico, un nivel aceptable para la salud respiratoria.",
+      "fuente": "pm25_med"
+     },
+     {
+      "texto": "El metro de Medellín transportó 12.693.379 pasajeros en el mes de referencia, evidenciando su rol central en la movilidad urbana.",
+      "fuente": "pax_metro_mes"
+     },
+     {
+      "texto": "El Parque Arví lidera las visitas a los Parques Interactivos de Turismo (PIT) con 143.633 visitantes, seguido por el Cerro Nutibara con 111.447.",
+      "fuente": "pits_top"
+     }
+    ],
+    "analisis": [
+     {
+      "texto": "Un nivel de PM2.5 de 9,8 indica una calidad del aire razonablemente buena, lo cual es un factor competitivo para turistas sensibles a la salud ambiental.",
+      "fuente": "pm25_med"
+     },
+     {
+      "texto": "El alto volumen de pasajeros del metro (12,7 millones) refleja la eficiencia del sistema de transporte masivo para conectar a los turistas con los principales destinos de la ciudad.",
+      "fuente": "pax_metro_mes"
+     }
+    ],
+    "grafico": {
+     "titulo": "Top 3 Parques Interactivos",
+     "labels": [
+      "Parque Arví",
+      "Cerro Nutibara",
+      "José María Córdova"
+     ],
+     "values": [
+      143633.0,
+      111447.0,
+      72905.0
+     ],
+     "unidad": "Visitas"
+    }
+   }
+  ]
+ }
+}
