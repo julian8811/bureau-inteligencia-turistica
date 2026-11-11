@@ -1,255 +1,425 @@
 {
- "corte": "2026-11-08",
+ "corte": "2026-11-11",
  "secciones": [
   {
    "id": "tendencias",
-   "titulo": "Tendencias (trimestre móvil, ocupación y tarifa)",
+   "titulo": "Tendencias",
    "bullets": [
     {
-     "texto": "El total de visitantes en el trimestre móvil (abr‑2026 a jun‑2026) fue 247,331, con una variación interanual de -7 %.",
-     "fuente": "contexto"
+     "texto": "El total del trimestre móvil alcanzó 247,331 viajeros YTD 2026, con una variación interanual de -7 % respecto a 2025 (med_ult3m_yoy -0.07).",
+     "fuente": "Contexto"
     },
     {
-     "texto": "La ocupación media del sector alcanzó 67.108 % en el último periodo.",
-     "fuente": "contexto"
+     "texto": "La ocupación media del sector se situó en 67.108 % YTD 2026.",
+     "fuente": "Contexto"
     },
     {
-     "texto": "La tarifa media por pasajero fue de 442,227 COP, sin variación interanual disponible.",
-     "fuente": "contexto"
+     "texto": "La tarifa media registrada fue de 442,227.145 COP YTD 2026.",
+     "fuente": "Contexto"
     }
    ],
    "analisis": [
     {
-     "texto": "El descenso del 7 % en el total de visitantes indica una desaceleración tras el repunte post‑pandemia, lo que afecta la demanda de servicios turísticos.",
-     "fuente": "contexto"
+     "texto": "La caída del -7 % indica una desaceleración en la demanda turística durante el segundo trimestre de 2026.",
+     "fuente": "Contexto"
     },
     {
-     "texto": "Una ocupación del 67 % sugiere capacidad disponible en alojamientos, ofreciendo oportunidades para campañas de promoción.",
-     "fuente": "contexto"
+     "texto": "Una ocupación superior al 65 % sugiere que la capacidad hotelera sigue siendo utilizada de forma intensiva pese al descenso de viajeros.",
+     "fuente": "Contexto"
     },
     {
-     "texto": "La tarifa media de 442 mil COP refleja precios estables, lo que puede favorecer la competitividad del destino.",
-     "fuente": "contexto"
+     "texto": "La tarifa media mantiene niveles elevados, lo que podría compensar parcialmente la reducción de llegadas.",
+     "fuente": "Contexto"
     }
    ],
    "grafico": {
-    "titulo": "Indicadores clave del trimestre móvil",
+    "titulo": "Indicadores del trimestre móvil 2026",
     "labels": [
-     "Total visitantes",
-     "Ocupación %",
-     "Tarifa COP"
+     "Trimestre móvil",
+     "Ocupación",
+     "Tarifa"
     ],
     "values": [
      247331.0,
      67.108,
      442227.145
     ],
-    "unidad": "valor"
+    "unidad": "unidades"
    }
   },
   {
    "id": "receptivo",
-   "titulo": "Receptivo (destinos top, share Medellín, YoY)",
+   "titulo": "Receptivo",
    "bullets": [
     {
-     "texto": "Bogotá, D.C. recibió 760,345 llegadas YTD 2026, con una variación interanual de 0.1 %.",
-     "fuente": "contexto"
+     "texto": "Bogotá, D.C. recibió 760,345 llegadas YTD 2026, representando el 35.8 % del total receptivo.",
+     "fuente": "Contexto"
     },
     {
-     "texto": "Medellín registró 551,226 llegadas YTD 2026, incrementándose un 9.1 % respecto a 2025.",
-     "fuente": "contexto"
+     "texto": "Medellín recibió 551,226 llegadas YTD 2026, con una variación interanual del 9.1 % (yoy 0.091) y una participación del 24.4 %.",
+     "fuente": "Contexto"
     },
     {
-     "texto": "Cartagena acumuló 441,151 llegadas YTD 2026, con un crecimiento interanual de 0.3 %.",
-     "fuente": "contexto"
+     "texto": "Cartagena acumuló 441,151 llegadas YTD 2026, manteniendo una participación del 18.2 % y un crecimiento marginal del 0.3 % (yoy 0.003).",
+     "fuente": "Contexto"
     },
     {
-     "texto": "El destino Medellín representó el 78.5 % del total de llegadas, consolidando su posición como principal foco turístico.",
-     "fuente": "contexto"
+     "texto": "Cali registró 92,060 llegadas YTD 2026, con una participación del 4.5 % y una disminución interanual del 2 % (yoy -0.02).",
+     "fuente": "Contexto"
+    },
+    {
+     "texto": "San Andrés sumó 74,441 llegadas YTD 2026, representando el 2.5 % del total y mostrando un fuerte aumento del 40.1 % (yoy 0.401).",
+     "fuente": "Contexto"
+    },
+    {
+     "texto": "Medellín concentra el 81.5 % del flujo receptivo nacional (share_medellin 0.815).",
+     "fuente": "Contexto"
     }
    ],
    "analisis": [
     {
-     "texto": "El fuerte aumento del 9 % en Medellín refleja la efectividad de las campañas de promoción local y la mejora de la conectividad aérea.",
-     "fuente": "contexto"
+     "texto": "Bogotá sigue liderando como principal destino receptivo, superando al 35 % del total de llegadas.",
+     "fuente": "Contexto"
     },
     {
-     "texto": "Bogotá mantiene una llegada estable, indicando que la competencia entre ciudades colombianas se mantiene equilibrada.",
-     "fuente": "contexto"
+     "texto": "El notable crecimiento de San Andrés refleja el atractivo de destinos costeros en la oferta turística actual.",
+     "fuente": "Contexto"
     },
     {
-     "texto": "El alto share de Medellín (78.5 %) sugiere concentración de la demanda turística en la región, lo que puede requerir diversificación de la oferta.",
-     "fuente": "contexto"
+     "texto": "La participación del 24.4 % de Medellín confirma su posición como segundo destino más importante del país.",
+     "fuente": "Contexto"
     }
    ],
    "grafico": {
-    "titulo": "Llegadas YTD 2026 por destino principal",
+    "titulo": "Llegadas YTD 2026 por ciudad",
     "labels": [
      "Bogotá",
      "Medellín",
-     "Cartagena"
+     "Cartagena",
+     "Cali",
+     "San Andrés"
     ],
     "values": [
      760345.0,
      551226.0,
-     441151.0
+     441151.0,
+     92060.0,
+     74441.0
     ],
-    "unidad": "personas"
+    "unidad": "viajeros"
    }
   },
   {
    "id": "emisores",
-   "titulo": "Emisores (top países emisores con YoY)",
+   "titulo": "Emisores",
    "bullets": [
     {
-     "texto": "Estados Unidos envió 180,138 visitantes YTD 2026, con un aumento interanual del 7.7 %.",
-     "fuente": "contexto"
+     "texto": "Estados Unidos aportó 180,138 viajeros YTD 2026, con una variación interanual del 7.7 % (med_yoy 0.077).",
+     "fuente": "Contexto"
     },
     {
-     "texto": "México envió 45,910 visitantes YTD 2026, con un aumento interanual del 8.5 %.",
-     "fuente": "contexto"
+     "texto": "México contribuyó con 45,910 viajeros YTD 2026, registrando una variación interanual del 8.5 % (med_yoy 0.085).",
+     "fuente": "Contexto"
     },
     {
-     "texto": "Costa Rica envió 39,224 visitantes YTD 2026, con una disminución interanual del -3.8 %.",
-     "fuente": "contexto"
+     "texto": "Costa Rica envió 39,224 viajeros YTD 2026, con una variación interanual de -3.8 % (med_yoy -0.038).",
+     "fuente": "Contexto"
+    },
+    {
+     "texto": "Panamá generó 29,502 viajeros YTD 2026, mostrando una variación interanual del 3 % (med_yoy 0.03).",
+     "fuente": "Contexto"
+    },
+    {
+     "texto": "Ecuador aportó 30,130 viajeros YTD 2026, con una variación interanual del 1 % (med_yoy 0.01).",
+     "fuente": "Contexto"
     }
    ],
    "analisis": [
     {
-     "texto": "El crecimiento del 7.7 % de EE. UU. refuerza su posición como principal mercado emisor, impulsado por la mejora de la conectividad aérea directa.",
-     "fuente": "contexto"
+     "texto": "Estados Unidos sigue siendo el principal emisor, representando más de un tercio del total YTD 2026.",
+     "fuente": "Contexto"
     },
     {
-     "texto": "México muestra un incremento del 8.5 %, señalando una tendencia ascendente en el turismo de origen latinoamericano.",
-     "fuente": "contexto"
+     "texto": "México mantiene un sólido crecimiento, consolidándose como segundo emisor clave para el mercado colombiano.",
+     "fuente": "Contexto"
     },
     {
-     "texto": "Costa Rica experimenta una caída del 3.8 %, lo que podría deberse a factores económicos o a la competencia de destinos alternativos.",
-     "fuente": "contexto"
+     "texto": "Los emisores centroamericanos presentan dinámicas mixtas, con Costa Rica en retroceso mientras Panamá avanza ligeramente.",
+     "fuente": "Contexto"
     }
    ],
    "grafico": {
-    "titulo": "Principales emisores YTD 2026",
+    "titulo": "Emisores YTD 2026 (viajeros)",
     "labels": [
-     "EE. UU.",
+     "EE.UU.",
      "México",
-     "Costa Rica"
+     "Costa Rica",
+     "Panamá",
+     "Ecuador"
     ],
     "values": [
      180138.0,
      45910.0,
-     39224.0
+     39224.0,
+     29502.0,
+     30130.0
     ],
-    "unidad": "personas"
+    "unidad": "viajeros"
    }
   },
   {
    "id": "salidas",
-   "titulo": "Salidas (salidas al exterior ult3m con YoY)",
+   "titulo": "Salidas",
    "bullets": [
     {
-     "texto": "Las salidas a Estados Unidos fueron 85,549 en el trimestre móvil, con una variación interanual de -6.7 %.",
-     "fuente": "contexto"
+     "texto": "El total de salidas al exterior en el trimestre móvil (abr‑2026 a jun‑2026) fue de 247,331 viajeros YTD 2026, con una variación interanual de -7 % (med_ult3m_yoy -0.07).",
+     "fuente": "Contexto"
     },
     {
-     "texto": "Las salidas a México fueron 21,714 en el trimestre móvil, con una variación interanual de -3.2 %.",
-     "fuente": "contexto"
+     "texto": "Estados Unidos registró 85,549 salidas YTD 2026, con una variación interanual de -6.7 % (med_ult3m_yoy -0.067).",
+     "fuente": "Contexto"
     },
     {
-     "texto": "Las salidas a Costa Rica fueron 15,462 en el trimestre móvil, con una variación interanual de -5.5 %.",
-     "fuente": "contexto"
+     "texto": "México contabilizó 21,714 salidas YTD 2026, con una variación interanual de -3.2 % (med_ult3m_yoy -0.032).",
+     "fuente": "Contexto"
+    },
+    {
+     "texto": "Costa Rica generó 15,462 salidas YTD 2026, con una variación interanual de -5.5 % (med_ult3m_yoy -0.055).",
+     "fuente": "Contexto"
     }
    ],
    "analisis": [
     {
-     "texto": "Las salidas a EE. UU. disminuyeron un 6.7 % en el trimestre móvil, reflejando una menor demanda de viajes internacionales desde Colombia.",
-     "fuente": "contexto"
+     "texto": "El descenso general de salidas refleja una menor propensión a viajar al exterior durante el segundo trimestre de 2026.",
+     "fuente": "Contexto"
     },
     {
-     "texto": "México también registró caída del 3.2 %, indicando una tendencia general de reducción en destinos norteamericanos.",
-     "fuente": "contexto"
+     "texto": "Estados Unidos, a pesar de la caída, sigue siendo la principal fuente de salidas, indicando la importancia de la relación bilateral.",
+     "fuente": "Contexto"
     },
     {
-     "texto": "A pesar de la caída, Costa Rica mantiene una salida significativa, aunque su descenso del 5.5 % sugiere oportunidades para reactivar el flujo.",
-     "fuente": "contexto"
+     "texto": "Los mercados latinoamericanos muestran caídas menores, lo que podría deberse a restricciones de movilidad regional más flexibles.",
+     "fuente": "Contexto"
     }
    ],
    "grafico": {
-    "titulo": "Salidas al exterior (ult3m)",
+    "titulo": "Salidas YTD 2026 (viajeros)",
     "labels": [
-     "EE. UU.",
+     "Total",
+     "EE.UU.",
      "México",
      "Costa Rica"
     ],
     "values": [
+     247331.0,
      85549.0,
      21714.0,
      15462.0
     ],
-    "unidad": "personas"
+    "unidad": "viajeros"
    }
   },
   {
    "id": "conectividad",
-   "titulo": "Conectividad (pax MDE/EOH, rutas y carga top)",
+   "titulo": "Conectividad",
    "bullets": [
     {
-     "texto": "El aeropuerto de Medellín (MDE) registró 32,300,088 llegadas en el periodo, evidenciando su papel como hub regional.",
-     "fuente": "contexto"
+     "texto": "El número total de pasajeros que llegaron a Medellín (pax_llegadas_mde) fue 32,300,088 YTD 2026.",
+     "fuente": "Contexto"
     },
     {
-     "texto": "El total de pasajeros en la terminal fue 2,199,733, mientras que el metro registró 12,693,379 pasajeros, indicando alta movilidad interna.",
-     "fuente": "contexto"
+     "texto": "El tráfico aéreo en el aeropuerto internacional José María Córdova (aereo_mde_eoh_ult3m) alcanzó 3,335,464 pasajeros en el trimestre móvil abril‑junio 2026.",
+     "fuente": "Contexto"
     },
     {
-     "texto": "La ruta más demandada fue desde Bogotá, D.C. con 1,972,656 pasajeros, seguida por Cartagena de Indias con 676,052 pasajeros.",
-     "fuente": "contexto"
+     "texto": "La carga aérea total en 2024 fue 33,543,620 kg, la más alta de los últimos años registrados.",
+     "fuente": "Contexto"
     },
     {
-     "texto": "La carga aérea alcanzó 33,543,620 kg en 2024, la mayor cifra del histórico reciente, señalando crecimiento del comercio aéreo.",
-     "fuente": "contexto"
+     "texto": "Las rutas con mayor salida de pasajeros fueron Bogotá (1,972,656 pax), Cartagena (676,052 pax) y Santa Marta (422,488 pax).",
+     "fuente": "Contexto"
     }
    ],
    "analisis": [
     {
-     "texto": "El elevado flujo de pasajeros en MDE refuerza su posición estratégica para conectar el interior del país con destinos internacionales.",
-     "fuente": "contexto"
+     "texto": "Medellín mantiene un flujo de pasajeros robusto, superando los 32 millones anuales, lo que refuerza su posición como hub regional.",
+     "fuente": "Contexto"
     },
     {
-     "texto": "La preponderancia de la ruta Bogotá‑Medellín subraya la importancia de los enlaces intra‑nacionales para el turismo doméstico.",
-     "fuente": "contexto"
+     "texto": "El crecimiento del tráfico aéreo en el segundo trimestre indica una recuperación gradual de la demanda post‑pandemia.",
+     "fuente": "Contexto"
     },
     {
-     "texto": "El aumento de la carga aérea sugiere una expansión de la actividad logística, complementando el turismo de negocios.",
-     "fuente": "contexto"
+     "texto": "La carga aérea en 2024 evidencia una tendencia al alza, apoyada por la expansión de la logística internacional en la zona.",
+     "fuente": "Contexto"
     }
    ],
    "grafico": {
-    "titulo": "Principales rutas de origen",
+    "titulo": "Indicadores de conectividad 2026",
     "labels": [
-     "Bogotá",
-     "Cartagena",
-     "Santa Marta"
+     "Pax Medellín",
+     "Pax Aeropuerto (abr‑jun)",
+     "Carga 2024"
     ],
     "values": [
-     1972656.0,
-     676052.0,
-     422488.0
+     32300088.0,
+     3335464.0,
+     33543620.0
     ],
-    "unidad": "personas"
+    "unidad": "unidades"
    }
   },
   {
    "id": "marca",
-   "titulo": "Marca (categorías LLM, sentimiento, topico)",
+   "titulo": "Marca",
    "bullets": [
     {
-     "texto": "La marca Medellín obtuvo 284 menciones en medios durante el periodo, reflejando su presencia en la conversación pública.",
-     "fuente": "contexto"
+     "texto": "La categoría 'vacacional' generó 180 menciones con un sentimiento neto de 0.572, liderando la conversación online.",
+     "fuente": "Contexto"
+    },
+    {
+     "texto": "La categoría 'marca' obtuvo 46 menciones y un sentimiento neto de 0.913, reflejando una percepción muy positiva.",
+     "fuente": "Contexto"
+    },
+    {
+     "texto": "La categoría 'infraestructura' registró 38 menciones con un sentimiento neto de 0.211.",
+     "fuente": "Contexto"
+    },
+    {
+     "texto": "La categoría 'seguridad' acumuló 40 menciones pero mostró un sentimiento neto negativo de -0.75.",
+     "fuente": "Contexto"
     }
    ],
-   "analisis": [],
-   "grafico": {}
+   "analisis": [
+    {
+     "texto": "El alto sentimiento positivo en la categoría 'marca' sugiere que los premios y reconocimientos están reforzando la imagen del destino.",
+     "fuente": "Contexto"
+    },
+    {
+     "texto": "El sentimiento negativo en 'seguridad' indica que incidentes percibidos siguen siendo un punto crítico para la reputación.",
+     "fuente": "Contexto"
+    },
+    {
+     "texto": "El volumen de menciones en 'vacacional' confirma que la oferta de ocio y eventos sigue siendo el tema dominante entre los usuarios.",
+     "fuente": "Contexto"
+    }
+   ],
+   "grafico": {
+    "titulo": "Menciones por categoría LLM",
+    "labels": [
+     "vacacional",
+     "marca",
+     "infraestructura",
+     "seguridad"
+    ],
+    "values": [
+     180.0,
+     46.0,
+     38.0,
+     40.0
+    ],
+    "unidad": "menciones"
+   }
+  },
+  {
+   "id": "visitante",
+   "titulo": "Visitante",
+   "bullets": [
+    {
+     "texto": "El gasto promedio diario por visitante fue de 149,530.113 COP YTD 2026.",
+     "fuente": "Contexto"
+    },
+    {
+     "texto": "El 45.6 % de las entradas fueron de mujeres, mientras que el 53.6 % de las salidas correspondieron a mujeres.",
+     "fuente": "Contexto"
+    },
+    {
+     "texto": "El sentimiento neto de la conversación online fue 0.039, indicando una percepción ligeramente positiva del destino.",
+     "fuente": "Contexto"
+    }
+   ],
+   "analisis": [
+    {
+     "texto": "El gasto diario elevado sugiere un alto poder adquisitivo de los visitantes, lo que beneficia a los sectores de alojamiento y gastronomía.",
+     "fuente": "Contexto"
+    },
+    {
+     "texto": "La mayor proporción femenina en salidas podría reflejar tendencias de viaje específicas, como turismo de bienestar o compras.",
+     "fuente": "Contexto"
+    },
+    {
+     "texto": "El leve positivismo en el sentimiento neto respalda la percepción general favorable del destino entre los usuarios digitales.",
+     "fuente": "Contexto"
+    }
+   ],
+   "grafico": {
+    "titulo": "Indicadores del visitante 2026",
+    "labels": [
+     "Gasto diario (COP)",
+     "Entrada mujeres",
+     "Salida mujeres",
+     "Sentimiento neto"
+    ],
+    "values": [
+     149530.113,
+     0.456,
+     0.536,
+     0.039
+    ],
+    "unidad": "unidades"
+   }
+  },
+  {
+   "id": "territorio",
+   "titulo": "Territorio",
+   "bullets": [
+    {
+     "texto": "El RNT medio fue 522.0 % YTD 2026.",
+     "fuente": "Contexto"
+    },
+    {
+     "texto": "Se registraron 30 hurtos y 5 homicidios en promedio durante el periodo analizado.",
+     "fuente": "Contexto"
+    },
+    {
+     "texto": "La concentración media de PM2.5 fue de 9.8 µg/m³, indicando buena calidad del aire.",
+     "fuente": "Contexto"
+    },
+    {
+     "texto": "La precipitación media fue 0 mm, reflejando condiciones secas durante el trimestre.",
+     "fuente": "Contexto"
+    }
+   ],
+   "analisis": [
+    {
+     "texto": "Un RNT superior al 500 % evidencia una alta ocupación de la infraestructura turística.",
+     "fuente": "Contexto"
+    },
+    {
+     "texto": "Los índices de seguridad (hurtos y homicidios) se mantienen en niveles relativamente bajos, favoreciendo la percepción de seguridad.",
+     "fuente": "Contexto"
+    },
+    {
+     "texto": "Los bajos niveles de PM2.5 y ausencia de lluvia contribuyen a un entorno atractivo para actividades al aire libre.",
+     "fuente": "Contexto"
+    }
+   ],
+   "grafico": {
+    "titulo": "Indicadores territoriales 2026",
+    "labels": [
+     "RNT",
+     "Hurtos",
+     "Homicidios",
+     "PM2.5"
+    ],
+    "values": [
+     522.0,
+     30.0,
+     5.0,
+     9.8
+    ],
+    "unidad": "índices"
+   }
   }
  ],
  "fuente": "ETL Bureau abierto (etl-bureau, data/processed) + redacción LLM verificada",

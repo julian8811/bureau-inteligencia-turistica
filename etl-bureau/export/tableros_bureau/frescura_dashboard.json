@@ -1,163 +1,166 @@
 {
- "generado": "2026-11-09",
- "estado": "ok",
+ "generado": "2026-11-11",
+ "estado": "atencion",
  "resumen": {
-  "ok": 21,
-  "atrasadas": [],
+  "ok": 19,
+  "atrasadas": [
+   "owid_benchmark_2025_2026.json",
+   "dashboard/index.html"
+  ],
   "faltantes": [],
   "total": 21
  },
  "fuentes": [
   {
    "fuente": "raw",
-   "esperado": "2026-11-09",
-   "encontrado": "2026-11-09",
+   "esperado": "2026-11-11",
+   "encontrado": "2026-11-11",
    "edad_dias": 0,
    "estado": "ok",
    "detalle": ""
   },
   {
    "fuente": "kpis_diario",
-   "esperado": "kpis_2026-11-09.csv",
-   "encontrado": "kpis_2026-11-09.csv",
+   "esperado": "kpis_2026-11-11.csv",
+   "encontrado": "kpis_2026-11-11.csv",
    "edad_dias": 0,
    "estado": "ok",
    "detalle": ""
   },
   {
    "fuente": "kpis_historico",
-   "esperado": "2026-11-09",
-   "encontrado": "2026-11-09",
+   "esperado": "2026-11-11",
+   "encontrado": "2026-11-11",
    "edad_dias": 0,
    "estado": "ok",
    "detalle": ""
   },
   {
    "fuente": "bureau.sqlite",
-   "esperado": "2026-11-09",
-   "encontrado": "2026-11-09",
+   "esperado": "2026-11-11",
+   "encontrado": "2026-11-11",
    "edad_dias": 0,
    "estado": "ok",
    "detalle": ""
   },
   {
    "fuente": "paises_2025_2026.json",
-   "esperado": "2026-11-09",
-   "encontrado": "2026-11-09",
+   "esperado": "2026-11-11",
+   "encontrado": "2026-11-11",
    "edad_dias": 0,
    "estado": "ok",
    "detalle": "fecha por mtime (el JSON no trae generado)"
   },
   {
    "fuente": "marca_llm_2025_2026.json",
-   "esperado": "2026-11-09",
-   "encontrado": "2026-11-09",
+   "esperado": "2026-11-11",
+   "encontrado": "2026-11-11",
    "edad_dias": 0,
    "estado": "ok",
    "detalle": "fecha por mtime (el JSON no trae generado)"
   },
   {
    "fuente": "prensa_medios.json",
-   "esperado": "2026-11-09",
-   "encontrado": "2026-11-09",
+   "esperado": "2026-11-11",
+   "encontrado": "2026-11-11",
    "edad_dias": 0,
    "estado": "ok",
    "detalle": ""
   },
   {
    "fuente": "informe_llm.json",
-   "esperado": "2026-11-09",
-   "encontrado": "2026-11-09",
+   "esperado": "2026-11-11",
+   "encontrado": "2026-11-11",
    "edad_dias": 0,
    "estado": "ok",
    "detalle": ""
   },
   {
    "fuente": "manifiesto_bureau.json",
-   "esperado": "2026-11-09",
-   "encontrado": "2026-11-09",
+   "esperado": "2026-11-11",
+   "encontrado": "2026-11-11",
    "edad_dias": 0,
    "estado": "ok",
    "detalle": ""
   },
   {
    "fuente": "oferta_territorio_2025_2026.json",
-   "esperado": "2026-11-09",
-   "encontrado": "2026-11-09",
+   "esperado": "2026-11-11",
+   "encontrado": "2026-11-11",
    "edad_dias": 0,
    "estado": "ok",
    "detalle": ""
   },
   {
    "fuente": "seguridad_2025_2026.json",
-   "esperado": "2026-11-09",
-   "encontrado": "2026-11-09",
+   "esperado": "2026-11-11",
+   "encontrado": "2026-11-11",
    "edad_dias": 0,
    "estado": "ok",
    "detalle": ""
   },
   {
    "fuente": "clima_aire_2025_2026.json",
-   "esperado": "2026-11-09",
-   "encontrado": "2026-11-09",
+   "esperado": "2026-11-11",
+   "encontrado": "2026-11-11",
    "edad_dias": 0,
    "estado": "ok",
    "detalle": ""
   },
   {
    "fuente": "conectividad_benchmark_2025_2026.json",
-   "esperado": "2026-11-09",
-   "encontrado": "2026-11-09",
+   "esperado": "2026-11-11",
+   "encontrado": "2026-11-11",
    "edad_dias": 0,
    "estado": "ok",
    "detalle": ""
   },
   {
    "fuente": "calendario_contexto_2025_2026.json",
-   "esperado": "2026-11-09",
-   "encontrado": "2026-11-09",
+   "esperado": "2026-11-11",
+   "encontrado": "2026-11-11",
    "edad_dias": 0,
    "estado": "ok",
    "detalle": ""
   },
   {
    "fuente": "owid_benchmark_2025_2026.json",
-   "esperado": "2026-11-09",
+   "esperado": "2026-11-11",
    "encontrado": "2026-11-09",
-   "edad_dias": 0,
-   "estado": "ok",
+   "edad_dias": 2,
+   "estado": "atrasado",
    "detalle": ""
   },
   {
    "fuente": "sit_emisores_2025_2026.json",
-   "esperado": "2026-11-09",
-   "encontrado": "2026-11-09",
+   "esperado": "2026-11-11",
+   "encontrado": "2026-11-11",
    "edad_dias": 0,
    "estado": "ok",
    "detalle": ""
   },
   {
    "fuente": "pronosticos.json",
-   "esperado": "2026-11-09",
-   "encontrado": "2026-11-09",
+   "esperado": "2026-11-11",
+   "encontrado": "2026-11-11",
    "edad_dias": 0,
    "estado": "ok",
    "detalle": "fecha por mtime (el JSON no trae generado)"
   },
   {
    "fuente": "web/data",
-   "esperado": "2026-11-09",
-   "encontrado": "2026-11-09",
+   "esperado": "2026-11-11",
+   "encontrado": "2026-11-11",
    "edad_dias": 0,
    "estado": "ok",
    "detalle": ""
   },
   {
    "fuente": "dashboard/index.html",
-   "esperado": "2026-11-09",
+   "esperado": "2026-11-11",
    "encontrado": "2026-11-09",
-   "edad_dias": 0,
-   "estado": "ok",
+   "edad_dias": 2,
+   "estado": "atrasado",
    "detalle": ""
   },
   {
@@ -170,9 +173,9 @@
   },
   {
    "fuente": "vercel/manifiesto",
-   "esperado": "2026-11-09",
-   "encontrado": "2026-11-09",
-   "edad_dias": 0,
+   "esperado": "2026-11-11",
+   "encontrado": "2026-11-10",
+   "edad_dias": 1,
    "estado": "ok",
    "detalle": ""
   }
