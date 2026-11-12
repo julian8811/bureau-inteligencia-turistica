@@ -153,30 +153,1171 @@
       "nombre": "Navidad"
     }
   ],
+  "festivos_emisores": [
+    {
+      "date": "2025-01-01",
+      "nombre": "Confraternização Universal",
+      "pais": "BR"
+    },
+    {
+      "date": "2025-03-03",
+      "nombre": "Carnaval",
+      "pais": "BR"
+    },
+    {
+      "date": "2025-03-04",
+      "nombre": "Carnaval",
+      "pais": "BR"
+    },
+    {
+      "date": "2025-04-18",
+      "nombre": "Sexta-feira Santa",
+      "pais": "BR"
+    },
+    {
+      "date": "2025-04-20",
+      "nombre": "Domingo de Páscoa",
+      "pais": "BR"
+    },
+    {
+      "date": "2025-04-21",
+      "nombre": "Dia de Tiradentes",
+      "pais": "BR"
+    },
+    {
+      "date": "2025-05-01",
+      "nombre": "Dia do Trabalhador",
+      "pais": "BR"
+    },
+    {
+      "date": "2025-06-19",
+      "nombre": "Corpus Christi",
+      "pais": "BR"
+    },
+    {
+      "date": "2025-07-09",
+      "nombre": "Revolução Constitucionalista de 1932",
+      "pais": "BR"
+    },
+    {
+      "date": "2025-09-07",
+      "nombre": "Dia da Independência",
+      "pais": "BR"
+    },
+    {
+      "date": "2025-10-12",
+      "nombre": "Nossa Senhora Aparecida",
+      "pais": "BR"
+    },
+    {
+      "date": "2025-11-02",
+      "nombre": "Dia de Finados",
+      "pais": "BR"
+    },
+    {
+      "date": "2025-11-15",
+      "nombre": "Proclamação da República",
+      "pais": "BR"
+    },
+    {
+      "date": "2025-11-20",
+      "nombre": "Dia da Consciência Negra",
+      "pais": "BR"
+    },
+    {
+      "date": "2025-12-25",
+      "nombre": "Natal",
+      "pais": "BR"
+    },
+    {
+      "date": "2026-01-01",
+      "nombre": "Confraternização Universal",
+      "pais": "BR"
+    },
+    {
+      "date": "2026-02-16",
+      "nombre": "Carnaval",
+      "pais": "BR"
+    },
+    {
+      "date": "2026-02-17",
+      "nombre": "Carnaval",
+      "pais": "BR"
+    },
+    {
+      "date": "2026-04-03",
+      "nombre": "Sexta-feira Santa",
+      "pais": "BR"
+    },
+    {
+      "date": "2026-04-05",
+      "nombre": "Domingo de Páscoa",
+      "pais": "BR"
+    },
+    {
+      "date": "2026-04-21",
+      "nombre": "Dia de Tiradentes",
+      "pais": "BR"
+    },
+    {
+      "date": "2026-05-01",
+      "nombre": "Dia do Trabalhador",
+      "pais": "BR"
+    },
+    {
+      "date": "2026-06-04",
+      "nombre": "Corpus Christi",
+      "pais": "BR"
+    },
+    {
+      "date": "2026-07-09",
+      "nombre": "Revolução Constitucionalista de 1932",
+      "pais": "BR"
+    },
+    {
+      "date": "2026-09-07",
+      "nombre": "Dia da Independência",
+      "pais": "BR"
+    },
+    {
+      "date": "2026-10-12",
+      "nombre": "Nossa Senhora Aparecida",
+      "pais": "BR"
+    },
+    {
+      "date": "2026-11-02",
+      "nombre": "Dia de Finados",
+      "pais": "BR"
+    },
+    {
+      "date": "2026-11-15",
+      "nombre": "Proclamação da República",
+      "pais": "BR"
+    },
+    {
+      "date": "2026-11-20",
+      "nombre": "Dia da Consciência Negra",
+      "pais": "BR"
+    },
+    {
+      "date": "2026-12-25",
+      "nombre": "Natal",
+      "pais": "BR"
+    },
+    {
+      "date": "2025-01-01",
+      "nombre": "Día de Año Nuevo",
+      "pais": "DO"
+    },
+    {
+      "date": "2025-01-06",
+      "nombre": "Día de Reyes",
+      "pais": "DO"
+    },
+    {
+      "date": "2025-01-21",
+      "nombre": "Día de Nuestra Señora de la Altagracia",
+      "pais": "DO"
+    },
+    {
+      "date": "2025-01-26",
+      "nombre": "Día del Natalicio de Juan Pablo Duarte",
+      "pais": "DO"
+    },
+    {
+      "date": "2025-02-27",
+      "nombre": "Día de la Independencia de la República Dominicana",
+      "pais": "DO"
+    },
+    {
+      "date": "2025-04-18",
+      "nombre": "Good Friday",
+      "pais": "DO"
+    },
+    {
+      "date": "2025-05-01",
+      "nombre": "Día del Trabajador",
+      "pais": "DO"
+    },
+    {
+      "date": "2025-05-28",
+      "nombre": "Día de las Madres",
+      "pais": "DO"
+    },
+    {
+      "date": "2025-06-19",
+      "nombre": "Corpus Christi",
+      "pais": "DO"
+    },
+    {
+      "date": "2025-08-16",
+      "nombre": "Día de la Restauración Dominicana",
+      "pais": "DO"
+    },
+    {
+      "date": "2025-09-24",
+      "nombre": "Nuestra Senora de las Mercedes",
+      "pais": "DO"
+    },
+    {
+      "date": "2025-11-06",
+      "nombre": "Día de la Constitución",
+      "pais": "DO"
+    },
+    {
+      "date": "2025-12-25",
+      "nombre": "Navidad",
+      "pais": "DO"
+    },
+    {
+      "date": "2026-01-01",
+      "nombre": "Día de Año Nuevo",
+      "pais": "DO"
+    },
+    {
+      "date": "2026-01-06",
+      "nombre": "Día de Reyes",
+      "pais": "DO"
+    },
+    {
+      "date": "2026-01-21",
+      "nombre": "Día de Nuestra Señora de la Altagracia",
+      "pais": "DO"
+    },
+    {
+      "date": "2026-01-26",
+      "nombre": "Día del Natalicio de Juan Pablo Duarte",
+      "pais": "DO"
+    },
+    {
+      "date": "2026-02-27",
+      "nombre": "Día de la Independencia de la República Dominicana",
+      "pais": "DO"
+    },
+    {
+      "date": "2026-04-03",
+      "nombre": "Good Friday",
+      "pais": "DO"
+    },
+    {
+      "date": "2026-05-01",
+      "nombre": "Día del Trabajador",
+      "pais": "DO"
+    },
+    {
+      "date": "2026-05-28",
+      "nombre": "Día de las Madres",
+      "pais": "DO"
+    },
+    {
+      "date": "2026-06-04",
+      "nombre": "Corpus Christi",
+      "pais": "DO"
+    },
+    {
+      "date": "2026-08-16",
+      "nombre": "Día de la Restauración Dominicana",
+      "pais": "DO"
+    },
+    {
+      "date": "2026-09-24",
+      "nombre": "Nuestra Senora de las Mercedes",
+      "pais": "DO"
+    },
+    {
+      "date": "2026-11-06",
+      "nombre": "Día de la Constitución",
+      "pais": "DO"
+    },
+    {
+      "date": "2026-12-25",
+      "nombre": "Navidad",
+      "pais": "DO"
+    },
+    {
+      "date": "2025-01-01",
+      "nombre": "Año Nuevo",
+      "pais": "ES"
+    },
+    {
+      "date": "2025-01-06",
+      "nombre": "Día de Reyes / Epifanía del Señor",
+      "pais": "ES"
+    },
+    {
+      "date": "2025-02-28",
+      "nombre": "Día de Andalucía",
+      "pais": "ES"
+    },
+    {
+      "date": "2025-03-01",
+      "nombre": "Dia de les Illes Balears",
+      "pais": "ES"
+    },
+    {
+      "date": "2025-04-17",
+      "nombre": "Jueves Santo",
+      "pais": "ES"
+    },
+    {
+      "date": "2025-04-18",
+      "nombre": "Viernes Santo",
+      "pais": "ES"
+    },
+    {
+      "date": "2025-04-21",
+      "nombre": "Lunes de Pascua",
+      "pais": "ES"
+    },
+    {
+      "date": "2025-04-23",
+      "nombre": "Día de Castilla y León",
+      "pais": "ES"
+    },
+    {
+      "date": "2025-04-23",
+      "nombre": "San Jorge (Día de Aragón)",
+      "pais": "ES"
+    },
+    {
+      "date": "2025-05-01",
+      "nombre": "Fiesta del trabajo",
+      "pais": "ES"
+    },
+    {
+      "date": "2025-05-02",
+      "nombre": "Fiesta de la Comunidad de Madrid",
+      "pais": "ES"
+    },
+    {
+      "date": "2025-05-17",
+      "nombre": "Día das Letras Galegas",
+      "pais": "ES"
+    },
+    {
+      "date": "2025-05-30",
+      "nombre": "Día de Canarias",
+      "pais": "ES"
+    },
+    {
+      "date": "2025-05-31",
+      "nombre": "Día de la Región Castilla-La Mancha",
+      "pais": "ES"
+    },
+    {
+      "date": "2025-06-09",
+      "nombre": "Día de La Rioja",
+      "pais": "ES"
+    },
+    {
+      "date": "2025-06-09",
+      "nombre": "Día de la Región de Murcia",
+      "pais": "ES"
+    },
+    {
+      "date": "2025-06-19",
+      "nombre": "Corpus Christi",
+      "pais": "ES"
+    },
+    {
+      "date": "2025-06-24",
+      "nombre": "Sant Joan",
+      "pais": "ES"
+    },
+    {
+      "date": "2025-07-25",
+      "nombre": "Santiago Apóstol",
+      "pais": "ES"
+    },
+    {
+      "date": "2025-07-28",
+      "nombre": "Día de las Instituciones de Cantabria",
+      "pais": "ES"
+    },
+    {
+      "date": "2025-08-15",
+      "nombre": "Asunción",
+      "pais": "ES"
+    },
+    {
+      "date": "2025-09-08",
+      "nombre": "Día de Asturias",
+      "pais": "ES"
+    },
+    {
+      "date": "2025-09-08",
+      "nombre": "Día de Extremadura",
+      "pais": "ES"
+    },
+    {
+      "date": "2025-09-11",
+      "nombre": "Diada Nacional de Catalunya",
+      "pais": "ES"
+    },
+    {
+      "date": "2025-09-15",
+      "nombre": "Festividad de la Bien Aparecida",
+      "pais": "ES"
+    },
+    {
+      "date": "2025-10-09",
+      "nombre": "Dia de la Comunitat Valenciana",
+      "pais": "ES"
+    },
+    {
+      "date": "2025-10-12",
+      "nombre": "Fiesta Nacional de España",
+      "pais": "ES"
+    },
+    {
+      "date": "2025-11-01",
+      "nombre": "Día de todos los Santos",
+      "pais": "ES"
+    },
+    {
+      "date": "2025-12-06",
+      "nombre": "Día de la Constitución",
+      "pais": "ES"
+    },
+    {
+      "date": "2025-12-08",
+      "nombre": "Inmaculada Concepción",
+      "pais": "ES"
+    },
+    {
+      "date": "2025-12-25",
+      "nombre": "Navidad",
+      "pais": "ES"
+    },
+    {
+      "date": "2025-12-26",
+      "nombre": "Feast of Saint Stephen",
+      "pais": "ES"
+    },
+    {
+      "date": "2026-01-01",
+      "nombre": "Año Nuevo",
+      "pais": "ES"
+    },
+    {
+      "date": "2026-01-06",
+      "nombre": "Día de Reyes / Epifanía del Señor",
+      "pais": "ES"
+    },
+    {
+      "date": "2026-02-28",
+      "nombre": "Día de Andalucía",
+      "pais": "ES"
+    },
+    {
+      "date": "2026-03-01",
+      "nombre": "Dia de les Illes Balears",
+      "pais": "ES"
+    },
+    {
+      "date": "2026-04-02",
+      "nombre": "Jueves Santo",
+      "pais": "ES"
+    },
+    {
+      "date": "2026-04-03",
+      "nombre": "Viernes Santo",
+      "pais": "ES"
+    },
+    {
+      "date": "2026-04-06",
+      "nombre": "Lunes de Pascua",
+      "pais": "ES"
+    },
+    {
+      "date": "2026-04-23",
+      "nombre": "Día de Castilla y León",
+      "pais": "ES"
+    },
+    {
+      "date": "2026-04-23",
+      "nombre": "San Jorge (Día de Aragón)",
+      "pais": "ES"
+    },
+    {
+      "date": "2026-05-01",
+      "nombre": "Fiesta del trabajo",
+      "pais": "ES"
+    },
+    {
+      "date": "2026-05-02",
+      "nombre": "Fiesta de la Comunidad de Madrid",
+      "pais": "ES"
+    },
+    {
+      "date": "2026-05-17",
+      "nombre": "Día das Letras Galegas",
+      "pais": "ES"
+    },
+    {
+      "date": "2026-05-30",
+      "nombre": "Día de Canarias",
+      "pais": "ES"
+    },
+    {
+      "date": "2026-05-31",
+      "nombre": "Día de la Región Castilla-La Mancha",
+      "pais": "ES"
+    },
+    {
+      "date": "2026-06-04",
+      "nombre": "Corpus Christi",
+      "pais": "ES"
+    },
+    {
+      "date": "2026-06-09",
+      "nombre": "Día de La Rioja",
+      "pais": "ES"
+    },
+    {
+      "date": "2026-06-09",
+      "nombre": "Día de la Región de Murcia",
+      "pais": "ES"
+    },
+    {
+      "date": "2026-06-24",
+      "nombre": "Sant Joan",
+      "pais": "ES"
+    },
+    {
+      "date": "2026-07-25",
+      "nombre": "Santiago Apóstol",
+      "pais": "ES"
+    },
+    {
+      "date": "2026-07-28",
+      "nombre": "Día de las Instituciones de Cantabria",
+      "pais": "ES"
+    },
+    {
+      "date": "2026-08-15",
+      "nombre": "Asunción",
+      "pais": "ES"
+    },
+    {
+      "date": "2026-09-08",
+      "nombre": "Día de Asturias",
+      "pais": "ES"
+    },
+    {
+      "date": "2026-09-08",
+      "nombre": "Día de Extremadura",
+      "pais": "ES"
+    },
+    {
+      "date": "2026-09-11",
+      "nombre": "Diada Nacional de Catalunya",
+      "pais": "ES"
+    },
+    {
+      "date": "2026-09-15",
+      "nombre": "Festividad de la Bien Aparecida",
+      "pais": "ES"
+    },
+    {
+      "date": "2026-10-09",
+      "nombre": "Dia de la Comunitat Valenciana",
+      "pais": "ES"
+    },
+    {
+      "date": "2026-10-12",
+      "nombre": "Fiesta Nacional de España",
+      "pais": "ES"
+    },
+    {
+      "date": "2026-11-01",
+      "nombre": "Día de todos los Santos",
+      "pais": "ES"
+    },
+    {
+      "date": "2026-12-06",
+      "nombre": "Día de la Constitución",
+      "pais": "ES"
+    },
+    {
+      "date": "2026-12-08",
+      "nombre": "Inmaculada Concepción",
+      "pais": "ES"
+    },
+    {
+      "date": "2026-12-25",
+      "nombre": "Navidad",
+      "pais": "ES"
+    },
+    {
+      "date": "2026-12-26",
+      "nombre": "Feast of Saint Stephen",
+      "pais": "ES"
+    },
+    {
+      "date": "2025-01-01",
+      "nombre": "Jour de l'an",
+      "pais": "FR"
+    },
+    {
+      "date": "2025-04-21",
+      "nombre": "Lundi de Pâques",
+      "pais": "FR"
+    },
+    {
+      "date": "2025-05-01",
+      "nombre": "Fête du Travail",
+      "pais": "FR"
+    },
+    {
+      "date": "2025-05-08",
+      "nombre": "Victoire 1945",
+      "pais": "FR"
+    },
+    {
+      "date": "2025-05-29",
+      "nombre": "Ascension",
+      "pais": "FR"
+    },
+    {
+      "date": "2025-06-09",
+      "nombre": "Lundi de Pentecôte",
+      "pais": "FR"
+    },
+    {
+      "date": "2025-07-14",
+      "nombre": "Fête nationale",
+      "pais": "FR"
+    },
+    {
+      "date": "2025-08-15",
+      "nombre": "Assomption",
+      "pais": "FR"
+    },
+    {
+      "date": "2025-11-01",
+      "nombre": "Toussaint",
+      "pais": "FR"
+    },
+    {
+      "date": "2025-11-11",
+      "nombre": "Armistice 1918",
+      "pais": "FR"
+    },
+    {
+      "date": "2025-12-25",
+      "nombre": "Noël",
+      "pais": "FR"
+    },
+    {
+      "date": "2026-01-01",
+      "nombre": "Jour de l'an",
+      "pais": "FR"
+    },
+    {
+      "date": "2026-04-06",
+      "nombre": "Lundi de Pâques",
+      "pais": "FR"
+    },
+    {
+      "date": "2026-05-01",
+      "nombre": "Fête du Travail",
+      "pais": "FR"
+    },
+    {
+      "date": "2026-05-08",
+      "nombre": "Victoire 1945",
+      "pais": "FR"
+    },
+    {
+      "date": "2026-05-14",
+      "nombre": "Ascension",
+      "pais": "FR"
+    },
+    {
+      "date": "2026-05-25",
+      "nombre": "Lundi de Pentecôte",
+      "pais": "FR"
+    },
+    {
+      "date": "2026-07-14",
+      "nombre": "Fête nationale",
+      "pais": "FR"
+    },
+    {
+      "date": "2026-08-15",
+      "nombre": "Assomption",
+      "pais": "FR"
+    },
+    {
+      "date": "2026-11-01",
+      "nombre": "Toussaint",
+      "pais": "FR"
+    },
+    {
+      "date": "2026-11-11",
+      "nombre": "Armistice 1918",
+      "pais": "FR"
+    },
+    {
+      "date": "2026-12-25",
+      "nombre": "Noël",
+      "pais": "FR"
+    },
+    {
+      "date": "2025-01-01",
+      "nombre": "Año Nuevo",
+      "pais": "MX"
+    },
+    {
+      "date": "2025-02-03",
+      "nombre": "Día de la Constitución",
+      "pais": "MX"
+    },
+    {
+      "date": "2025-03-17",
+      "nombre": "Natalicio de Benito Juárez",
+      "pais": "MX"
+    },
+    {
+      "date": "2025-04-17",
+      "nombre": "Jueves Santo",
+      "pais": "MX"
+    },
+    {
+      "date": "2025-04-18",
+      "nombre": "Viernes Santo",
+      "pais": "MX"
+    },
+    {
+      "date": "2025-05-01",
+      "nombre": "Día del Trabajo",
+      "pais": "MX"
+    },
+    {
+      "date": "2025-09-16",
+      "nombre": "Día de la Independencia",
+      "pais": "MX"
+    },
+    {
+      "date": "2025-11-17",
+      "nombre": "Día de la Revolución",
+      "pais": "MX"
+    },
+    {
+      "date": "2025-12-25",
+      "nombre": "Navidad",
+      "pais": "MX"
+    },
+    {
+      "date": "2026-01-01",
+      "nombre": "Año Nuevo",
+      "pais": "MX"
+    },
+    {
+      "date": "2026-02-02",
+      "nombre": "Día de la Constitución",
+      "pais": "MX"
+    },
+    {
+      "date": "2026-03-16",
+      "nombre": "Natalicio de Benito Juárez",
+      "pais": "MX"
+    },
+    {
+      "date": "2026-04-02",
+      "nombre": "Jueves Santo",
+      "pais": "MX"
+    },
+    {
+      "date": "2026-04-03",
+      "nombre": "Viernes Santo",
+      "pais": "MX"
+    },
+    {
+      "date": "2026-05-01",
+      "nombre": "Día del Trabajo",
+      "pais": "MX"
+    },
+    {
+      "date": "2026-09-16",
+      "nombre": "Día de la Independencia",
+      "pais": "MX"
+    },
+    {
+      "date": "2026-11-16",
+      "nombre": "Día de la Revolución",
+      "pais": "MX"
+    },
+    {
+      "date": "2026-12-25",
+      "nombre": "Navidad",
+      "pais": "MX"
+    },
+    {
+      "date": "2025-01-01",
+      "nombre": "Año Nuevo",
+      "pais": "PA"
+    },
+    {
+      "date": "2025-01-09",
+      "nombre": "Día de los Mártires",
+      "pais": "PA"
+    },
+    {
+      "date": "2025-03-03",
+      "nombre": "Lunes de Carnaval",
+      "pais": "PA"
+    },
+    {
+      "date": "2025-03-04",
+      "nombre": "Martes de Carnaval",
+      "pais": "PA"
+    },
+    {
+      "date": "2025-04-18",
+      "nombre": "Viernes Santo",
+      "pais": "PA"
+    },
+    {
+      "date": "2025-05-01",
+      "nombre": "Día del Trabajo",
+      "pais": "PA"
+    },
+    {
+      "date": "2025-11-03",
+      "nombre": "Separación de Panamá de Colombia",
+      "pais": "PA"
+    },
+    {
+      "date": "2025-11-04",
+      "nombre": "Día de los Símbolos Patrios",
+      "pais": "PA"
+    },
+    {
+      "date": "2025-11-05",
+      "nombre": "Consolidación de la Separación de Panamá de Colombia",
+      "pais": "PA"
+    },
+    {
+      "date": "2025-11-10",
+      "nombre": "Primer Grito de Independencia de la Villa de Los Santos",
+      "pais": "PA"
+    },
+    {
+      "date": "2025-11-28",
+      "nombre": "Independencia de Panamá de España",
+      "pais": "PA"
+    },
+    {
+      "date": "2025-12-08",
+      "nombre": "Día de las Madres",
+      "pais": "PA"
+    },
+    {
+      "date": "2025-12-20",
+      "nombre": "Día de Duelo Nacional",
+      "pais": "PA"
+    },
+    {
+      "date": "2025-12-25",
+      "nombre": "Navidad",
+      "pais": "PA"
+    },
+    {
+      "date": "2026-01-01",
+      "nombre": "Año Nuevo",
+      "pais": "PA"
+    },
+    {
+      "date": "2026-01-09",
+      "nombre": "Día de los Mártires",
+      "pais": "PA"
+    },
+    {
+      "date": "2026-02-16",
+      "nombre": "Lunes de Carnaval",
+      "pais": "PA"
+    },
+    {
+      "date": "2026-02-17",
+      "nombre": "Martes de Carnaval",
+      "pais": "PA"
+    },
+    {
+      "date": "2026-04-03",
+      "nombre": "Viernes Santo",
+      "pais": "PA"
+    },
+    {
+      "date": "2026-05-01",
+      "nombre": "Día del Trabajo",
+      "pais": "PA"
+    },
+    {
+      "date": "2026-11-03",
+      "nombre": "Separación de Panamá de Colombia",
+      "pais": "PA"
+    },
+    {
+      "date": "2026-11-04",
+      "nombre": "Día de los Símbolos Patrios",
+      "pais": "PA"
+    },
+    {
+      "date": "2026-11-05",
+      "nombre": "Consolidación de la Separación de Panamá de Colombia",
+      "pais": "PA"
+    },
+    {
+      "date": "2026-11-10",
+      "nombre": "Primer Grito de Independencia de la Villa de Los Santos",
+      "pais": "PA"
+    },
+    {
+      "date": "2026-11-28",
+      "nombre": "Independencia de Panamá de España",
+      "pais": "PA"
+    },
+    {
+      "date": "2026-12-08",
+      "nombre": "Día de las Madres",
+      "pais": "PA"
+    },
+    {
+      "date": "2026-12-21",
+      "nombre": "Día de Duelo Nacional",
+      "pais": "PA"
+    },
+    {
+      "date": "2026-12-25",
+      "nombre": "Navidad",
+      "pais": "PA"
+    },
+    {
+      "date": "2025-01-01",
+      "nombre": "New Year's Day",
+      "pais": "US"
+    },
+    {
+      "date": "2025-01-20",
+      "nombre": "Martin Luther King, Jr. Day",
+      "pais": "US"
+    },
+    {
+      "date": "2025-02-12",
+      "nombre": "Lincoln's Birthday",
+      "pais": "US"
+    },
+    {
+      "date": "2025-02-17",
+      "nombre": "Washington's Birthday",
+      "pais": "US"
+    },
+    {
+      "date": "2025-04-18",
+      "nombre": "Good Friday",
+      "pais": "US"
+    },
+    {
+      "date": "2025-04-18",
+      "nombre": "Good Friday",
+      "pais": "US"
+    },
+    {
+      "date": "2025-05-08",
+      "nombre": "Truman Day",
+      "pais": "US"
+    },
+    {
+      "date": "2025-05-26",
+      "nombre": "Memorial Day",
+      "pais": "US"
+    },
+    {
+      "date": "2025-06-19",
+      "nombre": "Juneteenth National Independence Day",
+      "pais": "US"
+    },
+    {
+      "date": "2025-07-04",
+      "nombre": "Independence Day",
+      "pais": "US"
+    },
+    {
+      "date": "2025-09-01",
+      "nombre": "Labor Day",
+      "pais": "US"
+    },
+    {
+      "date": "2025-10-13",
+      "nombre": "Columbus Day",
+      "pais": "US"
+    },
+    {
+      "date": "2025-10-13",
+      "nombre": "Columbus Day",
+      "pais": "US"
+    },
+    {
+      "date": "2025-10-13",
+      "nombre": "Indigenous Peoples' Day",
+      "pais": "US"
+    },
+    {
+      "date": "2025-11-11",
+      "nombre": "Veterans Day",
+      "pais": "US"
+    },
+    {
+      "date": "2025-11-27",
+      "nombre": "Thanksgiving Day",
+      "pais": "US"
+    },
+    {
+      "date": "2025-12-25",
+      "nombre": "Christmas Day",
+      "pais": "US"
+    },
+    {
+      "date": "2026-01-01",
+      "nombre": "New Year's Day",
+      "pais": "US"
+    },
+    {
+      "date": "2026-01-19",
+      "nombre": "Martin Luther King, Jr. Day",
+      "pais": "US"
+    },
+    {
+      "date": "2026-02-12",
+      "nombre": "Lincoln's Birthday",
+      "pais": "US"
+    },
+    {
+      "date": "2026-02-16",
+      "nombre": "Washington's Birthday",
+      "pais": "US"
+    },
+    {
+      "date": "2026-04-03",
+      "nombre": "Good Friday",
+      "pais": "US"
+    },
+    {
+      "date": "2026-04-03",
+      "nombre": "Good Friday",
+      "pais": "US"
+    },
+    {
+      "date": "2026-05-08",
+      "nombre": "Truman Day",
+      "pais": "US"
+    },
+    {
+      "date": "2026-05-25",
+      "nombre": "Memorial Day",
+      "pais": "US"
+    },
+    {
+      "date": "2026-06-19",
+      "nombre": "Juneteenth National Independence Day",
+      "pais": "US"
+    },
+    {
+      "date": "2026-07-03",
+      "nombre": "Independence Day",
+      "pais": "US"
+    },
+    {
+      "date": "2026-09-07",
+      "nombre": "Labor Day",
+      "pais": "US"
+    },
+    {
+      "date": "2026-10-12",
+      "nombre": "Columbus Day",
+      "pais": "US"
+    },
+    {
+      "date": "2026-10-12",
+      "nombre": "Columbus Day",
+      "pais": "US"
+    },
+    {
+      "date": "2026-10-12",
+      "nombre": "Indigenous Peoples' Day",
+      "pais": "US"
+    },
+    {
+      "date": "2026-11-11",
+      "nombre": "Veterans Day",
+      "pais": "US"
+    },
+    {
+      "date": "2026-11-26",
+      "nombre": "Thanksgiving Day",
+      "pais": "US"
+    },
+    {
+      "date": "2026-12-25",
+      "nombre": "Christmas Day",
+      "pais": "US"
+    }
+  ],
+  "avisos_viaje": [
+    {
+      "pais": "Estados Unidos",
+      "fuente": "US State Dept",
+      "nivel": "Colombia - Level 3: Reconsider Travel",
+      "titulo": "Colombia - Level 3: Reconsider Travel",
+      "actualizado": "2026-03-30T20:00:00-04:00",
+      "resumen": "Reconsider travel to Colombia due to&nbsp; crime, terrorism, civil unrest, &nbsp; kidnapping, and natural disasters. &nbsp;Some areas have an increased risk. Read the entire Travel Advisory. Violent crime is common in many areas of Colombia, including murder, assault, and robbery",
+      "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.col.html"
+    },
+    {
+      "pais": "Canadá",
+      "fuente": "Global Affairs Canada",
+      "nivel": "Exercise a high degree of caution (with regional advisories)",
+      "titulo": "Colombia",
+      "actualizado": "November 2, 2026 10:32 EST",
+      "resumen": "Health - Travel health notice for yellow fever was removed",
+      "url": "https://travel.gc.ca/destinations/colombia"
+    },
+    {
+      "pais": "Reino Unido",
+      "fuente": "FCDO",
+      "nivel": "avoid_all_but_essential_travel_to_parts",
+      "titulo": "Colombia travel advice",
+      "actualizado": "2026-10-30T00:40:46+00:00",
+      "resumen": "New information about the the temporary deployment of security forces in the city of Cucuta (‘Warnings and Insurance’ page).",
+      "url": "https://www.gov.uk/foreign-travel-advice/colombia"
+    }
+  ],
   "estaciones": {
-    "total": 413,
+    "total": 352,
     "por_estado": {
-      "Activa": 297,
-      "Suspendida": 116
+      "Activa": 274,
+      "Suspendida": 78
     },
     "por_categoria": {
-      "Pluviométrica": 239,
-      "Meteorológica Especial": 51,
-      "Pluviográfica": 39,
-      "Limnimétrica": 30,
-      "Climatológica Ordinaria": 21,
-      "Limnigráfica": 15,
-      "Climatológica Principal": 9,
-      "Sinóptica Principal": 6,
-      "Ambiental": 3
+      "Pluviométrica": 220,
+      "Meteorológica Especial": 50,
+      "Pluviográfica": 26,
+      "Limnimétrica": 20,
+      "Climatológica Ordinaria": 14,
+      "Limnigráfica": 10,
+      "Climatológica Principal": 6,
+      "Sinóptica Principal": 4,
+      "Ambiental": 2
     },
     "top_municipios": [
       {
         "municipio": "Medellín",
-        "n": 413
+        "n": 352
       }
     ],
-    "con_coordenadas": 413
+    "con_coordenadas": 352
   },
   "estado": "ok"
 }

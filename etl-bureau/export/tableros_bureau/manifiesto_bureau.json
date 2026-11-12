@@ -12,8 +12,8 @@
   {
    "archivo": "etl-bureau/export/tableros_bureau/marca_llm_2025_2026.json",
    "id": "marca_llm_2025_2026",
-   "estado": "ok",
-   "n": 6
+   "estado": "SKIP",
+   "n": 0
   },
   {
    "archivo": "etl-bureau/export/tableros_bureau/prensa_medios.json",
@@ -28,7 +28,9 @@
    "n": 9
   }
  ],
- "errores": [],
+ "errores": [
+  "marca_llm: [Errno 2] No such file or directory: '/home/runner/work/bureau-inteligencia-turistica/bureau-inteligencia-turistica/etl-bureau/data/processed/marca_llm.csv'"
+ ],
  "mercados": [
   "Colombia",
   "Estados Unidos",

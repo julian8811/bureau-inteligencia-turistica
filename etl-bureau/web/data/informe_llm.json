@@ -1,256 +1,408 @@
 {
- "corte": "2026-11-08",
- "generado": "2026-11-08",
+ "corte": "2026-11-12",
+ "generado": "2026-11-12",
  "secciones": [
   {
    "id": "tendencias",
-   "titulo": "Tendencias (trimestre móvil, ocupación y tarifa)",
+   "titulo": "Tendencias de Mercado",
    "bullets": [
     {
-     "texto": "El total de visitantes en el trimestre móvil (abr‑2026 a jun‑2026) fue 247,331, con una variación interanual de -7 %.",
-     "fuente": "contexto"
+     "texto": "El total de llegadas a Medellín en la ventana móvil de abril a junio de 2026 fue de 247.331, registrando una variación interanual de -7,0%.",
+     "fuente": "med_ult3m_total, med_ult3m_yoy"
     },
     {
-     "texto": "La ocupación media del sector alcanzó 67.108 % en el último periodo.",
-     "fuente": "contexto"
+     "texto": "La ocupación hotelera promedio en el último periodo reportado se situó en 67,108%, reflejando la dinámica de demanda actual.",
+     "fuente": "occ_med_ult"
     },
     {
-     "texto": "La tarifa media por pasajero fue de 442,227 COP, sin variación interanual disponible.",
-     "fuente": "contexto"
+     "texto": "La tarifa media de habitación en el último periodo alcanzó los 442.227,145 COP, estableciendo el nivel de precios del mercado.",
+     "fuente": "tarifa_med_ult"
     }
    ],
    "analisis": [
     {
-     "texto": "El descenso del 7 % en el total de visitantes indica una desaceleración tras el repunte post‑pandemia, lo que afecta la demanda de servicios turísticos.",
-     "fuente": "contexto"
+     "texto": "La contracción del 7,0% en las llegadas trimestrales móviles sugiere una moderación en la demanda turística inmediata frente al mismo periodo del año anterior.",
+     "fuente": "med_ult3m_yoy"
     },
     {
-     "texto": "Una ocupación del 67 % sugiere capacidad disponible en alojamientos, ofreciendo oportunidades para campañas de promoción.",
-     "fuente": "contexto"
-    },
-    {
-     "texto": "La tarifa media de 442 mil COP refleja precios estables, lo que puede favorecer la competitividad del destino.",
-     "fuente": "contexto"
+     "texto": "La combinación de una ocupación del 67,108% y una tarifa media de 442.227,145 COP indica que el mercado mantiene una estructura de precios estable a pesar de la variación en volúmenes.",
+     "fuente": "occ_med_ult, tarifa_med_ult"
     }
    ],
    "grafico": {
-    "titulo": "Indicadores clave del trimestre móvil",
+    "titulo": "Ocupación y Tarifa Media",
     "labels": [
-     "Total visitantes",
-     "Ocupación %",
-     "Tarifa COP"
+     "Ocupación (%)",
+     "Tarifa Media (COP)"
     ],
     "values": [
-     247331.0,
      67.108,
      442227.145
     ],
-    "unidad": "valor"
+    "unidad": "Mixto (% y COP)"
    }
   },
   {
    "id": "receptivo",
-   "titulo": "Receptivo (destinos top, share Medellín, YoY)",
+   "titulo": "Mercado Receptivo Nacional",
    "bullets": [
     {
-     "texto": "Bogotá, D.C. recibió 760,345 llegadas YTD 2026, con una variación interanual de 0.1 %.",
-     "fuente": "contexto"
+     "texto": "Bogotá, D.C. lidera las llegadas nacionales con 760.345 visitantes en el acumulado YTD 2026, representando el 35,8% del total de destinos.",
+     "fuente": "destinos_ytd_2026, share"
     },
     {
-     "texto": "Medellín registró 551,226 llegadas YTD 2026, incrementándose un 9.1 % respecto a 2025.",
-     "fuente": "contexto"
+     "texto": "Medellín registra 551.226 llegadas en el YTD 2026, consolidándose como el segundo destino nacional con una participación del 24,4%.",
+     "fuente": "destinos_ytd_2026, share"
     },
     {
-     "texto": "Cartagena acumuló 441,151 llegadas YTD 2026, con un crecimiento interanual de 0.3 %.",
-     "fuente": "contexto"
+     "texto": "Cartagena cierra el podio con 441.151 llegadas en el YTD 2026, capturando el 18,2% del mercado nacional.",
+     "fuente": "destinos_ytd_2026, share"
     },
     {
-     "texto": "El destino Medellín representó el 78.5 % del total de llegadas, consolidando su posición como principal foco turístico.",
-     "fuente": "contexto"
+     "texto": "San Andrés muestra el mayor crecimiento interanual entre los destinos principales con un 40,1% de variación, alcanzando 74.441 llegadas en el YTD 2026.",
+     "fuente": "destinos, yoy, llegadas_2026_ytd"
     }
    ],
    "analisis": [
     {
-     "texto": "El fuerte aumento del 9 % en Medellín refleja la efectividad de las campañas de promoción local y la mejora de la conectividad aérea.",
-     "fuente": "contexto"
+     "texto": "La concentración del 78,4% de las llegadas nacionales en las tres primeras ciudades (Bogotá, Medellín y Cartagena) evidencia la alta centralidad del turismo urbano y de sol y playa en el país.",
+     "fuente": "share (Bogotá, Medellín, Cartagena)"
     },
     {
-     "texto": "Bogotá mantiene una llegada estable, indicando que la competencia entre ciudades colombianas se mantiene equilibrada.",
-     "fuente": "contexto"
-    },
-    {
-     "texto": "El alto share de Medellín (78.5 %) sugiere concentración de la demanda turística en la región, lo que puede requerir diversificación de la oferta.",
-     "fuente": "contexto"
+     "texto": "El fuerte crecimiento del 40,1% en San Andrés contrasta con la estabilidad de Bogotá (0,1%) y sugiere una reorientación de la demanda hacia destinos insulares.",
+     "fuente": "yoy (San Andrés, Bogotá)"
     }
    ],
    "grafico": {
-    "titulo": "Llegadas YTD 2026 por destino principal",
+    "titulo": "Llegadas Nacionales YTD 2026",
     "labels": [
-     "Bogotá",
+     "Bogotá, D.C.",
      "Medellín",
-     "Cartagena"
+     "Cartagena",
+     "Cali",
+     "San Andrés"
     ],
     "values": [
      760345.0,
      551226.0,
-     441151.0
+     441151.0,
+     92060.0,
+     74441.0
     ],
-    "unidad": "personas"
+    "unidad": "Llegadas"
    }
   },
   {
    "id": "emisores",
-   "titulo": "Emisores (top países emisores con YoY)",
+   "titulo": "Mercado Emisor Internacional",
    "bullets": [
     {
-     "texto": "Estados Unidos envió 180,138 visitantes YTD 2026, con un aumento interanual del 7.7 %.",
-     "fuente": "contexto"
+     "texto": "Estados Unidos es el principal emisor internacional hacia Medellín con 180.138 llegadas en el YTD 2026, representando el 33,1% del total de emisores.",
+     "fuente": "emisores_ytd_2026, share_med"
     },
     {
-     "texto": "México envió 45,910 visitantes YTD 2026, con un aumento interanual del 8.5 %.",
-     "fuente": "contexto"
+     "texto": "México ocupa la segunda posición con 45.910 llegadas en el YTD 2026, mostrando una variación interanual positiva del 8,5%.",
+     "fuente": "emisores_ytd_2026, med_yoy"
     },
     {
-     "texto": "Costa Rica envió 39,224 visitantes YTD 2026, con una disminución interanual del -3.8 %.",
-     "fuente": "contexto"
+     "texto": "Costa Rica se posiciona como el tercer emisor con 39.224 llegadas en el YTD 2026, aunque registra una caída interanual del 3,8%.",
+     "fuente": "emisores_ytd_2026, med_yoy"
+    },
+    {
+     "texto": "Puerto Rico destaca por su dinamismo con un crecimiento interanual del 76,5%, alcanzando 23.851 llegadas en el YTD 2026.",
+     "fuente": "emisores_ytd_2026, med_yoy"
     }
    ],
    "analisis": [
     {
-     "texto": "El crecimiento del 7.7 % de EE. UU. refuerza su posición como principal mercado emisor, impulsado por la mejora de la conectividad aérea directa.",
-     "fuente": "contexto"
+     "texto": "La dependencia del mercado estadounidense, que aporta más de un tercio de las llegadas, implica una vulnerabilidad ante fluctuaciones en la conectividad o la política migratoria de ese país.",
+     "fuente": "share_med (Estados Unidos)"
     },
     {
-     "texto": "México muestra un incremento del 8.5 %, señalando una tendencia ascendente en el turismo de origen latinoamericano.",
-     "fuente": "contexto"
-    },
-    {
-     "texto": "Costa Rica experimenta una caída del 3.8 %, lo que podría deberse a factores económicos o a la competencia de destinos alternativos.",
-     "fuente": "contexto"
+     "texto": "El crecimiento excepcional de Puerto Rico (76,5%) y México (8,5%) sugiere una diversificación incipiente de la base de emisores hacia mercados de habla hispana y caribeños.",
+     "fuente": "med_yoy (Puerto Rico, México)"
     }
    ],
    "grafico": {
-    "titulo": "Principales emisores YTD 2026",
+    "titulo": "Top Emisores YTD 2026",
     "labels": [
-     "EE. UU.",
+     "Estados Unidos",
      "México",
-     "Costa Rica"
+     "Costa Rica",
+     "Ecuador",
+     "Panamá"
     ],
     "values": [
      180138.0,
      45910.0,
-     39224.0
+     39224.0,
+     30130.0,
+     29502.0
     ],
-    "unidad": "personas"
+    "unidad": "Llegadas"
    }
   },
   {
    "id": "salidas",
-   "titulo": "Salidas (salidas al exterior ult3m con YoY)",
+   "titulo": "Salidas al Exterior",
    "bullets": [
     {
-     "texto": "Las salidas a Estados Unidos fueron 85,549 en el trimestre móvil, con una variación interanual de -6.7 %.",
-     "fuente": "contexto"
+     "texto": "El total de salidas de colombianos al exterior en la ventana móvil de abril a junio de 2026 fue de 1.580.620, con un crecimiento interanual del 8,3%.",
+     "fuente": "salidas_destino_ult3m, salidas_destino_ult3m_yoy"
     },
     {
-     "texto": "Las salidas a México fueron 21,714 en el trimestre móvil, con una variación interanual de -3.2 %.",
-     "fuente": "contexto"
+     "texto": "Estados Unidos es el destino preferido para las salidas, con 1.701.005 viajes registrados en el año de referencia 2025.",
+     "fuente": "salidas_top_dest, salidas_top_valor"
     },
     {
-     "texto": "Las salidas a Costa Rica fueron 15,462 en el trimestre móvil, con una variación interanual de -5.5 %.",
-     "fuente": "contexto"
+     "texto": "Panamá registra el mayor crecimiento interanual en salidas con un 21,8%, alcanzando 360.081 viajes en el YTD 2026.",
+     "fuente": "emisores_top (Panamá), sal_yoy, sal_2026_ytd"
+    },
+    {
+     "texto": "México muestra una contracción interanual del 20,0% en las salidas, con 253.633 viajes en el YTD 2026.",
+     "fuente": "emisores_top (México), sal_yoy, sal_2026_ytd"
     }
    ],
    "analisis": [
     {
-     "texto": "Las salidas a EE. UU. disminuyeron un 6.7 % en el trimestre móvil, reflejando una menor demanda de viajes internacionales desde Colombia.",
-     "fuente": "contexto"
+     "texto": "El aumento del 8,3% en las salidas totales indica un mayor poder adquisitivo o interés por el turismo internacional por parte de los residentes.",
+     "fuente": "salidas_destino_ult3m_yoy"
     },
     {
-     "texto": "México también registró caída del 3.2 %, indicando una tendencia general de reducción en destinos norteamericanos.",
-     "fuente": "contexto"
-    },
-    {
-     "texto": "A pesar de la caída, Costa Rica mantiene una salida significativa, aunque su descenso del 5.5 % sugiere oportunidades para reactivar el flujo.",
-     "fuente": "contexto"
+     "texto": "La divergencia entre el crecimiento de Panamá (21,8%) y la caída de México (-20,0%) sugiere cambios en la conectividad aérea o en la preferencia de destino entre los viajeros colombianos.",
+     "fuente": "sal_yoy (Panamá, México)"
     }
    ],
    "grafico": {
-    "titulo": "Salidas al exterior (ult3m)",
+    "titulo": "Salidas YTD 2026 por Destino",
     "labels": [
-     "EE. UU.",
+     "Estados Unidos",
+     "Panamá",
      "México",
-     "Costa Rica"
+     "Rep. Dominicana",
+     "Perú"
     ],
     "values": [
-     85549.0,
-     21714.0,
-     15462.0
+     854982.0,
+     360081.0,
+     253633.0,
+     216694.0,
+     105216.0
     ],
-    "unidad": "personas"
+    "unidad": "Viajes"
    }
   },
   {
    "id": "conectividad",
-   "titulo": "Conectividad (pax MDE/EOH, rutas y carga top)",
+   "titulo": "Conectividad Aérea y Terrestre",
    "bullets": [
     {
-     "texto": "El aeropuerto de Medellín (MDE) registró 32,300,088 llegadas en el periodo, evidenciando su papel como hub regional.",
-     "fuente": "contexto"
+     "texto": "El Aeropuerto José María Córdova (MDE) registró 3.335.464 pasajeros en la ventana móvil de abril a junio de 2026.",
+     "fuente": "aereo_mde_eoh_ult3m"
     },
     {
-     "texto": "El total de pasajeros en la terminal fue 2,199,733, mientras que el metro registró 12,693,379 pasajeros, indicando alta movilidad interna.",
-     "fuente": "contexto"
+     "texto": "La ruta Bogotá - Medellín es la más transitada con 1.972.656 pasajeros, seguida por Cartagena de Indias con 676.052.",
+     "fuente": "rutas_top"
     },
     {
-     "texto": "La ruta más demandada fue desde Bogotá, D.C. con 1,972,656 pasajeros, seguida por Cartagena de Indias con 676,052 pasajeros.",
-     "fuente": "contexto"
+     "texto": "El volumen de carga transportada en el último periodo fue de 18.430.048 kg, manteniendo la posición de Medellín como hub logístico.",
+     "fuente": "carga_ult_kg"
     },
     {
-     "texto": "La carga aérea alcanzó 33,543,620 kg en 2024, la mayor cifra del histórico reciente, señalando crecimiento del comercio aéreo.",
-     "fuente": "contexto"
+     "texto": "El sistema de metro de Medellín transportó 12.693.379 pasajeros en el último mes reportado.",
+     "fuente": "pax_metro_mes"
     }
    ],
    "analisis": [
     {
-     "texto": "El elevado flujo de pasajeros en MDE refuerza su posición estratégica para conectar el interior del país con destinos internacionales.",
-     "fuente": "contexto"
+     "texto": "La predominancia de la ruta Bogotá-Medellín (más de 1,9 millones de pax) confirma la interdependencia económica y turística entre las dos principales ciudades del país.",
+     "fuente": "rutas_top (BOGOTÁ, D.C.)"
     },
     {
-     "texto": "La preponderancia de la ruta Bogotá‑Medellín subraya la importancia de los enlaces intra‑nacionales para el turismo doméstico.",
-     "fuente": "contexto"
-    },
-    {
-     "texto": "El aumento de la carga aérea sugiere una expansión de la actividad logística, complementando el turismo de negocios.",
-     "fuente": "contexto"
+     "texto": "El volumen de carga de 18,4 millones de kg en el último periodo refuerza el rol de Medellín como nodo de distribución regional, complementando su actividad turística.",
+     "fuente": "carga_ult_kg"
     }
    ],
    "grafico": {
-    "titulo": "Principales rutas de origen",
+    "titulo": "Top Rutas Aéreas (Pax)",
     "labels": [
-     "Bogotá",
-     "Cartagena",
-     "Santa Marta"
+     "Bogotá, D.C.",
+     "Cartagena de Indias",
+     "Santa Marta",
+     "Santiago de Cali",
+     "Barranquilla"
     ],
     "values": [
      1972656.0,
      676052.0,
-     422488.0
+     422488.0,
+     327693.0,
+     262780.0
     ],
-    "unidad": "personas"
+    "unidad": "Pasajeros"
    }
   },
   {
    "id": "marca",
-   "titulo": "Marca (categorías LLM, sentimiento, topico)",
+   "titulo": "Marca Destino y Percepción",
    "bullets": [
     {
-     "texto": "La marca Medellín obtuvo 284 menciones en medios durante el periodo, reflejando su presencia en la conversación pública.",
-     "fuente": "contexto"
+     "texto": "Medellín acumula 234 menciones en las plataformas de análisis de sentimiento, con un sentimiento neto de 0,034.",
+     "fuente": "menciones, sentimiento_neto"
+    },
+    {
+     "texto": "La ciudad mantiene una cuota de voz (share) del 82,1% en las conversaciones digitales analizadas.",
+     "fuente": "share_medellin"
     }
    ],
-   "analisis": [],
-   "grafico": {}
+   "analisis": [
+    {
+     "texto": "Un sentimiento neto positivo, aunque marginal (0,034), indica que la percepción general de la marca Medellín sigue siendo favorable en el entorno digital.",
+     "fuente": "sentimiento_neto"
+    },
+    {
+     "texto": "La alta cuota de voz del 82,1% demuestra la relevancia de Medellín como referente turístico en las conversaciones sobre destinos en Colombia.",
+     "fuente": "share_medellin"
+    }
+   ],
+   "grafico": {
+    "titulo": "Percepción Digital",
+    "labels": [
+     "Menciones",
+     "Sentimiento Neto",
+     "Share (%)"
+    ],
+    "values": [
+     234.0,
+     0.034,
+     82.1
+    ],
+    "unidad": "Mixto"
+   }
+  },
+  {
+   "id": "visitante",
+   "titulo": "Perfil del Visitante",
+   "bullets": [
+    {
+     "texto": "El gasto promedio diario por visitante se ubicó en 149.530,113 COP durante el segundo trimestre de 2026.",
+     "fuente": "gasto_prom_dia_cop, gasto_trimestre"
+    },
+    {
+     "texto": "El 45,6% de las llegadas internacionales corresponde a mujeres, mientras que el 53,6% de las salidas al exterior está compuesto por mujeres.",
+     "fuente": "genero_entradas_fem, genero_salidas_fem"
+    }
+   ],
+   "analisis": [
+    {
+     "texto": "El gasto diario de 149.530,113 COP establece la base para estimar el impacto económico directo del turismo en la economía local.",
+     "fuente": "gasto_prom_dia_cop"
+    },
+    {
+     "texto": "La mayor participación femenina en las salidas (53,6%) frente a las llegadas (45,6%) sugiere que las mujeres son el motor principal del turismo saliente colombiano.",
+     "fuente": "genero_salidas_fem, genero_entradas_fem"
+    }
+   ],
+   "grafico": {
+    "titulo": "Gasto y Género",
+    "labels": [
+     "Gasto Diario (COP)",
+     "Fem Llegadas (%)",
+     "Fem Salidas (%)"
+    ],
+    "values": [
+     149530.113,
+     45.6,
+     53.6
+    ],
+    "unidad": "Mixto (COP y %)"
+   }
+  },
+  {
+   "id": "aereo",
+   "titulo": "Industria Aérea",
+   "bullets": [
+    {
+     "texto": "El total de pasajeros de llegadas en el aeropuerto de Medellín (MDE) alcanzó los 32.300.088 en el periodo de referencia.",
+     "fuente": "pax_llegadas_mde"
+    },
+    {
+     "texto": "La carga aérea total registrada fue de 18.430.048 kg, consolidando la operación logística del aeropuerto.",
+     "fuente": "carga_ult_kg"
+    }
+   ],
+   "analisis": [
+    {
+     "texto": "El volumen de 32,3 millones de pasajeros de llegada posiciona a Medellín como uno de los aeropuertos más transitados del país, facilitando la conectividad internacional.",
+     "fuente": "pax_llegadas_mde"
+    },
+    {
+     "texto": "La operación de carga de 18,4 millones de kg demuestra la capacidad del aeropuerto para soportar flujos comerciales significativos además del turístico.",
+     "fuente": "carga_ult_kg"
+    }
+   ],
+   "grafico": {
+    "titulo": "Volumen Aéreo MDE",
+    "labels": [
+     "Pax Llegadas",
+     "Carga (kg)"
+    ],
+    "values": [
+     32300088.0,
+     18430048.0
+    ],
+    "unidad": "Mixto (Pax y kg)"
+   }
+  },
+  {
+   "id": "territorio",
+   "titulo": "Territorio y Entorno",
+   "bullets": [
+    {
+     "texto": "Se registraron 522 establecimientos de alojamiento turístico (RNT) activos en Medellín.",
+     "fuente": "rnt_med_total"
+    },
+    {
+     "texto": "La seguridad se vio afectada por 30 hurtos y 5 homicidios en el último periodo reportado.",
+     "fuente": "hurtos_med_ult, homicidios_med_ult"
+    },
+    {
+     "texto": "La calidad del aire se mantuvo con un nivel de PM2.5 de 16,9, dentro de rangos aceptables.",
+     "fuente": "pm25_med"
+    },
+    {
+     "texto": "No se registró precipitación (0,0 mm) en el último periodo, lo que puede influir en la planificación de actividades al aire libre.",
+     "fuente": "lluvia_med_mm"
+    }
+   ],
+   "analisis": [
+    {
+     "texto": "La baja cifra de homicidios (5) y hurtos (30) en el último periodo sugiere un entorno de seguridad relativamente estable para el visitante.",
+     "fuente": "homicidios_med_ult, hurtos_med_ult"
+    },
+    {
+     "texto": "La ausencia de lluvia (0,0 mm) en el último periodo favorece la realización de eventos y actividades turísticas al aire libre sin interrupciones climáticas.",
+     "fuente": "lluvia_med_mm"
+    }
+   ],
+   "grafico": {
+    "titulo": "Indicadores de Territorio",
+    "labels": [
+     "RNT",
+     "Hurtos",
+     "Homicidios",
+     "PM2.5",
+     "Lluvia (mm)"
+    ],
+    "values": [
+     522.0,
+     30.0,
+     5.0,
+     16.9,
+     0.0
+    ],
+    "unidad": "Mixto"
+   }
   }
  ]
 }
