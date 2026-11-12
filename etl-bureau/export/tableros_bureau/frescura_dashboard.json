@@ -1,166 +1,174 @@
 {
- "generado": "2026-11-11",
+ "generado": "2026-11-12",
  "estado": "atencion",
  "resumen": {
-  "ok": 19,
+  "ok": 20,
   "atrasadas": [
-   "owid_benchmark_2025_2026.json",
-   "dashboard/index.html"
+   "raw_carry",
+   "owid_benchmark_2025_2026.json"
   ],
   "faltantes": [],
-  "total": 21
+  "total": 22
  },
  "fuentes": [
   {
    "fuente": "raw",
-   "esperado": "2026-11-11",
-   "encontrado": "2026-11-11",
+   "esperado": "2026-11-12",
+   "encontrado": "2026-11-12",
    "edad_dias": 0,
    "estado": "ok",
    "detalle": ""
   },
   {
+   "fuente": "raw_carry",
+   "esperado": "2026-11-12",
+   "encontrado": "aereo_mde_eoh,airportmiles_mde,alumbrados_antioquia,avisos_viaje,bts_co,ciudades_llegadas,dane_egit_alojamiento,dane_egit_gasto_dia,dane_egit_pernoctacion,dane_egit_turismo_interno,dane_ema,dane_ema_mensual,dane_ipc,emisores_contexto,entradas_nacionalidad,eurostat_arrivals,eurostat_aviation,eurostat_capacity,eurostat_demanda,eurostat_tourism,festivos_co,festivos_emisores,gastronomia_osm_med,ideam_lluvia_med,medata_extranjeros_pais_mde,medata_mig_mde,medata_occ_feria,medata_occ_mitad,medata_occ_moda,medata_occ_receso,medata_occ_santa,medata_occ_tex,medata_ocupacion_med,medata_ocupacion_zona,medata_pax_int_origen,medata_pits,medata_sitios_interes,medata_tarifa_med,medata_tarifa_zona,medata_travel_metrics,medellin_no_residentes,operaciones_aereas,rnt_antioquia,rnt_prestadores,salidas_destino,seguridad_homicidios_med,seguridad_hurtos_med,sisaire_amva,tieredtravel_med,trm_mensual",
+   "edad_dias": 5,
+   "estado": "atrasado",
+   "detalle": "carry (contenido del aereo_mde_eoh<-2026-11-11; airportmiles_mde<-2026-11-07; alumbrados_antioquia<-2026-11-11; avisos_viaje<-2026-11-11; bts_co<-2026-11-11; ciudades_llegadas<-2026-11-11; dane_egit_alojamiento<-2026-11-11; dane_egit_gasto_dia<-2026-11-11; dane_egit_pernoctacion<-2026-11-11; dane_egit_turismo_interno<-2026-11-11; dane_ema<-2026-11-11; dane_ema_mensual<-2026-11-11; dane_ipc<-2026-11-11; emisores_contexto<-2026-11-07; entradas_nacionalidad<-2026-11-09; eurostat_arrivals<-2026-11-11; eurostat_aviation<-2026-11-11; eurostat_capacity<-2026-11-11; eurostat_demanda<-2026-11-11; eurostat_tourism<-2026-11-11; festivos_co<-2026-11-11; festivos_emisores<-2026-11-11; gastronomia_osm_med<-2026-11-11; ideam_lluvia_med<-2026-11-11; medata_extranjeros_pais_mde<-2026-11-11; medata_mig_mde<-2026-11-11; medata_occ_feria<-2026-11-11; medata_occ_mitad<-2026-11-11; medata_occ_moda<-2026-11-11; medata_occ_receso<-2026-11-11; medata_occ_santa<-2026-11-11; medata_occ_tex<-2026-11-11; medata_ocupacion_med<-2026-11-11; medata_ocupacion_zona<-2026-11-11; medata_pax_int_origen<-2026-11-11; medata_pits<-2026-11-11; medata_sitios_interes<-2026-11-11; medata_tarifa_med<-2026-11-11; medata_tarifa_zona<-2026-11-11; medata_travel_metrics<-2026-11-11; medellin_no_residentes<-2026-11-11; operaciones_aereas<-2026-11-11; rnt_antioquia<-2026-11-11; rnt_prestadores<-2026-11-11; salidas_destino<-2026-11-11; seguridad_homicidios_med<-2026-11-09; seguridad_hurtos_med<-2026-11-09; sisaire_amva<-2026-11-11; tieredtravel_med<-2026-11-07; trm_mensual<-2026-11-11), no es dato fresco"
+  },
+  {
    "fuente": "kpis_diario",
-   "esperado": "kpis_2026-11-11.csv",
-   "encontrado": "kpis_2026-11-11.csv",
+   "esperado": "kpis_2026-11-12.csv",
+   "encontrado": "kpis_2026-11-12.csv",
    "edad_dias": 0,
    "estado": "ok",
    "detalle": ""
   },
   {
    "fuente": "kpis_historico",
-   "esperado": "2026-11-11",
-   "encontrado": "2026-11-11",
+   "esperado": "2026-11-12",
+   "encontrado": "2026-11-12",
    "edad_dias": 0,
    "estado": "ok",
    "detalle": ""
   },
   {
    "fuente": "bureau.sqlite",
-   "esperado": "2026-11-11",
-   "encontrado": "2026-11-11",
+   "esperado": "2026-11-12",
+   "encontrado": "2026-11-12",
    "edad_dias": 0,
    "estado": "ok",
    "detalle": ""
   },
   {
    "fuente": "paises_2025_2026.json",
-   "esperado": "2026-11-11",
-   "encontrado": "2026-11-11",
+   "esperado": "2026-11-12",
+   "encontrado": "2026-11-12",
    "edad_dias": 0,
    "estado": "ok",
    "detalle": "fecha por mtime (el JSON no trae generado)"
   },
   {
    "fuente": "marca_llm_2025_2026.json",
-   "esperado": "2026-11-11",
-   "encontrado": "2026-11-11",
+   "esperado": "2026-11-12",
+   "encontrado": "2026-11-12",
    "edad_dias": 0,
    "estado": "ok",
    "detalle": "fecha por mtime (el JSON no trae generado)"
   },
   {
    "fuente": "prensa_medios.json",
-   "esperado": "2026-11-11",
-   "encontrado": "2026-11-11",
+   "esperado": "2026-11-12",
+   "encontrado": "2026-11-12",
    "edad_dias": 0,
    "estado": "ok",
    "detalle": ""
   },
   {
    "fuente": "informe_llm.json",
-   "esperado": "2026-11-11",
-   "encontrado": "2026-11-11",
+   "esperado": "2026-11-12",
+   "encontrado": "2026-11-12",
    "edad_dias": 0,
    "estado": "ok",
    "detalle": ""
   },
   {
    "fuente": "manifiesto_bureau.json",
-   "esperado": "2026-11-11",
-   "encontrado": "2026-11-11",
+   "esperado": "2026-11-12",
+   "encontrado": "2026-11-12",
    "edad_dias": 0,
    "estado": "ok",
    "detalle": ""
   },
   {
    "fuente": "oferta_territorio_2025_2026.json",
-   "esperado": "2026-11-11",
-   "encontrado": "2026-11-11",
+   "esperado": "2026-11-12",
+   "encontrado": "2026-11-12",
    "edad_dias": 0,
    "estado": "ok",
    "detalle": ""
   },
   {
    "fuente": "seguridad_2025_2026.json",
-   "esperado": "2026-11-11",
-   "encontrado": "2026-11-11",
+   "esperado": "2026-11-12",
+   "encontrado": "2026-11-12",
    "edad_dias": 0,
    "estado": "ok",
    "detalle": ""
   },
   {
    "fuente": "clima_aire_2025_2026.json",
-   "esperado": "2026-11-11",
-   "encontrado": "2026-11-11",
+   "esperado": "2026-11-12",
+   "encontrado": "2026-11-12",
    "edad_dias": 0,
    "estado": "ok",
    "detalle": ""
   },
   {
    "fuente": "conectividad_benchmark_2025_2026.json",
-   "esperado": "2026-11-11",
-   "encontrado": "2026-11-11",
+   "esperado": "2026-11-12",
+   "encontrado": "2026-11-12",
    "edad_dias": 0,
    "estado": "ok",
    "detalle": ""
   },
   {
    "fuente": "calendario_contexto_2025_2026.json",
-   "esperado": "2026-11-11",
-   "encontrado": "2026-11-11",
+   "esperado": "2026-11-12",
+   "encontrado": "2026-11-12",
    "edad_dias": 0,
    "estado": "ok",
    "detalle": ""
   },
   {
    "fuente": "owid_benchmark_2025_2026.json",
-   "esperado": "2026-11-11",
+   "esperado": "2026-11-12",
    "encontrado": "2026-11-09",
-   "edad_dias": 2,
+   "edad_dias": 3,
    "estado": "atrasado",
    "detalle": ""
   },
   {
    "fuente": "sit_emisores_2025_2026.json",
-   "esperado": "2026-11-11",
-   "encontrado": "2026-11-11",
+   "esperado": "2026-11-12",
+   "encontrado": "2026-11-12",
    "edad_dias": 0,
    "estado": "ok",
    "detalle": ""
   },
   {
    "fuente": "pronosticos.json",
-   "esperado": "2026-11-11",
+   "esperado": "2026-11-12",
    "encontrado": "2026-11-11",
-   "edad_dias": 0,
+   "edad_dias": 1,
    "estado": "ok",
    "detalle": "fecha por mtime (el JSON no trae generado)"
   },
   {
    "fuente": "web/data",
-   "esperado": "2026-11-11",
-   "encontrado": "2026-11-11",
+   "esperado": "2026-11-12",
+   "encontrado": "2026-11-12",
    "edad_dias": 0,
    "estado": "ok",
    "detalle": ""
   },
   {
    "fuente": "dashboard/index.html",
-   "esperado": "2026-11-11",
-   "encontrado": "2026-11-09",
-   "edad_dias": 2,
-   "estado": "atrasado",
+   "esperado": "2026-11-12",
+   "encontrado": "2026-11-11",
+   "edad_dias": 1,
+   "estado": "ok",
    "detalle": ""
   },
   {
@@ -173,8 +181,8 @@
   },
   {
    "fuente": "vercel/manifiesto",
-   "esperado": "2026-11-11",
-   "encontrado": "2026-11-10",
+   "esperado": "2026-11-12",
+   "encontrado": "2026-11-11",
    "edad_dias": 1,
    "estado": "ok",
    "detalle": ""
