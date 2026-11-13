@@ -1,0 +1,282 @@
+{
+ "corte": "2026-11-13",
+ "generado": "2026-11-13",
+ "secciones": [
+  {
+   "id": "tendencias",
+   "titulo": "Tendencias",
+   "bullets": [
+    {
+     "texto": "En el trimestre móvil de abril a junio de 2026, el total de viajeros fue 247,331, lo que indica una caída del 7 % respecto a 2025 (YoY -0.07).",
+     "fuente": "Fuente: datos del contexto"
+    },
+    {
+     "texto": "La ocupación media registrada en el mismo periodo fue 67.108 %.",
+     "fuente": "Fuente: datos del contexto"
+    },
+    {
+     "texto": "La tarifa media alcanzó 442,227.145 unidades monetarias, sin variación YoY disponible.",
+     "fuente": "Fuente: datos del contexto"
+    }
+   ],
+   "analisis": [
+    {
+     "texto": "La disminución del flujo de viajeros sugiere efectos de factores externos que redujeron la demanda en el primer semestre.",
+     "fuente": "Fuente: datos del contexto"
+    },
+    {
+     "texto": "A pesar de la caída en viajeros, la ocupación se mantuvo alta, indicando eficiencia en la capacidad disponible.",
+     "fuente": "Fuente: datos del contexto"
+    }
+   ],
+   "grafico": {
+    "titulo": "Trimestre móvil 2026",
+    "labels": [
+     "Viajeros",
+     "Ocupación",
+     "Tarifa"
+    ],
+    "values": [
+     247331.0,
+     67.108,
+     442227.145
+    ],
+    "unidad": "unidades"
+   }
+  },
+  {
+   "id": "receptivo",
+   "titulo": "Receptivo",
+   "bullets": [
+    {
+     "texto": "Bogotá, D.C. recibió 760,345 viajeros YTD 2026, representando el 35.8 % del total de llegadas.",
+     "fuente": "Fuente: datos del contexto"
+    },
+    {
+     "texto": "Medellín registró 551,226 llegadas YTD 2026, lo que equivale a un aumento del 9.1 % respecto a 2025 (YoY 0.091) y mantiene una participación del 24.4 %.",
+     "fuente": "Fuente: datos del contexto"
+    },
+    {
+     "texto": "Cartagena acumuló 441,151 viajeros YTD 2026, con una participación del 18.2 %.",
+     "fuente": "Fuente: datos del contexto"
+    },
+    {
+     "texto": "El share de Medellín dentro del total de destinos receptivos es 0.819, indicando que el 81.9 % de los viajeros se dirigen a la ciudad.",
+     "fuente": "Fuente: datos del contexto"
+    }
+   ],
+   "analisis": [
+    {
+     "texto": "El crecimiento de Medellín refleja la recuperación del turismo interno y la atracción de eventos locales.",
+     "fuente": "Fuente: datos del contexto"
+    },
+    {
+     "texto": "Bogotá sigue liderando como principal destino, consolidando su posición estratégica en la red de movilidad nacional.",
+     "fuente": "Fuente: datos del contexto"
+    }
+   ],
+   "grafico": {
+    "titulo": "Llegadas YTD 2026 por ciudad",
+    "labels": [
+     "Bogotá, D.C.",
+     "Medellín",
+     "Cartagena"
+    ],
+    "values": [
+     760345.0,
+     551226.0,
+     441151.0
+    ],
+    "unidad": "viajeros"
+   }
+  },
+  {
+   "id": "emisores",
+   "titulo": "Emisores",
+   "bullets": [
+    {
+     "texto": "Estados Unidos generó 180,138 viajeros YTD 2026, lo que representa un crecimiento del 7.7 % respecto a 2025 (YoY 0.077).",
+     "fuente": "Fuente: datos del contexto"
+    },
+    {
+     "texto": "México aportó 45,910 viajeros YTD 2026, con una variación YoY del 8.5 % (YoY 0.085).",
+     "fuente": "Fuente: datos del contexto"
+    },
+    {
+     "texto": "Costa Rica contribuyó con 39,224 viajeros YTD 2026, registrando una disminución del 3.8 % (YoY -0.038).",
+     "fuente": "Fuente: datos del contexto"
+    },
+    {
+     "texto": "Panamá envió 29,502 viajeros YTD 2026, con un aumento del 3 % (YoY 0.03).",
+     "fuente": "Fuente: datos del contexto"
+    },
+    {
+     "texto": "Ecuador aportó 30,130 viajeros YTD 2026, con un leve crecimiento del 1 % (YoY 0.01).",
+     "fuente": "Fuente: datos del contexto"
+    }
+   ],
+   "analisis": [
+    {
+     "texto": "Estados Unidos sigue siendo el principal emisor, aunque su crecimiento se desacelera, lo que podría reflejar cambios en la demanda de viajes internacionales.",
+     "fuente": "Fuente: datos del contexto"
+    },
+    {
+     "texto": "México y Costa Rica mantienen posiciones relevantes, impulsados por la proximidad y la conectividad aérea.",
+     "fuente": "Fuente: datos del contexto"
+    }
+   ],
+   "grafico": {
+    "titulo": "Emisores top YTD 2026",
+    "labels": [
+     "Estados Unidos",
+     "México",
+     "Costa Rica"
+    ],
+    "values": [
+     180138.0,
+     45910.0,
+     39224.0
+    ],
+    "unidad": "viajeros"
+   }
+  },
+  {
+   "id": "salidas",
+   "titulo": "Salidas",
+   "bullets": [
+    {
+     "texto": "Las salidas al exterior en el trimestre móvil (abr‑2026 a jun‑2026) totalizaron 1,580,620, incrementándose un 8.3 % respecto a 2025 (YoY 0.083).",
+     "fuente": "Fuente: datos del contexto"
+    },
+    {
+     "texto": "Estados Unidos lideró con 85,549 viajeros en el mismo periodo, aunque mostró una caída del 6.7 % YoY (YoY -0.067).",
+     "fuente": "Fuente: datos del contexto"
+    },
+    {
+     "texto": "México registró 21,714 salidas, con una disminución del 3.2 % YoY (YoY -0.032).",
+     "fuente": "Fuente: datos del contexto"
+    },
+    {
+     "texto": "Perú presentó 9,969 salidas, con un leve aumento del 1.9 % YoY (YoY 0.019).",
+     "fuente": "Fuente: datos del contexto"
+    }
+   ],
+   "analisis": [
+    {
+     "texto": "El aumento global de salidas refleja la recuperación de la demanda internacional tras la pandemia.",
+     "fuente": "Fuente: datos del contexto"
+    },
+    {
+     "texto": "La caída en los flujos hacia EE.UU. sugiere posibles restricciones o cambios en la preferencia de destinos.",
+     "fuente": "Fuente: datos del contexto"
+    }
+   ],
+   "grafico": {
+    "titulo": "Salidas YTD 2026",
+    "labels": [
+     "Total Salidas",
+     "EE.UU."
+    ],
+    "values": [
+     1580620.0,
+     85549.0
+    ],
+    "unidad": "viajeros"
+   }
+  },
+  {
+   "id": "conectividad",
+   "titulo": "Conectividad",
+   "bullets": [
+    {
+     "texto": "El número total de pasajeros en el aeropuerto de Medellín (MDE) y su entorno (EOH) alcanzó 3,335,464 en el trimestre móvil de 2026, indicando una alta actividad aeroportuaria.",
+     "fuente": "Fuente: datos del contexto"
+    },
+    {
+     "texto": "La ruta más demandada fue Bogotá, D.C., con 1,972,656 pasajeros, seguida por Cartagena de Indias con 676,052 pasajeros.",
+     "fuente": "Fuente: datos del contexto"
+    },
+    {
+     "texto": "El volumen de carga aérea en 2024 fue de 33,543,620 kg, mostrando una tendencia al alza respecto a años anteriores.",
+     "fuente": "Fuente: datos del contexto"
+    }
+   ],
+   "analisis": [
+    {
+     "texto": "La fuerte conectividad con Bogotá refuerza la integración regional y facilita el flujo de turistas y negocios.",
+     "fuente": "Fuente: datos del contexto"
+    },
+    {
+     "texto": "El crecimiento de la carga aérea evidencia el dinamismo del sector logístico y su papel en la economía.",
+     "fuente": "Fuente: datos del contexto"
+    }
+   ],
+   "grafico": {
+    "titulo": "Rutas top por pax",
+    "labels": [
+     "Bogotá, D.C.",
+     "Cartagena de Indias",
+     "Santa Marta",
+     "Santiago de Cali",
+     "Barranquilla"
+    ],
+    "values": [
+     1972656.0,
+     676052.0,
+     422488.0,
+     327693.0,
+     262780.0
+    ],
+    "unidad": "viajeros"
+   }
+  },
+  {
+   "id": "marca",
+   "titulo": "Marca",
+   "bullets": [
+    {
+     "texto": "Se registraron 232 menciones en medios y plataformas digitales, con un sentimiento neto positivo de 0.034, indicando una percepción ligeramente favorable.",
+     "fuente": "Fuente: datos del contexto"
+    }
+   ],
+   "analisis": [
+    {
+     "texto": "El leve aumento del sentimiento sugiere que las campañas de promoción están generando una imagen positiva.",
+     "fuente": "Fuente: datos del contexto"
+    },
+    {
+     "texto": "El número de menciones, aunque moderado, brinda una base para fortalecer la presencia de la marca en canales digitales.",
+     "fuente": "Fuente: datos del contexto"
+    }
+   ],
+   "grafico": {
+    "titulo": "Menciones y Sentimiento",
+    "labels": [
+     "Menciones",
+     "Sentimiento Neto"
+    ],
+    "values": [
+     232.0,
+     0.034
+    ],
+    "unidad": "índice"
+   }
+  },
+  {
+   "id": "territorio",
+   "titulo": "Territorio",
+   "bullets": [
+    {
+     "texto": "El ingreso neto por turismo (RNT) alcanzó 522.0 unidades monetarias, reflejando la contribución económica del sector.",
+     "fuente": "Fuente: datos del contexto"
+    },
+    {
+     "texto": "Se reportaron 30 hurtos y 5 homicidios en el periodo analizado, indicadores de seguridad que deben ser monitoreados.",
+     "fuente": "Fuente: datos del contexto"
+    }
+   ],
+   "analisis": [],
+   "grafico": {}
+  }
+ ]
+}

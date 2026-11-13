@@ -39133,6 +39133,177 @@
       "views": 9798
     }
   ],
+  "bts_colombia": [
+    {
+      "year": "2024",
+      "mes": "08",
+      "llegadas_sillas": 313024,
+      "llegadas_pax": 273133,
+      "salidas_sillas": 313381
+    },
+    {
+      "year": "2024",
+      "mes": "09",
+      "llegadas_sillas": 247830,
+      "llegadas_pax": 215809,
+      "salidas_sillas": 247022
+    },
+    {
+      "year": "2024",
+      "mes": "10",
+      "llegadas_sillas": 251232,
+      "llegadas_pax": 204172,
+      "salidas_sillas": 251132
+    },
+    {
+      "year": "2024",
+      "mes": "11",
+      "llegadas_sillas": 255030,
+      "llegadas_pax": 202148,
+      "salidas_sillas": 255397
+    },
+    {
+      "year": "2024",
+      "mes": "12",
+      "llegadas_sillas": 344003,
+      "llegadas_pax": 266927,
+      "salidas_sillas": 344110
+    },
+    {
+      "year": "2025",
+      "mes": "01",
+      "llegadas_sillas": 319738,
+      "llegadas_pax": 269340,
+      "salidas_sillas": 320263
+    },
+    {
+      "year": "2025",
+      "mes": "02",
+      "llegadas_sillas": 246282,
+      "llegadas_pax": 180922,
+      "salidas_sillas": 246360
+    },
+    {
+      "year": "2025",
+      "mes": "03",
+      "llegadas_sillas": 278463,
+      "llegadas_pax": 226973,
+      "salidas_sillas": 277907
+    },
+    {
+      "year": "2025",
+      "mes": "04",
+      "llegadas_sillas": 262971,
+      "llegadas_pax": 220419,
+      "salidas_sillas": 262186
+    },
+    {
+      "year": "2025",
+      "mes": "05",
+      "llegadas_sillas": 277556,
+      "llegadas_pax": 218398,
+      "salidas_sillas": 278435
+    },
+    {
+      "year": "2025",
+      "mes": "06",
+      "llegadas_sillas": 324308,
+      "llegadas_pax": 265454,
+      "salidas_sillas": 325298
+    },
+    {
+      "year": "2025",
+      "mes": "07",
+      "llegadas_sillas": 345412,
+      "llegadas_pax": 276578,
+      "salidas_sillas": 346090
+    },
+    {
+      "year": "2025",
+      "mes": "08",
+      "llegadas_sillas": 339488,
+      "llegadas_pax": 284396,
+      "salidas_sillas": 340253
+    },
+    {
+      "year": "2025",
+      "mes": "09",
+      "llegadas_sillas": 267630,
+      "llegadas_pax": 215405,
+      "salidas_sillas": 267952
+    },
+    {
+      "year": "2025",
+      "mes": "10",
+      "llegadas_sillas": 273367,
+      "llegadas_pax": 213755,
+      "salidas_sillas": 274190
+    },
+    {
+      "year": "2025",
+      "mes": "11",
+      "llegadas_sillas": 286020,
+      "llegadas_pax": 216243,
+      "salidas_sillas": 287642
+    },
+    {
+      "year": "2025",
+      "mes": "12",
+      "llegadas_sillas": 357339,
+      "llegadas_pax": 270325,
+      "salidas_sillas": 357608
+    },
+    {
+      "year": "2026",
+      "mes": "01",
+      "llegadas_sillas": 325930,
+      "llegadas_pax": 280539,
+      "salidas_sillas": 325897
+    },
+    {
+      "year": "2026",
+      "mes": "02",
+      "llegadas_sillas": 261142,
+      "llegadas_pax": 194484,
+      "salidas_sillas": 260903
+    },
+    {
+      "year": "2026",
+      "mes": "03",
+      "llegadas_sillas": 302516,
+      "llegadas_pax": 248783,
+      "salidas_sillas": 302734
+    },
+    {
+      "year": "2026",
+      "mes": "04",
+      "llegadas_sillas": 277432,
+      "llegadas_pax": 224184,
+      "salidas_sillas": 276554
+    },
+    {
+      "year": "2026",
+      "mes": "05",
+      "llegadas_sillas": 255874,
+      "llegadas_pax": 208370,
+      "salidas_sillas": 255970
+    },
+    {
+      "year": "2026",
+      "mes": "06",
+      "llegadas_sillas": 293644,
+      "llegadas_pax": 248658,
+      "salidas_sillas": 292966
+    },
+    {
+      "year": "2026",
+      "mes": "07",
+      "llegadas_sillas": 318691,
+      "llegadas_pax": 251254,
+      "salidas_sillas": 318622
+    }
+  ],
+  "ipc_colombia": [],
   "cortes": {
     "operaciones": "2026-07",
     "trm": "2026-11-13",
