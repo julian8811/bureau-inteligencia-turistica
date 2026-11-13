@@ -1,8 +1,8 @@
 {
   "id": "bureau-oferta",
-  "generado": "2026-11-12",
+  "generado": "2026-11-13",
   "ventana": "2025-2026",
-  "fuente": "RNT + DANE-EGIT (raw 2026-11-02)",
+  "fuente": "RNT + DANE-EGIT (raw latest)",
   "serie": {
     "rnt": {
       "prestadores": 971,

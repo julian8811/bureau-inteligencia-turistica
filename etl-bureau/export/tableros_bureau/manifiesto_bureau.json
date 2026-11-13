@@ -1,5 +1,5 @@
 {
- "generado": "2026-11-12",
+ "generado": "2026-11-13",
  "fuente": "ETL Bureau abierto (etl-bureau, data/processed)",
  "licencia": "Datos abiertos procesados por el ETL Bureau; insumo Aerocivil/DANE abierto.",
  "piezas": [
@@ -12,8 +12,8 @@
   {
    "archivo": "etl-bureau/export/tableros_bureau/marca_llm_2025_2026.json",
    "id": "marca_llm_2025_2026",
-   "estado": "SKIP",
-   "n": 0
+   "estado": "ok",
+   "n": 6
   },
   {
    "archivo": "etl-bureau/export/tableros_bureau/prensa_medios.json",
@@ -28,9 +28,7 @@
    "n": 9
   }
  ],
- "errores": [
-  "marca_llm: [Errno 2] No such file or directory: '/home/runner/work/bureau-inteligencia-turistica/bureau-inteligencia-turistica/etl-bureau/data/processed/marca_llm.csv'"
- ],
+ "errores": [],
  "mercados": [
   "Colombia",
   "Estados Unidos",

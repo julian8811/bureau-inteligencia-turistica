@@ -1,10 +1,52 @@
 {
  "id": "marca_llm_2025_2026",
- "estado": "SKIP",
- "motivo": "FileNotFoundError: [Errno 2] No such file or directory: '/home/runner/work/bureau-inteligencia-turistica/bureau-inteligencia-turistica/etl-bureau/data/processed/marca_llm.csv'",
  "fuente": "ETL Bureau abierto (etl-bureau, data/processed)",
  "licencia": "Datos abiertos procesados por el ETL Bureau; insumo Aerocivil/DANE abierto.",
- "ventana": "2025-2026",
- "categorias": [],
- "top_topico_global": null
+ "ventana": "2026-10 a 2026-11",
+ "categorias": [
+  {
+   "categoria": "otro",
+   "n": 60,
+   "share": 0.253165,
+   "sent_net": 0.183333,
+   "top_topico": "ritvales 2025"
+  },
+  {
+   "categoria": "mice",
+   "n": 55,
+   "share": 0.232068,
+   "sent_net": 0.636364,
+   "top_topico": "congreso icca"
+  },
+  {
+   "categoria": "vacacional",
+   "n": 54,
+   "share": 0.227848,
+   "sent_net": 0.592593,
+   "top_topico": "feria flores programación"
+  },
+  {
+   "categoria": "marca",
+   "n": 37,
+   "share": 0.156118,
+   "sent_net": 0.945946,
+   "top_topico": "premio turismo"
+  },
+  {
+   "categoria": "infraestructura",
+   "n": 22,
+   "share": 0.092827,
+   "sent_net": 0.045455,
+   "top_topico": "cierres viales"
+  },
+  {
+   "categoria": "seguridad",
+   "n": 9,
+   "share": 0.037975,
+   "sent_net": -0.111111,
+   "top_topico": "seguridad infraestructura"
+  }
+ ],
+ "top_topico_global": "ritvales 2025",
+ "n_total": 237
 }
