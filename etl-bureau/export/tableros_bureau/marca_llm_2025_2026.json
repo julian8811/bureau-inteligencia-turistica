@@ -1,10 +1,52 @@
 {
  "id": "marca_llm_2025_2026",
- "estado": "SKIP",
- "motivo": "FileNotFoundError: [Errno 2] No such file or directory: '/home/runner/work/bureau-inteligencia-turistica/bureau-inteligencia-turistica/etl-bureau/data/processed/marca_llm.csv'",
  "fuente": "ETL Bureau abierto (etl-bureau, data/processed)",
  "licencia": "Datos abiertos procesados por el ETL Bureau; insumo Aerocivil/DANE abierto.",
- "ventana": "2025-2026",
- "categorias": [],
- "top_topico_global": null
+ "ventana": "2026-10 a 2026-11",
+ "categorias": [
+  {
+   "categoria": "vacacional",
+   "n": 79,
+   "share": 0.288321,
+   "sent_net": 0.43038,
+   "top_topico": "turismo salud"
+  },
+  {
+   "categoria": "mice",
+   "n": 60,
+   "share": 0.218978,
+   "sent_net": 0.9,
+   "top_topico": "ritvales raíz"
+  },
+  {
+   "categoria": "otro",
+   "n": 50,
+   "share": 0.182482,
+   "sent_net": 0.32,
+   "top_topico": "política pública"
+  },
+  {
+   "categoria": "marca",
+   "n": 41,
+   "share": 0.149635,
+   "sent_net": 0.829268,
+   "top_topico": "semana turismo"
+  },
+  {
+   "categoria": "infraestructura",
+   "n": 30,
+   "share": 0.109489,
+   "sent_net": 0.266667,
+   "top_topico": "horarios metro"
+  },
+  {
+   "categoria": "seguridad",
+   "n": 14,
+   "share": 0.051095,
+   "sent_net": 0.0,
+   "top_topico": "turismo seguro"
+  }
+ ],
+ "top_topico_global": "turismo salud",
+ "n_total": 274
 }
